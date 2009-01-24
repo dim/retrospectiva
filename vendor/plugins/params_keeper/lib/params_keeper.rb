@@ -42,5 +42,3 @@ module ParamsKeeper
     private :params_keeper_retrieve, :params_keeper_store, :params_keeper_key
   end
 end
-
-ActionController::Base.send :include, ParamsKeeper
