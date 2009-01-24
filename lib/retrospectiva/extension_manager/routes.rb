@@ -20,8 +20,8 @@ module Retrospectiva
 
         RetroEM.installed_extensions.each do |extension|
           next unless extension.assets?
-          map.connect "system/extensions/#{extension.name}/:asset_type/*path", :controller => 'retrospectiva_extension_assets', :action => 'show', :extension => extension.name 
-          map.connect "system/extensions/#{extension.name}/*path", :controller => 'retrospectiva_extension_assets', :action => 'show', :extension => extension.name
+          map.connect "extensions/#{extension.name}/:asset_type/*path", :controller => 'retrospectiva_extension_assets', :action => 'show', :extension => extension.name 
+          map.connect "extensions/#{extension.name}/*path", :controller => 'retrospectiva_extension_assets', :action => 'show', :extension => extension.name
         end
       end
       
