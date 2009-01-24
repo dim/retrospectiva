@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
     def layout_markers
       @layout_markers ||= {
         :header => RetroCM[:content][:custom][:header].to_s,
-        :footer => '',
+        :footer => RetroCM[:content][:custom][:footer].to_s,
         :content_styles => ''
       }
     end
