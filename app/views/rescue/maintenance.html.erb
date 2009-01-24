@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= application ? application : "Retrospectiva" %> down for maintenance</title>
+
+  <style type="text/css">
+    div.container { position: absolute; left: 50%; top: 50%; width: 500px; height: 300px; margin-left: -260px; margin-top: -150px; }
+    body          { background: #000; color:#fff; font-family: "Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,"Liberation Sans","Sans",sans-serif; }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    
+    <h3>
+      <%= application ? application : "Retrospectiva" %> 
+      is currently down for 
+      <%= reason ? reason : "maintenance" %>
+      as of <%= Time.now.strftime("%H:%M %Z") %>.
+    </h3>
+    <p>
+      It'll be back <%= deadline ? deadline : "shortly" %>.
+    </p>
+    
+  </div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Ticket do
+describe TicketChange do
+  fixtures :all
 
   describe 'an instance' do
     
@@ -89,7 +90,6 @@ describe Ticket do
 
 
   describe 'on create' do
-    fixtures :users, :tickets, :projects, :ticket_subscribers
     
     before(:each) do
       @ticket_change = TicketChange.new
@@ -191,7 +191,6 @@ describe Ticket do
   end
 
   describe 'attachment status' do    
-    fixtures :ticket_changes
     
     before do 
       @ticket_change = ticket_changes(:agents_ticket_update)
@@ -217,7 +216,6 @@ describe Ticket do
   
 
   describe 'modifiable status' do
-    fixtures :ticket_changes, :users
         
     it 'should return true if user is an admin' do
       ticket_changes(:another_open_update).modifiable?(users(:admin)).should == true
@@ -249,7 +247,6 @@ describe Ticket do
 
   
   describe 'monitoring ticket changes' do
-    fixtures :tickets, :users, :projects, :statuses, :priorities, :milestones, :ticket_properties, :ticket_property_types, :ticket_properties_tickets
 
     before do
       @ticket = tickets(:open)
@@ -296,7 +293,6 @@ describe Ticket do
   end
   
   describe 'previewable' do  
-    fixtures :projects, :tickets, :ticket_changes, :statuses, :users
       
     describe 'channel' do
       before do

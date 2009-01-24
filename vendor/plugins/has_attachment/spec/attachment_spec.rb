@@ -1,6 +1,12 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe Attachment do
+
+  before :each do
+    File.open(Attachment.storage_path + '/1', 'w') {|f| f << "#!/usr/bin/env ruby\nputs 'This is a ruby script!'" }
+    File.open(Attachment.storage_path + '/2', 'w') {|f| f << "GIF89a^A^@^A^@�^@^@���^@^@^@!�^D^A^@^@^@^@,^@^@^@^@^A^@^A^@^@^B^BD^A^@;if" }
+    File.open(Attachment.storage_path + '/3', 'w') {|f| f << "..." }
+  end      
 
   def build_attachment(content, name = 'file.rb', type = 'text/plain')    
     @stream = ActionController::UploadedStringIO.new(content)
@@ -21,10 +27,12 @@ describe Attachment do
         @a1.should_not be_ready_to_save
         @a2.should_not be_ready_to_save        
       end
+      
       it 'should have no file name' do
         @a1.file_name.should be_blank
         @a2.file_name.should be_blank
-      end      
+      end
+      
       it 'should have no content-type' do
         @a1.content_type.should be_blank
         @a2.content_type.should be_blank
@@ -151,7 +159,6 @@ describe Attachment do
 
   describe 'existing' do
     fixtures :attachments
-    load_attachment_fixtures    
 
     describe 'if file is present' do
      

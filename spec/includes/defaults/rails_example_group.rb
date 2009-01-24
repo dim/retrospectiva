@@ -1,10 +1,8 @@
-Spec::Rails::Example::RailsExampleGroup.class_eval do
-  cattr_accessor :attachments_path
-  self.attachments_path = File.join(RAILS_ROOT, 'spec', 'fixtures', 'attachments')
+Attachment.storage_path = '/dev/null'    
 
+Spec::Rails::Example::RailsExampleGroup.class_eval do
   before(:all) do
     RetroCM[:general][:basic][:site_url] = 'http://test.host'
-    Attachment.storage_path = attachments_path    
   end
 
   before(:each) do
@@ -17,21 +15,4 @@ Spec::Rails::Example::RailsExampleGroup.class_eval do
     Project.current = nil
   end
 
-  class << self
-    
-    def load_attachment_fixtures
-      before do
-        File.open(attachments_path + '/1', 'w') {|f| f << "#!/usr/bin/env ruby\nputs 'This is a ruby script!'" }
-        File.open(attachments_path + '/2', 'w') {|f| f << "GIF89a^A^@^A^@�^@^@���^@^@^@!�^D^A^@^@^@^@,^@^@^@^@^A^@^A^@^@^B^BD^A^@;if" }
-        File.open(attachments_path + '/3', 'w') {|f| f << "..." }
-      end
-      
-      after do 
-        Dir[attachments_path + '/*'].each do |file|
-          File.unlink(file)
-        end      
-      end    
-    end
-    
-  end  
 end
