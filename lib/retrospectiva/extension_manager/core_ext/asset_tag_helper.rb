@@ -60,7 +60,7 @@ module Retrospectiva
         module ExtensionAssetTag
           
           def directory
-            "extensions/#{@controller.class.retrospectiva_extension}/#{super}"
+            "system/extensions/#{@controller.class.retrospectiva_extension}/#{super}"
           end
           
         end
