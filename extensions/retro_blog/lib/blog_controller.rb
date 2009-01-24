@@ -24,8 +24,9 @@ class BlogController < ProjectAreaController
   before_filter :load_categories, :only => [:index] 
   
   def index
-    @posts = Project.current.blog_posts.posted_by(params[:u]).categorized_as(params[:c]).paginate :page => params[:page],
+    @blog_posts = Project.current.blog_posts.posted_by(params[:u]).categorized_as(params[:c]).paginate :page => params[:page],
       :include => [:categories, :user, :comments]
+    respond_with_defaults(BlogPost)
   end
   
   def show

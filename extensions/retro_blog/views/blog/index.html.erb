@@ -6,17 +6,15 @@
 
   <div class="span-17 append-1">
   
-    <% @posts.each do |post| -%>
-      <%= render :partial => 'post', :locals => { :post => post, :preview => true } %>
-    <% end if @posts.any? -%>
+    <%= render :partial => 'post', :collection => @blog_posts, :locals => { :preview => true } %>
 
-    <% if @posts.empty? -%>
+    <% if @blog_posts.empty? -%>
       <h4 class="box centered"><%=_ 'There are no posts available.' %></h4>
     <% end -%>
 
     <% content_footer('righted') do -%>
-      <%= will_paginate(@posts) %>
-    <% end if @posts.total_pages > 1 -%>
+      <%= will_paginate(@blog_posts) %>
+    <% end if @blog_posts.total_pages > 1 -%>
 
   </div>
 

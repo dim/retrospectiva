@@ -36,7 +36,7 @@ describe BlogController do
         :include => [:categories, :user, :comments]
       ).and_return(@posts) 
       do_get(:u => '1', :c => 'News')
-      assigns[:posts].should == @posts 
+      assigns[:blog_posts].should == @posts 
     end
     
     it 'should load the categories' do

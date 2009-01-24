@@ -10,12 +10,16 @@ module Retrospectiva
             
       def install(extension)
         @installed_extension_names << extension.name
-        write_extension_table
+        returning write_extension_table do
+          dump_schema
+        end
       end
 
       def uninstall(extension)
-        @installed_extension_names.delete(extension.name)
-        write_extension_table
+        @installed_extension_names.delete(extension.name)        
+        returning write_extension_table do
+          dump_schema
+        end
       end
       
       def download(uri)
@@ -48,6 +52,13 @@ module Retrospectiva
         def sanitize!
           valid_names = ExtensionManager.available_extensions.map(&:name)
           @installed_extension_names = (installed_extension_names & valid_names).uniq
+        end
+        
+        def dump_schema
+          require 'active_record/schema_dumper'
+          File.open("#{RAILS_ROOT}/db/schema.rb", "w") do |file|
+            ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
+          end        
         end
 
         def extension_path(name = nil)
