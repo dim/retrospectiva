@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new user') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => @user,
+      :collection_path => admin_users_path } %>

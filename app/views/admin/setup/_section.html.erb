@@ -1,0 +1,9 @@
+<h1 id="<%=h section.name %>_section"><%=h section.label %></h1>
+<%= simple_markup(section.description) unless section.description.blank? %>
+
+<%= render :partial => 'group', :collection => section.groups, :locals => {:f => f} %>
+<% f.fieldset do -%>
+  <%= f.submit _('Save all') -%>
+<% end -%>
+<%= top_link %>
+<hr/>

@@ -1,0 +1,16 @@
+<tr class="<%= cycle('odd', 'even') -%> record">
+  <td class="strong"><%=h group.name %> [<%=h group.id %>]</td>
+  <td class="small"><%=h group.project_names.join(', ') %></td>
+  <% RetroAM.permission_map.values.sort.each do |resource| -%>
+    <td class="tiny" title="<%=h _(resource.label) %>"><%= format_permissions(group, resource) %></td>
+  <% end -%>
+  <td class="actions righted w-4">
+    <%= link_to _('Edit'), edit_admin_group_path(group) -%>
+
+    <% if group.default? -%>
+      <%= inactive_link _('Delete') %>
+    <% else -%>
+      <%= link_to _('Delete'), admin_group_path(group), options_for_destroy_link(group) %>
+    <% end -%>
+  </td>
+</tr>

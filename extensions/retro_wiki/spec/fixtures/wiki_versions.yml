@@ -1,0 +1,22 @@
+--- 
+intro_1st: 
+  id: 1
+  wiki_page_id: 1
+  author: Agent
+  content: Original content
+  user_id: 3
+  created_at: <%= 14.days.ago %>
+intro_2nd: 
+  id: 2
+  wiki_page_id: 1
+  author: Agent
+  content: New content
+  user_id: 3
+  created_at: <%= 7.days.ago %>
+intro_3rd: 
+  id: 3
+  wiki_page_id: 1
+  author: Agent
+  content: Brand New content
+  user_id: 4
+  created_at: <%= 5.days.ago %>

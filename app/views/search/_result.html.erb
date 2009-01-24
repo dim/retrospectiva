@@ -1,0 +1,5 @@
+<% title = h(truncate(result.previewable.title, :length => 100)) -%>
+<% content = h(strip_tags(result.previewable.description)) -%>
+
+<h3><%= link_to highlight_matches(title, params[:q]), result.previewable.path %></h3>
+<p class="quiet"><%= highlight_matches content, params[:q] %></p>

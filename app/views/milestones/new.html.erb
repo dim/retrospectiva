@@ -1,0 +1,12 @@
+<% @page_title = _('Milestones') -%>
+<% slim_page -%>
+<%= page_title %>
+
+<% plus_form_for @milestone, :url => project_milestones_path(Project.current) do |f| -%>
+  <%= f.info _('Create a new milestone') %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+
+  <fieldset>
+    <%= f.submit _('Create') %> | <%= link_to _('Back'), project_milestones_path(Project.current) %>
+  </fieldset>
+<% end -%>

@@ -1,0 +1,8 @@
+<tr class="<%= cycle('odd', 'even') -%> record">
+  <td><%=h repository.name %></td>
+  <td><%=h repository.kind %></td>
+  <td class="actions righted w-6">
+    <%= link_to _('Edit'), edit_admin_repository_path(repository) %>
+    <%= link_to _('Delete'), admin_repository_path(repository), options_for_destroy_link(repository) %>
+  </td>
+</tr>

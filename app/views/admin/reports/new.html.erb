@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new report') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => @ticket_report,
+      :collection_path => admin_project_reports_path(@project) } %>

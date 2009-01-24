@@ -1,0 +1,25 @@
+<% @page_title = _('My Account') %>
+<% slim_page -%>
+
+<%= page_title %>
+
+<% plus_form_for @user, :url => account_path do |f| -%>  
+  <%= f.error_messages %>
+  <%= render :partial => 'admin/users/core', :locals => {:f => f, :disabled => true } %>
+  <%= view_extensions :user, :fields, :public, :locals => { :f => f } %>
+
+  <% f.fieldset do -%>
+    <%= f.label_tag _('Options') + ':' -%>
+    
+    <%= check_box_tag :reset_private_key %>
+    <%= f.click_choice _('Renew my private key'), :for => 'reset_private_key' %>
+    <%= info_image :title => _('Check this option to renew your private access key.') + ' ' + _('Remember to update your RSS subscriptions afterwards.') %>
+
+    <%= view_extensions :user, :options, :public, :locals => { :f => f } %>
+  <% end -%>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Update') %>
+  <% end -%>
+<% end -%>
+<%= top_link %>

@@ -1,0 +1,7 @@
+<% @page_title = _('Edit ticket property') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/edit_form', :locals => {
+      :record => @ticket_property_type,
+      :member_path => property_path(@project, @ticket_property_type),
+      :collection_path => properties_path(@project) } %>

@@ -1,0 +1,7 @@
+<% if @property_type == Status -%>    
+  <%= render :partial => 'status_form', :locals => {:f => f} %>
+<% elsif @property_type == Priority -%>    
+  <%= render :partial => 'priority_form', :locals => {:f => f} %>
+<% else -%>    
+  <%= render :partial => 'value_form', :locals => {:f => f} %>    
+<% end -%>    

@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+#--
+# Copyright (C) 2007 Dimitrij Denissenko
+# Please read LICENSE document for more information.
+#++
+
+require 'optparse'
+
+OPTIONS = { 
+  :environment => "production",
+  :reload_db => false,
+  :dry_run => false,
+  :truncate_db => false
+}
+
+ARGV.options do |opts|
+  script_name = File.basename($0)
+  opts.banner = "Usage: ruby #{script_name} [options]"
+
+  opts.separator ""
+
+  opts.on("-t", "--truncate-db",
+          "resync the entire database, truncating it first") { |OPTIONS[:truncate_db]| }
+  opts.on("-e", "--environment=name", String,
+          "Specifies the environment to run this script against", 
+          "(test/development/production). Default: production") { |OPTIONS[:environment]| }
+  opts.on("-d", "--dry-run",
+          "Doesn't insert anything into the database") { |OPTIONS[:dry_run]| }
+
+  opts.separator ''
+
+  opts.on("-h", "--help",
+          "Show this help message.") { puts opts; exit }
+
+  opts.parse!
+end
+
+# Set up our environment
+ENV["RAILS_ENV"] = OPTIONS[:environment]
+require File.dirname(__FILE__) + '/../config/environment'
+
+
+if OPTIONS[:dry_run]
+  puts '*' * 50
+  puts ' ' * 10 + 'THIS IS JUST A DRY RUN!'
+  puts '*' * 50
+end
+
+# Truncate the tables if requested
+if OPTIONS[:truncate_db]
+  unless OPTIONS[:dry_run]
+    Changeset.destroy_all 
+  end
+  puts ">>> Truncated 'changesets' and 'changes' tables <<<"    
+end
+
+# Reset column info
+Change.reset_column_information
+Changeset.reset_column_information
+Repository.reset_column_information
+
+# The actual sync stuff
+Repository.find(:all).each do |repos|
+  puts ">>> Synching repository '#{repos.name}' <<<"
+  unless OPTIONS[:dry_run]
+    repos.sync_changesets rescue puts($!)      
+  end
+end

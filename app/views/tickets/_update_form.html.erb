@@ -1,0 +1,22 @@
+<% plus_form_for @ticket,
+    :url => project_ticket_path(Project.current, @ticket, :anchor => 'ticket_form'),
+    :html => {:multipart => true, :class=> 'ticket-form', :id => 'ticket_form' } do |f| -%>
+
+  <% f.fields_for @ticket_change do |c| %>
+      
+    <% c.section _('Comment') do -%>
+      <%= error_messages_for(:ticket_change) %>     
+      <%= render :partial => 'tickets/form/name_and_email', :locals => { :f => c } %>
+      <%= render :partial => 'tickets/form/update_content', :locals => { :f => c } %>
+      <%= render :partial => 'tickets/form/attachment_and_watch_status', :locals => { :f => c } %>        
+    <% end -%>
+      
+    <%= render :partial => 'tickets/form/ticket_options', :locals => { :f => c } %>
+  
+  <% end -%>
+  
+  <% f.fieldset :buttons do -%>
+    <%= f.submit _('Update') %>
+  <% end -%>
+      
+<% end -%>

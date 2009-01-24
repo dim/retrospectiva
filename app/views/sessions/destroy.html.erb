@@ -1,0 +1,9 @@
+<% @page_title = _('Logged out') %>
+<% slim_page %>
+<%= page_title %>
+
+<p><%=_ 'You are now logged out of the system.' %></p>
+      
+<div class="content-footer">
+  <%= link_to _('Home'), home_path %> | <%= link_to _('Login'), login_path %>  
+</div>

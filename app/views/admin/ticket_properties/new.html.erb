@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new ticket property') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => @ticket_property_type,
+      :collection_path => properties_path(@project) } %>

@@ -1,0 +1,27 @@
+<%= f.error_messages %>
+
+<% f.fieldset do -%>
+  <%= f.label :name, _('Group name') + ':', :required => true -%>
+  <%= f.text_field :name -%>
+<% end -%>
+
+<% f.section _('Projects') do -%>
+  <% f.fieldset do -%>
+  <%= f.check_box :access_to_all_projects, 
+        :onclick => "$('project_selection').toggle();" %><em><%= f.label :access_to_all_projects, _('Make all projects available to this group'), :class => 'choice' %></em>
+  <br/>
+  <div id="project_selection" style="<%= @group.access_to_all_projects? ? 'display: none' : nil %>">
+    <%= project_selection(f) %>
+  </div>
+  <% end -%>
+<% end -%>
+
+<% f.section _('Permissions') do -%>
+  <% RetroAM.permission_map.values.sort.each do |resource| -%>
+    <% f.fieldset 'bottom-5' do -%>
+      <%= f.label_tag _(resource.label) %>
+      <span class="small"><%= check_boxes_for_permissions(resource, f) %></span>
+      <%= hidden_field_tag "group[permissions][#{resource.name}][]" %>
+    <% end -%>
+  <% end -%>
+<% end -%>

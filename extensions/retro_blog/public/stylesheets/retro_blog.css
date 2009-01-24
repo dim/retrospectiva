@@ -1,0 +1,17 @@
+.blog-navigation dt,
+.retro-blog h1,
+.retro-blog h3,
+.retro-blog .markup {
+  font-family: Georgia, "DejaVu Serif", "Bitstream Vera Serif", "Vera Serif", serif;
+}
+
+.blog-navigation dt { padding: 0; margin: 0; font-size: 1.3em; font-weight: normal; }
+.blog-navigation dd { padding: 0; margin: 0.2em 0 0 0; }
+.retro-blog h1      { font-size: 2.2em; font-weight:normal; }
+
+.retro-blog #blog-comment-form { margin-top: 2.5em; }
+.retro-blog #blog-comment-form textarea { height: 140px;}
+
+.retro-blog .markup p,
+.retro-blog .markup td,
+.retro-blog .markup li { font-size: 1.1em; line-height:1.4; }

@@ -1,0 +1,4 @@
+<% f.section h(group.label) do -%>
+  <%= simple_markup(group.description) unless group.description.blank? %>
+  <%= render :partial => 'setting', :collection => group.settings, :locals => {:f => f} %>
+<% end -%>

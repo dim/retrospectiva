@@ -1,0 +1,10 @@
+svn:
+  name: SVN repository
+  id: 1
+  path: tmp/svn_test
+  type: Repository::Subversion
+git:
+  name: Git repository
+  id: 2
+  path: tmp/git_test.git
+  type: Repository::Git

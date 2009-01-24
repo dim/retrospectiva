@@ -1,0 +1,13 @@
+<% @page_title = _('Blog') + ' . ' + _('Create Post') -%>
+<% include_blog_stylesheet -%>
+<% slim_page -%>
+ 
+<% plus_form_for [Project.current, @blog_post] do |f| -%>  
+  <%= f.error_messages %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Create') %>
+  <% end -%>
+<% end -%>
+  

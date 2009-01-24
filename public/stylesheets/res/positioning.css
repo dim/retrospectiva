@@ -1,0 +1,127 @@
+#header {
+  background: #000 url(../../images/bg.header.png) top left repeat-x; 
+  border-bottom: 1px solid #fff;
+  position: relative;    
+}
+
+
+#header #logo   { float: left; padding: 10px 0 5px 15px; }
+#header #logo a { outline: none; }
+
+#header #status_info { float: right; padding: 1px 15px 5px 0; }
+#header #status_info #login_info { text-align: right; color: #eee; font-size: 90%; }
+#header #status_info #login_info a { color: #6ad; }
+#header #status_info #login_info a:hover,
+#header #status_info #login_info a:focus { background:none; color: #fff; }
+#header #status_info #project_info { text-align: right; color: #fff; font-weight: bold; font-size: 120%; }
+
+#header #menu {
+  background: #f3f3f3 url(../../images/menu_item.png) repeat-x top left;
+  border-bottom: 1px solid #ddd;  
+}
+  #header #menu a,
+  #header #menu a:visited { outline: none; background: none; color: #888; padding: 2px 15px ; font-size: 13px; line-height: 19px; }
+
+  #header #menu a.active,
+  #header #menu a:hover   { color: #000; }
+
+  #header #menu a.active  { background: #eee url(../../images/menu_item_active.png) repeat-x top left; }
+
+  #header #menu ul        { margin: 0; padding: 0; list-style:none; border-top: 1px solid #ddd; }
+  #header #menu li        { margin: 0; padding: 0; float:left; line-height: 19px; }
+
+  #header #menu #main-navigation    { float:left }
+  #header #menu #main-navigation li { border-right: 1px solid #ccc; }
+  #header #menu #main-navigation li a { border-left: 1px solid #fff; }
+  #header #menu #base-navigation    { float:right }
+  #header #menu #base-navigation li { border-left: 1px solid #ccc; }
+  #header #menu #base-navigation li a { border-left: 1px solid #fff; }
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  z-index:50;
+  border-top: 1px solid #ccc;
+  font-size: 95%;
+  opacity:0.9;
+  height: 28px;
+  width: 100%;  
+  background-color: #fafafa;
+}
+
+#footer a        { padding: 1px; }
+#footer a:hover  { background: transparent; border-bottom: 1px dotted #37b; color: #000; }
+#footer img      { vertical-align: middle; }
+
+#footer #right-side       { padding: 5px 25px 0 0; float:right; }        
+#footer #right-side a img { margin-top: -3px; }        
+#footer #left-side        { padding: 5px 0 0 15px; }
+#footer #left-side .dots  { padding: 0 5px; }
+#footer #left-side input,
+#footer #left-side select { margin: 0; font-size: 11px; margin-top: -3px; }
+#footer #left-side select { padding: 1px; }
+
+#content {
+  margin: 20px 10px 0 10px;
+  padding: 0 20px 60px 20px;
+  max-width: 1160px;
+}
+
+ul#breadcrumbs {
+  margin: 0 0 1em 0; padding:0;
+}
+  ul#breadcrumbs li {
+    display: inline; 
+    color: #333; 
+    margin:0; padding:0 0 0 1em;
+    background: url(../../images/bc.png) no-repeat center left;
+  }
+  ul#breadcrumbs li.first { padding: 0; background-image: none; }
+
+
+.slim { width: 950px; }
+.super-slim { width: 640px; }
+
+
+#load_indicator,
+#flash_box {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background-color: #fcfcff;
+  border-bottom: 1px solid #ccc;
+  padding: 0.25em 0;
+  opacity: 0.8;
+  z-index:100;
+  cursor: pointer;
+}
+
+#load_indicator .content,
+#flash_box .content   { 
+  font-weight: bold; 
+  text-align: center;
+  background: transparent;
+  border: 0; 
+  margin: 0; 
+}
+
+#load_indicator .content { color: #666; font-size: 95%; padding: 0.5em; }
+
+#flash_box .error   { color: #c00;  }
+#flash_box .warning { color: #660; }
+#flash_box .notice  { color: #48b; }
+
+
+.markup-reference       { width: 720px; }
+.markup-reference blockquote,
+.markup-reference pre,
+.markup-reference code  { background: transparent; border: 0; padding: 0; margin-top: 0; margin-bottom: 0; line-height: 1.5; font-size: 0.9em; }
+.markup-reference table { border: 1px solid #ddd; } 
+
+.markup-reference .examples  { width: 100%; margin-bottom: 0.5em; } 
+.markup-reference td, 
+.markup-reference th { border-bottom: 1px solid #ddd; }
+.markup-reference th.example { border-bottom-width: 1px; }
+.markup-reference td.result  { font-family: Georgia, "DejaVu Serif", "Bitstream Vera Serif", "Vera Serif", serif; background: #eee; }
+.markup-reference th.example,
+.markup-reference td.result  { vertical-align: top; width: 50%; padding: 10px; }

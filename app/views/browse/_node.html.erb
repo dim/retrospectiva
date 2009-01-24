@@ -1,0 +1,14 @@
+<tr class="<%= cycle('odd', 'even', :name => 'files') -%>">
+  <td class="linked node-type node-type-<%=h node.content_type -%>">
+    <%= link_to_browse h(node.name), node.path, params[:rev] %>
+  </td>
+  <td><%= time_interval_in_words(node.date) %></td>
+  <td class="centered">
+    <%= node.dir? ? _('{{count}} file(s)', :count => node.sub_node_count) : number_to_human_size(node.size) -%>
+  </td>
+  <td class="small quiet">
+    <%= link_to_changeset '[' + h(node.short_revision) + ']', node.revision %>
+    <%= "#{h(node.author)}:" unless node.author.blank? %>
+    <%= truncate(h(node.log), :length => 80) unless node.log.blank? %>&nbsp;
+  </td>
+</tr>

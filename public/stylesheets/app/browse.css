@@ -1,0 +1,18 @@
+.repository-browser .browseable-path a { background: none; color: #000; }
+.repository-browser .browseable-path a:hover { background: none; color: #37b; }
+
+.repository-browser .node-info .commit-log { max-height: 150px; overflow: auto; }
+
+.repository-browser table.record-list tbody td.node-type a { 
+  background-repeat: no-repeat; 
+  background-position:  5px center; 
+  padding-left: 25px; 
+}
+.repository-browser table.record-list tbody td.node-type-unknown a,
+.repository-browser table.record-list tbody td.node-type-binary a  { background-image: url(../../images/icon_file.png); }
+.repository-browser table.record-list tbody td.node-type-up a      { background-image: url(../../images/icon_up.png); }
+.repository-browser table.record-list tbody td.node-type-text a    { background-image: url(../../images/icon_file_text.png); }
+.repository-browser table.record-list tbody td.node-type-image a   { background-image: url(../../images/icon_file_image.png); }
+.repository-browser table.record-list tbody td.node-type-dir a     { background-image: url(../../images/icon_folder.png); }
+
+.repository-browser .revision-selector form { display: inline; }

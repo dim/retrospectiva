@@ -1,0 +1,38 @@
+<%= f.error_messages %>
+
+<% f.fieldset do -%>
+  <%= f.label :kind, _('Kind') + ':', :required => true %>
+  <%= f.select :kind, Repository.types, {}, 
+        @repository.new_record? ? {} : { :disabled => 'disabled' } %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :name, _('Name') + ':', :required => true %>
+  <%= f.text_field :name %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :path, _('Path') + ':' -%>
+  <%= f.text_field :path -%>
+  <div id="repository-test-result" class="result-notification"></div>
+<% end -%>
+
+<%= observe_field :repository_path, 
+  :frequency => 1, 
+  :update => 'repository-test-result', 
+  :url => validate_admin_repositories_path,
+  :with => "'path=' + escape(value) + '&kind=' + escape($F('repository_kind'))" -%>
+
+<% f.fieldset do -%>
+  <%= f.label :sync_callback, _('Sync callback') + ':' -%>
+  <%= f.text_field :sync_callback -%>
+  <div class="break quieter">
+    <%=_ 'Please specify an optional system call, which will be executed before each repository synchronization.' %> <%=_ 'Examples' %>:
+    <ul>
+      <li><code>/usr/bin/svnsync sync file:///path/to/repository</code></li>
+      <li><code>cd /path/to/repository && /usr/bin/git-pull</code></li>
+    </ul>
+  </div>
+<% end -%>
+
+

@@ -1,0 +1,6 @@
+<tfoot>
+  <tr>
+    <th colspan="<%= colspan.first || 1 %>"><%= will_paginate(collection) %></th>
+    <th colspan="<%= colspan.last  || 1 %>" class="righted"><%= will_paginate_per_page(collection) %></th>
+  </tr>
+</tfoot>

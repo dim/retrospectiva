@@ -1,0 +1,26 @@
+<%= f.error_messages %>
+<%= render :partial => 'admin/users/core', :locals => {:f => f, :disabled => false} %>
+<%= view_extensions :user, :fields, :admin, :locals => { :f => f } %>
+
+<% f.fieldset do -%>
+  <%= f.label :scm_name, _('SCM name') + ':' -%>
+  <%= f.text_field :scm_name -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label_tag _('Options') + ':' -%>
+  <%= f.check_box :admin %>
+  <%= f.label :admin, _('Administrator'), :class => 'choice' %>  
+  <% if controller.action_name == 'edit' || RetroCM[:general][:user_management][:activation] == 'auto' -%>
+    <br/>
+    <%= f.check_box :active %>
+    <%= f.label :active, _('Active'), :class => 'choice' %>
+  <% end -%>
+  <%= view_extensions :user, :options, :admin, :locals => { :f => f } %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label_tag _('Groups') + ':' -%>
+  <%= f.check_boxes :group_ids, @groups.map {|i| [h(i.name), i.id] } %>
+  <div class="break quieter"><%= _('ATTENTION: Group settings will be ignored if the \'Administrator\' option is selected!') %></div>
+<% end -%>

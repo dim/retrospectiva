@@ -1,0 +1,12 @@
+--- 
+retro:
+  id: 1
+  name: Retrospectiva
+  root_path: retrospectiva/
+  info: Retrospectiva project
+  closed: false
+  short_name: retrospectiva
+  existing_wiki_page_titles:
+    - Intro
+    - New Page
+  repository_id: 1

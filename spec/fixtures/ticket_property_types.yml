@@ -1,0 +1,12 @@
+retro_release:
+  id: 1
+  name: Release
+  project_id: 1
+retro_component:
+  id: 2
+  name: Component
+  project_id: 1
+sub_severity:
+  id: 3
+  name: Severity
+  project_id: 2

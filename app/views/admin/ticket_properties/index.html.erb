@@ -1,0 +1,28 @@
+<% @page_title = _('Ticket properties') -%>
+<%= render :partial => '/admin/shared/header' %>
+<%= breadcrumbs link_to(_('Projects'), admin_projects_path), h(@project.name + ': ' + @page_title) -%>
+
+<h2><%= _('Global') %></h2>
+<div class="box">
+  <ul class="non-sortable">  
+    <li>
+      <div class="actions float-r"><%= link_to _('View'), property_values_path(@project, 'Status') %></div>
+      <span class="strong"><%= _('Status') %></span>    
+    </li>
+    <li>
+      <div class="actions float-r"><%= link_to _('View'), property_values_path(@project, 'Priority') %></div>
+      <span class="strong"><%= _('Priority') %></span>    
+    </li>
+  </ul>
+</div>
+
+
+<h2><%= _('Project specific') %></h2>
+
+<div class="bottom-5 strong"><%= link_to _('Create a new ticket property'), new_property_path %></div>
+<div class="box">
+  <ul id="ticket_properties" class="sortable">  
+    <%= render :partial => 'ticket_property', :collection => @ticket_properties %>
+  </ul>
+  <%= sortable_element "ticket_properties", :url => sort_properties_path(@project), :method => :put %>
+</div>

@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new group') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => @group,
+      :collection_path => admin_groups_path } %>

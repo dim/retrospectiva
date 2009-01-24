@@ -1,0 +1,34 @@
+<% @page_title = _('Browse source') -%>
+
+<div class="repository-browser">
+  <%= browseable_path -%>
+  <% content_header 'bottom-5' do -%>
+    <%= link_to_revisions %>
+  <% end -%>
+  <%= render :partial => 'node_info' %>
+
+  <table class="record-list">
+    <thead>
+      <tr>
+        <th><%=_ 'Name' -%></th>
+        <th class="narrow-column"><%=_ 'Last modified' -%></th>
+        <th class="centered slim-column"><%=_ 'Size' -%></th>
+        <th><%=_ 'Commit' %></th>
+      </tr>
+    </thead>
+ 
+    <tbody>
+      <% unless params[:path].blank? -%>
+        <tr class="<%= cycle('odd', 'even', :name => 'files') -%> record">
+          <% paths = params[:path]; paths.pop %>
+          <td class="linked node-type node-type-up"><%= link_to_browse '..', paths, params[:rev] %></td>
+          <td colspan="3"></td>
+        </tr>
+      <% end -%>  
+      <%= render :partial => 'node', :collection => @node.sub_nodes %>
+    </tbody>
+
+  </table>
+  <hr/>
+  <%= top_link %>  
+</div>

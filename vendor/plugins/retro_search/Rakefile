@@ -1,0 +1,25 @@
+require 'rubygems'
+require 'rake/gempackagetask'
+require 'rake/contrib/rubyforgepublisher'
+require 'rake/clean'
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'spec/rake/spectask'
+require 'spec/version'
+
+desc 'Default: run unit tests.'
+task :default => :spec
+
+Spec::Rake::SpecTask.new do |t|
+  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.spec_opts = ['--colour', '--format', 'profile', '--timeout', '20']
+end
+
+desc 'Generate documentation for the acts_as_previewable plugin.'
+Rake::RDocTask.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'ActsAsPreviewable'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end

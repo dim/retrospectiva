@@ -1,0 +1,13 @@
+<% @page_title = _('Browse source') -%>
+
+<div class="repository-browser">
+  <%= browseable_path -%>
+  <%= render :partial => 'show_header', :locals => { :formats => [:raw] } %>
+  <%= render :partial => 'node_info' %>
+  
+  <div class="box">
+    <h2><%=_ 'Binary File' %></h2>
+    <p><%=_ 'File content cannot be displayed for binary files.' -%></p>  
+  </div>
+  <%= top_link %>      
+</div>

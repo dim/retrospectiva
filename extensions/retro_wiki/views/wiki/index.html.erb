@@ -1,0 +1,32 @@
+<% slim_page -%>
+
+<div class="retro-wiki">
+  <%= page_title _('Wiki') + ': ' + _('Pages') %>
+  
+  <% content_header do -%>
+    <div class="float-r">
+      <% if params[:order] == 'recent' -%>
+        <%= link_to _('Sort alphabetically'), project_wiki_pages_path(Project.current) %>
+      <% else -%>
+        <%= link_to _('Sort by last update'), project_wiki_pages_path(Project.current, :order => 'recent') %>
+      <% end -%>
+    </div>
+
+    <%= link_to _('Home'), project_wiki_page_path(Project.current, Project.current.wiki_title) %> |
+    <%= link_to _('Files'), project_wiki_files_path(Project.current) %>    
+  <% end -%>
+  
+  <ul class="wiki-page-index">
+    <% @pages.each do |page| -%> 
+      <li>
+        <%= link_to page.title, project_wiki_page_path(Project.current, page.title) %> 
+        (<%=_ 'updated' -%> <%= time_interval_in_words(page.updated_at) %>)
+      </li>
+    <% end -%> 
+  </ul>
+  
+  <% content_footer('righted') do -%>
+    <%= will_paginate(@pages) %>
+  <% end if @pages.total_pages > 1 -%>
+
+</div>

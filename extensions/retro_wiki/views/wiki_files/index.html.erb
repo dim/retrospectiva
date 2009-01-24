@@ -1,0 +1,33 @@
+<% slim_page -%>
+
+<div class="retro-wiki">
+  <%= page_title _('Wiki') + ': ' + _('Files') %>
+  
+  <% content_header do -%>
+    <%= link_to _('Home'), project_wiki_page_path(Project.current, Project.current.wiki_title) %> |
+    <%= link_to _('Pages'), project_wiki_pages_path(Project.current) %>
+    <% if User.current.permitted?(:wiki_pages, :upload) -%>
+      | <%= link_to _('Upload'), new_project_wiki_file_path(Project.current) %>
+    <% end -%>
+  <% end -%>
+  
+  <table class="record-list">
+    <thead>
+      <tr>
+        <th><%=_ 'File' %></th>
+        <th><%=_ 'Name' %></th>      
+        <th><%=_ 'Type' %></th>      
+        <th><%=_ 'Size' %></th>      
+        <th>&nbsp;</th>
+      </tr>
+    </thead>  
+  
+    <tbody id="groups">
+      <%= render :partial => 'file', :collection => @files %>
+    </tbody>
+  </table>
+
+  <% content_footer('righted') do -%>
+    <%= will_paginate(@files) %>
+  <% end if @files.total_pages > 1 -%>  
+</div>

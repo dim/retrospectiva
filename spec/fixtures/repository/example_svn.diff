@@ -1,0 +1,107 @@
+--- Revision 123
++++ Revision 456
+@@ -10,23 +10,16 @@
+     i.rank = 400
+   end
+ 
+-  menu_item :new_ticket, :only => [:new, :create] do |i|
+-    i.label = N_('New Ticket')
+-    i.path = lambda do |project|
+-      new_project_ticket_path(project)
+-    end
+-    i.rank = 500
+-  end
+-
+   require_permissions :tickets,
+     :view   => ['index', 'show', 'download'],
+     :create => ['new', 'create'],
+     :update => ['update'],
+     :delete => ['destroy', 'destroy_change'],
+-    :modify => ['modify_summary', 'modify_content', 'modify_change_content'],
++    :modify => ['modify_change_content', 'modify_summary', 'modify_content'],
+     :watch  => ['toggle_subscription']
+ 
+-  verify        :only => [:modify_summary, :modify_content, :modify_change_content], :xhr => true, :method => :put
++  verify        :only => [:modify_summary, :modify_content, :modify_change_content], 
++    :xhr => true, :method => :put
+   verify_action :destroy_change, :method => :delete
+   verify_action :toggle_subscription, :method => :post
+ 
+@@ -58,7 +51,10 @@
+     filters = TicketFilter::Collection.new(stored_params, Project.current)
+     @next_ticket = @ticket.next_ticket(filters)
+     @previous_ticket = @ticket.previous_ticket(filters)    
+-    @change.attributes = { :author => cached_user_attribute(:name, 'Anonymous'), :email => cached_user_attribute(:email) }
++    @change.attributes = { 
++      :author => cached_user_attribute(:name, 'Anonymous'), 
++      :email => cached_user_attribute(:email) 
++    }
+   end
+ 
+   def new
+@@ -147,6 +143,18 @@
+       params.merge!(@report.filter_options) if @report
+     end
+ 
++    def find_and_verify_attachment
++      @attachment = Attachment.find params[:id], :include => :attachable
++      @attachment.readable? && case @attachment.attachable
++      when Ticket
++        params[:ticket_id].to_i == @attachment.attachable.id
++      when TicketChange
++        params[:ticket_id].to_i == @attachment.attachable.ticket_id
++      else
++        false
++      end || raise(ActiveRecord::RecordNotFound, "Couldn't find #{@attachment.class} with ID=#{params[:id]}")
++    end
++
+     def setup_filters
+       @filters = TicketFilter::Collection.new(params, Project.current)
+     end
+@@ -158,7 +166,7 @@
+     def find_ticket
+       @ticket = Project.current.tickets.find_by_id params[:id],
+         :include => Ticket.default_includes,
+-        :order => 'ticket_changes.created_at'
++        :order => 'ticket_changes.id'
+       redirect_to project_tickets_path(Project.current) unless @ticket
+     end
+ 
+@@ -183,23 +191,14 @@
+       refuse_authorization! unless User.current.permitted?(:tickets, :modify, @change)
+     end
+ 
+-    def find_and_verify_attachment
+-      @attachment = Attachment.find params[:id], :include => :attachable
+-      @attachment.readable? && case @attachment.attachable
+-      when Ticket
+-        params[:ticket_id].to_i == @attachment.attachable.id
+-      when TicketChange
+-        params[:ticket_id].to_i == @attachment.attachable.ticket_id
+-      else
+-        false
+-      end || raise(ActiveRecord::RecordNotFound, "Couldn't find #{@attachment.class} with ID=#{params[:id]}")
+-    end
+ 
+   private
+ 
+     def paginate_tickets(per_page)
+       conditions = PlusFilter::Conditions.new(@filters.conditions) do |c|
+-        c << ['tickets.updated_at > ?', @report.since] if @report && @report.since
++        if @report && @report.since
++          c << ['tickets.updated_at > ?', @report.since]
++        end
+         c << Retro::Search.conditions(params[:term], *Ticket.searchable_column_names)
+       end.to_a
+ 
+@@ -217,4 +216,10 @@
+       stored || {}
+     end
+ 
++  menu_item :new_ticket, :only => [:new, :create] do |i|
++    i.label = N_('New Ticket')
++    i.path = lambda { |project| new_project_ticket_path(project) }
++    i.rank = 500
++  end
++
+ end

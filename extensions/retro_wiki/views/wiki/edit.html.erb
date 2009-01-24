@@ -1,0 +1,33 @@
+<%= render :partial => 'header' %>
+    
+<div class="retro-wiki">
+
+  <div class="page-title">
+    <%=h @wiki_page.title %>
+  </div>
+
+  <% plus_form_for @wiki_page, :url => project_wiki_page_path(Project.current, @wiki_page), :html => { :method => :put } do |f| -%>
+    <%= f.error_messages %>
+
+    <fieldset>
+      <%= f.label_tag _('Title') + ':' %>
+      <%=h @wiki_page.title %>
+    </fieldset>  
+
+    <fieldset>
+      <%= f.label :author, _('Author') + ':' %>
+      <%= f.text_field :author, :disabled => !User.current.public? %>
+    </fieldset>  
+
+    <fieldset>
+      <%= f.label :content, _('Content') + ':' %>
+      <%= markup_area :wiki_page, :content %>
+    </fieldset>  
+      
+    <fieldset>
+      <%= f.submit _('Save') %> | <%= link_to_function _('Cancel'), 'history.back()' %>
+    </fieldset>
+
+  <% end -%>
+
+</div>

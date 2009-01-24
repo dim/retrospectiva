@@ -1,0 +1,23 @@
+<% @page_title = _('Tasks') -%>
+<%= render :partial => '/admin/shared/index_header' %>
+
+<% form_for :tasks, :url => save_admin_tasks_path, :html => { :method => :put } do |f| -%>
+
+  <table class="record-list">
+    <thead>
+      <tr>
+        <th><%= _('Task') %></th>
+        <th><%= _('Description') %></th>
+        <th><%= _('Status') %></th>
+        <th><%= _('Interval') %></th>
+      </tr>
+    </thead>
+  
+    <tbody id="tasks">
+      <%= render :partial => 'task', :collection => @tasks %>
+    </tbody>
+  </table>
+  <hr/>
+  <%= f.submit _('Save all') %>
+
+<% end -%>

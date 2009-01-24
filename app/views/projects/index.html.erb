@@ -1,0 +1,25 @@
+<% @page_title = _('Projects') -%>
+<% slim_page -%>
+<%= page_title %>
+
+<% if @projects.blank? -%>
+  <h2><%=_ 'No projects available' -%></h2>
+<% else -%>
+  <% @projects.each do |project| %>
+    <div class="project">
+      <h2><%= link_to h(project.name), project_path(project) -%>
+        <% unless project.info.blank? -%>&nbsp;
+          <span class="wee">
+            <%= link_to_function _('Click for info'),
+              visual_effect(:toggle_appear, "project_info_#{project.id}", :duration => 0.5) %>
+          </span>
+        <% end -%>
+      </h2>
+      <% unless project.info.blank? -%>
+        <div style="display: none;" class="markup box" id="project_info_<%=h project.id %>">
+          <%= markup(project.info) %>
+        </div>
+      <% end -%>
+    </div>    
+  <% end -%>  
+<% end -%>

@@ -1,0 +1,32 @@
+form fieldset { border: 0; padding: 0; margin: 0.5em 0 1em 0; }
+
+form .full-w,
+form .full-w input,
+form .full-w textarea { width:750px; }
+
+form.plus_form  { padding:1em; background: #f8f8f8; border: 1px solid #ccc; }
+
+form.plus_form table,
+form.plus_form fieldset { margin-left: 8px; width: 750px; }
+form.plus_form fieldset.info,
+form.plus_form fieldset.section,   
+form.plus_form fieldset.buttons   { margin-left: 0; }
+form.plus_form fieldset.buttons   { border-top: 1px solid #ccc; padding: 1em 0 0 8px; }
+form.plus_form fieldset div       { color: #444; float:left; padding-right: 8px; }
+form.plus_form fieldset div.errorExplanation { float:none; padding:0; }
+form.plus_form fieldset div.break { clear:left; }
+form.plus_form fieldset ul.sortable,
+form.plus_form fieldset ul.non-sortable { margin-bottom: 0; }
+form.plus_form fieldset input     { vertical-align:middle; }
+
+
+form.plus_form label         { color: #222; display: block; padding-bottom: 2px; }
+form.plus_form label.explain { display:block; font-weight: normal; font-size: 85%; color: #999; margin: 0 0 3px 5px; }
+form.plus_form label.choice  { display:inline; font-weight: normal; padding-bottom: 0; vertical-align:middle; }
+
+form.plus_form .required { color: #c90020; }
+form.plus_form .quiet { color: #666; }
+form.plus_form .quieter { color: #999; }
+
+input.text, input.title, textarea, select { margin: auto; }
+input.text, input.file                    { padding: 2px 1px; }

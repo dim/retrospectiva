@@ -1,0 +1,20 @@
+<% @page_title = _('View changes') -%>
+
+<div class="repository-browser">
+  <%= browseable_path -%>
+  <% content_header 'bottom-5' do -%>
+    <div class="float-r">
+      <%= link_to _('Download'), project_diff_path(Project.current, params[:path], params.only(:rev, :compare_with).merge(:format => :plain)) %>
+    </div>
+    <%= link_to_browse _('Browse'), params[:path], params[:rev] %> |
+    <%= link_to_revisions %>
+  <% end -%>
+  
+  <% if @unified_diff.blank? -%>
+    <h1><%=_ 'Invalid or empty DIFF' -%></h1>
+    <p><%=_ "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.", :source => params[:rev], :target => params[:compare_with] -%></p>  
+  <% else -%>
+    <%= format_diff(@unified_diff, @node.path) -%>
+  <% end -%>
+  <%= top_link %>      
+</div>

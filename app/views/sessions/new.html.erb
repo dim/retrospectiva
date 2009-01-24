@@ -1,0 +1,39 @@
+<% @page_title = _('Login') %>
+<% slim_page %>
+<%= page_title %>
+
+<div class="content-header">
+  <%= view_extensions :session, :header %>
+</div>
+
+<%= view_extensions :session, :top %>
+<% plus_form_for :user, :url => session_path, :html => html_options_for_login_form do |f| -%>
+  <% f.fieldset do -%>
+    <%= f.label :username, _('Username or Email') + ':' -%>
+    <%= f.text_field :username -%>
+  <% end -%>
+
+  <% f.fieldset do -%>
+    <%= f.label :password, _('Password') + ':' -%>
+    <%= f.password_field :password -%>
+  <% end -%>
+
+  <%= view_extensions :session, :form, :locals => { :f => f } %>
+  <%= secure_auth_tags %>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Login') %>
+  <% end -%>
+<% end -%>
+<%= view_extensions :session, :bottom %>
+
+<div class="content-footer">
+  <%= link_to _('Home'), home_path %>
+  <% if self_registration? -%>
+   | <%= link_to _('Register'), new_account_path %>
+  <% end -%>
+  <% if account_management? -%>
+   | <%= link_to _('Forgot password'), account_forgot_password_path %>
+  <% end -%>  
+  <%= view_extensions :session, :footer %>
+</div>

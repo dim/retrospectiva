@@ -1,0 +1,77 @@
+de-DE:
+  activerecord:
+    errors:
+      messages:
+        cannot_be_selected: kann nicht ausgewählt werden
+        cannot_be_disabled: kann nicht ausgeschaltet werden
+        must_be_specified: muss angegeben sein
+      models:
+        project:
+          attributes:
+            name:
+              invalid: muss mit einem Lateinischen Buchstaben beginnen
+              overlap: überlappt mit einem anderen Projekt
+        ticket_change:
+          attributes:
+            content:
+              blank: muss ausgefüllt werden wenn ein Anhang beigefügt ist
+        user:
+          attributes:
+            admin:
+              not_for_public: muss ausgeschaltet sein. Public darf niemals Administratorrechte erlangen
+              last_available: muss eingeschaltet sein. Benutzer is der letzte verfügbare Administrator
+              invalid_downgrade: muss eingeschaltet sein. Eigenes Benutzerkonto kann nicht zurückgestuft werden
+            active:
+              must_be_active: muss eingeschaltet sein. Public muss aktiv sein
+              own_account_must_be_active: muss eingeschaltet sein. Eigenes Benutzerkonto kann nicht deaktiviert werden
+    models:
+      attachment: 'Anhang'
+      change: 'Änderung'
+      changeset: 'Änderungssatz'
+      group: 'Gruppe'
+      milestone: 'Meilenstein'
+      priority: 'Priorität'
+      project: 'Projekt'
+      repository: 'Repository'
+      status: 'Status'
+      ticket_change: 'Ticketänderung'
+      ticket_property_type: 'Ticketeigenschaftstyp'
+      ticket_property: 'Ticketeigenschaft'
+      ticket_report: 'Ticketreport'
+      ticket: 'Ticket'
+      user: 'Benutzer'
+    attributes:
+      attachment:
+        file_name: 'Dateiname'
+        content_type: Datentyp
+      change:
+        path: 'Pfad'
+        from_path: 'Quelle'
+      changeset:
+        author: 'Autor'
+      group:
+        name: 'Name'
+        permissions: 'Zugriffsrechte'
+        access_to_all_projects: 'Zugang zu allen Projekten'
+      milestone:
+        due: 'Fällig am'
+        finished_on: 'Erledigt am'
+        started_on: 'Begonnen am'
+      priority:
+        default_value: 'Standardeinstellung'
+        rank: 'Rang'
+      project:
+        name: 'Name'
+        short_name: 'Abkürzung'
+        closed: 'Geschlossen'
+        root_path: 'Pfad'
+        locale: 'Regionalschema'
+        enabled_modules: 'Aktivierte Module'
+        central: 'Zentral'
+      repository:
+        name: 'Name'
+        kind: 'Typ'
+        path: 'Pfad' 
+        hidden_paths: 'Versteckte Pfade'
+        sync_callback: 'Synchronisationsbefehl'
+                

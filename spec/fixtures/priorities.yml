@@ -1,0 +1,14 @@
+--- 
+normal: 
+  name: Normal
+  id: 1
+  rank: 2
+  default_value: true
+minor: 
+  name: Minor
+  id: 2
+  rank: 1 
+major: 
+  name: Major
+  id: 3
+  rank: 3

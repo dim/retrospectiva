@@ -1,0 +1,32 @@
+<% @page_title = _('Changeset') + ' ' + @changeset.revision -%>
+<%= page_title %>
+
+<div class="changeset">
+
+  <div class="content-header"><%= changeset_navigation(@changeset) %></div>    
+
+  <%= render :partial => 'changeset', :locals => {:changeset => @changeset }%>
+
+  <% if User.current.permitted?(:code, :browse) -%>
+    <h2><%=_ 'Affected files' -%>:</h2>
+    <% cache :controller => 'changesets', :action => 'show', :id => @changeset.id do -%>
+      <ul class="changes">
+        <%= format_changes(@changeset) %>
+      </ul>
+  
+      <% @changeset.changes.each do |change| -%>
+        <% next if !change.diffable? || change.unified_diff.blank? -%>
+
+        <h3 id="ch<%=h change.id %>" class="bottom-5">
+          <%= relativize_path(change.path) %>
+          <span class="wee">(<%= link_to_diff_download(change) %>)</span>
+        </h3>
+        <%= format_diff change.unified_diff, relativize_path(change.path) %>
+        <%= top_link %>
+      <% end -%>
+    <% end -%>
+  <% end -%>
+
+
+</div>
+  

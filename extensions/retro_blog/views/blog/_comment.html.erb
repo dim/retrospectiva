@@ -1,0 +1,28 @@
+<div id="comment<%= comment.id %>" class="clearfix comment bottom-10">
+
+  <div class="span-4 colborder">
+    <h6 class="small"><%= truncated_author(comment) %></h6>
+    <div class="loud tiny bottom-5" title="<%=h time_interval_in_words(comment.created_at) %>">
+      <%=h datetime_format(comment.created_at) %>        
+    </div>        
+    <%= author_gravatar(nil, comment.author, :email => comment.email, :size => 30) %>
+  </div>
+ 
+  <div class="bottom-10 span-19 last" id="blog-comment-content-<%= comment.id %>">
+    <% content_tag :div, :class => 'float-r actions smaller' do -%>        
+      <%= in_place_edit_external_control _('Edit'), "blog_comment_#{comment.id}" %>
+      <%= link_to _('Delete'), project_blog_post_comment_path(Project.current, @blog_post, comment),
+            :confirm => _('Really delete this comment?'),
+            :method => :delete %>
+    <% end if User.current.admin? -%>
+    
+    <div id="blog_comment_<%= comment.id %>" class="markup"><%= simple_markup(comment.content) %></div>
+    <% if User.current.admin? -%>
+      <%= retro_in_place_editor "blog_comment_#{comment.id}", 
+            :url => project_blog_post_comment_path(Project.current, @blog_post, comment),
+            :rows => 4, 
+            :text => h(comment.content) %>    
+    <% end -%>
+  </div>
+
+</div>

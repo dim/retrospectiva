@@ -1,0 +1,11 @@
+<%= render :partial => 'priority_form', :locals => {:f => f} %>
+
+<% f.fieldset do -%>
+  <%= f.label :state_id, _('State') %>
+  <%= f.collection_select :state_id, Status.states, :id, :group %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :statement_id, _('Statement') %>
+  <%= f.collection_select :statement_id, Status.statements, :id, :name %>
+<% end -%>

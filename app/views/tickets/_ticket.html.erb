@@ -1,0 +1,34 @@
+<tr class="<%= cycle('odd', 'even') -%> <%= html_classes_for_ticket(ticket) %>">
+  <td class="ticket-col-id">
+    <%= link_to h("##{ticket.id}"), project_ticket_path(Project.current, ticket) %><br/>
+    <%= subscription_icon(ticket) %>    
+  </td>
+  <td class="ticket-col-status" title="<%=h ticket.status.name %>">
+    <%= link_to h(truncate(ticket.status.name)), project_ticket_path(Project.current, ticket) %><br/>
+    <%= image_tag "#{ticket.status.state.type}_#{ticket.status.statement.type}.png", :alt => _(ticket.status.state.group), :title => _(ticket.status.state.group) %>
+  </td>
+  <td class="ticket-col-summary" title="<%=h truncate(ticket.content.to_s.squish, :length => 600) %>">
+    <div class="span-1">
+      <%= author_gravatar(ticket.user, ticket.author, :email => ticket.email, :size => 30) %>
+    </div>
+    <div class="span-9 last">
+      <h6><%= link_to h(truncate(ticket.summary, :length => 50)), project_ticket_path(Project.current, ticket) %></h6>
+      <span class="small quieter"><%=_ 'Created {{period}} ago by {{author}}', :period => time_ago_in_words(ticket.created_at), :author => truncate(ticket.author) %></span>
+    </div>
+  </td>
+  <td class="ticket-col-assigned-to" title="<%= h(ticket.assigned_user.name) if ticket.assigned_user %>">
+    <%= ticket.assigned_user ? h(truncate(ticket.assigned_user.name, :length => 20)) : '&ndash;' %>
+  </td>
+  <td class="ticket-col-priority">
+    <%=h ticket.priority.name %>
+  </td>
+  <td class="ticket-col-milestone" title="<%= h(ticket.milestone.name) if ticket.milestone %>">
+    <%= ticket.milestone ? h(truncate(ticket.milestone.name)) : '&ndash;' %>
+  </td>
+  <% if property_types.any? -%>
+    <td class="ticket-col-ticket-properties"><%= custom_properties(ticket) %></td>
+  <% end -%>
+  <td class="ticket-col-last-update" title="<%= last_change_content_one_line(ticket) %>">
+    <%= ticket.updated? ? time_interval_in_words(ticket.updated_at) : _('New ticket') %>
+  </td>
+</tr>

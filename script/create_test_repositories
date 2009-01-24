@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+RAILS_ROOT = File.dirname(__FILE__) + '/..'
+SVNADMIN = "/usr/bin/env svnadmin"
+GUNZIP = "/usr/bin/env gunzip"
+TAR = "/usr/bin/env tar"
+
+puts
+puts "  Verify prerequisites" 
+unless `#{SVNADMIN} --version 2> /dev/null` =~ /Copyright/i
+	puts "  [E] Unable to locate 'svnadmin'. Please install the required application/libraray and try again."
+	puts
+	exit 1 
+end
+
+unless `#{GUNZIP} -V 2> /dev/null` =~ /Copyright/i
+	puts "  [E] Unable to locate 'gunzip'. Please install the required application/libraray and try again."
+	puts
+	exit 1 
+end
+
+unless `#{TAR} --version 2> /dev/null` =~ /Copyright/i
+	puts "  [E] Unable to locate 'tar'. Please install the required application/libraray and try again."
+	puts
+	exit 1 
+end
+
+puts "  Remove existing repositories" 
+`rm -rf #{RAILS_ROOT}/tmp/svn_test` 
+`rm -rf #{RAILS_ROOT}/tmp/git_test.git` 
+
+puts "  Create SVN test repository" 
+`#{SVNADMIN} create #{RAILS_ROOT}/tmp/svn_test` 
+`#{GUNZIP} < #{RAILS_ROOT}/spec/fixtures/repository/svn.gz | #{SVNADMIN} load #{RAILS_ROOT}/tmp/svn_test/`
+
+puts "  Create GIT test repository" 
+`#{TAR} xzf #{RAILS_ROOT}/spec/fixtures/repository/git.tgz -C #{RAILS_ROOT}/tmp/` 
+
+puts "  Done!"
+puts
+
+exit 0 

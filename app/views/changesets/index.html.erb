@@ -1,0 +1,15 @@
+<% @page_title = _('Changesets') -%>
+<% slim_page -%>
+<%= page_title -%>
+
+<div class="changesets">
+  <% content_header do -%>
+  <% end -%>
+
+  <%= render :partial => 'changeset', :collection => @changesets %>
+
+  <% content_footer('righted') do -%>
+    <%= will_paginate @changesets, :params => { :project_id => Project.current.to_param } %>
+  <% end if @changesets.total_pages > 1 -%>
+</div>
+

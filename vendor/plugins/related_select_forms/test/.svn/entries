@@ -1,0 +1,52 @@
+8
+
+dir
+6859
+svn+ssh://uk-test/var/svn/svnrepo/retrospectiva/vendor/plugins/related_select_forms/test
+svn+ssh://uk-test/var/svn/svnrepo
+
+
+
+2008-03-03T13:21:16.209359Z
+6857
+ddenissenko
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+6a7d94b4-5d22-0410-a36c-f857d36b91fa
+
+related_select_forms_test.rb
+file
+
+
+
+
+2008-02-24T22:06:27.000000Z
+7994d9a83dbe9600a761e284a0180a86
+2008-03-03T13:21:16.209359Z
+6857
+ddenissenko
+
+test_multiple_with_preselection.output
+file
+
+
+
+
+2008-02-24T22:06:27.000000Z
+7c3cc6f47858c7e4a41be7c783fec469
+2008-03-03T13:21:16.209359Z
+6857
+ddenissenko
+

@@ -1,0 +1,25 @@
+<tr class="<%= cycle('odd', 'even') -%> record">
+  <td class="centered"><%= user_gravatar(user) %></td>
+  <td>
+    <span class="strong"><%=h user.name %> (<%=h user.username %>)</span><br/>
+    <%= mail_to user.email %>
+  </td>  
+  <td class="centered"><%= boolean_format user.active?, _('Active'), _('Inactive') %></td>
+  <td class="small"><%=h ActiveSupport::TimeZone[user.time_zone].to_s %></td>
+  <td class="small">
+    <% if user.admin? -%>
+      <%= content_tag('em', _('Administrator')) %>        
+    <% else -%>        
+      <%=h user.groups.map(&:name).join(', ') %>
+    <% end -%>    
+  </td>
+  <td class="actions righted w-4">
+    <%= link_to _('Edit'), edit_admin_user_path(user) %>
+
+    <% if user.current? || user.last_admin? -%>
+      <span class="inactive"><%= _('Delete') %></span>
+    <% else -%>
+      <%= link_to _('Delete'), admin_user_path(user), options_for_destroy_link(user) -%>
+    <% end -%>
+  </td>
+</tr>

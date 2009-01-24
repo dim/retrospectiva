@@ -1,0 +1,9 @@
+h2. Creating the test repositories
+
+To create the required repositories in the @tmp@ directory please go to your 
+application's root directory and enter:
+{{{
+  ruby script/create_test_repositories
+}}}
+
+Please follow the instruction on your screen.

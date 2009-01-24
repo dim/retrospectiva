@@ -1,0 +1,7 @@
+<% @page_title = _('Edit repository') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/edit_form', :locals => {
+      :record => :repository,
+      :member_path => admin_repository_path(@repository),
+      :collection_path => admin_repositories_path } %>

@@ -1,0 +1,44 @@
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+
+describe ProjectAreaController do
+
+  describe 'if there is no main project' do
+
+    before do
+      Project.stub!(:central).and_return(false)
+    end
+    
+    it 'should correctly generate routes' do
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123', :use_route => :project_ticket).should == 
+        '/projects/one/tickets/123'     
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == 
+        '/projects/one/tickets/123'     
+    end
+
+    it 'should correctly recognize routes' do
+      params_from(:get, '/projects/one/tickets/123').should == { :project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123' }
+    end
+        
+  end
+
+  describe 'if there is a main project' do
+
+    before do
+      Project.stub!(:central).and_return('one')
+    end
+    
+    it 'should correctly generate routes' do
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123', :use_route => :project_ticket).should == 
+        '/tickets/123'     
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == 
+        '/tickets/123'     
+    end
+    
+    it 'should correctly recognize routes' do
+      params_from(:get, '/tickets/123').should == { :project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123' }
+    end
+
+  end
+  
+end
+

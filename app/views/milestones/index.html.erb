@@ -1,0 +1,22 @@
+<% @page_title = _('Milestones') -%>
+<% slim_page -%>
+<%= page_title %>
+
+<div class="milestones">
+  <% content_header do -%>
+    <% if params[:completed] == '1' -%>
+      <%= link_to _('Hide already completed milestones'), project_milestones_path(Project.current) %>
+    <% else -%>
+      <%= link_to _('Show already completed milestones'), project_milestones_path(Project.current, :completed => 1) %>
+    <% end -%> 
+    <% if User.current.permitted?(:milestones, :create) -%>
+      | <%= link_to _('Create a new milestone'), new_project_milestone_path(Project.current) %>
+    <% end -%> 
+  <% end -%> 
+    
+  <%= render :partial => 'milestone', :collection => @milestones  %> 
+
+  <% content_footer('righted') do -%>
+    <%= will_paginate @milestones, :params => { :project_id => Project.current.to_param } %>
+  <% end if @milestones.total_pages > 1 -%>
+</div>

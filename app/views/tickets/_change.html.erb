@@ -1,0 +1,47 @@
+<div class="ticket-change clearfix" id="ch<%= change.id %>">
+
+  <div class="span-4">
+    <h6 class="small"><%= truncated_author(change) %></h6>
+    <div class="loud tiny bottom-5" title="<%=h time_interval_in_words(change.created_at) %>">
+      <%=h datetime_format(change.created_at) %>        
+    </div>        
+    <%= author_gravatar(change.user, change.author, :email => change.email, :size => 30) %>
+  </div>
+
+  <div class="span-20 last">    
+    <% if User.current.permitted?(:tickets, :delete) || ( change.content? && change.modifiable?(User.current) ) -%>
+      <div class="float-r actions smaller">        
+        <% if change.content? && change.modifiable?(User.current) -%>
+          <%= in_place_edit_external_control _('Edit'), "ticket_change_content_#{change.id}" %>
+        <% end -%>
+        <% if User.current.permitted?(:tickets, :delete) -%>
+          <%= link_to _('Delete'), project_ticket_destroy_change_path(Project.current, @ticket, change),
+                :confirm => _('Really delete ticket change?'),
+                :method => :delete %>
+        <% end -%>
+      </div>
+    <% end -%>
+
+    <% if change.updates? -%>
+      <ul class="ticket-actions">
+        <% change.updates.each do |property, update| -%>
+          <li class="loud"><span class="strong"><%=h property %></span> <%= ticket_update(update, :em) %></li>
+        <% end -%>
+        <% if change.attachment? -%>
+          <li class="loud"><span class="strong"><%=_ 'Attachment' %></span> <%=_ 'added' %>: <%= link_to_attachment_download change.attachment %></li>
+        <% end -%>
+      </ul>
+    <% end -%>
+
+    <% if change.content? -%>
+      <div id="ticket_change_content_<%= change.id %>" class="markup ticket-change-content"><%= markup(change.content) %></div>
+      <% if change.modifiable?(User.current) -%>
+        <%= retro_in_place_editor "ticket_change_content_#{change.id}", 
+               :url => modify_change_content_project_ticket_path(Project.current, change),
+              :rows => 4, :text => h(change.content) %>
+      <% end -%>
+    <% end -%>
+
+  </div>
+
+</div>

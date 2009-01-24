@@ -1,0 +1,25 @@
+open:
+  id: 1
+  name: Open
+  rank: 1
+  state_id: 1
+  statement_id: 2
+  default_value: true
+assigned:
+  id: 2
+  name: Assigned
+  rank: 2
+  statement_id: 1
+  state_id: 2
+invalid:
+  id: 3
+  name: Invalid
+  rank: 3
+  statement_id: 3
+  state_id: 3  
+fixed:
+  id: 4
+  name: Fixed
+  rank: 4
+  statement_id: 1
+  state_id: 3

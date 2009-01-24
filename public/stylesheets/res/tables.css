@@ -1,0 +1,107 @@
+table.ln-code {
+  border: 1px solid #ddd;
+  border-collapse: separate;
+  width: 100%;
+  margin-bottom: 0;
+}
+  table.ln-code thead th {
+    background: #333 url(../../images/record_list/header_bg.gif) repeat-x;
+    border: 1px solid #333;
+    color: #fff; 
+    font-size: 90%;
+  }
+  table.ln-code thead th a:hover { background: transparent; }
+
+  table.ln-code tbody th,
+  table.ln-code tbody td { vertical-align:top; padding: 2px 5px 2px 10px; border: 0; }
+  table.ln-code tbody th {
+    text-align: right;
+    background: #f3f3f6;
+    border-right: 1px solid #ccc;
+    padding-right: 4px;
+    width: 3%;
+  }  
+  table.ln-code tbody pre     { 
+    margin:0; padding:0; border:0; 
+    background: transparent; 
+    line-height: 1.2;    
+  }
+  table.ln-code tbody.full-width   td  { width: 97%; }
+  table.ln-code tbody.side-by-side td  { width: 47%; }
+  table.ln-code tbody.side-by-side pre { 
+    white-space: pre;
+    white-space: -moz-pre-wrap !important;
+    white-space: -hp-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+  }
+  table.ln-code tbody th pre           { overflow: visible; }
+  table.ln-code tbody td pre           { overflow: auto; }
+
+  table.ln-code .separator td,
+  table.ln-code .separator th { 
+    border-top: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc; 
+    padding-top:0; padding-bottom:0;     
+  }
+
+  table.ln-code .separator td { background: #e8e8e8; }
+  table.ln-code .separator th { background: #d8d8d8; }
+
+  table.ln-code .update td { border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+  table.ln-code .modify td { background: #fff6bf; border-color: #fd0; }
+  table.ln-code .insert td { background: #e8ffe8; border-color: #090; }
+  table.ln-code .delete td { background: #ffe8e8; border-color: #c00; }
+  table.ln-code .update .first td { border-top-style: solid; border-top-width: 1px; }
+  table.ln-code .update .last td  { border-bottom-style: solid; border-bottom-width: 1px; }
+
+  table.ln-code .r   { color: #c00; font-weight: bold; }
+  table.ln-code .pc  { color: #c00; } /* eg. self, nil, etc */
+  table.ln-code .pd  { color: #02c; } /* predefined: eg. BigDecimal, String */
+  table.ln-code .pt  { color: #c00; } /* eg. int, char, boolean, etc. */
+  table.ln-code .sy  { color: #29F; } /* symbol */
+  table.ln-code .c   { color: #486; } /* comment */
+  table.ln-code .s   { color: #46c; } /* strings */
+  table.ln-code .k   { color: #46c; } /* strings */
+  table.ln-code .dl  { color: #000; font-weight: bold; }
+  table.ln-code .cl  { color: #111; font-weight: bold; } /* class names */
+  table.ln-code .fu  { color: #111; font-weight: bold; } /* functions */
+  table.ln-code .co  { color: #111; font-weight: bold; } /* constants */
+  table.ln-code .iv  { color: #048; font-weight: bold; } /* instance variables */
+  table.ln-code .cv  { color: #048; font-weight: bold; } /* class variables */
+  table.ln-code .il  { color: #000; background-color: #eee; }
+  table.ln-code .idl { color: #000; font-weight: bold;}
+  table.ln-code .ta  { color: #508; }
+  table.ln-code .an  { color: #859; }
+
+  
+/* Record list */
+
+table.record-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.record-list thead th {
+  background: #fff url(../../images/menu_item.png) repeat-x;
+  color: #000; border: 1px solid #ddd; border-bottom: 1px solid #ccc;
+}
+table.record-list thead td { color: #000; padding: 2px 0 4px 0;}
+table.record-list thead td input { width: auto; border: 1px solid #999;}
+
+table.record-list tfoot td,
+table.record-list tfoot th { font-style: normal; font-weight: normal; border-top: 1px solid #ccc; padding:4px 0; }
+table.record-list tfoot td { color: #444; }
+table.record-list tfoot th { color: #000; }
+
+
+table.record-list tbody tr:hover td  { background: #ddd; }
+table.record-list tbody td.top,
+table.record-list tbody th.top  { vertical-align:top }
+
+table.record-list tbody td.linked         { padding: 0; }
+table.record-list tbody td.linked a,
+table.record-list tbody td.linked em      { display:block; padding: 4px 5px; }

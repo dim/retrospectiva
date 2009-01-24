@@ -1,0 +1,200 @@
+---
+###########################################
+#
+# General section
+#
+###########################################         
+- !ruby/object:RetroCM::Section
+  name: 'general'
+  groups: 
+    - !ruby/object:RetroCM::Group
+      name: 'basic'
+      settings:
+        - !ruby/object:RetroCM::StringSetting
+          name: 'site_name'
+          default: 'Retrospectiva'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'site_url'
+          default: 'http://localhost.localdomain'
+          format: !ruby/regexp /^https?\:\/\/[-\w\.\:]+(?:\/~?[-\w\d\.]+)*$/
+          after_change: 'ActionController::UrlWriter.reload!'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'session_key'
+          default: '__retrospectiva_session'
+          format: !ruby/regexp /^\w+$/
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'locale'
+          evaluate: 'RetroI18n.choices'
+          default: 'en-US'
+        - !ruby/object:RetroCM::IntegerSetting
+          name: 'session_expiration'
+          min: 1
+          max: 43200
+          default: 360
+    - !ruby/object:RetroCM::Group
+      name: 'attachments'
+      settings:
+        - !ruby/object:RetroCM::IntegerSetting
+          name: 'max_size'
+          min: 1
+          default: 2048
+    - !ruby/object:RetroCM::Group
+      name: 'user_management'
+      settings:
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'secure_auth'
+          default: false
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'account_management'
+          default: true
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'self_registration'
+          default: false
+        - !ruby/object:RetroCM::StringSetting
+          name: 'assign_to_groups'
+          allow_blank: true
+          format: !ruby/regexp /^\d+(,\d+)*$/
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'activation'
+          options:
+            - 'auto'
+            - 'email' 
+            - 'admin'
+          default: 'auto'
+        - !ruby/object:RetroCM::IntegerSetting
+          name: 'expiration'
+          min: 1
+          max: 43200
+          default: 24
+###########################################
+#
+# Email section
+#
+###########################################         
+- !ruby/object:RetroCM::Section
+  name: 'email'
+  groups: 
+    - !ruby/object:RetroCM::Group
+      name: 'general'
+      settings:
+        - !ruby/object:RetroCM::StringSetting
+          name: 'from'
+          default: 'dontreply@localhost'
+          format: !ruby/regexp /^((\S.*\s+<\w\S+@\S+\w>)|(\w\S+@\S+\w))$/
+    - !ruby/object:RetroCM::Group
+      name: 'smtp'
+      settings:
+        - !ruby/object:RetroCM::StringSetting
+          name: 'address'
+          default: 'localhost'
+          after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::IntegerSetting
+          name: 'port'
+          default: 25
+          after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'domain'
+          default: 'localdomain'
+          after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'authentication'
+          options:
+            - 'none'
+            - 'plain' 
+            - 'login'
+            - 'cram_md5'
+          default: 'none'
+          after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'user_name'
+          allow_blank: true
+          after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'password'
+          allow_blank: true
+          after_change: 'Notifications.reload_settings'
+###########################################
+#
+# Content section
+#
+###########################################         
+- !ruby/object:RetroCM::Section
+  name: 'content'
+  groups: 
+    - !ruby/object:RetroCM::Group
+      name: 'format'
+      settings:
+        - !ruby/object:RetroCM::StringSetting
+          name: 'datetime'
+          default: '%b %d %Y * %H:%M'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'date'
+          default: '%B %d, %Y'
+        - !ruby/object:RetroCM::StringSetting
+          name: 'time'
+          default: '%H:%M'
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'changeset_logs'
+          options:
+            - 'simple'
+            - 'wikified' 
+          default: 'simple'
+    - !ruby/object:RetroCM::Group
+      name: 'markup'
+      settings:
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'default'
+          options:
+            - 'retro'
+            - 'textile' 
+            - 'markdown'
+            - 'rdoc'
+          default: 'retro'
+          after_change: 'WikiEngine.default_engine = value'
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'global_ticket_refs'
+          default: false
+    - !ruby/object:RetroCM::Group
+      name: 'custom'
+      settings:
+        - !ruby/object:RetroCM::TextSetting
+          name: 'header'
+          allow_blank: true
+        - !ruby/object:RetroCM::TextSetting
+          name: 'footer'
+          allow_blank: true
+###########################################
+#
+# Ticketing section
+#
+###########################################         
+- !ruby/object:RetroCM::Section
+  name: 'ticketing'
+  groups: 
+    - !ruby/object:RetroCM::Group
+      name: 'subscription'
+      settings:
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'subscribe_on_assignement'
+          default: true
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'encourage_subscription'
+          default: true
+    - !ruby/object:RetroCM::Group
+      name: 'user_assignment'
+      settings:
+        - !ruby/object:RetroCM::SelectSetting
+          name: 'field_type'
+          options:
+            - 'drop-down' 
+            - 'text-field'
+          default: 'drop-down'
+    - !ruby/object:RetroCM::Group
+      name: 'author_modifiable'
+      settings:
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'tickets'
+          default: false
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'ticket_changes'
+          default: false

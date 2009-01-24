@@ -1,0 +1,6 @@
+<% plus_form_for record, :url => member_path, :html => { :method => :put } do |f| -%>
+  <%= render :partial => '/admin/shared/form_header', :locals => { :f => f } %>
+  <%= render :partial => '/admin/shared/form_footer', :locals => { 
+        :f => f, :label => _('Update'), :collection_path => collection_path } %>
+<% end -%>
+<%= top_link %>

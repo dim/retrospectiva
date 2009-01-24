@@ -1,0 +1,141 @@
+.box       { padding: 1.5em; margin-bottom: 1.5em; background: #f9f9f9; border: 1px solid #999; }
+.frame     { padding: 1px; border: 1px solid #ccc; }
+.top-link  { text-align: right; margin: 0.5em 0 1.5em 0; }
+.help      { cursor:help; }
+
+.content-header {
+  font-size: 0.95em;  /* fine */
+  font-weight: bold;
+  padding: 0 0.1em 0.2em 0.1em;
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
+}
+
+.content-footer {
+  clear:both;
+  font-size: 0.95em; /* fine */
+  font-weight: bold;
+  padding: 0.2em 0.1em 0 0.1em;
+  margin-top: 1.5em;
+  border-top: 1px solid #eee;
+}
+
+
+/* Markup specific settings
+-------------------------------------------------------------- */
+
+.compact,
+.markup       { margin: 0 0 1.5em; }
+
+.compact p,
+.markup p     { line-height: 1.25em; margin-bottom: 0.5em; } 
+
+.compact p img,
+.markup p img { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+ 
+.compact h1,
+.compact h2,
+.compact h3,
+.compact h4,
+.compact h5,
+.compact h6,
+.markup h1,
+.markup h2,
+.markup h3,
+.markup h4,
+.markup h5,
+.markup h6  { margin-bottom: 0.25em; clear:left; }
+.markup h1  { margin-bottom: 0.5em; }
+.markup table td, 
+.markup table th { vertical-align: middle; }
+.markup table { border: 1px solid #bbb; padding: 1px; }
+
+.markup-preview {
+  width: 740px; height: 300px;
+  overflow: auto;
+  border: 1px solid #999;
+  background: #f3f3f3 url(../../images/preview.png) center center;
+  padding: 0.5em; margin:0.5em 0;
+}
+.markup-preview pre     { background-color: transparent; border: none; }
+
+.markup-editor textarea { height: 300px; width: 742px; font-family: monospace; }
+
+.markup-links,
+form.plus_form fieldset div.markup-links { text-align: right; clear: left; float:none; }
+
+
+/* Internal navigation
+-------------------------------------------------------------- */
+
+.internal-navigation { 
+  margin: 0 0 10px 0; 
+  padding: 0.5em 1em 0 1em; 
+  background-color: #f6f6f9;
+  border: 1px solid #ccc;
+}
+.internal-navigation dl { 
+  overflow: auto;
+  margin: 0 0 0.1em; 
+  padding: .25em 0; 
+  clear: left; 
+}
+.internal-navigation dl dt { 
+  width: 80px; 
+  margin: 0; 
+  padding: 0; 
+  float: left; 
+}
+.internal-navigation dl dd        { margin: 0 0.5em 0.5em 100px; }
+.internal-navigation dd a         { padding: 1px; }    
+.internal-navigation dd a.active  { color: #000; }    
+.internal-navigation dd img       { vertical-align: middle; }
+.internal-navigation dd .option   { margin: 0 1.5em 0 0; float: left; }
+.internal-navigation input.text   { margin: 0; font-size: 0.9em; padding: 1px 3px; }
+    
+
+/* Tooltip
+-------------------------------------------------------------- */
+
+.tooltip { position: absolute !important; overflow:hidden; z-index: 10000 !important; }
+
+/* Sortable ULs
+-------------------------------------------------------------- */
+
+ul.sortable,
+ul.non-sortable { list-style: none; margin-left: 0; width: 650px; }
+
+ul.sortable li, 
+ul.non-sortable li { 
+  border: 1px solid #ddd; 
+  margin-bottom: 0.25em; 
+  padding: 1px 5px 1px 18px;  
+}
+ul.sortable li { background: url(../../images/sortable.png) no-repeat center left; }
+ul.sortable *  { cursor: pointer; }
+
+
+/* Action links
+-------------------------------------------------------------- */
+
+.actions a,
+.actions span.inactive { 
+  border: 1px solid #aaa; color: #888; 
+  background: #f3f3f3 url(../../images/menu_item.png) repeat-x; 
+  padding: 1px 8px; font-size: 0.9em; font-weight: bold; }
+.actions span.inactive { background: #f3f3f3; color: #ccc; cursor: pointer;}
+.actions a:hover       { background: transparent; color: #333; border-color: #999; }
+td.actions { padding-bottom: 6px; }
+
+.actions.smaller a,
+.actions.smaller span.inactive { padding: 0 4px; }
+
+/* In-Place editing
+-------------------------------------------------------------- */
+
+h1 .inplaceeditor-form { display: inline; font-size: 0.5em; }
+h2 .inplaceeditor-form { display: inline; font-size: 0.7em; }
+h3 .inplaceeditor-form { display: inline; font-size: 0.9em; }
+.inplaceeditor-form .editor_cancel { margin-left: 0.25em; }
+
+  

@@ -1,0 +1,88 @@
+<select id="select1_value" name="select1[value]"><option value="1">A</option>
+<option value="2">B</option></select><script type="text/javascript">
+//<![CDATA[
+
+      var HTMLRelatedSelectStruct = {
+        select_children: undefined, 
+        select_parent: undefined,
+        relation_hash: undefined,
+        extended_html_select_object: true,
+        select: function(value) {
+          for (i=0; i < this.options.length; i++) { 
+            if (this.options[i].value == value) this.selectedIndex = i; 
+          }
+          this.refresh_children();
+        },
+        child_add: function(child) {
+          if (this.select_children == undefined) this.select_children = [];
+          this.select_children.push(child);
+        },            
+        refresh_children: function() {
+          if (this.select_children != undefined) {
+            this.select_children.each( function(child){ child.refresh(); } );
+          }
+        },
+        refresh: function() {
+          this.options.length = 0;
+          if (this.select_parent != undefined && this.relation_hash != undefined && this.select_parent.selectedIndex > -1) {
+            opts = this.relation_hash[this.select_parent.options[this.select_parent.selectedIndex].value];
+            if (opts != undefined) {
+              for (i=0; i<opts.length; i++) this.options[i] = opts[i];
+              this.refresh_children();
+            }
+          }
+        },
+        onchange: function() { this.refresh_children(); }            
+      };        
+      
+//]]>
+</script><select id="select2_value" name="select2[value]"></select><script type="text/javascript">
+//<![CDATA[
+
+      if ($('select1_value').extended_html_select_object != true) Object.extend($('select1_value'), HTMLRelatedSelectStruct); 
+      if ($('select2_value').extended_html_select_object != true) Object.extend($('select2_value'), HTMLRelatedSelectStruct); 
+      $('select1_value').child_add($('select2_value')); $('select2_value').select_parent = $('select1_value');
+      $('select2_value').relation_hash = {
+        1: [new Option('K', '11'), new Option('L', '12')],
+        2: [new Option('M', '21'), new Option('N', '22')]
+      };
+      
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+$('select2_value').refresh();
+//]]>
+</script><select id="select3_value" name="select3[value]"></select><script type="text/javascript">
+//<![CDATA[
+
+      if ($('select1_value').extended_html_select_object != true) Object.extend($('select1_value'), HTMLRelatedSelectStruct); 
+      if ($('select3_value').extended_html_select_object != true) Object.extend($('select3_value'), HTMLRelatedSelectStruct); 
+      $('select1_value').child_add($('select3_value')); $('select3_value').select_parent = $('select1_value');
+      $('select3_value').relation_hash = {
+        1: [new Option('O', '13'), new Option('P', '14')],
+        2: [new Option('Q', '23'), new Option('R', '24')]
+      };
+      
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+      $('select1_value').select('2'); $('select3_value').select('24');
+//]]>
+</script><select id="select4_value" name="select4[value]"></select><script type="text/javascript">
+//<![CDATA[
+
+      if ($('select2_value').extended_html_select_object != true) Object.extend($('select2_value'), HTMLRelatedSelectStruct); 
+      if ($('select4_value').extended_html_select_object != true) Object.extend($('select4_value'), HTMLRelatedSelectStruct); 
+      $('select2_value').child_add($('select4_value')); $('select4_value').select_parent = $('select2_value');
+      $('select4_value').relation_hash = {
+        11: [new Option('U', '111'), new Option('V', '112')],
+        12: [new Option('W', '121')],
+        21: [new Option('X', '211'), new Option('Y', '212')]
+      };
+      
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+$('select4_value').refresh();
+//]]>
+</script>

@@ -1,0 +1,26 @@
+--- 
+text:
+  id: 1
+  file_name: file.rb
+  content_type: text/plain
+  attachable_type: Ticket
+  attachable_id: 1
+image:
+  id: 2
+  file_name: file.gif
+  content_type: image/gif
+  attachable_type: Ticket
+  attachable_id: 2
+binary:
+  id: 3
+  file_name: file.std
+  content_type: application/octet-stream
+  attachable_type: Ticket
+  attachable_id: 3
+missing:
+  id: 999
+  file_name: missing.rb
+  content_type: text/plain
+  attachable_type: Ticket
+  attachable_id: 9
+    

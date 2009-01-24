@@ -1,0 +1,6 @@
+.project
+.loadpath
+coverage
+Capfile
+.tmp*
+*.*~

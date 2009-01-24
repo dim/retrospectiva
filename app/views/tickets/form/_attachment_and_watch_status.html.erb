@@ -1,0 +1,16 @@
+<% f.fieldset do -%>
+  
+  <% content_tag :div do -%>
+    <%= f.label :attachment, _('Attachment') + ' (' + _('max.') + ': ' + maximum_attachment_size + '):' %>
+    <%= f.file_field :attachment %>
+  <% end  -%>    
+
+  <% content_tag :div do -%>
+    <%= f.label_tag _('Watch') + ': ' + image_tag('watching.png', :alt => '') %>
+    <div>
+      <%= check_box_tag 'watch_ticket', '1', RetroCM[:ticketing][:subscription][:encourage_subscription] %>
+      <%= f.click_choice _('Watch this ticket'), :for => 'watch_ticket' %>
+    </div>
+  <% end if User.current.permitted?(:ticket, :watch) and not @ticket.subscribers.include?(User.current) -%>
+
+<% end -%>

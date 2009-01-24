@@ -1,0 +1,42 @@
+<div class="ticket-intro clearfix">
+
+  <div class="span-4">
+    <h6 class="small"><%= truncated_author(@ticket) %></h6>
+    <div class="loud tiny bottom-5" title="<%=h time_interval_in_words(@ticket.created_at) %>">
+      <%=h datetime_format(@ticket.created_at) %>        
+    </div>        
+    <%= author_gravatar(@ticket.user, @ticket.author, :email => @ticket.email) %>
+  </div>
+
+
+  <div class="span-18 last">    
+  
+    <% if User.current.permitted?(:tickets, :delete) || @ticket.modifiable?(User.current) -%>
+      <div class="float-r actions smaller">        
+        <% if @ticket.modifiable?(User.current) -%>
+          <%= in_place_edit_external_control _('Edit'), 'ticket-content' %>
+        <% end -%>
+        <% if User.current.permitted?(:tickets, :delete) -%>
+          <%= link_to _('Delete'), project_ticket_path(Project.current, @ticket),
+                :confirm => _('Really delete ticket?'),
+                :method => :delete %>
+        <% end -%>
+      </div>
+    <% end -%>
+
+    <% if @ticket.attachment? %>
+      <ul class="ticket-actions">
+        <li class="loud"><span class="strong"><%=_ 'Attachment' %></span> <%=_ 'added' %>: <%= link_to_attachment_download @ticket.attachment %></li>
+      </ul>
+    <% end -%>
+
+    <div id="ticket-content" class="markup ticket-content"><%= markup(@ticket.content) %></div>
+    <% if @ticket.modifiable?(User.current) -%>
+      <%= retro_in_place_editor 'ticket-content', 
+             :url => modify_content_project_ticket_path(Project.current, @ticket),
+            :rows => 4, :text => h(@ticket.content) %>
+    <% end -%>
+    
+  </div>
+  
+</div>

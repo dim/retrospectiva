@@ -1,0 +1,23 @@
+<div class="blog-navigation"> 
+
+  <dl>
+    <dt><%=_ 'Navigation' -%></dt>
+    <dd><%= link_to _('Recent Posts'), project_blog_posts_path(Project.current) %></dd>
+    <% unless User.current.public? -%>
+      <dd><%= link_to _('My Posts'), project_blog_posts_path(Project.current, params.only(:c).merge(:u => User.current)) %></dd>
+    <% end -%>
+    <% if User.current.permitted?(:blog_posts, :create) -%>
+      <dd><%= link_to _('Create Post'), new_project_blog_post_path(Project.current) %></dd>
+    <% end -%>
+  </dl>
+
+  <% if @categories.any? -%>
+    <dl>
+      <dt><%=_ 'Categories' -%></dt>
+      <% @categories.each do |category| -%>
+        <dd><%= link_to h(category), project_blog_posts_path(Project.current, params.only(:u).merge(:c => category)) %></dd>
+      <% end -%>
+    </dl>
+  <% end -%>
+
+</div>

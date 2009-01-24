@@ -1,0 +1,22 @@
+--- 
+retro:
+  id: 1
+  name: Retrospectiva
+  root_path: retrospectiva/
+  info: Retrospectiva project
+  closed: false
+  short_name: retrospectiva
+  repository_id: 1
+sub:
+  id: 2
+  name: Subproject
+  root_path: subproject/
+  info: A subproject
+  closed: false
+  short_name: subproject
+closed:
+  id: 3
+  name: Closed Project
+  info: A closed project
+  closed: true
+  short_name: closed

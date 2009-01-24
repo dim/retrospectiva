@@ -1,0 +1,2 @@
+page.replace_html 'tickets', :partial => 'ticket', :collection => @tickets
+toggle_pagination(page)

@@ -1,0 +1,1 @@
+page.replace_html params[:element_id], markup(params[:content].to_s)

@@ -1,0 +1,21 @@
+<div class="changeset box clearfix">
+
+  <div class="span-4 centered colborder">
+    <div class="bottom-5"><%= author_gravatar(changeset.user, changeset.author) %></div>
+    <% unless changeset.author.blank? -%>
+      <h6 title="<%=h changeset.author %>"><%=h truncate(changeset.author, :length => 16) %></h6>
+    <% end -%>
+    <div class="loud small" title="<%=h datetime_format(changeset.revised_at) %>">
+      <%=h time_interval_in_words(changeset.revised_at) -%>
+    </div>        
+  </div>
+
+  <div class="span-16 last">
+    <h3 class="bottom-5" title="[<%=h changeset.revision %>]">
+      <%= link_to_unless_current _('Changeset') + " #{changeset.short_revision}", 
+        project_changeset_path(Project.current, changeset) %>
+    </h3>
+    <div class="clear quiet small compact"><%= format_log(changeset.log) %></div>    
+  </div>  
+
+</div>

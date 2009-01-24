@@ -1,0 +1,28 @@
+<%= f.error_messages %>  
+
+<fieldset>
+  <%= f.label :name, _('Name') + ':', :required => true %>
+  <%= f.text_field :name %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :started_on_3i, _('Started on') + ':' %>
+  <%= f.date_select :started_on %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :due_3i, _('Due on') + ':' %>
+  <%= f.date_select :due, :include_blank => true %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :finished_on_3i, _('Finished on') + ':' %>
+  <%= f.date_select :finished_on, :include_blank => true %>
+</fieldset>
+
+<%= view_extensions :milestone, :form, :locals => { :f => f } %>
+
+<fieldset>
+  <%= f.label :info, _('A short description or other info you want displayed (optional)') + ':' %>  
+  <%= markup_area :milestone, :info -%>
+</fieldset>  

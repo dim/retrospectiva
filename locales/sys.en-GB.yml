@@ -1,0 +1,27 @@
+en-GB:
+  activerecord:
+    errors:
+      messages:
+        cannot_be_selected: cannot be selected
+        cannot_be_disabled: cannot be disabled        
+        must_be_specified: must be specified
+      models:
+        project:
+          attributes:
+            name:
+              invalid: must begin with a latin character
+              overlap: overlaps with an existing project
+        ticket_change:
+          attributes:
+            content:
+              blank: cannot be empty if an attachment is submitted
+        user:
+          attributes:
+            admin:
+              not_for_public: must be disabled. Public can never have admin rights
+              last_available: must be enabled. User is the last available admin
+              invalid_downgrade: must be enabled. You cannot downgrade your own account
+            active:
+              must_be_active: must be enabled. Public must be active
+              own_account_must_be_active: must be enabled. You cannot deactivate your own account
+              

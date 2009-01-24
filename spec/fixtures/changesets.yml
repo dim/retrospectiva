@@ -1,0 +1,167 @@
+--- 
+initial: 
+  id: 100
+  revision: "1"
+  repository_id: 1
+  log: |-
+    Initial commit.
+    Added dummy fixture files to the test repository.
+  author: dim
+  revised_at: 2007-02-17 21:00:52
+with_deleted: 
+  id: 101
+  revision: "2"
+  repository_id: 1
+  log: Deleted some files and a directory.
+  author: dim
+  revised_at: 2007-02-17 21:02:17
+with_added: 
+  id: 102
+  revision: "3"
+  repository_id: 1
+  log: Added some files.
+  author: dim
+  revised_at: 2007-02-17 21:05:10
+with_modified: 
+  id: 103
+  revision: "4"
+  repository_id: 1
+  log: Modified file(s) content.
+  author: dim
+  revised_at: 2007-02-17 21:07:14  
+with_renamed:
+  id: 104
+  revision: "5"
+  repository_id: 1
+  log: |-
+    Deleted one file.
+    Renamed one file.
+  author: dim
+  revised_at: 2007-02-17 21:08:45
+with_image:
+  id: 105
+  revision: "6"
+  repository_id: 1
+  log: Added an image file.
+  author: dim
+  revised_at: 2007-02-17 21:21:36
+with_references:
+  id: 106
+  revision: "7"
+  repository_id: 1
+  log: |-
+    Copied a file.
+    This comments also contains ticket [#2] & [#100] and changeset [r4] & [r100] references.
+  author: dim
+  revised_at: 2007-02-18 17:25:01
+with_binary: 
+  id: 107
+  revision: "8"
+  repository_id: 1
+  log: |-
+    Added binary file for additional testing
+  author: dim
+  revised_at: 2007-02-18 17:26:01
+  user_id: 3
+with_binary_modification:
+  id: 108
+  revision: "9"
+  repository_id: 1
+  log: |
+    * modified binary file.
+  author: kou
+  revised_at: 2008-02-06 13:14:14
+large_copy:
+  id: 109
+  revision: "10"
+  repository_id: 1
+  log: |
+    * copied retrospectiva/.
+  author: kou
+  revised_at: 2008-02-07 13:21:14
+subproject:
+  id: 200
+  revision: "333"
+  repository_id: 1
+  log: Changed the subproject
+  author: dim
+  revised_at: 2008-01-01 12:00:00
+git_initial: 
+  id: 300
+  revision: fda71ed24f9db74abc627f21d82fcc43852f5ad1
+  repository_id: 2
+  log: |-
+    Initial commit.
+    Added dummy fixture files to the test repository.
+  author: dim
+  revised_at: 2007-02-17 21:00:52
+git_with_deleted: 
+  id: 301
+  revision: 2dfd49e7cde300a492cea81884fdb08be861ad02
+  repository_id: 2
+  log: Deleted some files and a directory.
+  author: dim
+  revised_at: 2007-02-17 21:02:17
+git_with_added: 
+  id: 302
+  revision: 9d1574324929aea0eaf446ff23ddcca6d2d236a4
+  repository_id: 2
+  log: Added some files.
+  author: dim
+  revised_at: 2007-02-17 21:05:10
+git_with_modified: 
+  id: 303
+  revision: 573ae4e2c35ca993aef864adac5cdd3e3cf50125
+  repository_id: 2
+  log: Modified file(s) content.
+  author: dim
+  revised_at: 2007-02-17 21:07:14  
+git_with_renamed:
+  id: 304
+  revision: 44e3e065f9b3cd482cee5013047920d2f6b44a22
+  repository_id: 2
+  log: |-
+    Deleted one file.
+    Renamed one file.
+  author: dim
+  revised_at: 2007-02-17 21:08:45
+git_with_image:
+  id: 305
+  revision: d4ebc855a084469b2b08b9fde65041001975255c
+  repository_id: 2
+  log: Added an image file.
+  author: dim
+  revised_at: 2007-02-17 21:21:36
+git_with_references:
+  id: 306
+  revision: 97875dc61b331bd791c623e717c3de9e6c004afa
+  repository_id: 2
+  log: |-
+    Copied a file.
+    This comments also contains ticket [#2] & [#100] and changeset [r4] & [r100] references.
+  author: dim
+  revised_at: 2007-02-18 17:25:01
+git_with_binary: 
+  id: 307
+  revision: 1dc200bf2dee50d5403d31ffb2bd935c05292c54
+  repository_id: 2
+  log: |-
+    Added binary file for additional testing
+  author: dim
+  revised_at: 2007-02-18 17:26:01
+  user_id: 3
+git_with_binary_modification:
+  id: 308
+  revision: f4979fce71cc0c2ba39d5578502d41cc7c24d64a
+  repository_id: 2
+  log: * modified binary file.
+  author: kou
+  revised_at: 2008-02-06 13:14:14
+git_large_copy:
+  id: 309
+  revision: fe8566ec42808bdce1795d0759ee1e4a49bd2715
+  repository_id: 2
+  log: * copied retrospectiva/.
+  author: kou
+  revised_at: 2008-02-07 13:21:14
+  

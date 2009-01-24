@@ -1,0 +1,7 @@
+<%= render :partial => 'value_form', :locals => {:f => f} %>
+
+<% f.fieldset do -%>
+  <%= f.label_tag _('Options') %>
+  <%= f.check_box :default_value, :disabled => @ticket_property.default_value? ? 'disabled' : nil %>
+  <%= f.label :default_value, _('Default value'), :class => 'choice' %>
+<% end -%>

@@ -1,0 +1,21 @@
+<div id="header">
+  <div id="menu" class="clearfix">
+    <ul id="main-navigation"><%= main_navigation %></ul>
+  </div>
+</div>
+
+<div id="content" class="markup-reference">  
+  <% @examples.each do |section, strings| -%>
+    <% next if strings.blank? -%>
+    <h1 id="<%= section.to_s.to_web_safe_name %>"><%=h section.to_s %></h1>
+    <table class="examples"><tbody>
+      <% strings.each do |example| -%>
+        <tr>
+          <th class="example"><pre><%=h example %></pre></th>
+          <td class="result"><%= markup(example) %></td>
+        </tr>
+      <% end -%>
+    </tbody></table>
+    <%= top_link %>
+  <% end -%>
+</div>

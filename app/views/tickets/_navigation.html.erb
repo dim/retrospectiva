@@ -1,0 +1,22 @@
+<div class="content-header">
+  <%= link_to _('Back to ticket list'), project_tickets_path(Project.current) %>
+  <% if @ticket.changes.last -%>
+    | <%= link_to _('See last change'), :anchor => "ch#{@ticket.changes.last.id}" %>
+  <% end -%>
+  <% if @ticket.modifiable?(User.current) -%>
+    | <%= link_to_in_place_edit _('Edit summary'), 'ticket-summary',
+            :url => modify_summary_project_ticket_path(Project.current, @ticket),
+            :size => 60 %>
+  <% end -%>
+  <% if User.current.permitted?(:tickets, :watch) -%>
+    | <%= link_to (@ticket.subscribers.include?(User.current) ? _('Stop watching this ticket') : _('Watch this ticket')), 
+            toggle_subscription_project_ticket_path(Project.current, @ticket),
+            :method => :post %>
+  <% end -%>
+  <% if @previous_ticket -%>
+    | <%= link_to _('Previous ticket'), project_ticket_path(Project.current, @previous_ticket) %>
+  <% end -%>  
+  <% if @next_ticket -%>
+    | <%= link_to _('Next ticket'), project_ticket_path(Project.current, @next_ticket) %>
+  <% end -%>  
+</div>

@@ -1,0 +1,34 @@
+<% @page_title = _('Browse revisions') -%>
+
+<div class="repository-browser revisions-browser">
+  <%= browseable_path -%>  
+  <% content_header 'bottom-5' do -%>
+    <%= link_to_browse _('Browse'), params[:path], params[:rev] %>
+  <% end -%>
+  <%= render :partial => 'node_info' %>
+
+  <table class="record-list">
+    <thead>
+      <% if @revisions.total_pages > 1 -%>
+        <tr class="navigation">
+          <td colspan="6"><%= will_paginate @revisions, :params => { :project_id => Project.current.to_param } %></td>
+        </tr> 
+      <% end -%>
+      <tr>
+        <th class=""><%=_ 'Revision' -%></th>
+        <th class="narrow-column"><%=_ 'Date' -%></th>
+        <th class="narrow-column"><%=_ 'Author' -%></th>
+        <th><%=_ 'Log' -%></th>
+        <% if User.current.permitted?(:changesets, :view) -%>
+          <th class="very-slim-column">&nbsp;</th>
+        <% end -%>
+        <th class="very-slim-column">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render :partial => 'revision', :collection => @revisions %>
+   </tbody>
+  </table>
+  <%= top_link %>
+
+</div>

@@ -1,0 +1,23 @@
+<% @page_title = _('New ticket') -%>
+<% slim_page -%>
+<%= page_title %>
+
+<% plus_form_for @ticket,
+    :url => project_tickets_path(Project.current),
+    :html => {:multipart => true, :class=> 'ticket-form' } do |f| -%>
+
+  <%= f.error_messages %>
+
+  <% f.section _('Details') do -%>
+    <%= render :partial => 'tickets/form/name_and_email', :locals => { :f => f } %>
+    <%= render :partial => 'tickets/form/summary_and_description', :locals => { :f => f } %>  
+    <%= render :partial => 'tickets/form/attachment_and_watch_status', :locals => { :f => f } %>    
+  <% end -%>
+  
+  <%= render :partial => 'tickets/form/ticket_options', :locals => {:f => f} %>
+
+  <% f.fieldset :buttons do -%>
+    <%= f.submit _('Create') %>
+  <% end -%>    
+<% end -%>    
+  

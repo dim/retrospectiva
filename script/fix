@@ -1,0 +1,137 @@
+#!/usr/bin/env ruby
+
+#--
+# Copyright (C) 2007 Dimitrij Denissenko
+# Please read LICENSE document for more information.
+#++
+
+ROOT_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+
+def relativize_path(path)
+  File.expand_path(path).gsub(%r{#{Regexp.quote(ROOT_PATH + '/')}}, '')
+end
+
+def headline(text)
+  puts "\n > #{text}\n"
+end
+
+def message(code, text)
+  puts "   [#{code}] #{text}\n"
+end
+
+def error(text)
+  message('E', "Warning! #{text}")
+end
+
+def summary(text)
+  message('=', "Congratulations! #{text}")
+end
+
+
+
+
+def test_subversion_support
+  headline('Testing subversion support')
+
+  libs = {}
+  libs['Core']   = require 'svn/core'  rescue nil
+  libs['Fs']     = require 'svn/fs'    rescue nil
+  libs['Delta']  = require 'svn/delta' rescue nil
+  libs['Repos']  = require 'svn/repos' rescue nil
+  libs['Client'] = require 'svn/client' rescue nil
+
+  subversion_ok = true
+  libs.each_pair do |lib, loaded|
+    subversion_ok = false if loaded.nil?
+    code = loaded.nil? ? '-' : '+'
+    msg  = loaded.nil? ? 'NOT' : 'successfully'
+    message(code, "Svn::#{lib} library was #{msg} loaded")
+  end
+  if subversion_ok
+    summary('All libraries were loaded. Subversion support will be fully ENABLED!')
+  else
+    error('At least one required library could not be loaded. Subversion support will be DISABLED!')
+  end
+end
+
+
+def test_environment
+  headline('Checking production environment')
+
+  loaded = false
+  ENV['RAILS_ENV'] = 'production'
+  begin
+    require File.dirname(__FILE__) + '/../config/environment'
+    loaded = true
+    summary('Retrospectiva was successfully loaded!')
+  rescue
+    error('Cannot load Retrospectiva!')
+    message('E', $!)
+  end
+end
+
+
+def test_file_permissions
+  headline("Checking file access permissions for user '#{ENV['USER']}'")
+
+  permissions_ok = true
+  ['config/runtime/**', 'log', 'attachments', 'tmp/**', 'extensions'].each do |path|
+    full_path = File.join(ROOT_PATH, path)
+    Dir.glob(full_path).each do |fs_obj|
+      if File.writable?(fs_obj)
+        message('+', "#{relativize_path(fs_obj)} - writable")
+      else      
+        permissions_ok = false
+        message('-', "#{relativize_path(fs_obj)} - NOT writable")
+      end
+    end        
+  end
+  Dir.glob(File.join(ROOT_PATH, 'public', 'dispatch.*')).each do |fs_obj|
+    if File.executable?(fs_obj)
+      message('+', "#{relativize_path(fs_obj)} - executable")
+    else
+      permissions_ok = false
+      message('-', "#{relativize_path(fs_obj)} - NOT executable")
+    end    
+  end        
+  
+  if permissions_ok
+    summary('All your file system permissions are set correctly!')
+  else
+    error('At least one of your file system permissions IS NOT set correctly!')
+  end
+end
+
+
+def test_tasks
+  headline("Checking Retrospectiva tasks")
+  config_file = File.join(ROOT_PATH, 'config', 'runtime', 'tasks.yml')  
+
+  tasks_ok = true
+  if File.readable?(config_file)
+    message('+', "A tasks configuration #{relativize_path(config_file)} was found.")
+    if File.mtime(config_file) > Time.now - 60
+      message('+', 'Tasks have been processed recently.')    
+    else
+      tasks_ok = false
+      message('-', "Tasks have NOT been run since #{File.mtime(config_file).strftime('%Y-%m-%d %H:%M')}. ")
+      message('-', "Please set-up a periodic (cron) job as described in the documentation.")
+    end
+  else
+    tasks_ok = false
+    message('-', "No task configuration found. Please login as administrator to Retrospectiva and set-up tasks in the 'Admin' menu!")
+  end
+
+  if tasks_ok
+    summary('Tasks have been set-up correctly!')
+  else
+    error('Tasks seem not to be set-up correctly!')
+  end
+end
+
+puts "\n----- Retrospectiva status report\n"
+test_subversion_support
+test_environment
+test_file_permissions
+test_tasks
+puts "\n----- Finished\n"

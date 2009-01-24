@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new project') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => @project,
+      :collection_path => admin_projects_path } %>

@@ -1,0 +1,27 @@
+<% plus_form_for @blog_comment, :url => project_blog_post_comments_path(Project.current, @blog_post, :anchor => 'blog-comment-form'), :html => { :id => 'blog-comment-form' } do |f| -%>
+  
+  <%= f.info _('Leave a comment') %>
+  <%= f.error_messages %>
+
+  <% f.fieldset do -%>
+    <div>
+      <%= f.label :author, _('Author') + ':', :required => true %>
+      <%= f.text_field :author %>
+    </div>
+    <div>
+      <%= f.label :email, _('Email') + ':' %>
+      <%= f.text_field :email %>
+    </div>
+  <% end -%>
+
+  <% f.fieldset 'full-w' do -%>
+    <%= f.label :content, _('Comment') + ':' %>
+    <%= f.text_area :content, :rows => 4 %>
+  <% end -%>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Create') %>
+  <% end -%>
+
+<% end -%>
+<%= top_link %>

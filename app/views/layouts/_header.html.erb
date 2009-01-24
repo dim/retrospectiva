@@ -1,0 +1,11 @@
+<%= render :partial => 'layouts/top' %>
+<div id="header">
+  <div class="clearfix">
+    <div id="logo"><%= link_to image_tag('logo.png', :alt => _('Home'), :title => _('Home')), home_path, :class => 'transparent' %></div>
+    <div id="status_info">
+      <div id="login_info"><%= links_to_account_management %></div>
+      <div id="project_info">&nbsp;<%= h(Project.current.name) if Project.current %></div>      
+    </div>
+  </div>
+
+  <div id="menu" class="clearfix">

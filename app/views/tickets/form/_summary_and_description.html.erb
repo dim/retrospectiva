@@ -1,0 +1,10 @@
+<% f.fieldset do -%>
+  <div class="break">
+    <%= f.label :summary, _('Summary') + ':', :required => true %>
+    <%= f.text_field :summary, :wrap_options => {:class => 'full-w'} %>
+  </div>
+  <div class="break">
+    <%= f.label_tag _('Description'), :required => true %>
+    <%= markup_area :ticket, :content %>
+  </div>
+<% end -%>

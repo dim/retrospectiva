@@ -1,0 +1,49 @@
+.errorExplanation {
+  margin-bottom: 2em;
+  font-size: 0.9em;
+  background: #fff;
+}
+
+  .errorExplanation h3, .errorExplanation h2 {
+    background: #c00;
+    padding: 3px;
+    margin-bottom: 0;
+    font-size: 1.1em;
+    color: #fff;
+  }
+
+  .errorExplanation ul {
+    border-bottom: 2px solid #c00;
+    margin: 0;
+    padding: .5em 0 1em 3em;    
+  }
+  
+  .errorExplanation li {
+    margin:0;
+    padding: 0;  
+  }
+
+  .errorExplanation p {
+    margin: 0;
+    padding: 1em 1em 0 1em; 
+  }
+
+.fieldWithErrors {
+  display: inline;
+}
+
+  .fieldWithErrors input, .fieldWithErrors select, .fieldWithErrors textarea, .fieldWithErrors iframe {
+    border: 1px solid #999;
+    border-left: 4px solid #c00;
+  }
+
+textarea.editor_field { height: 15em; width: 80%; }
+
+.pagination { } 
+.pagination a, 
+.pagination span { border: 1px solid #bbb; padding:1px 0.5em; }
+.pagination span { border-color: #ddd; color:#999; }
+.pagination a:focus, 
+.pagination a:hover { background:none; border-color:#666; color:#333; } 
+.pagination .current { background:#3377BB; border-color:#666; color: #fff; }
+.pagination .intro { border:0; color: #000; }

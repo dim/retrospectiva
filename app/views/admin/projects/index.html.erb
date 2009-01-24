@@ -1,0 +1,21 @@
+<% @page_title = _('Projects') -%>
+<%= render :partial => '/admin/shared/index_header' %>
+
+<table class="record-list">
+  <thead>
+    <%= top_navigation_for @projects, _('Create a new project'), new_admin_project_path, 3, 2 %>
+    <tr>
+      <th><%=_ 'Project' -%></th>
+      <th class="centered"><%=_ 'Active' -%></th>
+      <th class="centered"><%=_ 'Central' -%></th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <%= bottom_navigation_for(@projects, 3, 2) %>
+
+  <tbody id="projects">
+    <%= render :partial => 'project', :collection => @projects %>
+  </tbody>
+</table>

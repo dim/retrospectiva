@@ -1,0 +1,29 @@
+<div class="blog-post">
+
+  <h1 class="bottom-1 blog-title"><%= preview ? link_to(h(post.title), project_blog_post_path(Project.current, post)) : h(post.title) %></h1>
+
+  <p class="small quiet">
+    <%=RetroI18n._ h('Posted by {{user}} on {{date}}'), 
+            :user => link_to(h(post.user.name),  project_blog_posts_path(Project.current, params.only(:c).merge(:u => post.user))), 
+            :date => date_format(post.created_at) %> | 
+    <% if post.categories.any? -%>
+      <%= category_links(post) %> &nbsp;|&nbsp;
+    <% end -%>
+    <% if preview -%>
+      <%= link_to _('{{count}} comments', :count => post.comments.size), project_blog_post_path(Project.current, post, :anchor => 'comments') %>
+    <% else -%>
+      <%= link_to _('{{count}} comments', :count => post.comments.size), :anchor => 'comments' %> &nbsp;|&nbsp; 
+      <%= link_to _('Recent Posts'), project_blog_posts_path(Project.current) %>       
+    <% end -%>
+  </p>
+  
+  <div class="markup blog-content">
+
+    <%= markup(preview ? post.preview : post.content) %>
+    <% if preview and post.content != post.preview -%>
+      <p><%= link_to _('Read more') + '...', project_blog_post_path(Project.current, post) %></p>
+    <% end -%>
+
+  </div>
+  
+</div>

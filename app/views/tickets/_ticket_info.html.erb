@@ -1,0 +1,36 @@
+<div class="ticket-info clearfix">
+  <% collection = property_name_value_map(@ticket) -%>
+  <% per_col = (collection.size / 3.0).ceil %>
+
+  <% collection.in_groups_of(per_col).each do |group| -%>
+    <div class="span-5">      
+      <% group.compact.each do |name, value| -%>
+        <div title="<%=h name %>: <%=h value %>">
+          <strong><%=h truncate(name, :length => 16) %>:</strong>
+          <em><%=h truncate(value, :length => 16) %></em>
+        </div>
+      <% end -%>
+    </div>
+  <% end -%>
+
+  <% (3 - (collection.size / per_col.to_f).ceil).times do -%>
+    <div class="span-5">&nbsp;</div>
+  <% end -%>
+  
+  <div class="span-2 righted">      
+    <% if @ticket.assigned_user -%>
+      <%= user_gravatar(@ticket.assigned_user, :size => 30) %>    
+    <% end -%>
+  </div>
+
+  <div class="span-5 last">      
+    <strong><%=_ 'Assigned To' %>:</strong><br/>
+    <% if @ticket.assigned_user -%>
+      <em><%= enkode_mail @ticket.assigned_user.email, h(truncate(@ticket.assigned_user.name, :length => 20)), h(@ticket.assigned_user.name) %></em>
+    <% else -%>
+      <em><%=_ 'Unassigned' %></em>
+    <% end -%>
+  </div>
+
+</div>
+ 

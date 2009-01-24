@@ -1,0 +1,27 @@
+*0.1.4* (May 26th 2006)
+
+  *  Thijs van der Vossen fixed a plugin load issue in the test suite and
+     provided another test to illustrate that test@example is considered
+     valid by RFC822, something most people wouldn't realise.
+
+*0.1.3* (May 9th 2006)
+
+  *  Thijs van der Vossen contributed some test cases.
+
+*0.1.2* (April 24th 2006)
+
+  *  Dan Kubb and Tim Fletcher have updated the RFC822 regular expression
+     on Tims website so I've put the latest version into this plugin. The
+     changes prevent matching of email addresses containing line breaks.
+
+*0.1.1* (April 23rd 2006)
+
+  *  Huge code cleanup & simplification by Dan Kubb.
+
+  *  Credit Tim Fletcher with the Ruby version of the RFC822 regular
+     expression.
+
+*0.1* (April 4th 2006)
+
+  *  First release, advertised on the Rails plugins page:
+     http://wiki.rubyonrails.org/rails/pages/Plugins

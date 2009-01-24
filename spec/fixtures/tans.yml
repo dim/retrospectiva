@@ -1,0 +1,3 @@
+one:
+  value: fc0b88b7c9e2c896bcee4881d00d7bf5a7d2442d
+  expires_at: <%= Date.today %>

@@ -1,0 +1,14 @@
+<% f.fieldset do -%>
+  <%= f.label :title, _('Title') + ':' %>
+  <%= f.text_field :title %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :content, _('Content') + ':' %>
+  <%= markup_area :blog_post, :content %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :category_list, _('Categories') + ':' %>
+  <%= f.text_field :category_list %>
+<% end -%>

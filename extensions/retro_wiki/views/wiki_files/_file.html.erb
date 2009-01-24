@@ -1,0 +1,18 @@
+<tr class="<%= cycle('odd', 'even') -%> record">
+  <td class="strong">
+    <%= boolean_format file.readable? %>
+    <%= link_to h(file.wiki_title), path_to_wiki_file(file) %>
+  </td>
+  
+  <td><%=h file.file_name %></td>
+  <td><%=h file.content_type %></td>
+  <td><%=h number_to_human_size(file.size) %></td>
+  
+  <td class="actions righted w-4">
+    <% if User.current.permitted?(:wiki_pages, :upload) -%>
+      <%= link_to _('Delete'), project_wiki_file_path(Project.current, file),
+						:confirm => _('Are you sure?'), 
+						:method => :delete %>
+    <% end -%>
+  </td>
+</tr>

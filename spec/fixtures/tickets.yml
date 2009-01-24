@@ -1,0 +1,63 @@
+--- 
+open:
+  id: 1
+  project_id: 1
+  author: John Doe
+  priority_id: 1
+  summary: An open ticket
+  content: Description
+  status_id: 1
+  email: jdoe@mail.com
+  milestone_id: 1
+  created_at: <%= 4.months.ago.midnight.to_formatted_s(:db) %>
+  updated_at: <%= 4.months.ago.midnight.to_formatted_s(:db) %>
+fixed:
+  id: 2
+  project_id: 1
+  author: Jane Doe
+  priority_id: 1
+  summary: A resolved issue
+  content: Description
+  status_id: 4
+  email: j.doe@mail.com
+  milestone_id: 1
+  created_at: <%= 4.months.ago.to_formatted_s(:db) %>
+  updated_at: <%= 4.months.ago.to_formatted_s(:db) %>
+another_open:
+  id: 3
+  project_id: 1
+  author: Tim Doe
+  priority_id: 1
+  summary: Another open
+  content: Description
+  status_id: 1
+  email: tim.doe@mail.com
+  milestone_id: 1
+  assigned_user_id: 3
+  created_at: <%= 4.months.ago.to_formatted_s(:db) %>
+  updated_at: <%= 2.months.ago.to_formatted_s(:db) %>
+agents_ticket:
+  id: 4
+  project_id: 1
+  author: Agent
+  priority_id: 1
+  summary: Agent's request
+  content: Description
+  status_id: 1
+  email: agent@somedomain.com
+  milestone_id: 1
+  user_id: 3
+  created_at: <%= 4.days.ago.to_formatted_s(:db) %>
+  updated_at: <%= 3.days.ago.to_formatted_s(:db) %>
+special_chars_and_links:
+  id: 9
+  project_id: 1
+  author: Tom Doe
+  priority_id: 1
+  summary: Link with '&'
+  content: http://example.com/?a=b&c=d;e=f
+  status_id: 1
+  email: tdoe@mail.com
+  milestone_id: 3
+  created_at: 2000-01-01 21:30:00
+  updated_at: 2000-01-06 21:30:00

@@ -1,0 +1,57 @@
+.tickets table a:hover, 
+.tickets table a:focus { color:#000; background:none; }
+
+.tickets table tbody td { vertical-align: top; font-size:98%; }
+.tickets .content-header { margin-bottom:1em; border-color: #ccc; }
+.tickets .internal-navigation { border-top:0; margin-top:-10px; padding-bottom:0.5em; }
+
+.ticket-statement-positive .ticket-col-id a,
+.ticket-statement-positive .ticket-col-status a,
+.ticket-statement-positive .ticket-col-summary h6 a { color: #672; }
+.ticket-statement-neutral .ticket-col-id a,
+.ticket-statement-neutral .ticket-col-status a,
+.ticket-statement-neutral .ticket-col-summary h6 a { color: #37b; }
+.ticket-statement-negative .ticket-col-id a,
+.ticket-statement-negative .ticket-col-status a,
+.ticket-statement-negative .ticket-col-summary h6 a { color: #732; }
+
+.ticket-col-id,
+.ticket-col-status,
+.ticket-col-assigned-to { font-weight:bold; }
+
+.ticket-col-assigned-to,
+.ticket-col-priority,
+.ticket-col-milestone,
+.ticket-col-ticket-properties,
+.ticket-col-last-update,
+.ticket-info { font-size:95%; }
+
+.ticket-col-priority,
+.ticket-col-milestone,
+.ticket-col-ticket-properties,
+.ticket-col-last-update { color:#666; }
+
+.ticket-state-resolved .ticket-col-id,
+.ticket-state-resolved .ticket-col-status,
+.ticket-state-resolved .ticket-col-summary h6 { text-decoration: line-through; }
+
+.ticket-summary h2 { margin-bottom: 0; }
+.ticket-intro  { margin-bottom: 3em; }
+
+.ticket-change { border-bottom: 1px solid #ddd; padding-bottom: 1em; margin-bottom: 1.5em; }
+.ticket-change .ticket-change-content { margin-left:0.5em; }
+
+
+.ticket-form fieldset { margin:0.25em 0 0.5em 8px; }
+.ticket-form h3 { margin: 0.5em 0; }
+.ticket-form .markup-editor textarea,
+.ticket-form .markup-preview { height: 240px; }
+
+.ticket-form .ticket-options { margin-bottom: 0.5em; }
+.ticket-form .ticket-options th,
+.ticket-form .ticket-options td { padding: 1px 10px 1px 4px; }
+.ticket-form .ticket-options th { width: 17%; }
+.ticket-form .ticket-options td { width: 33%; }
+.ticket-form .ticket-options label { display: inline; }
+
+#ticket_report_selector dl { max-height: 140px; overflow: auto; }

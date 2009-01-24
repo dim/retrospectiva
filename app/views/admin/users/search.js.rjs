@@ -1,0 +1,2 @@
+page.replace_html 'users', :partial => 'user', :collection => @users
+toggle_pagination(page)

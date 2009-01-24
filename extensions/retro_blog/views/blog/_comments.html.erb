@@ -1,0 +1,9 @@
+<div class="blog-comments">
+  <h1 id="comments" class="bottom"><%=_ 'Comments' %></h1>
+
+  <% if User.current.permitted?(:blog_posts, :comment) -%>       
+    <p><%= link_to _('Leave a comment'), :anchor => 'blog-comment-form' %></p>
+  <% end -%>
+  
+  <%= render :partial => 'comment', :collection => @blog_post.comments -%>
+</div>

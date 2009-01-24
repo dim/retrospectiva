@@ -1,0 +1,20 @@
+<li id="<%= 'property_value_' + property_value.id.to_s %>">
+  <div class="actions float-r">
+    <% case property_value when Status -%>
+      <%= links_to_edit_and_destroy property_value, _('status record') %>
+    <% when Priority -%>
+      <%= links_to_edit_and_destroy property_value, _('priority record') %>
+    <% else -%>
+      <%= link_to_edit(property_value) %>
+      <%= link_to _('Delete'), property_value_path(@project, @property_type, property_value),
+            options_for_destroy_link(property_value) -%>
+    <% end -%>
+  </div>
+  
+  <span class="strong"><%=h property_value.name %></span>
+  <% case property_value when Status -%>
+    (<%=h property_value.state.group %> / <%=h property_value.statement.name %><%= ' / ' + _('Default') if property_value.default_value? %>)
+  <% when Priority -%>
+    <%= '(' + _('Default') + ')' if property_value.default_value? %>
+  <% end -%>  
+</li>

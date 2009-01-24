@@ -1,0 +1,13 @@
+<% @page_title = _('Extensions') -%>
+<%= render :partial => '/admin/shared/index_header' %>
+  
+<table style="width:auto;">
+  <tbody>
+    <% @available.each do |extension| -%>
+      <tr>
+        <td><%=h extension.name.titleize %></td>
+        <td class="centered"><%= boolean_format(extension.installed?, _('Installed'), _('Not Installed')) %></td>  
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

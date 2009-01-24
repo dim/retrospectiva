@@ -1,0 +1,5 @@
+--- 
+process_mails: 
+  :interval: 300
+sync_repositories:
+  :interval: 600

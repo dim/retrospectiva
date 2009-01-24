@@ -1,0 +1,22 @@
+<%= render :partial => 'header' %>
+    
+<div class="retro-wiki">
+
+  <div class="page-title">
+    <%=h @wiki_page.title %>
+  </div>
+
+  <% plus_form_for @wiki_page, :url => rename_project_wiki_page_path(Project.current, @wiki_page.title_was), :html => { :method => :put } do |f| -%>
+    <%= f.error_messages %>
+
+    <fieldset>
+      <%= f.label_tag _('Title') + ':', :for => 'title' %>
+      <div><%= text_field_tag :title %></div>
+    </fieldset>  
+      
+    <fieldset>
+      <%= f.submit _('Rename') %> | <%= link_to _('Cancel'), project_wiki_page_path(Project.current, @wiki_page.title_was) %>
+    </fieldset>
+  <% end -%>
+
+</div>

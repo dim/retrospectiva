@@ -1,0 +1,52 @@
+<%= f.error_messages %>
+
+<% f.fieldset do -%>
+  <%= f.label :name, _('Project name') + ':', :required => true %>
+  <%= f.text_field :name %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :locale, _('Locale') + ':', :required => true %>
+  <%= f.select :locale, [["[#{_('Global')}]", nil]] + RetroI18n.choices %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :repository_id, _('Repository') + ':' -%>
+  <%= f.collection_select :repository_id, @repositories, :id, :name, :include_blank => true -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :root_path, _('Repository path') + ':' -%>
+  <%= f.text_field :root_path -%>
+  <div id="repository-test-result" class="result-notification"></div>
+<% end -%>
+
+<%= observe_field :project_root_path, 
+  :frequency => 1, 
+  :update => 'repository-test-result', 
+  :url => repository_validation_admin_projects_path,
+  :with => "'root_path=' + escape(value) + '&repository_id=' + escape($F('project_repository_id'))" -%>
+
+<% f.fieldset do -%>  
+  <%= f.label_tag _('Enabled modules') + ':' %>
+  <ul id="enabled_modules" class="sortable">
+    <%= enabled_modules_selection(f) %>    
+  </ul>
+  <%= javascript_tag("Sortable.create('enabled_modules')") %>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label_tag _('Options') + ':' %>
+  <%= f.check_box :closed -%>
+  <%= f.label :closed, _('Closed'), :class => 'choice' %>
+  <br/>
+  <%= f.check_box :central -%>
+  <%= f.label :central, _('Central'), :class => 'choice' %>
+  <%= info_image :title => _('Check this option to make this your default project.') %>
+
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :project_info,_('Description') + ':' %>
+  <%= markup_area :project, :info %>
+<% end -%>

@@ -1,0 +1,9 @@
+--- 
+release_positive:
+  content: Awesome ...
+  author: A
+  blog_post_id: 2
+release_negative:
+  content: Took a while ...
+  author: B
+  blog_post_id: 2

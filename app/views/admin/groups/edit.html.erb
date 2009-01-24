@@ -1,0 +1,7 @@
+<% @page_title = _('Edit group') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/edit_form', :locals => {
+      :record => @group,
+      :member_path => admin_group_path(@group),
+      :collection_path => admin_groups_path } %>

@@ -1,0 +1,131 @@
+body { margin: 0; }
+
+.container { margin: 0; }
+.border,
+.colborder {border-color: #ddd;}
+.w-1 {width:30px;}
+.w-2 {width:70px;}
+.w-3 {width:110px;}
+.w-4 {width:150px;}
+.w-5 {width:190px;}
+.w-6 {width:230px;}
+.w-7 {width:270px;}
+.w-8 {width:310px;}
+.w-9 {width:350px;}
+.w-10 {width:390px;}
+
+/* Use other style */
+body { 
+  font-family: "Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,"Liberation Sans","Sans",sans-serif;
+}
+
+/* Make headers bold */
+h1,h2,h3,h4,h5,h6,.page-title { font-weight: bold; color: #111; }
+
+/* Reset font-sizes and margins */
+.page-title { font-size: 2em; margin-bottom: 0.5em; }
+h1 { font-size: 1.8em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.25em; }
+h4 { font-size: 1.1em; margin-bottom: 0.75em; }
+h5 { margin-bottom: 1em; }
+
+/* Don't use margins for images */
+p img       { float: none; margin: 0; padding: 0; }
+img         { margin: 0; }
+
+tr.even  td { background: #fafafa; }
+tr.odd   td { background: #eee; }
+
+a:focus, 
+a:hover     { color: #fff; background: #37b; }
+a.nob:focus, 
+a.nob:hover { background: none; }
+a           { text-decoration: none; color: #37b; }
+
+small       { font-size: 0.9em; }        /* Added small tag definition */
+big         { font-size: 1.1em; }        /* Added big tag definition */
+
+/* Override pre-code */
+pre,code,tt { font-family: 'DejaVu Sans Mono','Andale Mono','Lucida Console',monospace; line-height: 1; } 
+pre         { background: #f9f9fc; padding: 0.75em 1em; border: 1px solid #eee; overflow: auto; } 
+
+ul          { list-style-type: square; line-height: 1.5; }
+ol          { list-style-type: decimal; line-height: 1.5; }
+
+/* Misc classes
+-------------------------------------------------------------- */
+
+.fine       { font-size: .95em; }
+.small      { font-size: .9em; line-height: 1; }
+.smaller    { font-size: .85em; }
+.tiny       { font-size: .8em; }
+.wee        { font-size: .7em; }
+
+.raised     { font-size: 1.05em; }
+.big        { font-size: 1.1em; }
+.large      { font-size: 1.2em; line-height: 1; }
+.larger     { font-size: 1.3em; }
+
+.strong     { font-weight: bold; }
+.italic     { font-style: italic; }
+.highlight  { color:#c00; font-weight: bold; border: 1px solid #ddd; background: #fafafa; padding: 0 1px; font-family: "Lucida Sans","Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,sans-serif; }
+.quieter    { color: #999; }
+
+.top-1,
+.top-5,
+.top-10,
+.top-15,
+.top-20     { padding-top:0; }
+
+.bottom-1,
+.bottom-5,   
+.bottom-10,   
+.bottom-15,  
+.bottom-20  { padding-bottom:0; }
+
+.top-1       { margin-top:0.1em; }
+.top-5       { margin-top:0.5em; }
+.top-10      { margin-top:1em;   }
+.top-15      { margin-top:1.5em; }
+.top-20      { margin-top:2em;   }
+.bottom-1    { margin-bottom:0.1em; }
+.bottom-5    { margin-bottom:0.5em; }
+.bottom-10   { margin-bottom:1em;   }
+.bottom-15   { margin-bottom:1.5em; }
+.bottom-20   { margin-bottom:2em;   }
+
+.inline     { display: inline; }
+
+.float-r    { float: right; }
+.float-l    { float: left; }
+.clear-r    { clear: right; }
+.clear-l    { clear: left; }
+.full-w     { width: 100%; }
+
+.centered   { text-align: center; }
+.righted    { text-align: right; }
+
+.transparent,
+.transparent:focus,
+.transparent:hover { background: transparent; }
+
+/* Table specific classes
+-------------------------------------------------------------- */
+table .nowrap            { white-space:nowrap; }
+table .narrow-column     { width: 10em; }
+table .narrower-column   { width: 8em; }
+table .slim-column       { width: 5em; }
+table .slimmer-column    { width: 4em; }
+table .very-slim-column  { width: 3em; }
+table .ultra-slim-column { width: 1em; }
+
+
+/* Use different font for bold text */
+
+h1,h2,h3,h4,h5,h6,.page-title {
+  font-family: "Lucida Sans","Lucida Sans Unicode","Helvetica Neue",Arial,Helvetica,"Lucida Grande",sans-serif;     
+}
+.strong,.highlight  { 
+  font-family: "Lucida Sans","Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,sans-serif; 
+}

@@ -1,0 +1,27 @@
+<% f.fieldset do -%>
+  <%= f.label :username, _('Username') + ':', :required => true -%>
+  <%= f.text_field :username, :disabled => disabled -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :email, _('Email') + ':', :required => true -%>
+  <%= f.text_field :email, :disabled => disabled -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :name, _('Full name') + ':', :required => true -%>
+  <%= f.text_field :name -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :plain_password, _('Password') + ': ' + 
+        ( f.object.new_record? ? '' : info_image(:title => _('Leave password field blank, unless you actually want to change your password.')) ),
+      :required => f.object.new_record? -%>
+  <%= f.password_field :plain_password, :explain => _('Password') %>
+  <%= f.password_field :plain_password_confirmation, :explain => _('Confirmation') -%>
+<% end -%>
+
+<% f.fieldset do -%>
+  <%= f.label :time_zone, _('Time zone') + ':' -%>
+  <%= f.time_zone_select :time_zone %>
+<% end -%>

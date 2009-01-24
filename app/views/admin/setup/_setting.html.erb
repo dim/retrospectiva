@@ -1,0 +1,10 @@
+<fieldset>
+  <%= setting_input(setting, f) %>
+  <% unless setting.description.blank? -%>
+    <%= content_tag :div, 
+          simple_markup(setting.description),
+          :class => 'quieter', 
+          :style => 'display: none;', 
+          :id => "#{tag_id_for(setting)}_info" %>
+  <% end -%>
+</fieldset>

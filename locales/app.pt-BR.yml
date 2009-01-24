@@ -1,0 +1,1281 @@
+pt-BR:
+  application:
+    # app/views/notifications/account_validation.html.erb
+    "1. Click this link": "1. Clique neste link"
+
+    # app/views/notifications/account_validation.html.erb
+    "2. Surf to {{url}} and enter the following activation code": "2. Vá para {{url}} e digite o seguinte código de ativação"
+
+    # app/controllers/admin/users_controller.rb
+    "A notification was sent to the user.": "Uma notificação foi enviada ao usuário."
+
+    # app/views/milestones/_form.html.erb
+    "A short description or other info you want displayed (optional)": "Uma breve descrição ou outra informação que deve ser exibida (opcional)."
+
+    # app/views/browse/show_file.html.erb
+    "A viewable MIME type was not detected. Trying to display the file content as plain text.": "Um tipo MIME visualizável não foi detectado. Tentando exibir o conteúdo do arquivo como texto puro."
+
+    # app/views/admin/projects/_project.html.erb
+    "ATTENTION: Are you really sure, that you want to delete this project?": 
+
+    # app/views/admin/users/_form.html.erb
+    "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ATENÇÃO: As definições de grupo serão ignoradas se a opção 'Administrador' for selecionada."
+
+    # app/models/notifications.rb
+    "Account activation": "Ativação de conta"
+
+    # app/models/notifications.rb
+    "Account validation": "Validação de conta"
+
+    # app/views/accounts/activate.html.erb
+    "Activate": "Ativar"
+
+    # app/views/accounts/activate.html.erb
+    "Activate account": "Ativar conta"
+
+    # app/views/accounts/activate.html.erb
+    "Activation code": "Código de ativação"
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/admin/users/index.html.erb
+    "Active": "Ativo"
+
+    # app/helpers/ticket_filter_helper.rb
+    "Add filter": "Adicionar filtro"
+
+    # app/helpers/changesets_helper.rb
+    "Added": "adicionado"
+
+    # app/helpers/navigation_helper.rb
+    "Admin": 
+
+    # app/views/admin/shared/_header.html.erb
+    "Administration": "Administração"
+
+    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_user.html.erb
+    "Administrator": "Administrador"
+
+    # app/views/changesets/show.html.erb
+    "Affected files": "Arquivos afetados"
+
+    # app/helpers/search_helper.rb
+    # app/models/group.rb
+    "All": "Todos"
+
+    # app/models/status.rb
+    "All in progress": "Todos em andamento"
+
+    # app/models/status.rb
+    "All open": "Todos em aberto"
+
+    # app/views/tickets/_reports.html.erb
+    "All open tickets": "Todos os tickets em aberto"
+
+    # app/models/status.rb
+    "All resolved": "Todos os resolvidos"
+
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_update_note.html.erb
+    "Alternatively, copy and paste this link to your browser address bar.": "Alternativamente copie e cole este link para a barra de endereço do seu navegador."
+
+    # app/controllers/accounts_controller.rb
+    "An email including the activation code and the instructions was sent to you.": "Um e-mail incluindo o código de ativação e as instruções foi enviado para você."
+
+    # app/views/tickets/_ticket_info.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    "Assigned To": "Atribuído a"
+
+    # app/models/ticket_filter/custom.rb
+    "Assigned to me": "Atribuídos a mim"
+
+    # app/models/ticket_change.rb
+    "Assigned user": 
+
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    "Attachment": "Anexo"
+
+    # app/views/browse/revisions.html.erb
+    "Author": "Autor"
+
+    # app/views/milestones/edit.html.erb
+    # app/views/milestones/new.html.erb
+    "Back": 
+
+    # app/views/tickets/_navigation.html.erb
+    "Back to ticket list": "Voltar à lista de tickets"
+
+    # app/helpers/navigation_helper.rb
+    "Back to top": "Voltar ao topo"
+
+    # app/views/browse/show_binary.html.erb
+    "Binary File": "Arquivo binário"
+
+    # app/core_info.rb
+    # app/views/browse/diff.html.erb
+    # app/views/browse/revisions.html.erb
+    "Browse": "Navegar"
+
+    # app/controllers/browse_controller.rb
+    "Browse Code": "Ver código"
+
+    # app/views/browse/revisions.html.erb
+    "Browse revisions": "Ver revisões"
+
+    # app/views/browse/index.html.erb
+    # app/views/browse/repository_unavailable.html.erb
+    # app/views/browse/show_binary.html.erb
+    # app/views/browse/show_file.html.erb
+    # app/views/browse/show_image.html.erb
+    "Browse source": "Ver código"
+
+    # app/helpers/project_area_helper.rb
+    "Browse {{title}}": 
+
+    # app/helpers/application_helper.rb
+    # app/views/admin/shared/_form_footer.html.erb
+    "Cancel": "Cancelar"
+
+    # app/models/user.rb
+    "Cannot delete. User '{{username}}' is the last available admin.": 
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/projects/index.html.erb
+    "Central": 
+
+    # app/views/notifications/ticket_update_note.html.erb
+    "Changed by {{author}} - {{time}}": "Modificado por {{author}} - {{time}}"
+
+    # app/views/browse/_revision.html.erb
+    # app/views/changesets/_changeset.html.erb
+    # app/views/changesets/show.html.erb
+    "Changeset": 
+
+    # app/helpers/changesets_helper.rb
+    "Changeset index": "Índice de Commit"
+
+    # app/models/changeset.rb
+    "Changeset {{revision}}": "Commit {{revision}}"
+
+    # app/controllers/changesets_controller.rb
+    # app/core_info.rb
+    # app/models/changeset.rb
+    # app/views/changesets/index.html.erb
+    "Changesets": "Commits"
+
+    # app/models/changeset.rb
+    "Changesets for {{project}}": 
+
+    # app/views/admin/projects/_form.html.erb
+    "Check this option to make this your default project.": 
+
+    # app/views/accounts/show.html.erb
+    "Check this option to renew your private access key.": 
+
+    # app/views/projects/index.html.erb
+    "Click for info": "Clique para informação"
+
+    # app/helpers/format_helper.rb
+    "Close preview": "Fechar pré-visualização"
+
+    # app/views/admin/projects/_form.html.erb
+    "Closed": "Fechado"
+
+    # app/views/milestones/_milestone.html.erb
+    "Closed tickets": "Tickets fechados"
+
+    # app/core_info.rb
+    "Code": 
+
+    # app/views/tickets/_update_form.html.erb
+    "Comment": "Comentário"
+
+    # app/views/tickets/show.html.erb
+    "Comments and Changes": 
+
+    # app/views/browse/index.html.erb
+    "Commit": 
+
+    # app/helpers/browse_helper.rb
+    "Compare [{{revision_a}}] with [{{revision_b}}]": 
+
+    # app/helpers/admin/setup_helper.rb
+    "Configuration could not be saved": "Configuração não pôde ser salva"
+
+    # app/views/admin/users/_core.html.erb
+    "Confirmation": 
+
+    # app/core_info.rb
+    # app/views/tickets/form/_update_content.erb
+    "Content": 
+
+    # app/helpers/changesets_helper.rb
+    "Copied": "Copiado"
+
+    # app/core_info.rb
+    # app/views/accounts/new.html.erb
+    # app/views/admin/shared/_new_form.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    # app/views/milestones/new.html.erb
+    # app/views/tickets/new.html.erb
+    "Create": "Criar"
+
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/groups/new.html.erb
+    "Create a new group": 
+
+    # app/views/milestones/index.html.erb
+    # app/views/milestones/new.html.erb
+    "Create a new milestone": 
+
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/projects/new.html.erb
+    "Create a new project": 
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    "Create a new property value": 
+
+    # app/views/admin/reports/index.html.erb
+    # app/views/admin/reports/new.html.erb
+    "Create a new report": "Criar um novo relatório"
+
+    # app/views/admin/repositories/index.html.erb
+    # app/views/admin/repositories/new.html.erb
+    "Create a new repository": 
+
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_properties/new.html.erb
+    "Create a new ticket property": 
+
+    # app/views/admin/users/index.html.erb
+    # app/views/admin/users/new.html.erb
+    "Create a new user": 
+
+    # app/views/tickets/_ticket.html.erb
+    "Created {{period}} ago by {{author}}": 
+
+    # app/helpers/browse_helper.rb
+    "Current": 
+
+    # app/helpers/navigation_helper.rb
+    "Dashboard": 
+
+    # app/views/browse/revisions.html.erb
+    "Date": "Data"
+
+    # lib/time_interval.rb
+    "Days": "Dias"
+
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_update_note.html.erb
+    "Dear user!": "Caro usuário!"
+
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    "Default": "Padrão"
+
+    # app/models/group.rb
+    "Default group cannot be deleted": "Grupo padrão não pode ser removido"
+
+    # app/models/group.rb
+    "Default group cannot be modified.": 
+
+    # app/views/admin/ticket_property_values/_priority_form.html.erb
+    "Default value": 
+
+    # app/core_info.rb
+    # app/helpers/admin/ticket_property_values_helper.rb
+    # app/helpers/milestones_helper.rb
+    # app/views/admin/groups/_group.html.erb
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/reports/_ticket_report.html.erb
+    # app/views/admin/repositories/_repository.html.erb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    "Delete": "Remover"
+
+    # app/helpers/changesets_helper.rb
+    "Deleted": "Removido"
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/tasks/index.html.erb
+    # app/views/tickets/form/_summary_and_description.html.erb
+    "Description": "Descrição"
+
+    # app/views/tickets/new.html.erb
+    "Details": 
+
+    # app/views/browse/_revision.html.erb
+    "Diff": 
+
+    # app/helpers/application_helper.rb
+    "Display": 
+
+    # app/views/browse/diff.html.erb
+    "Download": "Baixar"
+
+    # app/helpers/changesets_helper.rb
+    "Download Diff": "Baixar diff"
+
+    # app/views/browse/_show_header.html.erb
+    "Download in other formats": "Baixar em outros formatos"
+
+    # app/views/milestones/_form.html.erb
+    # app/views/milestones/_milestone.html.erb
+    "Due on": "Término em"
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    # app/helpers/milestones_helper.rb
+    # app/views/admin/groups/_group.html.erb
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/reports/_ticket_report.html.erb
+    # app/views/admin/repositories/_repository.html.erb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    "Edit": 
+
+    # app/views/admin/groups/edit.html.erb
+    "Edit group": 
+
+    # app/views/milestones/edit.html.erb
+    "Edit milestone": 
+
+    # app/views/admin/projects/edit.html.erb
+    "Edit project": 
+
+    # app/views/admin/ticket_property_values/edit.html.erb
+    "Edit property value": 
+
+    # app/views/admin/reports/edit.html.erb
+    "Edit report": 
+
+    # app/views/admin/repositories/edit.html.erb
+    "Edit repository": 
+
+    # app/views/tickets/_navigation.html.erb
+    "Edit summary": "Editar sumário"
+
+    # app/views/admin/ticket_properties/edit.html.erb
+    "Edit ticket property": 
+
+    # app/views/admin/users/edit.html.erb
+    "Edit user": 
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    # app/views/tickets/form/_name_and_email.html.erb
+    "Email": "E-mail"
+
+    # app/views/admin/users/edit.html.erb
+    "Email notification": "Notificação por e-mail"
+
+    # app/views/admin/projects/_form.html.erb
+    "Enabled modules": 
+
+    # app/views/admin/repositories/_form.html.erb
+    "Examples": 
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/extensions/index.html.erb
+    "Extensions": 
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! Path does not contain a valid repository.": "Falha! Caminho não contém um repositório válido."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! Path does not exist.": "Falha! Caminho não existe."
+
+    # app/controllers/admin/projects_controller.rb
+    "Failure! Path is not a directory in this repository.": "Falha! Caminho não é um diretório neste repositório."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! You are not permitted to browse this path.": "Falha! Você não tem permissão para navegar neste caminho."
+
+    # app/views/browse/show_binary.html.erb
+    "File content cannot be displayed for binary files.": "Conteúdo do arquivo não pode ser exibido para arquivos binários."
+
+    # app/models/attachment.rb
+    "File size exceeds the maximum limit": 
+
+    # app/views/admin/reports/_form.html.erb
+    "Filter options": "Opções de filtro"
+
+    # app/views/tickets/index.html.erb
+    "Filter tickets": "Filtrar tickets"
+
+    # app/views/milestones/_form.html.erb
+    "Finished on": "Finalizado em"
+
+    # app/views/accounts/forgot_password.html.erb
+    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/sessions/new.html.erb
+    "Forgot password": "Esqueceu a senha?"
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    "Full name": 
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    "Global": 
+
+    # app/views/admin/groups/index.html.erb
+    "Group": "Grupo"
+
+    # app/controllers/admin/groups_controller.rb
+    "Group could not be deleted. Following error(s) occured": "O grupo não pôde ser removido. O(s) seguinte(s) erro(s) ocorreu(ram)"
+
+    # app/views/admin/groups/_form.html.erb
+    "Group name": "Nome do grupo"
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully created.": "Grupo criado com sucesso."
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully deleted.": "Grupo removido com sucesso."
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully updated.": "Grupo atualizado com sucesso."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/groups/_header.html.erb
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/index.html.erb
+    "Groups": "Grupos"
+
+    # app/views/sessions/logged_in.html.erb
+    "Hi {{user}}!": "Olá {{user}}!"
+
+    # app/views/milestones/index.html.erb
+    "Hide already completed milestones": "Esconder marcos já concluídos"
+
+    # app/views/layouts/_header.html.erb
+    # app/views/sessions/destroy.html.erb
+    # app/views/sessions/logged_in.html.erb
+    # app/views/sessions/new.html.erb
+    "Home": "Início"
+
+    # lib/time_interval.rb
+    "Hours": "Horas"
+
+    # app/views/tickets/index.html.erb
+    "ID": 
+
+    # app/models/status.rb
+    "In progress": "Em andamento"
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/users/_user.html.erb
+    "Inactive": 
+
+    # app/helpers/application_helper.rb
+    "Info": 
+
+    # app/views/admin/extensions/index.html.erb
+    "Installed": 
+
+    # app/views/admin/tasks/index.html.erb
+    "Interval": "Intervalo"
+
+    # app/models/attachment.rb
+    "Invalid file size": 
+
+    # app/views/browse/diff.html.erb
+    "Invalid or empty DIFF": "DIFF inválido ou vazio"
+
+    # app/views/admin/repositories/_form.html.erb
+    # app/views/admin/repositories/index.html.erb
+    "Kind": 
+
+    # app/views/tickets/index.html.erb
+    "Last Update": "Última atualização"
+
+    # app/views/browse/index.html.erb
+    "Last modified": 
+
+    # app/views/admin/tasks/_task.html.erb
+    "Last run": "Última execução"
+
+    # app/views/admin/users/_core.html.erb
+    "Leave password field blank, unless you actually want to change your password.": "Deixe o campo de senha em branco, a menos que você realmente vá alterar sua senha."
+
+    # app/helpers/browse_helper.rb
+    "Line {{number}}": 
+
+    # app/controllers/markup_controller.rb
+    "Links": 
+
+    # app/helpers/application_helper.rb
+    # app/views/layouts/_footer.html.erb
+    "Loading...": 
+
+    # app/views/admin/projects/_form.html.erb
+    "Locale": "Localização"
+
+    # app/views/browse/revisions.html.erb
+    "Log": "Log"
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/logged_in.html.erb
+    "Logged in as {{username}}": "Identificado como {{username}}"
+
+    # app/views/sessions/destroy.html.erb
+    "Logged out": "Saiu"
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/destroy.html.erb
+    # app/views/sessions/new.html.erb
+    "Login": 
+
+    # app/controllers/sessions_controller.rb
+    "Login was not successful. Invalid username or password.": "Identificação sem sucesso. Nome de usuário ou senha inválidos."
+
+    # app/controllers/sessions_controller.rb
+    "Login was successful.": "Identificação com sucesso."
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/logged_in.html.erb
+    "Logout": "Sair"
+
+    # app/views/admin/groups/_form.html.erb
+    "Make all projects available to this group": "Disponibilizar todos os projetos para este grupo"
+
+    # app/views/admin/dashboard/index.html.erb
+    "Manage": "Gerenciar"
+
+    # app/helpers/format_helper.rb
+    "Markup reference": "Referência de Markup"
+
+    # app/helpers/tickets_helper.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    "Milestone": "Marco"
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully created.": "Marco criado com sucesso."
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully deleted.": "Marco removido com sucesso."
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully updated.": "Marco atualizado com sucesso."
+
+    # app/controllers/milestones_controller.rb
+    # app/core_info.rb
+    # app/models/milestone.rb
+    # app/views/milestones/edit.html.erb
+    # app/views/milestones/index.html.erb
+    # app/views/milestones/new.html.erb
+    "Milestones": "Marcos"
+
+    # app/models/milestone.rb
+    "Milestones for {{project}}": 
+
+    # lib/time_interval.rb
+    "Minutes": "Minutos"
+
+    # app/core_info.rb
+    "Modify": 
+
+    # lib/time_interval.rb
+    "Months": "Meses"
+
+    # app/helpers/changesets_helper.rb
+    "Moved": "Movido"
+
+    # app/helpers/navigation_helper.rb
+    # app/views/accounts/show.html.erb
+    # app/views/notifications/password_reset_instructions.html.erb
+    "My Account": "Minha conta"
+
+    # app/models/ticket_filter/collection.rb
+    "My Tickets": "Meus Tickets"
+
+    # app/views/admin/reports/_form.html.erb
+    # app/views/admin/repositories/_form.html.erb
+    # app/views/admin/ticket_properties/_form.html.erb
+    # app/views/admin/ticket_property_values/_value_form.html.erb
+    # app/views/browse/index.html.erb
+    # app/views/milestones/_form.html.erb
+    # app/views/tickets/form/_name_and_email.html.erb
+    "Name": "Nome"
+
+    # app/models/status.rb
+    "Negative": 
+
+    # app/models/status.rb
+    "Neutral": 
+
+    # app/views/admin/ticket_property_values/new.html.erb
+    "New": 
+
+    # app/controllers/tickets_controller.rb
+    "New Ticket": "Novo ticket"
+
+    # app/views/tickets/_ticket.html.erb
+    # app/views/tickets/new.html.erb
+    "New ticket": "Novo ticket"
+
+    # app/helpers/changesets_helper.rb
+    "Next changeset": "Próximo commit"
+
+    # app/views/tickets/_navigation.html.erb
+    "Next ticket": "Próximo ticket"
+
+    # app/helpers/format_helper.rb
+    "No": 
+
+    # app/models/ticket_change.rb
+    "No changes were made": 
+
+    # app/views/projects/index.html.erb
+    "No projects available": "Nenhum projeto disponível"
+
+    # app/controllers/admin/projects_controller.rb
+    "No repository selected.": "Nenhum repositório selecionado."
+
+    # app/views/admin/extensions/index.html.erb
+    "Not Installed": 
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    "Note": "Nota"
+
+    # app/views/admin/users/edit.html.erb
+    "Notify user on account activation": "Notificar o usuário na ativação da conta"
+
+    # app/models/status.rb
+    "Open": "Aberto"
+
+    # app/views/milestones/_milestone.html.erb
+    "Open tickets": "Tickets abertos"
+
+    # app/views/accounts/show.html.erb
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/ticket_property_values/_priority_form.html.erb
+    # app/views/admin/users/_form.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    "Options": 
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/sessions/new.html.erb
+    "Password": 
+
+    # app/models/notifications.rb
+    "Password reset": "Redefinição de senha"
+
+    # app/views/admin/repositories/_form.html.erb
+    "Path": "Caminho"
+
+    # app/controllers/browse_controller.rb
+    "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Caminho '{{path}}' não existe na revisão {{revision}}, mostrando revisão {{latest}}."
+
+    # app/controllers/browse_controller.rb
+    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Caminho '{{path}}' não existe na revisão {{revision}}, mostrando caminho raíz."
+
+    # app/views/admin/groups/_form.html.erb
+    # app/views/admin/groups/index.html.erb
+    "Permissions": "Permissões"
+
+    # app/views/admin/repositories/_form.html.erb
+    "Please specify an optional system call, which will be executed before each repository synchronization.": 
+
+    # app/models/status.rb
+    "Positive": 
+
+    # app/helpers/format_helper.rb
+    "Preview": 
+
+    # app/helpers/changesets_helper.rb
+    "Previous changeset": "Commit anterior"
+
+    # app/views/tickets/_navigation.html.erb
+    "Previous ticket": "Ticket anterior"
+
+    # app/helpers/tickets_helper.rb
+    # app/models/priority.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    "Priority": "Prioridade"
+
+    # app/views/admin/projects/index.html.erb
+    "Project": "Projeto"
+
+    # app/controllers/admin/projects_controller.rb
+    "Project could not be deleted. Following error(s) occured": 
+
+    # app/views/admin/projects/_form.html.erb
+    "Project name": "Nome do projeto"
+
+    # app/views/admin/ticket_properties/index.html.erb
+    "Project specific": 
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully created.": "Projeto criado com sucesso."
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully deleted.": "Projeto removido com sucesso."
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully updated.": "Projeto atualizado com sucesso."
+
+    # app/helpers/navigation_helper.rb
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/groups/_form.html.erb
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/projects/_header.html.erb
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/reports/_header.html.erb
+    # app/views/admin/reports/index.html.erb
+    # app/views/admin/ticket_properties/_header.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    # app/views/projects/index.html.erb
+    "Projects": "Projetos"
+
+    # app/views/browse/_node_info.html.erb
+    # app/views/tickets/index.html.erb
+    "Properties": "Propriedades"
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully created.": 
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully deleted.": 
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully updated.": 
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    "Property values": 
+
+    # app/models/user.rb
+    "Public user cannot be deleted.": 
+
+    # app/models/user.rb
+    "Public user cannot be modified.": 
+
+    # app/helpers/changesets_helper.rb
+    "Quick Diff": "Diff rápido"
+
+    # app/helpers/navigation_helper.rb
+    "RSS Feed": 
+
+    # app/helpers/browse_helper.rb
+    "Raw": 
+
+    # app/helpers/milestones_helper.rb
+    "Really delete this milestone record?": 
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    # app/helpers/admin_area_helper.rb
+    "Really delete this {{record}}?": "Realmente remover este {{record}}?"
+
+    # app/views/tickets/_change.html.erb
+    "Really delete ticket change?": "Realmente remover modificação de ticket?"
+
+    # app/views/tickets/_ticket_intro.html.erb
+    "Really delete ticket?": 
+
+    # app/helpers/navigation_helper.rb
+    # app/views/accounts/new.html.erb
+    # app/views/sessions/new.html.erb
+    "Register": "Registrar"
+
+    # app/views/accounts/show.html.erb
+    "Remember to update your RSS subscriptions afterwards.": "Lembre-se de atualizar sua inscrições RSS depois."
+
+    # app/helpers/ticket_filter_helper.rb
+    "Remove filter": "Remover filtro"
+
+    # app/views/accounts/show.html.erb
+    "Renew my private key": 
+
+    # app/controllers/admin/reports_controller.rb
+    "Report was successfully created.": "Relatório criado com sucesso."
+
+    # app/controllers/admin/reports_controller.rb
+    "Report was successfully deleted.": "Relatório removido com sucesso."
+
+    # app/controllers/admin/reports_controller.rb
+    "Report was successfully updated.": "Relatório atualizado com sucesso."
+
+    # app/models/ticket_filter/custom.rb
+    "Reported by me": "Relatado por mim"
+
+    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_update_note.html.erb
+    "Reported by {{author}} - {{time}}": "Relatado por {{author}} - {{time}}"
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/reports/index.html.erb
+    # app/views/tickets/_reports.html.erb
+    "Reports": "Relatórios"
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/repositories/_header.html.erb
+    # app/views/admin/repositories/index.html.erb
+    "Repositories": "Repositórios"
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/repositories/index.html.erb
+    "Repository": "Repositório"
+
+    # app/views/browse/repository_unavailable.html.erb
+    "Repository Unavailable": 
+
+    # app/views/admin/projects/_form.html.erb
+    "Repository path": "Caminho do repositório"
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully created.": "Repositório criado com sucesso."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully deleted.": "Reposítório removido com sucesso."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully updated.": "Repositório atualizado com sucesso."
+
+    # app/models/status.rb
+    "Resolved": "Resolvido"
+
+    # app/views/admin/dashboard/index.html.erb
+    "Retrospectiva administration": "Administração do Retrospectiva"
+
+    # app/views/browse/_node_info.html.erb
+    # app/views/browse/revisions.html.erb
+    "Revision": "Revisão"
+
+    # app/controllers/browse_controller.rb
+    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revisão {{revision}} parece não ser válida, mostrando revisão {{latest}}."
+
+    # app/helpers/browse_helper.rb
+    "Revisions": 
+
+    # app/views/admin/users/_form.html.erb
+    "SCM name": 
+
+    # app/helpers/application_helper.rb
+    "Save": "Salvar"
+
+    # app/views/admin/setup/_section.html.erb
+    # app/views/admin/tasks/index.html.erb
+    "Save all": "Salvar todos"
+
+    # app/helpers/application_helper.rb
+    "Saving...": 
+
+    # app/controllers/search_controller.rb
+    # app/core_info.rb
+    # app/helpers/navigation_helper.rb
+    # app/views/admin/users/index.html.erb
+    # app/views/search/index.html.erb
+    # app/views/tickets/index.html.erb
+    "Search": "Procurar"
+
+    # app/views/tickets/_navigation.html.erb
+    "See last change": "Ver última modificação"
+
+    # app/helpers/ticket_filter_helper.rb
+    "Select filter": "Selecionar filtro"
+
+    # app/views/accounts/forgot_password.html.erb
+    "Send": 
+
+    # app/controllers/admin/setup_controller.rb
+    "Settings were successfully saved.": "Definições salvas com sucesso."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/setup/index.html.erb
+    "Setup": "Configuração"
+
+    # app/controllers/accounts_controller.rb
+    "Shortly you will receive an email with instructions on how to reset your password.": 
+
+    # app/views/milestones/index.html.erb
+    "Show already completed milestones": "Mostrar marcos já concluídos."
+
+    # app/helpers/project_area_helper.rb
+    "Show changeset {{revision}}": 
+
+    # app/views/browse/_node_info.html.erb
+    "Show latest": "Mostrar mais recente"
+
+    # app/views/tickets/index.html.erb
+    "Show report": "Mostrar relatório"
+
+    # app/views/browse/index.html.erb
+    "Size": "Tamanho"
+
+    # app/views/admin/tasks/_task.html.erb
+    "Started": "Iniciado"
+
+    # app/views/milestones/_form.html.erb
+    "Started on": 
+
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/ticket_property_values/_status_form.html.erb
+    "State": "Estado"
+
+    # app/views/admin/ticket_property_values/_status_form.html.erb
+    "Statement": 
+
+    # app/helpers/tickets_helper.rb
+    # app/models/status.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/tasks/index.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    "Status": 
+
+    # app/views/tickets/_navigation.html.erb
+    "Stop watching this ticket": 
+
+    # app/controllers/admin/repositories_controller.rb
+    "Success! Path contains a valid repository (latest revision: {{latest}}).": "Sucesso! Caminho contém um repositório válido (última revisão: {{latest}})."
+
+    # app/controllers/admin/projects_controller.rb
+    "Success! Path is a directory in this repository.": "Sucesso! Caminho é um diretório neste repositório."
+
+    # app/views/tickets/form/_summary_and_description.html.erb
+    # app/views/tickets/index.html.erb
+    "Summary": "Sumário"
+
+    # app/views/admin/repositories/_form.html.erb
+    "Sync callback": 
+
+    # app/views/admin/tasks/index.html.erb
+    "Task": 
+
+    # app/controllers/admin/tasks_controller.rb
+    "Task configuration was successfully updated.": "Configuração da tarefa foi atualizada com sucesso."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/tasks/index.html.erb
+    "Tasks": "Tarefas"
+
+    # app/helpers/browse_helper.rb
+    "Text": "Texto"
+
+    # app/controllers/accounts_controller.rb
+    "Thank you.": 
+
+    # app/views/browse/repository_unavailable.html.erb
+    "The repository is currently unavailable, please try it again later.": 
+
+    # app/helpers/admin/setup_helper.rb
+    "There were problems": "Houve problemas"
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    "They will be set back to the default value.": 
+
+    # app/views/admin/users/edit.html.erb
+    "This setting only applies if you enable the 'Activate' checkbox": "Esta definição só se aplica se você habilitar o item 'Ativar'"
+
+    # app/views/tickets/show.html.erb
+    "Ticket": 
+
+    # app/controllers/tickets_controller.rb
+    "Ticket change was successfully deleted.": "Modificação de ticket removida com sucesso."
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    "Ticket properties": "Propriedades de ticket"
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully created.": "Propriedade de ticket criada com sucesso."
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully deleted.": "Propriedade de ticket criada com sucesso."
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully updated.": "Propriedade de ticket removida com sucesso."
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully created.": "Ticket criado com sucesso."
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully deleted.": 
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully updated.": "Ticket atualizado com sucesso."
+
+    # app/controllers/tickets_controller.rb
+    # app/core_info.rb
+    # app/models/ticket.rb
+    # app/models/ticket_change.rb
+    # app/views/tickets/index.html.erb
+    "Tickets": 
+
+    # app/models/ticket.rb
+    # app/models/ticket_change.rb
+    "Tickets for {{project}}": 
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/admin/users/index.html.erb
+    "Time zone": 
+
+    # app/views/notifications/account_activation_note.html.erb
+    "To access the login page click this link": 
+
+    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_update_note.html.erb
+    "To access the ticket click this link": 
+
+    # app/views/notifications/password_reset_instructions.html.erb
+    "To access your account, click the link below": 
+
+    # app/views/notifications/account_validation.html.erb
+    "To complete the registration process you need to verify your email address. To make up this process you have two options": "Para completar o processo de registro você precisa verificar seu endereço de e-mail. Para fazer isso você tem duas opções:"
+
+    # app/helpers/admin/setup_helper.rb
+    "Toggle description for setting '{{name}}'": "Alternar descrição para definição '{{name}}'"
+
+    # app/views/browse/diff.html.erb
+    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Não foi possível mostrar as modificações (DIFF) entre a revisão '{{source}}' e a '{{target}}' para o arquivo selecionado."
+
+    # app/controllers/browse_controller.rb
+    "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "Não foi possível encontrar revisão {{revision}} para '/{{path}}', mostrando revisão {{latest}}."
+
+    # app/views/tickets/_ticket_info.html.erb
+    "Unassigned": 
+
+    # app/views/browse/show_file.html.erb
+    "Unknown File Type": "Tipo de arquivo desconhecido"
+
+    # app/core_info.rb
+    # app/views/accounts/show.html.erb
+    # app/views/admin/shared/_edit_form.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/users/edit.html.erb
+    # app/views/milestones/edit.html.erb
+    # app/views/tickets/_update_form.html.erb
+    "Update": "Atualizar"
+
+    # app/helpers/changesets_helper.rb
+    "Updated": "Atualizado"
+
+    # app/models/attachment.rb
+    "Upload is not permitted": 
+
+    # app/views/admin/users/index.html.erb
+    "User": "Usuário"
+
+    # app/controllers/admin/users_controller.rb
+    "User account was activated.": "Conta de usuário ativada."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully activated. You can now login.": "Conta de usuário ativada com sucesso. Você pode entrar agora."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully created.": "Conta de usuário criada com sucesso."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully updated.": "Conta de usuário atualizada com sucesso."
+
+    # app/controllers/admin/users_controller.rb
+    "User could not be deleted. Following error(s) occurred": "O usuário não pôde ser removido. O(s) seguinte(s) erro(s) ocorreu(ram)"
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully created.": "Usuário criado com sucesso."
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully deleted.": "Usuário removido com sucesso."
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully updated.": "Usuário atualizado com sucesso."
+
+    # app/views/accounts/activate.html.erb
+    # app/views/admin/users/_core.html.erb
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    "Username": "Nome de usuário"
+
+    # app/views/accounts/forgot_password.html.erb
+    # app/views/sessions/new.html.erb
+    "Username or Email": 
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/users/_header.html.erb
+    # app/views/admin/users/index.html.erb
+    "Users": "Usuários"
+
+    # app/core_info.rb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    "View": "Ver"
+
+    # app/views/browse/diff.html.erb
+    "View changes": "Ver modificações"
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    "WARNING: There are currently {{count}} tickets assigned with this property.": 
+
+    # app/core_info.rb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    "Watch": 
+
+    # app/views/tickets/_navigation.html.erb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    "Watch this ticket": 
+
+    # app/models/ticket_filter/custom.rb
+    "Watched by me": 
+
+    # lib/time_interval.rb
+    "Weeks": "Semanas"
+
+    # app/views/admin/reports/_form.html.erb
+    "Within the last": "Nos últimos"
+
+    # app/helpers/format_helper.rb
+    "Yes": 
+
+    # app/views/sessions/logged_in.html.erb
+    "You are logged in to the system.": 
+
+    # app/controllers/accounts_controller.rb
+    "You are not allowed to login until your account has been activated by the administrator.": "Você não tem permissão para entrar até que sua conta seja ativada pelo administrador."
+
+    # app/views/sessions/destroy.html.erb
+    "You are now logged out of the system.": "Você não está mais identificado no sistema."
+
+    # app/controllers/tickets_controller.rb
+    "You are now watching this ticket.": 
+
+    # app/views/notifications/account_activation_note.html.erb
+    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Você está recebendo esta mensagem porque a conta de usuário que você solicitou em {{site}} foi ativada."
+
+    # app/views/notifications/ticket_creation_note.html.erb
+    "You are receiving this message because you are subscribed to receive notifications about": "Você está recebendo esta mensagem porque você está inscrito para receber notificações sobre"
+
+    # app/views/notifications/account_validation.html.erb
+    "You are receiving this message because you have applied for an user account at {{site}}.": "Você está recebendo esta mensagem porque você solicitou uma conta de usuário em {{site}}."
+
+    # app/views/notifications/ticket_update_note.html.erb
+    "You are receiving this message because you have subscribed to receive notification about changes of": "Você está recebendo esta mensagem porque você se inscreveu para receber notificações sobre mudaças em"
+
+    # app/views/notifications/password_reset_instructions.html.erb
+    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": 
+
+    # app/helpers/tickets_helper.rb
+    "You are watching this ticket": 
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    "You can sort the items by dragging them and dropping them into the right position.": "Você pode ordenar os itens arrastando-os e soltando-os dentro da posição correta."
+
+    # app/models/user.rb
+    "You cannot delete your own account.": 
+
+    # app/controllers/accounts_controller.rb
+    "You need to activate your account within the next {{count}} hours to be able to login.": "Você precisa ativar sua conta dentro das próximas {{count}} horas para poder entrar."
+
+    # app/controllers/tickets_controller.rb
+    "You stopped watching this ticket.": 
+
+    # app/views/notifications/password_reset_instructions.html.erb
+    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": 
+
+    # app/views/admin/projects/_project.html.erb
+    "You will lose all related data as well!": 
+
+    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_validation.html.erb
+    "Your registration details": "Seus detalhes de registro:"
+
+    # app/views/search/index.html.erb
+    "Your search for '{{term}}' did not match any results.": "Sua pesquisa por {{term}} não encontrou nenhum resultado."
+
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    "added": "adicionado"
+
+    # app/helpers/tickets_helper.rb
+    "changed from {{old_value}} to {{new_value}}": "alterado de {{old_value}} para {{new_value}}"
+
+    # app/views/milestones/_milestone.html.erb
+    "completed": "concluído"
+
+    # app/helpers/changesets_helper.rb
+    "copied from {{path}}": "copiado de {{path}}"
+
+    # Unknown
+    "group record": 
+
+    # app/helpers/format_helper.rb
+    "in {{period}}": "em {{period}}"
+
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    "max.": "máx."
+
+    # app/helpers/changesets_helper.rb
+    "moved from {{path}}": "movido de {{path}}"
+
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    "priority record": 
+
+    # Unknown
+    "property value record": 
+
+    # Unknown
+    "report record": 
+
+    # Unknown
+    "repository record": 
+
+    # app/helpers/tickets_helper.rb
+    "reset (from {{value}})": "redefinido (de {{value}})"
+
+    # app/helpers/tickets_helper.rb
+    "set to {{value}}": "definido para {{value}}"
+
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    "status record": 
+
+    # Unknown
+    "ticket property record": 
+
+    # Unknown
+    "user record": 
+
+    # app/views/browse/_node.html.erb
+    "{{count}} file(s)": 
+
+    # app/helpers/format_helper.rb
+    "{{period}} ago": "{{period}} atrás"
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "{{record}} was successfully created.": "{{record}} criado com sucesso."
+

@@ -1,0 +1,12 @@
+retrospectiva_default:
+  project_id: 1
+  group_id: 1
+retrospectiva_all_projects:
+  project_id: 1
+  group_id: 3
+sub_all_projects:
+  project_id: 2
+  group_id: 3
+closed_all_projects:
+  project_id: 2
+  group_id: 3

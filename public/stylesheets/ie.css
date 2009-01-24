@@ -1,0 +1,21 @@
+body {text-align:center;}
+.container {text-align:left;}
+.pull-1, .pull-2, .pull-3, .pull-4, ul.push-1, .push-2, .push-3, .push-4, ol {position:relative;}
+legend {margin-bottom:1.4em;}
+ol {margin-left:2em;}
+sup {vertical-align:text-top;}
+sub {vertical-align:text-bottom;}
+#content {padding-top:10px;}
+#container {text-align:left;}
+code, table.ln-code td {font-size:0.9em;}
+form fieldset {padding-top:30px;position:relative;}
+form fieldset legend {position:absolute;top:-10px;left:20px;border:1px solid #ccc;}
+pre {overflow-x:scroll;}
+
+* html .column {overflow-x:hidden;}
+* html #footer {position:static;}
+* html #header .informative #project-info {top:30px;}
+* html pre {width:99%;padding:0 0 0.5em 0;}
+* html pre code {display:block;margin:.5em 1em;}
+* html .tooltip {width:30em;}
+* html .ticketing #ticket-report-selector dl {height:150px;}

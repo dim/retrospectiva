@@ -1,0 +1,9 @@
+Default:
+  id: 1
+  name: Default
+  permissions: |
+    --- 
+    wiki_pages: 
+    - create
+    - update
+    - view

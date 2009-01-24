@@ -1,0 +1,28 @@
+<% @page_title = _('Users') -%>
+<%= render :partial => '/admin/shared/index_header' %>
+
+<table class="record-list">
+  <thead>
+    <% top_navigation_for(@users, _('Create a new user'), new_admin_user_path, 4, 2) do -%>
+      &mdash;&nbsp;<%= _('Search') %>: <%= search_field_tag %>
+    <% end -%>
+    <tr>
+      <th colspan="2"><%= _('User') %></th>
+      <th class="centered"><%= _('Active') %></th>
+      <th><%= _('Time zone') %></th>
+      <th><%= _('Groups') %></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <%= bottom_navigation_for(@users, 4, 2) %>
+
+  <tbody id="users">
+    <%= render :partial => 'user', :collection => @users %>
+  </tbody>
+</table>
+
+<%= observe_field 'term',
+      :frequency => 1,
+      :url => formatted_search_admin_users_path(:js),
+      :with => "'term=' + escape(value)" -%>

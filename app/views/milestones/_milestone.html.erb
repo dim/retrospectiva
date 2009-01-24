@@ -1,0 +1,34 @@
+<div class="box milestone">
+
+  <div class="quiet small righted float-r">
+    <% unless milestone.due.blank? -%>
+      <%=_ 'Due on' -%>: <%= date_format(milestone.due) %>
+      <%=h "(#{time_interval_in_words(milestone.due)})" unless milestone.completed? %>
+    <% end -%>
+    <%= ' (' + _('completed') + ')' if milestone.completed? %>
+    <%= links_to_edit_and_delete(milestone) %>
+  </div>
+  
+  <h2><%=h milestone.name -%></h2>  
+
+  <% unless milestone.info.blank? -%>
+    <div class="markup info"><%= markup(milestone.info) %></div>
+  <% end -%>
+
+  <div class="progress">
+    <div class="completed" style="width: <%= milestone.percent_completed -%>%;">
+      <%= image_spacer(:size => '1x14') %></div>
+  </div>
+
+  <p class="strong small top-5 bottom-5">
+    <%= milestone.percent_completed -%>% <%=_ 'completed' -%>
+    <% if User.current.permitted?(:tickets, :view) -%>
+      &nbsp;&ndash;&nbsp;
+      <%= link_to _('Closed tickets'), :controller => 'tickets', :state => 3, :milestone => milestone.id %>:&nbsp;
+      <%= milestone.closed_tickets -%>&nbsp;-&nbsp;
+      <%= link_to _('Open tickets'), :controller => 'tickets', :state => 1, :milestone => milestone.id %>:&nbsp;
+      <%= milestone.open_tickets -%>
+    <% end -%>
+  </p>
+</div>
+  

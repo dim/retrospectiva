@@ -1,0 +1,19 @@
+<% @page_title = _('Repositories') -%>
+<%= render :partial => '/admin/shared/index_header' %>
+
+<table class="record-list">
+  <thead>
+    <%= top_navigation_for @repositories, _('Create a new repository'), new_admin_repository_path, 2, 1 %>
+    <tr>
+      <th><%=_ 'Repository' -%></th>
+      <th><%=_ 'Kind' -%></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+
+  <%= bottom_navigation_for(@repositories, 2, 1) %>
+
+  <tbody id="repositories">
+    <%= render :partial => 'repository', :collection => @repositories %>
+  </tbody>
+</table>

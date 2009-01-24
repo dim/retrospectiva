@@ -1,0 +1,73 @@
+#!/usr/bin/env ruby
+
+#--
+# Copyright (C) 2008 Dimitrij Denissenko
+# Please read LICENSE document for more information.
+#++
+
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+
+puts "\n\n----- Retrospectiva extension manager CLI\n"
+
+if (['install', 'migrate', 'uninstall', 'download'].include?(ARGV[0]) && !ARGV[1].blank?) || ARGV[0] == 'list'
+
+  manager = Retrospectiva::ExtensionManager
+  force_migration =  ARGV.include?('--force-db')
+
+  case ARGV[0]
+  when 'install'
+    skip_migration =  ARGV.include?('--skip-db')
+    manager.install_extension(ARGV[1], skip_migration, force_migration)
+    puts "\n  ATTENTION: You need to restart the web-server to take over the changes\n"
+  when 'migrate'
+    extension = RetroEM::Extension.load(ARGV[1])
+    extension.migrate(:up)
+  when 'uninstall'
+    skip_migration = !ARGV.include?('--remove-db')
+    manager.uninstall_extension(ARGV[1], skip_migration, force_migration)
+    puts "\n  ATTENTION: You need to restart your web-server to take over the changes\n"
+  when 'download'
+    puts "\n  * Downloading out extension from #{ARGV[1]}\n"
+    result = manager.download_extension(ARGV[1])
+    if result
+    	puts "  * Download OK\n"
+    else    
+    	puts "  * Download FAILED\n"
+    end 
+  end   
+
+  puts "\n  Available extensions:\n\n"
+  manager.available_extensions.each do |extension|
+    puts "    [#{extension.installed? ? '+' : '-'}] #{extension.name}"
+  end  
+
+else
+
+ script_name = File.basename($0)
+ puts "      
+  List extensions: 
+    #{$0} list
+      
+    
+  Install extensions:        
+    #{$0} install extension [options]
+          
+    Options:
+      --skip-db: Do NOT make any extension relevant DB changes
+      --force-db: Raise an error if DB oprations fail
+          
+        
+  Uninstall extensions:                
+    #{$0} uninstall extension [options]
+
+    Options:
+      --remove-db: Also remove extension relevant DB changes
+      --force-db: Raise an error if DB oprations fail
+
+  Download extensions: 
+    #{$0} download GIT_URI
+
+"
+end
+
+puts "\n\n----- www.retrospectiva.org\n\n"

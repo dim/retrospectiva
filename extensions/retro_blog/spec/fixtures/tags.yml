@@ -1,0 +1,10 @@
+--- 
+general:
+  id: 1
+  name: General
+release:
+  id: 2
+  name: Release
+other:
+  id: 3
+  name: Other

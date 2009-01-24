@@ -1,0 +1,26 @@
+<% slim_page -%>
+
+<div class="retro-wiki">
+
+  <%= page_title _('Wiki') + ": " + _('Upload') -%>
+
+  <% plus_form_for @wiki_file, :url => project_wiki_files_path(Project.current), :html => { :multipart => true } do |f| -%>
+    <%= f.error_messages %>
+
+    <fieldset>
+      <%= f.label_tag _('Title') + ':' %>
+      <%= f.text_field :wiki_title %>
+    </fieldset>  
+
+    <fieldset>
+      <%= f.label :file, _('File') + ':' %>
+      <%= f.file_field :file %>
+    </fieldset>  
+
+    <fieldset>
+      <%= f.submit _('Create') %> | <%= link_to _('Cancel'), project_wiki_files_path(Project.current) %>
+    </fieldset>
+
+  <% end -%>
+
+</div>

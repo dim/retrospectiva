@@ -1,0 +1,52 @@
+--- 
+Public: 
+  id: 1
+  name: 
+  admin: false
+  username: Public
+  password: fc0b88b7c9e2c896bcee4881d00d7bf5a7d2442d
+  email: 
+  time_zone: London
+admin: # plain_password = password
+  name: Administrator
+  admin: true
+  id: 2
+  password: 86499698083f5f58715f008be1fb4d7eac240e97
+  salt: 123456
+  username: admin
+  email: admin@administration.com
+  time_zone: London
+  private_key: de0ed534f6055c365d05c685582edeceef1eafa6
+agent: # plain_password = password
+  name: Agent
+  admin: false
+  id: 3
+  password: b742714644f63a57f3bfe7dbe782451f0fe982b4
+  salt: 987654
+  username: agent
+  email: agent@somedomain.com
+  scm_name: agent
+  time_zone: London
+  private_key: 6b2c92007c38ca274ea45d8dd52f401b81ae44e6
+inactive:
+  name: Inactive user
+  admin: false
+  active: false
+  id: 5
+  password: da17fd21b775503df59bf88f5b6e7b1db924ea8e
+  salt: 654321
+  username: inactive
+  email: inactive@user.com
+  activation_code: Y56vp4m
+  scm_name: inactive
+  time_zone: London
+double_agent: # plain_password = password
+  name: Double Agent
+  admin: false
+  id: 6
+  password: b742714644f63a57f3bfe7dbe782451f0fe982b4
+  salt: 987654
+  username: double_agent
+  email: double_agent@somedomain.com
+  time_zone: London
+  private_key: ba80ff74a9627f676b4c426587ce5ea487665e46

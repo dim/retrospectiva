@@ -1,0 +1,20 @@
+--- 
+Public: 
+  id: 1
+  name: 
+  admin: false
+  username: Public
+  password: fc0b88b7c9e2c896bcee4881d00d7bf5a7d2442d
+  email: 
+  time_zone: London
+agent: # plain_password = password
+  name: Agent
+  admin: false
+  id: 3
+  password: b742714644f63a57f3bfe7dbe782451f0fe982b4
+  salt: 987654
+  username: agent
+  email: agent@somedomain.com
+  scm_name: agent
+  time_zone: London
+  private_key: 6b2c92007c38ca274ea45d8dd52f401b81ae44e6

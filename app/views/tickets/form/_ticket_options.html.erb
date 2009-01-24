@@ -1,0 +1,36 @@
+<% f.section _('Options') do -%>
+
+  <table class="ticket-options">
+  
+    <%= view_extensions :ticket, :options, :top, :locals => { :f => f } %>
+  
+    <tr>
+      <th><%= f.label :status_id, _('Status') + ':' %></th>
+      <td><%= f.collection_select :status_id, Status.find(:all, :order => 'rank'), 'id', 'name' %></td>
+      <th><%= f.label :assigned_user, _('Assigned To') + ':' %></th>
+      <td><%= user_select(f) %></td>
+    </tr>
+  
+    <tr>
+      <th><%= f.label :priority_id, _('Priority') + ':' %></th>
+      <td><%= f.collection_select :priority_id, Priority.find(:all, :order => 'rank'), 'id', 'name' -%></td>
+      <th><%= f.label :milestone_id, _('Milestone') + ':' %></th>
+      <td><%= f.collection_select :milestone_id, Project.current.milestones.active_on(@ticket.created_at), 'id', 'name', { :include_blank => true } -%></td>
+    </tr>
+  
+    <%= view_extensions :ticket, :options, :middle, :locals => { :f => f } %>
+  
+    <% Project.current.ticket_property_types.in_groups_of(2).each do |(type1, type2)| -%>
+      <tr>
+        <th><%= f.label "ticket_property_#{type1.id}_ids", h(type1.name) + ':' if type1 %>&nbsp;</th>
+        <td><%= property_select(f, @ticket, type1) if type1 %>&nbsp;</td>
+        <th><%= f.label "ticket_property_#{type2.id}_ids", h(type2.name) + ':' if type2 %>&nbsp;</th>
+        <td><%= property_select(f, @ticket, type2) if type2 %>&nbsp;</td>
+      </tr>
+    <% end if Project.current.ticket_property_types.any? -%>
+  
+    <%= view_extensions :ticket, :options, :bottom, :locals => { f => :f } %>
+  
+  </table>
+
+<% end -%>

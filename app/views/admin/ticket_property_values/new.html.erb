@@ -1,0 +1,15 @@
+<% @page_title = _('New') -%>
+<%= render :partial => '/admin/shared/header' %>
+
+<%= breadcrumbs link_to(_('Projects'), admin_projects_path), 
+  link_to(h(@project.name + ': ' + _('Ticket properties')), properties_path(@project)),
+  link_to(h(@property_type.name), property_values_path(@project, @property_type)),
+  h(@page_title) -%>
+
+<% plus_form_for @ticket_property, :url => property_values_path(@project, @property_type) do |f| -%>
+  <%= f.info _('Create a new property value') %>
+  <%= render :partial => 'form', :locals => {:f => f} %>    
+  <%= render :partial => '/admin/shared/form_footer', :locals => { 
+        :f => f, :label => _('Create'), :collection_path => property_values_path(@project, @property_type) } %>
+<% end -%>
+<%= top_link %>

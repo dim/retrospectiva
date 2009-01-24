@@ -1,0 +1,28 @@
+<% @page_title = _('Ticket') + " ##{@ticket.id}" -%>
+<% slim_page -%>
+
+<div class="ticket <%= html_classes_for_ticket(@ticket) %>">
+  
+  <div title="<%=h @ticket.summary %>" class="ticket-summary">
+    <div class="float-r righted strong large last">
+      #<%=h @ticket.id %><br/>
+      <%= subscription_icon(@ticket) %>
+    </div>    
+    <h2 id="ticket-summary"><%=h truncate(@ticket.summary, :length => 100) %></h2>    
+  </div>
+
+  <%= render :partial => 'navigation' %>
+  <div class="box">
+    <%= render :partial => 'ticket_info' %>
+    <hr/>
+    <%= render :partial => 'ticket_intro' %>
+  </div>
+  
+  <% if @ticket.changes.any? -%>
+    <h2><%=_ 'Comments and Changes' %></h2>
+    <%= render :partial => 'change', :collection => @ticket.changes %>
+  <% end -%>
+
+  <%= render :partial => 'update_form' if User.current.permitted?(:tickets, :update) %>    
+  <%= top_link %>
+</div>

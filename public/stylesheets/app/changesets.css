@@ -1,0 +1,5 @@
+div.changeset ul        { list-style: none; }
+
+div.changeset ul li,
+div.changeset ul li img { margin: 0; padding: 0; }
+  

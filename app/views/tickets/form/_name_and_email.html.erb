@@ -1,0 +1,10 @@
+<% f.fieldset do -%>
+  <div>
+    <%= f.label :author, _('Name') + ':', :required => true %>
+    <%= f.text_field :author, :disabled => !User.current.public? %>
+  </div>
+  <div>
+    <%= f.label :email, _('Email') + ':' %>
+    <%= f.text_field :email, :disabled => !User.current.public? %>
+  </div>
+<% end -%>

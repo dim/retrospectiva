@@ -1,0 +1,12 @@
+<% @page_title = _('Browse source') -%>
+
+<div class="repository-browser">
+  <%= browseable_path -%>
+  <%= render :partial => 'show_header', :locals => { :formats => [:raw] } %>
+  <%= render :partial => 'node_info' %>
+    
+  <div class="image-node box">
+    <%= image_tag project_download_path(Project.current, params[:path], :rev => params[:rev]), :alt => h(@node.name) %>
+  </div>
+  <%= top_link %>
+</div>

@@ -1,0 +1,25 @@
+release_a: 
+  name: Release A
+  ticket_property_type_id: 1
+  id: 1
+  rank: 0
+release_b: 
+  name: Release B
+  ticket_property_type_id: 1
+  id: 2
+  rank: 1
+component_a: 
+  name: Component A
+  ticket_property_type_id: 2
+  id: 3
+  rank: 0
+component_b: 
+  name: Component B
+  ticket_property_type_id: 2
+  id: 4
+  rank: 1
+severity_a: 
+  name: Severity A
+  ticket_property_type_id: 3
+  id: 5
+  rank: 0

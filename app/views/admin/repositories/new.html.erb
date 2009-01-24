@@ -1,0 +1,6 @@
+<% @page_title = _('Create a new repository') -%>
+<%= render :partial => 'header' %>
+
+<%= render :partial => '/admin/shared/new_form', :locals => {
+      :record => :repository,
+      :collection_path => admin_repositories_path } %>

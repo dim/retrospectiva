@@ -1,0 +1,63 @@
+Dear user!
+
+You are receiving this message because you have subscribed to receive notification about changes of:
+
+  Ticket #9: 'Link with '&''
+
+To access the ticket click this link:
+  http://test.host/projects/retrospectiva/tickets/9#ch6
+
+Alternatively, copy and paste this link to your browser address bar.
+
+-----------------------------------------------------------------------
+
+  Changed by Me - Jan 06 2000 * 21:30
+
+   * Status: changed from WontFix to Open
+   * Priority: changed from Minor to Enhancement
+
+-----------------------------------------------------------------------
+
+  Changed by Me - Jan 05 2000 * 21:30
+
+  Try to change
+
+  {{{ @@gc_count = (@@gc_count + 1) % 20 }}}
+
+  to a lower value, eg:
+
+  {{{ @@gc_count = (@@gc_count + 1) % 10 }}}
+
+  This should slow-down your memory growth (and the SVN processing
+  speed :-().
+
+-----------------------------------------------------------------------
+
+  Changed by Me - Jan 04 2000 * 21:30
+
+   * Status: changed from Open to WontFix
+   * Priority: changed from Normal to Minor
+
+  Yes, this is the expected behaviour when you are working with with
+  SVN repositories. Retrospectiva (as a typical RubyOnRails
+  application) uses ~40M of RAM, the rest is consumed by the Ruby-SVN
+  bindings (for various reasons). The memory consumption is directly
+  proportional to the size of your repository, but your demand of
+  ~100M of RAM seems quite reasonable to me.
+
+  Please don’t worry being Out Of Memory after a few days, the
+  memory allocation will not grow any further.
+
+  Regards[[BR]] Dimitrij
+
+-----------------------------------------------------------------------
+
+  Changed by Agent - Jan 03 2000 * 21:30
+
+   * Milestone: set to Future milestone 2
+
+-----------------------------------------------------------------------
+
+  Reported by Tom Doe - Jan 01 2000 * 21:30
+
+  http://example.com/?a=b&c=d;e=f

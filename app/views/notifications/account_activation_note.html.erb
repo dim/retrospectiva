@@ -1,0 +1,14 @@
+<%=_ "Dear user!" %>
+
+<%=_ "You are receiving this message because the user account you have applied for at {{site}} has been activated.", :site => @site_name %>
+
+<%=_ "Your registration details" %>:
+
+   <%= (_("Username") + ':').ljust(20) %><%=h @user.username %>
+   <%= (_("Full name") + ':').ljust(20) %><%=h @user.name %>
+   <%= (_("Email") + ':').ljust(20) %><%=h @user.email %>
+
+<%=_ "To access the login page click this link" %>:
+   <%= login_url %>
+
+<%=_ "Alternatively, copy and paste this link to your browser address bar." %>

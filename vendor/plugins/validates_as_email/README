@@ -1,0 +1,59 @@
+                            ValidatesAsEmail 0.1.4
+                            ======================
+
+Ximon Eighteen <ximon.eighteen@int.greenpeace.org>
+Dan Kubb <dan.kubb@autopilotmarketing.com>
+Thijs van der Vossen <thijs@fngtps.com>
+
+This Ruby on Rails plugin implements an ActiveRecord validation helper called
+validates_as_email. The helper acts as if validates_format_of was used with a
+regular expression that defines an RFC822 email address conformance test.
+
+The plugin implements the regular expression here:
+
+  http://tfletcher.com/lib/rfc822.rb
+
+Which is an implementation in Ruby of a regular expression published by Cal
+Henderson for PHP here:
+
+  http://www.iamcal.com/publish/articles/php/parsing_email
+
+Installation:
+=============
+
+  ruby script/plugin install https://svn.greenpeace.org/repositories/rails_plugins/validates_as_email
+
+Full documentation on script/plugin can be obtained by invoking the plugin
+script with no arguments:
+
+  ruby script/plugin
+
+You may need to restart your webserver in order to load the plugin files.
+
+Usage:
+======
+
+In your model file do something like:
+
+class MyClass < ActiveRecord::Base
+  validates_presence_of :email
+  validates_as_email :email
+end
+
+Tests:
+======
+
+Some tests have been added.
+
+License:
+========
+
+Since Cal Henderson placed his pages under the Creative Commons
+Attribution-ShareALike 2.5 License I have placed this plugin under the
+same license. The license can be seen here:
+
+  http://creativecommons.org/licenses/by-sa/2.5/
+
+Thanks for reading,
+
+Ximon Eighteen

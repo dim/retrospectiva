@@ -1,0 +1,7 @@
+<tr>
+  <td colspan="<%= colspan.first || 1 %>"><%= will_paginate(collection) %></td>
+  <td colspan="<%= colspan.last  || 1 %>" class="righted">
+    <span class="strong"><%= link_to label, new_path %></span>
+    <%= additional_content %>
+  </td>
+</tr>

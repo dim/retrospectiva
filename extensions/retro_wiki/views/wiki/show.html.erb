@@ -1,0 +1,30 @@
+<%= render :partial => 'header' %>
+
+<div class="retro-wiki">
+
+  <div class="page-title">
+    <%=h @wiki_page.title -%>
+    <% if @wiki_page.historic? -%>    
+      <span class="wee">(<%=_ 'Version' %> <%=h "##{@wiki_page.number}" %>)</span>
+    <% end -%>
+  </div>
+ 
+  <% content_header do -%>
+    <div class="float-r"><%= wiki_page_navigation %></div>
+    <%= wiki_navigation %>
+  <% end -%>
+
+  <div class="markup content">
+    <%= markup(@wiki_page.content) %>
+  </div>
+  
+  <% content_footer('righted') do -%>
+    <% if @wiki_page.number == 1 -%> 
+      <%=_ 'Created on {{date}} by {{author}}', :date => datetime_format(@wiki_page.created_at), :author => h(@wiki_page.author) -%> 
+    <% else -%> 
+      <%=_ 'Updated on {{date}} by {{author}}', :date => datetime_format(@wiki_page.updated_at), :author => h(@wiki_page.author) -%> 
+    <% end -%> 
+  <% end -%>
+
+</div>  
+

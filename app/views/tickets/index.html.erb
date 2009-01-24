@@ -1,0 +1,58 @@
+<% @page_title = _('Tickets') -%>
+<%= page_title %>
+
+<div class="tickets">
+
+  <% content_header do -%>
+    <%= link_to_function _('Filter tickets'), toggle_internal_navigation('filter', 'report') -%>
+    <% if @reports.any? -%>
+      | <%= link_to_function _('Show report'), toggle_internal_navigation('report', 'filter') -%>
+    <% end -%>
+  <% end -%>
+  
+  <% content_tag :div, :class => 'internal-navigation clearfix', :id => 'ticket_report_selector', :style => (@report ? nil : 'display:none;') do -%>
+    <%= render :partial => 'reports' %>
+  <% end if @reports.any? -%>
+  
+  <% content_tag :div, :class => 'internal-navigation clearfix', :id => 'ticket_filter_selector', :style => (@report || @filters.default? ? 'display:none;' : nil) do -%>
+    <%= ticket_filter_selector(@filters) %>
+  <% end -%>
+  
+  <table class="record-list">
+    <thead>
+      <tr>
+        <td colspan="4"><%= will_paginate @tickets, :params => { :project_id => Project.current.to_param } %></td>
+        <td colspan="<%= property_types.any? ? 4 : 3 %>" class="righted"><%= _('Search') %>: <%= search_field_tag %></td>
+      </tr>
+      <tr>
+        <th><%= _('ID') %></th>
+        <th><%= _('Status') %></th>
+        <th><%= _('Summary') %></th>
+        <th><%= _('Assigned To') %></th>
+        <th><%= _('Priority') %></th>
+        <th><%= _('Milestone') %></th>
+        <% if property_types.any? -%>
+          <th><%= _('Properties') %></th>
+        <% end -%>
+        <th><%= _('Last Update') %></th>
+      </tr>
+    </thead>
+  
+    <tfoot>
+      <tr>
+        <th colspan="4"><%= will_paginate @tickets, :params => { :project_id => Project.current.to_param } %></th>
+        <th colspan="<%= property_types.any? ? 4 : 3 %>" class="righted"><%= will_paginate_per_page(@tickets) %></th>
+      </tr>
+    </tfoot>
+  
+    <tbody id="tickets">
+      <%= render :partial => 'ticket', :collection => @tickets %>
+    </tbody>
+  </table>
+  
+  <%= observe_field 'term',
+        :frequency => 1,
+        :url => hash_for_search_tickets_path,
+        :with => "'term=' + escape(value)" -%>
+
+</div>

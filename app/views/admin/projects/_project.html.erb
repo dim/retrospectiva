@@ -1,0 +1,16 @@
+<tr class="<%= cycle('odd', 'even') -%> record">
+  <td><%=h project.name %></td>
+  <td class="centered"><%= boolean_format project.active?, _('Active'), _('Inactive') %></td>
+  <td class="centered"><%= boolean_format project.central? %></td>
+  <td class="actions righted">
+    <%= link_to _('Ticket properties'), admin_project_ticket_properties_path(project) %>
+    <%= link_to _('Reports'), admin_project_reports_path(project) -%>
+  </td>
+  <td class="actions righted w-4">
+    <%= link_to _('Edit'), edit_admin_project_path(project) %>
+    <%= link_to _('Delete'), admin_project_path(project),
+          :confirm => _('ATTENTION: Are you really sure, that you want to delete this project?') + "\n" +
+                      _('You will lose all related data as well!'),
+          :method => :delete -%>
+  </td>
+</tr>

@@ -1,0 +1,12 @@
+default_public:
+  user_id: 1
+  group_id: 1
+default_agent:
+  user_id: 3
+  group_id: 1
+default_double_agent:
+  user_id: 6
+  group_id: 1
+all_projects_double_agent:
+  user_id: 6
+  group_id: 3

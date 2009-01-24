@@ -1,0 +1,23 @@
+<% @page_title = @property_type.name %>
+<%= render :partial => '/admin/shared/header' %>
+
+<%= breadcrumbs link_to(_('Projects'), admin_projects_path), 
+  link_to(h(@project.name + ': ' + _('Ticket properties')), properties_path(@project)),
+  h(@page_title) -%>
+
+<div class="strong bottom-5">
+  <%= link_to _('Create a new property value'), new_property_value_path(@project, @property_type) %>
+</div>
+<div class="box">
+  <h2><%= _('Property values') %></h2>
+  <ul id="property_values" class="sortable">
+    <%= render :partial => 'property_value', :collection => @property_values %>
+  </ul>
+  <%= sortable_element "ticket_properties", :url => sort_property_values_path(@project, @property_type), :method => :put %>
+  
+  <p class="description">
+    <strong><%= _('Note') -%>:</strong>
+    <%= _('You can sort the items by dragging them and dropping them into the right position.') %>
+  </p>
+</div>
+<%= top_link %>

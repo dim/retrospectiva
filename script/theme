@@ -1,0 +1,107 @@
+#!/usr/bin/env ruby
+
+require 'open-uri'
+require 'fileutils'
+require 'optparse'
+require 'yaml'
+
+
+class ThemeManager
+  THEME_ROOT = 'http://retrospectiva.googlecode.com/svn/themes'
+  PUBLIC_ROOT = File.expand_path(File.dirname(__FILE__) + "/../public")
+
+  def initialize
+    @script_name = File.basename($0)     
+    options.parse!(ARGV)
+    command = ARGV.shift
+    name = ARGV.shift
+    if command == 'list'
+      list_themes
+    elsif command == 'install' && !name.nil? && !name.empty?
+      install_theme(name)
+    else
+      puts options
+      exit 1
+    end
+  end
+
+	def options
+    OptionParser.new do |o|
+      o.set_summary_indent('  ')
+      o.banner = "\nRetrospectiva theme manager"            
+      o.separator "Usage: #{@script_name} command"
+      o.separator ""
+      o.separator "COMMANDS"      
+      o.separator "  list       List available themes."
+      o.separator "  install    Installs a theme."
+      o.separator ""
+      o.separator "EXAMPLES"
+      o.separator "  List all available themes: #{@script_name} list"
+      o.separator "  Install the default theme: #{@script_name} install default"
+      o.separator ""
+    end
+  end
+
+  def install_theme(name)
+    theme = Theme.new(name)
+    unless theme.valid?
+      puts "\nInvalid theme '#{name}'.\n\n"
+      exit 1
+    end
+    theme.files.each do |path|	    	    
+	    File.open("#{PUBLIC_ROOT}/#{path}", 'wb') do |local|
+	    	open("#{THEME_ROOT}/#{theme.name}/#{path}").each do |line|
+					local.write(line)					    	
+	    	end
+	    end    	
+    end    
+    puts "\nTheme '#{theme.name}' was successfully installed.\n\n"
+  end
+
+  def list_themes
+    themes = []
+    
+    open(THEME_ROOT).each do |line|
+      line.scan(/<a[^>]*href=\"(\w+)\/\">(\w+)\/<\/a><\/li>/) do |name,|
+        theme = Theme.new(name)
+        themes << theme if theme.valid?
+      end
+    end
+    
+    puts "\nAvailable themes:"
+    themes.each do |theme|
+      puts "  #{theme.name}  -  #{theme.description}"
+    end
+    puts "\n"
+  end
+
+  class Theme   
+    attr_reader :name
+    
+    def initialize(name)
+      @name = name
+    end
+    
+    def valid?
+      files.any?
+    end
+    
+    def description
+      conf['description'] || ''
+    end
+
+    def files
+      conf['files'].is_a?(Array) ? conf['files'] : []
+    end
+  
+    def conf
+      @conf ||= YAML.load(info) rescue {}
+    end
+    
+    def info
+      @info ||= open("#{THEME_ROOT}/#{name}/info.yml") rescue nil
+    end    
+  end  
+end
+
+ThemeManager.new

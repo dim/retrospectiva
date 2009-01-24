@@ -1,0 +1,26 @@
+<% @page_title = _('Register') -%>
+<% slim_page -%>
+
+<%= page_title %>
+
+<div class="content-header">
+  <%= view_extensions :user, :new, :header %>
+</div>
+
+<%= view_extensions :user, :new, :top %>
+<% plus_form_for @user, :url => account_path, :html => html_options_for_account_form do |f| -%>  
+  <%= f.error_messages %>
+  <%= render :partial => 'admin/users/core', :locals => {:f => f, :disabled => false } %>
+  <%= view_extensions :user, :fields, :public, :locals => { :f => f } %>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Create') %>
+  <% end -%>
+<% end -%>
+<%= view_extensions :user, :new, :bottom %>
+
+
+<div class="content-footer">
+  <%= top_link :class => 'float-r' %>
+  <%= view_extensions :user, :new, :footer %>
+</div>

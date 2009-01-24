@@ -1,0 +1,31 @@
+<% @page_title = _('Search') -%>
+<% slim_page -%>
+
+<div class="search">
+
+  <%= page_title %>
+  <% plus_form_for :search, :url => project_search_path(Project.current), :html => { :method => :get } do |f| -%>
+    
+    <% f.fieldset do -%>
+      <%= f.label_tag _('Search') + ':', :for => 'search_q' %>
+      <%= text_field_tag 'q', params[:q], :id => 'search_q' %>
+    <% end -%>
+
+    <% f.fieldset do -%>
+      <%= channel_checkboxes(f) %>    
+    <% end -%>
+
+    <% f.fieldset do -%>
+      <%= f.submit _('Search'), :name => nil %>
+    <% end -%>
+
+  <% end -%>
+  <hr space="true"/>
+
+  <% if @results.any? -%>
+    <%= render :partial => 'result', :collection => @results %>
+  <% elsif params.key?(:q) -%>
+    <h4><%=_ 'Your search for \'{{term}}\' did not match any results.', :term => "<em>#{h(params[:q])}</em>" %></h4>
+  <% end -%>
+
+</div>  

@@ -1,0 +1,13 @@
+delivered:
+  object: 
+  mailer_class_name: Mailer
+  created_at: <%= 7.hours.ago %>
+  delivered_at: <%= 6.hours.ago %>
+old_pending:
+  object: 
+  mailer_class_name: Mailer
+  created_at: <%= 10.hours.ago %>
+new_pending:
+  object: 
+  mailer_class_name: Mailer
+  created_at: <%= 2.minutes.ago %>

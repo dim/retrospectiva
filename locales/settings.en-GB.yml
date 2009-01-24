@@ -1,0 +1,191 @@
+en-GB: 
+  settings: 
+    general: 
+      label: General
+      groups: 
+        basic: 
+          label: Basic settings
+          settings: 
+            site_name: 
+              label: Website name
+              description: |
+                Please set a name for your web site (e.g. 'My Project').
+                This name will be displayed to users on the page and in emails.
+
+            site_url: 
+              label: Website URL
+              description: |
+                Please set the URL of your web site (e.g. 'http://retro.myproject.com').
+                This URL will be used in notification emails.
+
+            session_key: 
+              label: Session key
+              description: |
+                Please set a unique session key for your web site (e.g. '_mypage_session').
+                It allows to differenciate between sessions of Retrospectiva installations.
+                The session key must only consist of alphanumeric characters and underscores.
+
+            locale: 
+              label: Global locale
+              description: Specify your web site locale here.
+            session_expiration: 
+              label: Expiration of sessions (minutes)
+              description: |
+                After how many minutes being non-active should visitor-sessions expire? [1-43200]
+
+        attachments: 
+          label: Attachments
+          settings: 
+            max_size: 
+              label: Maximal attachment size (kB)
+        user_management: 
+          label: User management
+          settings: 
+            secure_auth: 
+              label: Use secure authentication
+              description: The secure authentication mechanism encrypts passwords on client-side before they are actually transmitted.
+            account_management: 
+              label: Allow unprivileged users to manage their accounts
+              description: Should non-administrator users be allowed to change their own (noncritical) account settings, (e.g. 'password').
+            self_registration: 
+              label: Allow self-registration
+              description: Should users be allowed to register to the system.
+            assign_to_groups: 
+              label: Automatically assign new users to the following groups (IDs, comma-separated)
+              description: |
+                This setting only applies if 'self-registration' is enabled. Invalid values will be ignored.             
+                If you wish to specify additional (every user is a member of 'Default') groups, new users should be automatically assigned to, please fill in a comma-separated list of group IDs here.
+
+            activation: 
+              label: Activate user accounts
+              description: |
+                This setting only applies if 'self-registration' is enabled.
+                Options:
+                  - auto: User accounts are automatically activated on registration
+                  - email: New user accounts need to be activated by entering an activation code sent per email
+                  - admin: New user accounts are disabled by default (need to be manually activated by administrators)
+
+            expiration: 
+              label: Expiration of non-activated user accounts (hours)
+              description: |
+                This setting only applies if 'self-registration' is enabled and account activation is set to 'email'.
+                After how many hours should non-activated user accounts be deleted again? [1-43200]
+
+    email: 
+      label: Email settings
+      groups: 
+        general: 
+          label: General
+          settings: 
+            from: 
+              label: From address
+              description: |
+                Define the From: header in outgoing emails here. Use either a simple email address (e.g. 'dontreply@myproject.com') or a title-address combination (e.g. 'MyProject notifier <dontreply@myproject.com>')
+                Please use an address with a FQDN, since many mail servers reject unqualified domain names in From: header.
+
+        smtp: 
+          label: SMTP server
+          settings: 
+            address: 
+              label: Address
+              description: Allows you to use a remote mail server.
+            port: 
+              label: Port
+              description: On the off chance that your mail server doesn't run on port 25, you can change it.
+            domain: 
+              label: Domain
+              description: If you need to specify a HELO domain, you can do it here.
+            authentication: 
+              label: Authentication
+              description: If your mail server requires authentication, you need to specify the authentication type here.
+            user_name: 
+              label: Username
+              description: |
+                If your mail server requires authentication, set the username in this setting. 
+                If you leave this value blank, no authentication will be performed.
+
+            password: 
+              label: Password
+              description: |
+                If your mail server requires authentication, set the password in this setting.
+                If you leave this value blank, no authentication will be performed.
+
+    content: 
+      label: Content
+      groups: 
+        format: 
+          label: Format
+          settings: 
+            datetime: 
+              label: Date & time
+              description: Please set a format for the output of dates and times
+            date: 
+              label: Date only
+              description: Please set a format for the output of dates
+            time: 
+              label: Time only
+              description: Please set a format for the output of times
+            changeset_logs: 
+              label: Changeset logs
+              description: Should commit comments be displayed wikified?
+        markup: 
+          label: Markup
+          settings: 
+            default: 
+              label: Default language
+            global_ticket_refs: 
+              label: Global ticket references
+              description: |
+                This setting only applies if you are working with multiple projects.
+                By default, ticket references in markup content (e.g. [#4711]) are automatically converted to links only if the referenced ticket belongs the the currently selected project. Please select this option if you wish to make your tickets cross-project linkable.
+
+        custom: 
+          label: Custom
+          settings: 
+            header: 
+              label: HTML header
+              description: |
+                Any code posted here will be added at the bottom of the HTML <head> tag on every page.
+
+            footer: 
+              label: HTML footer
+              description: |
+                Any code posted here will be added at the bottom of every HTML page, right before the closing </body> tag.
+
+    ticketing: 
+      label: Ticketing
+      groups: 
+        subscription: 
+          label: Subscription
+          settings: 
+            subscribe_on_assignement: 
+              label: Subscribe on assignment
+              description: |
+                Should a user who is assigned to a ticket be automatically subscribed to receive email notifications?
+
+            encourage_subscription: 
+              label: Encourage subscription
+              description: |
+                Should the subscription check box in the ticket submit/comment form be enabled by default?
+
+        user_assignment: 
+          label: User assignment
+          settings: 
+            field_type: 
+              label: Field type
+              description: |
+                By default, users can be assigned to tickets by selecting their usernames from a 'drop-down' menu.
+                If you do not want to reveal the names of your project's contributors, select the 'text-field' mode,
+                where usernames must be explicitely entered in an input field.
+
+        author_modifiable: 
+          label: Edit own records
+          description: |
+            Should users be able to modify own tickets and ticket change records?
+            By default, only administrators have the right to change these.
+
+          settings: 
+            tickets: 
+              label: Tickets
+            ticket_changes: 
+              label: Ticket Changes

@@ -1,0 +1,22 @@
+<% @page_title = _('Activate account') -%>
+<% slim_page -%>
+
+<%= page_title %>
+<% plus_form_for :user, :url => account_activate_path do |f| -%>  
+
+  <% f.fieldset do -%>
+    <%= f.label_tag _('Username') + ':', :for => 'username' -%>
+    <%= text_field_tag 'username' -%>
+  <% end -%>
+
+  <% f.fieldset do -%>
+    <%= f.label_tag _('Activation code') + ':', :for => 'code' -%>
+    <%= text_field_tag 'code' -%>
+  <% end -%>
+
+  <% f.fieldset do -%>
+    <%= f.submit _('Activate') %>
+  <% end -%>
+
+<% end -%>
+<%= top_link %>

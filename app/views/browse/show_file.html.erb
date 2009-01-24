@@ -1,0 +1,16 @@
+<% @page_title = _('Browse source') -%>
+
+<div class="repository-browser">
+  <%= browseable_path -%>
+  <%= render :partial => 'show_header', :locals => { :formats => [:raw, :text] } %>
+  <%= render :partial => 'node_info' %>  
+
+  <% if @node.content_type == :unknown -%>
+    <div class="box">
+      <h2><%=_ 'Unknown File Type' %></h2>
+      <p><%=_ 'A viewable MIME type was not detected. Trying to display the file content as plain text.' %></p>  
+    </div>
+  <% end -%>
+  <%= format_code_with_line_numbers(@node.content) %>
+  <%= top_link %>
+</div>
