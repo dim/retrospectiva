@@ -28,7 +28,7 @@
 .markup       { margin: 0 0 1.5em; }
 
 .compact p,
-.markup p     { line-height: 1.25em; margin-bottom: 0.5em; } 
+.markup p     { line-height: 1.25em; margin-bottom: 1em; } 
 
 .compact p img,
 .markup p img { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }

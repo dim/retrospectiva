@@ -470,7 +470,7 @@ describe Ticket do
   end
 
   describe 'generating RSS' do
-    fixtures :projects
+    fixtures :projects, :tickets, :statuses, :priorities, :users
 
     before do
       Project.stub!(:current).and_return(projects(:retro))
@@ -480,7 +480,13 @@ describe Ticket do
       Ticket.should_receive(:flatten_and_sort).with([]).and_return([])
       Ticket.to_rss([])      
     end
+
    
+    it 'should work correctly' do
+      rss = Ticket.to_rss([tickets(:open)]).to_s
+      rss.should match(/<description>Tickets for Retrospectiva<\/description>/)
+      rss.should match(/Ticket #1 \(Open\) reported by John Doe/)
+    end
   end
 
   describe '\'flattening\' records' do
