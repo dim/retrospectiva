@@ -22,9 +22,8 @@ class ChangesetsController < ProjectAreaController
   end
   
   def show
-    @changeset = Project.current.changesets.find_by_revision params[:id],
+    @changeset = Project.current.changesets.find_by_revision! params[:id],
       :include => [:changes, :user]
-    @changeset || raise(ActiveRecord::RecordNotFound, "Changeset '#{params[:id]}' not found")
 
     @next_changeset = @changeset.next_by_project(Project.current)
     @previous_changeset = @changeset.previous_by_project(Project.current)

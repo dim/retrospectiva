@@ -79,6 +79,8 @@ class BlogController < ProjectAreaController
       @categories = Project.current.blog_posts.categories
     end
 
+  private
+  
     def options_for_paginate
       { :page => ( request.format.rss? ? 1 : params[:page] ), 
         :per_page => ( request.format.rss? ? 5 : nil ),

@@ -68,7 +68,7 @@ describe ChangesetsController do
       before do
         @changeset = @changesets.first
         @next_changeset = @changesets.last
-        @proxy.stub!(:find_by_revision).and_return(@changeset)
+        @proxy.stub!(:find_by_revision!).and_return(@changeset)
         @changeset.stub!(:next_by_project).and_return(@next_changeset)
         @changeset.stub!(:previous_by_project).and_return(nil)
       end
@@ -79,7 +79,7 @@ describe ChangesetsController do
 
       
       it "should find the changeset" do
-        @proxy.should_receive(:find_by_revision).
+        @proxy.should_receive(:find_by_revision!).
           with('1', :include => [:changes, :user]).and_return(@changeset)
         do_get
         assigns[:changeset].should == @changeset
@@ -100,16 +100,6 @@ describe ChangesetsController do
 
     end
 
-    describe 'if the record CANNOT be found' do
-      before do
-        @proxy.should_receive(:find_by_revision).
-          with('-1', :include => [:changes, :user]).and_return(nil)        
-      end
-
-      it "should raise an error (404)" do
-        lambda { get :show, :project_id => @project.to_param, :id => '-1' }.should raise_error(ActiveRecord::RecordNotFound)
-      end
-    end
   end
 
 end

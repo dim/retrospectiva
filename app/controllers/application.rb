@@ -46,6 +46,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    # Override ActionController::Base method to prevent invalid format calls (causes 500 error)
+    # 
+    # Previously: /ticket/123.xml => 500
+    # Override:   /ticket/123.xml => 406
+    def default_render
+      response.content_type.blank? ? respond_to(:html) : super 
+    end
+
     def permit_private_key_access
       if User.current.public? and params[:private].present?
         user = User.find_by_private_key_and_active(params[:private], true)
@@ -79,7 +87,7 @@ class ApplicationController < ActionController::Base
       status = interpret_status(status_code)
       path = "#{RAILS_ROOT}/app/views/rescue/#{status[0,3]}.html.erb" 
       if File.exist?(path)
-        render :file => path, :layout => 'application', :status => status
+        render :file => path, :layout => 'application.html.erb', :status => status
       else
         head status
       end

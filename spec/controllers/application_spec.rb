@@ -45,7 +45,8 @@ describe ApplicationController do
     
   end
 
-  describe 'rescuing failed requests' do
+
+  describe 'rescueing failed requests' do
     
     def template_path(code)
       "#{RAILS_ROOT}/app/views/rescue/#{code}.html.erb"      
@@ -68,7 +69,7 @@ describe ApplicationController do
       end
               
       it 'should render the 404 error page ' do
-        controller.should_receive(:render).with(:file => template_path(404), :layout => 'application', :status => '404 Not Found') 
+        controller.should_receive(:render).with(:file => template_path(404), :layout => 'application.html.erb', :status => '404 Not Found') 
         do_rescue        
       end
     
@@ -86,7 +87,7 @@ describe ApplicationController do
       end
               
       it 'should render the 422 error page ' do
-        controller.should_receive(:render).with(:file => template_path(422), :layout => 'application', :status => '422 Unprocessable Entity') 
+        controller.should_receive(:render).with(:file => template_path(422), :layout => 'application.html.erb', :status => '422 Unprocessable Entity') 
         do_rescue        
       end
 
@@ -123,7 +124,7 @@ describe ApplicationController do
       end
 
       it 'should render the 500 error page ' do
-        controller.should_receive(:render).with(:file => template_path(500), :layout => 'application', :status => '500 Internal Server Error') 
+        controller.should_receive(:render).with(:file => template_path(500), :layout => 'application.html.erb', :status => '500 Internal Server Error') 
         do_rescue        
       end
 
@@ -135,5 +136,50 @@ describe ApplicationController do
     end
     
   end
+
+
+
+  describe 'default render patch (auto-respond-to HTML)' do
+    before do
+      @controller_class = ChangesetsController
+      @controller = @controller_class.new
+      (class << @controller; self; end).class_eval do
+        def controller_path #:nodoc:
+          self.class.name.underscore.gsub('_controller', '')
+        end
+        include Spec::Rails::Example::ControllerExampleGroup::ControllerInstanceMethods
+      end
+      
+      @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
+      @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
+      @project.stub!(:changesets).and_return(@changesets)
+    end
+    
+    it 'should render HTML if no specific format requested' do
+      get :index, :project_id => @project.to_param
+      response.should be_success
+      response.content_type.should == 'text/html' 
+    end
+
+    it 'should render the format if no specific format requested and expicitely allowed' do
+      get :index, :project_id => @project.to_param, :format => 'rss'
+      response.should be_success
+      response.content_type.should == 'application/rss+xml' 
+    end
+
+    it 'should return 406 Not Acceptable if requested format is not part of expicitely allowed ones' do
+      get :index, :project_id => @project.to_param, :format => 'xml'
+      response.code.should == '406'
+    end
+    
+    it 'should return 406 Not Acceptable if requested format is not HTML and no formats were specified' do
+      @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
+      @changesets.should_receive(:find).twice.and_return(nil)
+      get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
+      response.code.should == '406'
+    end
+
+  end
+
 
 end
