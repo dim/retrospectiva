@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
     project.resources :changesets
     project.resources :tickets, 
-      :collection => { :search => :any }, 
+      :collection => { :search => :any, :users => :post }, 
       :member => { :modify_summary => :put, :modify_content => :put, :modify_change_content => :put, :toggle_subscription => :post } do |ticket|
       ticket.download 'download/:id/:file_name', :controller => 'tickets', :action => 'download', :file_name => /.+/
       ticket.destroy_change ':id', :controller => 'tickets', :action => 'destroy_change',

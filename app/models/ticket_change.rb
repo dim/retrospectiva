@@ -11,8 +11,8 @@ class TicketChange < ActiveRecord::Base
   validates_length_of :content, :maximum => 50000, :allow_blank => true
   validates_association_of :ticket
 
-  delegate :project, :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id, :assigned_username,
-    :status_id=, :priority_id=, :milestone_id=, :property_ids=, :assigned_user_id=, :assigned_username=, :to => :ticket
+  delegate :project, :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id, :assigned_user,
+    :status_id=, :priority_id=, :milestone_id=, :property_ids=, :assigned_user_id=, :assigned_user=, :to => :ticket
   
   retro_previewable do |r|
     r.channel do |c, options|

@@ -136,6 +136,17 @@ class TicketsController < ProjectAreaController
     render :inline => '<%= markup(@content) %>'
   end
 
+  def users
+    if RetroCM[:ticketing][:user_assignment][:field_type] == 'text-field' 
+      @users = Project.current.users.with_permission(:tickets, :update).select do |record|
+        record.name.downcase.include?(params[:assigned_user].to_s.downcase)
+      end.first(5)
+      render :layout => false
+    else
+      raise ActionController::UnknownAction
+    end
+  end
+
   protected
 
     def find_report

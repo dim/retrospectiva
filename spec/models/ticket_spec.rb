@@ -267,22 +267,6 @@ describe Ticket do
         :joins=>nil, :order=>"tickets.updated_at DESC", :include=> nil)
       @ticket.previous_ticket(@filter)
     end
-
-    it 'should return the username of the assigned user' do
-      @ticket.assigned_username.should == 'agent'
-    end
-  
-    it 'should accept a valid username for user assignement' do
-      @ticket.assigned_user = nil
-      @ticket.assigned_user.should be_nil
-      @ticket.assigned_username = 'double_agent'
-      @ticket.assigned_user.should == users(:double_agent)
-    end
-
-    it 'should reject invalid username for user assignement' do
-      @ticket.assigned_username = 'not-in-the-system'
-      @ticket.assigned_user.should be_nil
-    end
     
     it 'should allow to update attributes without changing the timestamps' do
       original = @ticket.updated_at

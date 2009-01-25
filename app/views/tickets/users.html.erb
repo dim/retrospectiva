@@ -1,0 +1,7 @@
+<% if @users.any? -%>
+<ul class="autocomplete">
+  <% @users.each do |user| -%>
+    <li id="<%=h user.id %>"><%= highlight(h(user.name), params[:assigned_user].to_s) %></li>  
+  <% end -%>
+</ul>
+<% end -%>

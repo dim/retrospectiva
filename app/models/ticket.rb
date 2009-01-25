@@ -18,7 +18,7 @@ class Ticket < ActiveRecord::Base
   validates_length_of :content, :in => (1..50000)
   validates_association_of :status, :priority, :project
 
-  attr_accessible :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id, :assigned_username 
+  attr_accessible :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id 
 
   retro_previewable do |r|
     r.channel do |c, options|
@@ -163,16 +163,6 @@ class Ticket < ActiveRecord::Base
       subscribers << user
     end
     subscribers.include?(user)
-  end
-  
-  # Assigns the user by the username
-  def assigned_username=(value)
-    self.assigned_user = project.users.find :first, :conditions => ['users.username = ?', value.to_s]
-  end
-
-  # Returns the user name is a user is assigned, else nil
-  def assigned_username
-    assigned_user ? assigned_user.username : nil
   end
   
   # @Override: Make sure assigned properties are not saved instantly but applied after_save  

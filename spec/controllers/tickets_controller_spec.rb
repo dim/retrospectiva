@@ -903,4 +903,44 @@ describe TicketsController do
   end
 
 
+  describe "handling POST /tickets/users" do
+    
+    def do_post(options = {})
+      post :users, options.merge(:project_id => '1')
+    end
+    
+    describe 'if user assignment via text field is disabled' do
+      
+      before do
+        RetroCM[:ticketing][:user_assignment].stub!(:[]).and_return('drop-down')        
+      end
+      
+      it 'should raise an error (404)' do
+        RetroCM[:ticketing][:user_assignment].should_receive(:[]).with(:field_type).and_return('drop-down')        
+        lambda { do_post }.should raise_error(ActionController::UnknownAction)
+      end
+      
+    end
+
+    describe 'if user assignment via text field is enabled' do
+      
+      before do
+        @tom, @jerry = mock_model(User, :name => 'Tom'), mock_model(User, :name => 'Jerry')
+        @users_proxy = @project.stub_association!(:users, :with_permission => [@tom, @jerry])
+        RetroCM[:ticketing][:user_assignment].stub!(:[]).and_return('text-field')        
+      end
+      
+      it 'should find and assign matching users' do
+        @project.should_receive(:users).and_return(@users_proxy)
+        @users_proxy.should_receive(:with_permission).with(:tickets, :update).and_return([@tom, @jerry])
+        do_post(:assigned_user => 'to')
+        assigns[:users].should == [@tom]
+      end
+      
+    end
+    
+    
+  end
+
+
 end

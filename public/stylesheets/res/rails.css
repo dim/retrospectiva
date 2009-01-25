@@ -47,3 +47,8 @@ textarea.editor_field { height: 15em; width: 80%; }
 .pagination a:hover { background:none; border-color:#666; color:#333; } 
 .pagination .current { background:#3377BB; border-color:#666; color: #fff; }
 .pagination .intro { border:0; color: #000; }
+
+.autocomplete { background: #fff; list-style:none; border: 1px solid #ccc; margin:0; padding:0; width:100%; }
+.autocomplete li { padding: 4px 10px 4px 5px; cursor:pointer; } 
+.autocomplete li.selected { background-color: #ddd; }
+.autocomplete .highlight { border: none; background: transparent; font-weight: bold; color: #333; }
