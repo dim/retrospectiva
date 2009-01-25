@@ -6,12 +6,12 @@
     <%=h @wiki_page.title %>
   </div>
 
-  <% plus_form_for @wiki_page, :url => rename_project_wiki_page_path(Project.current, @wiki_page.title_was), :html => { :method => :put } do |f| -%>
+  <% plus_form_for @wiki_page, :url => update_title_project_wiki_page_path(Project.current, @wiki_page.title_was), :html => { :method => :put } do |f| -%>
     <%= f.error_messages %>
 
     <fieldset>
       <%= f.label_tag _('Title') + ':', :for => 'title' %>
-      <div><%= text_field_tag :title %></div>
+      <div><%= text_field_tag :title, @wiki_page.title %></div>
     </fieldset>  
       
     <fieldset>
