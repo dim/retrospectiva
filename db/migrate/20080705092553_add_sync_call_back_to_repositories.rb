@@ -3,7 +3,7 @@ class AddSyncCallBackToRepositories < ActiveRecord::Migration
     add_column :repositories, :sync_callback, :string, :limit => 255
     repositories = select_all "SELECT id, path FROM repositories WHERE use_svnsync = #{quote(true)}"
     repositories.each do |record|
-      execute "UPDATE repositories SET sync_callback = '/usr/bin/env svnsync sync file://#{repos['path']}' WHERE id = #{repos['id']}"
+      execute "UPDATE repositories SET sync_callback = '/usr/bin/env svnsync sync file://#{record['path']}' WHERE id = #{record['id']}"
     end
   end
 
