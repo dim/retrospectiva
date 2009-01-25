@@ -7,10 +7,11 @@ module WikiHelper
   def wiki_navigation
     links = []
 
+    links << link_to(_('Home'), project_wiki_page_path(Project.current, Project.current.wiki_title))
     links << link_to(_('Pages'), project_wiki_pages_path(Project.current))
     links << link_to(_('Files'), project_wiki_files_path(Project.current))
     
-    if User.current.permitted?(:wiki_pages, :edit)
+    if User.current.permitted?(:wiki_pages, :update)
       links << if @wiki_page.historic?
         link_to _('Rollback'), edit_project_wiki_page_path(Project.current, @wiki_page, :version => @wiki_page.number)
       else
@@ -47,7 +48,7 @@ module WikiHelper
   end
 
   private
-    
+
     def note_after_link(content)
       " <span class=\"small\">(#{content})</span>"
     end
