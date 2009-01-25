@@ -12,23 +12,28 @@ module DiffHelper
             :class => html_class_for_diff_row(i, line_set.size)
           )
         end
-        "<tbody class=\"side-by-side #{line_set.operation}\">#{table_rows.join("\n")}</tbody>"
+        "<tbody class=\"#{line_set.operation}\">#{table_rows.join("\n")}</tbody>"
       end.join("\n")      
     end
     
     content_tag :table, 
-      header_for_diff_table(scanner, path) + 
+      colgroup_for_diff_table +
+      header_for_diff_table(scanner, path) +      
       body_for_diff_table(tbody_tags),
-      :class => 'ln-code'
+      :class => 'code code-split'
   end
 
   protected
 
     def header_for_diff_table(scanner, path)
-      source_rev = link_to_browse h(scanner.source_rev), path, scanner.source_rev
-      target_rev = link_to_browse h(scanner.target_rev), path, scanner.target_rev
+      source_rev = link_to_browse h(truncate_revision(scanner.source_rev)), path, scanner.source_rev
+      target_rev = link_to_browse h(truncate_revision(scanner.target_rev)), path, scanner.target_rev
       "<thead><tr><th colspan=\"2\">#{source_rev}</th><th colspan=\"2\">#{target_rev}</th></tr></thead>"      
-    end  
+    end
+    
+    def colgroup_for_diff_table
+      '<colgroup><col class="code-line"/><col class="code-left"/><col class="code-line"/><col class="code-right"/></colgroup>'
+    end
     
     def body_for_diff_table(tbody_tags)
       separator = content_tag :tr,
@@ -48,5 +53,8 @@ module DiffHelper
       content_tag tag, "<pre>#{values ? h(values) : '&nbsp;'}</pre>", options
     end
 
+    def truncate_revision(revision)
+      Project.current.repository ? Project.current.repository.class.truncate_revision(revision) : revision      
+    end
 
 end

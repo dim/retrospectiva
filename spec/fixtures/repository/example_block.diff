@@ -1,0 +1,26 @@
+--- Revision 66c1706e3e642e9901cd8b760c6d7cd02a0c2852
++++ Revision 43d013c41659eff05c8a7fac89c11fcb469743bf
+@@ -43,10 +43,10 @@ class ProjectAreaController < ApplicationController
+       raise ActiveRecord::RecordNotFound, "Unable to find project '#{params[:project_id]}'"
+     end
+ 
+-    def respond_with_defaults
++    def respond_with_defaults(klass = nil)
+       respond_to do |format|
+         format.html
+-        format.rss  { render_rss }
++        format.rss  { render_rss(klass) }
+       end
+     end
+ 
+@@ -55,8 +55,8 @@ class ProjectAreaController < ApplicationController
+       @rss_channel = model.previewable.channel      
+     end
+ 
+-    def render_rss
+-      klass   = self.class.name.demodulize.gsub(/Controller$/, '').singularize.constantize
++    def render_rss(klass = nil)
++      klass ||= self.class.name.demodulize.gsub(/Controller$/, '').singularize.constantize
+       records = instance_variable_get("@#{klass.name.tableize}".to_sym)
+       render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
+     end

@@ -8,7 +8,7 @@
   <% @projects.each do |project| %>
     <div class="project">
       <h2><%= link_to h(project.name), project_path(project) -%>
-        <% unless project.info.blank? -%>&nbsp;
+        <% unless project.info.blank? -%>
           <span class="wee">
             <%= link_to_function _('Click for info'),
               visual_effect(:toggle_appear, "project_info_#{project.id}", :duration => 0.5) %>

@@ -2,6 +2,17 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 
 describe Repository::Abstract::DiffScanner do
 
+  def segment_types(block)
+    block.segments.map do |s|
+      s.class.name.demodulize.downcase.to_sym 
+    end      
+  end
+
+  def segment_infos(block)
+    block.segments.map(&:info)
+  end
+
+
   describe 'general test' do
 
     before do
@@ -35,20 +46,8 @@ describe Repository::Abstract::DiffScanner do
 
       it 'should correctly identify segments' do
         segments = @scanner.blocks[0].segments
-        segments[0].should be_instance_of(Repository::Abstract::DiffScanner::Copy) 
-        segments[1].should be_instance_of(Repository::Abstract::DiffScanner::Update)
-        segments[2].should be_instance_of(Repository::Abstract::DiffScanner::Copy)
-        segments[3].should be_instance_of(Repository::Abstract::DiffScanner::Update)
-        segments[4].should be_instance_of(Repository::Abstract::DiffScanner::Copy)
-        segments[5].should be_instance_of(Repository::Abstract::DiffScanner::Update)
-        segments[6].should be_instance_of(Repository::Abstract::DiffScanner::Copy)
-        segments[0].info.should == '3'
-        segments[1].info.should == '8/0'
-        segments[2].info.should == '5'
-        segments[3].info.should == '1/1'
-        segments[4].info.should == '2'
-        segments[5].info.should == '1/2'
-        segments[6].info.should == '3'
+        segment_types(@scanner.blocks[0]).should == [:copy, :update, :copy, :update, :copy, :update, :copy]
+        segment_infos(@scanner.blocks[0]).should == ['3', '8/0', '5', '1/1', '2', '1/2', '3']
       end
       
     end
@@ -75,6 +74,24 @@ describe Repository::Abstract::DiffScanner do
       
     end
 
+  end
+
+
+  describe 'complex block detection' do
+
+    before do
+      @content = File.read(RAILS_ROOT + '/spec/fixtures/repository/example_block.diff')
+      @scanner = Repository::Abstract::DiffScanner.new @content
+    end
+    
+    it 'should correctly extract diff blocks and segments' do
+      @scanner.blocks.should have(2).records
+      @scanner.blocks[0].segments.should have(5).records
+      segment_types(@scanner.blocks[0]).should == [:copy, :update, :copy, :update, :copy]
+      @scanner.blocks[1].segments.should have(3).records    
+      segment_types(@scanner.blocks[1]).should == [:copy, :update, :copy]
+    end
+        
   end
 
 end

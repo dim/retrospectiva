@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/changesets/show.html.erb" do
 
   before do 
-    @repository = mock_model(Repository, :diff_scanner => Repository::Abstract::DiffScanner)
+    @repository = stub_model(Repository::Subversion)
     @project = mock_current_project! :repository => @repository
     @project.stub!(:relativize_path).with('added.rb').and_return('added.rb')
     @project.stub!(:relativize_path).with('modified.rb').and_return('modified.rb')
@@ -72,7 +72,7 @@ END_DIFF
     end    
 
     it 'should not display the quick diffs' do
-      response.should_not have_tag('table.ln-code')
+      response.should_not have_tag('table.code')
     end    
   end
   
@@ -135,7 +135,7 @@ END_DIFF
   
     it 'should show the side-by-side diff' do
       do_show
-      response.should have_tag('table.ln-code') do
+      response.should have_tag('table.code') do
         with_tag 'thead' do
           with_tag 'th[colspan=2] a[href=?]', project_browse_path(@project, 'modified.rb', :rev => 'R5'),  'R5'
           with_tag 'th[colspan=2] a[href=?]', project_browse_path(@project, 'modified.rb', :rev => 'R10'), 'R10'          

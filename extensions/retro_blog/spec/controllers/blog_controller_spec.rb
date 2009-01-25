@@ -50,8 +50,16 @@ describe BlogController do
       response.should render_template(:index)
     end
 
+    it 'should indicate RSS download'
+
   end
 
+
+  describe 'GET /index.rss' do
+    
+    it 'is pending'
+    
+  end
 
   describe 'GET /show' do
     

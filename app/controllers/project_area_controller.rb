@@ -50,9 +50,9 @@ class ProjectAreaController < ApplicationController
       end
     end
 
-    def load_rss(model = nil)
-      model ||= self.class.name.gsub(/Controller$/, '').singularize.constantize
-      @rss_channel = model.previewable.channel      
+    def load_rss(klass = nil)
+      klass ||= self.class.name.gsub(/Controller$/, '').singularize.constantize
+      @rss_channel = klass.previewable.channel      
     end
 
     def render_rss(klass = nil)

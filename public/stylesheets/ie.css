@@ -7,7 +7,7 @@ sup {vertical-align:text-top;}
 sub {vertical-align:text-bottom;}
 #content {padding-top:10px;}
 #container {text-align:left;}
-code, table.ln-code td {font-size:0.9em;}
+code, table.code td {font-size:0.9em;}
 form fieldset {padding-top:30px;position:relative;}
 form fieldset legend {position:absolute;top:-10px;left:20px;border:1px solid #ccc;}
 pre {overflow-x:scroll;}

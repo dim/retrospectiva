@@ -19,13 +19,13 @@ class BlogController < ProjectAreaController
     :update  => ['update'],
     :delete  => ['destroy']
 
+  before_filter :load_rss, :only => :index
   before_filter :find_blog_post, :only => [:show, :comment, :edit, :update, :destroy]
   before_filter :new, :only => [:create]
   before_filter :load_categories, :only => [:index] 
   
   def index
-    @blog_posts = Project.current.blog_posts.posted_by(params[:u]).categorized_as(params[:c]).paginate :page => params[:page],
-      :include => [:categories, :user, :comments]
+    @blog_posts = Project.current.blog_posts.posted_by(params[:u]).categorized_as(params[:c]).paginate options_for_paginate
     respond_with_defaults(BlogPost)
   end
   
@@ -66,6 +66,10 @@ class BlogController < ProjectAreaController
   end
 
   protected 
+
+    def load_rss
+      super(BlogPost)
+    end
     
     def find_blog_post
       @blog_post = Project.current.blog_posts.find params[:id], :include => [:categories, :user, :comments]     
@@ -73,5 +77,11 @@ class BlogController < ProjectAreaController
 
     def load_categories
       @categories = Project.current.blog_posts.categories
+    end
+
+    def options_for_paginate
+      { :page => ( request.format.rss? ? 1 : params[:page] ), 
+        :per_page => ( request.format.rss? ? 5 : nil ),
+        :include => [:categories, :user, :comments] }
     end
 end

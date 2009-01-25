@@ -4,7 +4,7 @@
 <table class="record-list">
   <thead>
     <% top_navigation_for(@users, _('Create a new user'), new_admin_user_path, 4, 2) do -%>
-      &mdash;&nbsp;<%= _('Search') %>: <%= search_field_tag %>
+      &mdash; <%= _('Search') %>: <%= search_field_tag %>
     <% end -%>
     <tr>
       <th colspan="2"><%= _('User') %></th>

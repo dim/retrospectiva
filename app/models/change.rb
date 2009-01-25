@@ -25,7 +25,7 @@ class Change < ActiveRecord::Base
       node = repository.node(path, revision)
       if node.size < max_size
         @unified_diff = repository.unified_diff(path, previous_revision, revision)
-      end      
+      end
     end
     @unified_diff ||= ''
   end

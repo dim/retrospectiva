@@ -2,7 +2,7 @@ class Repository::Abstract::DiffScanner
   attr_reader :header, :blocks
   
   def initialize(unified_diff)
-    @header, *parts = unified_diff.split(marker_pattern)        
+    @header, *parts = unified_diff.split(marker_pattern)
     @blocks = (0..(parts.size/3-1)).map do |index|
       Block.new(*parts[index*3, 3])
     end
@@ -17,7 +17,7 @@ class Repository::Abstract::DiffScanner
   end
   
   def marker_pattern
-    /^@@ -(\d+),?\d* \+(\d+),?\d* @@\r?\n/m
+    /^@@ -(\d+),?\d* \+(\d+),?\d* @@\s/
   end
 
   def source_revision_pattern

@@ -23,7 +23,7 @@ class Repository::Git < Repository::Abstract
   def unified_diff(path, revision_a, revision_b)
     return '' unless active?
 
-    text = repo.git.run '', 'diff', '', {}, [revision_a, revision_b, '--', path]    
+    text = repo.git.run '', 'diff', '', {}, [revision_a, revision_b, '--', path]
     list = Grit::Diff.list_from_string(repo, text).first
     return '' unless list.present? and list.diff.start_with?('--- ')
     

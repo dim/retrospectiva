@@ -30,10 +30,15 @@ module BrowseHelper
       lines << link_to_code_line(num + 1)
       code << line.gsub(/\r?\n/, '')
     end
-    content_tag :table, 
-      "<tbody class=\"full-width\"><tr><th><pre>#{lines.join("\n")}</pre></th>"+
-      "<td><pre>#{code.join("\n")}</pre></td></tr></tbody>",
-      :class => 'ln-code'
+    content_tag :table, %Q(
+      <colgroup><col class="code-line"/><col class="code-full"/></colgroup>
+      <tbody>
+        <tr>
+          <th><pre>#{lines.join("\n")}</pre></th>
+          <td><pre>#{code.join("\n")}</pre></td>
+        </tr>
+      </tbody>
+    ), :class => 'code'      
   end
 
   def link_to_diff(label, current_node, path_tokens, revision)

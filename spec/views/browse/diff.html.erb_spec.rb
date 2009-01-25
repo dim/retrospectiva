@@ -4,7 +4,7 @@ describe "/browse/diff.html.erb" do
   include Spec::RepositoryInclude
   
   before do 
-    @repository = mock_model(Repository, :diff_scanner => Repository::Abstract::DiffScanner)
+    @repository = stub_model(Repository::Subversion)
     @project = mock_current_project! :repository => @repository
     @user = mock_current_user! :permitted? => false
     assigns[:node] = @node = mock_text_node

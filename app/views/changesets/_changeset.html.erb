@@ -11,7 +11,7 @@
   </div>
 
   <div class="span-16 last">
-    <h3 class="bottom-5" title="[<%=h changeset.revision %>]">
+    <h3 class="bottom-5" title="<%=h changeset.revision %>">
       <%= link_to_unless_current _('Changeset') + " #{changeset.short_revision}", 
         project_changeset_path(Project.current, changeset) %>
     </h3>

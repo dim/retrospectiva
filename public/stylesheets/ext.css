@@ -1,6 +1,6 @@
-body { margin: 0; }
+body { margin:0; }
 
-.container { margin: 0; }
+.container { margin:0; }
 .border,
 .colborder {border-color: #ddd;}
 .w-1 {width:30px;}
@@ -47,7 +47,7 @@ small       { font-size: 0.9em; }        /* Added small tag definition */
 big         { font-size: 1.1em; }        /* Added big tag definition */
 
 /* Override pre-code */
-pre,code,tt { font-family: 'DejaVu Sans Mono','Andale Mono','Lucida Console',monospace; line-height: 1; } 
+pre,code,tt { font-family: 'DejaVu Sans Mono','Lucida Console','Courier New','Andale Mono',monospace; line-height: 1; } 
 pre         { background: #f9f9fc; padding: 0.75em 1em; border: 1px solid #eee; overflow: auto; } 
 
 ul          { list-style-type: square; line-height: 1.5; }

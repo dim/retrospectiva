@@ -7,12 +7,12 @@
             :user => link_to(h(post.user.name),  project_blog_posts_path(Project.current, params.only(:c).merge(:u => post.user))), 
             :date => date_format(post.created_at) %> | 
     <% if post.categories.any? -%>
-      <%= category_links(post) %> &nbsp;|&nbsp;
+      <%= category_links(post) %> |
     <% end -%>
     <% if preview -%>
       <%= link_to _('{{count}} comments', :count => post.comments.size), project_blog_post_path(Project.current, post, :anchor => 'comments') %>
     <% else -%>
-      <%= link_to _('{{count}} comments', :count => post.comments.size), :anchor => 'comments' %> &nbsp;|&nbsp; 
+      <%= link_to _('{{count}} comments', :count => post.comments.size), :anchor => 'comments' %> | 
       <%= link_to _('Recent Posts'), project_blog_posts_path(Project.current) %>       
     <% end -%>
   </p>
