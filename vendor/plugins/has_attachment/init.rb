@@ -1,5 +1,5 @@
 require 'has_attachment'
-require 'attachment'
+require_dependency 'attachment'
 
 ActiveRecord::Base.class_eval do
   include HasAttachment
