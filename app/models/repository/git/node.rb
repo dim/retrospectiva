@@ -33,8 +33,9 @@ class Repository::Git::Node < Repository::Abstract::Node
     return [] unless dir?
 
     @sub_nodes ||= node.contents.map do |content|
+      next nil unless [Grit::Tree, Grit::Blob].include?(content.class)      
       self.class.new(repos, path + '/' + content.name, selected_revision, true)
-    end.sort_by {|n| [n.content_code, n.name.downcase] }
+    end.compact.sort_by {|n| [n.content_code, n.name.downcase] }
   end
 
   def content
