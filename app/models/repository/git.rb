@@ -25,7 +25,7 @@ class Repository::Git < Repository::Abstract
 
     text = repo.git.run '', 'diff', '', {}, [revision_a, revision_b, '--', path]
     list = Grit::Diff.list_from_string(repo, text).first
-    return '' unless list.present? and list.diff.start_with?('--- ')
+    return '' unless list.present? and list.diff.to_s.starts_with?('--- ')
     
     "--- Revision #{revision_a}\n+++ Revision #{revision_b}\n" + list.diff.
       gsub(/\A\-{3} .+?\n/, '').
