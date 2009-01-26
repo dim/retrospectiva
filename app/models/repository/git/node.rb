@@ -70,11 +70,7 @@ class Repository::Git::Node < Repository::Abstract::Node
     end
     
     def node
-      @node ||= if root?
-        repos.repo.tree(selected_revision)
-      else      
-        repos.repo.tree(selected_revision, [path]).contents.first
-      end
+      @node ||= fetch_node rescue nil
     end
 
     def sanitize_path(value)
@@ -85,5 +81,14 @@ class Repository::Git::Node < Repository::Abstract::Node
       path.blank?    
     end
   
+  private
+  
+    def fetch_node
+      if root? 
+        repos.repo.tree(selected_revision)
+      else 
+        repos.repo.tree(selected_revision, [path]).contents.first
+      end
+    end
 
 end  
