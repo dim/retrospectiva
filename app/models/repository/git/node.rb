@@ -4,13 +4,13 @@
 #++
 class Repository::Git::Node < Repository::Abstract::Node
   
-  def initialize(repos, path, selected_rev = nil)
+  def initialize(repos, path, selected_rev = nil, skip_check = false)
     super(repos, sanitize_path(path), selected_rev || 'HEAD')
-    raise_invalid_node_error! unless exists?
+    raise_invalid_node_error! unless skip_check || exists?
   end
 
   def revision
-    @revision ||= repos.history(path, selected_revision, 1).first || selected_revision    
+    @revision ||= repos.repo.log(selected_revision, path, :n => 1).map(&:id).first 
   end
 
   def author
@@ -33,7 +33,7 @@ class Repository::Git::Node < Repository::Abstract::Node
     return [] unless dir?
 
     @sub_nodes ||= node.contents.map do |content|
-      self.class.new(repos, path + '/' + content.name, selected_revision)
+      self.class.new(repos, path + '/' + content.name, selected_revision, true)
     end.sort_by {|n| [n.content_code, n.name.downcase] }
   end
 
@@ -62,7 +62,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   protected
 
     def exists?
-      node.present?
+      node.present? and revision.present?
     end
     
     def commit

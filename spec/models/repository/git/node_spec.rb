@@ -21,21 +21,36 @@ describe Repository::Git::Node do
 
   describe 'requesting a node' do    
     describe 'with an invalid revision' do
+
       it 'should raise an Invalid Revision exception' do
-        lambda { request_node("retrospectiva/config/environment.rb", invalid_revision) }.should 
-          raise_error(Repository::InvalidRevision)
+        lambda { 
+          request_node("retrospectiva/config/environment.rb", invalid_revision) 
+        }.should raise_error(Repository::Abstract::Node::InvalidPathForRevision)
       end
+
+      it 'should raise an Invalid Revision exception' do
+        lambda { 
+          request_node('', '127') 
+        }.should raise_error(Repository::Abstract::Node::InvalidPathForRevision)
+      end
+
     end
 
     describe 'with an invalid path' do
       it 'should raise an Invalid Path exception' do
-        lambda { request_node('nonexistent') }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)
-        lambda { request_node("retrospectiva/script/weird.rb") }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)          
-        lambda { request_node("retrospectiva/script/weird.rb", invalid_revision) }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)          
+        lambda { 
+          request_node('nonexistent') 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)
+
+        lambda { 
+          request_node("retrospectiva/script/weird.rb") 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)          
+
+        lambda { 
+          request_node("retrospectiva/script/weird.rb", invalid_revision) 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)          
       end
+
     end
     
     describe 'with valid path and revision' do

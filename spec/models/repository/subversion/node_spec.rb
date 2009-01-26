@@ -10,19 +10,25 @@ describe Repository::Subversion::Node do
   describe 'requesting a node' do    
     describe 'with an invalid revision' do
       it 'should raise an Invalid Revision exception' do
-        lambda { request_node("retrospectiva/config/environment.rb", 100000) }.should 
-          raise_error(Repository::InvalidRevision)
+        lambda { 
+          request_node("retrospectiva/config/environment.rb", 100000) 
+        }.should raise_error(Repository::InvalidRevision)
       end
     end
 
     describe 'with an invalid path' do
       it 'should raise an Invalid Path exception' do
-        lambda { request_node('nonexistent') }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)
-        lambda { request_node("retrospectiva/script/weird.rb") }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)          
-        lambda { request_node("retrospectiva/script/weird.rb", 5) }.should 
-          raise_error(Repository::Abstract::Node::InvalidPath)          
+        lambda { 
+          request_node('nonexistent') 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)
+        
+        lambda { 
+          request_node("retrospectiva/script/weird.rb") 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)          
+        
+        lambda { 
+          request_node("retrospectiva/script/weird.rb", 5) 
+        }.should raise_error(Repository::Abstract::Node::InvalidPath)          
       end
     end
     
