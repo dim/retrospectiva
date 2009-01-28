@@ -18,7 +18,7 @@ class BlogCommentsController < ProjectAreaController
       flash[:notice] = _('Comment was successfully created.')      
       redirect_to project_blog_post_path(Project.current, @blog_post, :anchor => "comment#{@blog_comment.to_param}")
     else
-      render :template => 'blog/show.html'
+      render :template => 'blog/show'
     end
   end
 

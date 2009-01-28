@@ -5,5 +5,5 @@
     <p><%= link_to _('Leave a comment'), :anchor => 'blog-comment-form' %></p>
   <% end -%>
   
-  <%= render :partial => 'comment', :collection => @blog_post.comments -%>
+  <%= render :partial => 'blog/comment', :collection => @blog_post.comments -%>
 </div>
