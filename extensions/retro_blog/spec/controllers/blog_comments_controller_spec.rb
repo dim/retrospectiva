@@ -65,7 +65,7 @@ describe BlogCommentsController do
       it "should render the form again" do
         do_post
         response.should be_success
-        response.should render_template('blog/show.html')
+        response.should render_template('blog/show')
       end      
       
       it 'should NOT cache the author setting' do
