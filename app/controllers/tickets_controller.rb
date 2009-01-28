@@ -19,7 +19,7 @@ class TicketsController < ProjectAreaController
   end
 
   require_permissions :tickets,
-    :view   => ['index', 'show', 'download', 'users'],
+    :view   => ['index', 'search', 'show', 'download', 'users'],
     :create => ['new', 'create'],
     :update => ['update'],
     :delete => ['destroy', 'destroy_change'],
