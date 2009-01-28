@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.with_options :controller => 'markup' do |markup|
-    markup.markup_preview 'markup/preview', :action => 'preview'
+    markup.markup_preview 'markup/preview.js', :action => 'preview', :format => 'js'
     markup.markup_reference 'markup/reference', :action => 'reference'
   end
 

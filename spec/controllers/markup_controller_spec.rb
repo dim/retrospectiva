@@ -24,4 +24,29 @@ describe MarkupController do
     
   end
 
+  describe 'POST /preview' do
+    integrate_views
+    
+    def do_post
+      xhr :post, :preview, :content => '', :element_id => 'content_editor'
+    end
+    
+    it 'should reject non-xhr requests' do
+      post  :preview, :element_id => 'content_editor'
+      response.code.should == '400'      
+    end
+
+    it 'should reject requests without an element ID' do
+      xhr :post,  :preview
+      response.code.should == '400'      
+    end
+    
+    it 'should load the template' do
+      do_post
+      response.should be_success
+      response.should render_template(:preview)
+    end
+    
+  end
+
 end

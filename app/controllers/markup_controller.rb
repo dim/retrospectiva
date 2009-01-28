@@ -3,6 +3,7 @@ class MarkupController < ApplicationController
   verify_action :preview, :params => [:element_id], :xhr => true
 
   def preview
+    respond_to(:js)
   end
   
   def reference
