@@ -33,7 +33,7 @@ class Repository::Git::Node < Repository::Abstract::Node
     return [] unless dir?
 
     @sub_nodes ||= node.contents.map do |content|
-      next nil unless [Grit::Tree, Grit::Blob].include?(content.class)      
+      next nil unless content.acts_like?(:node)      
       self.class.new(repos, path + '/' + content.name, selected_revision, true)
     end.compact.sort_by {|n| [n.content_code, n.name.downcase] }
   end
@@ -63,7 +63,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   protected
 
     def exists?
-      node.present? and revision.present?
+      node.acts_like?(:node) and revision.present?
     end
     
     def commit
@@ -83,9 +83,9 @@ class Repository::Git::Node < Repository::Abstract::Node
     end
   
   private
-  
+
     def fetch_node
-      if root? 
+      if root?
         repos.repo.tree(selected_revision)
       else 
         repos.repo.tree(selected_revision, [path]).contents.first
