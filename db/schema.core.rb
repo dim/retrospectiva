@@ -96,10 +96,12 @@ ActiveRecord::Schema.define(:version => 20090124095048) do
     t.date     "finished_on"
     t.integer  "rank",                      :default => 9999
     t.date     "started_on"
+    t.datetime "updated_at"
   end
 
   add_index "milestones", ["project_id"], :name => "i_mst_on_project_id"
   add_index "milestones", ["rank"], :name => "i_mst_on_rank"
+  add_index "milestones", ["updated_at"], :name => "i_mst_on_updated_at"
 
   create_table "priorities", :force => true do |t|
     t.string  "name",          :limit => 50

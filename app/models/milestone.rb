@@ -20,9 +20,9 @@ class Milestone < ActiveRecord::Base
     end
     r.item do |i, milestone, options|
       project = options[:project] || Project.current
-      i.title = milestone.name
+      i.title = _('Milestone') + ': ' + milestone.name
       i.description = milestone.info
-      i.date = milestone.started_on.to_time
+      i.date = milestone.updated_at.to_time
       i.link = i.guid = i.route(:project_milestones_url, project)
     end
   end
@@ -43,16 +43,18 @@ class Milestone < ActiveRecord::Base
     
     def full_text_search(query)
       filter = Retro::Search::exclusive query, *searchable_column_names
-      feedable.find :all, :conditions => filter, :limit => 100
+      feedable.find :all, 
+        :conditions => filter, 
+        :limit => 100,
+        :order => default_order
     end
 
   end
 
-  named_scope :feedable, :limit => 10, :order => default_order    
+  named_scope :feedable, :limit => 10, :order => 'milestones.updated_at DESC'    
 
   named_scope :active_on, lambda { |date| { 
-    :conditions => ['( milestones.finished_on IS NULL OR milestones.finished_on >= ? )', date], 
-    :order => 'milestones.rank' 
+    :conditions => ['( milestones.finished_on IS NULL OR milestones.finished_on >= ? )', date] 
   }}    
   
   def open_tickets

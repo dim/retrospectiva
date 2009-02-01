@@ -51,7 +51,7 @@ describe Milestone do
         end
         
         it 'should have a valid title' do
-          @item.title.should == @milestone.name
+          @item.title.should == 'Milestone: ' + @milestone.name
         end
         
         it 'should have a valid description' do
@@ -63,7 +63,7 @@ describe Milestone do
         end
         
         it 'should have a date' do
-          @item.date.should == @milestone.started_on.to_time
+          @item.date.should == @milestone.updated_at
         end      
         
       end
