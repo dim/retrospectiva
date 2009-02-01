@@ -292,7 +292,7 @@ describe BrowseController do
         :include => [:changes],
         :page => nil,
         :conditions => ['changes.path LIKE ? AND changes.name != ?', 'path/%', 'D'],
-        :order => 'changesets.revised_at DESC',
+        :order => 'changesets.created_at DESC',
         :per_page => 25        
       ).and_return(@changesets)
       do_get

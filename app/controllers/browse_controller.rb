@@ -9,10 +9,12 @@ class BrowseController < ProjectAreaController
     end
     i.rank = 200
   end
+
   require_permissions :code, 
     :browse => ['index', 'download', 'revisions', 'diff']  
 
-  verify_action :diff, :params => [:compare_with]
+  verify :params => [:compare_with], :only => :diff
+
   before_filter :fetch_node
   before_filter :verify_file_node, :only => ['download', 'diff']
 
@@ -37,7 +39,7 @@ class BrowseController < ProjectAreaController
       :page => params[:page],
       :conditions => ['changes.path LIKE ? AND changes.name != ?', path_pattern, 'D'],
       :per_page => 25,
-      :order => 'changesets.revised_at DESC')
+      :order => 'changesets.created_at DESC')
   end
 
   def diff

@@ -26,11 +26,10 @@ class TicketsController < ProjectAreaController
     :modify => ['modify_summary', 'modify_content', 'modify_change_content'],
     :watch  => ['toggle_subscription']
 
-  verify        :only => [:modify_summary, :modify_content, :modify_change_content], :xhr => true, :method => :put
-  verify_action :destroy_change, :method => :delete
-  verify_action :toggle_subscription, :method => :post
+  enable_private_rss :only => :index
 
-  before_filter :load_rss, :only => :index
+  verify        :xhr => true, :only => [:modify_summary, :modify_content, :modify_change_content]
+
   before_filter :find_report, :only => [:index, :search]
   before_filter :setup_filters, :only => [:index, :search]
 
@@ -182,12 +181,12 @@ class TicketsController < ProjectAreaController
 
     def find_ticket_and_verify_permissions
       @ticket = Project.current.tickets.find(params[:id])
-      refuse_authorization! unless User.current.permitted?(:tickets, :modify, @ticket)
+      failed_authorization! unless User.current.permitted?(:tickets, :modify, @ticket)
     end
 
     def find_change_and_verify_permissions
       @ticket_change = Project.current.ticket_changes.find(params[:id])
-      refuse_authorization! unless User.current.permitted?(:tickets, :modify, @ticket_change)
+      failed_authorization! unless User.current.permitted?(:tickets, :modify, @ticket_change)
     end
 
     def find_and_verify_attachment

@@ -5,7 +5,7 @@
 class ChangesetObserver < ActiveRecord::Observer
 
   def before_create(changeset)
-    changeset.user = User.find_by_scm_name_and_active(changeset.author, true)
+    changeset.user = User.active.find_by_scm_name changeset.author
     true
   end
   

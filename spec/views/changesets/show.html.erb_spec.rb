@@ -33,7 +33,7 @@ END_DIFF
       :short_revision => 'REV1',
       :author => 'dim',
       :log => 'log',
-      :revised_at => Date.today.to_time,
+      :created_at => Date.today.to_time,
       :user => nil,
       :changes => [@c1, @c2, @c3]
     assigns[:changeset] = @changeset

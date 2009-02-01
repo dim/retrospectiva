@@ -598,7 +598,7 @@ describe TicketsController do
       @ticket = mock_model(Ticket, :update_attribute_without_timestamps => true, :summary => 'NEW', :summary_was => 'WAS')
       @tickets_proxy.stub!(:find).and_return(@ticket)
       @user.stub!(:permitted?).and_return(true)
-      controller.stub!(:refuse_authorization!)
+      controller.stub!(:failed_authorization)
     end
 
     def do_xhr_put
@@ -610,11 +610,6 @@ describe TicketsController do
       response.code.should == '400'
     end
 
-    it 'should reject non-PUT requests' do
-      xhr :get, :modify_summary, :project_id => @project.to_param, :id => '1', :value => 'NEW'
-      response.code.should == '400'
-    end
-
     it 'should find the ticket' do
       @tickets_proxy.should_receive(:find).with('1').and_return(@ticket)
       do_xhr_put
@@ -623,13 +618,13 @@ describe TicketsController do
 
     it 'should validate if the ticket is modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket).and_return(true)
-      controller.should_not_receive(:refuse_authorization!)
+      controller.should_not_receive(:failed_authorization!)
       do_xhr_put
     end
 
     it 'should refuse authorization if the ticket is not modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket).and_return(false)
-      controller.should_receive(:refuse_authorization!)
+      controller.should_receive(:failed_authorization!)
       do_xhr_put
     end
 
@@ -665,7 +660,7 @@ describe TicketsController do
       @ticket = mock_model(Ticket, :update_attribute_without_timestamps => true, :content => 'NEW', :content_was => 'WAS')
       @tickets_proxy.stub!(:find).and_return(@ticket)
       @user.stub!(:permitted?).and_return(true)
-      controller.stub!(:refuse_authorization!)
+      controller.stub!(:failed_authorization!)
     end
 
     def do_xhr_put
@@ -677,11 +672,6 @@ describe TicketsController do
       response.code.should == '400'
     end
 
-    it 'should reject non-PUT requests' do
-      xhr :get, :modify_content, :project_id => @project.to_param, :id => '1', :value => 'NEW'
-      response.code.should == '400'
-    end
-
     it 'should find the ticket' do
       @tickets_proxy.should_receive(:find).with('1').and_return(@ticket)
       do_xhr_put
@@ -690,13 +680,13 @@ describe TicketsController do
 
     it 'should validate if the ticket is modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket).and_return(true)
-      controller.should_not_receive(:refuse_authorization!)
+      controller.should_not_receive(:failed_authorization!)
       do_xhr_put
     end
 
     it 'should refuse authorization if the ticket is not modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket).and_return(false)
-      controller.should_receive(:refuse_authorization!)
+      controller.should_receive(:failed_authorization!)
       do_xhr_put
     end
 
@@ -731,7 +721,7 @@ describe TicketsController do
       @ticket_change = mock_model(TicketChange, :update_attribute => true, :content => 'NEW', :content_was => 'WAS')
       @changes_proxy.stub!(:find).and_return(@ticket_change)
       @user.stub!(:permitted?).and_return(true)
-      controller.stub!(:refuse_authorization!)
+      controller.stub!(:failed_authorization!)
     end
 
     def do_xhr_put
@@ -743,11 +733,6 @@ describe TicketsController do
       response.code.should == '400'
     end
 
-    it 'should reject non-PUT requests' do
-      xhr :get, :modify_change_content, :project_id => @project.to_param, :id => '1', :value => 'NEW'
-      response.code.should == '400'
-    end
-
     it 'should find the ticket change' do
       @changes_proxy.should_receive(:find).with('1').and_return(@ticket_change)
       do_xhr_put
@@ -756,13 +741,13 @@ describe TicketsController do
 
     it 'should validate if the ticket is modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket_change).and_return(true)
-      controller.should_not_receive(:refuse_authorization!)
+      controller.should_not_receive(:failed_authorization!)
       do_xhr_put
     end
 
     it 'should refuse authorization if the ticket is not modifiable' do
       @user.should_receive(:permitted?).with(:tickets, :modify, @ticket_change).and_return(false)
-      controller.should_receive(:refuse_authorization!)
+      controller.should_receive(:failed_authorization!)
       do_xhr_put
     end
 
@@ -833,11 +818,6 @@ describe TicketsController do
 
     def do_delete
       delete :destroy_change, :project_id => @project.to_param, :ticket_id => '1', :id => '2'
-    end
-
-    it 'should reject non-DELETE requests' do
-      get :destroy_change, :project_id => @project.to_param, :ticket_id => '1', :id => '2'
-      response.code.should == '400'
     end
 
     it 'should find and assign the ticket change and the ticket' do

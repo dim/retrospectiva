@@ -26,11 +26,13 @@ class Changeset < ActiveRecord::Base
       i.title = _('Changeset {{revision}}', :revision => changeset.revision)
       i.description = changeset.log
       i.author = changeset.author
-      i.date = changeset.revised_at
+      i.date = changeset.created_at
       i.link = i.guid = i.route(:project_changeset_url, project, changeset)
     end
   end
  
+  named_scope :feedable, :limit => 10, :order => 'changesets.created_at DESC'    
+  
   class << self
     def per_page
       5
@@ -42,10 +44,7 @@ class Changeset < ActiveRecord::Base
     
     def full_text_search(query)
       filter = Retro::Search::exclusive query, *searchable_column_names
-      find :all,
-        :conditions => filter,
-        :limit => 100,
-        :order => 'changesets.revised_at DESC'      
+      feedable.find :all, :conditions => filter, :limit => 100
     end
 
     def update_project_associations!
@@ -94,14 +93,14 @@ class Changeset < ActiveRecord::Base
   
   def next_by_project(project)
     project.changesets.find :first, 
-      :conditions => ['changesets.revised_at > ?', revised_at],
-      :order => 'changesets.revised_at'
+      :conditions => ['changesets.created_at > ?', created_at],
+      :order => 'changesets.created_at'
   end
 
   def previous_by_project(project)    
     project.changesets.find :first, 
-      :conditions => ['changesets.revised_at < ?', revised_at],
-      :order => 'changesets.revised_at DESC'
+      :conditions => ['changesets.created_at < ?', created_at],
+      :order => 'changesets.created_at DESC'
   end
 
 end

@@ -6,18 +6,20 @@ class ChangesetsController < ProjectAreaController
     end
     i.rank = 100
   end
+  
   require_permissions :changesets, 
     :view => ['index', 'show']  
+
   keep_params! :only => [:index], :exclude => [:project_id]
 
-  before_filter :load_rss, :only => :index
+  enable_private_rss :only => :index
 
   def index
     @changesets = Project.current.changesets.paginate(
       :include => [:user],
       :page => ( request.format.rss? ? 1 : params[:page] ),
       :per_page => ( request.format.rss? ? 10 : nil ),
-      :order => 'changesets.revised_at DESC')
+      :order => 'changesets.created_at DESC')
     respond_with_defaults
   end
   

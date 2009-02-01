@@ -11,7 +11,7 @@ describe "/browse/revisions.html.erb" do
       mock_model(Changeset,
         :revision => 'R10',
         :short_revision => 'R10',
-        :revised_at => 1.month.ago,
+        :created_at => 1.month.ago,
         :author => 'me',
         :log => 'LOG1'
       ),

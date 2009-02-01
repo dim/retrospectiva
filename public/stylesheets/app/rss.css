@@ -1,0 +1,4 @@
+.rss .rss-icons { padding-right: 10px; }
+.rss .rss-icons a:hover { background: transparent; }
+.rss .rss-icons a img { padding: 1px; border:1px solid #ccc; width: 12px; height:12px; }
+.rss .rss-icons a:hover img { border-color:#888; }

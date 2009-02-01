@@ -10,8 +10,10 @@ module RoutingFilter
     end
         
     def around_generate(*args, &block)
-      returning yield do |result|
-        result.gsub!(/^\/projects\/#{Regexp.escape(Project.central.to_param)}(.+)$/, '\1') if Project.central
+      returning yield do |path|
+        if Project.central and path != "/projects/#{Project.central.to_param}.rss"
+          path.gsub!(/^\/projects\/#{Regexp.escape(Project.central.to_param)}(.+)$/, '\1')
+        end
       end
     end
 

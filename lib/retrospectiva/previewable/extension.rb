@@ -11,7 +11,9 @@ module Retrospectiva
     end
     
     def self.klasses
-      class_names.map(&:constantize)
+      class_names.map(&:constantize).select do |klass|
+        klass.previewable.channel?
+      end
     end
     
     module Extension
@@ -38,11 +40,15 @@ module Retrospectiva
           respond_to?(:full_text_search)
         end
 
+        def feedable?
+          respond_to?(:feedable)
+        end
+
         def to_rss(records, options = {})
           RSS::Maker.make('2.0') do |rss|
             previewable.channel(options).apply_to!(rss.channel)
             records.each do |record|
-              record.previewable(options).apply_to!(rss.items.new_item)
+              record.to_rss(rss.items.new_item, options)
             end
             rss.items.do_sort = true
           end
@@ -53,6 +59,10 @@ module Retrospectiva
 
         def previewable(options = {})
           self.class.previewable.item(self, options)
+        end
+        
+        def to_rss(builder_item, options)
+          previewable(options).apply_to!(builder_item)
         end
         
       end

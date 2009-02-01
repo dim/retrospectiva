@@ -76,7 +76,7 @@ describe Changeset do
         end
         
         it 'should have a date' do
-          @item.date.should == @changeset.revised_at
+          @item.date.should == @changeset.created_at
         end      
         
       end

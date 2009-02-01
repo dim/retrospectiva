@@ -44,10 +44,11 @@ class BlogPost < ActiveRecord::Base
   }
 
   named_scope :posted_by, lambda {|user_id|
-    return {} if user_id.blank?
-    
+    return {} if user_id.blank?    
     { :conditions => ['users.id = ?', user_id], :include => :user }
   }
+
+  named_scope :feedable, :order => 'created_at DESC', :limit => 10
 
   class << self
     

@@ -4,10 +4,12 @@
 #++
 class BlogCommentsController < ProjectAreaController
   retrospectiva_extension('retro_blog')
-  use_menu_item_from 'BlogController'
   helper BlogHelper
 
-  require_permissions :blog_posts, :comment => ['create']
+  menu_item :use => 'BlogController'
+
+  require_permissions :blog_posts, 
+    :comment => ['create']
 
   before_filter :find_blog_post
   

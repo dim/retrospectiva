@@ -59,7 +59,7 @@ module Retrospectiva
         Dir[File.join(path, '*_controller.rb')].each do |file|            
           File.basename(file, '.rb').classify.constantize
         end   
-      end
+      end && true
     end
     private :preload_controllers!
             

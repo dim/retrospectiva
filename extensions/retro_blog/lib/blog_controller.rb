@@ -19,7 +19,8 @@ class BlogController < ProjectAreaController
     :update  => ['update'],
     :delete  => ['destroy']
 
-  before_filter :load_rss, :only => :index
+  enable_private_rss :only => :index
+  
   before_filter :find_blog_post, :only => [:show, :comment, :edit, :update, :destroy]
   before_filter :new, :only => [:create]
   before_filter :load_categories, :only => [:index] 
@@ -67,10 +68,6 @@ class BlogController < ProjectAreaController
 
   protected 
 
-    def load_rss
-      super(BlogPost)
-    end
-    
     def find_blog_post
       @blog_post = Project.current.blog_posts.find params[:id], :include => [:categories, :user, :comments]     
     end
@@ -84,6 +81,7 @@ class BlogController < ProjectAreaController
     def options_for_paginate
       { :page => ( request.format.rss? ? 1 : params[:page] ), 
         :per_page => ( request.format.rss? ? 5 : nil ),
-        :include => [:categories, :user, :comments] }
+        :include => [:categories, :user, :comments],
+        :order => 'created_at DESC' }
     end
 end

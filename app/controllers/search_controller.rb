@@ -9,21 +9,11 @@ class SearchController < ProjectAreaController
   require_permissions :content, 
     :search => ['index']
 
-  before_filter :load_channels
-  
   def index
+    @channels_index = load_channels(:searchable?)
     @results = params[:q].blank? ? [] : query_results
   end
-  
-  protected
     
-    def load_channels
-      @channels_index = Retrospectiva::Previewable.klasses.select(&:searchable?).group_by do |klass|
-        channel = klass.previewable.channel
-        User.current.has_access?(channel.path) ? channel : nil
-      end.delete_if {|k,| k.nil? }
-    end
-  
   private
   
     def query_results

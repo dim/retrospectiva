@@ -3,8 +3,7 @@
 # Please read LICENSE document for more information.
 #++
 class Admin::ReportsController < AdminAreaController
-  verify_restful_actions!
-  verify_action :sort, :method => :put, :xhr => true
+  verify :xhr => true, :only => :sort
 
   before_filter :find_project
   before_filter :new, :only => [:create]

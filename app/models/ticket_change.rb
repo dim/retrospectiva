@@ -15,14 +15,6 @@ class TicketChange < ActiveRecord::Base
     :status_id=, :priority_id=, :milestone_id=, :property_ids=, :assigned_user_id=, :assigned_user=, :to => :ticket
   
   retro_previewable do |r|
-    r.channel do |c, options|
-      project = options[:project] || Project.current
-      c.name = 'tickets'
-      c.title = _('Tickets')
-      c.description = _('Tickets for {{project}}', :project => project.name)
-      c.link = c.route(:project_tickets_url, project)
-    end
-    
     r.item do |i, change, options|
       project = options[:project] || Project.current
       i.title = _('Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}', :id => change.ticket.id, :status => change.ticket.status.name, :author => change.author, :summary => change.ticket.summary)

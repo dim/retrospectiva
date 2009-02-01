@@ -42,7 +42,7 @@ class Repository::Git < Repository::Abstract
   def sync_changesets
     return unless active?
 
-    last_changeset = changesets.find :first, :select => 'revision', :order => 'revised_at DESC'
+    last_changeset = changesets.find :first, :select => 'revision', :order => 'created_at DESC'
     revisions = if last_changeset and last_commit = repo.commit(last_changeset.revision) and head = repo.commits('master', 1).first      
       repo.commits_between(last_commit, head)
     else
@@ -86,7 +86,7 @@ class Repository::Git < Repository::Abstract
       changeset = changesets.build :revision => revision.to_s, 
         :author => commit.committer.name, 
         :log => commit.message, 
-        :revised_at => commit.committed_date      
+        :created_at => commit.committed_date      
       changeset.skip_project_synchronization = true
       [changeset, node_data]
     end

@@ -22,7 +22,7 @@ share_as :EveryAdminAreaController do
   end
 
   it "should grant access to administrators" do
-    mock_current_user!(:admin? => true)
+    mock_current_user!(:admin? => true, :name => 'Admin')
     controller.class.rspec_reset
     controller.send(:action_methods).each do |action|      
       lambda { request_restfully(action) }.should_not raise_error(RetroAM::NoAuthorizationError)
@@ -30,7 +30,7 @@ share_as :EveryAdminAreaController do
   end
 
   it "should deny access to ordinary users" do
-    mock_current_user!(:admin? => false)
+    mock_current_user!(:admin? => false, :name => 'Ordinary')
     controller.class.rspec_reset    
     controller.send(:action_methods).each do |action|
       lambda { request_restfully(action) }.should raise_error(RetroAM::NoAuthorizationError)

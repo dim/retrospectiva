@@ -59,7 +59,7 @@ describe Milestone do
         end
         
         it 'should have a valid link' do
-          @item.link.should == "http://test.host/projects/retrospectiva/milestones/#{@milestone.id}"
+          @item.link.should == "http://test.host/projects/retrospectiva/milestones"
         end
         
         it 'should have a date' do

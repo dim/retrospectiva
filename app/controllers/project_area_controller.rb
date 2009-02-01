@@ -4,20 +4,24 @@ class ProjectAreaController < ApplicationController
 
   class << self
     
-    def menu_item(name, options = {}, &block)
-      RetroAM.menu_map.push(self, name, options, &block)
-    end
-    
-    def use_menu_item_from(controller_name)
-      RetroAM.menu_links[name] = controller_name      
+    def menu_item(*args, &block)
+      options = args.extract_options!
+      
+      if args.first      
+        RetroAM.menu_map.push(self, args.first, options, &block)
+      elsif options[:use]
+        RetroAM.menu_links[name] = options[:use]        
+      elsif options[:none]
+        RetroAM.menu_links[name] = options[:use]        
+      end      
     end
     
     def authorize?(action_name, request_params = {}, user = User.current, project = Project.current)
       name = RetroAM.menu_links[self.name] || self.name
       item = RetroAM.menu_items.find {|i| i.active?(name, action_name) }
       module_enabled?(project, item) && module_accessible?(project, item) ? super : false
-    end
-
+    end       
+    
     def module_enabled?(project, item)
       project.present? and item.present? and project.enabled_modules.include?(item.name)
     end    
@@ -48,11 +52,6 @@ class ProjectAreaController < ApplicationController
         format.html
         format.rss  { render_rss(klass) }
       end
-    end
-
-    def load_rss(klass = nil)
-      klass ||= self.class.name.gsub(/Controller$/, '').singularize.constantize
-      @rss_channel = klass.previewable.channel      
     end
 
     def render_rss(klass = nil)

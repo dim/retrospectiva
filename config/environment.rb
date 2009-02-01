@@ -81,7 +81,8 @@ Rails::Initializer.run do |config|
   config.after_initialize do
     RetroCM.reload!
     RetroEM.load!(config)
-
+    Retrospectiva::Previewable.load!
+    
     ActionController::UrlWriter.reload!
     ActionController::Base.session_options.merge!(
       :session_key => RetroCM[:general][:basic][:session_key],

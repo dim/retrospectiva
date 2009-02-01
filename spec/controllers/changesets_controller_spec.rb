@@ -5,7 +5,7 @@ describe ChangesetsController do
 
   before do
     @project = permit_access_with_current_project! :name => 'Any'
-    @changesets = [mock_model(Changeset, :revision => 'R10', :log => 'L1', :author => 'A1', :revised_at => 1.month.ago)]
+    @changesets = [mock_model(Changeset, :revision => 'R10', :log => 'L1', :author => 'A1', :created_at => 1.month.ago)]
     @proxy = @project.stub_association!(:changesets)
   end
   
@@ -25,7 +25,7 @@ describe ChangesetsController do
 
     it "should find changesets" do
       @proxy.should_receive(:paginate).
-        with(:per_page=>nil, :page=>nil, :order=>'changesets.revised_at DESC', :include=>[:user]).
+        with(:per_page=>nil, :page=>nil, :order=>'changesets.created_at DESC', :include=>[:user]).
         and_return(@changesets)
       do_get
     end
@@ -50,7 +50,7 @@ describe ChangesetsController do
   
     it "should find changesets" do
       @proxy.should_receive(:paginate).
-        with(:per_page=>10, :page=>1, :order=>'changesets.revised_at DESC', :include=>[:user]).
+        with(:per_page=>10, :page=>1, :order=>'changesets.created_at DESC', :include=>[:user]).
         and_return(@changesets)
       do_get
     end

@@ -295,25 +295,10 @@ describe TicketChange do
   describe 'previewable' do  
       
     describe 'channel' do
-      before do
-        @channel = TicketChange.previewable.channel(:project => projects(:retro))
-      end
       
-      it 'should have a valid name' do
-        @channel.name.should == 'tickets'
+      it 'should have no channel' do
+        TicketChange.previewable.channel?.should be(false)
       end
-      
-      it 'should have a valid title' do
-        @channel.title.should == 'Tickets'
-      end
-      
-      it 'should have a valid description' do
-        @channel.description.should == 'Tickets for Retrospectiva'
-      end
-      
-      it 'should have a valid link' do
-        @channel.link.should == 'http://test.host/projects/retrospectiva/tickets'
-      end      
 
     end
 

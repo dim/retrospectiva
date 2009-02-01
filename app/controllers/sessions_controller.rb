@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  verify_action :secure, :method => :post, :params => :username, :xhr => true
+  verify :params => [:username], :xhr => true, :only => :secure
 
   prepend_before_filter :reset_session, :only => [:destroy]
   before_filter :verify_secure_authentication, :only => [:secure]
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def secure
-    user = User.find_by_username_and_active params[:username], true
+    user = User.active.find_by_username params[:username]
     user ? render(:text => user.salt) : render(:nothing => true)
   end
   

@@ -1,0 +1,8 @@
+<div class="float-l rss-icons">  
+  <%= subscribe_to title, url, :via => [:aol, :bloglines, :google, :newsgator, :technorati, :yahoo] %>
+</div>    
+    
+<div class="float-l">
+  <h6 class="big"><%= link_to h(title), url, :title => "RSS: " + h(title) %></h6>    
+  <div class="clear quiet small"><%=h description %></div>
+</div>

@@ -37,6 +37,10 @@ describe User do
       users(:agent).changesets.should have(2).records
     end
 
+    it "should have many login tokens" do
+      users(:agent).should have_many(:login_tokens)
+    end
+
     it "should have many assigned tickets" do
       users(:agent).should have_many(:assigned_tickets)
       users(:agent).assigned_tickets.should have(1).record
@@ -371,23 +375,23 @@ describe User do
     describe 'in secure mode' do
       before do
         @user = users(:agent)
-        @tan = 'QwErTyUiOp'
-        @hash = Digest::SHA1.hexdigest("#{@tan}:#{@user.password}")        
+        @token = 'QwErTyUiOp'
+        @hash = Digest::SHA1.hexdigest("#{@token}:#{@user.password}")        
         User.stub!(:secure_auth?).and_return(true)
-        Tan.stub!(:spend).and_return(@tan)
+        SecureToken.stub!(:spend).and_return(@token)
       end
       
       it 'should authenticate if username, tan and hash are given correctly calculated' do
-        User.authenticate(:username => @user.username, :tan => @tan, :hash => @hash).should == @user
+        User.authenticate(:username => @user.username, :tan => @token, :hash => @hash).should == @user
       end
 
       it 'should not authenticate if username doe notusername match hash' do
-        User.authenticate(:username => @user.username, :tan => @tan, :hash => 'wrong').should be_nil
+        User.authenticate(:username => @user.username, :tan => @token, :hash => 'wrong').should be_nil
       end      
 
       it 'should not authenticate if tan has expired' do
-        Tan.stub!(:spend).and_return(nil)
-        User.authenticate(:username => @user.username, :tan => @tan, :hash => @hash).should be_nil
+        SecureToken.stub!(:spend).and_return(nil)
+        User.authenticate(:username => @user.username, :tan => @token, :hash => @hash).should be_nil
       end      
     end
 

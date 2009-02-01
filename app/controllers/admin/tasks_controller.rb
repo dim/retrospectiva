@@ -3,7 +3,7 @@
 # Please read LICENSE document for more information.
 #++
 class Admin::TasksController < AdminAreaController
-  verify_action :save, :method => :put, :params => :tasks
+  verify :params => :tasks, :only => :save
 
   def index
     @tasks  = Retrospectiva::Tasks.tasks

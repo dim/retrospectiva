@@ -1,0 +1,10 @@
+<div class="clear">
+  <h2><%=h project.name %></h2>
+  
+  <% ([:all] + @project_map[project].keys.sort_by(&:title)).in_groups_of(3).each do |group| -%>
+    <%= render :partial => 'feed', :collection => group, :locals => { :project => project } %>
+    <%= reset_cycle :name => "feed-container" -%>
+  <% end -%>
+  
+</div>
+<hr class="space" />

@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
   before_filter :registration_enabled?, :only => [:new, :create]
   before_filter :activation_enabled?, :only => [:activate]
   
-  before_filter :permit_private_key_access, :only => [:show]
+  before_filter :user_has_valid_login_token?, :only => [:show]
   before_filter :user_is_non_public?, :only => [:show, :update]
   before_filter :user_is_public?, :only => [:new, :create, :activate, :forgot_password]
 
@@ -76,6 +76,16 @@ class AccountsController < ApplicationController
     # Ensure account activation is set to 'email'
     def activation_enabled?
       configured?(:activation, 'email') || raise_unknown_action_error
+    end
+
+    def user_has_valid_login_token?
+      return true unless User.current.public? 
+
+      token = LoginToken.spend(params[:lt])
+      if token and token.user
+        User.current = token.user
+        session[:user_id] = token.user.id
+      end
     end
 
     def user_is_non_public?

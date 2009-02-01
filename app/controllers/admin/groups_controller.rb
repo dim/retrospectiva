@@ -3,7 +3,6 @@
 # Please read LICENSE document for more information.
 #++
 class Admin::GroupsController < AdminAreaController
-  verify_restful_actions!  
   before_filter :paginate_groups, :only => [:index]
   before_filter :find_projects, :only => [:new, :edit]
   before_filter :new, :only => [:create]

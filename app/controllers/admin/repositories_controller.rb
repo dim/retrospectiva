@@ -3,11 +3,11 @@
 # Please read LICENSE document for more information.
 #++
 class Admin::RepositoriesController < AdminAreaController
-  verify_restful_actions!  
+  verify :xhr => true, :only => :validate
+
   before_filter :paginate_repositories, :only => [:index]
   before_filter :new, :only => [:create]
   before_filter :find_repository, :only => [:edit, :update]
-  verify_action :validate, :xhr => true
 
   def index
   end

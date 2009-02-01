@@ -5,7 +5,7 @@
 class WikiFilesController < ProjectAreaController
   retrospectiva_extension('retro_wiki')
   
-  use_menu_item_from 'WikiController'
+  menu_item :use => 'WikiController'
   
   require_permissions :wiki_pages,
     :view   => ['index', 'show']

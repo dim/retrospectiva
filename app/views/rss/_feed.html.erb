@@ -1,0 +1,20 @@
+<div class="bottom-15 span-7 append-1<%=h cycle(' clear', '', ' last', :name => 'feed-container') %>">
+  <% case feed; when nil -%>
+    &nbsp;
+
+  <% when :all -%>
+    <%= render :partial => 'description', :locals => { 
+					:title => _('All'), 
+					:url => feed_url(project_url(project)), 
+					:description => _('All feeds for {{project}}', :project => project.name)
+				} %>
+
+  <% else -%>
+    <%= render :partial => 'description', :locals => { 
+					:title => feed.title, 
+					:url => feed_url(feed.link), 
+					:description => feed.description 
+				} %>
+          
+  <% end -%>
+</div>

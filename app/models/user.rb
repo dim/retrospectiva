@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     :dependent => :nullify
   has_many :tickets, :dependent => :nullify
   has_many :ticket_changes, :dependent => :nullify
+  has_many :login_tokens, :dependent => :destroy
   
 
   validates_uniqueness_of :username, :allow_nil => true
@@ -29,6 +30,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :plain_password, :plain_password_confirmation, :time_zone
   attr_accessor  :plain_password, :plain_password_confirmation
+  
+  named_scope :active, :conditions => ['active = ?', true]
   
   class << self
 
@@ -67,9 +70,9 @@ class User < ActiveRecord::Base
       return nil if username_or_email.blank? or username_or_email == 'Public'
       
       if username_or_email =~ /@/ 
-        find_by_email_and_active(username_or_email, true)
+        active.find_by_email(username_or_email)
       else
-        find_by_username_and_active(username_or_email, true)
+        active.find_by_username(username_or_email)
       end      
     end
 
@@ -106,8 +109,8 @@ class User < ActiveRecord::Base
   end
   
   # Returns true if given hash digest matches the plain password for a given tan
-  def valid_password_hash?(hash, tan = nil)    
-    Digest::SHA1.hexdigest("#{Tan.spend(tan)}:#{password}") == hash    
+  def valid_password_hash?(hash, token = nil)    
+    Digest::SHA1.hexdigest("#{SecureToken.spend(token)}:#{password}") == hash    
   end
 
   # Returns all active projects available for the user
@@ -147,7 +150,7 @@ class User < ActiveRecord::Base
   
   # Resets user's private key
   def reset_private_key
-    self.private_key = hash_crypt(Randomizer.string)
+    self.private_key = ActiveSupport::SecureRandom.hex(32)
   end
   
   def has_access?(path_or_hash, method = :get)

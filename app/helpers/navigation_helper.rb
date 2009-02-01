@@ -64,13 +64,7 @@ module NavigationHelper
     elements = []
     elements += view_extension_parts(:footer, :left, :before)
     
-    if @rss_channel
-      title = _('RSS Feed')
-      image = image_tag('rss.png', :alt => @rss_channel.title)
-      elements << link_to("#{image} #{title}", @rss_channel.rss_path, 
-        :title => @rss_channel.title, 
-        :class => 'strong')
-    end
+    elements << link_to(image_tag('rss.png') + ' ' + _('Feeds'), rss_path, :class => 'strong')
 
     elements += view_extension_parts(:footer, :left, :between)
 

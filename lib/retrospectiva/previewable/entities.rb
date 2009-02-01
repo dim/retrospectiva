@@ -62,18 +62,14 @@ module Retrospectiva
     class Channel < AbstractEntity
       
       def eql?(other)
-        other and name == other.name
+        other.class == self.class and name == other.name
       end
       alias_method :==, :eql?
       
-      def rss_path
-        path + '.rss'
-      end
-
       def inspect
         "#<Channel name: #{name}, title: #{title}, link: #{link}>"
       end
-      
+
       protected
         def valid_attribute_names
           [:title, :description, :link, :name]

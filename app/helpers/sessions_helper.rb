@@ -14,7 +14,7 @@ module SessionsHelper
 
   def secure_auth_tags
     if secure_auth?
-      hidden_field_tag('user[tan]', Tan.generate(2.minutes), :id => 'user_tan') + 
+      hidden_field_tag('user[tan]', SecureToken.generate(2.minutes), :id => 'user_tan') + 
       hidden_field_tag('user[hash]', '', :id => 'user_hash') + "\n"
     else
       ''

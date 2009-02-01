@@ -4,12 +4,13 @@ class MilestonesController < ProjectAreaController
     i.rank = 300
   end
   require_permissions :milestones, 
-    :view => ['index', 'show'],
+    :view   => ['index', 'show'],
     :create => ['new', 'create'], 
     :update => ['edit', 'update'], 
     :delete => ['destroy']
 
-  before_filter :load_rss, :only => :index
+  enable_private_rss :only => :index
+
   before_filter :new, :only => :create
   before_filter :edit, :only => :update
   

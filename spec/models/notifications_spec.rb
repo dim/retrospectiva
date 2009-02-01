@@ -197,6 +197,7 @@ describe Notifications do
     
     before do
       @user = users(:agent)
+      @user.login_tokens.stub!(:generate).and_return('LT-123-KEY')
     end
     
     def do_deliver(options = {})

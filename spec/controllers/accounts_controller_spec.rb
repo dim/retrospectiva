@@ -73,25 +73,30 @@ describe AccountsController do
 
     it_should_successfully_render_template('show')
 
-    describe "if user is public but a private key was passed" do
+    describe "if user is public but a login-ticket was passed" do
       
       before do
         @agent = mock_model(User)
-        User.stub!(:find_by_private_key_and_active).and_return(@agent)
+        @token = mock_model(LoginToken, :user => @agent, :destroy => true)  
+        
+        LoginToken.stub!(:find_by_id_and_value).and_return(@token)
+        
         User.stub!(:current=)
         @user.stub!(:public?).and_return(true)
       end
   
       def do_get
-        super(:private => '[PRIVATE KEY]') 
+        super(:lt => 'LT-123-KEY') 
       end
   
       it_should_verify_that_account_management_is_enabled
   
       it 'should try to authenticate the user' do
-        User.should_receive(:find_by_private_key_and_active).with('[PRIVATE KEY]', true).and_return(@agent)
+        LoginToken.should_receive(:find_by_id_and_value).with(123, 'KEY').and_return(@token)
+        @token.should_receive(:user).with().and_return(@agent)
         User.should_receive(:current=).with(@agent)
         do_get
+        session[:user_id].should == @agent.id
       end
     end
 

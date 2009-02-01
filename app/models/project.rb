@@ -31,6 +31,7 @@ class Project < ActiveRecord::Base
   attr_accessor :path_to_first_menu_item
 
   named_scope :active, :conditions => ['projects.closed = ?', false]
+  named_scope :central, :conditions => ['projects.central = ?', true]
 
   class << self
     
@@ -44,8 +45,7 @@ class Project < ActiveRecord::Base
 
     def central
       if Thread.current[:central_project].nil?
-        Thread.current[:central_project] = Project.find_by_central_and_closed(true, false) 
-        Thread.current[:central_project] ||= false
+        Thread.current[:central_project] = Project.active.central.find(:first) || false 
       end
       Thread.current[:central_project]
     end

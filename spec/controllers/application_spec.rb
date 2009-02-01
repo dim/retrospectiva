@@ -140,16 +140,9 @@ describe ApplicationController do
 
 
   describe 'default render patch (auto-respond-to HTML)' do
+    pretend_to_be ChangesetsController
+
     before do
-      @controller_class = ChangesetsController
-      @controller = @controller_class.new
-      (class << @controller; self; end).class_eval do
-        def controller_path #:nodoc:
-          self.class.name.underscore.gsub('_controller', '')
-        end
-        include Spec::Rails::Example::ControllerExampleGroup::ControllerInstanceMethods
-      end
-      
       @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
       @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
       @project.stub!(:changesets).and_return(@changesets)
@@ -181,5 +174,70 @@ describe ApplicationController do
 
   end
 
+
+  describe 'RSS access via private key' do
+    pretend_to_be MilestonesController
+    
+    before do
+      @user = mock_current_user! :admin? => true, :name => 'Agent'
+      @project = mock_current_project! :name => 'Retro'
+      
+      @controller_class.stub!(:module_enabled?).and_return(true)       
+      @controller_class.stub!(:module_accessible?).and_return(true)       
+      
+      @projects = [@project]
+      @user.stub!(:public?).and_return(true)
+      @user.stub!(:admin?).and_return(false)
+      @user.stub!(:permitted?).and_return(false)
+      @user.stub!(:active_projects).and_return(@projects)
+      
+      @milestones = []
+      @milestones.stub!(:active_on).and_return(@milestones)
+      @project.stub!(:milestones).and_return(@milestones)
+    end
+    
+    describe 'if non-RSS content is requested' do
+      it 'should refuse authorisation ' do
+        lambda { get :index, :project_id => '1' }.should raise_error(RetroAM::NoAuthorizationError)
+      end
+    end
+    
+    describe 'if RSS content is requested' do
+
+      it 'should refuse authorisation without a private key' do
+        lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
+      end
+
+      describe 'if a valid private key is submitted' do
+        
+        before do
+          User.stub!(:find_by_private_key).and_return(@user)          
+          @user.stub!(:permitted?).and_return(true)          
+        end
+        
+        def do_get(options = {})
+          get :index, { :project_id => '1', :format => 'rss', :private => '[PKEY]' }.merge(options)
+        end
+        
+        it 'should find the user by the key' do
+          User.should_receive(:find_by_private_key).with('[PKEY]').and_return(@user)
+          do_get
+        end        
+        
+        it 'should permit access' do
+          do_get
+          response.should be_success
+          response.body.should include('rss version="2.0"')         
+        end
+
+        it 'should reset the session afterwards' do
+          do_get
+          session[:user_id].should be_nil
+        end
+        
+      end
+    
+    end    
+  end      
 
 end

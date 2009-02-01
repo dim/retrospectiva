@@ -2,7 +2,7 @@
   <td title="<%=h revision.revision %>" class="linked">
     <%= link_to_browse h(@node.name + ' [' + revision.short_revision + ']'), params[:path], revision.revision %>
   </td>
-  <td><%=h date_format(revision.revised_at) %></td>
+  <td><%=h date_format(revision.created_at) %></td>
   <td><%=h revision.author %></td>
   <td class="small quiet"><%=h truncate(revision.log.to_s * 100, :length => 80) %></td>
   <% if User.current.permitted?(:changesets, :view) -%>

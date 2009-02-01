@@ -1,0 +1,8 @@
+<% @page_title = _('RSS') -%>
+<% slim_page -%>
+
+<div class="rss">
+  <%= page_title %>
+  <%= render :partial => 'all' if @projects.size > 1 %>
+  <%= render :partial => 'project', :collection => @project_map.keys %>
+</div>  

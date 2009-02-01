@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
     project.filter 'central_project'
 
     project.resources :changesets
+    
     project.resources :tickets, 
       :collection => { :search => :any, :users => :post }, 
       :member => { :modify_summary => :put, :modify_content => :put, :modify_change_content => :put, :toggle_subscription => :post } do |ticket|
@@ -24,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
     end
     
     project.resources :milestones
+    
     project.with_options :controller => 'browse' do |browse|
       browse.browse    'browse/*path'
       browse.revisions 'revisions/*path', :action => 'revisions'
@@ -33,7 +35,12 @@ ActionController::Routing::Routes.draw do |map|
 
     project.with_options :controller => 'search' do |search|
       search.search    'search'
-    end  
+    end
+    
+  end
+
+  map.with_options :controller => 'rss' do |rss|
+    rss.rss 'rss'
   end
 
   map.with_options :controller => 'markup' do |markup|

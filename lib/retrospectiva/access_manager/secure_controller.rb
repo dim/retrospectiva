@@ -3,16 +3,12 @@ module Retrospectiva
     module SecureController
 
       def self.included(base) #:nodoc:
-        base.extend(ClassMethods)
-        base.send(:include, InstanceMethods)
-
-        [:before_authenticate, :after_authenticate].each do |method|
-          base.class_eval <<-END_EVAL
-            def self.#{method}(*callbacks, &block)
-              callbacks << block if block_given?
-              write_inheritable_array(#{method.to_sym.inspect}, callbacks)
-            end
-          END_EVAL
+        base.class_eval do
+          extend ClassMethods
+          include InstanceMethods
+          include ActiveSupport::Callbacks
+          
+          define_callbacks :before_authenticate, :after_authenticate
         end
       end
 
@@ -37,7 +33,7 @@ module Retrospectiva
         # should be granted or refused.
         def authorize?(action_name, request_params = {}, user = User.current, project = nil)
           action_name = action_name.to_s
-
+          
           if user.blank?
             false
           elsif user.admin?
@@ -92,7 +88,7 @@ module Retrospectiva
         private
 
           def ensure_authorize_before_filter!
-            raise Error, "Unable to find an 'authorize' before_filter." unless authorized_controller?
+            raise Error, "Unable to find an 'authorize' before_filter in #{self.name}." unless authorized_controller?
           end
       end
 
@@ -115,29 +111,20 @@ module Retrospectiva
           #     before_filter :authenticate
           #
           def authenticate
-            result = security_callback(:before_authenticate)
-            return false if result == false
-
-            if session[:user_id].is_a?(Integer)
-              logger.debug("Authenticating user with id = #{session[:user_id]}") if logger
-              User.current = User.find_by_id session[:user_id], :include => {:groups => :projects}
+            result = run_callbacks(:before_authenticate) {|cb_res,| cb_res == false } 
+            return result if result == false # skip authentication 
+            
+            User.current = if session[:user_id]
+              logger.debug("Authenticating user with ID: #{session[:user_id]}") if logger
+              User.find_by_id session[:user_id], :include => {:groups => :projects}
             else
-              User.current = User.public_user
-              raise "You have no Public user. See the INSTALL file for instructions on setting up default content." unless User.current
+              logger.debug("Authenticating public user with ID: #{session[:user_id]}") if logger
+              User.public_user || raise("You have no Public user. See the INSTALL file for instructions on setting up default content.")
             end
+            failed_authentication! if User.current.blank?
 
-            if User.current.blank?
-              logger.debug("Authentication failed. Redirect to login.") if logger
-              reset_session
-              redirect_to login_path
-              return false
-            end
-
-            security_callback(:after_authenticate)
+            run_callbacks(:after_authenticate)
           end
-
-          def before_authenticate() end
-          def after_authenticate() end
 
           # This filter restricts action access to a specific user-level. Potential
           # user levels are:
@@ -158,27 +145,26 @@ module Retrospectiva
           def authorize
             authenticate unless User.current
             raise ActionController::UnknownAction unless self.class.action_methods.include?(action_name)
-            refuse_authorization! unless self.class.authorize?(action_name, params, User.current, Project.current)
+            failed_authorization! unless self.class.authorize?(action_name, params, User.current, Project.current)
             return true
           end
 
-          def refuse_authorization!
-            raise NoAuthorizationError, "No authorization for action: #{action_name}, params: #{params.inspect}, user: #{User.current.username rescue 'nil'}, project: #{Project.current.name rescue 'nil'}"
+          def failed_authentication!
+            logger.debug("Authentication failed. Redirect to login.") if logger
+            reset_session
+            redirect_to login_path
           end
 
-        private
-
-          def security_callback(method)
-            methods = self.class.read_inheritable_attribute(method.to_sym) || []
-            methods.each do |callback|
-              result = send(callback)
-              return false if result == false
-            end
-            send(method)
+          def failed_authorization!
+            project = Project.current ? Project.current.name : 'nil'
+            user = User.current ? User.current.name : 'nil'
+            permissions = self.class.require_permissions[action_name]
+            
+            raise NoAuthorizationError, 
+              "No authorization for #{self.class.name}/#{action_name} - params: #{params.except(:controller, :action).inspect}, user: #{user}, project: #{project}, permissions: #{permissions.inspect}"
           end
 
       end
-
     end
   end
 end

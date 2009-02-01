@@ -3,10 +3,10 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ProjectAreaController do
 
   before do 
-    @user = mock_current_user! :admin? => true
-    @project = mock_current_project! :enabled_modules => []
+    @user = mock_current_user! :admin? => true, :name => 'Agent'
+    @project = mock_current_project! :enabled_modules => [], :name => 'Retro'
     @item = mock(RetroAM::MenuMap::Item, :name => 'Item', :active? => true)       
-    RetroAM.menu_items.stub!(:find).and_return(@item)
+    RetroAM.menu_items.stub!(:find).and_return(@item)    
   end
 
   describe 'extended authorization requirements' do

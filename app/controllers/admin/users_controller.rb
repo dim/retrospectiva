@@ -3,7 +3,6 @@
 # Please read LICENSE document for more information.
 #++
 class Admin::UsersController < AdminAreaController
-  verify_restful_actions!  
   before_filter :paginate_users, :only => [:index, :search]
   before_filter :find_and_validate_user, :only => [:edit, :update]
   before_filter :find_groups, :only => [:new, :edit]

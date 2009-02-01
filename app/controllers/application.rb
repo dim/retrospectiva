@@ -2,18 +2,32 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # :secret => '7161d9a625e85aa1d6f2f460327dea4d'
   filter_parameter_logging :password
   
-  before_filter :set_locale
   before_filter :authenticate
+  before_filter :set_locale
   before_filter :set_time_zone
   after_filter  :reset_request_cache
   
   helper_method :layout_markers
 
   class << self
-    def verify_action(name, options = {})
-      verify options.merge(:only => name)
-    end        
-    protected :verify_action    
+
+    def enable_private_rss(options)
+      after_authenticate do |controller|
+        next unless controller.request.format.rss? and controller.params[:private].present? and User.current.public?          
+
+        user = User.active.find_by_private_key controller.params[:private]
+        if user
+          User.current = user
+          controller.session[:user_id] = user.id
+          @private_rss_enabled = true
+        end
+      end
+      
+      after_filter do |controller|
+        controller.session[:user_id] = nil if @private_rss_enabled
+      end
+    end
+  
   end
 
   protected
@@ -46,22 +60,19 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def load_channels(restriction = :present?, project = Project.current)
+      Retrospectiva::Previewable.klasses.select(&restriction).group_by do |klass|
+        channel = klass.previewable.channel(:project => project)
+        User.current.has_access?(channel.path) ? channel : nil
+      end.delete_if {|k, | k.nil? }
+    end
+
     # Override ActionController::Base method to prevent invalid format calls (causes 500 error)
     # 
     # Previously: /ticket/123.xml => 500
     # Override:   /ticket/123.xml => 406
     def default_render
       response.content_type.blank? ? respond_to(:html) : super 
-    end
-
-    def permit_private_key_access
-      if User.current.public? and params[:private].present?
-        user = User.find_by_private_key_and_active(params[:private], true)
-        if user
-          User.current = user
-          session[:user_id] = User.current.id
-        end
-      end || true
     end
 
     def rescue_action_in_public(exception) #:doc:
@@ -92,5 +103,5 @@ class ApplicationController < ActionController::Base
         head status
       end
     end
-  
+    
 end

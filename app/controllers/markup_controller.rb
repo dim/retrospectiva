@@ -1,6 +1,6 @@
 class MarkupController < ApplicationController
   layout 'markup_reference'
-  verify_action :preview, :params => [:element_id], :xhr => true
+  verify :params => [:element_id], :xhr => true, :only => :preview
 
   def preview
     respond_to(:js)

@@ -42,7 +42,7 @@ class Repository::Subversion < Repository::Abstract
   def sync_changesets
     return unless active?
 
-    latest_changeset = changesets.find(:first, :select => 'revision', :order => 'revised_at DESC')
+    latest_changeset = changesets.find(:first, :select => 'revision', :order => 'created_at DESC')
     start = latest_changeset ? latest_changeset.revision.to_i + 1: 1
     stop  = latest_revision.to_i
     return if start > stop
@@ -98,7 +98,7 @@ class Repository::Subversion < Repository::Abstract
       changeset = changesets.build :revision => revision.to_s, 
         :author => info.author,
         :log => info.log,
-        :revised_at => info.date
+        :created_at => info.date
       changeset.skip_project_synchronization = true
     
       [changeset, node_data]

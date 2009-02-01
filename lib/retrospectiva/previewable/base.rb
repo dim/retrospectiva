@@ -1,7 +1,17 @@
 module Retrospectiva
   module Previewable
     
-    class Base      
+    def self.load!
+      ActiveSupport::Dependencies.load_paths.map do |path|
+        Dir[path + '/**/*.rb']
+      end.flatten.uniq.each do |file|
+        content = File.read(file)
+        ActiveSupport::Dependencies.depend_on(file) if content =~ /retro_previewable\s+(do|\{)/
+      end
+    end
+    
+    class Base
+      
       def initialize(&block)
         @setup = Setup.new(&block)
       end
@@ -17,6 +27,10 @@ module Retrospectiva
           @setup.item.call(entity, *args)
         end
       end
+      
+      def channel?
+        @setup.channel?
+      end
     end
     
     class Setup
@@ -27,6 +41,10 @@ module Retrospectiva
       def channel(&block)
         @channel = block if block_given?
         @channel
+      end
+  
+      def channel?
+        @channel.present?
       end
   
       def item(&block)

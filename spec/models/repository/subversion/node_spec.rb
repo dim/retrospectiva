@@ -51,7 +51,7 @@ describe Repository::Subversion::Node do
       end      
 
       it 'should correctly identify the date of last modification' do
-        @node.date.utc.to_i.should == changesets(:with_modified).revised_at.utc.to_i
+        @node.date.utc.to_i.should == changesets(:with_modified).created_at.utc.to_i
       end      
 
       it 'should correctly identify the change-log' do

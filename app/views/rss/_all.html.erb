@@ -1,0 +1,9 @@
+<h2><%=_ 'All Projects' %></h2>
+
+<div class="bottom-15 span-7 append-1">
+  <%= render :partial => 'description', :locals => { 
+				:title => _('All'), 
+				:url => formatted_projects_url(:rss), 
+				:description => _('All feeds from all projects')
+			} %>
+</div>

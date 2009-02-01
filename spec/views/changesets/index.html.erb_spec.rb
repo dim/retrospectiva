@@ -12,7 +12,7 @@ describe "/changesets/index.html.erb" do
         :short_revision => 'REV1',
         :author => 'dim',
         :log => 'log',
-        :revised_at => Date.today.to_time,
+        :created_at => Date.today.to_time,
         :user => @user),
       mock_model(Changeset)
     ]

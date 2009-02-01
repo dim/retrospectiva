@@ -20,6 +20,10 @@ class Ticket < ActiveRecord::Base
 
   attr_accessible :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id 
 
+  named_scope :for_preview, 
+    :include => [{ :changes => :user }, :status, :user, :project],
+    :order => 'tickets.created_at DESC, ticket_changes.created_at'      
+  
   retro_previewable do |r|
     r.channel do |c, options|
       project = options[:project] || Project.current
@@ -36,7 +40,7 @@ class Ticket < ActiveRecord::Base
       i.link = i.guid = i.route(:project_ticket_url, project, ticket)
     end
   end
-  
+
   class << self
     
     def default_includes
@@ -52,14 +56,15 @@ class Ticket < ActiveRecord::Base
     
     def full_text_search(query)
       filter = Retro::Search::exclusive query, *searchable_column_names
-      records = find :all,
-        :include => [{ :changes => :user }, :status, :user],
-        :conditions => filter,
-        :limit => 100,
-        :order => 'tickets.created_at DESC, ticket_changes.created_at'      
+      records = for_preview.find :all, :conditions => filter, :limit => 100
       flatten_and_sort(records).reverse
     end
-    
+
+    def feedable
+      records = for_preview.find(:all, :limit => 10)
+      flatten_and_sort(records).reverse
+    end
+
     # Override default method to include both Tickets and TicketChanges into the feed
     def to_rss(records)
       super(flatten_and_sort(records).last(records.size).reverse)
@@ -74,7 +79,7 @@ class Ticket < ActiveRecord::Base
             change
           end + [ticket]
         end.flatten.sort_by do |record|
-          record.previewable.date
+          record.previewable(:project => record.project).date
         end
       end
 

@@ -60,4 +60,76 @@ describe TicketsController do
       '/projects/one/tickets/123/toggle_subscription'
   end
 
+  
+  describe 'modify-summary' do
+
+    it 'should correctly recognize params' do
+      params_from(:put, '/projects/one/tickets/123/modify_summary').should ==
+        { :project_id => 'one', :controller => 'tickets', :action => 'modify_summary', :id => '123' }
+    end
+
+    it 'should reject non-PUT requests' do
+      lambda { 
+        params_from(:get, '/projects/one/tickets/123/modify_summary').should ==
+          { :project_id => 'one', :controller => 'tickets', :action => 'modify_summary', :id => '123' }
+      }.should raise_error(ActionController::MethodNotAllowed, 'Only put requests are allowed.') 
+    end
+  
+  end
+
+  describe 'modify-content' do
+
+    it 'should correctly recognize params' do
+      params_from(:put, '/projects/one/tickets/123/modify_content').should ==
+        { :project_id => 'one', :controller => 'tickets', :action => 'modify_content', :id => '123' }
+    end
+
+    it 'should reject non-PUT requests' do
+      lambda { 
+        params_from(:get, '/projects/one/tickets/123/modify_content').should ==
+          { :project_id => 'one', :controller => 'tickets', :action => 'modify_content', :id => '123' }
+      }.should raise_error(ActionController::MethodNotAllowed, 'Only put requests are allowed.') 
+    end
+  
+  end
+
+  describe 'modify-change-content' do
+
+    it 'should correctly recognize params' do
+      params_from(:put, '/projects/one/tickets/123/modify_change_content').should ==
+        { :project_id => 'one', :controller => 'tickets', :action => 'modify_change_content', :id => '123' }
+    end
+
+    it 'should reject non-PUT requests' do
+      lambda { 
+        params_from(:get, '/projects/one/tickets/123/modify_change_content').should ==
+          { :project_id => 'one', :controller => 'tickets', :action => 'modify_change_content', :id => '123' }
+      }.should raise_error(ActionController::MethodNotAllowed, 'Only put requests are allowed.') 
+    end
+  
+  end
+
+  describe 'destroy-change' do
+
+    it 'should correctly generate params' do
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'destroy_change', :ticket_id => '123', :id => '45').should ==
+        '/projects/one/tickets/123/45'
+    end
+
+    it 'should correctly recognize params' do
+      params_from(:delete, '/projects/one/tickets/123/45').should ==
+        { :project_id => 'one', :controller => 'tickets', :action => 'destroy_change', :ticket_id => '123', :id => '45' }
+    end
+
+    it 'should reject non-DELETE requests' do
+      lambda { 
+        params_from(:get, '/projects/one/tickets/123/45').should ==
+          { :project_id => 'one', :controller => 'tickets', :action => 'destroy_change', :ticket_id => '123', :id => '45' }
+      }.should raise_error(ActionController::MethodNotAllowed, 'Only delete requests are allowed.') 
+    end
+  
+  end
+
+
+
 end

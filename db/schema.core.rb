@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(:version => 20090124095048) do
     t.string   "author",        :limit => 50
     t.text     "log"
     t.datetime "created_at"
-    t.datetime "revised_at"
     t.integer  "repository_id",               :default => 0, :null => false
     t.integer  "user_id"
   end
 
+  add_index "changesets", ["created_at"], :name => "i_cs_on_created_at"
   add_index "changesets", ["repository_id"], :name => "i_cs_on_repository_id"
   add_index "changesets", ["user_id"], :name => "i_cs_on_user_id"
 
@@ -144,6 +144,17 @@ ActiveRecord::Schema.define(:version => 20090124095048) do
 
   add_index "repositories", ["type"], :name => "i_repositories_on_type"
 
+  create_table "secure_tokens", :force => true do |t|
+    t.string   "value"
+    t.datetime "expires_at"
+    t.string   "type",       :limit => 20
+    t.integer  "user_id"
+  end
+
+  add_index "secure_tokens", ["type"], :name => "i_stokens_type"
+  add_index "secure_tokens", ["user_id"], :name => "i_stokens_user_id"
+  add_index "secure_tokens", ["value"], :name => "i_stokens_value"
+
   create_table "statuses", :force => true do |t|
     t.string  "name",          :limit => 25
     t.boolean "default_value",               :default => false, :null => false
@@ -172,11 +183,6 @@ ActiveRecord::Schema.define(:version => 20090124095048) do
   end
 
   add_index "tags", ["name"], :name => "i_tags_on_name"
-
-  create_table "tans", :force => true do |t|
-    t.string   "value"
-    t.datetime "expires_at"
-  end
 
   create_table "ticket_changes", :force => true do |t|
     t.integer  "ticket_id"

@@ -170,7 +170,7 @@ describe SessionsController do
 
     describe 'with a valid username parameter' do  
       before do
-        User.should_receive(:find_by_username_and_active).with('myaccount', true).and_return(@user)
+        User.should_receive(:find_by_username).with('myaccount').and_return(@user)
         @user.should_receive(:salt).and_return('QwErTyU')
         xhr :post, :secure, :username => 'myaccount'
       end
@@ -183,7 +183,7 @@ describe SessionsController do
 
     describe 'with a invalid username parameter' do  
       before do
-        User.should_receive(:find_by_username_and_active).with('invalid', true).and_return(nil)
+        User.should_receive(:find_by_username).with('invalid').and_return(nil)
         xhr :post, :secure, :username => 'invalid'
       end
 

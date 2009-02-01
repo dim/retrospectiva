@@ -4,7 +4,7 @@
 #++
 class Admin::SetupController < AdminAreaController
   before_filter :validate_site_url
-  verify_action :save, :params => :retro_cf
+  verify :params => :retro_cf, :only => :save
   
   def index
     @sections = RetroCM.sections
