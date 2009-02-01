@@ -5,6 +5,9 @@
 class Change < ActiveRecord::Base
   extend ActiveSupport::Memoizable
 
+  cattr_accessor :maximum_diff_size
+  self.maximum_diff_size = 512.kilobyte
+
   belongs_to :changeset
   belongs_to :repository
 
@@ -12,22 +15,23 @@ class Change < ActiveRecord::Base
   validates_presence_of :revision  
 
   def previous_revision
-    return '-' unless repository.active?
-    
-    repository.history(path, revision).reject do |hrev|
-      hrev == revision
-    end.first.to_s
+    return '-' unless repository.active?    
+    repository.history(path, revision, 2).last.to_s
   end
   memoize :previous_revision
 
-  def unified_diff(max_size = 512.kilobyte)
+  def unified_diff
     if @unified_diff.nil? && diffable?
       node = repository.node(path, revision)
-      if node.size < max_size
+      if node.size < maximum_diff_size
         @unified_diff = repository.unified_diff(path, previous_revision, revision)
       end
     end
     @unified_diff ||= ''
+  end
+  
+  def unified_diff?
+    unified_diff.present?
   end
   
   def diffable?

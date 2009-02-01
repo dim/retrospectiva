@@ -33,7 +33,7 @@ class Repository::Subversion < Repository::Abstract
     diff
   end  
 
-  def history(path, revision = nil)
+  def history(path, revision = nil, limit = 100)
     fs.history(path, 0, (revision || latest_revision).to_i).map {|r| r.last.to_s }
   rescue Svn::Error::FS_NOT_FOUND, Svn::Error::FS_NO_SUCH_REVISION
     []

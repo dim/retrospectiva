@@ -47,7 +47,7 @@ class Repository::Abstract < ::Repository
   end  
 
   # Returns the revision history for a path starting with a given revision
-  def history(path, revision = nil)
+  def history(path, revision = nil, limit = nil)
     raise NotImplementedError, 'history is an abstract method'    
   end
 
