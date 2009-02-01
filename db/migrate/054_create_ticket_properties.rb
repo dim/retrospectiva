@@ -28,26 +28,33 @@ class CreateTicketProperties < ActiveRecord::Migration
     end
     add_index :ticket_properties_tickets, [:ticket_id, :ticket_property_id], :unique => true, :name => 'uidx_ticket_properties_tickets'
         
+   
+    project_ids = select_all("SELECT id FROM projects").map {|i| i['id'].to_i }   
+    components = select_all("SELECT id, name FROM components")
+    releases = select_all("SELECT id, name FROM releases")
+    
+    project_ids.each do |project_id|  
         
-    Project.reflections[:ticket_property_types].options.delete(:order)
-    Project.reflections[:ticket_properties].options.delete(:order)
-    TicketPropertyType.reflections[:ticket_properties].options.delete(:order)
-    [Release, Component].each do |klass|
-
-      Project.find(:all).each do |project|
-        project.ticket_property_types.find_by_name(klass.name, :include => [:ticket_properties]) ||
-        project.ticket_property_types.create!( :name => klass.name )
+      counter = 0
+      component_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id, rank) VALUES ('Component', #{project_id}, 9999)"
+      components.each do |component|
+        property_id = insert_sql "INSERT INTO ticket_properties (name, ticket_property_type_id, rank) VALUES ('#{component['name']}', #{component_type_id}, #{counter+=1})"
+        select_all("SELECT id FROM tickets WHERE project_id = #{project_id} AND component_id = #{component['id']}").each do |ticket|
+          insert_sql "INSERT INTO ticket_properties_tickets (ticket_id, ticket_property_id) VALUES (#{ticket['id']}, #{property_id})"
+        end
       end
 
       counter = 0
-      klass.find(:all, :order => 'id').each do |record|
-        type = record.project.ticket_property_types.find_by_name(klass.name, :include => [:ticket_properties])
-        property = type.ticket_properties.create( :name => record.name, :rank => counter += 1 )        
-        Ticket.send("find_all_by_#{klass.name.downcase}_id", record.id).each do |ticket|
-          ticket.ticket_properties << property
-        end        
-      end    
+      release_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id, rank) VALUES ('Release', #{project_id}, 9999)"
+      releases.each do |release|
+        property_id = insert_sql "INSERT INTO ticket_properties (name, ticket_property_type_id, rank) VALUES ('#{release['name']}', #{release_type_id}, #{counter+=1})"
+        select_all("SELECT id FROM tickets WHERE project_id = #{project_id} AND release_id = #{release['id']}").each do |ticket|
+          insert_sql "INSERT INTO ticket_properties_tickets (ticket_id, ticket_property_id) VALUES (#{ticket['id']}, #{property_id})"
+        end
+      end
+      
     end
+
   end
 
   def self.down
