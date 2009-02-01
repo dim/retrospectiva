@@ -1,3 +1,4 @@
+require 'ostruct'
 require 'retrospectiva'
 require 'time_interval'
 require 'plus_forms'
