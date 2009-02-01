@@ -82,6 +82,6 @@ class BlogController < ProjectAreaController
       { :page => ( request.format.rss? ? 1 : params[:page] ), 
         :per_page => ( request.format.rss? ? 5 : nil ),
         :include => [:categories, :user, :comments],
-        :order => 'created_at DESC' }
+        :order => 'blog_posts.created_at DESC' }
     end
 end

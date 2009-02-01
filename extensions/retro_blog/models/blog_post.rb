@@ -48,7 +48,7 @@ class BlogPost < ActiveRecord::Base
     { :conditions => ['users.id = ?', user_id], :include => :user }
   }
 
-  named_scope :feedable, :order => 'created_at DESC', :limit => 10
+  named_scope :feedable, :order => 'blog_posts.created_at DESC', :limit => 10
 
   class << self
     
