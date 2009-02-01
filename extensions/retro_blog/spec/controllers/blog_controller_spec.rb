@@ -34,7 +34,8 @@ describe BlogController do
       @posts_proxy.should_receive(:paginate).with(
         :page => params[:page],
         :include => [:categories, :user, :comments],
-        :per_page=>nil
+        :per_page=>nil,
+        :order=>'blog_posts.created_at DESC'
       ).and_return(@posts) 
       do_get(:u => '1', :c => 'News')
       assigns[:blog_posts].should == @posts 
