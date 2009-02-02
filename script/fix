@@ -1,9 +1,14 @@
 #!/usr/bin/env ruby
 
 #--
-# Copyright (C) 2007 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
+begin
+	require 'rubygems'
+rescue LoadError
+	raise LoadError, 'RubyGEMs are NOT installed! Please install RubyGEMs first.'
+end
 
 ROOT_PATH = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 
@@ -40,17 +45,39 @@ def test_subversion_support
   libs['Repos']  = require 'svn/repos' rescue nil
   libs['Client'] = require 'svn/client' rescue nil
 
-  subversion_ok = true
+  ok = true
   libs.each_pair do |lib, loaded|
-    subversion_ok = false if loaded.nil?
+    ok = false if loaded.nil?
     code = loaded.nil? ? '-' : '+'
     msg  = loaded.nil? ? 'NOT' : 'successfully'
     message(code, "Svn::#{lib} library was #{msg} loaded")
   end
-  if subversion_ok
+  if ok
     summary('All libraries were loaded. Subversion support will be fully ENABLED!')
   else
     error('At least one required library could not be loaded. Subversion support will be DISABLED!')
+  end
+end
+
+def test_git_support
+  headline('Testing subversion support')
+
+  libs = {}
+    
+  libs['Grit']   		= require 'grit' rescue nil
+  libs['Grit::Git'] = require 'grit/git' rescue nil
+
+  ok = true
+  libs.each do |lib, loaded|
+    ok = false if loaded.nil?
+    code = loaded.nil? ? '-' : '+'
+    msg  = loaded.nil? ? 'NOT' : 'successfully'
+    message(code, "#{lib} library was #{msg} loaded")
+  end
+  if ok
+    summary('All libraries were loaded. GIT support will be fully ENABLED!')
+  else
+    error('At least one required library could not be loaded. GIT support will be DISABLED!')
   end
 end
 
@@ -130,6 +157,7 @@ def test_tasks
 end
 
 puts "\n----- Retrospectiva status report\n"
+test_git_support
 test_subversion_support
 test_environment
 test_file_permissions
