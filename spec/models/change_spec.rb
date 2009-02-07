@@ -73,7 +73,8 @@ describe Change do
     end
     
     it 'should return an empty string as DIFF if DIFF is exceeding the size limit' do
-      changes(:r04_m02).unified_diff(0).should == ''
+      Change.stub!(:maximum_diff_size).and_return(0)
+      changes(:r04_m02).unified_diff.should == ''
     end    
     
   end

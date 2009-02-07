@@ -13,6 +13,7 @@ describe "/changesets/show.html.erb" do
 
     @c1 = mock_model Change, 
       :name => 'M', :path => '/retro/modified.rb', :revision => 'R10', :diffable? => true,
+      :unified_diff? => true,
       :unified_diff => <<END_DIFF
 --- Revision R5
 +++ Revision R10
@@ -24,9 +25,9 @@ describe "/changesets/show.html.erb" do
      return unless check_repository_testable 
 END_DIFF
     @c2 = mock_model Change, 
-      :name => 'MV', :path => '/retro/moved_to.rb', :revision => 'R10', :diffable? => false, :from_path => '/retro/moved_from.rb', :from_revision => 'R5'
+      :name => 'MV', :path => '/retro/moved_to.rb', :revision => 'R10', :diffable? => false, :from_path => '/retro/moved_from.rb', :from_revision => 'R5', :unified_diff? => false
     @c3 = mock_model Change, 
-      :name => 'A', :path => '/retro/added.rb', :revision => 'R10', :diffable? => false
+      :name => 'A', :path => '/retro/added.rb', :revision => 'R10', :diffable? => false, :unified_diff? => false
     
     @changeset = mock_model Changeset,
       :revision => 'REV1',

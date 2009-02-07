@@ -4,7 +4,7 @@
 # you don't control web/app server and can't set it the proper way
 # ENV['RAILS_ENV'] ||= 'production'
 
-RETROSPECTIVA_VERSION = '1.1-DEV (M3+)'
+RETROSPECTIVA_VERSION = '1.9.207'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION

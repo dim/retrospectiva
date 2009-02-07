@@ -87,7 +87,7 @@ module ApplicationHelper
   def truncated_author(object, author_method = :author, email_method = :email)
     author, email = object.send(author_method), object.send(email_method)     
     value = h(truncate(author, :length => 20))
-    email.blank? ? value : enkode_mail(email, value, h(author))
+    email.blank? ? value : mail_to(email, value, :title => h(author))
   end
   
   def will_paginate_per_page(collection, options = {})
@@ -139,12 +139,67 @@ module ApplicationHelper
     page << "$$('.pagination').each(function(el) { el.#{term.blank? ? 'show' : 'hide'}() });"    
   end
 
+  # Modification of the built-in encryption 
+  # Uses modified version of the hivelogic enkoder (original Copyright (c) 2006, Automatic Corp.)
+  def mail_to(email_address, name = nil, html_options = {})
+    html_options.symbolize_keys!
+    html_options.delete(:encode)
+    logic = random_enkode_logic
+      
+    result = ''
+    "document.write('#{super}');".each_byte do |c|
+      result << sprintf("%%%x", c)
+    end
+    result = "eval(decodeURIComponent('#{result}'))"
+
+    result = logic[:rb].call(result)
+    result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
+    result = "function hl_enkoder(){var kode='#{escape_javascript(result)}';var i,c,x;while(eval(kode));};hl_enkoder();"
+    "<script type=\"#{Mime::JS}\">#{result}</script>"     
+  end
+
   protected
 
     def gravatar(email, options = {})
       size = options.delete(:size) || 40
       options.reverse_merge!(:class => 'frame')
       image_tag "http://www.gravatar.com/avatar/#{MD5::md5(email)}.png?s=#{size}", options
+    end
+
+  private
+  
+    def random_enkode_logic
+      kodes = [{
+        :rb => lambda {|s| s.reverse },
+        :js => "kode=kode.split('').reverse().join('')"
+      }, {
+        :rb => lambda {|s|
+          result = ''
+          s.each_byte { |b|
+            b += 3
+            b -= 128 if b > 127
+            result << b.chr
+          }
+          result
+        },
+        :js => (
+           "x='';for(i=0;i<kode.length;i++){c=kode.charCodeAt(i)-3;" +
+           "if(c<0)c+=128;x+=String.fromCharCode(c)}kode=x"
+        )
+      }, {
+        :rb => lambda {|s|
+          for i in (0..s.length/2-1)
+            s[i*2],s[i*2+1] = s[i*2+1],s[i*2]
+          end
+          s
+        },
+        :js => (
+           "x='';for(i=0;i<(kode.length-1);i+=2){" +
+           "x+=kode.charAt(i+1)+kode.charAt(i)};" +
+           "kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+         )
+      }]
+      kodes[rand(kodes.size)]      
     end
   
 end

@@ -23,7 +23,7 @@ class Change < ActiveRecord::Base
   def unified_diff
     if @unified_diff.nil? && diffable?
       node = repository.node(path, revision)
-      if node.size < maximum_diff_size
+      if node.size < self.class.maximum_diff_size
         @unified_diff = repository.unified_diff(path, previous_revision, revision)
       end
     end

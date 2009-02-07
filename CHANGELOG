@@ -1,0 +1,180 @@
+(2009-02-02) Dimitrij Denissenko 
+
+  Updated fix script (included tests for GIT) [2cf950]
+    * script/fix
+
+(2009-02-01) Dimitrij Denissenko 
+
+  Minor changes and performance improvement to changeset/changes
+  [01aa0c]
+    * app/models/change.rb
+    * app/models/repository/abstract.rb
+    * app/models/repository/subversion.rb
+    * app/views/changesets/_change.html.erb
+    * app/views/changesets/show.html.erb
+
+  Fixed spec [64c184]
+    * .../spec/controllers/blog_controller_spec.rb
+
+  Fixed ambiguous SQL clause [c4de13]
+    * extensions/retro_blog/lib/blog_controller.rb
+    * extensions/retro_blog/models/blog_post.rb
+
+  Updated migration [b4eae8]
+    * db/migrate/054_create_ticket_properties.rb
+
+  Added requirement for OpenStruct [782abb]
+    * config/initializers/D.libs/libs.rb
+
+  Changed Milestone ranking in Feeds [4f2ff0]
+    * app/models/milestone.rb
+    * ...01170000_add_updated_at_column_to_milestones.rb
+    * db/schema.core.rb
+    * spec/fixtures/milestones.yml
+    * spec/models/milestone_spec.rb
+
+  Added RSS controller / Added Secure-Token password recovery / Added
+  Specs / Revised data model [841111]
+    * 101 files affected
+
+(2009-01-28) Dimitrij Denissenko 
+
+  Added duck-typing to Grit node classes / Fixed spec [de6670]
+    * app/models/repository/git/node.rb
+    * config/initializers/A.defaults/repositories.rb
+    * spec/controllers/markup_controller_spec.rb
+
+  Fixed markup preview [a35596]
+    * app/controllers/markup_controller.rb
+    * config/routes.rb
+    * spec/controllers/markup_controller_spec.rb
+
+  Fixed spec [524793]
+    * .../controllers/blog_comments_controller_spec.rb
+    * .../spec/controllers/blog_controller_spec.rb
+    * .../spec/views/blog/show.html.erb_spec.rb
+
+  Fixed rendering of previous blog comments on failed attempts to create
+  new comments [74c9ad]
+    * .../retro_blog/lib/blog_comments_controller.rb
+    * .../retro_blog/views/blog/_comments.html.erb
+
+  Set permission level for search in ticketing [be7011]
+    * app/controllers/tickets_controller.rb
+
+  Set permission level for user-auto-complete in ticketing [842be4]
+    * app/controllers/tickets_controller.rb
+
+(2009-01-27) Dimitrij Denissenko 
+
+  Added merging of permissions [623962]
+    * .../access_manager/secure_controller.rb
+
+(2009-01-26) Dimitrij Denissenko 
+
+  Removed extension template file [71cc48]
+    * extensions/agile_pm
+
+  Removed GIT's submodule nodes (for now) [810f58]
+    * app/models/repository/git/node.rb
+
+  Fixed typo [e867ea]
+    * app/models/repository/git.rb
+
+  Added additional rescue to Git::Node init [aa28e5]
+    * app/models/repository/git/node.rb
+    * spec/models/repository/git/node_spec.rb
+    * spec/models/repository/subversion/node_spec.rb
+
+  Fixed GIT node-retrieval [42fcff]
+    * app/models/repository/git/node.rb
+
+(2009-01-25) Dimitrij Denissenko 
+
+  Added custom environment addition / Fixed spec [badfa0]
+    * config/initializers/A.defaults/custom.rb
+    * vendor/plugins/has_attachment/init.rb
+
+  Fixed migration [c03983]
+    * ...705092553_add_sync_call_back_to_repositories.rb
+
+  Updated user assignment (per text field) in tickets. / Added
+  auto-complete field [5bb3fc]
+    * 9 files affected
+
+  Fixed Attachment model dependency [1576c6]
+    * vendor/plugins/has_attachment/init.rb
+
+  Added default respond_to (to prevent 500 errors on missing templates)
+  [45da99]
+    * 7 files affected
+
+  Fixed page renaming in Wiki / Added spec [b7e7fb]
+    * .../spec/views/wiki/rename.html.erb_spec.rb
+    * extensions/retro_wiki/views/wiki/rename.html.erb
+
+  Fixed Wiki permission [2ed07c]
+    * extensions/retro_wiki/lib/wiki_helper.rb
+
+  Fixed diff browser (for GIT type diffs) / UI improvements [a898e9]
+    * 23 files affected
+
+(2009-01-24) Dimitrij Denissenko 
+
+  Added RSS to Blog [43d013]
+    * app/controllers/project_area_controller.rb
+    * extensions/retro_blog/lib/blog_controller.rb
+    * .../spec/controllers/blog_controller_spec.rb
+    * extensions/retro_blog/views/blog/index.html.erb
+    * .../extension_manager/extension_installer.rb
+
+  Fixed RSS/Rails bug [3a0478]
+    * config/initializers/B.patches/time_with_zone.rb
+    * public/stylesheets/res/classes.css
+    * spec/models/ticket_spec.rb
+
+  Added bottom layout marker [a3301c]
+    * app/controllers/application.rb
+    * extensions/.gitignore
+
+  Moved params_keeper to plugins (better compatibility) [297f9c]
+    * lib/params_keeper.rb
+    * vendor/plugins/params_keeper/init.rb
+    * vendor/plugins/params_keeper/lib/params_keeper.rb
+
+  Moved validates_association to plugins (better compatibility) [c6cd7f]
+    * config/initializers/C.extensions/validations.rb
+    * vendor/plugins/validates_association/init.rb
+    * .../lib/validates_association.rb
+
+  Migrated has_attachment to plugin (compatibility) [981279]
+    * 17 files affected
+
+  Changed file permission [90756f]
+
+  Reverted [6d75ecfb0a2e68b908b7779c32da79f25d753bea], extension
+  stylesheets should not be 'kept' [73ec89]
+    * .../extension_manager/core_ext/asset_tag_helper.rb
+    * lib/retrospectiva/extension_manager/routes.rb
+
+  Simplified Blog stylesheet [a1848d]
+    * .../retro_blog/public/stylesheets/retro_blog.css
+    * extensions/retro_blog/views/blog/index.html.erb
+
+  Added Capistrano compatibility / Removed unused files [6d75ec]
+    * .../extension_manager/core_ext/asset_tag_helper.rb
+    * lib/retrospectiva/extension_manager/routes.rb
+    * public/404.html
+    * public/422.html
+    * public/500.html
+    * public/blank_iframe.html
+
+  Removed empty extension folder [c48cb9]
+    * extensions/agile_pm
+
+  Updated README [87c850]
+    * README
+
+  Initial public import [66c170]
+    * 904 files affected
+
