@@ -160,7 +160,7 @@ module Retrospectiva
             user = User.current ? User.current.name : 'nil'
             permissions = self.class.require_permissions[action_name]
             
-            raise NoAuthorizationError, 
+            raise Retrospectiva::AccessManager::NoAuthorizationError, 
               "No authorization for #{self.class.name}/#{action_name} - params: #{params.except(:controller, :action).inspect}, user: #{user}, project: #{project}, permissions: #{permissions.inspect}"
           end
 

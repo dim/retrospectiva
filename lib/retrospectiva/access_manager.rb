@@ -67,10 +67,13 @@ module Retrospectiva
 end
 
 RetroAM = Retrospectiva::AccessManager
+
 ActionController::Base.class_eval do
   private
   include Retrospectiva::AccessManager::SecureController
+  rescue_responses.update('Retrospectiva::AccessManager::NoAuthorizationError' => :forbidden)
 end
+
 ActionController::Base.class_eval do
   prepend_before_filter :reload_retrospectiva_controllers!
   private
