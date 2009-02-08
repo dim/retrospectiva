@@ -26,7 +26,7 @@ class WikiController < ProjectAreaController
   
   def index
     @pages = Project.current.wiki_pages.paginate :page => params[:page], 
-      :order => 'wiki_pages.title' 
+      :order => params[:order] == 'recent' ? 'wiki_pages.updated_at DESC' : 'wiki_pages.title' 
   end
   
   def show

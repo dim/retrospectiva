@@ -16,13 +16,19 @@ describe WikiController do
       @pages_proxy.stub!(:paginate).and_return(@pages) 
     end
     
-    def do_get
-      get :index, :project_id => @project.to_param
+    def do_get(options = {})
+      get :index, options.merge(:project_id => @project.to_param)
     end
     
     it 'should load the pages' do
       @pages_proxy.should_receive(:paginate).with(:page => nil, :order => 'wiki_pages.title').and_return(@pages) 
       do_get
+      assigns[:pages].should == @pages 
+    end
+
+    it 'should order the pages by last update if requested' do
+      @pages_proxy.should_receive(:paginate).with(:page => nil, :order => 'wiki_pages.updated_at DESC').and_return(@pages) 
+      do_get :order => 'recent'
       assigns[:pages].should == @pages 
     end
     
