@@ -13,7 +13,7 @@
   <ul id="property_values" class="sortable">
     <%= render :partial => 'property_value', :collection => @property_values %>
   </ul>
-  <%= sortable_element "ticket_properties", :url => sort_property_values_path(@project, @property_type), :method => :put %>
+  <%= sortable_element "property_values", :url => sort_property_values_path(@project, @property_type), :method => :put %>
   
   <p class="description">
     <strong><%= _('Note') -%>:</strong>

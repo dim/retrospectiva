@@ -26,7 +26,7 @@
   <div class="span-5 last">      
     <strong><%=_ 'Assigned To' %>:</strong><br/>
     <% if @ticket.assigned_user -%>
-      <em><%= mail_to @ticket.assigned_user.email, h(truncate(@ticket.assigned_user.name, :length => 20)), :title => h(@ticket.assigned_user.name) %></em>
+      <em><%= mail_to @ticket.assigned_user.email, h(truncate(@ticket.assigned_user.name, :length => 20)), :encode => :enkoder, :title => h(@ticket.assigned_user.name) %></em>
     <% else -%>
       <em><%=_ 'Unassigned' %></em>
     <% end -%>

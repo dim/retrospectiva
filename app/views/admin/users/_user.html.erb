@@ -2,7 +2,7 @@
   <td class="centered"><%= user_gravatar(user) %></td>
   <td>
     <span class="strong"><%=h user.name %> (<%=h user.username %>)</span><br/>
-    <%= mail_to user.email %>
+    <%= mail_to user.email, nil, :encode => :hex %>
   </td>  
   <td class="centered"><%= boolean_format user.active?, _('Active'), _('Inactive') %></td>
   <td class="small"><%=h ActiveSupport::TimeZone[user.time_zone].to_s %></td>

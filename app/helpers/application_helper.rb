@@ -87,7 +87,7 @@ module ApplicationHelper
   def truncated_author(object, author_method = :author, email_method = :email)
     author, email = object.send(author_method), object.send(email_method)     
     value = h(truncate(author, :length => 20))
-    email.blank? ? value : mail_to(email, value, :title => h(author))
+    email.blank? ? value : mail_to(email, value, :title => h(author), :encode => :enkoder)
   end
   
   def will_paginate_per_page(collection, options = {})
@@ -143,19 +143,22 @@ module ApplicationHelper
   # Uses modified version of the hivelogic enkoder (original Copyright (c) 2006, Automatic Corp.)
   def mail_to(email_address, name = nil, html_options = {})
     html_options.symbolize_keys!
-    html_options.delete(:encode)
-    logic = random_enkode_logic
-      
-    result = ''
-    "document.write('#{super}');".each_byte do |c|
-      result << sprintf("%%%x", c)
+    if html_options[:encode] == :enkoder
+      html_options.delete(:encode)
+      logic = random_enkode_logic     
+      result = ''
+      "document.write('#{super}');".each_byte do |c|
+        result << sprintf("%%%x", c)
+      end
+      result = "eval(decodeURIComponent('#{result}'))"
+  
+      result = logic[:rb].call(result)
+      result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
+      result = "function hl_enkoder(){var kode='#{h(escape_javascript(result))}'.unescapeHTML();var i,c,x;while(eval(kode));};hl_enkoder();"
+      "<script type=\"#{Mime::JS}\">#{result}</script>"           
+    else
+      super
     end
-    result = "eval(decodeURIComponent('#{result}'))"
-
-    result = logic[:rb].call(result)
-    result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
-    result = "function hl_enkoder(){var kode='#{escape_javascript(result)}';var i,c,x;while(eval(kode));};hl_enkoder();"
-    "<script type=\"#{Mime::JS}\">#{result}</script>"     
   end
 
   protected
