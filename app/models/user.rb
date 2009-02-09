@@ -13,11 +13,11 @@ class User < ActiveRecord::Base
   has_many :login_tokens, :dependent => :destroy
   
 
-  validates_uniqueness_of :username, :allow_nil => true
+  validates_uniqueness_of :username, :allow_blank => true, :case_sensitive => false
   validates_length_of     :username, :within => 3..40
 
   validates_presence_of   :name, :email, :unless => :public?
-  validates_uniqueness_of :email, :allow_nil => true, :unless => :public?
+  validates_uniqueness_of :email, :allow_blank => true, :case_sensitive => false, :unless => :public?
   validates_as_email :email, :allow_blank => true
 
   validates_confirmation_of :plain_password
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   validates_presence_of :plain_password, :on => :create
   validates_length_of :plain_password, :within => 6..40, :on => :create, :allow_blank => true
 
-  validates_uniqueness_of :scm_name, :allow_nil => true
+  validates_uniqueness_of :scm_name, :case_sensitive => false, :allow_blank => true
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone::MAPPING.keys
 
   attr_accessible :name, :plain_password, :plain_password_confirmation, :time_zone

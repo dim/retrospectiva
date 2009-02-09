@@ -40,6 +40,7 @@ inactive:
   activation_code: Y56vp4m
   scm_name: inactive
   time_zone: London
+  scm_name: ''
 double_agent: # plain_password = password
   name: Double Agent
   admin: false

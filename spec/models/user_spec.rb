@@ -121,6 +121,11 @@ describe User do
     it "should validate uniqueness of SCM name" do
       @user.should validate_uniqueness_of(:scm_name)
     end
+
+    it "should allow SCM name to be blank" do
+      @user.scm_name = ''
+      @user.should have(:no).errors_on(:scm_name)
+    end
     
     describe 'if plain password is blank' do
       before do
