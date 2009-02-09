@@ -129,8 +129,8 @@ class AccountsController < ApplicationController
       end
     end
 
-    def failed_registration(errors = nil)
-      flash[:error] = messages unless errors.blank?
+    def failed_registration(error_messages = nil)
+      flash[:error] = error_messages unless error_messages.blank?
       render :action => 'new'      
     end  
 

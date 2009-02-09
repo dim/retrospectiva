@@ -248,6 +248,13 @@ describe AccountsController do
 
       it 'should proceed with failed-registration' do
         @new.should_receive(:save).and_return(false)
+        do_post
+        response.should be_success
+        response.should render_template(:new)
+      end
+
+      it 'should proceed with failed-registration' do
+        @new.should_receive(:save).and_return(false)
         controller.should_receive(:failed_registration)
         do_post
       end
@@ -472,10 +479,19 @@ describe AccountsController do
 
 
   describe 'failed registration process' do
+    
+    before do
+      controller.stub!(:render)      
+    end
 
     it 'should re-render the new-account form' do
       controller.should_receive(:render).with(:action => 'new')
       controller.send(:failed_registration)
+    end
+
+    it 'should set the error-flash if messages were passed' do
+      controller.send(:failed_registration, 'Error message')
+      flash[:error].should == 'Error message'
     end
 
   end
