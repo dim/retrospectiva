@@ -53,6 +53,6 @@
   <%= observe_field 'term',
         :frequency => 1,
         :url => hash_for_search_tickets_path,
-        :with => "'term=' + escape(value)" -%>
+        :with => "'term=' + encodeURIComponent(value)" -%>
 
 </div>

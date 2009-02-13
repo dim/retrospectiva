@@ -25,7 +25,7 @@
   :frequency => 1, 
   :update => 'repository-test-result', 
   :url => repository_validation_admin_projects_path,
-  :with => "'root_path=' + escape(value) + '&repository_id=' + escape($F('project_repository_id'))" -%>
+  :with => "'root_path=' + encodeURIComponent(value) + '&repository_id=' + encodeURIComponent($F('project_repository_id'))" -%>
 
 <% f.fieldset do -%>  
   <%= f.label_tag _('Enabled modules') + ':' %>

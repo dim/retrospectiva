@@ -25,4 +25,4 @@
 <%= observe_field 'term',
       :frequency => 1,
       :url => formatted_search_admin_users_path(:js),
-      :with => "'term=' + escape(value)" -%>
+      :with => "'term=' + encodeURIComponent(value)" -%>

@@ -21,7 +21,7 @@
   :frequency => 1, 
   :update => 'repository-test-result', 
   :url => validate_admin_repositories_path,
-  :with => "'path=' + escape(value) + '&kind=' + escape($F('repository_kind'))" -%>
+  :with => "'path=' + encodeURIComponent(value) + '&kind=' + encodeURIComponent($F('repository_kind'))" -%>
 
 <% f.fieldset do -%>
   <%= f.label :sync_callback, _('Sync callback') + ':' -%>

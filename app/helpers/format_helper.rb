@@ -64,7 +64,7 @@ module FormatHelper
         ]    
       preview_link = link_to_remote _('Preview'), 
         :url => markup_preview_path,
-        :with => "'content=' + escape($F('#{element_id}')) + '&element_id=#{element_id}_preview'",
+        :with => "'content=' + encodeURIComponent($F('#{element_id}')) + '&element_id=#{element_id}_preview'",
         :complete => "Element.hide('#{element_id}_editor'); Element.show('#{element_id}_preview_container'); "
   
       content_tag :div, markup_link + ' | ' + preview_link, :class => 'markup-links'
