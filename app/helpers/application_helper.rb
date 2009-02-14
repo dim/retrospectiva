@@ -145,23 +145,27 @@ module ApplicationHelper
     html_options.symbolize_keys!
     if html_options[:encode] == :enkoder
       html_options.delete(:encode)
-      logic = random_enkode_logic     
-      result = ''
-      "document.write('#{super}');".each_byte do |c|
-        result << sprintf("%%%x", c)
-      end
-      result = "eval(decodeURIComponent('#{result}'))"
-  
-      result = logic[:rb].call(result)
-      result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
-      result = "function hl_enkoder(){var kode='#{h(escape_javascript(result))}'.unescapeHTML();var i,c,x;while(eval(kode));};hl_enkoder();"
-      "<script type=\"#{Mime::JS}\">#{result}</script>"           
+      enkode(super)
     else
       super
     end
   end
 
   protected
+    
+    def enkode(text)
+      result = ''
+      "document.write('#{escape_javascript(text.dup)}');".each_byte do |c|
+        result << sprintf("%%%x", c)
+      end
+      result = "eval(decodeURIComponent('#{result}'))"
+  
+      logic  = random_enkode_logic     
+      result = logic[:rb].call(result)
+      result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
+      result = "function hl_enkoder(){var kode='#{h(escape_javascript(result))}'.unescapeHTML();var i,c,x;while(eval(kode));};hl_enkoder();"
+      javascript_tag result      
+    end
 
     def gravatar(email, options = {})
       size = options.delete(:size) || 40
@@ -170,6 +174,10 @@ module ApplicationHelper
     end
 
   private
+    
+    def token_tag
+      protect_against_forgery? ? enkode(super) : ''
+    end  
   
     def random_enkode_logic
       kodes = [{
