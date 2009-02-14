@@ -20,6 +20,9 @@
   border-top: 1px solid #eee;
 }
 
+.ticket-open {}
+.ticket-in-progress {}
+.ticket-resolved { text-decoration: line-through; }
 
 /* Markup specific settings
 -------------------------------------------------------------- */

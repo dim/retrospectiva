@@ -112,11 +112,11 @@ module TicketsHelper
   protected
   
     def html_class_for_ticket_state(ticket)
-      "ticket-state-#{ticket.status.state.type}".gsub('_', '-')
+      "ticket-state-#{ticket.status.state.type}".dasherize
     end
   
     def html_class_for_ticket_statement(ticket)
-      "ticket-statement-#{ticket.status.statement.type}".gsub('_', '-')
+      "ticket-statement-#{ticket.status.statement.type}".dasherize
     end
     
     def wrap_update(value, tag = nil)

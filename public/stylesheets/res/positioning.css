@@ -18,6 +18,8 @@
 #header #menu {
   background: #f3f3f3 url(../../images/menu_item.png) repeat-x top left;
   border-bottom: 1px solid #ddd;  
+  height:20px!important;
+  overflow:hidden;  
 }
   #header #menu a,
   #header #menu a:visited { outline: none; background: none; color: #888; padding: 2px 15px ; font-size: 13px; line-height: 19px; }
