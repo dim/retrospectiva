@@ -3,7 +3,7 @@
 <div class="bottom-15 span-7 append-1">
   <%= render :partial => 'description', :locals => { 
 				:title => _('All'), 
-				:url => formatted_projects_url(:rss), 
+				:url => feed_url(projects_url), 
 				:description => _('All feeds from all projects')
 			} %>
 </div>
