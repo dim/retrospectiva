@@ -36,7 +36,7 @@ class CreateTicketProperties < ActiveRecord::Migration
     project_ids.each do |project_id|  
         
       counter = 0
-      component_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id, rank) VALUES ('Component', #{project_id}, 9999)"
+      component_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id) VALUES ('Component', #{project_id})"
       components.each do |component|
         property_id = insert_sql "INSERT INTO ticket_properties (name, ticket_property_type_id, rank) VALUES ('#{component['name']}', #{component_type_id}, #{counter+=1})"
         select_all("SELECT id FROM tickets WHERE project_id = #{project_id} AND component_id = #{component['id']}").each do |ticket|
@@ -45,7 +45,7 @@ class CreateTicketProperties < ActiveRecord::Migration
       end
 
       counter = 0
-      release_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id, rank) VALUES ('Release', #{project_id}, 9999)"
+      release_type_id = insert_sql "INSERT INTO ticket_property_types (name, project_id) VALUES ('Release', #{project_id})"
       releases.each do |release|
         property_id = insert_sql "INSERT INTO ticket_properties (name, ticket_property_type_id, rank) VALUES ('#{release['name']}', #{release_type_id}, #{counter+=1})"
         select_all("SELECT id FROM tickets WHERE project_id = #{project_id} AND release_id = #{release['id']}").each do |ticket|

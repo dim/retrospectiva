@@ -11,7 +11,7 @@ class UpdateChangedAttributesInAllTicketChanges < ActiveRecord::Migration
         end
         change.save
       end
-    end    
+    end rescue true
   end
 
   def self.down
@@ -25,7 +25,7 @@ class UpdateChangedAttributesInAllTicketChanges < ActiveRecord::Migration
         end
         change.save
       end
-    end
+    end rescue true
   end
   
 end

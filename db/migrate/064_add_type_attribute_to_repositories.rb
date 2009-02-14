@@ -2,9 +2,7 @@ class AddTypeAttributeToRepositories < ActiveRecord::Migration
   def self.up
     add_column :repositories, :type, :string, :limit => 40
     add_index :repositories, [:type], :name => 'i_repositories_on_type'
-    Repository.find(:all).each do |repos|
-      repos.update_attribute(:type, 'SubversionRepository')
-    end
+    execute "UPDATE repositories SET type = 'SubversionRepository'"
   end
 
   def self.down

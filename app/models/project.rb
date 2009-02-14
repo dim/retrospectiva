@@ -65,10 +65,23 @@ class Project < ActiveRecord::Base
     value.is_a?(Hash) ? value : {}
   end
 
+  def reset_existing_tickets!
+    self.existing_tickets = tickets.inject({}) do |result, ticket|
+      result[ticket.id] = { :state => ticket.status.state_id, :summary => ticket.summary } if ticket.status
+      result
+    end
+    save
+  end
+
   def existing_revisions
     value = read_attribute(:existing_revisions)
     value.is_a?(Array) ? value : []
   end
+  
+  def reset_existing_revisions!
+    self.existing_revisions = changesets.map(&:revision)
+    save
+  end  
 
   def enabled_modules
     value = read_attribute(:enabled_modules)

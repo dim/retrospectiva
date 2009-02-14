@@ -47,7 +47,7 @@ describe Ticket do
   end
   
   describe 'updating' do
-    fixtures 'tickets'
+    fixtures :tickets, :projects, :statuses
 
     before(:each) do
       @ticket = tickets(:another_open)
@@ -58,7 +58,7 @@ describe Ticket do
       @ticket.update_timestamp(@ts)
       @ticket.updated_at.to_formatted_s(:db).should == @ts.to_formatted_s(:db)
     end
-    
+
   end
 
 
@@ -303,6 +303,16 @@ describe Ticket do
       @ticket = Ticket.new
     end
 
+    def build_ticket
+      @ticket.project = projects(:retro)
+      @ticket.user = users(:agent)
+      @ticket.status = statuses(:open)
+      @ticket.priority = priorities(:normal)
+      @ticket.summary = 'New ticket'
+      @ticket.content = 'New content'
+      @ticket
+    end
+    
     it 'should forward all attachment errors to the ticket (if any)' do
       attachment = mock_model(Attachment)
       attachment.errors.should_receive(:each_full).and_yield(['[ERROR]'])      
@@ -332,8 +342,13 @@ describe Ticket do
       @ticket.email = 'me@home.net'
       @ticket.valid?
       @ticket.email.should == users(:agent).email
+    end   
+
+    it 'should update the existing-tickets cache in parent project' do
+      @ticket = build_ticket
+      @ticket.save.should be(true)            
+      projects(:retro).existing_tickets[@ticket.id][:summary].should == 'New ticket'
     end
-        
 
   end
   
@@ -396,6 +411,33 @@ describe Ticket do
       @ticket.email = ' '
       @ticket.valid?
       @ticket.email.should be_nil
+    end
+
+    it 'should update the existing-tickets cache in parent project' do
+      projects(:retro).existing_tickets[tickets(:another_open).id][:summary].should == 'Another open'
+      projects(:retro).existing_tickets[tickets(:another_open).id][:state].should == 1
+      
+      tickets(:another_open).summary = 'Now closed'
+      tickets(:another_open).save.should be_true
+      projects(:retro).reload.existing_tickets[tickets(:another_open).id][:summary].should == 'Now closed' 
+      projects(:retro).reload.existing_tickets[tickets(:another_open).id][:state].should == 1 
+
+      tickets(:another_open).status = statuses(:fixed)
+      tickets(:another_open).save.should be_true
+      projects(:retro).reload.existing_tickets[tickets(:another_open).id][:summary].should == 'Now closed' 
+      projects(:retro).reload.existing_tickets[tickets(:another_open).id][:state].should == 3      
+    end
+
+  end
+
+
+  describe 'on delete' do
+    fixtures :projects, :tickets, :statuses
+
+    it 'should remove the ticket reference from the existing-tickets cache in parent project' do
+      projects(:retro).existing_tickets[tickets(:another_open).id].should_not be_blank      
+      tickets(:another_open).destroy
+      projects(:retro).reload.existing_tickets[tickets(:another_open).id].should be_blank      
     end
         
   end

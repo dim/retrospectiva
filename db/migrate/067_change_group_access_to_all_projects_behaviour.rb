@@ -1,8 +1,10 @@
 class ChangeGroupAccessToAllProjectsBehaviour < ActiveRecord::Migration
   def self.up
-    Group.find_all_by_access_to_all_projects(true).each do |group|
-      group.projects = Project.find(:all)
-      group.save
+    project_ids = select_all("SELECT id FROM projects").map {|i| i['id'] }    
+    select_all("SELECT id FROM groups WHERE access_to_all_projects = #{quoted_true}").each do |record|
+      project_ids.each do |project_id|
+        execute "INSERT INTO groups_projects (group_id, project_id) VALUES (#{record['id']}, #{project_id})"
+      end
     end
   end
 

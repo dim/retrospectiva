@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Changeset do      
+  fixtures :changesets, :projects, :users, :repositories, :changesets_projects, :changes
   
   describe 'class' do
     it 'should expire cache on delete-all' do
@@ -32,7 +33,6 @@ describe Changeset do
     end
 
     describe 'previewable' do
-      fixtures :projects, :changesets
       
       describe 'channel' do
         before do
@@ -85,7 +85,6 @@ describe Changeset do
   end
   
   describe 'instance' do
-    fixtures :changesets, :changesets_projects, :projects, :changes, :repositories 
   
     before(:each) do
       @changeset = changesets(:initial)
@@ -195,38 +194,39 @@ describe Changeset do
   end
 
   describe 'on create' do
-    fixtures :users, :repositories
   
     before(:each) do
       @changeset = Changeset.new :revision => '300', :repository_id => 1
     end
     
+    it 'should update the existing-revisions cache in parent project' do
+      projects(:retro).existing_revisions.should_not include('300')      
+      @changeset.projects = [projects(:retro)]
+      @changeset.save.should be(true)      
+      @changeset.should have(1).projects      
+      projects(:retro).existing_revisions.should include('300')
+    end
+    
     describe 'if a valid user matches the changeset author' do
-      before(:each) do
+      it 'should assign the user to the changeset' do
         @changeset.author = users(:agent).scm_name
         @changeset.save.should be(true)
-      end
-      it 'should assign the user to the changeset' do
         @changeset.user(true).should == users(:agent)
       end
     end
 
     describe 'if an inactive user matches the changeset author' do
-      before(:each) do
+      it 'should not assign the user to the changeset' do
         @changeset.author = users(:inactive).scm_name
         @changeset.save.should be(true)
-      end
-      it 'should not assign the user to the changeset' do
         @changeset.user.should be_nil
       end
     end
 
     describe 'if no user matches the changeset author' do
-      before(:each) do
+      it 'should not assign any user to the changeset' do
         @changeset.author = 'not-existing-user'
         @changeset.save.should be(true)
-      end
-      it 'should not assign any user to the changeset' do
         @changeset.user.should be_nil
       end
     end  
@@ -235,5 +235,21 @@ describe Changeset do
       Changeset.should_receive(:update_project_associations!)
       @changeset.save.should be(true)
     end
+  end
+
+
+  describe 'on delete' do
+
+    before do
+      @project = projects(:retro)
+      @changeset = changesets(:with_added)
+    end
+
+    it 'should remove the revision reference from the existing-revisions cache in parent project' do
+      @project.existing_revisions.should include(@changeset.revision)      
+      @changeset.destroy
+      @project.reload.existing_revisions.should_not include(@changeset.revision)      
+    end
+    
   end
 end

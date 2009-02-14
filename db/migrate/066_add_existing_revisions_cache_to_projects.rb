@@ -1,9 +1,7 @@
 class AddExistingRevisionsCacheToProjects < ActiveRecord::Migration
   def self.up
     add_column :projects, :existing_revisions, :text
-    Project.find(:all).each do |project|
-      project.update_existing_revisions
-    end
+    Project.find(:all).each(&:reset_existing_tickets!) rescue true
   end
 
   def self.down

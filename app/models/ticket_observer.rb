@@ -34,4 +34,23 @@ class TicketObserver < ActiveRecord::Observer
     true
   end
 
+  def after_save(ticket)
+    existing_tickets = ticket.project.existing_tickets
+    unless existing_tickets[ticket.id].is_a?(Hash) &&  
+      existing_tickets[ticket.id][:state] == ticket.status.state_id && 
+      existing_tickets[ticket.id][:summary] == ticket.summary
+
+      existing_tickets.merge!(ticket.id => { :state => ticket.status.state_id, :summary => ticket.summary })
+      ticket.project.update_attribute(:existing_tickets, existing_tickets)
+    end      
+  end
+
+  def after_destroy(ticket)
+    existing_tickets = ticket.project.existing_tickets
+    if existing_tickets.key?(ticket.id)  
+      existing_tickets.delete(ticket.id)
+      ticket.project.update_attribute(:existing_tickets, existing_tickets)
+    end
+  end
+
 end

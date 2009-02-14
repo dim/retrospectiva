@@ -10,13 +10,9 @@ class AddRankingToStaticTicketProperties < ActiveRecord::Migration
     add_column :milestones, :rank, :integer
     add_index :milestones, :rank
     
-    Status.set_table_name('status')
-    [Status, Priority, Milestone].each do |klass|
-      counter = 0
-      klass.find(:all, :order => 'id').each do |record|
-        record.update_attribute(:rank, counter += 1)
-      end
-    end
+    execute "UPDATE status SET rank = id"
+    execute "UPDATE priorities SET rank = id"
+    execute "UPDATE milestones SET rank = id"
 
     rename_column :ticket_reports, :position, :rank
   end
