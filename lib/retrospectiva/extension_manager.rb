@@ -23,7 +23,7 @@ module Retrospectiva
         config.eager_load_paths += extension.load_paths
         
         ActiveSupport::Dependencies.load_paths += extension.load_paths
-        ActionController::Base.append_view_path(extension.view_paths)
+        ActionController::Base.prepend_view_path(extension.view_paths)
 
         extension.load_paths.reverse_each { |dir| $LOAD_PATH.unshift(dir) }
       end

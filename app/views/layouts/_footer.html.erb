@@ -1,22 +1,3 @@
-  <% if User.current.active_projects.size > 1 || User.current.admin? || true -%>
-    <ul id="base-navigation"><%= base_navigation %></ul>
-  <% end -%>
-  </div>
-  
-  <div id="flash_box" style="display: none;" onclick="new Effect.Fade(this,{duration: 0.1, from: 0.7});">  
-    <%= render_flash_messages %>
-  </div>
-
-  <div id="load_indicator" style="display: none;">  
-    <div class="content"><%=_ 'Loading...' %></div>
-  </div>  
-
-</div>
-
-<div id="content" class="content<%= content_styles %>">
-  <%= yield %>
-</div>
-
 <div id="footer">
   <div id="right-side">
     Powered by <%= link_to image_tag('logo_small.png', :alt => 'retrospectiva'), 'http://retrospectiva.org', :popup => true %>

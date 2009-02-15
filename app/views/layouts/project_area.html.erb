@@ -1,6 +1,9 @@
-<%= render :partial => 'layouts/header' %>
+<% content_for :main_navigation do -%>
   <ul id="main-navigation">
     <%= main_navigation %>
   </ul>
+<% end -%>
+<%= render :partial => 'layouts/header' %>
+<%= render :partial => 'layouts/content' %>
 <%= render :partial => 'layouts/footer' %>
 
