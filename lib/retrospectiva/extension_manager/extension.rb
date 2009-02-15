@@ -79,6 +79,10 @@ module Retrospectiva
         File.join(root_path, 'public', *tokens)
       end
 
+      def settings_path
+        File.join(root_path, 'ext_settings.yml')
+      end
+
       private
       
         def info_path

@@ -25,10 +25,11 @@ module Retrospectiva
         ActiveSupport::Dependencies.load_paths += extension.load_paths
         ActionController::Base.prepend_view_path(extension.view_paths)
 
-        extension.load_paths.reverse_each { |dir| $LOAD_PATH.unshift(dir) }
+        extension.load_paths.reverse_each { |dir| $LOAD_PATH.unshift(dir) }        
       end
       ActiveSupport::Dependencies.clear
-      $LOAD_PATH.uniq!      
+      $LOAD_PATH.uniq!
+      I18n.reload!
     end
         
     # Returns the path the extensions are stored in

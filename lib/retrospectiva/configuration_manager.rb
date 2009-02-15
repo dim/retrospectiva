@@ -71,10 +71,9 @@ module Retrospectiva
   
       def merge_extensions!(core_settings)
         RetroEM.installed_extensions.each do |extension|
-          settings_file = File.join(RetroEM.extension_path(extension), 'ext_settings.yml')            
-          next unless File.exists?(settings_file)
-
-          YAML.load_configuration(settings_file, []).each do |setting|
+          next unless File.exists?(extension.settings_path)
+          
+          YAML.load_configuration(extension.settings_path, []).each do |setting|
             existing = core_settings.find {|i| i.name == setting.name }
             existing ? existing.merge!(setting) : core_settings.push(setting)
           end
