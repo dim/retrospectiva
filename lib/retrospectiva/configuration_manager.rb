@@ -70,6 +70,8 @@ module Retrospectiva
       end
   
       def merge_extensions!(core_settings)
+        raise 'RetroEM is not loaded (must be loaded before RetroCM)' unless RetroEM.loaded?
+        
         RetroEM.installed_extensions.each do |extension|
           next unless File.exists?(extension.settings_path)
           

@@ -79,8 +79,8 @@ Rails::Initializer.run do |config|
   end
   
   config.after_initialize do
-    RetroCM.reload!
     RetroEM.load!(config)
+    RetroCM.reload!
     Retrospectiva::Previewable.load!
     
     ActionController::UrlWriter.reload!

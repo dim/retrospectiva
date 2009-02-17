@@ -30,8 +30,13 @@ module Retrospectiva
       ActiveSupport::Dependencies.clear
       $LOAD_PATH.uniq!
       I18n.reload!
+      @loaded = true
     end
-        
+    
+    def loaded?
+      @loaded == true
+    end
+    
     # Returns the path the extensions are stored in
     def extension_path(name = nil)
       path = File.join(RAILS_ROOT, 'extensions')
