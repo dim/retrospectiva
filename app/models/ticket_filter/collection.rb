@@ -41,9 +41,9 @@ class TicketFilter::Collection < Array
   end
   
   def conditions
-    values = PlusFilter::Conditions.new
-    each {|i| values << i.conditions if i.selected? }
-    values.to_a
+    returning PlusFilter::Conditions.new do |values|
+      each {|i| values << i.conditions if i.selected? }
+    end.to_a
   end
 
   def joins

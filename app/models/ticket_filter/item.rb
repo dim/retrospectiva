@@ -1,10 +1,12 @@
 class TicketFilter::Item < Array
   attr_reader :name, :selected_ids
+
+  delegate :include?, :to => :selected_ids 
   
   def initialize(name, records, selected_ids, options = {})
     super(records)
     @name = name.to_s
-    @options = options
+    @options = options.dup
     @selected_ids = select_valid(*selected_ids)
   end
   
@@ -17,9 +19,13 @@ class TicketFilter::Item < Array
   end
 
   def conditions
+    return nil unless selected?
+
     case @options[:conditions]
     when Proc
-      @options[:conditions].call(self, PlusFilter::Conditions.new).to_a
+      value = PlusFilter::Conditions.new      
+      @options[:conditions].call(self, value)
+      value.to_a
     when String
       [@options[:conditions], selected_ids]
     else
@@ -38,10 +44,6 @@ class TicketFilter::Item < Array
     else
       nil
     end
-  end
-
-  def include?(id)   
-    selected_ids.include?(id)
   end
 
   def select(*ids_to_select)
