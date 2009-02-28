@@ -95,9 +95,11 @@ class TicketFilter::Collection < Array
     end
 
     def push_other_items!
-      property :my_tickets, TicketFilter::Custom::UserFilter.items, 
-        :label => _('My Tickets'),
-        :conditions => TicketFilter::Custom::UserFilter.lambda_for_conditions
+      unless User.current.public?
+        property :my_tickets, TicketFilter::Custom::UserFilter.items, 
+          :label => _('My Tickets'),
+          :conditions => TicketFilter::Custom::UserFilter.lambda_for_conditions
+      end
     end  
 
     def pre_select!      

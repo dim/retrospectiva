@@ -63,7 +63,7 @@ describe TicketFilter::Collection do
     before do
       @status = @statuses.first
       @ticket_property = @ticket_properties.first
-      User.stub!(:current).and_return(mock_model(User))
+      User.stub!(:current).and_return(mock_model(User, :public? => false))
     end
            
     it 'should return no params if nothing is selected' do
@@ -95,7 +95,7 @@ describe TicketFilter::Collection do
     before do
       @s1, @s2 = @statuses
       @p1 = @priorities.first
-      User.stub!(:current).and_return(mock_model(User))
+      User.stub!(:current).and_return(mock_model(User, :public? => false))
     end
 
     it 'should allow to include an additional element to an existing filter' do
@@ -121,11 +121,12 @@ describe TicketFilter::Collection do
 
   describe 'using the collection for conditions generation' do
     
-     before do
-       @status = @statuses.first
-       @priority = @priorities.first
-       User.stub!(:current).and_return(mock_model(User))
-     end
+    before do
+      @status = @statuses.first
+      @priority = @priorities.first
+      @user = mock_model(User, :public? => false)
+      User.stub!(:current).and_return(@user)
+    end
            
     it 'should generate simple clauses' do
       do_create(:status => @status.id).conditions.should == ['( statuses.id IN (?) )', [@status.id]]
@@ -135,17 +136,36 @@ describe TicketFilter::Collection do
       do_create(:status => @status.id, :priority => @priority.id).conditions.should == ['( statuses.id IN (?) ) AND ( priorities.id IN (?) )', [@status.id], [@priority.id]]
     end
 
+    it 'should generate custom clauses' do
+      do_create(:my_tickets => 1).conditions.should == ["( ( tickets.assigned_user_id = ? ) )", @user.id]
+    end
+
   end
 
   describe 'using the collection for joins generation' do
     
-     before do
-       @ticket_property = @ticket_properties.first
-       User.stub!(:current).and_return(mock_model(User))
-     end
+    before do
+      @ticket_property = @ticket_properties.first
+      User.stub!(:current).and_return(mock_model(User, :public? => false))
+    end
            
     it 'should generate clauses' do
       do_create(:release => @ticket_property.id).joins.should == "INNER JOIN ticket_properties_tickets AS ticket_property_release ON ticket_property_release.ticket_property_id IN (#{@ticket_property.id}) AND ticket_property_release.ticket_id = tickets.id"
+    end
+
+  end
+
+
+  describe 'user filters' do
+    
+    it 'should be available if user is not public' do
+      User.stub!(:current).and_return(mock_model(User, :public? => false))
+      do_create.map(&:name).should include('my_tickets')
+    end
+
+    it 'should be NOT available if user is public' do
+      User.stub!(:current).and_return(mock_model(User, :public? => true))
+      do_create.map(&:name).should_not include('my_tickets')
     end
 
   end
