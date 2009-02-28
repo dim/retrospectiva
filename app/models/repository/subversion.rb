@@ -45,14 +45,7 @@ class Repository::Subversion < Repository::Abstract
     latest_changeset = changesets.find(:first, :select => 'revision', :order => 'created_at DESC')
     start = latest_changeset ? latest_changeset.revision.to_i + 1: 1
     stop  = latest_revision.to_i
-    return if start > stop
-
-    log :debug, 'SYNC', "Revisions: #{start} - #{stop}"
-    (start..stop).each do |rev| 
-      create_changeset!(rev)
-    end
-    
-    Changeset.update_project_associations!
+    synchronize!((start..stop).to_a) unless start > stop
   end
 
   def fs
@@ -99,8 +92,6 @@ class Repository::Subversion < Repository::Abstract
         :author => info.author,
         :log => info.log,
         :created_at => info.date
-      changeset.skip_project_synchronization = true
-    
       [changeset, node_data]
     end
   

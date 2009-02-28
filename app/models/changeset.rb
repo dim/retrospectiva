@@ -11,7 +11,7 @@ class Changeset < ActiveRecord::Base
   validates_presence_of :repository_id, :revision
   validates_uniqueness_of :revision, :scope => :repository_id
 
-  attr_accessor :skip_project_synchronization
+  attr_accessor :bulk_synchronization
   
   retro_previewable do |r|
     r.channel do |c, options|
@@ -55,30 +55,29 @@ class Changeset < ActiveRecord::Base
         FROM changesets
         INNER JOIN projects 
           ON projects.repository_id = changesets.repository_id
-         AND projects.closed = ?
         INNER JOIN changes 
           ON changes.changeset_id = changesets.id 
-         AND ( projects.root_path IS NULL OR changes.path LIKE #{pattern} OR changes.from_path LIKE #{pattern} )
+         AND ( projects.root_path IS NULL OR projects.root_path = '' OR changes.path LIKE #{pattern} OR changes.from_path LIKE #{pattern} )
         LEFT OUTER JOIN changesets_projects
           ON changesets_projects.changeset_id = changesets.id 
          AND changesets_projects.project_id = projects.id 
         WHERE changesets_projects.changeset_id IS NULL
       }.squish
-      connection.insert sanitize_sql([sql, false])
+      connection.send :update_sql, sql
     end
 
     def delete_all(*args)
-      expire_cache
+      expire_cache!
       super    
     end
     
     def destroy_all(*args)
-      expire_cache
+      expire_cache!
       super
     end
     
-    def expire_cache
-      ActionController::Base.new.expire_fragment(%r{changesets/changeset/\d+})
+    def expire_cache!
+      ActionController::Base.new.expire_fragment(/changesets/)
     end
 
   end 

@@ -1,12 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Repository::Git do
-  fixtures :repositories, :changesets, :changes
+  fixtures :repositories, :changesets, :changes, :projects, :changesets_projects
   before do
     @repository = repositories(:git)    
   end
 
-  describe 'synchronization' do
+  describe 'bulk synchronization' do
     before(:each) do
       @should = @repository.changesets.find :all, :include => [:changes]
     end
@@ -18,23 +18,30 @@ describe Repository::Git do
       @repository.changesets.reload      
     end
     
-    it 'should create a list of changesets in the database' do
-      do_sync
-      @repository.changesets.should have(@should.size).records
-    end
-
-    
     def list_of(changes, attribute)
       changes.sort_by(&:path).map(&attribute.to_sym) 
     end
     
-    it 'should perform correctly' do
+    it 'should perform correctly (all in one test for performance reasons)' do
       do_sync
+
+      # should create a list of changesets in the database
+      @repository.changesets.should have(@should.size).records
+            
       @should.each do |original|
-        synchronised = @repository.changesets.find_by_revision(original.revision)
+        synchronised = @repository.changesets.find_by_revision!(original.revision)
+
+        # should be an new record
         synchronised.id.should_not == original.id
+
+        # should have the expected attributes
         synchronised.log.should == original.log
         synchronised.author.should == original.author
+
+        # should be associated with the right project(s)
+        synchronised.projects.should == []
+        
+        # should have changes (as expected)
         list_of(synchronised.changes, :path).should == list_of(original.changes, :path)
         list_of(synchronised.changes, :from_path).should == list_of(original.changes, :from_path)
         list_of(synchronised.changes, :from_revision).should == list_of(original.changes, :from_revision)

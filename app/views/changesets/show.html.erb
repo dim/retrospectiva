@@ -10,7 +10,7 @@
   <% if User.current.permitted?(:code, :browse) -%>
     <h2><%=_ 'Affected files' -%>:</h2>
 
-    <% cache :controller => 'changesets', :action => 'show', :id => @changeset.id, :locale => I18n.locale do -%>
+    <% cache "changesets/#{I18n.locale}/#{@changeset.id}" do -%>
       <ul class="changes">
         <%= format_changes(@changeset) %>
       </ul>

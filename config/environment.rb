@@ -88,10 +88,11 @@ Rails::Initializer.run do |config|
       :session_key => RetroCM[:general][:basic][:session_key],
       :secret      => Retrospectiva::Session.read_or_generate_secret
     )
-
     ActionView::Base.sanitized_bad_tags.merge %w(meta iframe frame layer ilayer link object embed bgsound from input select textarea style)
     ActionView::Base.sanitized_allowed_tags.merge %w(table tr td th)
     ActionView::Base.sanitized_allowed_attributes.merge %w(colspan rowspan style)
+
+    ActionController::Base.cache_store = :file_store, RAILS_ROOT + '/tmp/cache'
   end unless $rails_gem_installer
 end
 

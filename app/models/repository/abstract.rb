@@ -86,20 +86,38 @@ class Repository::Abstract < ::Repository
     def log(level, action, message)
       logger.send level, "[#{self.class.name.demodulize}:#{name}:#{action}] #{message}"
     end
+    
+    def synchronize!(revisions)
+      log :debug, 'SYNC', "Revisions (#{revisions.size}): #{revisions.first} .. #{revisions.last}"
+      bulk_mode = revisions.size > 5
 
-    def create_changeset!(revision)
-      log :debug, 'SYNC', "Revision: #{revision}"
-      next if changesets.exists?(:revision => revision.to_s)
+      changesets = revisions.map do |revision|
+        create_changeset!(revision, bulk_mode)
+      end.compact
+
+      if bulk_mode
+        Changeset.update_project_associations!
+        changesets.map(&:projects).flatten.uniq.each(&:reset_existing_revisions!)
+      end
+
+      true
+    end
+
+    def create_changeset!(revision, bulk_mode = false)
+      log :debug, 'SYNC', "Revision #{revision}"
+      return nil if changesets.exists?(:revision => revision.to_s)
       
       changeset, node_data = new_changeset(revision)
+      changeset.bulk_synchronization = bulk_mode
       changeset.changes.build_copied(*node_data[:copied])
       changeset.changes.build_moved(*node_data[:moved])
       changeset.changes.build_added(*node_data[:added])
       changeset.changes.build_deleted(*node_data[:deleted])
-      changeset.changes.build_modified(*node_data[:updated])  
-      changeset.save!
-      
+      changeset.changes.build_modified(*node_data[:updated])
+      changeset.save!      
       log :info, 'SYNC', "Added revision #{revision}"
+      
+      changeset
     rescue ActiveRecord::RecordInvalid
       log :error, 'SYNC', "Revision already exists!"
     rescue => other

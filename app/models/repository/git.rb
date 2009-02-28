@@ -48,13 +48,8 @@ class Repository::Git < Repository::Abstract
     else
       repo.commits('HEAD', nil).reverse
     end.map(&:id)
-
-    log :debug, 'SYNC', "Revisions: #{revisions.first} - #{revisions.last}"    
-    revisions.each do |revision|
-      create_changeset!(revision)
-    end
-
-    Changeset.update_project_associations!
+    
+    synchronize!(revisions)
   end
 
   def repo
@@ -87,7 +82,6 @@ class Repository::Git < Repository::Abstract
         :author => commit.committer.name, 
         :log => commit.message, 
         :created_at => commit.committed_date      
-      changeset.skip_project_synchronization = true
       [changeset, node_data]
     end
 

@@ -5,12 +5,12 @@ describe Changeset do
   
   describe 'class' do
     it 'should expire cache on delete-all' do
-      Changeset.should_receive(:expire_cache)
+      Changeset.should_receive(:expire_cache!)
       Changeset.delete_all ['revision = ?', 'not-there']      
     end
 
     it 'should expire cache on destroy-all' do
-      Changeset.should_receive(:expire_cache)
+      Changeset.should_receive(:expire_cache!)
       Changeset.destroy_all ['revision = ?', 'not-there']
     end    
 
@@ -196,15 +196,36 @@ describe Changeset do
   describe 'on create' do
   
     before(:each) do
-      @changeset = Changeset.new :revision => '300', :repository_id => 1
+      @changeset = Changeset.new :revision => '800', :repository_id => 1
+      @changeset.changes.build :name => 'M', :path => 'retrospectiva/file.rb'
+    end
+
+    it 'should create changeset-project relation' do
+      @changeset.save.should be(true)   
+      @changeset.projects.should == [projects(:retro)]
     end
     
     it 'should update the existing-revisions cache in parent project' do
-      projects(:retro).existing_revisions.should_not include('300')      
-      @changeset.projects = [projects(:retro)]
-      @changeset.save.should be(true)      
-      @changeset.should have(1).projects      
-      projects(:retro).existing_revisions.should include('300')
+      projects(:retro).existing_revisions.should_not include('800')
+      @changeset.save.should be(true)   
+      projects(:retro).reload.existing_revisions.should include('800')
+    end
+
+    describe 'if in bulk-mode' do
+
+      it 'should NOT create changeset-project relation' do
+        @changeset.bulk_synchronization = true
+        @changeset.save.should be(true)   
+        @changeset.projects.should == []
+      end
+      
+      it 'should update the existing-revisions cache in parent project' do
+        @changeset.bulk_synchronization = true
+        projects(:retro).existing_revisions.should_not include('800')
+        @changeset.save.should be(true)   
+        projects(:retro).reload.existing_revisions.should_not include('800')
+      end      
+      
     end
     
     describe 'if a valid user matches the changeset author' do
@@ -231,10 +252,6 @@ describe Changeset do
       end
     end  
 
-    it 'should update the project-changeset associations' do
-      Changeset.should_receive(:update_project_associations!)
-      @changeset.save.should be(true)
-    end
   end
 
 
