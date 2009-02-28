@@ -69,9 +69,8 @@ describe FormatHelper do
 
   describe 'formatting changeset links' do
     before do
-      @proxy = mock('ChangesetsAsscociationProxy', :exists? => true)
       @user.stub!(:permitted?).and_return true
-      @project.stub!(:changesets).and_return @proxy
+      @project.stub!(:existing_revisions).and_return ['1a2b3c4d']
     end
     
     def do_format(value, options = {})
@@ -80,7 +79,6 @@ describe FormatHelper do
     
     it 'should just return a dummy link if in demo mode' do
       @user.should_not_receive(:permitted?)
-      @proxy.should_not_receive(:exists?)
       helper.should_not_receive(:project_changeset_path)
       do_format('1a2b3c4d', :demo => true).should == '<a href="#" onclick="; return false;">[1a2b3c4d]</a>'      
     end
@@ -91,13 +89,13 @@ describe FormatHelper do
     end
 
     it 'should check if the changeset exists' do
-      @proxy.should_receive(:exists?).with(:revision => '1a2b3c4d').and_return(false)
+      @project.should_receive(:existing_revisions).and_return ['12345678']
       do_format('1a2b3c4d').should == '[1a2b3c4d]'
     end    
 
     it 'should rerun a link if criteria is met' do
       helper.should_receive(:project_changeset_path).with(@project, '1a2b3c4d').and_return('LINK_PATH')
-      do_format('1a2b3c4d').should == '<a href="LINK_PATH">[1a2b3c4d]</a>'
+      do_format('1a2b3c4d').should == '<a href="LINK_PATH" title="Show changeset 1a2b3c4d">[1a2b3c4d]</a>'
     end    
   end
 

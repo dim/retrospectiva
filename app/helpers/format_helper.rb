@@ -1,4 +1,5 @@
 module FormatHelper
+  include NavigationHelper
 
   def datetime_format(datetime)
     datetime.strftime(RetroCM[:content][:format][:datetime])
@@ -106,14 +107,11 @@ module FormatHelper
     
     def format_internal_changeset_link(revision, options = {})
       label = h("[#{revision}]")
-      return link_to_function(label) if options[:demo]
-
-      if User.current.permitted?(:changesets, :view) &&
-         Project.current.changesets.exists?(:revision => revision)
-        link_to label, project_changeset_path(Project.current, revision)
+      if options[:demo]
+        link_to_function(label) 
       else
-        label
-      end    
+        link_to_changeset(label, revision)
+      end
     end
   
     def format_internal_ticket_link(ticket_id, options = {})

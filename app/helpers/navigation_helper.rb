@@ -30,7 +30,26 @@ module NavigationHelper
     condition = User.current.has_access?(options)
     link_to_if(condition, name, options, html_options, &block) 
   end 
+
+  def link_to_changeset(label, revision, options = {})
+    condition = User.current.permitted?(:changesets, :view) &&
+      Project.current.existing_revisions.include?(revision)    
+
+    link_to_if condition, label, 
+      project_changeset_path(Project.current, revision), 
+      options.reverse_merge(:title => _('Show changeset {{revision}}', :revision => h(revision)))
+  end
   
+  def link_to_browse(label, path, revision = nil)
+    relative_path = relativize_path(path.is_a?(Array) ? path.join('/') : path)
+    tokens = relative_path.split('/').reject(&:blank?)
+    title = ( tokens.blank? ? 'root' : tokens.join('/') ) + ( revision ? " [#{revision}]" : '' )
+    
+    link_to_if_permitted label, 
+      project_browse_path(Project.current, tokens, :rev => revision),
+      :title => _('Browse {{title}}', :title => title)      
+  end
+
   def link_to_admin_dashboard(label = nil)
     label ||= _('Dashboard')
     link_to_if User.current.admin?, label, admin_path
@@ -78,5 +97,37 @@ module NavigationHelper
     
     elements.join(separator)
   end
+
+
+  # Override default named route method 
+  def project_browse_path(project, path = nil, options = {})
+    options.delete(:rev) if options.key?(:rev) and options[:rev].blank?
+    super(project, path, options)
+  end
+
+  # Override default named route method 
+  def project_revisions_path(project, path = nil, options = {})
+    options.delete(:rev) if options.key?(:rev) and options[:rev].blank?
+    super(project, path, options)
+  end
+
+  # Override default named route method 
+  def project_download_path(project, path = nil, options = {})
+    options.delete(:rev) if options.key?(:rev) and options[:rev].blank?
+    super(project, path, options)
+  end
+  
+  # Override default named route method 
+  def project_diff_path(project, path = nil, options = {})
+    options.delete(:rev) if options.key?(:rev) and options[:rev].blank?
+    super(project, path, options)
+  end
+
+  protected
+
+    def relativize_path(full_path)
+      path = Project.current.relativize_path(full_path)
+      path.blank? ? '/' : path
+    end  
 
 end
