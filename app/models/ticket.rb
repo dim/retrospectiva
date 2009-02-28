@@ -200,10 +200,10 @@ class Ticket < ActiveRecord::Base
   
   protected
 
-    def validate_on_create 
+    def validate_on_create
       attachment.errors.each_full do |msg|
         errors.add :attachment, msg
-      end if attachment
+      end if attachment and not attachment.valid?
       errors.empty?
     end
     

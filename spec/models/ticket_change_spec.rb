@@ -95,25 +95,30 @@ describe TicketChange do
       @ticket_change = TicketChange.new
     end
 
+    def build_attachment(content, name = 'file.rb', type = 'text/plain')    
+      returning ActionController::UploadedStringIO.new(content) do |stream|
+        stream.original_path = name
+        stream.content_type = type
+      end
+    end
+    
     it 'should forward all attachment errors to the ticket-change (if any)' do
+      Attachment.stub!(:max_size).and_return(4)
+      @ticket_change.attachment = build_attachment('ABCDE')
+      @ticket_change.should have(2).errors_on(:attachment)
+      @ticket_change.errors.on(:attachment).sort.should == ["File size exceeds the maximum limit", "Upload is not permitted"]
+    end
+
+    it 'should forward all ticket errors to the ticket-change (if any)' do
       ticket = mock_model(Ticket, :valid? => false, :changed => [])
       ticket.stub!(:errors).and_return({ 'status_id' => 'BLANK', 'milestone_id' => 'INVALID' })      
       @ticket_change.stub!(:ticket).and_return(ticket)
       @ticket_change.should have(1).error_on(:status_id)
       @ticket_change.should have(1).error_on(:milestone_id)
     end
-
-    it 'should forward all ticket errors to the ticket-change (if any)' do
-      attachment = mock_model(Attachment, :readable? => true)
-      attachment.errors.should_receive(:each_full).and_yield(['[ERROR]'])      
-      @ticket_change.stub!(:attachment).and_return(attachment)
-      @ticket_change.should have(1).error_on(:attachment)
-    end
         
     it 'should validate presence of content if an attachment is present' do
-      attachment = mock_model(Attachment, :readable? => true)
-      attachment.errors.stub!(:each_full).and_yield([])
-      @ticket_change.stub!(:attachment).and_return(attachment)
+      @ticket_change.stub!(:attachment?).and_return(true)
       @ticket_change.should have(1).error_on(:content)
     end
 

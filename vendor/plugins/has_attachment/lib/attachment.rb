@@ -17,7 +17,7 @@ class Attachment < ActiveRecord::Base
   class << self
 
     def max_size
-      RetroCM[:general][:attachments][:max_size]
+      RetroCM[:general][:attachments][:max_size].to_i.kilobytes
     end
 
     def parse(stream)
@@ -30,7 +30,7 @@ class Attachment < ActiveRecord::Base
   def initialize(stream)
     super(nil)
     if stream.respond_to?(:size) and stream.size.to_i > 0 and stream.respond_to?(:original_filename) && stream.respond_to?(:content_type)
-      self.content = stream || ''
+      self.content = stream
       self.file_name = sanitize_filename(stream.original_filename)
       self.content_type = stream.content_type.to_s.strip
     end

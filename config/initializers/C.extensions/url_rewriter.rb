@@ -1,13 +1,10 @@
 module ActionController
   module UrlWriter
-    # Always use the same default_url_options 
+
+    # Always delegate the default_url_options (instead of assigning them) 
     def self.included(base) #:nodoc:
       ActionController::Routing::Routes.install_helpers(base)
-      base.class_eval do
-        def self.default_url_options
-          ActionController::UrlWriter.default_url_options
-        end
-      end
+      base.class.delegate :default_url_options, :to => :'ActionController::UrlWriter'
     end
     
     def self.reload!

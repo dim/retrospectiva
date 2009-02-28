@@ -313,11 +313,18 @@ describe Ticket do
       @ticket
     end
     
+    def build_attachment(content, name = 'file.rb', type = 'text/plain')    
+      returning ActionController::UploadedStringIO.new(content) do |stream|
+        stream.original_path = name
+        stream.content_type = type
+      end
+    end
+    
     it 'should forward all attachment errors to the ticket (if any)' do
-      attachment = mock_model(Attachment)
-      attachment.errors.should_receive(:each_full).and_yield(['[ERROR]'])      
-      @ticket.stub!(:attachment).and_return(attachment)
-      @ticket.should have(1).error_on(:attachment)
+      Attachment.stub!(:max_size).and_return(4)
+      @ticket.attachment = build_attachment('ABCDE')
+      @ticket.should have(2).errors_on(:attachment)
+      @ticket.errors.on(:attachment).sort.should == ["File size exceeds the maximum limit", "Upload is not permitted"]
     end
     
     it 'should automatically assign the logged-in user (unless Public)' do

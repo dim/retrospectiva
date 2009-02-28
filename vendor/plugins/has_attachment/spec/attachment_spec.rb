@@ -15,6 +15,11 @@ describe Attachment do
     Attachment.new(@stream)
   end
 
+  it 'should use the RetroCM setting to determine the maximum file size' do
+    RetroCM[:general][:attachments].should_receive(:[]).with(:max_size).and_return(2048)
+    Attachment.max_size.should == 2048.kilobytes
+  end
+  
   describe 'initialising' do
     
     describe 'if passed stream is invalid' do

@@ -71,7 +71,7 @@ class TicketChange < ActiveRecord::Base
       
       attachment.errors.each_full do |msg|
         errors.add(:attachment, msg)
-      end if attachment?
+      end if attachment and not attachment.valid?
 
       if attachment? and !content?
         errors.add :content, :blank
