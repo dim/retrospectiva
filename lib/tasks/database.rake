@@ -17,7 +17,7 @@ namespace :db do
     desc 'Loads the initial content'
     task :load_content => :environment do
       puts "\n===== Load the initial content\n"
-      load("db/default_content.rb")
+      load(RAILS_ROOT + "/db/default_content.rb")
     end
   end
 end

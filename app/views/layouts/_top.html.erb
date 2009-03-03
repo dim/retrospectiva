@@ -11,13 +11,13 @@
 
 <%= stylesheet_link_tag 'lib', 'ext', 'res/positioning', 'res/forms', 'res/classes', 'res/tables', 'res/rails',
       'app/admin', 'app/browse', 'app/changesets', 'app/milestones', 'app/tickets', 'app/search', 'app/rss', :cache => true %>  
-<%= stylesheet_link_tag 'theme' %>
 <!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
 
 <%#= javascript_include_tag "date/#{I18n.locale}" %>
 <%= javascript_include_tag 'prototype', 'effects', 'controls', 'dragdrop','application', 'sha1', :cache => true %>
 
 <%= layout_markers[:header] %>
+<%= stylesheet_link_tag 'theme' %>
 </head>
 <body id="top">
 <div id="container">
