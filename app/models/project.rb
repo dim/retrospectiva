@@ -50,6 +50,11 @@ class Project < ActiveRecord::Base
       Thread.current[:central_project]
     end
 
+    # Fixed Rails development mode bug (http://rails.lighthouseapp.com/projects/8994/tickets/1339) 
+    def skip_time_zone_conversion_for_attributes
+      []
+    end
+
   end
 
   def to_param

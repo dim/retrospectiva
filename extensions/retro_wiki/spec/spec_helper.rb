@@ -1,4 +1,4 @@
-ENV['RETRO_EXT'] ||= 'retro_wiki'
+ENV['RETRO_EXT'] ||= File.basename(File.expand_path(File.dirname(__FILE__) + '/..'))
 require File.expand_path(File.dirname(__FILE__) + '/../../../spec/spec_helper')
 
 Spec::Runner.configure do |config|

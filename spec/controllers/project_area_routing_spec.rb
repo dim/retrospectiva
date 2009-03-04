@@ -21,10 +21,11 @@ describe ProjectAreaController do
         
   end
 
-  describe 'if there is a main project' do
+  describe 'dealing with central projects' do
 
     before do
-      Project.stub!(:central).and_return('one')
+      @project = stub_model(Project, :short_name => 'one')
+      Project.stub!(:central).and_return(@project)
     end
     
     it 'should correctly generate routes' do

@@ -1,9 +1,9 @@
 module RoutingFilter
   class CentralProject < Base
 
-    def around_recognize(path, environment, &block)      
-      if !path.starts_with?("/projects/") and Project.central 
-        ActionController::Routing::Routes.recognize_path("/projects/#{Project.central.to_param}" + path, environment) rescue yield
+    def around_recognize(path, environment, &block)
+      if !path.starts_with?("/projects") and Project.central 
+        ActionController::Routing::Routes.recognize_path("/projects/#{Project.central.short_name}" + path, environment) rescue yield
       else
         yield
       end      
@@ -11,11 +11,24 @@ module RoutingFilter
         
     def around_generate(*args, &block)
       returning yield do |path|
-        if Project.central and path != "/projects/#{Project.central.to_param}.rss"
-          path.gsub!(/^\/projects\/#{Regexp.escape(Project.central.to_param)}(.+)$/, '\1')
+        if Project.central and path !~ /^#{central_project_expression}\.rss/
+          path.sub!(/^#{central_project_expression}(.+)$/, '\1\2')
         end
       end
     end
+
+    private
+      
+      delegate :relative_url_root, :to => :'ActionController::Base'
+      
+      def central_project_expression
+        expression = Regexp.escape("/projects/") + Regexp.escape(Project.central.short_name)
+        if relative_url_root.present?
+          "(#{relative_url_root})?#{expression}"
+        else
+          expression
+        end
+      end
 
   end
 end

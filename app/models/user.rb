@@ -156,7 +156,8 @@ class User < ActiveRecord::Base
   def has_access?(path_or_hash, method = :get)
     path_or_hash = path_or_hash.dup
     path = path_or_hash.is_a?(Hash) ? ActionController::Routing::Routes.generate(path_or_hash) : path_or_hash
-    path.gsub!(/\?.+?$/, '') # Remove query string
+    path.sub!(%r/^#{Regexp.escape(ActionController::Base.relative_url_root.to_s)}/, '')  # Remove URL prefix
+    path.sub!(/\?.+?$/, '') # Remove query string
     options = ActionController::Routing::Routes.recognize_path(path, :method => method)
 
     controller = "#{options[:controller].camelize}Controller".constantize
