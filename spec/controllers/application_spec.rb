@@ -151,7 +151,28 @@ describe ApplicationController do
       end
     
     end
+
+
+    describe 'if user has no permission (403)' do
+
+      before do
+        controller.stub!(:response_code_for_rescue).and_return(:forbidden)
+        controller.stub!(:login_path).and_return('/path/to/login') 
+        controller.stub!(:redirect_to) 
+      end
+              
+      it 'should redirect ro login-page ' do
+        controller.should_receive(:login_path).and_return('/path/to/login') 
+        controller.should_receive(:redirect_to).with('/path/to/login') 
+        do_rescue
+      end
     
+      it 'should not double-render' do
+        controller.should_not_receive(:render) 
+        do_rescue
+      end
+    
+    end
   end
 
 

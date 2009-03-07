@@ -80,11 +80,14 @@ class ApplicationController < ActionController::Base
 
     def rescue_action_in_public(exception) #:doc:
       status_code = response_code_for_rescue(exception)
-      returning render_optional_error_file(status_code) do
-        if status_code == :internal_server_error
-          ExceptionNotifier.deliver_exception_notification(exception, self, request, {})
-        end
-      end      
+      case status_code
+      when :forbidden
+        redirect_to(login_path)
+        return false
+      when :internal_server_error
+        ExceptionNotifier.deliver_exception_notification(exception, self, request, {})
+      end
+      render_optional_error_file(status_code)    
     end
 
   private  
