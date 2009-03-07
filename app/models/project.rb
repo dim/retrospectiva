@@ -60,6 +60,17 @@ class Project < ActiveRecord::Base
   def to_param
     short_name  
   end
+
+  # Override for AR's default inspect method
+  def inspect
+    attributes_as_nice_string = self.class.column_names.collect do |name|
+      if ( has_attribute?(name) || new_record? )
+        value = self.class.serialized_attributes.key?(name) ? "[#{self.class.serialized_attributes[name]}]" : attribute_for_inspect(name)
+        "#{name}: #{value}"
+      end
+    end.compact.join(", ")
+    "#<#{self.class} #{attributes_as_nice_string}>"
+  end
   
   def active?
     not closed?

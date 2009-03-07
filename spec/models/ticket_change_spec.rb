@@ -25,13 +25,6 @@ describe TicketChange do
       @ticket_change.attributes = { :updates => {'key' => 'value'} }
       @ticket_change.updates.should == {}
     end
-    
-    it 'should return the correct value for content? depending if content is blank' do
-      @ticket_change.content = 'A'
-      @ticket_change.content?.should be_true
-      @ticket_change.content = ' '
-      @ticket_change.content?.should be_false
-    end
 
     it 'should return the correct value for attachment? depending if attachment is present and readble' do
       @ticket_change.attachment?.should be_false
@@ -222,30 +215,26 @@ describe TicketChange do
 
   describe 'modifiable status' do
         
-    it 'should return true if user is an admin' do
-      ticket_changes(:another_open_update).modifiable?(users(:admin)).should == true
-    end
-
     it 'should return false if no user is assigned' do
-      ticket_changes(:another_open_update).modifiable?(users(:agent)).should == false
+      ticket_changes(:another_open_update).send(:modifiable?, users(:agent)).should == false
     end
 
     describe 'if author-modification is on' do
       it 'should return true if user is the author' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(true)
-        ticket_changes(:agents_ticket_update).modifiable?(users(:agent)).should == true
+        ticket_changes(:agents_ticket_update).send(:modifiable?, users(:agent)).should == true
       end
 
       it 'should return false if user is not the author' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(true)
-        ticket_changes(:agents_ticket_update).modifiable?(users(:double_agent)).should == false
+        ticket_changes(:agents_ticket_update).send(:modifiable?, users(:double_agent)).should == false
       end      
     end
 
     describe 'if author-modification is off' do
       it 'should return false' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(false)
-        ticket_changes(:agents_ticket_update).modifiable?(users(:agent)).should == false
+        ticket_changes(:agents_ticket_update).send(:modifiable?, users(:agent)).should == false
       end      
     end    
   end

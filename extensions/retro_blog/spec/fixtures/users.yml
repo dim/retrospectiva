@@ -6,6 +6,7 @@ Public:
   password: fc0b88b7c9e2c896bcee4881d00d7bf5a7d2442d
   email: 
   time_zone: London
+  groups: Default  
 agent:
   name: Agent
   admin: false
@@ -16,3 +17,4 @@ agent:
   scm_name: agent
   time_zone: London
   private_key: 6b2c92007c38ca274ea45d8dd52f401b81ae44e6
+  groups: Default  

@@ -154,12 +154,6 @@ class Ticket < ActiveRecord::Base
     reload
   end
   
-  # Return true if user has the permission to modify this ticket, else false
-  def modifiable?(user)
-    user.admin? || ( RetroCM[:ticketing][:author_modifiable][:tickets] == true && 
-      self.user.present? && user == self.user )
-  end
-
   # Toggles a user's subscribtion and returns the updated status (true or false)
   def toggle_subscriber(user)     
     if subscribers.include?(user)
@@ -199,6 +193,11 @@ class Ticket < ActiveRecord::Base
   end  
   
   protected
+
+    # Return true if user has the permission to modify this ticket, else false
+    def modifiable?(user)
+      RetroCM[:ticketing][:author_modifiable][:tickets] == true && self.user == user
+    end  
 
     def validate_on_create
       attachment.errors.each_full do |msg|

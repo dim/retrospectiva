@@ -113,7 +113,7 @@ describe Repository::Git::Node do
     end
 
     it 'should have a mime-type' do
-      @node.mime_type.should == 'text/plain'
+      @node.mime_type.should == 'application/ruby'
     end
   end
 

@@ -55,6 +55,7 @@ describe User do
       users(:agent).should have_many(:ticket_changes)
       users(:agent).ticket_changes.should have(1).record
     end
+
   end
 
 
@@ -469,7 +470,12 @@ describe User do
     it 'should differ from project to project' do
       permissions_for(:agent, :retro).should == groups(:Default).permissions
       permissions_for(:agent, :sub).should == {}
-      permissions_for(:double_agent, :retro).should == permissions_for(:agent, :retro).union(permissions_for(:double_agent, :sub))
+      permissions_for(:double_agent, :retro).should ==  { 
+        "code"=>["browse"], 
+        "changesets"=>["view"], 
+        "content"=>["search"], 
+        "milestones"=>["create", "view"],
+        "tickets"=>["create", "modify", "update", "view", "watch"] }
       permissions_for(:double_agent, :sub).should == groups(:all_projects).permissions
     end
 
@@ -506,7 +512,7 @@ describe User do
 
       before do
         users(:agent).stub!(:project_permission?).and_return(true)
-        @permission = mock_model(RetroAM::Permission)
+        @permission = mock_model(RetroAM::Permission, :custom? => false)
         RetroAM.permission_map.stub!(:find).and_return(@permission)
       end
     
@@ -520,33 +526,28 @@ describe User do
         users(:agent).permitted?(:tickets, :view).should be(true)
       end
 
-      it 'should not care if the permission is custom or not' do
-        @permission.should_not_receive(:custom?)
-        users(:agent).permitted?(:tickets, :view).should be(true)
+
+      describe 'if the permission has no callback' do
+        
+        it 'should NOT evaluate permission' do
+          @permission.should_receive(:custom?).and_return(false)
+          @permission.should_not_receive(:evaluate)
+          users(:agent).permitted?(:tickets, :view).should be(true)
+        end
+        
       end
 
+      describe 'if the permission has a callback' do
+        
+        it 'should evaluate permission' do
+          @permission.should_receive(:custom?).and_return(true)
+          @permission.should_receive(:evaluate).with(projects(:retro), users(:agent), true, 'A', 123).and_return(true)
+          users(:agent).permitted?(:tickets, :view, 'A', 123).should be(true)
+        end        
+
+      end
     end
     
-    describe 'if user is NOT permitted (permission is NOT granted on project level)' do
-
-      before do
-        users(:agent).stub!(:project_permission?).and_return(false)
-        @permission = mock_model(RetroAM::Permission, :custom? => true, :evaluate => true)
-        RetroAM.permission_map.stub!(:find).and_return(@permission)
-      end
-
-      it 'should return false if permission is not custom' do
-        @permission.should_receive(:custom?).and_return(false)
-        users(:agent).permitted?(:tickets, :modify).should be(false)
-      end
-
-      it 'should evaluate permission if permission is custom' do
-        @permission.should_receive(:custom?).and_return(true)
-        @permission.should_receive(:evaluate).with(users(:agent), 'A', 123).and_return(true)
-        users(:agent).permitted?(:tickets, :view, 'A', 123).should be(true)
-      end
-      
-    end    
     
     describe 'in reality' do      
       fixtures :tickets, :ticket_changes
@@ -577,50 +578,78 @@ describe User do
         users(:admin).permitted?(:tickets, :update, :project => projects(:sub)).should be(true)
         users(:admin).permitted?(:tickets, :modify, :project => projects(:sub)).should be(true)
       end
-      
-      describe 'modification of tickets' do
-        it 'should be ok for admin users' do
-          users(:admin).permitted?(:tickets, :modify, tickets(:another_open)).should be(true)        
-        end
-  
-        it 'should be ok for users to modify their own tickets if \'author-modification\' is on' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(true)
-          users(:agent).permitted?(:tickets, :modify, tickets(:agents_ticket)).should be(true)
-        end
-  
-        it 'should be ok for users to modify their own tickets if \'author-modification\' is off' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(false)
-          users(:agent).permitted?(:tickets, :modify, tickets(:agents_ticket)).should be(false)
-        end
-  
-        it 'should NEVER be ok for users to modify other\'s tickets' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(true)
-          users(:double_agent).permitted?(:tickets, :modify, tickets(:agents_ticket)).should be(false)
-        end
-      end
+
+      describe 'permissions with callbacks' do
         
-      describe 'modification of ticket changes' do
-        it 'should be ok for admins to modify ticket changes' do
-          users(:admin).permitted?(:tickets, :modify, ticket_changes(:another_open_update)).should be(true)        
+        it 'should not allow Public to watch tickets (even if permission was accidetntally assigned)' do
+          users(:Public).send(:project_permission?, projects(:retro), :tickets, :watch).should be(true)
+          users(:Public).permitted?(:tickets, :watch).should be(false)
         end
+      
+        describe 'modification of tickets/ticket-changes' do
+          
+          it 'should be granted for admin users' do
+            users(:admin).permitted?(:tickets, :modify).should be(true)        
+          end
+
+          it 'should be granted for users with global permission' do
+            users(:double_agent).send(:project_permission?, projects(:retro), :tickets, :modify).should be(true)
+            users(:double_agent).permitted?(:tickets, :modify).should be(true)
+          end
+
+          describe 'for users without global permission' do
+
+            describe 'if \'author-modification\' is ON' do
+              
+              before do 
+                RetroCM[:ticketing][:author_modifiable].stub!(:[]).with(:tickets).and_return(true)                
+                RetroCM[:ticketing][:author_modifiable].stub!(:[]).with(:ticket_changes).and_return(true)
+              end
+
+              it 'should check for global permission' do
+                users(:agent).send(:project_permission?, projects(:retro), :tickets, :modify).should be(false)
+              end
+              
+              it 'should grant permission to modify their own tickets' do
+                users(:agent).permitted?(:tickets, :modify, tickets(:agents_ticket)).should be(true)
+              end
   
-        it 'should be ok for users to modify their own ticket changes if \'author-modification\' is on' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(true)
-          users(:agent).permitted?(:tickets, :modify, ticket_changes(:agents_ticket_update)).should be(true)
+              it 'should grant permission to modify their own ticket changes' do
+                users(:agent).permitted?(:tickets, :modify, ticket_changes(:agents_ticket_update)).should be(true)
+              end
+
+              it 'should REFUSE permission to modify other\'s tickets' do
+                users(:agent).permitted?(:tickets, :modify, tickets(:another_open)).should be(false)
+              end              
+
+              it 'should REFUSE permission to modify other\'s ticket changes' do
+                users(:agent).permitted?(:tickets, :modify, ticket_changes(:another_open_update)).should be(false)
+              end              
+              
+            end
+            
+            describe 'if \'author-modification\' is OFF' do
+              
+              before do 
+                RetroCM[:ticketing][:author_modifiable].stub!(:[]).with(:tickets).and_return(false)                
+                RetroCM[:ticketing][:author_modifiable].stub!(:[]).with(:ticket_changes).and_return(false)
+              end
+      
+              it 'should REFUSE permission to modify even their own tickets' do
+                users(:agent).permitted?(:tickets, :modify, tickets(:agents_ticket)).should be(false)
+              end
+
+              it 'should REFUSE permission to modify even their own ticket changes' do
+                users(:agent).permitted?(:tickets, :modify, ticket_changes(:agents_ticket_update)).should be(false)
+              end
+
+            end
+          end
+
         end
-  
-        it 'should be ok for users to modify their own ticket changes if \'author-modification\' is off' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(false)
-          users(:agent).permitted?(:tickets, :modify, ticket_changes(:agents_ticket_update)).should be(false)
-        end
-  
-        it 'should NEVER be ok for users to modify other\'s ticket changes' do
-          RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:ticket_changes).and_return(true)
-          users(:double_agent).permitted?(:tickets, :modify, ticket_changes(:agents_ticket_update)).should be(false)
-        end            
+
       end      
-    end
-    
+    end    
   end
 
 end

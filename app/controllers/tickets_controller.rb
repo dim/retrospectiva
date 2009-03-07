@@ -23,9 +23,10 @@ class TicketsController < ProjectAreaController
     :create => ['new', 'create'],
     :update => ['update'],
     :delete => ['destroy', 'destroy_change'],
-    :modify => ['modify_summary', 'modify_content', 'modify_change_content'],
     :watch  => ['toggle_subscription']
 
+  require_user 'modify_summary', 'modify_content', 'modify_change_content'
+  
   enable_private_rss :only => :index
 
   verify        :xhr => true, :only => [:modify_summary, :modify_content, :modify_change_content]

@@ -175,8 +175,8 @@ class User < ActiveRecord::Base
     permission = RetroAM.permission_map.find(resource, action)
     
     if project && permission
-      project_permission?(project, resource, action) ||
-        ( permission.custom? && permission.evaluate(self, *args) )
+      has_permission = project_permission?(project, resource, action)
+      permission.custom? ? permission.evaluate(project, self, has_permission, *args) : has_permission
     else
       false
     end

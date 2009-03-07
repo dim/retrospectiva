@@ -3,7 +3,7 @@
   <% if @ticket.changes.last -%>
     | <%= link_to _('See last change'), :anchor => "ch#{@ticket.changes.last.id}" %>
   <% end -%>
-  <% if @ticket.modifiable?(User.current) -%>
+  <% if User.current.permitted?(:tickets, :modify, @ticket) -%>
     | <%= link_to_in_place_edit _('Edit summary'), 'ticket-summary',
             :url => modify_summary_project_ticket_path(Project.current, @ticket),
             :size => 60 %>

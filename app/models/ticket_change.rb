@@ -29,10 +29,6 @@ class TicketChange < ActiveRecord::Base
     end
   end
       
-  def content?
-    content.present?
-  end
-  
   def updates?
     attachment? || updates.any?
   end
@@ -44,11 +40,6 @@ class TicketChange < ActiveRecord::Base
   def updates
     value = read_attribute :updates
     value.is_a?(Hash) ? value : {}
-  end
-
-  def modifiable?(user)
-    user.admin? || 
-      ( RetroCM[:ticketing][:author_modifiable][:ticket_changes] == true && self.user.present? && user == self.user )
   end
 
   # Returns a hash of ticket attributes being modified since last save
@@ -64,6 +55,10 @@ class TicketChange < ActiveRecord::Base
 
   protected
   
+    def modifiable?(user)
+      RetroCM[:ticketing][:author_modifiable][:ticket_changes] == true && self.user == user
+    end
+  
     def validate_on_create 
       ticket.errors.each do |attr, msg|
         errors.add(attr, msg)
@@ -73,9 +68,9 @@ class TicketChange < ActiveRecord::Base
         errors.add(:attachment, msg)
       end if attachment and not attachment.valid?
 
-      if attachment? and !content?
+      if attachment? and content.blank?
         errors.add :content, :blank
-      elsif !content? && !updates?
+      elsif content.blank? and not updates?
         errors.add_to_base _('No changes were made')
       end
 

@@ -10,3 +10,6 @@ sub_all_projects:
 closed_all_projects:
   project_id: 2
   group_id: 3
+retrospectiva_content_manager:
+  project_id: 1
+  group_id: 4

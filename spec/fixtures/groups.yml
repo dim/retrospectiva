@@ -35,3 +35,10 @@ all_projects:
     milestones: 
     - create
   access_to_all_projects: true
+content_manager:
+  id: 4
+  name: Content Manager
+  permissions: |
+    --- 
+    tickets: 
+    - modify

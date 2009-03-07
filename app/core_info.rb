@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 RetroAM.permission_map do |map|
@@ -23,13 +23,16 @@ RetroAM.permission_map do |map|
     tickets.permission :view, :label => N_('View')
     tickets.permission :create, :label => N_('Create')
     tickets.permission :update, :label => N_('Update')
-    tickets.permission :delete, :label => N_('Delete')
-    tickets.permission :modify, :label => N_('Modify') do |user, *records|
-      [records].flatten.compact.map do |record|
-        record.modifiable?(user)
-      end.uniq == [true]
+    tickets.permission :delete, :label => N_('Delete')    
+    tickets.permission :watch, :label => N_('Watch') do |project, user, has_permission, *records|
+      has_permission and not user.public?
     end
-    tickets.permission :watch, :label => N_('Watch')
+    tickets.permission :modify, :label => N_('Modify') do |project, user, has_permission, *records|
+      has_permission or  
+        [records].flatten.compact.find do |record|
+          not record.send(:modifiable?, user)
+        end.blank?
+    end    
   end
 
   # Default resource

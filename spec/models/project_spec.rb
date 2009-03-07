@@ -11,7 +11,7 @@ describe Project do
 
     it "should have and belong to many groups" do
       @project.should have_and_belong_to_many(:groups)
-      @project.groups.should have(2).record
+      @project.groups.should have(3).record
     end
 
     it "should have and belong to many changesets" do

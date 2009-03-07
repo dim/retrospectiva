@@ -10,3 +10,6 @@ default_double_agent:
 all_projects_double_agent:
   user_id: 6
   group_id: 3
+content_manager_double_agent:
+  user_id: 6
+  group_id: 4

@@ -103,31 +103,27 @@ describe Ticket do
   
   describe 'modifiable status' do
     fixtures :tickets, :users
-        
-    it 'should return true if user is an admin' do
-      tickets(:another_open).modifiable?(users(:admin)).should == true
-    end
 
     it 'should return false if no user is assigned' do
-      tickets(:another_open).modifiable?(users(:agent)).should == false
+      tickets(:another_open).send(:modifiable?, users(:agent)).should == false
     end
 
     describe 'if author-modification is on' do
       it 'should return true if user is the author' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(true)
-        tickets(:agents_ticket).modifiable?(users(:agent)).should == true
+        tickets(:agents_ticket).send(:modifiable?, users(:agent)).should == true
       end
 
       it 'should return false if user is not the author' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(true)
-        tickets(:agents_ticket).modifiable?(users(:double_agent)).should == false
+        tickets(:agents_ticket).send(:modifiable?, users(:double_agent)).should == false
       end      
     end
 
     describe 'if author-modification is off' do
       it 'should return false' do
         RetroCM[:ticketing][:author_modifiable].should_receive(:[]).with(:tickets).and_return(false)
-        tickets(:agents_ticket).modifiable?(users(:agent)).should == false
+        tickets(:agents_ticket).send(:modifiable?, users(:agent)).should == false
       end
     end
   end
