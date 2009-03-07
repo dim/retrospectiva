@@ -26,6 +26,8 @@ class TicketChangeObserver < ActiveRecord::Observer
   end
 
   def before_create(change)
+    # Make sure we force ticket to save, even if nothing has changed
+    change.ticket.updated_at_will_change!
     change.ticket.save
   end
 

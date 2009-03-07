@@ -85,7 +85,9 @@ describe TicketChange do
   describe 'on create' do
     
     before(:each) do
-      @ticket_change = TicketChange.new
+      @ticket = tickets(:open)
+      @ticket_change = @ticket.changes.new
+      Notifications.stub!(:queue_ticket_update_note)
     end
 
     def build_attachment(content, name = 'file.rb', type = 'text/plain')    
@@ -103,9 +105,8 @@ describe TicketChange do
     end
 
     it 'should forward all ticket errors to the ticket-change (if any)' do
-      ticket = mock_model(Ticket, :valid? => false, :changed => [])
-      ticket.stub!(:errors).and_return({ 'status_id' => 'BLANK', 'milestone_id' => 'INVALID' })      
-      @ticket_change.stub!(:ticket).and_return(ticket)
+      @ticket_change.ticket.status_id = 999
+      @ticket_change.ticket.milestone_id = 999
       @ticket_change.should have(1).error_on(:status_id)
       @ticket_change.should have(1).error_on(:milestone_id)
     end
@@ -150,12 +151,12 @@ describe TicketChange do
       @ticket_change.updates.should == updates
     end
 
-    it 'should save the ticket' do
-      @ticket = mock_model(Ticket, :permitted_subscribers => [])
-      @ticket_change.should_receive(:valid?).and_return(true)
-      @ticket_change.stub!(:ticket).and_return(@ticket)
-      @ticket.should_receive(:save).and_return(true)
-      @ticket_change.save
+    it 'should save the ticket and update the timestamp' do
+      (@ticket.reload.updated_at > 5.seconds.ago).should be(false)
+      @ticket_change.user = users(:agent)
+      @ticket_change.content = 'An important update'
+      @ticket_change.save.should be(true)
+      (@ticket.reload.updated_at > 5.seconds.ago).should be(true)
     end
 
     it 'should send a notification to the subscribed users' do
