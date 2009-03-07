@@ -1,0 +1,13 @@
+--- 
+Default: 
+  name: Default 
+  permissions: |
+    --- 
+    blog_posts: 
+    - create
+    - update
+    - view
+    - comment
+    - delete
+  users: Public, agent
+  projects: retro

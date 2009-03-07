@@ -6,7 +6,7 @@
     <% unless User.current.public? -%>
       <dd><%= link_to _('My Posts'), project_blog_posts_path(Project.current, params.only(:c).merge(:u => User.current)) %></dd>
     <% end -%>
-    <% if User.current.permitted?(:blog_posts, :create) -%>
+    <% if permitted?(:blog_posts, :create) -%>
       <dd><%= link_to _('Create Post'), new_project_blog_post_path(Project.current) %></dd>
     <% end -%>
   </dl>

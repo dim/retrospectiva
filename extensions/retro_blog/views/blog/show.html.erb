@@ -4,15 +4,15 @@
 
 <div class="retro-blog"> 
   <% content_tag :div, :class => 'float-r actions smaller' do -%>        
-    <% if User.current.permitted?(:blog_posts, :update) -%>
+    <% if permitted?(:blog_posts, :update) -%>
       <%= link_to _('Edit'), edit_project_blog_post_path(Project.current, @blog_post) %>
     <% end -%>
-    <% if User.current.permitted?(:blog_posts, :delete) -%>
+    <% if permitted?(:blog_posts, :delete) -%>
       <%= link_to _('Delete'), project_blog_post_path(Project.current, @blog_post),
           :confirm => _('Really delete this post?'),
           :method => :delete %>
     <% end -%>
-  <% end if User.current.permitted?(:blog_posts, :update) || User.current.permitted?(:blog_posts, :delete) -%>
+  <% end if permitted?(:blog_posts, :update) || permitted?(:blog_posts, :delete) -%>
   
   <%= render :partial => 'blog/post', :locals => { :post => @blog_post, :preview => false } %>
   <hr class="space" />
@@ -20,6 +20,6 @@
   <%= top_link %>
   
   <%= render :partial => 'blog/comments' %>
-  <%= render :partial => 'blog/comment_form' if User.current.permitted?(:blog_posts, :comment) %>
+  <%= render :partial => 'blog/comment_form' if permitted?(:blog_posts, :comment) %>
 </div> 
   

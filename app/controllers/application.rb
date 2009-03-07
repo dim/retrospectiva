@@ -6,8 +6,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_time_zone
   after_filter  :reset_request_cache
+
+  delegate :permitted?, :to => :'User.current'
+  protected :permitted?
   
-  helper_method :layout_markers
+  helper_method :layout_markers, :permitted?
 
   class << self
 

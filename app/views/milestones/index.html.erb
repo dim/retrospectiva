@@ -9,7 +9,7 @@
     <% else -%>
       <%= link_to _('Show already completed milestones'), project_milestones_path(Project.current, :completed => 1) %>
     <% end -%> 
-    <% if User.current.permitted?(:milestones, :create) -%>
+    <% if permitted?(:milestones, :create) -%>
       | <%= link_to _('Create a new milestone'), new_project_milestone_path(Project.current) %>
     <% end -%> 
   <% end -%> 

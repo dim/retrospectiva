@@ -2,6 +2,23 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ApplicationController do
 
+  describe 'permission checks' do
+    
+    before do
+      @user = mock_current_user! :public? => true, :permitted => true    
+    end
+
+    it 'should forward checks currently logged-in user' do
+      @user.should_receive(:permitted?).with(:tickets, :view).and_return(true)
+      controller.send :permitted?, :tickets, :view
+    end
+
+    it 'should be protected' do
+      lambda { controller.permitted?(:tickets, :view) }.
+        should raise_error(NoMethodError, /protected method/)
+    end
+
+  end
 
   describe 'retrieving cached user attributes' do
     before do

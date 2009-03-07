@@ -75,7 +75,7 @@ class WikiController < ProjectAreaController
     def find_page_or_redirect
       @wiki_page = Project.current.wiki_pages.find_by_title params[:id], :include => [:versions]
       if @wiki_page
-      elsif params[:id].present? and User.current.permitted?(:wiki_pages, :update)
+      elsif params[:id].present? and permitted?(:wiki_pages, :update)
         redirect_to edit_project_wiki_page_path(Project.current, params[:id])
       else
         redirect_to project_wiki_pages_path(Project.current)

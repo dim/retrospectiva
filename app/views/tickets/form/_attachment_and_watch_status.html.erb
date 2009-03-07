@@ -11,6 +11,6 @@
       <%= check_box_tag 'watch_ticket', '1', RetroCM[:ticketing][:subscription][:encourage_subscription] %>
       <%= f.click_choice _('Watch this ticket'), :for => 'watch_ticket' %>
     </div>
-  <% end if User.current.permitted?(:ticket, :watch) and not @ticket.subscribers.include?(User.current) -%>
+  <% end if permitted?(:ticket, :watch) and not @ticket.subscribers.include?(User.current) -%>
 
 <% end -%>

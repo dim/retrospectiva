@@ -9,12 +9,12 @@
   </div>
 
   <div class="span-20 last">    
-    <% if User.current.permitted?(:tickets, :delete) || User.current.permitted?(:tickets, :modify, change) -%>
+    <% if permitted?(:tickets, :delete) || permitted?(:tickets, :modify, change) -%>
       <div class="float-r actions smaller">        
-        <% if User.current.permitted?(:tickets, :modify, change) -%>
+        <% if permitted?(:tickets, :modify, change) -%>
           <%= in_place_edit_external_control _('Edit'), "ticket_change_content_#{change.id}" %>
         <% end -%>
-        <% if User.current.permitted?(:tickets, :delete) -%>
+        <% if permitted?(:tickets, :delete) -%>
           <%= link_to _('Delete'), project_ticket_destroy_change_path(Project.current, @ticket, change),
                 :confirm => _('Really delete ticket change?'),
                 :method => :delete %>
@@ -35,7 +35,7 @@
 
     <% if change.content.present? -%>
       <div id="ticket_change_content_<%= change.id %>" class="markup ticket-change-content"><%= markup(change.content) %></div>
-      <% if User.current.permitted?(:tickets, :modify, change) -%>
+      <% if permitted?(:tickets, :modify, change) -%>
         <%= retro_in_place_editor "ticket_change_content_#{change.id}", 
                :url => modify_change_content_project_ticket_path(Project.current, change),
               :rows => 4, :text => h(change.content) %>

@@ -26,7 +26,7 @@ module ChangesetsHelper
         link_to_show_file(change)
       end
   
-      small = if User.current.permitted?(:code, :browse) && change.diffable? && !change.unified_diff.blank?
+      small = if permitted?(:code, :browse) && change.diffable? && !change.unified_diff.blank?
         link_to _('Quick Diff'), project_changeset_path(Project.current, changeset, :anchor => "ch#{change.id}")
       elsif change.name == 'CP'
         RetroI18n._('copied from {{path}}', :path => link_to_show_file(change, true))

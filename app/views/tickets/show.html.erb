@@ -23,6 +23,6 @@
     <%= render :partial => 'change', :collection => @ticket.changes %>
   <% end -%>
 
-  <%= render :partial => 'update_form' if User.current.permitted?(:tickets, :update) %>    
+  <%= render :partial => 'update_form' if permitted?(:tickets, :update) %>    
   <%= top_link %>
 </div>

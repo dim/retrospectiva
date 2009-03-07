@@ -11,7 +11,7 @@ module WikiHelper
     links << link_to(_('Pages'), project_wiki_pages_path(Project.current))
     links << link_to(_('Files'), project_wiki_files_path(Project.current))
     
-    if User.current.permitted?(:wiki_pages, :update)
+    if permitted?(:wiki_pages, :update)
       links << if @wiki_page.historic?
         link_to _('Rollback'), edit_project_wiki_page_path(Project.current, @wiki_page, :version => @wiki_page.number)
       else
@@ -19,11 +19,11 @@ module WikiHelper
       end
     end
     
-    if User.current.permitted?(:wiki_pages, :rename)
+    if permitted?(:wiki_pages, :rename)
       links << link_to(_('Rename'), rename_project_wiki_page_path(Project.current, @wiki_page))
     end
      
-    if User.current.permitted?(:wiki_pages, :delete)
+    if permitted?(:wiki_pages, :delete)
       links << link_to_wiki_page(_('Delete'), @wiki_page, 
         :confirm => _('Are you really sure?'),
         :method => :delete )

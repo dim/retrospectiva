@@ -22,7 +22,7 @@
 
   <p class="strong small top-5 bottom-5">
     <%= milestone.percent_completed -%>% <%=_ 'completed' -%>
-    <% if User.current.permitted?(:tickets, :view) -%>
+    <% if permitted?(:tickets, :view) -%>
       &ndash;
       <%= link_to _('Closed tickets'), :controller => 'tickets', :state => 3, :milestone => milestone.id %>:
       <%= milestone.closed_tickets -%>

@@ -19,7 +19,7 @@
         <th class="narrow-column"><%=_ 'Date' -%></th>
         <th class="narrow-column"><%=_ 'Author' -%></th>
         <th><%=_ 'Log' -%></th>
-        <% if User.current.permitted?(:changesets, :view) -%>
+        <% if permitted?(:changesets, :view) -%>
           <th class="very-slim-column">&nbsp;</th>
         <% end -%>
         <th class="very-slim-column">&nbsp;</th>

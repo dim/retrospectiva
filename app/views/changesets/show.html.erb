@@ -7,7 +7,7 @@
 
   <%= render :partial => 'changeset', :locals => {:changeset => @changeset }%>
 
-  <% if User.current.permitted?(:code, :browse) -%>
+  <% if permitted?(:code, :browse) -%>
     <h2><%=_ 'Affected files' -%>:</h2>
 
     <% cache "changesets/#{I18n.locale}/#{@changeset.id}" do -%>

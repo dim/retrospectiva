@@ -182,12 +182,12 @@ class TicketsController < ProjectAreaController
 
     def find_ticket_and_verify_permissions
       @ticket = Project.current.tickets.find(params[:id])
-      failed_authorization! unless User.current.permitted?(:tickets, :modify, @ticket)
+      failed_authorization! unless permitted?(:tickets, :modify, @ticket)
     end
 
     def find_change_and_verify_permissions
       @ticket_change = Project.current.ticket_changes.find(params[:id])
-      failed_authorization! unless User.current.permitted?(:tickets, :modify, @ticket_change)
+      failed_authorization! unless permitted?(:tickets, :modify, @ticket_change)
     end
 
     def find_and_verify_attachment
