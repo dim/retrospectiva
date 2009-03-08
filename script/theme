@@ -5,9 +5,9 @@ require 'fileutils'
 require 'optparse'
 require 'yaml'
 
-
 class ThemeManager
-  THEME_ROOT = 'http://retrospectiva.googlecode.com/svn/themes'
+  THEME_ROOT = 'http://github.com/dim/retrospectiva.themes'
+  THEME_INDEX = THEME_ROOT + '/raw/master/info.yml'
   PUBLIC_ROOT = File.expand_path(File.dirname(__FILE__) + "/../public")
 
   def initialize
@@ -25,7 +25,7 @@ class ThemeManager
     end
   end
 
-	def options
+  def options
     OptionParser.new do |o|
       o.set_summary_indent('  ')
       o.banner = "\nRetrospectiva theme manager"            
@@ -44,28 +44,29 @@ class ThemeManager
 
   def install_theme(name)
     theme = Theme.new(name)
+    
     unless theme.valid?
       puts "\nInvalid theme '#{name}'.\n\n"
       exit 1
     end
-    theme.files.each do |path|	    	    
-	    File.open("#{PUBLIC_ROOT}/#{path}", 'wb') do |local|
-	    	open("#{THEME_ROOT}/#{theme.name}/#{path}").each do |line|
-					local.write(line)					    	
-	    	end
-	    end    	
-    end    
+
+    theme.files.each do |path|            
+      File.open("#{PUBLIC_ROOT}/#{path}", 'wb') do |local|
+        open("#{theme.root}/#{path}").each do |line|
+          local.write(line)
+        end
+      end      
+    end
+    
     puts "\nTheme '#{theme.name}' was successfully installed.\n\n"
   end
 
   def list_themes
     themes = []
     
-    open(THEME_ROOT).each do |line|
-      line.scan(/<a[^>]*href=\"(\w+)\/\">(\w+)\/<\/a><\/li>/) do |name,|
-        theme = Theme.new(name)
-        themes << theme if theme.valid?
-      end
+    YAML.load(open(THEME_INDEX)).each do |name|
+      theme = Theme.new(name)
+      themes << theme if theme.valid?
     end
     
     puts "\nAvailable themes:"
@@ -98,9 +99,13 @@ class ThemeManager
       @conf ||= YAML.load(info) rescue {}
     end
     
+    def root
+      "#{THEME_ROOT}/raw/master/#{name}"    
+    end
+    
     def info
-      @info ||= open("#{THEME_ROOT}/#{name}/info.yml") rescue nil
-    end    
+      @info ||= open("#{root}/info.yml") rescue nil
+    end
   end  
 end
 
