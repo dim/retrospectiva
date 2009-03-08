@@ -1,12 +1,4 @@
-#!/usr/bin/env ruby
-require File.dirname(__FILE__) + '/../../config/environment'
-
-#Dir[RAILS_ROOT + '/locales/app.*.yml'].each do |file|
-#  RetroI18n.update(file, RAILS_ROOT + '/app/', RAILS_ROOT + '/lib/')
-#end  
-
-module RetroI18n
-  
+module RetroI18n  
   class SettingsFile < LocaleFile   
 
     class SettingsHash < ActiveSupport::OrderedHash
@@ -75,17 +67,4 @@ module RetroI18n
       end
     
   end
-  
 end
-
-
-I18n.backend.send :init_translations
-
-Dir[RAILS_ROOT + '/locales/settings.*.yml'].each do |file|
-  settings = RetroI18n::SettingsFile.new(file)
-  next if settings.locale == 'en-US'
-  settings.update
-
-end  
-
-

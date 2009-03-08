@@ -21,6 +21,9 @@ en-GB:
     # app/views/admin/users/_form.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!"
 
+    # app/views/rescue/403.html.erb
+    "Access forbidden (403)": 
+
     # app/models/notifications.rb
     "Account activation": "Account activation"
 
@@ -64,10 +67,28 @@ en-GB:
 
     # app/helpers/search_helper.rb
     # app/models/group.rb
+    # app/views/rss/_all.html.erb
+    # app/views/rss/_feed.html.erb
     "All": "All"
+
+    # app/controllers/projects_controller.rb
+    # app/views/rss/_all.html.erb
+    "All Projects": 
+
+    # app/views/rss/_feed.html.erb
+    "All feeds for {{project}}": 
+
+    # app/views/rss/_all.html.erb
+    "All feeds from all projects": 
 
     # app/models/status.rb
     "All in progress": "All in progress"
+
+    # app/controllers/projects_controller.rb
+    "All news for all projects": 
+
+    # app/controllers/projects_controller.rb
+    "All news for {{project}}": 
 
     # app/models/status.rb
     "All open": "All open"
@@ -120,6 +141,9 @@ en-GB:
     # app/views/browse/show_binary.html.erb
     "Binary File": "Binary File"
 
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Blocks": 
+
     # app/core_info.rb
     # app/views/browse/diff.html.erb
     # app/views/browse/revisions.html.erb
@@ -138,7 +162,7 @@ en-GB:
     # app/views/browse/show_image.html.erb
     "Browse source": "Browse source"
 
-    # app/helpers/project_area_helper.rb
+    # app/helpers/navigation_helper.rb
     "Browse {{title}}": "Browse {{title}}"
 
     # app/helpers/application_helper.rb
@@ -215,7 +239,7 @@ en-GB:
     "Confirmation": "Confirmation"
 
     # app/core_info.rb
-    # app/views/tickets/form/_update_content.erb
+    # app/views/tickets/form/_update_content.html.erb
     "Content": "Content"
 
     # app/helpers/changesets_helper.rb
@@ -410,10 +434,13 @@ en-GB:
     # app/controllers/admin/repositories_controller.rb
     "Failure! You are not permitted to browse this path.": "Failure! You are not permitted to browse this path."
 
+    # app/helpers/navigation_helper.rb
+    "Feeds": 
+
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "File content cannot be displayed for binary files."
 
-    # app/models/attachment.rb
+    # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": "File size exceeds the maximum limit"
 
     # app/views/admin/reports/_form.html.erb
@@ -429,6 +456,9 @@ en-GB:
     # app/views/notifications/password_reset_instructions.html.erb
     # app/views/sessions/new.html.erb
     "Forgot password": "Forgot password"
+
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Formats": 
 
     # app/views/admin/users/_core.html.erb
     # app/views/notifications/account_activation_note.html.erb
@@ -464,6 +494,9 @@ en-GB:
     # app/views/admin/users/index.html.erb
     "Groups": "Groups"
 
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Headers": 
+
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Hi {{user}}!"
 
@@ -471,6 +504,10 @@ en-GB:
     "Hide already completed milestones": "Hide already completed milestones"
 
     # app/views/layouts/_header.html.erb
+    # app/views/rescue/403.html.erb
+    # app/views/rescue/404.html.erb
+    # app/views/rescue/422.html.erb
+    # app/views/rescue/500.html.erb
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/logged_in.html.erb
     # app/views/sessions/new.html.erb
@@ -498,7 +535,7 @@ en-GB:
     # app/views/admin/tasks/index.html.erb
     "Interval": "Interval"
 
-    # app/models/attachment.rb
+    # vendor/plugins/has_attachment/lib/attachment.rb
     "Invalid file size": "Invalid file size"
 
     # app/views/browse/diff.html.erb
@@ -524,10 +561,14 @@ en-GB:
     "Line {{number}}": "Line {{number}}"
 
     # app/controllers/markup_controller.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Links": "Links"
 
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Lists": 
+
     # app/helpers/application_helper.rb
-    # app/views/layouts/_footer.html.erb
+    # app/views/layouts/_header.html.erb
     "Loading...": "Loading..."
 
     # app/views/admin/projects/_form.html.erb
@@ -567,7 +608,11 @@ en-GB:
     # app/helpers/format_helper.rb
     "Markup reference": "Markup reference"
 
+    # app/views/rescue/422.html.erb
+    "Maybe you tried to change something you didn't have access to.": 
+
     # app/helpers/tickets_helper.rb
+    # app/models/milestone.rb
     # app/models/ticket_change.rb
     # app/models/ticket_filter/collection.rb
     # app/views/tickets/form/_ticket_options.html.erb
@@ -679,6 +724,9 @@ en-GB:
     # app/views/tickets/form/_ticket_options.html.erb
     "Options": "Options"
 
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Paragraphs": 
+
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb
     "Password": "Password"
@@ -785,7 +833,10 @@ en-GB:
     # app/helpers/changesets_helper.rb
     "Quick Diff": "Quick Diff"
 
-    # app/helpers/navigation_helper.rb
+    # app/views/rss/index.html.erb
+    "RSS": 
+
+    # Unknown
     "RSS Feed": "RSS Feed"
 
     # app/helpers/browse_helper.rb
@@ -803,6 +854,9 @@ en-GB:
 
     # app/views/tickets/_ticket_intro.html.erb
     "Really delete ticket?": "Really delete ticket?"
+
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "References": 
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/new.html.erb
@@ -922,7 +976,7 @@ en-GB:
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "Show already completed milestones"
 
-    # app/helpers/project_area_helper.rb
+    # app/helpers/navigation_helper.rb
     "Show changeset {{revision}}": "Show changeset {{revision}}"
 
     # app/views/browse/_node_info.html.erb
@@ -973,6 +1027,9 @@ en-GB:
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Sync callback"
 
+    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    "Tables": 
+
     # app/views/admin/tasks/index.html.erb
     "Task": "Task"
 
@@ -988,6 +1045,12 @@ en-GB:
 
     # app/controllers/accounts_controller.rb
     "Thank you.": "Thank you."
+
+    # app/views/rescue/422.html.erb
+    "The change you wanted was rejected.": 
+
+    # app/views/rescue/404.html.erb
+    "The page you were looking for doesn't exist.": 
 
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": "The repository is currently unavailable, please try it again later."
@@ -1035,12 +1098,10 @@ en-GB:
     # app/controllers/tickets_controller.rb
     # app/core_info.rb
     # app/models/ticket.rb
-    # app/models/ticket_change.rb
     # app/views/tickets/index.html.erb
     "Tickets": "Tickets"
 
     # app/models/ticket.rb
-    # app/models/ticket_change.rb
     "Tickets for {{project}}": "Tickets for {{project}}"
 
     # app/views/admin/users/_core.html.erb
@@ -1087,7 +1148,7 @@ en-GB:
     # app/helpers/changesets_helper.rb
     "Updated": "Updated"
 
-    # app/models/attachment.rb
+    # vendor/plugins/has_attachment/lib/attachment.rb
     "Upload is not permitted": "Upload is not permitted"
 
     # app/views/admin/users/index.html.erb
@@ -1154,6 +1215,12 @@ en-GB:
     # app/models/ticket_filter/custom.rb
     "Watched by me": "Watched by me"
 
+    # app/views/rescue/500.html.erb
+    "We're sorry, but something went wrong.": 
+
+    # app/views/rescue/500.html.erb
+    "We've been notified about this issue and we'll take a look at it shortly.": 
+
     # lib/time_interval.rb
     "Weeks": "Weeks"
 
@@ -1168,6 +1235,9 @@ en-GB:
 
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "You are not allowed to login until your account has been activated by the administrator."
+
+    # app/views/rescue/403.html.erb
+    "You are not permitted to view this page.": 
 
     # app/views/sessions/destroy.html.erb
     "You are now logged out of the system.": "You are now logged out of the system."
@@ -1198,6 +1268,9 @@ en-GB:
 
     # app/models/user.rb
     "You cannot delete your own account.": "You cannot delete your own account."
+
+    # app/views/rescue/404.html.erb
+    "You may have mistyped the address or the page may have moved.": 
 
     # app/controllers/accounts_controller.rb
     "You need to activate your account within the next {{count}} hours to be able to login.": "You need to activate your account within the next {{count}} hours to be able to login."

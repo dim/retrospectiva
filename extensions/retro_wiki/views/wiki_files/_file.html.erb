@@ -11,7 +11,7 @@
   <td class="actions righted w-4">
     <% if permitted?(:wiki_pages, :upload) -%>
       <%= link_to _('Delete'), project_wiki_file_path(Project.current, file),
-						:confirm => _('Are you sure?'), 
+						:confirm => _('Are you really sure?'), 
 						:method => :delete %>
     <% end -%>
   </td>
