@@ -21,6 +21,10 @@ module Retrospectiva
       configuration.save
     end
     
+    def save!
+      configuration.save
+    end    
+    
     def errors
       configuration.errors      
     end

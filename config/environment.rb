@@ -83,11 +83,18 @@ Rails::Initializer.run do |config|
     RetroCM.reload!
     Retrospectiva::Previewable.load!
     
+    session_key = RetroCM[:general][:basic].setting(:session_key)
+    if session_key.default?
+      RetroCM[:general][:basic][:session_key] = "#{session_key.value}_#{ActiveSupport::SecureRandom.hex(3)}"
+      RetroCM.save!
+    end
+
     ActionController::UrlWriter.reload!
     ActionController::Base.session_options.merge!(
       :session_key => RetroCM[:general][:basic][:session_key],
       :secret      => Retrospectiva::Session.read_or_generate_secret
     )
+
     ActionView::Base.sanitized_bad_tags.merge %w(meta iframe frame layer ilayer link object embed bgsound from input select textarea style)
     ActionView::Base.sanitized_allowed_tags.merge %w(table tr td th)
     ActionView::Base.sanitized_allowed_attributes.merge %w(colspan rowspan style)
