@@ -3,7 +3,7 @@
   <div class="span-4 centered colborder">
     <div class="bottom-5"><%= author_gravatar(@changeset ? @changeset.user : nil, @node.author) %></div>
     <% unless @node.author.blank? -%>
-      <h6><%=h truncate(@node.author, :length => 16) %></h6>
+      <h6><%=h truncate(@node.author, :length => 20) %></h6>
     <% end -%>
     <div class="loud smaller">
       <%= datetime_format(@node.date) %><br/> 

@@ -27,28 +27,18 @@
 /* Markup specific settings
 -------------------------------------------------------------- */
 
-.compact,
 .markup       { margin: 0 0 1.5em; }
-
-.compact p,
-.markup p     { line-height: 1.25em; margin-bottom: 1em; } 
-
-.compact p img,
-.markup p img { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
- 
-.compact h1,
-.compact h2,
-.compact h3,
-.compact h4,
-.compact h5,
-.compact h6,
+.markup p     { line-height: 1.5; margin-bottom: 1em; clear:left; } 
+.markup p img { float: left; margin: 0.3em 1.5em 1.5em 0; padding: 1px; border:1px solid #ccc; } 
 .markup h1,
 .markup h2,
-.markup h3,
+.markup h3,    
 .markup h4,
 .markup h5,
-.markup h6  { margin-bottom: 0.25em; clear:left; }
-.markup h1  { margin-bottom: 0.5em; }
+.markup h6    { clear:left; margin-bottom:0.3em; }
+.markup h1,
+.markup h2    { color:#444; padding-top: 0.25em; }
+.markup li    { margin-bottom:0.1em; }
 .markup table td, 
 .markup table th { vertical-align: middle; }
 .markup table { border: 1px solid #bbb; padding: 1px; }

@@ -24,7 +24,7 @@ h1,h2,h3,h4,h5,h6,.page-title { font-weight: bold; color: #111; }
 
 /* Reset font-sizes and margins */
 .page-title { font-size: 2em; margin-bottom: 0.5em; }
-h1 { font-size: 1.8em; }
+h1 { font-size: 1.7em; }
 h2 { font-size: 1.5em; }
 h3 { font-size: 1.25em; }
 h4 { font-size: 1.1em; margin-bottom: 0.75em; }
@@ -48,7 +48,7 @@ big         { font-size: 1.1em; }        /* Added big tag definition */
 
 /* Override pre-code */
 pre,code,tt { font-family: 'DejaVu Sans Mono','Lucida Console','Courier New','Andale Mono',monospace; line-height: 1; } 
-pre         { background: #f9f9fc; padding: 0.75em 1em; border: 1px solid #eee; overflow: auto; } 
+pre         { background: #eee; padding: 0.75em 1em; border: 1px dashed #666; overflow: auto; } 
 
 ul          { list-style-type: square; line-height: 1.5; }
 ol          { list-style-type: decimal; line-height: 1.5; }
@@ -123,9 +123,7 @@ table .ultra-slim-column { width: 1em; }
 
 /* Use different font for bold text */
 
-h1,h2,h3,h4,h5,h6,.page-title {
-  font-family: "Lucida Sans","Lucida Sans Unicode","Helvetica Neue",Arial,Helvetica,"Lucida Grande",sans-serif;     
-}
-.strong,.highlight  { 
-  font-family: "Lucida Sans","Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,sans-serif; 
+h1, h2, h3, h4, h5, h6,
+.page-title, .strong, .highlight {
+  font-family: "Lucida Sans","Lucida Sans Unicode","Lucida Grande","Helvetica Neue",Arial,Helvetica,sans-serif;     
 }

@@ -3,7 +3,7 @@
   <div class="span-4 centered colborder">
     <div class="bottom-5"><%= author_gravatar(changeset.user, changeset.author) %></div>
     <% unless changeset.author.blank? -%>
-      <h6 title="<%=h changeset.author %>"><%=h truncate(changeset.author, :length => 16) %></h6>
+      <h6 title="<%=h changeset.author %>"><%=h truncate(changeset.author, :length => 20) %></h6>
     <% end -%>
     <div class="loud small" title="<%=h datetime_format(changeset.created_at) %>">
       <%=h time_interval_in_words(changeset.created_at) -%>
@@ -15,7 +15,7 @@
       <%= link_to_unless_current _('Changeset') + " #{changeset.short_revision}", 
         project_changeset_path(Project.current, changeset) %>
     </h3>
-    <div class="clear quiet small compact"><%= format_log(changeset.log) %></div>    
+    <div class="clear quiet small"><%= format_log(changeset.log) %></div>    
   </div>  
 
 </div>

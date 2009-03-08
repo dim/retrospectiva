@@ -11,7 +11,7 @@
     <div class="span-1">
       <%= author_gravatar(ticket.user, ticket.author, :email => ticket.email, :size => 30) %>
     </div>
-    <div class="span-9 last">
+    <div class="prepend-1">
       <h6><%= link_to h(truncate(ticket.summary, :length => 50)), project_ticket_path(Project.current, ticket) %></h6>
       <span class="small quieter"><%=_ 'Created {{period}} ago by {{author}}', :period => time_ago_in_words(ticket.created_at), :author => truncate(ticket.author) %></span>
     </div>
