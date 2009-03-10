@@ -17,7 +17,7 @@ class Repository::Git < Repository::Abstract
   end
 
   def latest_revision
-    'HEAD'
+    @latest_revision ||= (repo.log('HEAD', '', :n => 1).map(&:id).first || 'HEAD')
   end
 
   def unified_diff(path, revision_a, revision_b)

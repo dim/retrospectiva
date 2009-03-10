@@ -76,7 +76,7 @@ describe Repository::Git do
   end
   
   it 'should correctly extract the latest revision' do
-    @repository.latest_revision.should == 'HEAD'
+    @repository.latest_revision.should == 'fe8566ec42808bdce1795d0759ee1e4a49bd2715'
   end
 
   describe 'creating a unified diff' do

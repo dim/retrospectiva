@@ -57,14 +57,14 @@ ol          { list-style-type: decimal; line-height: 1.5; }
 -------------------------------------------------------------- */
 
 .fine       { font-size: .95em; }
-.small      { font-size: .9em; line-height: 1; }
+.small      { font-size: .9em; }
 .smaller    { font-size: .85em; }
 .tiny       { font-size: .8em; }
 .wee        { font-size: .7em; }
 
 .raised     { font-size: 1.05em; }
 .big        { font-size: 1.1em; }
-.large      { font-size: 1.2em; line-height: 1; }
+.large      { font-size: 1.2em; }
 .larger     { font-size: 1.3em; }
 
 .strong     { font-weight: bold; }

@@ -76,8 +76,8 @@ module Retrospectiva
         #
         def require_user(*actions)
           ensure_authorize_before_filter!
-          returning(@retro_am_auth_require_user ||= []) do |permissions|
-            permissions += actions.map(&:to_s) unless actions.blank?
+          returning(@retro_am_auth_require_user ||= []) do
+            @retro_am_auth_require_user += actions.map(&:to_s) unless actions.blank?
           end
         end
 
