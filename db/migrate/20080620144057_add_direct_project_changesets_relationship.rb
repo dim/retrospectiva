@@ -1,8 +1,8 @@
 class AddDirectProjectChangesetsRelationship < ActiveRecord::Migration
   def self.up
     create_table "changesets_projects", :id => false, :force => true do |t|
-      t.integer "changeset_id",   :limit => 11
-      t.integer "project_id", :limit => 11
+      t.integer "changeset_id"
+      t.integer "project_id"
     end
     add_index "changesets_projects", 'project_id', :name => 'i_cp_on_project'
     add_index "changesets_projects", 'changeset_id', :name => 'i_cp_on_changeset'

@@ -1,6 +1,6 @@
 class AddUserIdColumnToChangesets < ActiveRecord::Migration
   def self.up
-    add_column :changesets, :user_id, :integer, :limit => 11
+    add_column :changesets, :user_id, :integer
     add_index "changesets", ["user_id"], :name => "i_cs_on_user_id"
   end
 

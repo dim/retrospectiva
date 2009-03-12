@@ -1,8 +1,7 @@
 class DropSchemaInfoTable < ActiveRecord::Migration
   def self.up
-    begin
-      drop_table :schema_info
-    rescue ActiveRecord::StatementInvalid
+    if ActiveRecord::Base.connection.tables.include?('schema_info')
+      drop_table(:schema_info)
     end
   end
 
