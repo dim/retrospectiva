@@ -23,8 +23,8 @@ module Retrospectiva
       end
       
       def download(uri)
-        name = File.basename(uri.split('/').last, '.git')
-        if system("git clone #{uri} #{extension_path(name)}")
+        name = File.basename(uri, '.git').split('.').last
+        if system("git clone --depth 1 #{uri} #{extension_path(name)}")
           FileUtils.rm_rf File.join(extension_path(name), ".git")
           true
         else
