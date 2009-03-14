@@ -1,5 +1,5 @@
 <tr>
-  <td colspan="<%= colspan.first || 1 %>"><%= will_paginate(collection) %></td>
+  <td colspan="<%= colspan.first || 1 %>"><%= will_paginate(collection, :inner_window => 3) %></td>
   <td colspan="<%= colspan.last  || 1 %>" class="righted">
     <span class="strong"><%= link_to label, new_path %></span>
     <%= additional_content %>

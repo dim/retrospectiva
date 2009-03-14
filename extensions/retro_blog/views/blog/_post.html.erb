@@ -1,21 +1,27 @@
 <div class="blog-post">
 
-  <h1 class="bottom-1 blog-title"><%= preview ? link_to(h(post.title), project_blog_post_path(Project.current, post)) : h(post.title) %></h1>
-
-  <p class="small quiet">
-    <%=RetroI18n._ h('Posted by {{user}} on {{date}}'), 
-            :user => link_to(h(post.user.name),  project_blog_posts_path(Project.current, params.only(:c).merge(:u => post.user))), 
-            :date => date_format(post.created_at) %> | 
-    <% if post.categories.any? -%>
-      <%= category_links(post) %> |
-    <% end -%>
-    <% if preview -%>
-      <%= link_to _('{{count}} comments', :count => post.comments.size), project_blog_post_path(Project.current, post, :anchor => 'comments') %>
-    <% else -%>
-      <%= link_to _('{{count}} comments', :count => post.comments.size), :anchor => 'comments' %> | 
-      <%= link_to _('Recent Posts'), project_blog_posts_path(Project.current) %>       
-    <% end -%>
-  </p>
+  <div class="blog-title">
+    <h1 class="bottom-1">
+      
+      <%= preview ? link_to(h(post.title), project_blog_post_path(Project.current, post)) : h(post.title) %>
+    </h1>
+    
+    <p class="small quiet">
+      <%= user_gravatar post.user, :size => 22 %> 
+      <%= RetroI18n._ h('{{user}} on {{date}}'), 
+          :user => link_to(h(post.user.name), project_blog_posts_path(Project.current, params.only(:c).merge(:u => post.user))), 
+          :date => date_format(post.created_at) %> |
+      <% if post.categories.any? -%>
+        <%= category_links(post) %> |
+      <% end -%>
+      <% if preview -%>
+        <%= link_to _('{{count}} comments', :count => post.comments.size), project_blog_post_path(Project.current, post, :anchor => 'comments') %>
+      <% else -%>
+        <%= link_to _('{{count}} comments', :count => post.comments.size), :anchor => 'comments' %> | 
+        <%= link_to _('Recent Posts'), project_blog_posts_path(Project.current) %>       
+      <% end -%>      
+    </p>
+  </div>
   
   <div class="markup blog-content">
 

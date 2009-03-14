@@ -2,6 +2,8 @@
   font-family: Georgia, "DejaVu Serif", "Bitstream Vera Serif", "Vera Serif", serif;
 }
 
+.retro-blog .blog-title img { vertical-align:middle; }
+
 .blog-navigation dt { margin-bottom: 0.5em; }
 .blog-navigation dd { margin: 2px 0 0 0; }
 
