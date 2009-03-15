@@ -16,7 +16,7 @@
   <td class="actions righted w-4">
     <%= link_to _('Edit'), edit_admin_user_path(user) %>
 
-    <% if user.current? || user.last_admin? -%>
+    <% if user.current? || user.public? || user.last_admin? -%>
       <span class="inactive"><%= _('Delete') %></span>
     <% else -%>
       <%= link_to _('Delete'), admin_user_path(user), options_for_destroy_link(user) -%>

@@ -4,7 +4,7 @@
 #++
 class Admin::UsersController < AdminAreaController
   before_filter :paginate_users, :only => [:index, :search]
-  before_filter :find_and_validate_user, :only => [:edit, :update]
+  before_filter :find_user, :only => [:edit, :update, :destroy]
   before_filter :find_groups, :only => [:new, :edit]
   before_filter :new, :only => [:create]
 
@@ -45,30 +45,27 @@ class Admin::UsersController < AdminAreaController
   end
 
   def destroy
-    user = User.find(params[:id])
-    if user.destroy
+    if @user.destroy
       flash[:notice] = _('User was successfully deleted.')
     else
-      flash[:error] = [_('User could not be deleted. Following error(s) occurred') + ':'] + user.errors.full_messages
+      flash[:error] = [_('User could not be deleted. Following error(s) occurred') + ':'] + @user.errors.full_messages
     end
     redirect_to admin_users_path
   end
 
   protected
     
-    def find_and_validate_user
+    def find_user
       @user = User.find(params[:id])       
-      redirect_to admin_users_path if @user.public?      
     end
 
     def paginate_users
       conditions = PlusFilter::Conditions.new do |c|
-        c << ['users.id <> ?', User.public_user.id]
         c << Retro::Search::exclusive(params[:term], *User.searchable_column_names)
       end
       @users = User.paginate(
         :conditions => conditions.to_a,
-        :order => 'users.admin DESC, users.name',
+        :order => "CASE users.id WHEN #{User.public_user.id} THEN 0 ELSE 1 END, users.admin DESC, users.name",
         :include => [:groups],
         :per_page => params[:per_page],
         :page => params[:page]

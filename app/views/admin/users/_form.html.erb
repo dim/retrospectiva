@@ -19,8 +19,4 @@
   <%= view_extensions :user, :options, :admin, :locals => { :f => f } %>
 <% end -%>
 
-<% f.fieldset do -%>
-  <%= f.label_tag _('Groups') + ':' -%>
-  <%= f.check_boxes :group_ids, @groups.map {|i| [h(i.name), i.id] } %>
-  <div class="break quieter"><%= _('ATTENTION: Group settings will be ignored if the \'Administrator\' option is selected!') %></div>
-<% end -%>
+<%= render :partial => 'groups', :locals => { :f => f } %>

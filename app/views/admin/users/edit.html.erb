@@ -2,20 +2,35 @@
 <%= render :partial => 'header' %>
 
 <% plus_form_for(@user, :url => admin_user_path(@user)) do |f| -%>
-  <%= render :partial => '/admin/shared/form_header', :locals => {:f => f} %>
+  
+  <% if @user.public? -%>
+    <%= f.info @page_title %>
+    <%= f.error_messages %>
 
-  <% f.fieldset do -%>
-    <%= f.label_tag _('Email notification') %>
-    <div>
-      <%= check_box_tag 'send_notification', 1, true %>
-      <%= f.label_tag _('Notify user on account activation'), :for => 'send_notification', :class => 'choice' %>
-    </div>
-    <div class="break quiet">
-      <%= _('This setting only applies if you enable the \'Activate\' checkbox') -%>
-    </div>
-  <% end if RetroCM[:general][:user_management][:activation] == 'admin' && !@user.active? -%>
+    <% f.fieldset do -%>
+      <%= f.label :username, _('Username') + ':', :required => true -%>
+      <%= f.text_field :username, :disabled => true -%>
+    <% end -%>
+    
+    <%= render :partial => 'groups', :locals => { :f => f } %>
+    
+  <% else -%>
+    <%= render :partial => '/admin/shared/form_header', :locals => {:f => f} %>
+  
+    <% f.fieldset do -%>
+      <%= f.label_tag _('Email notification') %>
+      <div>
+        <%= check_box_tag 'send_notification', 1, true %>
+        <%= f.label_tag _('Notify user on account activation'), :for => 'send_notification', :class => 'choice' %>
+      </div>
+      <div class="break quiet">
+        <%= _('This setting only applies if you enable the \'Activate\' checkbox') -%>
+      </div>
+    <% end if RetroCM[:general][:user_management][:activation] == 'admin' && !@user.active? -%>
+  <% end -%>
 
   <%= render :partial => '/admin/shared/form_footer', :locals => { 
         :f => f, :label => _('Update'), :collection_path => admin_users_path } %>
+
 <% end -%>
 <%= top_link %>

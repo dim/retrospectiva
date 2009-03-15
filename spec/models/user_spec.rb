@@ -196,6 +196,12 @@ describe User do
         @user.should have(1).error_on(:base)
       end
 
+      it 'should rollback changes if Public user record modification was attempted' do
+        @user.name = 'Some name'
+        @user.should have(1).error_on(:base)
+        @user.name.should == 'Anonymous'
+      end
+
       it 'should not allow the Public user to become admin' do
         @user.admin = true
         @user.should have(1).errors_on(:admin)
@@ -203,7 +209,6 @@ describe User do
 
       it 'should not allow the Public user to become inactive' do
         @user.active = false
-        @user.valid?
         @user.should have(1).errors_on(:active)
       end          
     end

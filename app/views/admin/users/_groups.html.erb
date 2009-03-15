@@ -1,0 +1,7 @@
+<% f.fieldset do -%>
+  <%= f.label_tag _('Groups') + ':' -%>
+  <%= hidden_field_tag "#{f.object_name}[group_ids][]", Group.default_group.id, :id => "user_group_ids_#{Group.default_group.id}" -%>
+  <%= f.check_boxes :group_ids, @groups.map {|i| [h(i.name), i.id] } %>
+
+  <div class="break quieter"><%= _('ATTENTION: Group settings will be ignored if the \'Administrator\' option is selected!') %></div>
+<% end -%>

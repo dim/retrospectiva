@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :groups, 
-    :order => 'groups.name', 
+    :order => 'groups.name',
     :uniq => true
 
   has_many :changesets, :dependent => :nullify
@@ -210,10 +210,11 @@ class User < ActiveRecord::Base
       project_permissions(project)[resource.to_s].include?(action.to_s) rescue false
     end
 
+    def rollback_changes!
+      changed_attributes.each { |attr, value_was| self[attr] = value_was }      
+    end
+
     def validate
-      if public? && !new_record?
-        errors.add_to_base _('Public user cannot be modified.')
-      end
       if public? && admin?
         errors.add :admin, :not_for_public
       end
@@ -228,6 +229,10 @@ class User < ActiveRecord::Base
       end
       if current? && active_was && !active?
         errors.add :active, :own_account_must_be_active
+      end
+      if public? && changed? && !new_record?
+        errors.add_to_base _('Public user cannot be modified.')
+        rollback_changes!
       end
       errors.empty?
     end

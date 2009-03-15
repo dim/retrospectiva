@@ -52,7 +52,7 @@ class UserObserver < ActiveRecord::Observer
     def manage_group_associations(user)
       if user.admin?
         user.groups.clear
-      else
+      elsif !user.groups.include?(Group.default_group)
         user.groups << Group.default_group
       end
       true

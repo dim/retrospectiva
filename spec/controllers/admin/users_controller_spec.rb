@@ -23,8 +23,9 @@ describe Admin::UsersController do
 
     it "should find user records" do
       User.should_receive(:find).
-        with(:all, :conditions => ['( users.id <> ? )', 0],
-        :order => 'users.admin DESC, users.name',
+        with(:all,
+        :conditions => nil,
+        :order => 'CASE users.id WHEN 0 THEN 0 ELSE 1 END, users.admin DESC, users.name',
         :include => [:groups],
         :offset => 0, :limit => User.per_page).
         and_return(@users)
@@ -123,30 +124,16 @@ describe Admin::UsersController do
       assigns[:user].should equal(@user)
     end
 
-    describe 'if user is public' do
+    it_should_successfully_render_template('edit')
 
-      it "should redirect to the user list" do
-        @user.should_receive(:public?).and_return(true)
-        do_get
-        response.should redirect_to(admin_users_path)
-      end
-
+    it "should pre-load the group records" do
+      Group.should_receive(:find).
+        with(:all,  :conditions => ['id <> ?', 0], :order => 'name').
+        and_return([])
+      do_get
+      assigns[:groups].should == []
     end
 
-    describe 'if user is NOT public' do
-
-      it_should_successfully_render_template('edit')
-  
-      it "should pre-load the group records" do
-        Group.should_receive(:find).
-          with(:all,  :conditions => ['id <> ?', 0], :order => 'name').
-          and_return([])
-        do_get
-        assigns[:groups].should == []
-      end
-
-    end
-    
   end
 
 
@@ -220,16 +207,6 @@ describe Admin::UsersController do
       Group.stub!(:find).and_return([])
     end
 
-    describe 'if user is public' do
-
-      it "should redirect to the user list" do
-        @user.should_receive(:public?).and_return(true)
-        put :update, :id => "1"
-        response.should redirect_to(admin_users_path)
-      end
-
-    end
-    
     describe "with successful update" do
 
       def do_put(options = {})
