@@ -58,21 +58,21 @@ module RetroI18n
     #   RetroI18n.guess('de', 'en') # => 'de-DE'
     #   RetroI18n.guess('invalid', 'missing', 'ja') # => 'ja-JP'
     def guess(*codes)
-      available = locales.sort_by(&:priority).map{|i| i.code.downcase }
+      available = locales.sort_by(&:priority).map(&:code)
       
       codes.flatten.each do |code|
-        code = normalize_code(code).downcase      
-        match = 
-          available.find {|i| code == i } || 
+        code  = normalize_code(code)
+        match = available.find {|i| code == i } || 
           available.find {|i| code == i.split('-').first } ||
-          available.find {|i| code == i.split('-').last }
+          available.find {|i| code == i.split('-').last }        
         return match if match
       end
       nil
     end
   
     def normalize_code(code)
-      code.to_s.split(/[^a-z]/i).join('-')
+      first, *others = code.to_s.split(/[^a-z]/i)      
+      [first, *others.map(&:upcase)].join('-')
     end
 
   end
