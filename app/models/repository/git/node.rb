@@ -5,7 +5,7 @@
 class Repository::Git::Node < Repository::Abstract::Node
   
   def initialize(repos, path, selected_rev = nil, skip_check = false)
-    super(repos, sanitize_path(path), selected_rev || 'HEAD')
+    super(repos, sanitize_path(path), selected_rev || repos.latest_revision)
     raise_invalid_node_error! unless skip_check || exists?
   end
 

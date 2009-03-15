@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Changeset < ActiveRecord::Base
@@ -10,6 +10,9 @@ class Changeset < ActiveRecord::Base
 
   validates_presence_of :repository_id, :revision
   validates_uniqueness_of :revision, :scope => :repository_id
+
+  after_create :create_changeset_project_relations!
+  after_create :update_project_revision_cache!
 
   attr_accessor :bulk_synchronization
   
@@ -101,5 +104,27 @@ class Changeset < ActiveRecord::Base
       :conditions => ['changesets.created_at < ?', created_at],
       :order => 'changesets.created_at DESC'
   end
+
+  protected
+
+    def create_changeset_project_relations!
+      return true if bulk_synchronization
+    
+      relevant_paths = changes.map do |change|
+        [change.path, change.from_path].compact
+      end.flatten
+  
+      self.projects = repository.projects.select do |project|
+        project.root_path.blank? || relevant_paths.find {|path| path.starts_with?(project.root_path) }
+      end
+    end
+  
+    def update_project_revision_cache!
+      return true if bulk_synchronization
+
+      projects.each do |project|
+        project.update_attribute :existing_revisions, (project.existing_revisions + [revision]).uniq
+      end
+    end    
 
 end

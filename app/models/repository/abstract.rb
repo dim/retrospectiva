@@ -100,7 +100,7 @@ class Repository::Abstract < ::Repository
         changesets.map(&:projects).flatten.uniq.each(&:reset_existing_revisions!)
       end
 
-      true
+      changesets
     end
 
     def create_changeset!(revision, bulk_mode = false)
@@ -115,6 +115,7 @@ class Repository::Abstract < ::Repository
       changeset.changes.build_deleted(*node_data[:deleted])
       changeset.changes.build_modified(*node_data[:updated])
       changeset.save!      
+      changeset.bulk_synchronization = nil
       log :info, 'SYNC', "Added revision #{revision}"
       
       changeset

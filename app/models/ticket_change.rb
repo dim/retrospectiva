@@ -12,7 +12,8 @@ class TicketChange < ActiveRecord::Base
   validates_association_of :ticket
 
   delegate :project, :status_id, :priority_id, :milestone_id, :property_ids, :assigned_user_id, :assigned_user,
-    :status_id=, :priority_id=, :milestone_id=, :property_ids=, :assigned_user_id=, :assigned_user=, :to => :ticket
+    :status_id=, :priority_id=, :milestone_id=, :property_ids=, :assigned_user_id=, :assigned_user=, 
+    :status, :priority, :milestone, :status=, :priority=, :milestone=, :to => :ticket
   
   retro_previewable do |r|
     r.item do |i, change, options|
