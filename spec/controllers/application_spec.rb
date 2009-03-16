@@ -213,39 +213,67 @@ describe ChangesetsController do
 end
 
 
+describe MilestonesController do
 
-describe ChangesetsController do
-  describe 'default render patch (auto-respond-to HTML)' do
-
+  describe 'RSS access via private key' do
+    
     before do
-      @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
-      @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
-      @project.stub!(:changesets).and_return(@changesets)
+      @user = mock_current_user! :admin? => true, :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
+      @project = mock_model(Project, :name => 'Retro')
+      @projects = [@project]
+      @projects.stub!(:find).and_return(@project)
+      @user.stub!(:active_projects).and_return(@projects)
+
+      @milestones = []
+      @milestones.stub!(:active_on).and_return(@milestones)
+      @project.stub!(:milestones).and_return(@milestones)
+
+      MilestonesController.stub!(:module_enabled?).and_return(true)
+      MilestonesController.stub!(:module_accessible?).and_return(true)
     end
     
-    it 'should render HTML if no specific format requested' do
-      get :index, :project_id => @project.to_param
-      response.should be_success
-      response.content_type.should == 'text/html' 
-    end
-
-    it 'should render the format if no specific format requested and expicitely allowed' do
-      get :index, :project_id => @project.to_param, :format => 'rss'
-      response.should be_success
-      response.content_type.should == 'application/rss+xml' 
-    end
-
-    it 'should return 406 Not Acceptable if requested format is not part of expicitely allowed ones' do
-      get :index, :project_id => @project.to_param, :format => 'xml'
-      response.code.should == '406'
+    describe 'if non-RSS content is requested' do
+      it 'should refuse authorisation ' do
+        lambda { get :index, :project_id => '1' }.should raise_error(RetroAM::NoAuthorizationError)
+      end
     end
     
-    it 'should return 406 Not Acceptable if requested format is not HTML and no formats were specified' do
-      @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
-      @changesets.should_receive(:find).twice.and_return(nil)
-      get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
-      response.code.should == '406'
+    describe 'if RSS content is requested' do
+ 
+      it 'should refuse authorisation without a private key' do
+        bypass_rescue
+        lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
+      end
+ 
+      describe 'if a valid private key is submitted' do
+        
+        before do
+          User.stub!(:find_by_private_key).and_return(@user)
+          @user.stub!(:permitted?).and_return(true)
+        end
+        
+        def do_get(options = {})
+          get :index, { :project_id => '1', :format => 'rss', :private => '[PKEY]' }.merge(options)
+        end
+        
+        it 'should find the user by the key' do
+          User.should_receive(:find_by_private_key).with('[PKEY]').and_return(@user)
+          do_get
+        end
+        
+        it 'should permit access' do
+          do_get
+          response.should be_success
+          response.body.should include('rss version="2.0"')
+        end
+ 
+        it 'should reset the session afterwards' do
+          do_get
+          session[:user_id].should be_nil
+        end
+        
+      end
+    
     end
-
-  end
+  end   
 end
