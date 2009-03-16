@@ -14,5 +14,15 @@ module MilestonesHelper
     end  
     links.empty? ? nil : "<div class=\"top-1\">#{links.join(' | ')}</div>"
   end
+  
+  def ticket_stats_and_links(milestone)
+    [[1, milestone.open_tickets, _('Open')],
+     [2, milestone.in_progress_tickets, _('In progress')],
+     [3, milestone.closed_tickets, _('Closed')]
+    ].map do |state_id, count, label|
+      next nil if count.zero?
+      link_to "#{label} (#{count})", :controller => 'tickets', :state => state_id, :milestone => milestone.id
+    end.compact.join(', ')
+  end
 
 end

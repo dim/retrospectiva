@@ -15,20 +15,19 @@
     <div class="markup info"><%= markup(milestone.info) %></div>
   <% end -%>
 
-  <div class="progress">
+  <div class="progress clearfix">
     <div class="completed" style="width: <%= milestone.percent_completed -%>%;">
+      <%= image_spacer(:size => '1x14') %></div>
+    <div class="in-progress" style="width: <%= milestone.percent_in_progress -%>%;">
       <%= image_spacer(:size => '1x14') %></div>
   </div>
 
   <p class="strong small top-5 bottom-5">
     <%= milestone.percent_completed -%>% <%=_ 'completed' -%>
     <% if permitted?(:tickets, :view) -%>
-      &ndash;
-      <%= link_to _('Closed tickets'), :controller => 'tickets', :state => 3, :milestone => milestone.id %>:
-      <%= milestone.closed_tickets -%>
-      &ndash;
-      <%= link_to _('Open tickets'), :controller => 'tickets', :state => 1, :milestone => milestone.id %>:
-      <%= milestone.open_tickets -%>
+      &mdash;
+      <%=_ 'Tickets' %>:
+      <%= ticket_stats_and_links(milestone) %>
     <% end -%>
   </p>
 </div>

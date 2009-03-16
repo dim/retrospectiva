@@ -60,6 +60,10 @@ class Milestone < ActiveRecord::Base
   def open_tickets
     ticket_count_by_state(1)
   end
+
+  def in_progress_tickets
+    ticket_count_by_state(2)
+  end
   
   def closed_tickets
     ticket_count_by_state(3)
@@ -71,6 +75,10 @@ class Milestone < ActiveRecord::Base
     
   def percent_completed
     total_tickets.zero? ? 0 : (closed_tickets.to_f / total_tickets.to_f * 100).round
+  end
+
+  def percent_in_progress
+    total_tickets.zero? ? 0 : (in_progress_tickets.to_f / total_tickets.to_f * 100).round
   end
   
   def completed?

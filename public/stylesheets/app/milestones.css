@@ -2,8 +2,9 @@
   border: 1px solid #999;
   background: #fff; 
   padding: 1px;
-}
-  
+}  
+.milestones .progress div { float:left; } 
 .milestones .completed { background: #37b; }
-.milestones .completed img { margin: 0; }
+.milestones .in-progress { background: #cde; }
+.milestones .progress img { margin: 0; }
   

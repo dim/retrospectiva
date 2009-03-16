@@ -41,7 +41,7 @@ describe Project do
 
     it "should have many tickets" do
       @project.should have_many(:tickets)
-      @project.tickets.should have(5).records
+      @project.tickets.should have(6).records
     end
 
     it "should have many ticket changes" do

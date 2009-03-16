@@ -104,7 +104,7 @@ describe Milestone do
 
   it "should have many tickets" do
     @milestone.should have_many(:tickets)
-    @milestone.tickets.should have(4).records
+    @milestone.tickets.should have(5).records
   end
 
   it "should belong to a project" do
@@ -113,19 +113,27 @@ describe Milestone do
 
   describe 'counting tickets (when tickets are not pre-loaded)' do
     it "should count total tickets" do
-      @milestone.total_tickets.should == 4
+      @milestone.total_tickets.should == 5
     end
 
     it "should count open tickets" do
       @milestone.open_tickets.should == 3
     end
 
+    it "should count in-progress tickets" do
+      @milestone.in_progress_tickets.should == 1
+    end
+
     it "should count closed tickets" do
       @milestone.closed_tickets.should == 1
     end
 
-    it "should count the progress as open-to-closed ticket ratio" do
-      @milestone.percent_completed.should == 25
+    it "should count the in-progress as in-progress-to-total ratio" do
+      @milestone.percent_in_progress.should == 20
+    end
+
+    it "should count the progress as closed-to-total ratio" do
+      @milestone.percent_completed.should == 20
     end
   end
 
@@ -135,19 +143,27 @@ describe Milestone do
     end
     
     it "should count total tickets" do
-      @milestone.total_tickets.should == 4
+      @milestone.total_tickets.should == 5
     end
 
     it "should count open tickets" do
       @milestone.open_tickets.should == 3
     end
 
+    it "should count in-progress tickets" do
+      @milestone.in_progress_tickets.should == 1
+    end
+
     it "should count closed tickets" do
       @milestone.closed_tickets.should == 1
     end
 
-    it "should count the progress as open-to-closed ticket ratio" do
-      @milestone.percent_completed.should == 25
+    it "should count the in-progress as in-progress-to-total ratio" do
+      @milestone.percent_in_progress.should == 20
+    end
+
+    it "should count the progress as closed-to-total ratio" do
+      @milestone.percent_completed.should == 20
     end
   end
 

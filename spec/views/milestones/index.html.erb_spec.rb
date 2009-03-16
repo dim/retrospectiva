@@ -8,7 +8,7 @@ describe "/milestones/index.html.erb" do
     @project = mock_current_project!
     @milestone = mock_model Milestone, 
       :due => nil, :completed? => false, :name => 'M1', :info => 'I1', 
-      :open_tickets => 0, :closed_tickets => 0, :percent_completed => 50
+      :open_tickets => 0, :closed_tickets => 0, :in_prgress_tickets => 0, :percent_in_progress => 0, :percent_completed => 0
     milestone_2 = mock_model(Milestone)
 
     assigns[:milestones] = [@milestone, milestone_2].paginate(:per_page => 1)
