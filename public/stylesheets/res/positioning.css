@@ -18,6 +18,7 @@
 #header #menu {
   background: #f3f3f3 url(../../images/menu_item.png) repeat-x top left;
   border-bottom: 1px solid #ddd;  
+  border-top: 1px solid #eee;
   height:20px!important;
   overflow:hidden;  
 }
@@ -29,7 +30,7 @@
 
   #header #menu a.active  { background: #eee url(../../images/menu_item_active.png) repeat-x top left; }
 
-  #header #menu ul        { margin: 0; padding: 0; list-style:none; border-top: 1px solid #ddd; }
+  #header #menu ul        { margin: 0; padding: 0; list-style:none; }
   #header #menu li        { margin: 0; padding: 0; float:left; line-height: 19px; }
 
   #header #menu #main-navigation    { float:left }

@@ -59,10 +59,7 @@ module FormatHelper
 
     def links_for_markup_editor(element_id)
       markup_link = link_to _('Markup reference'), markup_reference_path,
-        :popup => [
-          _('Markup reference'), 
-          'height=400,width=800,location=0,status=0,menubar=0,resizable=1,scrollbars=1'
-        ]    
+        :popup => [_('Reference'), 'height=400,width=800,location=0,status=0,menubar=0,resizable=1,scrollbars=1']    
       preview_link = link_to_remote _('Preview'), 
         :url => markup_preview_path,
         :with => "'content=' + encodeURIComponent($F('#{element_id}')) + '&element_id=#{element_id}_preview'",

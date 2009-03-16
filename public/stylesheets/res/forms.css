@@ -6,8 +6,6 @@ form .full-w textarea { width:750px; }
 
 form.plus_form  { padding:1em; background: #f8f8f8; border: 1px solid #ccc; }
 
-form.plus_form table,
-form.plus_form fieldset { margin-left: 8px; width: 750px; }
 form.plus_form fieldset.info,
 form.plus_form fieldset.section,   
 form.plus_form fieldset.buttons   { margin-left: 0; }

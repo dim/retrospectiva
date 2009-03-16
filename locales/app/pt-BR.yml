@@ -18,10 +18,10 @@ pt-BR:
     # app/views/admin/projects/_project.html.erb
     "ATTENTION: Are you really sure, that you want to delete this project?": 
 
-    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_groups.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ATENÇÃO: As definições de grupo serão ignoradas se a opção 'Administrador' for selecionada."
 
-    # app/views/rescue/403.html.erb
+    # Unknown
     "Access forbidden (403)": 
 
     # app/models/notifications.rb
@@ -211,10 +211,11 @@ pt-BR:
     # app/helpers/format_helper.rb
     "Close preview": "Fechar pré-visualização"
 
+    # app/helpers/milestones_helper.rb
     # app/views/admin/projects/_form.html.erb
     "Closed": "Fechado"
 
-    # app/views/milestones/_milestone.html.erb
+    # Unknown
     "Closed tickets": "Tickets fechados"
 
     # app/core_info.rb
@@ -490,7 +491,7 @@ pt-BR:
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/groups/_header.html.erb
     # app/views/admin/groups/index.html.erb
-    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_groups.html.erb
     # app/views/admin/users/index.html.erb
     "Groups": "Grupos"
 
@@ -504,7 +505,6 @@ pt-BR:
     "Hide already completed milestones": "Esconder marcos já concluídos"
 
     # app/views/layouts/_header.html.erb
-    # app/views/rescue/403.html.erb
     # app/views/rescue/404.html.erb
     # app/views/rescue/422.html.erb
     # app/views/rescue/500.html.erb
@@ -519,6 +519,7 @@ pt-BR:
     # app/views/tickets/index.html.erb
     "ID": 
 
+    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "In progress": "Em andamento"
 
@@ -711,10 +712,11 @@ pt-BR:
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Notificar o usuário na ativação da conta"
 
+    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "Open": "Aberto"
 
-    # app/views/milestones/_milestone.html.erb
+    # Unknown
     "Open tickets": "Tickets abertos"
 
     # app/views/accounts/show.html.erb
@@ -851,6 +853,9 @@ pt-BR:
 
     # app/views/tickets/_ticket_intro.html.erb
     "Really delete ticket?": 
+
+    # app/helpers/format_helper.rb
+    "Reference": 
 
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "References": 
@@ -1095,6 +1100,7 @@ pt-BR:
     # app/controllers/tickets_controller.rb
     # app/core_info.rb
     # app/models/ticket.rb
+    # app/views/milestones/_milestone.html.erb
     # app/views/tickets/index.html.erb
     "Tickets": 
 
@@ -1177,6 +1183,7 @@ pt-BR:
 
     # app/views/accounts/activate.html.erb
     # app/views/admin/users/_core.html.erb
+    # app/views/admin/users/edit.html.erb
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
     "Username": "Nome de usuário"
@@ -1233,7 +1240,7 @@ pt-BR:
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "Você não tem permissão para entrar até que sua conta seja ativada pelo administrador."
 
-    # app/views/rescue/403.html.erb
+    # Unknown
     "You are not permitted to view this page.": 
 
     # app/views/sessions/destroy.html.erb

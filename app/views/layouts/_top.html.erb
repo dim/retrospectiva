@@ -11,9 +11,8 @@
 
 <%= stylesheet_link_tag 'lib', 'ext', 'res/positioning', 'res/forms', 'res/classes', 'res/tables', 'res/rails',
       'app/admin', 'app/browse', 'app/changesets', 'app/milestones', 'app/tickets', 'app/search', 'app/rss', :cache => true %>  
-<!--[if IE]><%= stylesheet_link_tag 'ie' %><![endif]-->
+<!--[if lte IE 7]><%= stylesheet_link_tag 'ie' %><![endif]-->
 
-<%#= javascript_include_tag "date/#{I18n.locale}" %>
 <%= javascript_include_tag 'prototype', 'effects', 'controls', 'dragdrop','application', 'sha1', :cache => true %>
 
 <%= layout_markers[:header] %>
