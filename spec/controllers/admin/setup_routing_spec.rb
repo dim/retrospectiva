@@ -17,7 +17,7 @@ describe Admin::SetupController do
   end
 
   it 'should correctly recognize params for save' do
-    route_for(:controller => 'admin/setup', :action => 'save').should == '/admin/setup' 
+    route_for(:controller => 'admin/setup', :action => 'save').should == { :path => '/admin/setup', :method => :put } 
   end
 
 end

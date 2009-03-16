@@ -1,0 +1,1 @@
+Attachment.storage_path = '/dev/null'

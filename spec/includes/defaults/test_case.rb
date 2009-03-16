@@ -1,6 +1,5 @@
-Attachment.storage_path = '/dev/null'    
-
-Spec::Rails::Example::RailsExampleGroup.class_eval do
+ActiveSupport::TestCase.class_eval do
+  
   before(:all) do
     RetroCM[:general][:basic][:site_url] = 'http://test.host'
   end

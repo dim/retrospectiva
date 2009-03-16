@@ -55,15 +55,15 @@ describe Admin::UsersController do
   end
 
   it 'should correctly recognize params for create' do
-    route_for(:controller => 'admin/users', :action => 'create').should == '/admin/users' 
+    route_for(:controller => 'admin/users', :action => 'create').should == { :path => '/admin/users', :method => :post } 
   end
   
   it 'should correctly recognize params for update' do
-    route_for(:controller => 'admin/users', :action => 'update', :id => '1').should == '/admin/users/1' 
+    route_for(:controller => 'admin/users', :action => 'update', :id => '1').should == { :path => '/admin/users/1', :method => :put } 
   end
 
   it 'should correctly recognize params for destroy' do
-    route_for(:controller => 'admin/users', :action => 'destroy', :id => '1').should == '/admin/users/1' 
+    route_for(:controller => 'admin/users', :action => 'destroy', :id => '1').should == { :path => '/admin/users/1', :method => :delete } 
   end
 
 end

@@ -35,8 +35,6 @@ describe BrowseController do
       '/projects/name/browse/main/sub/file.rb'     
     route_for(:project_id => 'name', :controller => 'browse', :action => 'index', :path => ['file.rb']).should == 
       '/projects/name/browse/file.rb'     
-    route_for(:project_id => 'name', :controller => 'browse', :action => 'index', :path => 'file.rb').should == 
-      '/projects/name/browse/file.rb'     
   end
 
   it 'should correctly generate params for revisions' do

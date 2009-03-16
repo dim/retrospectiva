@@ -7,12 +7,9 @@ describe Repository::Abstract::Node do
       @node = Repository::Abstract::Node.new(Repository::Abstract.new, '')
     end
     
-    def should_be_abstract(method, *args)
-      lambda { @node.send(method, *args) }.should raise_error(NotImplementedError) 
-    end
     
     it 'should have a revision (abstract)' do
-      should_be_abstract(:revision) 
+      lambda { @node.revision }.should raise_error(NotImplementedError)
     end
 
     it 'should have a short revision (returning the revision)' do
@@ -21,27 +18,27 @@ describe Repository::Abstract::Node do
     end
 
     it 'should have a author (abstract)' do
-      should_be_abstract(:author) 
+      lambda { @node.author }.should raise_error(NotImplementedError)
     end
 
     it 'should have a date (abstract)' do
-      should_be_abstract(:date) 
+      lambda { @node.date }.should raise_error(NotImplementedError)
     end
 
     it 'should have a log (abstract)' do
-      should_be_abstract(:log) 
+      lambda { @node.log }.should raise_error(NotImplementedError)
     end
 
     it 'should have a directory indicator (abstract)' do
-      should_be_abstract(:dir?) 
+      lambda { @node.dir? }.should raise_error(NotImplementedError)
     end
 
     it 'should have sub-nodes (abstract)' do
-      should_be_abstract(:sub_nodes) 
+      lambda { @node.sub_nodes }.should raise_error(NotImplementedError)
     end
 
     it 'should have an exists indicator (abstract)' do
-      should_be_abstract(:exists?) 
+      lambda { @node.send :exists? }.should raise_error(NotImplementedError)
     end
 
     it 'should have no properties by default' do

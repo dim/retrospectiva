@@ -9,10 +9,7 @@ describe ProjectAreaController do
     end
     
     it 'should correctly generate routes' do
-      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123', :use_route => :project_ticket).should == 
-        '/projects/one/tickets/123'     
-      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == 
-        '/projects/one/tickets/123'     
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == '/projects/one/tickets/123'
     end
 
     it 'should correctly recognize routes' do
@@ -29,10 +26,7 @@ describe ProjectAreaController do
     end
     
     it 'should correctly generate routes' do
-      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123', :use_route => :project_ticket).should == 
-        '/tickets/123'     
-      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == 
-        '/tickets/123'     
+      route_for(:project_id => 'one', :controller => 'tickets', :action => 'show', :id => '123').should == '/tickets/123'     
     end
     
     it 'should correctly recognize routes' do

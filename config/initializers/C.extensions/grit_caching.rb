@@ -19,4 +19,4 @@ end if SCM_GIT_ENABLED
 
 ActionController::Base.class_eval do
   include ActionController::Caching::GritCache
-end if SCM_GIT_ENABLED
+end if SCM_GIT_ENABLED and ActionController::Base.cache_configured?

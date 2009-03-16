@@ -1,9 +1,8 @@
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
 ENV["RAILS_ENV"] = "test"
-
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
-require 'spec'
+require 'spec/autorun'
 require 'spec/rails'
 
 Spec::Runner.configure do |config|
@@ -44,7 +43,7 @@ Spec::Runner.configure do |config|
   #
   # == Notes
   # 
-  # For more information take a look at Spec::Example::Configuration and Spec::Runner
+  # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
 
 Dir[File.dirname(__FILE__) + "/includes/**/*.rb"].each do |file|

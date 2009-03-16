@@ -370,9 +370,6 @@ describe ProjectsController do
         controller.should_receive(:render).with(
           :xml => '<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/"
-  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
   <channel>
     <title>Title</title>
@@ -382,7 +379,6 @@ describe ProjectsController do
       <title>Changeset </title>
       <link>http://test.host/projects/retro/changesets/1</link>
       <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-      <dc:date>2009-01-01T00:00:00+00:00</dc:date>
     </item>
   </channel>
 </rss>',

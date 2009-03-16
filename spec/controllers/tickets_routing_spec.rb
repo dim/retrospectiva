@@ -12,7 +12,7 @@ describe TicketsController do
   
   it 'should correctly recognize params for modify-summary' do
     route_for(:project_id => 'one', :controller => 'tickets', :action => 'modify_summary', :id => '123').should == 
-      '/projects/one/tickets/123/modify_summary'
+      { :path => '/projects/one/tickets/123/modify_summary', :method => :put }
   end
 
 
@@ -26,7 +26,7 @@ describe TicketsController do
   
   it 'should correctly recognize params for destroy-change' do
     route_for(:project_id => 'one', :controller => 'tickets', :action => 'destroy_change', :ticket_id => '123', :id => '456').should == 
-      '/projects/one/tickets/123/456'
+      { :path => '/projects/one/tickets/123/456', :method => :delete }
   end
 
 
@@ -55,9 +55,9 @@ describe TicketsController do
     }.should raise_error(ActionController::MethodNotAllowed, 'Only post requests are allowed.') 
   end
   
-  it 'should correctly recognize params for destroy-change' do
+  it 'should correctly recognize params for toggle-subscription' do
     route_for(:project_id => 'one', :controller => 'tickets', :action => 'toggle_subscription', :id => '123').should == 
-      '/projects/one/tickets/123/toggle_subscription'
+      { :path => '/projects/one/tickets/123/toggle_subscription', :method => :post }
   end
 
   
@@ -113,7 +113,7 @@ describe TicketsController do
 
     it 'should correctly generate params' do
       route_for(:project_id => 'one', :controller => 'tickets', :action => 'destroy_change', :ticket_id => '123', :id => '45').should ==
-        '/projects/one/tickets/123/45'
+        { :path => '/projects/one/tickets/123/45', :method => :delete }
     end
 
     it 'should correctly recognize params' do

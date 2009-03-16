@@ -60,19 +60,19 @@ describe Admin::ReportsController do
   end
 
   it 'should correctly recognize params for create' do
-    route_for(:controller => 'admin/reports', :action => 'create', :project_id => '123').should == '/admin/projects/123/reports' 
+    route_for(:controller => 'admin/reports', :action => 'create', :project_id => '123').should == { :path => '/admin/projects/123/reports', :method => :post } 
   end
   
   it 'should correctly recognize params for update' do
-    route_for(:controller => 'admin/reports', :action => 'update', :project_id => '123', :id => '1').should == '/admin/projects/123/reports/1' 
+    route_for(:controller => 'admin/reports', :action => 'update', :project_id => '123', :id => '1').should == { :path => '/admin/projects/123/reports/1', :method => :put } 
   end
 
   it 'should correctly recognize params for destroy' do
-    route_for(:controller => 'admin/reports', :action => 'destroy', :project_id => '123', :id => '1').should == '/admin/projects/123/reports/1' 
+    route_for(:controller => 'admin/reports', :action => 'destroy', :project_id => '123', :id => '1').should ==  { :path => '/admin/projects/123/reports/1', :method => :delete } 
   end
 
   it 'should correctly recognize params for sort' do
-    route_for(:controller => 'admin/reports', :action => 'sort', :project_id => '123').should == '/admin/projects/123/reports/sort' 
+    route_for(:controller => 'admin/reports', :action => 'sort', :project_id => '123').should == { :path => '/admin/projects/123/reports/sort', :method => :put } 
   end
 
 end
