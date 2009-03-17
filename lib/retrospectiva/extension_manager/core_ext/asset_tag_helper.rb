@@ -45,11 +45,11 @@ module Retrospectiva
         end
 
         def x_javascript_path(source)
-          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/javascripts")
+          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/javascripts", 'js')
         end
 
         def x_stylesheet_path(source)
-          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/stylesheets")
+          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/stylesheets", 'css')
         end
       
         def x_image_path(source)
