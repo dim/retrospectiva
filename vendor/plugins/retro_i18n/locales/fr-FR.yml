@@ -1,5 +1,7 @@
 # French translations for Ruby on Rails
 # by Christian Lescuyer (christian@flyingcoders.com)
+# contributor: Sebastien Grosjean - ZenCocoon.com
+ 
 fr-FR:
   date:
     formats:
@@ -62,6 +64,13 @@ fr-FR:
       over_x_years:
         one: "plus d'un an"
         other: "plus de {{count}} ans"
+    prompts:
+      year: "Année"
+      month: "Mois"
+      day: "Jour"
+      hour: "Heure"
+      minute: "Minute"
+      second: "Seconde"
   
   number:
     format:
@@ -74,9 +83,18 @@ fr-FR:
         precision: 2
         format: '%n %u'
     human:
+      format:
+        precision: 2
       storage_units: [ Octet, ko, Mo, Go, To ]
-        
-        
+  
+  support:
+    array:
+      sentence_connector: 'et'
+      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+  
   activerecord:
     errors:
       template:

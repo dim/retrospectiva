@@ -5,7 +5,7 @@ describe TicketsHelper do
   describe 'generating the search path hash for tickets (hash_for_search_tickets_path)' do
            
     before do
-      @default_params = { :controller => 'tickets', :action => 'search', :format => :js, :project_id => 'project_name', :only_path => true, :use_route => :formatted_search_project_tickets }
+      @default_params = { :controller => 'tickets', :action => 'search', :format => :js, :project_id => 'project_name', :only_path => true, :use_route => :search_project_tickets }
       Project.stub!(:current).and_return(mock_model(Project, :to_param => 'project_name'))
       assigns[:filters] = @filters = mock(TicketFilter::Collection, :to_params => {})
       helper.stub!(:params).and_return({})

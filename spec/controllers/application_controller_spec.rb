@@ -177,9 +177,10 @@ describe ApplicationController do
 end
 
 describe ChangesetsController do
-  describe 'default render patch (auto-respond-to HTML)' do
+  describe 'rendering defaults' do
 
     before do
+      rescue_action_in_public!
       @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
       @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
       @project.stub!(:changesets).and_return(@changesets)

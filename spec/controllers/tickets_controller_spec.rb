@@ -511,6 +511,7 @@ describe TicketsController do
         :send_arguments => ['path', {}]
       Attachment.stub!(:find).and_return(@attachment)
       controller.stub!(:send_file)
+      controller.stub!(:render)
     end
 
     def do_get

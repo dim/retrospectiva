@@ -1,4 +1,7 @@
-sv-SE:
+# Swedish translation, by Johan Lundström (johanlunds@gmail.com), with parts taken
+# from http://github.com/daniel/swe_rails
+ 
+"sv-SE":
   number:
     # Used in number_with_delimiter()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
@@ -44,8 +47,19 @@ sv-SE:
         # separator:
         delimiter: ""
         # precision: 1
-      storage_units: [Byte, KB, MB, GB, TB]
- 
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+              
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
     distance_in_words:
@@ -80,6 +94,13 @@ sv-SE:
       over_x_years:
         one: "mer än ett år"
         other: "mer än {{count}} år"
+    prompts:
+      year: "År"
+      month: "Månad"
+      day: "Dag"
+      hour: "Timme"
+      minute: "Minut"
+      second: "Sekund"
         
   activerecord:
     errors:
@@ -111,6 +132,34 @@ sv-SE:
         less_than_or_equal_to: "måste vara mindre än eller lika med {{count}}"
         odd: "måste vara udda"
         even: "måste vara jämnt"
+        # Append your own errors here or at the model/attributes scope.
+ 
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      # models:
+      # user:
+      # blank: "This is a custom blank message for {{model}}: {{attribute}}"
+      # attributes:
+      # login:
+      # blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      # models:
+        
+    # Translate model names. Used in Model.human_name().
+    #models:
+      # For example,
+      # user: "Dude"
+      # will translate User model name to "Dude"
+    
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    #attributes:
+      # For example,
+      # user:
+      # login: "Handle"
+      # will translate User attribute "login" as "Handle"
  
   date:
     formats:
@@ -119,7 +168,7 @@ sv-SE:
       # You can provide other formats here if you like!
       default: "%Y-%m-%d"
       short: "%e %b"
-      medium: "%e %B, %Y"
+      medium: "%e %b, %Y"
       long: "%e %B, %Y"
       
     day_names: [söndag, måndag, tisdag, onsdag, torsdag, fredag, lördag]
@@ -138,9 +187,11 @@ sv-SE:
       long: "%d %B, %Y %H:%M"
     am: ""
     pm: ""
-      
+            
 # Used in array.to_sentence.
   support:
     array:
-      sentence_connector: "och"
-      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " och "
+      last_word_connector: " och "
+ 

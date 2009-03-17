@@ -215,29 +215,21 @@ describe Admin::UsersController do
       end
 
       it "should find the user requested" do
-        controller.stub!(:successful_update)
         User.should_receive(:find).with("1").and_return(@user)
         do_put
       end
 
       it "should update the found user" do
         @user.should_receive(:attributes=).with(nil, false)
-        controller.stub!(:successful_update)
         do_put
         assigns(:user).should equal(@user)
       end
 
       it "should not pre-load the group records" do
-        controller.stub!(:successful_update)
         Group.should_not_receive(:find)
         do_put
       end
 
-      it "should run succesfull update post-process" do
-        controller.should_receive(:successful_update).with(true)
-        do_put
-      end
-      
       describe 'on post-process' do
 
         before do

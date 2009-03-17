@@ -16,9 +16,9 @@ describe MarkupController do
     
     it 'should load the examples' do
       WikiEngine.should_receive(:default).and_return(@engine)
-      @engine.should_receive(:markup_examples).and_return(@examples.dup)
+      @engine.should_receive(:markup_examples).and_return(@examples)
       do_get
-      assigns[:examples].should == @examples
+      assigns[:examples].should == @examples      
       @examples['Links'].should have(2).records
     end
     

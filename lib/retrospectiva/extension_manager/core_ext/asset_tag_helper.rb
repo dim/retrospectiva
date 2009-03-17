@@ -1,37 +1,36 @@
 module Retrospectiva
   module ExtensionManager
     module AssetTagHelper
-      Parent = ActionView::Helpers::AssetTagHelper
       
-      def x_javascript_include_tag(*sources)
+      def x_javascript_include_tag(*sources)        
         options = sources.extract_options!.stringify_keys
-        Parent::JavaScriptSources.create(self, @controller, sources, options.delete("recursive")).expand_sources.map do |source|
+        expand_javascript_sources(sources, options.delete("recursive")).collect do |source|
           x_javascript_src_tag(source, options)
         end.join("\n")
       end
             
       def x_stylesheet_link_tag(*sources)
         options = sources.extract_options!.stringify_keys
-        Parent::StylesheetSources.create(self, @controller, sources, options.delete("recursive")).expand_sources.map do |source|
+        expand_stylesheet_sources(sources, options.delete("recursive")).map do |source|
           x_stylesheet_tag(source, options)
         end.join("\n")
       end
     
       def x_image_tag(source, options = {})
         options.symbolize_keys!
-    
+
         options[:src] = x_image_path(source)
         options[:alt] ||= File.basename(options[:src], '.*').split('.').first.to_s.capitalize
-    
+
         if size = options.delete(:size)
           options[:width], options[:height] = size.split("x") if size =~ %r{^\d+x\d+$}
         end
-    
+
         if mouseover = options.delete(:mouseover)
           options[:onmouseover] = "this.src='#{x_image_path(mouseover)}'"
           options[:onmouseout]  = "this.src='#{x_image_path(options[:src])}'"
         end
-    
+
         tag("img", options)
       end
       
@@ -46,35 +45,15 @@ module Retrospectiva
         end
 
         def x_javascript_path(source)
-          JavaScriptTag.new(self, @controller, source).public_path
+          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/javascripts")
         end
 
         def x_stylesheet_path(source)
-          StylesheetTag.new(self, @controller, source).public_path
+          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/stylesheets")
         end
       
         def x_image_path(source)
-          ImageTag.new(self, @controller, source).public_path
-        end
-
-        module ExtensionAssetTag
-          
-          def directory
-            "extensions/#{@controller.class.retrospectiva_extension}/#{super}"
-          end
-          
-        end
-
-        class ImageTag < Parent::ImageTag
-          include ExtensionAssetTag
-        end
-
-        class JavaScriptTag < Parent::JavaScriptTag
-          include ExtensionAssetTag
-        end
-
-        class StylesheetTag < Parent::StylesheetTag
-          include ExtensionAssetTag
+          compute_public_path(source, "extensions/#{@controller.class.retrospectiva_extension}/images")
         end
       
     end

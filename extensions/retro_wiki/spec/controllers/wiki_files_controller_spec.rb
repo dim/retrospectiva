@@ -41,6 +41,7 @@ describe WikiFilesController do
       @file = mock_model(WikiFile, :readable? => true, :send_arguments => ['path', {}])
       @files_proxy.stub!(:find_by_wiki_title!).and_return(@file)
       controller.stub!(:send_file) 
+      controller.stub!(:render) 
     end
     
     def do_get

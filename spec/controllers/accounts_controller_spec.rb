@@ -202,7 +202,6 @@ describe AccountsController do
       @new.stub!(:save).and_return(true)
       @user.stub!(:public?).and_return(true)
       @user_attrs = { 'username' => 'me', 'email' => 'me@work', 'name' => 'Me' }
-      controller.stub!(:successful_registration)
       controller.stub!(:purge_expired_accounts)
       RetroCM[:general][:user_management].stub!(:[]).and_return(true)
       RetroCM[:general][:user_management].stub!(:[]).with(:self_registration).and_return(true)
@@ -238,7 +237,6 @@ describe AccountsController do
 
       it 'should proceed with successful-registration' do
         @new.should_receive(:save).and_return(true)
-        controller.should_receive(:successful_registration)
         do_post
       end
 
@@ -251,12 +249,6 @@ describe AccountsController do
         do_post
         response.should be_success
         response.should render_template(:new)
-      end
-
-      it 'should proceed with failed-registration' do
-        @new.should_receive(:save).and_return(false)
-        controller.should_receive(:failed_registration)
-        do_post
       end
 
     end
@@ -412,6 +404,7 @@ describe AccountsController do
 
     it 'should initate the process' do
       controller.should_receive(:successful_registration)
+      controller.should_receive(:render)
       do_call
     end
 

@@ -1,3 +1,15 @@
+# Russian localization for Ruby on Rails 2.2+
+# by Yaroslav Markin <yaroslav@markin.net>
+#
+# Be sure to check out "russian" gem (http://github.com/yaroslav/russian) for
+# full Russian language support in Rails (month names, pluralization, etc).
+# The following is an excerpt from that gem.
+#
+# Для полноценной поддержки русского языка (варианты названий месяцев,
+# плюрализация и так далее) в Rails 2.2 нужно использовать gem "russian"
+# (http://github.com/yaroslav/russian). Следующие данные -- выдержка их него, чтобы
+# была возможность минимальной локализации приложения на русский язык.
+ 
 ru-RU:
   date:
     formats:
@@ -53,7 +65,24 @@ ru-RU:
       format:
         delimiter: ""
         precision: 1
-      storage_units: [байт, КБ, МБ, ГБ, ТБ]
+      # Rails 2.2
+      # storage_units: [байт, КБ, МБ, ГБ, ТБ]
+ 
+      # Rails 2.3
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one: "байт"
+            few: "байта"
+            many: "байт"
+            other: "байта"
+          kb: "КБ"
+          mb: "МБ"
+          gb: "ГБ"
+          tb: "ТБ"
  
   datetime:
     distance_in_words:
@@ -170,3 +199,4 @@ ru-RU:
       words_connector: ", "
       two_words_connector: " и "
       last_word_connector: " и "
+ 

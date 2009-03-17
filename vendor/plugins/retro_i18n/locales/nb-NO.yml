@@ -1,4 +1,5 @@
-nb-NO:
+# Norwegian, norsk bokmål, by irb.no
+"nb-NO":
   support:
     array:
       sentence_connector: "og"
@@ -19,6 +20,8 @@ nb-NO:
       time: "%H:%M"
       short: "%e. %B, %H:%M"
       long: "%A, %e. %B %Y, %H:%M"
+    am: ""
+    pm: ""
   datetime:
     distance_in_words:
       half_a_minute: "et halvt minutt"

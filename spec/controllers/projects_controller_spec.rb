@@ -187,7 +187,6 @@ describe ProjectsController do
       @rss_items = mock('RssItems', :new_item => @rss_item)
       
       controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)      
-      controller.stub!(:render_rss).and_yield(@rss_items)
       
       @project_a = stub_model(Project, :to_param => 'retro', :name => 'Retro')
       @project_b = stub_model(Project, :to_param => 'sub', :name => 'Sub')
@@ -216,17 +215,17 @@ describe ProjectsController do
     end
 
 
-    it 'should convert feedable records to RSS' do
-      @ticket.should_receive(:to_rss).with(@rss_item, :project => @project_b)
-      @changeset.should_receive(:to_rss).with(@rss_item, :project => @project_a)
+    it 'should render RSS (with all records)' do
       do_get
-    end
-
-    it 'should render RSS' do
-      controller.should_receive(:render_rss).
-        with('All Projects', 'All news for all projects', 'http://test.host/projects').
-        and_yield(@rss_items)
-      do_get
+      response.should have_tag('rss') do
+        with_tag('channel') do
+          with_tag('title', 'All Projects')
+          with_tag('description', 'All news for all projects')
+          with_tag('item', 2)
+          with_tag('item link', 'http://test.host/projects/sub/tickets/456')
+          with_tag('item link', 'http://test.host/projects/retro/changesets/123')
+        end
+      end
     end
         
   end
@@ -275,11 +274,7 @@ describe ProjectsController do
       @changeset = stub_model(Changeset, :to_param => '123')
       @ticket = stub_model(Ticket, :to_param => '456', :status => mock_model(Status, :name => 'Open'))
       
-      @rss_item = mock('RssItems')
-      @rss_items = mock('RssItems', :new_item => @rss_item)
-      
       controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)      
-      controller.stub!(:render_rss).and_yield(@rss_items)
       controller.stub!(:find_feedable_records).and_return([@changeset, @ticket])
       
       @project = stub_model(Project, :to_param => 'retro', :name => 'Retro')
@@ -303,17 +298,17 @@ describe ProjectsController do
       do_get
     end
 
-    it 'should convert feedable records to RSS' do
-      @ticket.should_receive(:to_rss).with(@rss_item, :project => @project)
-      @changeset.should_receive(:to_rss).with(@rss_item, :project => @project)
+    it 'should render RSS (with all feedable records)' do
       do_get
-    end
-
-    it 'should render RSS' do
-      controller.should_receive(:render_rss).
-        with('Retro', 'All news for Retro', 'http://test.host/projects/retro').
-        and_yield(@rss_items)
-      do_get
+      response.should have_tag('rss') do
+        with_tag('channel') do
+          with_tag('title', 'Retro')
+          with_tag('description', 'All news for Retro')
+          with_tag('item', 2)
+          with_tag('item link', 'http://test.host/projects/retro/tickets/456')
+          with_tag('item link', 'http://test.host/projects/retro/changesets/123')
+        end
+      end
     end
         
   end
@@ -351,44 +346,6 @@ describe ProjectsController do
       end      
       
     end
-
-
-    describe 'render-rss' do
-      before do
-        controller.stub!(:render)
-        @changeset = stub_model(Changeset, :created_at => Time.utc(2009, 1, 1), :to_param => '1')
-        @project = stub_model(Project, :to_param => 'retro', :name => 'Retro')        
-      end
-      
-      def do_call
-        controller.send :render_rss, 'Title', 'Description', 'http://test.com/project/retro.rss' do |items|
-          @changeset.to_rss(items.new_item, :project => @project)
-        end
-      end
-      
-      it 'should render rss' do
-        controller.should_receive(:render).with(
-          :xml => '<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
-  <channel>
-    <title>Title</title>
-    <link>http://test.com/project/retro.rss</link>
-    <description>Description</description>
-    <item>
-      <title>Changeset </title>
-      <link>http://test.host/projects/retro/changesets/1</link>
-      <pubDate>Thu, 01 Jan 2009 00:00:00 +0000</pubDate>
-    </item>
-  </channel>
-</rss>',
-          :content_type => 'application/rss+xml'        
-        )        
-        do_call
-      end      
-
-    end
-
   
   end 
 end

@@ -12,7 +12,7 @@ fi-FI:
     day_names: [Sunnuntai, Maanantai, Tiistai, Keskiviikko, Torstai, Perjantai, Lauantai]
     abbr_day_names: [Su, Ma, Ti, Ke, To, Pe, La]
     month_names: [~, Tammikuu, Helmikuu, Maaliskuu, Huhtikuu, Toukokuu, Kesäkuu, Heinäkuu, Elokuu, Syyskuu, Lokakuu, Marraskuu, Joulukuu]
-    abbr_month_names: [~, Tammmi, Helmi, Maalis, Huhti, Touko, Kesä, Heinä, Elo, Syys, Loka, Marras, Joulu]
+    abbr_month_names: [~, Tammi, Helmi, Maalis, Huhti, Touko, Kesä, Heinä, Elo, Syys, Loka, Marras, Joulu]
     order: [:day, :month, :year]
  
   time:
@@ -25,8 +25,11 @@ fi-FI:
  
   support:
     array:
-      sentence_connector: "ja"
-      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " ja "
+      last_word_connector: " ja "
+ 
+ 
  
   number:
     format:
@@ -93,7 +96,14 @@ fi-FI:
       over_x_years:
         one: "yli vuosi"
         other: "yli {{count}} vuotta"
- 
+    prompts:
+      year: "Vuosi"
+      month: "Kuukausi"
+      day: "Päivä"
+      hour: "Tunti"
+      minute: "Minuutti"
+      second: "Sekuntia"
+  
   activerecord:
     errors:
       template:

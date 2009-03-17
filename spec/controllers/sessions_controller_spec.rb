@@ -71,7 +71,7 @@ describe SessionsController do
 
       describe 'if back-to location is set' do
         it 'should redirect to it' do
-          session.stub!(:data).and_return('back_to' => '/projects')
+          session[:back_to] = '/projects'
           do_post
           response.should be_redirect
           response.should redirect_to(projects_path)

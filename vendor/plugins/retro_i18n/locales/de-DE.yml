@@ -1,6 +1,6 @@
-# German translations for Ruby on Rails 
+# German translations for Ruby on Rails
 # by Clemens Kofler (clemens@railway.at)
-
+ 
 de-DE:
   date:
     formats:
@@ -22,7 +22,7 @@ de-DE:
       short: "%e. %B, %H:%M Uhr"
       long: "%A, %e. %B %Y, %H:%M Uhr"
       time: "%H:%M"
-      only_second: "%S"
+      medium: "%e. %b %Y"
  
     am: "vormittags"
     pm: "nachmittags"
@@ -62,7 +62,14 @@ de-DE:
       over_x_years:
         one: 'mehr als 1 Jahr'
         other: 'mehr als {{count}} Jahre'
-      
+    prompts:
+      second: "Sekunden"
+      minute: "Minuten"
+      hour: "Stunden"
+      day: "Tag"
+      month: "Monat"
+      year: "Jahr"
+ 
   number:
     format:
       precision: 2
@@ -85,12 +92,25 @@ de-DE:
       format:
         delimiter: ""
         precision: 1
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
  
   support:
     array:
-      sentence_connector: "und"
-      skip_last_comma: true
-        
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "
+ 
   activerecord:
     errors:
       template:
@@ -119,5 +139,4 @@ de-DE:
         less_than_or_equal_to: "muss kleiner oder gleich {{count}} sein"
         odd: "muss ungerade sein"
         even: "muss gerade sein"
-      models:
- 
+      

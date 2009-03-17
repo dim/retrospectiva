@@ -9,7 +9,7 @@ module FormatHelper
   alias_method_chain :markup, :wiki_words
 
   def path_to_wiki_file(file)
-    file.format? ? formatted_project_wiki_file_path(Project.current, file, file.format) : project_wiki_file_path(Project.current, file)
+    file.format? ? project_wiki_file_path(Project.current, file, :format => file.format) : project_wiki_file_path(Project.current, file)
   end
   
   protected

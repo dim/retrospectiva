@@ -16,7 +16,7 @@ module TicketsHelper
   end
   
   def hash_for_search_tickets_path
-    hash_for_formatted_search_project_tickets_path @filters.to_params.
+    hash_for_search_project_tickets_path @filters.to_params.
       merge(params[:report] ? {:report => params[:report]} : {}).
       merge(:project_id => Project.current.to_param, :format => :js)
   end

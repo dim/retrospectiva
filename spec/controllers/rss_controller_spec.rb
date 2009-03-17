@@ -26,7 +26,8 @@ describe RssController do
       controller.should_receive(:load_channels).with(:feedable?, @project_a).and_return({})
       controller.should_receive(:load_channels).with(:feedable?, @project_b).and_return({ 'channel' => [Changeset] })
       get :index
-      assigns[:project_map].should == [[@project_b, { 'channel' => [Changeset] }]] 
+      assigns[:project_map].should be_kind_of(ActiveSupport::OrderedHash) 
+      assigns[:project_map].to_a.should == [[@project_b, { 'channel' => [Changeset] }]] 
     end
 
     it 'should render the template' do
