@@ -17,6 +17,7 @@ namespace :db do
     desc 'Loads the initial content'
     task :load_content => :environment do
       puts "\n===== Load the initial content\n"
+      ActiveSupport::Dependencies.hook!
       load(RAILS_ROOT + "/db/default_content.rb")
     end
   end

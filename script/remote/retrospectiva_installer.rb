@@ -8,8 +8,8 @@ class RemoteInstaller
   BRANCH = ARGV[0] || "master"
   URL = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
   RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz"
-  RAKE_URL = "http://rubyforge.org/frs/download.php/43955/rake-0.8.3.tgz"
-  RAILS_URL = lambda { |rails_version| "http://github.com/rails/rails/tarball/v#{rails_version}.tgz" }
+  RAKE_URL = "http://rubyforge.org/frs/download.php/52697/rake-0.8.4.tgz"
+  RAILS_URL = lambda { |rails_version| "http://github.com/rails/rails/tarball/v#{rails_version}" }
 
   def self.run!
     new.run!
@@ -49,7 +49,7 @@ class RemoteInstaller
       end
 
       unless File.exist?(INSTALL_PATH)
-        step "Unpacking Retrospectiva to '#{INSTALL_PATH}'"
+        step "Unpacking Retrospectiva to '#{INSTALL_PATH}'", true
         unpack! ARCHIVE_PATH, ROOT_PATH
         temp_folder = Dir[File.join(ROOT_PATH, 'dim-retrospectiva-*')].first
         FileUtils.mv temp_folder, INSTALL_PATH
@@ -57,13 +57,13 @@ class RemoteInstaller
     end
 
     def install_rails!
-      unless File.exist?(RAILS_ARCHIVE)
+      unless File.exist?(RAILS_ARCHIVE)        
         step "Downloading Rails v#{rails_version} from '#{RAILS_URL.call(rails_version)}'"
         download! RAILS_URL.call(rails_version), RAILS_ARCHIVE
       end
 
       unless File.exist?(RAILS_PATH)
-        step "Unpacking Rails to '#{RAILS_PATH}'"
+        step "Unpacking Rails to '#{RAILS_PATH}'", true
         unpack! RAILS_ARCHIVE, VENDOR_PATH
         temp_folder = Dir[File.join(VENDOR_PATH, 'rails-rails-*')].first
         FileUtils.mv temp_folder, RAILS_PATH
@@ -77,7 +77,7 @@ class RemoteInstaller
       end
 
       unless File.exist?(RAKE_PATH)
-        step "Unpacking Rake to '#{RAKE_PATH}'"
+        step "Unpacking Rake to '#{RAKE_PATH}'", true
         unpack! RAKE_ARCHIVE, VENDOR_PATH
         temp_folder = Dir[File.join(VENDOR_PATH, 'rake-*')].first
         FileUtils.mv temp_folder, RAKE_PATH
@@ -94,7 +94,7 @@ class RemoteInstaller
 
         unless File.exist?(gem_path(name))
           FileUtils.mkdir_p(gem_path(name))
-          step "Unpacking GEM #{name}"
+          step "Unpacking GEM #{name}", true
           system "tar xf #{gem_archive_path(name)} --exclude metadata.gz -O | tar xz -C #{gem_path(name)} 2> /dev/null"
           system "tar xf #{gem_archive_path(name)} --exclude data.tar.gz -O | gzip -d > #{File.join(gem_path(name), '.specification')} 2> /dev/null"
         end
@@ -113,7 +113,7 @@ class RemoteInstaller
 
     def create_database!
       unless File.exist?(DATABASE_FILE) and File.size(DATABASE_FILE) > 0
-        step "Creating database content"
+        step "Creating database content", true
         silence_stream(STDOUT) do
           Rake.application['db:retro:load'].invoke
         end
@@ -209,8 +209,8 @@ class RemoteInstaller
       @environment ||= File.read(File.join(INSTALL_PATH, 'config', 'environment.rb'))
     end
 
-    def step(description)
-      puts "  #{description}"
+    def step(description, nl = false)
+      puts "  #{description}" + (nl ? "\n" : '')
     end
 
     def system(command)
