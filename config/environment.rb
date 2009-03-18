@@ -36,7 +36,7 @@ Rails::Initializer.run do |config|
   # Do NOT complain if Grit GEM missing  
   config.gems.last(4).each do |item|
     item.instance_variable_set(:@loaded, true) 
-  end unless $rails_gem_installer
+  end unless $gems_rake_task
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -72,7 +72,7 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
-  unless $rails_gem_installer
+  unless $gems_rake_task
     config.active_record.observers = 
       'user_observer', 'project_observer', 'group_observer', 
       'changeset_observer', 'ticket_observer', 'ticket_change_observer'
@@ -100,9 +100,11 @@ Rails::Initializer.run do |config|
     ActionView::Base.sanitized_allowed_attributes.merge %w(colspan rowspan style)
 
     ActionController::Base.cache_store = :file_store, RAILS_ROOT + '/tmp/cache'
-  end unless $rails_gem_installer
+  end unless $gems_rake_task
 end
 
 # Once everything is loaded
-RetroAM.load!
+unless $gems_rake_task
+  RetroAM.load!
+end
 
