@@ -47,18 +47,17 @@ Dir[RAILS_ROOT + '/extensions/*/locales/app/'].each do |locales_path|
     source_path = file_path.gsub(/\/extensions\/.+?\//, '/')
     source = RetroI18n::LocaleFile.new(source_path)
     
-#    if File.exist?(source.path)
-#  
-#      # If Extension has untranslated patterns that were already translated
-#      # in the Core, use them!
-#      target.translations.each do |key, value|
-#        next if value.present? or source.translations[key].blank?
-#        target.translations[key] = source.translations[key]         
-#      end 
-#      
-#      # Load and update all existing Extension translations  
-#      target.update(patterns)  
-#    end
+    if File.exist?(source.path)  
+      # If Extension has untranslated patterns that were already translated
+      # in the Core, use them!
+      target.translations.each do |key, value|
+        next if value.present? or source.translations[key].blank?
+        target.translations[key] = source.translations[key]         
+      end 
+      
+      # Load and update all existing Extension translations  
+      target.update(patterns)  
+    end
 
   end
 end  

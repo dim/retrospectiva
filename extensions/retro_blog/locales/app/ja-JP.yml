@@ -1,7 +1,7 @@
 ja-JP:
   application:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Author": 
+    "Author": "作者"
 
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/views/blog/edit.html.erb
@@ -23,7 +23,7 @@ ja-JP:
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Comment": 
+    "Comment": "コメント"
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully created.": 
@@ -40,7 +40,7 @@ ja-JP:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create": 
+    "Create": "作成"
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
@@ -49,14 +49,14 @@ ja-JP:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Delete": 
+    "Delete": "削除"
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
     "Edit": 
 
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Email": 
+    "Email": "Eメール"
 
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
@@ -98,10 +98,10 @@ ja-JP:
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Update": 
+    "Update": "更新"
 
     # extensions/retro_blog/ext_info.rb
-    "View": 
+    "View": "表示"
 
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": 

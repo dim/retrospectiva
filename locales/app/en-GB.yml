@@ -607,7 +607,7 @@ en-GB:
     "Markup reference": "Markup reference"
 
     # app/views/rescue/422.html.erb
-    "Maybe you tried to change something you didn't have access to.": "Maybe you tried to change something you didn't have access to." 
+    "Maybe you tried to change something you didn't have access to.": "Maybe you tried to change something you didn't have access to."
 
     # app/helpers/tickets_helper.rb
     # app/models/milestone.rb
@@ -724,7 +724,7 @@ en-GB:
     "Options": "Options"
 
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
-    "Paragraphs": "Paragraphs" 
+    "Paragraphs": "Paragraphs"
 
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb

@@ -5,7 +5,7 @@ ja-JP:
     "Are you really sure?": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Author": 
+    "Author": "作者"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Back in time": 
@@ -13,14 +13,14 @@ ja-JP:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Cancel": 
+    "Cancel": "中止"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     "Content": 
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Create": 
+    "Create": "作成"
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Created on {{date}} by {{author}}": 
@@ -28,7 +28,7 @@ ja-JP:
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
-    "Delete": 
+    "Delete": "削除"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Edit": 
@@ -57,13 +57,13 @@ ja-JP:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Home": 
+    "Home": "ホーム"
 
     # extensions/retro_wiki/ext/markup_controller.rb
-    "Links": 
+    "Links": "リンク"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Name": 
+    "Name": "名前"
 
     # extensions/retro_wiki/models/wiki_page.rb
     "Nothing changed": 
@@ -91,13 +91,13 @@ ja-JP:
     "Rollback": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Save": 
+    "Save": "保存"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": 
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Size": 
+    "Size": "サイズ"
 
     # extensions/retro_wiki/views/wiki/index.html.erb
     "Sort alphabetically": 
@@ -117,7 +117,7 @@ ja-JP:
     "Unable to download file": 
 
     # extensions/retro_wiki/ext_info.rb
-    "Update": 
+    "Update": "更新"
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Updated on {{date}} by {{author}}": 
@@ -130,7 +130,7 @@ ja-JP:
     "Version": 
 
     # extensions/retro_wiki/ext_info.rb
-    "View": 
+    "View": "表示"
 
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/views/wiki/_header.html.erb

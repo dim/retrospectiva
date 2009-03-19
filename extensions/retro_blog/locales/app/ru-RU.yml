@@ -1,7 +1,7 @@
 ru-RU:
   application:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Author": 
+    "Author": "Автор"
 
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/views/blog/edit.html.erb
@@ -23,7 +23,7 @@ ru-RU:
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Comment": 
+    "Comment": "Комментарий"
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully created.": 
@@ -40,7 +40,7 @@ ru-RU:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create": 
+    "Create": "Создать"
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
@@ -49,14 +49,14 @@ ru-RU:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Delete": 
+    "Delete": "Удалить"
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
     "Edit": 
 
     # extensions/retro_blog/views/blog/_comment_form.rhtml
-    "Email": 
+    "Email": "Email"
 
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
@@ -98,10 +98,10 @@ ru-RU:
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Update": 
+    "Update": "Обновить"
 
     # extensions/retro_blog/ext_info.rb
-    "View": 
+    "View": "Подробнее"
 
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": 

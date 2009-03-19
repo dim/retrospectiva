@@ -5,7 +5,7 @@ ru-RU:
     "Are you really sure?": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Author": 
+    "Author": "Автор"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Back in time": 
@@ -13,14 +13,14 @@ ru-RU:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Cancel": 
+    "Cancel": "Отмена"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     "Content": 
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Create": 
+    "Create": "Создать"
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Created on {{date}} by {{author}}": 
@@ -28,7 +28,7 @@ ru-RU:
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
-    "Delete": 
+    "Delete": "Удалить"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Edit": 
@@ -57,13 +57,13 @@ ru-RU:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Home": 
+    "Home": "Вернуться"
 
     # extensions/retro_wiki/ext/markup_controller.rb
     "Links": 
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Name": 
+    "Name": "Имя"
 
     # extensions/retro_wiki/models/wiki_page.rb
     "Nothing changed": 
@@ -91,13 +91,13 @@ ru-RU:
     "Rollback": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Save": 
+    "Save": "Сохранить"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": 
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Size": 
+    "Size": "Размер"
 
     # extensions/retro_wiki/views/wiki/index.html.erb
     "Sort alphabetically": 
@@ -117,7 +117,7 @@ ru-RU:
     "Unable to download file": 
 
     # extensions/retro_wiki/ext_info.rb
-    "Update": 
+    "Update": "Обновить"
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Updated on {{date}} by {{author}}": 
@@ -130,7 +130,7 @@ ru-RU:
     "Version": 
 
     # extensions/retro_wiki/ext_info.rb
-    "View": 
+    "View": "Подробнее"
 
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/views/wiki/_header.html.erb

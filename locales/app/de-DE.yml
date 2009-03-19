@@ -70,7 +70,7 @@ de-DE:
 
     # app/controllers/projects_controller.rb
     # app/views/rss/_all.html.erb
-    "All Projects": Alle Projekte 
+    "All Projects": "Alle Projekte"
 
     # app/views/rss/_feed.html.erb
     "All feeds for {{project}}": 
