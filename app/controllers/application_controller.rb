@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery # :secret => '7161d9a625e85aa1d6f2f460327dea4d'
+  protect_from_forgery
   filter_parameter_logging :password
   
   before_filter :authenticate

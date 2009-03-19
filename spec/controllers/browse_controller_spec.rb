@@ -148,6 +148,20 @@ describe BrowseController do
         response.should render_template(:show_file)
       end
 
+      it 'should ignore invalid format parameters and render the file contents as HTML' do
+        @node.should_receive(:content_type).and_return(:unknown)
+        do_get :format => 'invalid'
+        response.should be_success
+        response.should render_template(:show_file)
+      end
+
+      it 'should ignore empty format parameters and render the file contents as HTML' do
+        @node.should_receive(:content_type).and_return(:unknown)
+        do_get :format => ''
+        response.should be_success
+        response.should render_template(:show_file)
+      end
+
       describe 'if the size is above 512kB' do
         before do
           @node.stub!(:size).and_return(1.megabyte)

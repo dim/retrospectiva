@@ -51,18 +51,21 @@ class BrowseController < ProjectAreaController
 
     def render_node
       case @node.content_type
-      when :image  then render_image_node        
-      when :binary then render_binary_node
-      else              render_textual_node
-      end && false
+      when :image
+        render_image_node        
+      when :binary
+        render_binary_node
+      else
+        render_textual_node
+      end      
     end
     
     def render_image_node
-      params[:format] == 'raw' ? send_node : render(:action => 'show_image')
+      params[:format] == 'raw' ? send_node : render_node_template(:show_image)
     end
 
     def render_binary_node
-      params[:format] == 'raw' ? send_node : render(:action => 'show_binary')
+      params[:format] == 'raw' ? send_node : render_node_template(:show_binary)
     end
 
     def render_textual_node
@@ -70,10 +73,15 @@ class BrowseController < ProjectAreaController
         send_node
       elsif params[:format] == 'text' || @node.size > 512.kilobyte          
         send_node('text/plain', 'inline')
-      else
-        render :action => 'show_file'
+      else        
+        render_node_template :show_file
       end
     end    
+    
+    def render_node_template(template)
+      request.format = :html
+      render template
+    end
     
     def send_node(mime_type = nil, disposition = nil)
       send_data @node.content, 

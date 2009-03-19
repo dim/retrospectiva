@@ -198,16 +198,22 @@ describe ChangesetsController do
       response.content_type.should == 'application/rss+xml' 
     end
 
-    it 'should return 406 Not Acceptable if requested format is not part of expicitely allowed ones' do
+    it 'should return 406 Not Acceptable if requested format is not part of respond-to' do
       get :index, :project_id => @project.to_param, :format => 'xml'
       response.code.should == '406'
     end
     
-    it 'should return 406 Not Acceptable if requested format is not HTML and no formats were specified' do
+    it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
       @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
       @changesets.should_receive(:find).twice.and_return(nil)
       get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
       response.code.should == '406'
+    end
+
+    it 'should ignore format parameter if empty' do
+      get :index, :project_id => @project.to_param, :format => ''
+      response.should be_success
+      response.content_type.should == 'text/html' 
     end
 
   end
