@@ -68,22 +68,27 @@ en-GB:
     # app/views/rss/_feed.html.erb
     "All": "All"
 
+    # Missing
     # app/controllers/projects_controller.rb
     # app/views/rss/_all.html.erb
     "All Projects": 
 
+    # Missing
     # app/views/rss/_feed.html.erb
     "All feeds for {{project}}": 
 
+    # Missing
     # app/views/rss/_all.html.erb
     "All feeds from all projects": 
 
     # app/models/status.rb
     "All in progress": "All in progress"
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for all projects": 
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for {{project}}": 
 
@@ -138,6 +143,7 @@ en-GB:
     # app/views/browse/show_binary.html.erb
     "Binary File": "Binary File"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Blocks": 
 
@@ -432,6 +438,7 @@ en-GB:
     # app/controllers/admin/repositories_controller.rb
     "Failure! You are not permitted to browse this path.": "Failure! You are not permitted to browse this path."
 
+    # Missing
     # app/helpers/navigation_helper.rb
     "Feeds": 
 
@@ -455,6 +462,7 @@ en-GB:
     # app/views/sessions/new.html.erb
     "Forgot password": "Forgot password"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Formats": 
 
@@ -492,6 +500,7 @@ en-GB:
     # app/views/admin/users/index.html.erb
     "Groups": "Groups"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Headers": 
 
@@ -562,6 +571,7 @@ en-GB:
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Links": "Links"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Lists": 
 
@@ -832,6 +842,7 @@ en-GB:
     # app/helpers/changesets_helper.rb
     "Quick Diff": "Quick Diff"
 
+    # Missing
     # app/views/rss/index.html.erb
     "RSS": 
 
@@ -854,9 +865,11 @@ en-GB:
     # app/views/tickets/_ticket_intro.html.erb
     "Really delete ticket?": "Really delete ticket?"
 
+    # Missing
     # app/helpers/format_helper.rb
     "Reference": 
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "References": 
 
@@ -1029,6 +1042,7 @@ en-GB:
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Sync callback"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Tables": 
 
@@ -1048,9 +1062,11 @@ en-GB:
     # app/controllers/accounts_controller.rb
     "Thank you.": "Thank you."
 
+    # Missing
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": 
 
+    # Missing
     # app/views/rescue/404.html.erb
     "The page you were looking for doesn't exist.": 
 
@@ -1219,9 +1235,11 @@ en-GB:
     # app/models/ticket_filter/custom.rb
     "Watched by me": "Watched by me"
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": 
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
 
@@ -1273,6 +1291,7 @@ en-GB:
     # app/models/user.rb
     "You cannot delete your own account.": "You cannot delete your own account."
 
+    # Missing
     # app/views/rescue/404.html.erb
     "You may have mistyped the address or the page may have moved.": 
 

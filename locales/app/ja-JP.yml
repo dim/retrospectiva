@@ -71,22 +71,27 @@ ja-JP:
     # app/views/rss/_feed.html.erb
     "All": "すべて"
 
+    # Missing
     # app/controllers/projects_controller.rb
     # app/views/rss/_all.html.erb
     "All Projects": 
 
+    # Missing
     # app/views/rss/_feed.html.erb
     "All feeds for {{project}}": 
 
+    # Missing
     # app/views/rss/_all.html.erb
     "All feeds from all projects": 
 
     # app/models/status.rb
     "All in progress": "進行中のものすべて"
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for all projects": 
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for {{project}}": 
 
@@ -117,6 +122,7 @@ ja-JP:
     # app/models/ticket_filter/custom.rb
     "Assigned to me": "自分の担当"
 
+    # Missing
     # app/models/ticket_change.rb
     "Assigned user": 
 
@@ -128,6 +134,7 @@ ja-JP:
     # app/views/browse/revisions.html.erb
     "Author": "作者"
 
+    # Missing
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
     "Back": 
@@ -141,9 +148,11 @@ ja-JP:
     # app/views/browse/show_binary.html.erb
     "Binary File": "バイナリファイル"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Blocks": 
 
+    # Missing
     # app/core_info.rb
     # app/views/browse/diff.html.erb
     # app/views/browse/revisions.html.erb
@@ -169,9 +178,11 @@ ja-JP:
     # app/views/admin/shared/_form_footer.html.erb
     "Cancel": "中止"
 
+    # Missing
     # app/models/user.rb
     "Cannot delete. User '{{username}}' is the last available admin.": 
 
+    # Missing
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
     "Central": 
@@ -179,6 +190,7 @@ ja-JP:
     # app/views/notifications/ticket_update_note.html.erb
     "Changed by {{author}} - {{time}}": "{{author}}が変更 - {{time}}"
 
+    # Missing
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
     # app/views/changesets/show.html.erb
@@ -196,12 +208,15 @@ ja-JP:
     # app/views/changesets/index.html.erb
     "Changesets": "変更群一覧"
 
+    # Missing
     # app/models/changeset.rb
     "Changesets for {{project}}": 
 
+    # Missing
     # app/views/admin/projects/_form.html.erb
     "Check this option to make this your default project.": 
 
+    # Missing
     # app/views/accounts/show.html.erb
     "Check this option to renew your private access key.": 
 
@@ -218,27 +233,33 @@ ja-JP:
     # Unknown
     "Closed tickets": "解決済みチケット数"
 
+    # Missing
     # app/core_info.rb
     "Code": 
 
     # app/views/tickets/_update_form.html.erb
     "Comment": "コメント"
 
+    # Missing
     # app/views/tickets/show.html.erb
     "Comments and Changes": 
 
+    # Missing
     # app/views/browse/index.html.erb
     "Commit": 
 
+    # Missing
     # app/helpers/browse_helper.rb
     "Compare [{{revision_a}}] with [{{revision_b}}]": 
 
     # app/helpers/admin/setup_helper.rb
     "Configuration could not be saved": "設定を保存できませんでした"
 
+    # Missing
     # app/views/admin/users/_core.html.erb
     "Confirmation": 
 
+    # Missing
     # app/core_info.rb
     # app/views/tickets/form/_update_content.html.erb
     "Content": 
@@ -278,6 +299,7 @@ ja-JP:
     # app/views/admin/repositories/new.html.erb
     "Create a new repository": "新しいリポジトリの作成"
 
+    # Missing
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/admin/ticket_properties/new.html.erb
     "Create a new ticket property": 
@@ -286,12 +308,15 @@ ja-JP:
     # app/views/admin/users/new.html.erb
     "Create a new user": "新しいユーザの作成"
 
+    # Missing
     # app/views/tickets/_ticket.html.erb
     "Created {{period}} ago by {{author}}": 
 
+    # Missing
     # app/helpers/browse_helper.rb
     "Current": 
 
+    # Missing
     # app/helpers/navigation_helper.rb
     "Dashboard": 
 
@@ -314,9 +339,11 @@ ja-JP:
     # app/models/group.rb
     "Default group cannot be deleted": "Defaultグループを削除することはできません"
 
+    # Missing
     # app/models/group.rb
     "Default group cannot be modified.": 
 
+    # Missing
     # app/views/admin/ticket_property_values/_priority_form.html.erb
     "Default value": 
 
@@ -342,12 +369,14 @@ ja-JP:
     # app/views/tickets/form/_summary_and_description.html.erb
     "Description": "説明"
 
+    # Missing
     # app/views/tickets/new.html.erb
     "Details": 
 
     # app/views/browse/_revision.html.erb
     "Diff": "差分"
 
+    # Missing
     # app/helpers/application_helper.rb
     "Display": 
 
@@ -364,6 +393,7 @@ ja-JP:
     # app/views/milestones/_milestone.html.erb
     "Due on": "期日"
 
+    # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
@@ -413,12 +443,15 @@ ja-JP:
     # app/views/admin/users/edit.html.erb
     "Email notification": "Eメール通知"
 
+    # Missing
     # app/views/admin/projects/_form.html.erb
     "Enabled modules": 
 
+    # Missing
     # app/views/admin/repositories/_form.html.erb
     "Examples": 
 
+    # Missing
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/extensions/index.html.erb
     "Extensions": 
@@ -435,12 +468,14 @@ ja-JP:
     # app/controllers/admin/repositories_controller.rb
     "Failure! You are not permitted to browse this path.": "失敗！このパスを見る許可がありません。"
 
+    # Missing
     # app/helpers/navigation_helper.rb
     "Feeds": 
 
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "バイナリファイルの中身を表示することはできません。"
 
+    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": 
 
@@ -458,9 +493,11 @@ ja-JP:
     # app/views/sessions/new.html.erb
     "Forgot password": "パスワードを忘れましたか？"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Formats": 
 
+    # Missing
     # app/views/admin/users/_core.html.erb
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
@@ -495,6 +532,7 @@ ja-JP:
     # app/views/admin/users/index.html.erb
     "Groups": "グループ一覧"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Headers": 
 
@@ -516,6 +554,7 @@ ja-JP:
     # lib/time_interval.rb
     "Hours": "時間"
 
+    # Missing
     # app/views/tickets/index.html.erb
     "ID": 
 
@@ -523,25 +562,30 @@ ja-JP:
     # app/models/status.rb
     "In progress": "進行中"
 
+    # Missing
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/users/_user.html.erb
     "Inactive": 
 
+    # Missing
     # app/helpers/application_helper.rb
     "Info": 
 
+    # Missing
     # app/views/admin/extensions/index.html.erb
     "Installed": 
 
     # app/views/admin/tasks/index.html.erb
     "Interval": "間隔"
 
+    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "Invalid file size": 
 
     # app/views/browse/diff.html.erb
     "Invalid or empty DIFF": "不正な差分あるいは差分がありません"
 
+    # Missing
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/repositories/index.html.erb
     "Kind": 
@@ -549,6 +593,7 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Last Update": "最終更新時刻"
 
+    # Missing
     # app/views/browse/index.html.erb
     "Last modified": 
 
@@ -558,6 +603,7 @@ ja-JP:
     # app/views/admin/users/_core.html.erb
     "Leave password field blank, unless you actually want to change your password.": "パスワードを変更しない場合は何も入力しないでください。"
 
+    # Missing
     # app/helpers/browse_helper.rb
     "Line {{number}}": 
 
@@ -565,9 +611,11 @@ ja-JP:
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Links": "リンク"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Lists": 
 
+    # Missing
     # app/helpers/application_helper.rb
     # app/views/layouts/_header.html.erb
     "Loading...": 
@@ -585,6 +633,7 @@ ja-JP:
     # app/views/sessions/destroy.html.erb
     "Logged out": "ログアウトしました"
 
+    # Missing
     # app/helpers/navigation_helper.rb
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/new.html.erb
@@ -609,6 +658,7 @@ ja-JP:
     # app/helpers/format_helper.rb
     "Markup reference": "書式を表示"
 
+    # Missing
     # app/views/rescue/422.html.erb
     "Maybe you tried to change something you didn't have access to.": 
 
@@ -637,12 +687,14 @@ ja-JP:
     # app/views/milestones/new.html.erb
     "Milestones": "マイルストーン一覧"
 
+    # Missing
     # app/models/milestone.rb
     "Milestones for {{project}}": 
 
     # lib/time_interval.rb
     "Minutes": "分"
 
+    # Missing
     # app/core_info.rb
     "Modify": 
 
@@ -669,12 +721,15 @@ ja-JP:
     # app/views/tickets/form/_name_and_email.html.erb
     "Name": "名前"
 
+    # Missing
     # app/models/status.rb
     "Negative": 
 
+    # Missing
     # app/models/status.rb
     "Neutral": 
 
+    # Missing
     # app/views/admin/ticket_property_values/new.html.erb
     "New": 
 
@@ -691,9 +746,11 @@ ja-JP:
     # app/views/tickets/_navigation.html.erb
     "Next ticket": "次のチケット"
 
+    # Missing
     # app/helpers/format_helper.rb
     "No": 
 
+    # Missing
     # app/models/ticket_change.rb
     "No changes were made": 
 
@@ -703,6 +760,7 @@ ja-JP:
     # app/controllers/admin/projects_controller.rb
     "No repository selected.": "リポジトリが選択されていません。"
 
+    # Missing
     # app/views/admin/extensions/index.html.erb
     "Not Installed": 
 
@@ -719,6 +777,7 @@ ja-JP:
     # Unknown
     "Open tickets": "未解決チケット数"
 
+    # Missing
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_property_values/_priority_form.html.erb
@@ -726,6 +785,7 @@ ja-JP:
     # app/views/tickets/form/_ticket_options.html.erb
     "Options": 
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Paragraphs": 
 
@@ -749,12 +809,15 @@ ja-JP:
     # app/views/admin/groups/index.html.erb
     "Permissions": "許可一覧"
 
+    # Missing
     # app/views/admin/repositories/_form.html.erb
     "Please specify an optional system call, which will be executed before each repository synchronization.": 
 
+    # Missing
     # app/models/status.rb
     "Positive": 
 
+    # Missing
     # app/helpers/format_helper.rb
     "Preview": 
 
@@ -776,12 +839,14 @@ ja-JP:
     # app/views/admin/projects/index.html.erb
     "Project": "プロジェクト"
 
+    # Missing
     # app/controllers/admin/projects_controller.rb
     "Project could not be deleted. Following error(s) occured": 
 
     # app/views/admin/projects/_form.html.erb
     "Project name": "プロジェクト名"
 
+    # Missing
     # app/views/admin/ticket_properties/index.html.erb
     "Project specific": 
 
@@ -823,24 +888,29 @@ ja-JP:
     # app/controllers/admin/ticket_property_values_controller.rb
     "Property value was successfully updated.": "プロパティ値の更新に成功しました。"
 
+    # Missing
     # app/views/admin/ticket_property_values/index.html.erb
     "Property values": 
 
+    # Missing
     # app/models/user.rb
     "Public user cannot be deleted.": 
 
+    # Missing
     # app/models/user.rb
     "Public user cannot be modified.": 
 
     # app/helpers/changesets_helper.rb
     "Quick Diff": "差分へ"
 
+    # Missing
     # app/views/rss/index.html.erb
     "RSS": 
 
     # app/helpers/browse_helper.rb
     "Raw": "そのまま"
 
+    # Missing
     # app/helpers/milestones_helper.rb
     "Really delete this milestone record?": 
 
@@ -851,12 +921,15 @@ ja-JP:
     # app/views/tickets/_change.html.erb
     "Really delete ticket change?": "本当にチケットの変更を削除しますか？"
 
+    # Missing
     # app/views/tickets/_ticket_intro.html.erb
     "Really delete ticket?": 
 
+    # Missing
     # app/helpers/format_helper.rb
     "Reference": 
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "References": 
 
@@ -871,6 +944,7 @@ ja-JP:
     # app/helpers/ticket_filter_helper.rb
     "Remove filter": "抽出オプションを削除"
 
+    # Missing
     # app/views/accounts/show.html.erb
     "Renew my private key": 
 
@@ -904,6 +978,7 @@ ja-JP:
     # app/views/admin/repositories/index.html.erb
     "Repository": "リポジトリ"
 
+    # Missing
     # app/views/browse/repository_unavailable.html.erb
     "Repository Unavailable": 
 
@@ -932,9 +1007,11 @@ ja-JP:
     # app/controllers/browse_controller.rb
     "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "修正{{revision}}は正しくないようなので、修正{{latest}}を表示しています。"
 
+    # Missing
     # app/helpers/browse_helper.rb
     "Revisions": 
 
+    # Missing
     # app/views/admin/users/_form.html.erb
     "SCM name": 
 
@@ -945,6 +1022,7 @@ ja-JP:
     # app/views/admin/tasks/index.html.erb
     "Save all": "すべて保存"
 
+    # Missing
     # app/helpers/application_helper.rb
     "Saving...": 
 
@@ -962,6 +1040,7 @@ ja-JP:
     # app/helpers/ticket_filter_helper.rb
     "Select filter": "抽出オプションを選択"
 
+    # Missing
     # app/views/accounts/forgot_password.html.erb
     "Send": 
 
@@ -972,12 +1051,14 @@ ja-JP:
     # app/views/admin/setup/index.html.erb
     "Setup": "セットアップ"
 
+    # Missing
     # app/controllers/accounts_controller.rb
     "Shortly you will receive an email with instructions on how to reset your password.": 
 
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "完了したマイルストーンを表示"
 
+    # Missing
     # app/helpers/navigation_helper.rb
     "Show changeset {{revision}}": 
 
@@ -993,6 +1074,7 @@ ja-JP:
     # app/views/admin/tasks/_task.html.erb
     "Started": "開始時刻"
 
+    # Missing
     # app/views/milestones/_form.html.erb
     "Started on": 
 
@@ -1000,6 +1082,7 @@ ja-JP:
     # app/views/admin/ticket_property_values/_status_form.html.erb
     "State": "状況"
 
+    # Missing
     # app/views/admin/ticket_property_values/_status_form.html.erb
     "Statement": 
 
@@ -1013,6 +1096,7 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Status": "状態"
 
+    # Missing
     # app/views/tickets/_navigation.html.erb
     "Stop watching this ticket": 
 
@@ -1026,12 +1110,15 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Summary": "要約"
 
+    # Missing
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": 
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Tables": 
 
+    # Missing
     # app/views/admin/tasks/index.html.erb
     "Task": 
 
@@ -1045,27 +1132,33 @@ ja-JP:
     # app/helpers/browse_helper.rb
     "Text": "テキスト"
 
+    # Missing
     # app/controllers/accounts_controller.rb
     "Thank you.": 
 
+    # Missing
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": 
 
+    # Missing
     # app/views/rescue/404.html.erb
     "The page you were looking for doesn't exist.": 
 
+    # Missing
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": 
 
     # app/helpers/admin/setup_helper.rb
     "There were problems": "問題があります"
 
+    # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
     "They will be set back to the default value.": 
 
     # app/views/admin/users/edit.html.erb
     "This setting only applies if you enable the 'Activate' checkbox": "この設定は'有効にする'チェックボックスをチェックしたときだけ適用されます"
 
+    # Missing
     # app/views/tickets/show.html.erb
     "Ticket": 
 
@@ -1091,6 +1184,7 @@ ja-JP:
     # app/controllers/tickets_controller.rb
     "Ticket was successfully created.": "チケットの作成に成功しました。"
 
+    # Missing
     # app/controllers/tickets_controller.rb
     "Ticket was successfully deleted.": 
 
@@ -1104,20 +1198,25 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Tickets": "チケット一覧"
 
+    # Missing
     # app/models/ticket.rb
     "Tickets for {{project}}": 
 
+    # Missing
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/index.html.erb
     "Time zone": 
 
+    # Missing
     # app/views/notifications/account_activation_note.html.erb
     "To access the login page click this link": 
 
+    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "To access the ticket click this link": 
 
+    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
     "To access your account, click the link below": 
 
@@ -1133,6 +1232,7 @@ ja-JP:
     # app/controllers/browse_controller.rb
     "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "修正{{revision}}にパス'/{{path}}'が見つからなかったので修正{{latest}}を表示しています。"
 
+    # Missing
     # app/views/tickets/_ticket_info.html.erb
     "Unassigned": 
 
@@ -1151,6 +1251,7 @@ ja-JP:
     # app/helpers/changesets_helper.rb
     "Updated": "更新"
 
+    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "Upload is not permitted": 
 
@@ -1188,6 +1289,7 @@ ja-JP:
     # app/views/notifications/account_validation.html.erb
     "Username": "ユーザ名"
 
+    # Missing
     # app/views/accounts/forgot_password.html.erb
     # app/views/sessions/new.html.erb
     "Username or Email": 
@@ -1205,23 +1307,29 @@ ja-JP:
     # app/views/browse/diff.html.erb
     "View changes": "変更の閲覧"
 
+    # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
     "WARNING: There are currently {{count}} tickets assigned with this property.": 
 
+    # Missing
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     "Watch": 
 
+    # Missing
     # app/views/tickets/_navigation.html.erb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     "Watch this ticket": 
 
+    # Missing
     # app/models/ticket_filter/custom.rb
     "Watched by me": 
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": 
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
 
@@ -1231,9 +1339,11 @@ ja-JP:
     # app/views/admin/reports/_form.html.erb
     "Within the last": "最近〜以内"
 
+    # Missing
     # app/helpers/format_helper.rb
     "Yes": 
 
+    # Missing
     # app/views/sessions/logged_in.html.erb
     "You are logged in to the system.": 
 
@@ -1246,6 +1356,7 @@ ja-JP:
     # app/views/sessions/destroy.html.erb
     "You are now logged out of the system.": "今、このシステムからログアウトしました。"
 
+    # Missing
     # app/controllers/tickets_controller.rb
     "You are now watching this ticket.": 
 
@@ -1261,27 +1372,33 @@ ja-JP:
     # app/views/notifications/ticket_update_note.html.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "この変更の通知を購読したのでこのメッセージを送っています"
 
+    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
     "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": 
 
+    # Missing
     # app/helpers/tickets_helper.rb
     "You are watching this ticket": 
 
     # app/views/admin/ticket_property_values/index.html.erb
     "You can sort the items by dragging them and dropping them into the right position.": "適切な位置にドラッグ&ドロップをして項目の順序を並べ替える事ができます。"
 
+    # Missing
     # app/models/user.rb
     "You cannot delete your own account.": 
 
+    # Missing
     # app/views/rescue/404.html.erb
     "You may have mistyped the address or the page may have moved.": 
 
     # app/controllers/accounts_controller.rb
     "You need to activate your account within the next {{count}} hours to be able to login.": "ログインするためには{{count}}時間以内にあなたのアカウントを有効化する必要があります。"
 
+    # Missing
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": 
 
+    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
     "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": 
 
@@ -1329,6 +1446,7 @@ ja-JP:
     # app/views/admin/ticket_property_values/_property_value.html.erb
     "status record": "状態"
 
+    # Missing
     # app/views/browse/_node.html.erb
     "{{count}} file(s)": 
 

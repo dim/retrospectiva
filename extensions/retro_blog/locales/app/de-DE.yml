@@ -25,9 +25,11 @@ de-DE:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Comment": "Kommentar"
 
+    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully created.": 
 
+    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully deleted.": 
 
@@ -58,6 +60,7 @@ de-DE:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Email": "E-Mail"
 
+    # Missing
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": 
@@ -71,18 +74,23 @@ de-DE:
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully created.": "Eintrag wurde erfolgreich erstellt."
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully deleted.": 
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully updated.": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
     "Read more": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_comment.html.erb
     "Really delete this comment?": 
 
+    # Missing
     # extensions/retro_blog/views/blog/show.html.erb
     "Really delete this post?": 
 

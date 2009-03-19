@@ -1,5 +1,6 @@
 de-DE:
   application:
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
     "Are you really sure?": 
@@ -7,6 +8,7 @@ de-DE:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     "Author": "Autor"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Back in time": 
 
@@ -37,12 +39,15 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     "File": "Datei"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "File cannot be deleted.": 
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "File was successfully added.": 
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "File was successfully deleted.": 
 
@@ -51,6 +56,7 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     "Files": "Dateien"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Forward in time": 
 
@@ -65,12 +71,15 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     "Name": "Name"
 
+    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
     "Nothing changed": 
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
     "Page was successfully created.": 
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
     "Page was successfully updated.": 
 
@@ -87,12 +96,14 @@ de-DE:
     # extensions/retro_wiki/views/wiki/rename.html.erb
     "Rename": "Umbenennen"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Rollback": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     "Save": "Speichern"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": 
 
@@ -113,12 +124,14 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     "Type": "Typ"
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "Unable to download file": 
 
     # extensions/retro_wiki/ext_info.rb
     "Update": "Bearbeiten"
 
+    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Updated on {{date}} by {{author}}": 
 
@@ -126,6 +139,7 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     "Upload": "Hochladen"
 
+    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Version": 
 
@@ -139,15 +153,19 @@ de-DE:
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     "Wiki": "Wiki"
 
+    # Missing
     # extensions/retro_wiki/ext_info.rb
     "Wiki Files": 
 
+    # Missing
     # extensions/retro_wiki/ext_info.rb
     "Wiki Pages": 
 
+    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
     "updated": 
 
+    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "{{count}} more": 
 

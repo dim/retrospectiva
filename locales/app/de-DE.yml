@@ -72,18 +72,22 @@ de-DE:
     # app/views/rss/_all.html.erb
     "All Projects": "Alle Projekte"
 
+    # Missing
     # app/views/rss/_feed.html.erb
     "All feeds for {{project}}": 
 
+    # Missing
     # app/views/rss/_all.html.erb
     "All feeds from all projects": 
 
     # app/models/status.rb
     "All in progress": "Alle in Bearbetung"
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for all projects": 
 
+    # Missing
     # app/controllers/projects_controller.rb
     "All news for {{project}}": 
 
@@ -438,6 +442,7 @@ de-DE:
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "Detainhalte von Binärdateien können nicht angezeigt werden."
 
+    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": 
 
@@ -492,6 +497,7 @@ de-DE:
     # app/views/admin/users/index.html.erb
     "Groups": "Gruppen"
 
+    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
     "Headers": 
 
@@ -606,6 +612,7 @@ de-DE:
     # app/helpers/format_helper.rb
     "Markup reference": "Markup Referenz"
 
+    # Missing
     # app/views/rescue/422.html.erb
     "Maybe you tried to change something you didn't have access to.": 
 
@@ -851,6 +858,7 @@ de-DE:
     # app/views/tickets/_ticket_intro.html.erb
     "Really delete ticket?": "Soll das Ticket wirklich gelöscht werden?"
 
+    # Missing
     # app/helpers/format_helper.rb
     "Reference": 
 
@@ -1045,9 +1053,11 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "Thank you.": "Vielen Dank."
 
+    # Missing
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": 
 
+    # Missing
     # app/views/rescue/404.html.erb
     "The page you were looking for doesn't exist.": 
 
@@ -1216,9 +1226,11 @@ de-DE:
     # app/models/ticket_filter/custom.rb
     "Watched by me": "Von mir beobachtet"
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": 
 
+    # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
 
@@ -1270,6 +1282,7 @@ de-DE:
     # app/models/user.rb
     "You cannot delete your own account.": "Sie können Ihr eigenes Konto nicht löschen."
 
+    # Missing
     # app/views/rescue/404.html.erb
     "You may have mistyped the address or the page may have moved.": 
 

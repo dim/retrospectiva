@@ -27,7 +27,8 @@ module RetroI18n
           if options[:comments] == false
           elsif references.blank?
             file << "    # Unknown\n"
-          else            
+          else
+            file << "    # Missing\n" unless t(string)
             references.uniq.sort.each do |reference|
               file << "    # #{reference}\n"
             end
