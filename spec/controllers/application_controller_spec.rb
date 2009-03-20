@@ -86,7 +86,7 @@ describe ApplicationController do
       end
               
       it 'should render the 404 error page ' do
-        controller.should_receive(:render).with(:file => template_path(404), :layout => 'application.html.erb', :status => '404 Not Found') 
+        controller.should_receive(:render).with(:file => template_path(404), :layout => 'application', :status => '404 Not Found') 
         do_rescue        
       end
     
@@ -104,7 +104,7 @@ describe ApplicationController do
       end
               
       it 'should render the 422 error page ' do
-        controller.should_receive(:render).with(:file => template_path(422), :layout => 'application.html.erb', :status => '422 Unprocessable Entity') 
+        controller.should_receive(:render).with(:file => template_path(422), :layout => 'application', :status => '422 Unprocessable Entity') 
         do_rescue        
       end
 
@@ -141,7 +141,7 @@ describe ApplicationController do
       end
 
       it 'should render the 500 error page ' do
-        controller.should_receive(:render).with(:file => template_path(500), :layout => 'application.html.erb', :status => '500 Internal Server Error') 
+        controller.should_receive(:render).with(:file => template_path(500), :layout => 'application', :status => '500 Internal Server Error') 
         do_rescue        
       end
 

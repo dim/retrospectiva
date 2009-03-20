@@ -1,10 +1,6 @@
 # Be sure to restart your server when you modify this file
 
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
-
-RETROSPECTIVA_VERSION = '1.9.315'
+RETROSPECTIVA_VERSION = '1.9.320'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
@@ -91,8 +87,8 @@ Rails::Initializer.run do |config|
 
     ActionController::UrlWriter.reload!
     ActionController::Base.session_options.merge!(
-      :session_key => RetroCM[:general][:basic][:session_key],
-      :secret      => Retrospectiva::Session.read_or_generate_secret
+      :key    => RetroCM[:general][:basic][:session_key],
+      :secret => Retrospectiva::Session.read_or_generate_secret
     )
 
     ActionView::Base.sanitized_bad_tags.merge %w(meta iframe frame layer ilayer link object embed bgsound from input select textarea style)

@@ -3,9 +3,7 @@
 # Please read LICENSE document for more information.
 #++
 Project.class_eval do
-  has_many :blog_posts, 
-    :order => 'blog_posts.created_at DESC', 
-    :dependent => :destroy do
+  has_many :blog_posts, :dependent => :destroy do
 
     def categories
       records = find :all,
@@ -14,6 +12,7 @@ Project.class_eval do
         :order => "#{Tag.quoted_table_name}.name"
       records.map(&:name) 
     end
+    
   end
   
   has_many :blog_comments, 
