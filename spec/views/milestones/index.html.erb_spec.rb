@@ -4,13 +4,13 @@ describe "/milestones/index.html.erb" do
   include MilestonesHelper
   
   before(:each) do
+    template.stub!(:progress_bars).and_return('[PROGRESS BARS]')
+    template.stub!(:ticket_stats_and_links).and_return('[TICKET STATS + LINKS]')
     @user = mock_current_user! :permitted? => false
     @project = mock_current_project!
-    @milestone = mock_model Milestone, 
-      :due => nil, :completed? => false, :name => 'M1', :info => 'I1', 
-      :open_tickets => 0, :closed_tickets => 0, :in_prgress_tickets => 0, :percent_in_progress => 0, :percent_completed => 0
+    @milestone = mock_model Milestone, :due => nil, :completed? => false, :name => 'M1', :info => 'I1',
+      :progress_percentages => { :resolved => 60 }
     milestone_2 = mock_model(Milestone)
-
     assigns[:milestones] = [@milestone, milestone_2].paginate(:per_page => 1)
   end
 

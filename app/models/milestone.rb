@@ -3,7 +3,17 @@
 # Please read LICENSE document for more information.
 #++
 class Milestone < ActiveRecord::Base
-  has_many :tickets, :include => [:status], :dependent => :nullify 
+  has_many :tickets, :include => [:status], :dependent => :nullify do
+    
+    def count_by_state(*state_ids)
+      if loaded?
+        target.select {|i| state_ids.include?(i.status.state_id) }.size
+      else
+        count(:all, :conditions => ['statuses.state_id IN (?)', state_ids])
+      end      
+    end
+    
+  end
   belongs_to :project
 
   validates_presence_of :name, :project_id, :started_on
@@ -57,30 +67,22 @@ class Milestone < ActiveRecord::Base
     :conditions => ['( milestones.finished_on IS NULL OR milestones.finished_on >= ? )', date] 
   }}    
   
-  def open_tickets
-    ticket_count_by_state(1)
+  def ticket_counts
+    @tickets_counts ||= Status.states.inject({}) do |result, state|
+      result.merge state.type => tickets.count_by_state(state.id)
+    end.with_indifferent_access
   end
 
-  def in_progress_tickets
-    ticket_count_by_state(2)
-  end
-  
-  def closed_tickets
-    ticket_count_by_state(3)
+  def progress_percentages
+    @progress_percentages ||= Status.states.inject({}) do |result, state|
+      result.merge state.type => ( total_tickets.zero? ? 0 : progress_percentage(state.type, result.size + 1) )
+    end.with_indifferent_access
   end
   
   def total_tickets
-    ticket_count_by_state(1, 2, 3)
+    @total_tickets ||= tickets.count_by_state(1, 2, 3)
   end
     
-  def percent_completed
-    total_tickets.zero? ? 0 : (closed_tickets.to_f / total_tickets.to_f * 100).round
-  end
-
-  def percent_in_progress
-    total_tickets.zero? ? 0 : (in_progress_tickets.to_f / total_tickets.to_f * 100).round
-  end
-  
   def completed?
     finished_on.present?
   end
@@ -90,12 +92,13 @@ class Milestone < ActiveRecord::Base
   end
   
   private
- 
-    def ticket_count_by_state(*state_ids)
-      if tickets.loaded?
-        tickets.select {|i| state_ids.include?(i.status.state_id) }.size
+
+    def progress_percentage(state_type, cycle)
+      percentage = ticket_counts[state_type] / total_tickets.to_f * 100
+      if (percentage % 1) == 0.5
+        (cycle % 2).zero? ? percentage.floor : percentage.ceil 
       else
-        tickets.count(:all, :conditions => ['statuses.state_id IN (?)', state_ids])
+        percentage.round
       end
     end
 

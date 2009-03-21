@@ -4,7 +4,7 @@
   padding: 1px;
 }  
 .milestones .progress div { float:left; } 
-.milestones .completed { background: #37b; }
+.milestones .resolved { background: #37b; }
 .milestones .in-progress { background: #cde; }
 .milestones .progress img { margin: 0; }
   

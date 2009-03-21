@@ -16,14 +16,11 @@
   <% end -%>
 
   <div class="progress clearfix">
-    <div class="completed" style="width: <%= milestone.percent_completed -%>%;">
-      <%= image_spacer(:size => '1x14') %></div>
-    <div class="in-progress" style="width: <%= milestone.percent_in_progress -%>%;">
-      <%= image_spacer(:size => '1x14') %></div>
+    <%= progress_bars(milestone) %>
   </div>
 
   <p class="strong small top-5 bottom-5">
-    <%= milestone.percent_completed -%>% <%=_ 'completed' -%>
+    <%= number_to_percentage milestone.progress_percentages[:resolved], :precision => 0 %> <%=_ 'completed' %>
     <% if permitted?(:tickets, :view) -%>
       &mdash;
       <%=_ 'Tickets' %>:

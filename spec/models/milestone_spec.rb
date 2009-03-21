@@ -2,76 +2,76 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Milestone do
   fixtures :milestones, :tickets, :projects, :statuses
-  
+
   describe 'the class' do
 
     it 'should return (by default) up to 5 records per page' do
       Milestone.per_page.should == 5
-    end    
+    end
 
-    describe 'full text search' do      
-      
+    describe 'full text search' do
+
       it 'should find records matching the milestone name and description' do
         Milestone.full_text_search('info').should have(4).records
         Milestone.full_text_search('unscheduled').should have(1).record
-      end      
-    
+      end
+
     end
 
     describe 'previewable' do
-      
+
       describe 'channel' do
         before do
           @channel = Milestone.previewable.channel(:project => projects(:retro))
         end
-        
+
         it 'should have a valid name' do
           @channel.name.should == 'milestones'
         end
-        
+
         it 'should have a valid title' do
           @channel.title.should == 'Milestones'
         end
-        
+
         it 'should have a valid description' do
           @channel.description.should == 'Milestones for Retrospectiva'
         end
-        
+
         it 'should have a valid link' do
           @channel.link.should == 'http://test.host/projects/retrospectiva/milestones'
-        end      
+        end
 
       end
 
       describe 'items' do
-        
+
         before do
           @milestone = milestones(:retro_unscheduled)
           @item = @milestone.previewable(:project => projects(:retro))
         end
-        
+
         it 'should have a valid title' do
           @item.title.should == 'Milestone: ' + @milestone.name
         end
-        
+
         it 'should have a valid description' do
           @item.description.should == @milestone.info
         end
-        
+
         it 'should have a valid link' do
           @item.link.should == "http://test.host/projects/retrospectiva/milestones"
         end
-        
+
         it 'should have a date' do
           @item.date.should == @milestone.updated_at
-        end      
-        
+        end
+
       end
 
-    end   
+    end
   end
-  
-    
+
+
   before(:each) do
     @milestone = milestones(:retro_next_release)
   end
@@ -116,24 +116,16 @@ describe Milestone do
       @milestone.total_tickets.should == 5
     end
 
-    it "should count open tickets" do
-      @milestone.open_tickets.should == 3
+    it "should count total tickets" do
+      @milestone.total_tickets.should == 5
     end
 
-    it "should count in-progress tickets" do
-      @milestone.in_progress_tickets.should == 1
+    it "should count tickets by state" do
+      @milestone.ticket_counts.should == { 'open' => 3, 'in_progress' => 1, 'resolved' => 1 }
     end
 
-    it "should count closed tickets" do
-      @milestone.closed_tickets.should == 1
-    end
-
-    it "should count the in-progress as in-progress-to-total ratio" do
-      @milestone.percent_in_progress.should == 20
-    end
-
-    it "should count the progress as closed-to-total ratio" do
-      @milestone.percent_completed.should == 20
+    it "should count progress percentages" do
+      @milestone.progress_percentages.should == { 'open' => 60, 'in_progress' => 20, 'resolved' => 20 }
     end
   end
 
@@ -141,30 +133,29 @@ describe Milestone do
     before do
       @milestone.tickets(true)
     end
-    
+
     it "should count total tickets" do
       @milestone.total_tickets.should == 5
     end
 
-    it "should count open tickets" do
-      @milestone.open_tickets.should == 3
+    it "should count tickets by state" do
+      @milestone.ticket_counts.should == { 'open' => 3, 'in_progress' => 1, 'resolved' => 1 }
     end
 
-    it "should count in-progress tickets" do
-      @milestone.in_progress_tickets.should == 1
+    it "should count progress percentages" do
+      @milestone.progress_percentages.should == { 'open' => 60, 'in_progress' => 20, 'resolved' => 20 }
     end
+  end
 
-    it "should count closed tickets" do
-      @milestone.closed_tickets.should == 1
+  describe 'progress percentage rounding' do
+    before do
+      @milestone.stub!(:ticket_counts).and_return({'open' => 0, 'in_progress' => 21, 'resolved' => 3}.with_indifferent_access)
+      @milestone.stub!(:total_tickets).and_return(24)      
     end
-
-    it "should count the in-progress as in-progress-to-total ratio" do
-      @milestone.percent_in_progress.should == 20
-    end
-
-    it "should count the progress as closed-to-total ratio" do
-      @milestone.percent_completed.should == 20
-    end
+   
+    it 'should round correctly' do
+      @milestone.progress_percentages.should == { 'open' => 0, 'in_progress' => 87, 'resolved' => 13 }
+    end   
   end
 
 end
