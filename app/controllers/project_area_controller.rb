@@ -39,8 +39,6 @@ class ProjectAreaController < ApplicationController
     def find_project
       Project.current = User.current.active_projects.find(params[:project_id])
       Project.current || project_not_found!
-    ensure
-      retain_back_to
     end
     
     def project_not_found!
@@ -60,10 +58,13 @@ class ProjectAreaController < ApplicationController
       render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
     end
 
-  private
-  
-    def retain_back_to
-      session[:back_to] = request.path if request.get? and request.format.html?
+    def failed_authorization!
+      if User.current.public? and request.get? and request.format.html?
+        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
+        redirect_to login_path
+      else
+        super
+      end
     end
-  
+
 end

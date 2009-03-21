@@ -64,7 +64,6 @@ describe ProjectAreaController do
     
   end
 
-
   describe 'check if a menu-item is enabled' do
     
     it 'should verify that the given item is enabled for the given project' do
@@ -83,4 +82,114 @@ describe ProjectAreaController do
     
   end
 
+end
+
+describe SearchController do
+
+  describe "authorization" do
+
+    before do
+      @project = mock_current_project! :enabled_modules => [], :name => 'Retro'
+      @user = mock_current_user! :name => 'Doesnt Matter'
+      @user.stub!(:active_projects).and_return([@project])
+      @user.stub!(:has_access?).and_return(true)      
+    end       
+    
+    describe 'if a user is already logged in' do
+      
+      before do
+        @user.stub!(:public?).and_return(false)
+      end
+      
+      describe 'and if user is permitted to see page' do
+        before do
+          controller.class.stub!(:authorize?).and_return(true)          
+        end
+        
+        it 'should display the page' do
+          get :index, :project_id => 'one'
+          response.should be_success
+        end
+
+        it 'should not store request path' do
+          get :index, :project_id => 'one'
+          session[:back_to].should be_nil
+        end
+      end    
+
+      describe 'and if user is not permitted to see page' do
+        before do
+          rescue_action_in_public!
+          controller.stub!(:consider_all_requests_local).and_return(false)
+          controller.class.stub!(:authorize?).and_return(false)          
+        end
+        
+        it 'should display forbidden page' do
+          get :index, :project_id => 'one'
+          response.code.should == '403'
+          response.should render_template(RAILS_ROOT + '/app/views/rescue/403.html.erb')
+        end
+
+        it 'should not store request path' do
+          get :index, :project_id => 'one'
+          session[:back_to].should be_nil
+        end
+      end    
+
+    end
+
+    describe 'if a user is NOT logged in' do
+      
+      before do
+        @user.stub!(:public?).and_return(true)
+      end
+      
+      describe 'and if user is permitted to see page' do
+        before do
+          controller.class.stub!(:authorize?).and_return(true)          
+        end
+        
+        it 'should display the page' do
+          get :index, :project_id => 'one'
+          response.should be_success
+        end
+
+        it 'should not store request path' do
+          get :index, :project_id => 'one'
+          session[:back_to].should be_nil
+        end
+      end    
+
+      describe 'and if user is not permitted to see page' do
+        before do
+          controller.class.stub!(:authorize?).and_return(false)          
+        end
+        
+        it 'should redirect to login page' do
+          get :index, :project_id => 'one'
+          response.should redirect_to(login_path)
+        end
+
+        it 'should store the request path' do
+          get :index, :project_id => 'one'
+          session[:back_to].should == '/projects/one/search'
+        end
+        
+        describe 'and if relative URL root is set' do
+          
+          before do
+            ActionController::Base.stub!(:relative_url_root).and_return('/dev')
+          end
+          
+          it 'should store the request path correctly' do
+            get :index, :project_id => 'one'
+            session[:back_to].should == '/dev/projects/one/search'
+          end
+          
+        end
+        
+      end    
+
+    end
+  end  
 end

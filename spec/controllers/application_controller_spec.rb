@@ -157,18 +157,15 @@ describe ApplicationController do
 
       before do
         controller.stub!(:response_code_for_rescue).and_return(:forbidden)
-        controller.stub!(:login_path).and_return('/path/to/login') 
-        controller.stub!(:redirect_to) 
       end
               
-      it 'should redirect ro login-page ' do
-        controller.should_receive(:login_path).and_return('/path/to/login') 
-        controller.should_receive(:redirect_to).with('/path/to/login') 
-        do_rescue
+      it 'should render the 403 error page ' do
+        controller.should_receive(:render).with(:file => template_path(403), :layout => 'application', :status => '403 Forbidden') 
+        do_rescue        
       end
-    
-      it 'should not double-render' do
-        controller.should_not_receive(:render) 
+
+      it 'should NOT send a notification email' do
+        ExceptionNotifier.should_not_receive(:deliver_exception_notification)
         do_rescue
       end
     
@@ -225,7 +222,7 @@ describe MilestonesController do
   describe 'RSS access via private key' do
     
     before do
-      @user = mock_current_user! :admin? => true, :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
+      @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
       @project = mock_model(Project, :name => 'Retro')
       @projects = [@project]
       @projects.stub!(:find).and_return(@project)
@@ -239,9 +236,16 @@ describe MilestonesController do
       MilestonesController.stub!(:module_accessible?).and_return(true)
     end
     
-    describe 'if non-RSS content is requested' do
-      it 'should refuse authorisation ' do
-        lambda { get :index, :project_id => '1' }.should raise_error(RetroAM::NoAuthorizationError)
+    describe 'if key is valid but non-RSS content is requested' do
+      
+      it 'should not try to authorize the user via key' do
+        User.should_not_receive(:find_by_private_key)
+        get :index, :project_id => '1', :private => '[PKEY]'
+      end
+
+      it 'should redirect to login as usually' do
+        get :index, :project_id => '1', :private => '[PKEY]'
+        response.should redirect_to(login_path)
       end
     end
     
