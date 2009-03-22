@@ -316,7 +316,6 @@ describe TicketsController do
       @ticket = stub_model(Ticket, :protected_attributes= => nil)
       @tickets_proxy.stub!(:new).and_return @ticket
       @ticket_params = { 'author' => 'Me', 'email' => 'me@home', 'summary' => 'Summary', 'content' => 'Content' }
-      controller.stub!(:cached_user_attribute)
     end
 
     def do_post(params = {})
@@ -359,18 +358,14 @@ describe TicketsController do
 
     describe "with successful save" do
 
-      before do
-        controller.stub! :cache_user_attributes!
-      end
-
       def do_post
         @ticket.should_receive(:save).and_return true
         super
       end
 
       it "should store user attributes in the cookies" do
-        controller.should_receive :cache_user_attributes!
         do_post
+        cookies['retrospectiva__c'].should_not be_blank
       end
 
       it "should redirect to the ticket" do

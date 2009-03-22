@@ -36,11 +36,11 @@ class Project < ActiveRecord::Base
   class << self
     
     def current=(project)
-      @current_project = project
+      Thread.current[:current_project] = project
     end
     
     def current
-      @current_project.is_a?(Project) ? @current_project : nil
+      Thread.current[:current_project].is_a?(Project) ? Thread.current[:current_project] : nil
     end    
 
     def central

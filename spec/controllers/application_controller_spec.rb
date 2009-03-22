@@ -20,49 +20,6 @@ describe ApplicationController do
 
   end
 
-  describe 'retrieving cached user attributes' do
-    before do
-      @user = mock_current_user! :public? => true, :name => 'Jerry'
-      controller.stub!(:cookies).and_return(cookies)
-    end
-    
-    def do_call
-      controller.send :cached_user_attribute, :name, 'Anonymous'        
-    end
-    
-    describe 'if user is public' do
-            
-      it 'should try to read the cookie to retrieve the last used value' do
-        controller.send(:cookies).should_receive(:[]).with("__cu_name").and_return('Tom')
-        do_call.should == 'Tom'
-      end
-      
-      it 'should use the fallback value if no value is stored in the cookie' do
-        do_call.should == 'Anonymous'
-      end
-      
-    end
-    
-    describe 'if user is NOT public' do
-
-      before do
-        @user.stub!(:public?).and_return(false) 
-      end
-      
-      it 'should not check the cookie' do
-        cookies.should_not_receive(:[])
-        do_call
-      end
-      
-      it 'should use the name of the logged-in user' do
-        do_call.should == 'Jerry'
-      end
-      
-    end
-    
-  end
-
-
   describe 'rescueing failed requests' do
     
     def template_path(code)
@@ -173,118 +130,198 @@ describe ApplicationController do
   end
 end
 
-describe ChangesetsController do
-  describe 'rendering defaults' do
+describe 'Format rendering and fallback' do
+  controller_name :changesets
 
-    before do
-      rescue_action_in_public!
-      @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
-      @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
-      @project.stub!(:changesets).and_return(@changesets)
-    end
+  before do
+    rescue_action_in_public!
+    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
+    @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
+    @project.stub!(:changesets).and_return(@changesets)
+  end
+  
+  it 'should render HTML if no specific format requested' do
+    get :index, :project_id => @project.to_param
+    response.should be_success
+    response.content_type.should == 'text/html' 
+  end
+
+  it 'should render the format if no specific format requested and expicitely allowed' do
+    get :index, :project_id => @project.to_param, :format => 'rss'
+    response.should be_success
+    response.content_type.should == 'application/rss+xml' 
+  end
+
+  it 'should return 406 Not Acceptable if requested format is not part of respond-to' do
+    get :index, :project_id => @project.to_param, :format => 'xml'
+    response.code.should == '406'
+  end
+  
+  it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
+    @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
+    @changesets.should_receive(:find).twice.and_return(nil)
+    get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
+    response.code.should == '406'
+  end
+
+  it 'should ignore format parameter if empty' do
+    get :index, :project_id => @project.to_param, :format => ''
+    response.should be_success
+    response.content_type.should == 'text/html' 
+  end
+
+end
+
+
+describe 'RSS access via private key' do
+  controller_name :milestones
     
-    it 'should render HTML if no specific format requested' do
-      get :index, :project_id => @project.to_param
-      response.should be_success
-      response.content_type.should == 'text/html' 
-    end
+  before do
+    @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
+    @project = mock_model(Project, :name => 'Retro')
+    @projects = [@project]
+    @projects.stub!(:find).and_return(@project)
+    @user.stub!(:active_projects).and_return(@projects)
 
-    it 'should render the format if no specific format requested and expicitely allowed' do
-      get :index, :project_id => @project.to_param, :format => 'rss'
-      response.should be_success
-      response.content_type.should == 'application/rss+xml' 
-    end
+    @milestones = []
+    @milestones.stub!(:active_on).and_return(@milestones)
+    @project.stub!(:milestones).and_return(@milestones)
 
-    it 'should return 406 Not Acceptable if requested format is not part of respond-to' do
-      get :index, :project_id => @project.to_param, :format => 'xml'
-      response.code.should == '406'
-    end
+    MilestonesController.stub!(:module_enabled?).and_return(true)
+    MilestonesController.stub!(:module_accessible?).and_return(true)
+  end
+  
+  describe 'if key is valid but non-RSS content is requested' do
     
-    it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
-      @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
-      @changesets.should_receive(:find).twice.and_return(nil)
-      get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
-      response.code.should == '406'
+    it 'should not try to authorize the user via key' do
+      User.should_not_receive(:find_by_private_key)
+      get :index, :project_id => '1', :private => '[PKEY]'
     end
 
-    it 'should ignore format parameter if empty' do
-      get :index, :project_id => @project.to_param, :format => ''
-      response.should be_success
-      response.content_type.should == 'text/html' 
+    it 'should redirect to login as usually' do
+      get :index, :project_id => '1', :private => '[PKEY]'
+      response.should redirect_to(login_path)
     end
-
+  end
+  
+  describe 'if RSS content is requested' do
+ 
+      it 'should refuse authorisation without a private key' do
+      bypass_rescue
+      lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
+      end
+ 
+      describe 'if a valid private key is submitted' do
+      
+      before do
+        User.stub!(:find_by_private_key).and_return(@user)
+        @user.stub!(:permitted?).and_return(true)
+      end
+      
+      def do_get(options = {})
+        get :index, { :project_id => '1', :format => 'rss', :private => '[PKEY]' }.merge(options)
+      end
+      
+      it 'should find the user by the key' do
+        User.should_receive(:find_by_private_key).with('[PKEY]').and_return(@user)
+        do_get
+      end
+      
+      it 'should permit access' do
+        do_get
+        response.should be_success
+        response.body.should include('rss version="2.0"')
+        end
+ 
+        it 'should reset the session afterwards' do
+        do_get
+        session[:user_id].should be_nil
+      end
+      
+    end
+  
   end
 end
 
 
-describe MilestonesController do
+describe 'Caching user attributes' do
+  controller_name :tickets
 
-  describe 'RSS access via private key' do
+  before do      
+    Status.stub!(:default).and_return(mock_model(Status))
+    Priority.stub!(:default).and_return(mock_model(Priority))
+    @ticket = stub_model(Ticket)
+    @tickets = []
+    @tickets.stub!(:find).and_return(@ticket)
+    @tickets.stub!(:new).and_return(@ticket)
+
+    @project = permit_access_with_current_project! :name => 'Any', :tickets => @tickets
+    @user = mock_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
+  end
+
+  describe 'storing' do
+    before do
+      @ticket.stub!(:save).and_return(true)
+    end      
+    
+    def do_post
+      post :create, :project_id => @project.to_param, :ticket => { :author => 'Agent', :email => 'agent@mail.com' } 
+    end
+    
+    it 'should behave correctly' do
+      cookies['retrospectiva__c'].should be_nil
+      do_post
+      cookies['retrospectiva__c'].should  == "---+%0Aname%3A+Agent%0Aemail%3A+agent%40mail.com%0A"
+    end    
+
+  end
+
+  describe 'retrieving' do
     
     before do
-      @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
-      @project = mock_model(Project, :name => 'Retro')
-      @projects = [@project]
-      @projects.stub!(:find).and_return(@project)
-      @user.stub!(:active_projects).and_return(@projects)
+      cookies['retrospectiva__c'] = "---+%0Aname%3A+Author%0Aemail%3A+something%40mail.com%0A"      
+    end
 
-      @milestones = []
-      @milestones.stub!(:active_on).and_return(@milestones)
-      @project.stub!(:milestones).and_return(@milestones)
-
-      MilestonesController.stub!(:module_enabled?).and_return(true)
-      MilestonesController.stub!(:module_accessible?).and_return(true)
+    def do_get
+      get :new, :project_id => @project.to_param
     end
     
-    describe 'if key is valid but non-RSS content is requested' do
-      
-      it 'should not try to authorize the user via key' do
-        User.should_not_receive(:find_by_private_key)
-        get :index, :project_id => '1', :private => '[PKEY]'
+    it 'should unescape the values correctly' do
+      controller.send(:cookie_cache).should == { 'name' => 'Author', 'email' => 'something@mail.com' }
+    end
+
+    describe 'if user is public' do
+      before do
+        @user.stub!(:public?).and_return(true)
       end
 
-      it 'should redirect to login as usually' do
-        get :index, :project_id => '1', :private => '[PKEY]'
-        response.should redirect_to(login_path)
-      end
-    end
-    
-    describe 'if RSS content is requested' do
- 
-      it 'should refuse authorisation without a private key' do
-        bypass_rescue
-        lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
-      end
- 
-      describe 'if a valid private key is submitted' do
-        
+      it 'should assign the cached values' do
+        do_get
+        @ticket.author.should == 'Author'
+        @ticket.email.should == 'something@mail.com'
+      end            
+
+      describe 'if nothing is in cache' do
         before do
-          User.stub!(:find_by_private_key).and_return(@user)
-          @user.stub!(:permitted?).and_return(true)
+          cookies['retrospectiva__c'] = nil
         end
-        
-        def do_get(options = {})
-          get :index, { :project_id => '1', :format => 'rss', :private => '[PKEY]' }.merge(options)
-        end
-        
-        it 'should find the user by the key' do
-          User.should_receive(:find_by_private_key).with('[PKEY]').and_return(@user)
+
+        it 'should assign fall-back values' do
           do_get
-        end
-        
-        it 'should permit access' do
-          do_get
-          response.should be_success
-          response.body.should include('rss version="2.0"')
-        end
- 
-        it 'should reset the session afterwards' do
-          do_get
-          session[:user_id].should be_nil
-        end
-        
-      end
+          @ticket.author.should == 'Anonymous'
+          @ticket.email.should == ''
+        end            
+      end    
+
+    end    
+
+    describe 'if user is NOT public' do
+      it 'should assign the user values' do
+        do_get
+        @ticket.author.should == 'Agent'
+        @ticket.email.should == 'agent@mail.com'
+      end            
+    end    
     
-    end
-  end   
+  end
 end

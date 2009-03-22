@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    session[:user_id] = nil
     user = User.authenticate(params[:user] || {})
     if user
       successful_login(user)
@@ -28,10 +29,9 @@ class SessionsController < ApplicationController
   protected
     
     def successful_login(user, message = nil)
-      back_to = session[:back_to] || home_path
+      back_to = session[:back_to].present? ? session[:back_to] : home_path 
       message ||= _('Login was successful.')
 
-      reset_session
       session[:user_id] = user.id
       flash[:notice] = message
       redirect_to back_to

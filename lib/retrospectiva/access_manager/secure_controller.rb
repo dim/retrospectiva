@@ -114,13 +114,7 @@ module Retrospectiva
             result = run_callbacks(:before_authenticate) {|cb_res,| cb_res == false } 
             return result if result == false # skip authentication 
             
-            User.current = if session[:user_id]
-              logger.debug("Authenticating user with ID: #{session[:user_id]}") if logger
-              User.find_by_id session[:user_id], :include => {:groups => :projects}
-            else
-              logger.debug("Authenticating public user with ID: #{session[:user_id]}") if logger
-              User.public_user || raise("You have no Public user. See the INSTALL file for instructions on setting up default content.")
-            end
+            User.current = authenticate_user
             failed_authentication! if User.current.blank?
 
             run_callbacks(:after_authenticate)
@@ -149,6 +143,13 @@ module Retrospectiva
             return true
           end
 
+          def authenticate_user
+            return nil unless session[:user_id]
+            
+            logger.debug("Authenticating user with ID: #{session[:user_id]}") if logger
+            User.active.find_by_id session[:user_id], :include => {:groups => :projects}              
+          end
+                    
           def failed_authentication!
             logger.debug("Authentication failed. Redirect to login.") if logger
             reset_session

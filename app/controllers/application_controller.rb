@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
   before_filter :set_locale
   before_filter :set_time_zone
-  after_filter  :reset_request_cache
 
   delegate :permitted?, :to => :'User.current'
   protected :permitted?
@@ -44,23 +43,22 @@ class ApplicationController < ActionController::Base
       Time.zone = User.current.time_zone
     end
 
-    def reset_request_cache
-      User.current = nil
-      Project.current = nil
-    end
-
     def cached_user_attribute(name, fallback = '')
       if User.current.public?
-        cookies["__cu_#{name}"] || fallback
+        cookie_cache[name.to_s] ||  fallback
       else
         User.current.send(name)
       end
     end
 
-    def cache_user_attributes!(attributes) 
-      attributes.each do |name, value|
-        cookies["__cu_#{name}"] = { 'value' => value, 'expires' => 6.months.from_now }
-      end
+    def cache_user_attributes!(attributes)
+      value = cookie_cache.merge(attributes.stringify_keys)
+      cookies["retrospectiva__c"] = { 'value' => value.to_yaml, 'expires' => 6.months.from_now }
+    end
+    
+    def cookie_cache
+      value = YAML.load(CGI::unescape(cookies["retrospectiva__c"].to_s)) rescue nil
+      value.is_a?(Hash) ? value : {}      
     end
 
     def load_channels(restriction = :present?, project = Project.current)

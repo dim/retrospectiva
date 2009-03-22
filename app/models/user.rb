@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
   class << self
 
     def current=(user)
-      @current_user = user
+      Thread.current[:current_user] = user
     end
     
     def current
-      @current_user.is_a?(User) ? @current_user : public_user
+      Thread.current[:current_user].is_a?(User) ? Thread.current[:current_user] : public_user
     end
     
     def public_user

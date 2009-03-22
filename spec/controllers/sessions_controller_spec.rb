@@ -40,10 +40,19 @@ describe SessionsController do
 
     describe 'with invalid user-params' do
 
-      before { post :create, :user => 'abcd' }
+      def do_post
+        post :create, :user => 'abcd'
+      end
 
-      it 'should redirect-to the login screen' do        
+      it 'should redirect-to the login screen' do
+        do_post
         response.should redirect_to(login_path)
+      end
+
+      it 'should reset the the session' do        
+        session[:user_id] = 1
+        do_post
+        session[:user_id].should be_nil        
       end
 
     end
@@ -52,15 +61,15 @@ describe SessionsController do
     describe 'with correct user-credentials' do
 
       before do
-        User.should_receive(:authenticate).and_return(@user)
+        User.stub!(:authenticate).and_return(@user)
       end
 
       def do_post
         post :create, :user => {:username => 'myaccount', :password => 'passW0rd'}        
       end
 
-      it 'should reset session' do
-        controller.should_receive(:reset_session)
+      it 'should authenticate user' do    
+        User.should_receive(:authenticate).with('username' => "myaccount", 'password' => "passW0rd").and_return(@user)      
         do_post
       end
 
@@ -69,20 +78,23 @@ describe SessionsController do
         flash[:notice].should_not be_blank
       end
 
+      it 'should set session' do
+        session[:user_id] = 1
+        do_post
+        session[:user_id].should == @user.id        
+      end
+
       describe 'if back-to location is set' do
         it 'should redirect to it' do
           session[:back_to] = '/projects'
           do_post
-          response.should be_redirect
           response.should redirect_to(projects_path)
         end
       end
 
       describe 'if no back-to location is set' do
         it 'should redirect to home' do
-          session.stub!(:data).and_return({})
           do_post
-          response.should be_redirect
           response.should redirect_to(home_path)
         end
       end
