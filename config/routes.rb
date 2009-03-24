@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects do |project|
     project.filter 'central_project'
 
-    project.resources :changesets
+    project.resources :changesets, :member => { :diff => :get }
     
     project.resources :tickets, 
       :collection => { :search => :any, :users => :post }, 

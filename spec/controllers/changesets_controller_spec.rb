@@ -102,4 +102,56 @@ describe ChangesetsController do
 
   end
 
+
+  describe "handling GET /changesets/diff" do
+
+    before do
+      @changeset = @changesets.first
+      @proxy.stub!(:find_by_revision!).and_return(@changeset)
+      @change = mock_model(Change, :diffable? => true)
+      @changes_proxy = @changeset.stub_association!(:changes, :find => @change)
+    end
+      
+    def do_get
+      get :diff, :project_id => @project.to_param, :id => @changeset.to_param, :change_id => @change.to_param        
+    end
+      
+    it "should find the changeset" do
+      @proxy.should_receive(:find_by_revision!).
+        with(@changeset.to_param).and_return(@changeset)
+      do_get
+      assigns[:changeset].should == @changeset
+    end
+
+    it "should find the change" do
+      @changes_proxy.should_receive(:find).
+        with(@change.to_param).and_return(@change)
+      do_get
+      assigns[:change].should == @change
+    end
+
+    describe 'if change is not diffable' do
+    
+      it "should display a 404 page" do
+        rescue_action_in_public!
+        @change.should_receive(:diffable?).and_return(false)
+        do_get
+        response.code.should == '404'
+      end
+
+    end
+    
+    describe 'if change IS diffable' do
+
+      it "should display the unified diff" do
+        @change.should_receive(:diffable?).and_return(true)
+        do_get
+        response.should be_success
+        response.should render_template(:diff)
+      end
+      
+    end
+
+  end
+
 end

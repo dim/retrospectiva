@@ -72,9 +72,6 @@ END_DIFF
       response.should_not have_tag('ul.changes')
     end    
 
-    it 'should not display the quick diffs' do
-      response.should_not have_tag('table.code')
-    end    
   end
   
   
@@ -95,16 +92,16 @@ END_DIFF
       render '/changesets/show', :helper => 'project_area'
     end
 
-    it 'should relativize all absolute paths for display' do      
-      @project.should_receive(:relativize_path).with('/retro/modified.rb').exactly(4).times.and_return('modified.rb')
-      @project.should_receive(:relativize_path).with('/retro/moved_from.rb').and_return('moved_from.rb')
-      @project.should_receive(:relativize_path).with('/retro/moved_to.rb').and_return('moved_to.rb')
-      @project.should_receive(:relativize_path).with('/retro/added.rb').and_return('added.rb')      
+    it 'should check for permissions and access' do
+      @user.should_receive(:permitted?).with(:code, :browse).exactly(4).and_return(true)
       do_show
     end
 
-    it 'should check for permissions and access' do
-      @user.should_receive(:permitted?).with(:code, :browse).exactly(4).and_return(true)
+    it 'should relativize all absolute paths for display' do      
+      @project.should_receive(:relativize_path).with('/retro/modified.rb').and_return('modified.rb')
+      @project.should_receive(:relativize_path).with('/retro/moved_from.rb').and_return('moved_from.rb')
+      @project.should_receive(:relativize_path).with('/retro/moved_to.rb').and_return('moved_to.rb')
+      @project.should_receive(:relativize_path).with('/retro/added.rb').and_return('added.rb')      
       do_show
     end
     
@@ -125,28 +122,6 @@ END_DIFF
           without_tag 'span a', 'Quick Diff'
         end
       end
-    end    
-
-    it 'should have a quick diff for modified files and offer a link to download it' do
-      do_show
-      response.should have_tag("h3#ch#{@c1.id}") do
-        with_tag 'span a[href=?]', "/projects/#{@project.id}/diff/modified.rb?compare_with=R5&amp;format=plain&amp;rev=R10", 'Download Diff'
-      end
-    end    
-  
-    it 'should show the side-by-side diff' do
-      do_show
-      response.should have_tag('table.code') do
-        with_tag 'thead' do
-          with_tag 'th[colspan=2] a[href=?]', project_browse_path(@project, 'modified.rb', :rev => 'R5'),  'R5'
-          with_tag 'th[colspan=2] a[href=?]', project_browse_path(@project, 'modified.rb', :rev => 'R10'), 'R10'          
-        end
-        with_tag 'tbody.copy', 2
-        with_tag 'tbody.update', 1 do
-          with_tag 'tr', 1
-        end
-      end
-      response.should have_tag('a', 'Back to top')
     end    
   end
   

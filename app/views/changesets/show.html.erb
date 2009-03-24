@@ -14,8 +14,7 @@
       <ul class="changes">
         <%= format_changes(@changeset) %>
       </ul>
-  
-      <%= render :partial => 'change', :collection => @changeset.changes.select(&:unified_diff?) -%>
+      <%= top_link %>  
     <% end -%>
   <% end -%>
 </div>

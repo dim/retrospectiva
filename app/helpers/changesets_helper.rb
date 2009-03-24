@@ -27,7 +27,7 @@ module ChangesetsHelper
       end
   
       small = if permitted?(:code, :browse) && change.diffable? && !change.unified_diff.blank?
-        link_to _('Quick Diff'), project_changeset_path(Project.current, changeset, :anchor => "ch#{change.id}")
+        link_to_quick_diff(changeset, change)
       elsif change.name == 'CP'
         RetroI18n._('copied from {{path}}', :path => link_to_show_file(change, true))
       elsif change.name == 'MV'
@@ -48,7 +48,7 @@ module ChangesetsHelper
       :rev => change.revision,
       :compare_with => change.previous_revision,
       :format => 'plain'
-    link_to_if_permitted _('Download Diff'), path      
+    link_to_if_permitted _('Download'), path      
   end
 
   private
@@ -67,4 +67,13 @@ module ChangesetsHelper
       link_to_browse label, path, revision
     end
 
+    def link_to_quick_diff(changeset, change)
+      link_to_remote _('Quick Diff'), 
+        :url => diff_project_changeset_path(Project.current, changeset, :change_id => change.id),
+        :update => "ch_info_#{change.id}",
+        :before => "var cb = $('ch_#{change.id}'); if(cb) { cb.toggle(); return false; };",
+        :position => :bottom,
+        :method => :get    
+    end
+  
 end

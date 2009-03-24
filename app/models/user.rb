@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
     end
     
     def public_user
-      User.find_by_username 'Public', :include => {:groups => :projects}
+      Thread.current[:public_user] ||= User.find_by_username 'Public', :include => {:groups => :projects}
     end
 
     def searchable_column_names
