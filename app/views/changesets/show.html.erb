@@ -10,12 +10,10 @@
   <% if permitted?(:code, :browse) -%>
     <h2><%=_ 'Affected files' -%>:</h2>
 
-    <% cache "changesets/#{I18n.locale}/#{@changeset.id}" do -%>
-      <ul class="changes">
-        <%= format_changes(@changeset) %>
-      </ul>
-      <%= top_link %>  
-    <% end -%>
+    <ul class="changes">
+      <%= format_changes(@changeset) %>
+    </ul>
+    <%= top_link %>  
   <% end -%>
 </div>
   

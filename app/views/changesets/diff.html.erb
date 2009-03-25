@@ -5,5 +5,7 @@
   </div>
   <h3><%= relativize_path(@change.path) %></h3>
 
-  <%= format_diff @change.unified_diff, relativize_path(@change.path) %>
+  <% cache "#{Project.current.id}/changes/#{@change.id}" do -%>  
+    <%= format_diff @change.unified_diff, relativize_path(@change.path) %>
+  <% end -%>
 </div>

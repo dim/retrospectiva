@@ -80,7 +80,7 @@ class Changeset < ActiveRecord::Base
     end
     
     def expire_cache!
-      ActionController::Base.new.expire_fragment(/changesets/)
+      ActionController::Base.new.expire_fragment(/changes/)
     end
 
   end 
