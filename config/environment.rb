@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com', :version => '>= 1.0.3' 
 
   config.gem 'diff-lcs', :lib => 'diff/lcs', :version => '1.1.2'
-  config.gem 'mime-types', :lib => 'mime/types', :version => '1.15'
+  config.gem 'mime-types', :lib => 'mime/types', :version => '>= 1.15'
   config.gem 'open4', :version => '0.9.6'
   config.gem 'mojombo-grit', :lib => 'grit', :source => 'http://gems.github.com', :version => '0.9.4'
   
