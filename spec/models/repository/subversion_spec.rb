@@ -116,7 +116,11 @@ describe Repository::Subversion do
     
     it 'should correctly build the history' do
       @repository.history(@path).should == ['4', '3']
-    end    
+    end
+
+    it 'should correctly limit the history' do
+      @repository.history(@path, nil, 1).should == ['4']
+    end
   end
 
 end if SCM_SUBVERSION_ENABLED

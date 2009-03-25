@@ -115,6 +115,10 @@ describe Repository::Git do
     it 'should correctly build the history' do
       @repository.history(@path).should == changesets(:git_with_modified, :git_with_added).map(&:revision)
     end    
+
+    it 'should correctly limit the history' do
+      @repository.history(@path, nil, 1).should == [changesets(:git_with_modified).revision]
+    end    
   end
 
 end if SCM_GIT_ENABLED
