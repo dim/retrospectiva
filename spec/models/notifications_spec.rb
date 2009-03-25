@@ -33,8 +33,13 @@ describe Notifications do
       
       it 'should correncty_assign settings' do
         ActionMailer::Base.should_receive(:smtp_settings=).with(
-          :address => 'mail.mydomain.com', :port => 225, :domain => 'mydomain.com', 
-          :authentication => :plain, :user_name => 'me', :password => 'secret')
+          :enable_starttls_auto => true,                
+          :address => 'mail.mydomain.com', 
+          :port => 225, 
+          :domain => 'mydomain.com', 
+          :authentication => :plain, 
+          :user_name => 'me', 
+          :password => 'secret')
         Notifications.reload_settings
       end      
 
@@ -50,7 +55,13 @@ describe Notifications do
       
       it 'should neither assign user-name nor password' do
         ActionMailer::Base.should_receive(:smtp_settings=).with(
-          :address => 'mail.mydomain.com', :port => 225, :domain => 'mydomain.com')
+          :enable_starttls_auto => true,
+          :address => 'mail.mydomain.com', 
+          :port => 225, 
+          :domain => 'mydomain.com',
+          :authentication => nil, 
+          :user_name => nil, 
+          :password => nil)
         Notifications.reload_settings
       end      
 
@@ -67,7 +78,13 @@ describe Notifications do
       
       it 'should neither assign authentication settings' do
         ActionMailer::Base.should_receive(:smtp_settings=).with(
-          :address => 'mail.mydomain.com', :port => 225, :domain => 'mydomain.com')
+          :enable_starttls_auto => true,
+          :address => 'mail.mydomain.com', 
+          :port => 225, 
+          :domain => 'mydomain.com',
+          :authentication => nil, 
+          :user_name => nil, 
+          :password => nil)
         Notifications.reload_settings
       end      
 
