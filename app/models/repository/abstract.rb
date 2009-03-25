@@ -121,8 +121,10 @@ class Repository::Abstract < ::Repository
       changeset
     rescue ActiveRecord::RecordInvalid
       log :error, 'SYNC', "Revision already exists!"
+      nil
     rescue => other
       log :error, 'SYNC', other.message
+      nil
     end
 
 end
