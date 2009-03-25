@@ -206,6 +206,15 @@ describe Project do
       @project.valid?
       @project.short_name.should == 'my-test-project'
     end
+
+    describe 'if project is central' do
+      it "should automatically reset the currently selected central project" do
+        Project.should_receive(:central=).with(projects(:retro))        
+        projects(:retro).central = true
+        projects(:retro).save.should be(true)
+      end
+    end
+
   end
 
   describe 'on create' do    

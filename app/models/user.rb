@@ -36,15 +36,15 @@ class User < ActiveRecord::Base
   class << self
 
     def current=(user)
-      Thread.current[:current_user] = user
+      @current_user = user
     end
     
     def current
-      Thread.current[:current_user].is_a?(User) ? Thread.current[:current_user] : public_user
+      @current_user.is_a?(User) ? @current_user : public_user
     end
     
     def public_user
-      Thread.current[:public_user] ||= User.find_by_username 'Public', :include => {:groups => :projects}
+      @public_user ||= User.find_by_username 'Public', :include => {:groups => :projects}
     end
 
     def searchable_column_names

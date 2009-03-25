@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
   before_filter :set_locale
   before_filter :set_time_zone
+  after_filter  :reset_request_cache!
 
   delegate :permitted?, :to => :'User.current'
   protected :permitted?
@@ -33,7 +34,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-
+    
+    def reset_request_cache!
+      User.current = nil
+      Project.current = nil
+    end
+    
     # Set locale
     def set_locale
       I18n.locale = RetroCM[:general][:basic][:locale]    

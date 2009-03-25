@@ -25,10 +25,17 @@ class ProjectObserver < ActiveRecord::Observer
     true 
   end
 
+  def before_save(project)
+    if project.central?
+      project.class.central = project
+    end
+    true 
+  end
+
   # * Reset the 'central' status of all other projects if this project is 'central'
   def before_update(project)
     if project.central?
-      project.class.update_all ['central = ?', false], ['id <> ?', project.id] 
+      project.class.update_all ['central = ?', false], ['id <> ?', project.id]
     end
     true 
   end

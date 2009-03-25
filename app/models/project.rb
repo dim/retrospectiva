@@ -36,18 +36,22 @@ class Project < ActiveRecord::Base
   class << self
     
     def current=(project)
-      Thread.current[:current_project] = project
+      @current_project = project
     end
     
     def current
-      Thread.current[:current_project].is_a?(Project) ? Thread.current[:current_project] : nil
+      @current_project.is_a?(Project) ? @current_project : nil
     end    
 
+    def central=(project)
+      @central_project = nil
+    end
+
     def central
-      if Thread.current[:central_project].nil?
-        Thread.current[:central_project] = Project.active.central.find(:first) || false 
+      if @central_project.nil?
+        @central_project = Project.active.central.find(:first) || false  
       end
-      Thread.current[:central_project]
+      @central_project
     end
 
     # Fixed Rails development mode bug (http://rails.lighthouseapp.com/projects/8994/tickets/1339) 
