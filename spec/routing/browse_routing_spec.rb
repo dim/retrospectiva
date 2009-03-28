@@ -5,7 +5,7 @@ describe BrowseController do
   before do
     @node = mock_model Repository::Subversion::Node, 
       :selected_revision => '120',
-      :mime_type => 'text/x-ruby',
+      :mime_type => 'application/x-ruby',
       :dir? => false, 
       :content_type => :text, 
       :size => 40,

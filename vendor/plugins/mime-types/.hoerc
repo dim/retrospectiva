@@ -1,0 +1,12 @@
+--- 
+publish_on_announce: false
+exclude: !ruby/regexp /\.(?:svn|git)|(?:\.(?:swp|hoerc|DS_Store)|~|email.txt)$|(?:coverage|type-lists)\//
+signing_key_file: ~/.gem/gem-private_key.pem
+signing_cert_file: ~/.gem/gem-public_cert.pem
+blogs: 
+- user: user
+  url: url
+  extra_headers: 
+    mt_convert_breaks: markdown
+  blog_id: blog_id
+  password: password

@@ -92,7 +92,7 @@ describe Repository::Subversion::Node do
     end
 
     it 'should have a mime-type' do
-      @node.mime_type.should == 'text/x-ruby'
+      @node.mime_type.should == MIME::Types['application/ruby']
     end
   end
 
@@ -136,4 +136,4 @@ describe Repository::Subversion::Node do
     end
   end
   
-end if SCM_SUBVERSION_ENABLED
+end

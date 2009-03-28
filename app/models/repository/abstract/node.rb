@@ -8,6 +8,8 @@ class Repository::Abstract::Node
   class InvalidPathForRevision < StandardError
   end
 
+  DEFAULT_MIME_TYPE = MIME::Types['application/octet-stream'].first.freeze
+
   attr_reader :selected_revision, :path
 
   def initialize(repos, path, selected_revision = nil)   
@@ -59,7 +61,7 @@ class Repository::Abstract::Node
 
   # Returns the node's mime-type
   def mime_type
-    exists? && !dir? ? Mime::Map.unknown : nil
+    exists? && !dir? ? DEFAULT_MIME_TYPE : nil
   end
 
   # Returns the node's peroperty hash, Example:
@@ -87,10 +89,10 @@ class Repository::Abstract::Node
   def content_type
     if dir?
       :dir
-    elsif mime_type.to_s =~ /^text/i
-      :text
-    elsif mime_type.to_s =~ /^image\/(png|jpg|jpeg|gif)$/i
+    elsif mime_type.simplified =~ /^image\/(png|jpeg|gif)$/i
       :image
+    elsif mime_type.encoding != "base64"
+      :text
     elsif binary?
       :binary
     else

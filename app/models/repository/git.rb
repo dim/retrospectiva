@@ -17,7 +17,7 @@ class Repository::Git < Repository::Abstract
   end
 
   def latest_revision
-    @latest_revision ||= (repo.log('HEAD', '', :n => 1).map(&:id).first || 'HEAD')
+    @latest_revision ||= (repo.rev_list('HEAD', :n => 1).first || 'HEAD')
   end
 
   def unified_diff(path, revision_a, revision_b)
@@ -36,18 +36,19 @@ class Repository::Git < Repository::Abstract
   def history(path, revision = nil, limit = 100)
     return [] unless active? 
     
-    repo.log(revision || latest_revision, path, :n => limit).map(&:id)
+    repo.rev_list(revision || latest_revision, path, :n => limit)
   end
 
   def sync_changesets
     return unless active?
-
+    
     last_changeset = changesets.find :first, :select => 'revision', :order => 'created_at DESC'
-    revisions = if last_changeset and last_commit = repo.commit(last_changeset.revision) and head = repo.commits('master', 1).first      
-      repo.commits_between(last_commit, head)
+    
+    revisions = if last_changeset && ( head = repo.commit('HEAD') ) && ( latest = repo.commit(last_changeset.revision) )
+      repo.commits_between(latest, head).map(&:id)
     else
-      repo.commits('HEAD', nil).reverse
-    end.map(&:id)
+      repo.rev_list('HEAD').reverse
+    end
     
     synchronize!(revisions)
   end

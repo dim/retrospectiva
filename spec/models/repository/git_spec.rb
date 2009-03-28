@@ -6,7 +6,7 @@ describe Repository::Git do
     @repository = repositories(:git)    
   end
 
-  describe 'bulk synchronization' do
+  describe 'bulk synchronization (full) ' do
     before(:each) do
       @should = @repository.changesets.find :all, :include => [:changes]
     end
@@ -47,6 +47,21 @@ describe Repository::Git do
         list_of(synchronised.changes, :from_revision).should == list_of(original.changes, :from_revision)
         list_of(synchronised.changes, :name).should == list_of(original.changes, :name)
       end
+    end
+    
+  end
+
+  describe 'bulk synchronization (incremental)' do
+    def do_sync
+      @repository.changesets.last.destroy
+      @repository.changesets.reload.should have(9).records
+      @repository.sync_changesets
+      @repository.changesets.reload      
+    end
+    
+    it 'should correctly add all missing changesets' do
+      do_sync
+      @repository.changesets.should have(10).records
     end
     
   end
@@ -121,4 +136,4 @@ describe Repository::Git do
     end    
   end
 
-end if SCM_GIT_ENABLED
+end

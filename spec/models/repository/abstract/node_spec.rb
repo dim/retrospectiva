@@ -112,7 +112,7 @@ describe Repository::Abstract::Node do
       
       before do
         @node.stub!(:dir?).and_return(false)
-        @node.stub!(:mime_type).and_return(nil)
+        @node.stub!(:mime_type).and_return(Repository::Abstract::Node::DEFAULT_MIME_TYPE)
         @node.stub!(:binary?).and_return(false)
       end
       
@@ -122,17 +122,18 @@ describe Repository::Abstract::Node do
       end
 
       it 'should be :text if node has a textual mime-type' do
-        @node.should_receive(:mime_type).once.and_return('text/plain')
+        text_type = MIME::Types['text/plain'].first
+        @node.should_receive(:mime_type).twice.and_return(text_type)
         @node.content_type.should == :text
       end
 
       it 'should be :image if node has a web-image mime-type' do
-        @node.should_receive(:mime_type).twice.and_return('image/png')
+        @node.should_receive(:mime_type).once.and_return(MIME::Types['image/png'].first)
         @node.content_type.should == :image
       end
 
       it 'should NOT be :image if node has a non-web-image mime-type' do
-        @node.should_receive(:mime_type).and_return('image/bmp')
+        @node.should_receive(:mime_type).twice.and_return(MIME::Types['image/bmp'].first)
         @node.content_type.should == :unknown
       end
 

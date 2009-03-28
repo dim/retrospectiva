@@ -44,7 +44,7 @@ describe Change do
     
     it 'should be able to identify the previous revision' do
       changes(:r04_m02).previous_revision.should == '3'
-    end if SCM_SUBVERSION_ENABLED
+    end
 
     it 'should be able to generate a unified DIFF for diffable files' do
       changes(:r04_m02).unified_diff.should == %Q(
@@ -66,7 +66,7 @@ describe Change do
 +#
 \\ No newline at end of file
 ).lstrip
-    end if SCM_SUBVERSION_ENABLED
+    end
 
     it 'should return an empty string as DIFF for non-diffable files' do
       changes(:r03_a02).unified_diff.should == ''

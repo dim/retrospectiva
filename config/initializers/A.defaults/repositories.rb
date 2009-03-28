@@ -1,19 +1,6 @@
 # Load GIT libraries
 SCM_GIT_ENABLED = begin
-  require 'grit'
-  require 'grit/git'
-
-  Grit::Tree.class_eval do
-    def acts_like_node?; true; end
-  end
-
-  Grit::Blob.class_eval do
-    def acts_like_node?; true; end
-  end
-
-  true
-rescue LoadError
-  false
+  system("#{Grit::Git.git_binary} --version 1> /dev/null 2> /dev/null")
 end unless Object.const_defined?(:SCM_GIT_ENABLED) && Object.const_get(:SCM_GIT_ENABLED) == false
 
 # Load subversion binding libraries

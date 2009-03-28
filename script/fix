@@ -29,14 +29,14 @@ def error(text)
 end
 
 def summary(text)
-  message('=', "Congratulations! #{text}")
+  message('=', "OK! #{text}")
 end
 
 
 
 
 def test_subversion_support
-  headline('Testing subversion support')
+  headline('Testing Subversion support')
 
   libs = {}
   libs['Core']   = require 'svn/core'  rescue nil
@@ -60,24 +60,12 @@ def test_subversion_support
 end
 
 def test_git_support
-  headline('Testing subversion support')
+  headline('Testing Git support')
 
-  libs = {}
-    
-  libs['Grit']   		= require 'grit' rescue nil
-  libs['Grit::Git'] = require 'grit/git' rescue nil
-
-  ok = true
-  libs.each do |lib, loaded|
-    ok = false if loaded.nil?
-    code = loaded.nil? ? '-' : '+'
-    msg  = loaded.nil? ? 'NOT' : 'successfully'
-    message(code, "#{lib} library was #{msg} loaded")
-  end
-  if ok
-    summary('All libraries were loaded. GIT support will be fully ENABLED!')
+  if system("/usr/bin/env git --version 1> /dev/null 2> /dev/null")
+    summary('Git executables are installed on your machine. GIT support will be fully ENABLED!')
   else
-    error('At least one required library could not be loaded. GIT support will be DISABLED!')
+    error('Git executables are missing. GIT support will be DISABLED!')
   end
 end
 

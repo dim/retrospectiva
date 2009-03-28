@@ -62,7 +62,7 @@ describe Repository::Git::Node do
         @node.should be_kind_of(Repository::Git::Node)
       end
 
-      it 'should correctly identify the revision' do        
+      it 'should correctly identify the revision' do
         @node.revision.should == '573ae4e2c35ca993aef864adac5cdd3e3cf50125'
         @node.revision.should == changesets(:git_with_modified).revision
       end
@@ -113,7 +113,7 @@ describe Repository::Git::Node do
     end
 
     it 'should have a mime-type' do
-      @node.mime_type.should == 'application/ruby'
+      @node.mime_type.should == MIME::Types['application/ruby']
     end
   end
 
@@ -157,4 +157,4 @@ describe Repository::Git::Node do
     end
   end
   
-end if SCM_GIT_ENABLED
+end

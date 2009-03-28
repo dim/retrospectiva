@@ -7,6 +7,7 @@ module ActionController #:nodoc:
       end
 
       protected
+      
         def perform_action_with_grit_caching
           Grit.cache do
             perform_action_without_grit_caching

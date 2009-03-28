@@ -23,17 +23,6 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '>= 2.3.8'
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com', :version => '>= 1.0.3' 
 
-  config.gem 'diff-lcs', :lib => 'diff/lcs', :version => '1.1.2'
-  config.gem 'mime-types', :lib => 'mime/types', :version => '>= 1.15'
-  config.gem 'open4', :version => '0.9.6'
-  config.gem 'mojombo-grit', :lib => 'grit', :source => 'http://gems.github.com', :version => '0.9.4'
-  
-  
-  # Do NOT complain if Grit GEM missing  
-  config.gems.last(4).each do |item|
-    item.instance_variable_set(:@loaded, true) 
-  end unless $gems_rake_task
-
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -10,7 +10,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   end
 
   def revision
-    @revision ||= repos.repo.log(selected_revision, path, :n => 1).map(&:id).first 
+    @revision ||= repos.repo.rev_list(selected_revision, path, :n => 1).first 
   end
 
   def author
@@ -43,7 +43,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   end
 
   def mime_type
-    dir? ? nil : node.mime_type
+    dir? ? nil : MIME::Types[node.mime_type]
   end
 
   def size
@@ -56,7 +56,7 @@ class Repository::Git::Node < Repository::Abstract::Node
 
   # Returns true if the selected node revision mathces the latest repository revision
   def latest_revision?
-    selected_revision == 'HEAD' || selected_revision == repos.history(path, 'HEAD', 1).first
+    selected_revision == 'HEAD' || selected_revision == repos.latest_revision
   end
 
 

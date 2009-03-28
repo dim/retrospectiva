@@ -85,7 +85,7 @@ class BrowseController < ProjectAreaController
     
     def send_node(mime_type = nil, disposition = nil)
       send_data @node.content, 
-        :type => ( mime_type || @node.mime_type ), 
+        :type => ( mime_type || @node.mime_type.simplified ), 
         :disposition => ( disposition || @node.disposition )
     end
     

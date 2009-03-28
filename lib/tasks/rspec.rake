@@ -1,19 +1,4 @@
 gem 'test-unit', '1.2.3' if RUBY_VERSION.to_f >= 1.9
-rspec_gem_dir = nil
-Dir["#{RAILS_ROOT}/vendor/gems/*"].each do |subdir|
-  rspec_gem_dir = subdir if subdir.gsub("#{RAILS_ROOT}/vendor/gems/","") =~ /^(\w+-)?rspec-(\d+)/ && File.exist?("#{subdir}/lib/spec/rake/spectask.rb")
-end
-rspec_plugin_dir = File.expand_path(File.dirname(__FILE__) + '/../../vendor/plugins/rspec')
-
-if rspec_gem_dir && (test ?d, rspec_plugin_dir)
-  raise "\n#{'*'*50}\nYou have rspec installed in both vendor/gems and vendor/plugins\nPlease pick one and dispose of the other.\n#{'*'*50}\n\n"
-end
-
-if rspec_gem_dir
-  $LOAD_PATH.unshift("#{rspec_gem_dir}/lib") 
-elsif File.exist?(rspec_plugin_dir)
-  $LOAD_PATH.unshift("#{rspec_plugin_dir}/lib")
-end
 
 # Don't load rspec if running "rake gems:*"
 unless ARGV.any? {|a| a =~ /^gems/}
@@ -83,7 +68,7 @@ namespace :spec do
     t.spec_files = FileList['vendor/plugins/**/spec/**/*/*_spec.rb'].exclude('vendor/plugins/rspec/*')
   end
 
-  [:models, :controllers, :views, :helpers, :lib, :routing].each do |sub|
+  [:models, :controllers, :views, :helpers, :lib].each do |sub|
     desc "Run the code examples in spec/#{sub}"
     Spec::Rake::SpecTask.new(sub => spec_prereq) do |t|
       t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
@@ -120,7 +105,6 @@ namespace :spec do
     ::CodeStatistics::TEST_TYPES << "Helper specs" if File.exist?('spec/helpers')
     ::CodeStatistics::TEST_TYPES << "Library specs" if File.exist?('spec/lib')
     ::CodeStatistics::TEST_TYPES << "Routing specs" if File.exist?('spec/routing')
-    ::STATS_DIRECTORIES.delete_if {|a| a[0] =~ /test/}
   end
 
   namespace :db do

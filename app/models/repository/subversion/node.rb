@@ -1,9 +1,9 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
-class Repository::Subversion::Node < Repository::Abstract::Node
-    
+class Repository::Subversion::Node < Repository::Abstract::Node  
+  
   def initialize(repos, path, selected_revision = nil, skip_content = false)
     selected_revision = Kernel.Float(selected_revision || repos.latest_revision).to_i rescue 0
     if selected_revision < 1 || selected_revision > repos.latest_revision.to_i
@@ -89,18 +89,20 @@ class Repository::Subversion::Node < Repository::Abstract::Node
     def verify_mime_type
       return nil if dir?
   
-      svn_mime_type = properties[Svn::Core::PROP_MIME_TYPE]  
-      if svn_mime_type.blank? || svn_mime_type == Mime::Map.unknown
-        Mime::Map.mime_type(name) || Mime::Map.unknown
+      svn_type = MIME::Types[properties[Svn::Core::PROP_MIME_TYPE]].first      
+      if svn_type.blank? || svn_type == DEFAULT_MIME_TYPE
+        guesses = MIME::Types.of(name) rescue []
+        guesses.first || DEFAULT_MIME_TYPE
       else
         svn_mime_type
-      end  
+      end
     end
-  
+
     def read_content(root)
       return nil if dir?
 
-      charset = mime_type.blank? ? nil : mime_type.slice(%r{charset=([A-Za-z0-9\-_]+)}, 1)
+      svn_type = properties[Svn::Core::PROP_MIME_TYPE]      
+      charset = svn_type.blank? ? nil : svn_type.slice(/charset=([A-Za-z0-9\-_]+)/, 1)
       convert_to_utf8(root.file_contents(path, &:read), charset || 'utf-8')
     end
       

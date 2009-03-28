@@ -50,5 +50,5 @@ describe Repository::Git::DiffScanner do
 
   end
 
-end if SCM_GIT_ENABLED
+end
 

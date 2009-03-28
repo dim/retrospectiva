@@ -6,7 +6,7 @@ describe BrowseController do
     @repository = mock_model(Repository::Subversion, :latest_revision => '123')
     @node = mock_model Repository::Subversion::Node, 
       :selected_revision => '120',
-      :mime_type => 'text/x-ruby',
+      :mime_type => MIME::Types['application/x-ruby'].first,
       :dir? => false, 
       :content_type => :text, 
       :size => 40,
@@ -189,11 +189,11 @@ describe BrowseController do
 
       describe 'if format parameter \'raw\' is passed' do
         it 'should send the file with its native content type & disposition' do
-          @node.should_receive(:mime_type).and_return('text/x-ruby')
+          @node.should_receive(:mime_type).and_return(MIME::Types['application/x-ruby'].first)
           @node.should_receive(:disposition).and_return('inline')
           do_get :format => 'raw'
           response.should be_success
-          response.content_type.should == 'text/x-ruby'
+          response.content_type.should == 'application/ruby'
           response.headers['Content-Disposition'].should == 'inline'
         end
       end
@@ -217,7 +217,7 @@ describe BrowseController do
 
       describe 'if format parameter \'raw\' is passed' do
         it 'should send the file with its native content type & disposition' do
-          @node.should_receive(:mime_type).and_return('image/gif')
+          @node.should_receive(:mime_type).and_return(MIME::Types['image/gif'].first)
           @node.should_receive(:disposition).and_return('inline')
           do_get :format => 'raw'
           response.should be_success
@@ -245,7 +245,7 @@ describe BrowseController do
 
       describe 'if format parameter \'raw\' is passed' do
         it 'should send the file with its native content type & disposition' do
-          @node.should_receive(:mime_type).and_return('application/ogg')
+          @node.should_receive(:mime_type).and_return(MIME::Types['application/ogg'].first)
           @node.should_receive(:disposition).and_return('attachment')
           do_get :format => 'raw'
           response.should be_success
@@ -277,7 +277,7 @@ describe BrowseController do
       end
       
       it 'should send the file with its native content type and disposition' do
-        @node.should_receive(:mime_type).and_return('application/ogg')
+        @node.should_receive(:mime_type).and_return(MIME::Types['application/ogg'].first)
         @node.should_receive(:disposition).and_return('attachment')
         get :download, :path => ['file.ogg'], :project_id => 'one'
         response.should be_success
