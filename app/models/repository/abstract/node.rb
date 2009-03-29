@@ -89,9 +89,9 @@ class Repository::Abstract::Node
   def content_type
     if dir?
       :dir
-    elsif mime_type.simplified =~ /^image\/(png|jpeg|gif)$/i
+    elsif mime_type && mime_type.simplified =~ /^image\/(png|jpeg|gif)$/i
       :image
-    elsif mime_type.encoding != "base64"
+    elsif mime_type && mime_type.encoding != "base64"
       :text
     elsif binary?
       :binary

@@ -43,7 +43,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   end
 
   def mime_type
-    dir? ? nil : MIME::Types[node.mime_type]
+    dir? ? nil : MIME::Types[node.mime_type].first
   end
 
   def size

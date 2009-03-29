@@ -122,13 +122,12 @@ describe Repository::Abstract::Node do
       end
 
       it 'should be :text if node has a textual mime-type' do
-        text_type = MIME::Types['text/plain'].first
-        @node.should_receive(:mime_type).twice.and_return(text_type)
+        @node.should_receive(:mime_type).exactly(4).times.and_return(MIME::Types['text/plain'].first)
         @node.content_type.should == :text
       end
 
       it 'should be :image if node has a web-image mime-type' do
-        @node.should_receive(:mime_type).once.and_return(MIME::Types['image/png'].first)
+        @node.should_receive(:mime_type).twice.and_return(MIME::Types['image/png'].first)
         @node.content_type.should == :image
       end
 
