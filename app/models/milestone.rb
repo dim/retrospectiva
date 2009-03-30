@@ -74,9 +74,7 @@ class Milestone < ActiveRecord::Base
   end
 
   def progress_percentages
-    @progress_percentages ||= Status.states.inject({}) do |result, state|
-      result.merge state.type => ( total_tickets.zero? ? 0 : progress_percentage(state.type, result.size + 1) )
-    end.with_indifferent_access
+    @progress_percentages ||= calculate_percentages
   end
   
   def total_tickets
@@ -92,14 +90,24 @@ class Milestone < ActiveRecord::Base
   end
   
   private
+    
+    def calculate_percentages
+      result = Status.states.reverse.inject({}) do |result, state|
+        result.merge state.type => ( total_tickets.zero? ? 0 : (ticket_counts[state.type] / total_tickets.to_f * 100).round )
+      end.with_indifferent_access
+      correct_percentages(result)
+    end
 
-    def progress_percentage(state_type, cycle)
-      percentage = ticket_counts[state_type] / total_tickets.to_f * 100
-      if (percentage % 1) == 0.5
-        (cycle % 2).zero? ? percentage.floor : percentage.ceil 
-      else
-        percentage.round
+    def correct_percentages(percentages)
+      sum_of_all = percentages.values.sum
+      case sum_of_all
+      when 0..99
+        percentages['open'] += (100 - sum_of_all)
+      when 101        
+        key = ( percentages.key?('open') and percentages['open'] > 0 ? 'open' : percentages.sort_by(&:last).last.first )        
+        percentages[key] -= 1
       end
+      percentages        
     end
 
 end

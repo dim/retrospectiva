@@ -148,14 +148,30 @@ describe Milestone do
   end
 
   describe 'progress percentage rounding' do
-    before do
-      @milestone.stub!(:ticket_counts).and_return({'open' => 0, 'in_progress' => 21, 'resolved' => 3}.with_indifferent_access)
-      @milestone.stub!(:total_tickets).and_return(24)      
+   
+    def test_with(open, in_progress, resolved)
+      counts = {'open' => open, 'in_progress' => in_progress, 'resolved' => resolved}.with_indifferent_access
+      @milestone.stub!(:ticket_counts).and_return(counts)
+      @milestone.stub!(:total_tickets).and_return(counts.values.sum)
+      @milestone.progress_percentages.values.sum.should == 100
+      @milestone.progress_percentages
     end
    
     it 'should round correctly' do
-      @milestone.progress_percentages.should == { 'open' => 0, 'in_progress' => 87, 'resolved' => 13 }
+      test_with(0, 21, 3).should   == { 'open' => 0,   'in_progress' => 87, 'resolved' => 13 }
     end   
-  end
 
+    it 'should round correctly' do
+      test_with(33, 33, 33).should == { 'open' => 34,  'in_progress' => 33, 'resolved' => 33 }
+    end   
+
+    it 'should round correctly' do
+      test_with(1, 1, 56).should   == { 'open' => 1,   'in_progress' => 2,  'resolved' => 97 }
+    end   
+
+    it 'should round correctly' do
+      test_with(0, 0, 0).should    == { 'open' => 100, 'in_progress' => 0,  'resolved' => 0  }
+    end   
+
+  end
 end
