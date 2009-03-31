@@ -7,7 +7,7 @@ module TicketsHelper
 
   def last_change_content_one_line(ticket)
     if ticket.changes.last.nil? or ticket.changes.last.content.blank?
-      ''
+      h(datetime_format(ticket.updated_at))
     else
       content = "#{ticket.changes.last.author} (#{datetime_format(ticket.updated_at)})"
       content += ": " + truncate(ticket.changes.last.content.squish, :length => 600)
@@ -107,6 +107,33 @@ module TicketsHelper
       if ($('ticket_#{close}_selector')) Element.hide('ticket_#{close}_selector');
       Element.toggle('ticket_#{open}_selector');
     ).squish
+  end
+  
+  GROUP_BY_PROCS = {
+    'update' => lambda { |t| t.updated_at.end_of_week.to_date }    
+  }
+  
+  def render_grouped(tickets, group_by = nil)
+    return render(tickets) unless GROUP_BY_PROCS[group_by]
+
+    tickets.group_by(&GROUP_BY_PROCS[group_by]).map do |value, ticket_group|
+      
+      spacer = content_tag :td, ticket_spacer_value(value, group_by), 
+        :class => 'group quieter strong centered', 
+        :colspan => ( property_types.any? ? 8 : 7 )
+     
+      "<tr>#{spacer}</tr>" + render(ticket_group)
+      
+    end.join("\n")
+  end
+
+  def ticket_spacer_value(value, group_by)
+    case group_by
+    when 'update'
+      h(date_format(value))
+    else
+      '&ndash'
+    end
   end
   
   protected

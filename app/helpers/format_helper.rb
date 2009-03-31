@@ -2,15 +2,15 @@ module FormatHelper
   include NavigationHelper
 
   def datetime_format(datetime)
-    datetime.strftime(RetroCM[:content][:format][:datetime])
+    I18n.l datetime.to_time, :format => RetroCM[:content][:format][:datetime]
   end
 
   def date_format(datetime)
-    datetime.strftime(RetroCM[:content][:format][:date])
+    I18n.l datetime.to_date, :format => RetroCM[:content][:format][:date]
   end
 
   def time_format(datetime)
-    datetime.strftime(RetroCM[:content][:format][:time])
+    I18n.l datetime, :format => RetroCM[:content][:format][:time]
   end
 
   def boolean_format(value, t_yes = nil, t_no = nil)
@@ -133,7 +133,7 @@ module FormatHelper
 
     def find_project_for_ticket(ticket_id)
       projects = RetroCM[:content][:markup][:global_ticket_refs] ? User.current.active_projects : [Project.current]
-      projects.find do |project|
+      projects.detect do |project|
         !project.existing_tickets[ticket_id].blank?
       end
     end

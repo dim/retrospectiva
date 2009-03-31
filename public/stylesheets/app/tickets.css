@@ -5,6 +5,14 @@
 .tickets .content-header { margin-bottom:1em; border-color: #ccc; }
 .tickets .internal-navigation { border-top:0; margin-top:-10px; padding-bottom:0.5em; }
 
+.tickets table tbody td.group,
+.tickets table tbody td.group:hover {
+  line-height:1;
+  padding:3px 1em 2px; font-size:90%; 
+  background:#d2d2d2 url(../../images/bg.group.gif) left bottom repeat-x; 
+  border:1px solid #aaa; border-bottom:1px solid #999; 
+}
+
 .ticket-statement-positive .ticket-col-id a,
 .ticket-statement-positive .ticket-col-status a,
 .ticket-statement-positive .ticket-col-summary h6 a { color: #672; }

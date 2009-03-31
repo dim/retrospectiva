@@ -46,7 +46,7 @@
     </tfoot>
   
     <tbody id="tickets">
-      <%= render :partial => 'ticket', :collection => @tickets %>
+      <%= render_grouped @tickets, params[:group] %>
     </tbody>
   </table>
   
