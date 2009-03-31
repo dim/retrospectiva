@@ -11,7 +11,7 @@ class AssociationProxies::ActiveUserProjects < Array
     super(records)    
   end
   
-  def find(*args)
+  def find(param)
     case param
     when String
       detect {|i| i.to_param == param }

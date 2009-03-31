@@ -2,14 +2,17 @@ module FormatHelper
   include NavigationHelper
 
   def datetime_format(datetime)
+    return '' unless datetime
     I18n.l datetime.to_time, :format => RetroCM[:content][:format][:datetime]
   end
 
   def date_format(datetime)
+    return '' unless datetime
     I18n.l datetime.to_date, :format => RetroCM[:content][:format][:date]
   end
 
   def time_format(datetime)
+    return '' unless datetime
     I18n.l datetime, :format => RetroCM[:content][:format][:time]
   end
 
