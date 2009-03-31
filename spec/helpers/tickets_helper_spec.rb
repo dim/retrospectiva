@@ -62,19 +62,20 @@ describe TicketsHelper do
   describe 'displaying the content of the last ticket change in one line' do
 
     before do
+      helper.stub!(:datetime_format).and_return('[DATETIME]')
       @ticket_change = mock_model(TicketChange, :content => "Line1\nLine2\r\nLine3", :author => 'Me')
       @ticket = mock_model(Ticket, :changes => [@ticket_change], :updated_at => 1.month.ago)
     end
     
     it 'should return an empty string if no change is present' do
       @ticket.should_receive(:changes).and_return([])
-      helper.last_change_content_one_line(@ticket).should == '' 
+      helper.last_change_content_one_line(@ticket).should == '[DATETIME]' 
     end
 
     it 'should return the line-up conent if change is present' do
-      helper.should_receive(:datetime_format).and_return('[TS]')
+      helper.should_receive(:datetime_format).and_return('[DATETIME]')
       helper.should_receive(:truncate).with("Line1 Line2 Line3", :length => 600).and_return('[CONTENT]')
-      helper.last_change_content_one_line(@ticket).should == 'Me ([TS]): [CONTENT]' 
+      helper.last_change_content_one_line(@ticket).should == 'Me ([DATETIME]): [CONTENT]' 
     end
     
   end

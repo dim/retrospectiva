@@ -23,6 +23,7 @@ describe "/tickets/index.html.erb" do
       :author => 'Me',
       :email => '',
       :created_at => 2.days.ago,
+      :updated_at => 2.days.ago,
       :changes => [],
       :updated? => false
     ticket_2 = mock_model Ticket

@@ -12,25 +12,17 @@ class ApplicationController < ActionController::Base
   
   helper_method :layout_markers, :permitted?
 
-  class << self
-
-    def enable_private_rss(options)
-      after_authenticate do |controller|
-        next unless controller.request.format.rss? and controller.params[:private].present? and User.current.public?          
-
-        user = User.active.find_by_private_key controller.params[:private]
-        if user
-          User.current = user
-          controller.session[:user_id] = user.id
-          @private_rss_enabled = true
-        end
+  def self.enable_private_rss!(options = {})
+    pos = before_filters.index(:authorize) || before_filters.size
+    filter_chain.send :update_filter_chain, options, :before, pos do |controller|
+    
+      if controller.request.format.rss? and controller.params[:private].present? and User.current.public?
+        user = User.active.find_by_private_key controller.params[:private]      
+        User.current = user if user            
       end
-      
-      after_filter do |controller|
-        controller.session[:user_id] = nil if @private_rss_enabled
-      end
+      true
+    
     end
-  
   end
 
   protected
@@ -39,7 +31,7 @@ class ApplicationController < ActionController::Base
       User.current = nil
       Project.current = nil
     end
-    
+
     # Set locale
     def set_locale
       I18n.locale = RetroCM[:general][:basic][:locale]    

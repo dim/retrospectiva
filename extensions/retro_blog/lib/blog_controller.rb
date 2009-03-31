@@ -19,8 +19,7 @@ class BlogController < ProjectAreaController
     :update  => ['update'],
     :delete  => ['destroy']
 
-  enable_private_rss :only => :index
-  
+  enable_private_rss! :only => :index  
   before_filter :find_blog_post, :only => [:show, :comment, :edit, :update, :destroy]
   before_filter :new, :only => [:create]
   before_filter :load_categories, :only => [:index] 
