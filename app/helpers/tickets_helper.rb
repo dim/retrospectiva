@@ -119,7 +119,7 @@ module TicketsHelper
     tickets.group_by(&GROUP_BY_PROCS[group_by]).map do |value, ticket_group|
       
       spacer = content_tag :td, ticket_spacer_value(value, group_by), 
-        :class => 'group quieter strong centered', 
+        :class => 'group quieter centered', 
         :colspan => ( property_types.any? ? 8 : 7 )
      
       "<tr>#{spacer}</tr>" + render(ticket_group)

@@ -89,7 +89,7 @@ Rails::Initializer.run do |config|
 end
 
 # Once everything is loaded
-unless $gems_rake_task
+unless $gems_rake_task || $rails_rake_task
   RetroAM.load!
 end
 
