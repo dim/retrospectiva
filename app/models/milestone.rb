@@ -47,6 +47,10 @@ class Milestone < ActiveRecord::Base
       'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due ASC, milestones.finished_on DESC'
     end
 
+    def reverse_order
+      'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due DESC, milestones.finished_on ASC'
+    end
+
     def searchable_column_names
       [ 'milestones.name', 'milestones.info' ]
     end    

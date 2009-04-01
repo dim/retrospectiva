@@ -216,7 +216,20 @@ class TicketsController < ProjectAreaController
         :conditions => conditions,
         :include => Ticket.default_includes,
         :joins => @filters.joins,
-        :order => 'tickets.updated_at DESC, ticket_changes.created_at')
+        :order => [ticket_order, 'tickets.updated_at DESC', 'ticket_changes.created_at'].compact.join(', '))
+    end
+
+    def ticket_order
+      case params[:group]
+      when 'user'
+        'assigned_users_tickets.name'
+      when 'priority'
+        'priorities.rank'
+      when 'milestone'
+        Milestone.reverse_order
+      else
+        nil        
+      end      
     end
 
     def stored_params
