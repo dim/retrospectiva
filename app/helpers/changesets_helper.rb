@@ -5,6 +5,13 @@ module ChangesetsHelper
   def changeset_navigation(changeset)
     links = []
     links << link_to(_('Changeset index'), project_changesets_path(Project.current))
+    
+    if params[:expand_all]
+      links << link_to(_('Hide Quick Diffs'), :expand_all => nil)       
+    else
+      links << link_to(_('Show Quick Diffs'), :expand_all => '1')       
+    end if permitted?(:code, :browse)
+    
     if @previous_changeset
       links << link_to_changeset(_('Previous changeset'), @previous_changeset.revision) 
     end
@@ -20,24 +27,23 @@ module ChangesetsHelper
     changeset.changes.each do |change|
       parts = []
       parts << image_tag("ch_#{change.name}.png", :alt => change_label(change), :title => change_label(change))
-      parts << if change.name == 'D'
-        relativize_path(change.path)
-      else
-        link_to_show_file(change)
-      end
+      parts << content_tag(:span, link_to_show_file(change), :class => 'strong')
   
-      small = if permitted?(:code, :browse) && change.diffable? && !change.unified_diff.blank?
-        link_to_quick_diff(changeset, change)
+      small, quick_diff = nil, nil
+      if permitted?(:code, :browse) && change.diffable? && !change.unified_diff.blank?
+        small = link_to_quick_diff(changeset, change)
+        if params[:expand_all]
+          quick_diff = render :partial => 'quick_diff', :locals => { :change => change }
+        end
       elsif change.name == 'CP'
-        RetroI18n._('copied from {{path}}', :path => link_to_show_file(change, true))
+        small = RetroI18n._('copied from {{path}}', :path => link_to_show_file(change, true))
       elsif change.name == 'MV'
-        RetroI18n._('moved from {{path}}', :path => link_to_show_file(change, true))
-      else
-        nil
+        small = RetroI18n._('moved from {{path}}', :path => link_to_show_file(change, true))
       end
 
       parts << "<span class=\"small\">(#{small})</span>" if small
-      html << "<li id=\"ch_info_#{change.id}\">#{parts.join(' ')}</li>"
+      parts << quick_diff if quick_diff
+      html  << "<li id=\"ch_info_#{change.id}\">#{parts.join(' ')}</li>"
     end
     
     html.join("\n      ")
@@ -64,7 +70,7 @@ module ChangesetsHelper
         [relativize_path(change.path), change.revision]
       end
       label = path + (use_from ? " [#{truncate(revision, :length => 9)}]" : '')
-      link_to_browse label, path, revision
+      change.name == 'D' ? label : link_to_browse(label, path, revision)
     end
 
     def link_to_quick_diff(changeset, change)

@@ -1,5 +1,5 @@
 div.changeset ul        { list-style: none; }
 
-div.changeset ul li,
-div.changeset ul li img { margin: 0; padding: 0; }
+div.changeset ul li     { margin: 0.5em 0 0 0.25em; padding: 0; } 
+div.changeset ul li img { padding-right:4px; }
 div.changeset div.small p { margin-bottom:0.25em; }

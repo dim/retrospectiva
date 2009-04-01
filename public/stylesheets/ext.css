@@ -48,7 +48,7 @@ big         { font-size: 1.1em; }        /* Added big tag definition */
 
 /* Override pre-code */
 pre,code,tt { font-family: 'DejaVu Sans Mono','Lucida Console','Courier New','Andale Mono',monospace; line-height: 1; } 
-pre         { background: #eee; padding: 0.75em 1em; border: 1px dashed #666; overflow: auto; } 
+pre         { background: #eee; padding: 0.75em 1em; border: 1px dashed #666; } 
 
 ul          { list-style-type: square; line-height: 1.5; }
 ol          { list-style-type: decimal; line-height: 1.5; }

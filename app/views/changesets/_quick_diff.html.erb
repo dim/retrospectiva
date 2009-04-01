@@ -1,0 +1,11 @@
+<div class="box" id="ch_<%= change.id %>">
+  <div class="float-r">
+    <%= link_to_diff_download(change) %> | 
+    <%= link_to_function _('Close'), "$('ch_#{change.id}').hide()" %>
+  </div>
+  <h3><%= relativize_path(change.path) %></h3>
+
+  <% cache "#{Project.current.id}/changes/#{change.id}" do -%>  
+    <%= format_diff change.unified_diff, relativize_path(change.path) %>
+  <% end -%>
+</div>
