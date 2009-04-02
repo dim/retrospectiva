@@ -7,9 +7,9 @@ module ChangesetsHelper
     links << link_to(_('Changeset index'), project_changesets_path(Project.current))
     
     if params[:expand_all]
-      links << link_to(_('Hide Quick Diffs'), :expand_all => nil)       
+      links << link_to(_('Hide Quick Diffs'), project_changeset_path(Project.current, changeset))
     else
-      links << link_to(_('Show Quick Diffs'), :expand_all => '1')       
+      links << link_to(_('Show Quick Diffs'), project_changeset_path(Project.current, changeset, :expand_all => '1'))
     end if permitted?(:code, :browse)
     
     if @previous_changeset

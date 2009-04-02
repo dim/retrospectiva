@@ -5,11 +5,17 @@ describe "/changesets/show.html.erb" do
   before do 
     @repository = stub_model(Repository::Subversion)
     @project = mock_current_project! :repository => @repository, :existing_revisions => ['R5', 'R10', 'R15']
+    
     @project.stub!(:relativize_path).with('added.rb').and_return('added.rb')
     @project.stub!(:relativize_path).with('modified.rb').and_return('modified.rb')
     @project.stub!(:relativize_path).with('moved_from.rb').and_return('moved_from.rb')
     @project.stub!(:relativize_path).with('moved_to.rb').and_return('moved_to.rb')
-    @user = mock_current_user! :permitted? => true
+    
+    @project.stub!(:relativize_path).with('/retro/modified.rb').and_return('modified.rb')
+    @project.stub!(:relativize_path).with('/retro/moved_from.rb').and_return('moved_from.rb')
+    @project.stub!(:relativize_path).with('/retro/moved_to.rb').and_return('moved_to.rb')
+    @project.stub!(:relativize_path).with('/retro/added.rb').and_return('added.rb')      
+    @user = mock_current_user! :permitted? => true, :has_access? => true
 
     @c1 = mock_model Change, 
       :name => 'M', :path => '/retro/modified.rb', :revision => 'R10', :diffable? => true,
@@ -62,9 +68,10 @@ END_DIFF
     end    
   end
 
-  describe 'if user has NO permisssion to see code' do
+  describe 'if user has NO permission to see code' do
+    
     before do
-      @user.should_receive(:permitted?).with(:code, :browse).and_return(false)
+      @user.stub!(:permitted?).with(:code, :browse).and_return(false)
       render '/changesets/show', :helper => 'project_area'
     end
 
@@ -78,14 +85,7 @@ END_DIFF
   describe 'if user HAS permisssion to see code' do
     
     before do
-      @user.stub!(:permitted?).and_return(true)
-      @user.stub!(:has_access?).and_return(true)
       @c1.stub!(:previous_revision).and_return('R5')      
-      @project.stub!(:relativize_path).with('/retro/modified.rb').and_return('modified.rb')
-      @project.stub!(:relativize_path).with('/retro/moved_from.rb').and_return('moved_from.rb')
-      @project.stub!(:relativize_path).with('/retro/moved_to.rb').and_return('moved_to.rb')
-      @project.stub!(:relativize_path).with('/retro/added.rb').and_return('added.rb')      
-
     end
 
     def do_show
@@ -123,6 +123,20 @@ END_DIFF
         end
       end
     end    
+  
+    describe 'if expand-all paramter is provided' do
+      
+      before do
+        params[:expand_all] = '1'      
+      end
+
+      it 'should expand quick-diffs' do
+        do_show
+        response.should have_tag('ul.changes li', 3) # 3 changes
+        response.should have_tag('ul.changes li div.box', 1) # 1 modification
+      end    
+      
+    end
   end
   
 end
