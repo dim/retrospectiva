@@ -4,7 +4,7 @@
   </td>
   <td><%=h date_format(revision.created_at) %></td>
   <td><%=h revision.author %></td>
-  <td class="small quiet"><%=h truncate(revision.log.to_s * 100, :length => 80) %></td>
+  <td class="small quiet"><%=h truncate(revision.log.to_s, :length => 80) %></td>
   <% if permitted?(:changesets, :view) -%>
     <td class="linked"><%= link_to_changeset _('Changeset'), revision.revision %></td>
   <% end -%>
