@@ -440,9 +440,8 @@ ru-RU:
 
     # Missing
     # app/views/admin/ticket_property_values/edit.html.erb
-    "Edit property value": "Редактирование варианта значения
+    "Edit property value": "Редактирование варианта значения"
 
-    # Missing
     # app/views/admin/reports/edit.html.erb
     "Edit report": "Редактирование отчета"
 
