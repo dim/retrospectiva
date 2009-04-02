@@ -26,15 +26,15 @@ ru-RU:
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ВНИМАНИЕ: Настройки групп не учитываются если пользователю даны права администратора!"
 
     # Unknown
-    "Access forbidden (403)": 
+    "Access forbidden (403)": "Доступ запрещен(403)"
 
     # Missing
     # app/models/notifications.rb
-    "Account activation": 
+    "Account activation": "Активация учетной записи"
 
     # Missing
     # app/models/notifications.rb
-    "Account validation": 
+    "Account validation": "Проверка учетной записи"
 
     # app/views/accounts/activate.html.erb
     "Activate": "Активировать"
@@ -59,7 +59,7 @@ ru-RU:
     "Added": "добавлен"
 
     # app/helpers/navigation_helper.rb
-    "Admin": "Админка"
+    "Admin": "Администрирование"
 
     # app/views/admin/shared/_header.html.erb
     "Administration": "Администрирование"
@@ -80,11 +80,11 @@ ru-RU:
     # Missing
     # app/controllers/projects_controller.rb
     # app/views/rss/_all.html.erb
-    "All Projects": 
+    "All Projects": "Все проекты"
 
     # Missing
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": 
+    "All feeds for {{project}}":  
 
     # Missing
     # app/views/rss/_all.html.erb
@@ -143,7 +143,7 @@ ru-RU:
     # Missing
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
-    "Back": 
+    "Back": "Назад"
 
     # app/views/tickets/_navigation.html.erb
     "Back to ticket list": "Вернуться к списку тикетов"
@@ -162,7 +162,7 @@ ru-RU:
     # app/core_info.rb
     # app/views/browse/diff.html.erb
     # app/views/browse/revisions.html.erb
-    "Browse": 
+    "Browse": "Просмотр"
 
     # app/controllers/browse_controller.rb
     "Browse Code": "Просмотр кода"
@@ -192,7 +192,7 @@ ru-RU:
     # Missing
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
-    "Central": 
+    "Central": "Центральный"
 
     # Missing
     # app/views/notifications/ticket_update_note.html.erb
@@ -243,7 +243,7 @@ ru-RU:
 
     # Missing
     # app/core_info.rb
-    "Code": 
+    "Code": "Код"
 
     # app/views/tickets/_update_form.html.erb
     "Comment": "Комментарий"
@@ -270,7 +270,7 @@ ru-RU:
     # Missing
     # app/core_info.rb
     # app/views/tickets/form/_update_content.html.erb
-    "Content": 
+    "Content": "Содержимое"
 
     # app/helpers/changesets_helper.rb
     "Copied": "Скопировано"
@@ -286,42 +286,42 @@ ru-RU:
     # Missing
     # app/views/admin/groups/index.html.erb
     # app/views/admin/groups/new.html.erb
-    "Create a new group": 
+    "Create a new group": "Создание новой группы"
 
     # Missing
     # app/views/milestones/index.html.erb
     # app/views/milestones/new.html.erb
-    "Create a new milestone": 
+    "Create a new milestone": "Создание нового этапа"
 
     # Missing
     # app/views/admin/projects/index.html.erb
     # app/views/admin/projects/new.html.erb
-    "Create a new project": 
+    "Create a new project": "Создание нового проекта"
 
     # Missing
     # app/views/admin/ticket_property_values/index.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
-    "Create a new property value": 
+    "Create a new property value": "Создание нового варианта значения для свойства"
 
     # Missing
     # app/views/admin/reports/index.html.erb
     # app/views/admin/reports/new.html.erb
-    "Create a new report": 
+    "Create a new report": "Создание нового отчета"
 
     # Missing
     # app/views/admin/repositories/index.html.erb
     # app/views/admin/repositories/new.html.erb
-    "Create a new repository": 
+    "Create a new repository": "Создание нового репозитория"
 
     # Missing
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/admin/ticket_properties/new.html.erb
-    "Create a new ticket property": 
+    "Create a new ticket property": "Создание нового свойства тикета"
 
     # Missing
     # app/views/admin/users/index.html.erb
     # app/views/admin/users/new.html.erb
-    "Create a new user": 
+    "Create a new user": "Создание нового пользователя"
 
     # Missing
     # app/views/tickets/_ticket.html.erb
@@ -361,7 +361,7 @@ ru-RU:
 
     # Missing
     # app/views/admin/ticket_property_values/_priority_form.html.erb
-    "Default value": 
+    "Default value": "Значение по умолчанию"
 
     # app/core_info.rb
     # app/helpers/admin/ticket_property_values_helper.rb
@@ -387,7 +387,7 @@ ru-RU:
 
     # Missing
     # app/views/tickets/new.html.erb
-    "Details": 
+    "Details": "Детали"
 
     # Missing
     # app/views/browse/_revision.html.erb
@@ -424,42 +424,42 @@ ru-RU:
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "Edit": 
+    "Edit": "Редактировать"
 
     # Missing
     # app/views/admin/groups/edit.html.erb
-    "Edit group": 
+    "Edit group": "Редактирование группы"
 
     # Missing
     # app/views/milestones/edit.html.erb
-    "Edit milestone": 
+    "Edit milestone": "Редактирование этапа"
 
     # Missing
     # app/views/admin/projects/edit.html.erb
-    "Edit project": 
+    "Edit project": "Редактирование проекта"
 
     # Missing
     # app/views/admin/ticket_property_values/edit.html.erb
-    "Edit property value": 
+    "Edit property value": "Редактирование варианта значения
 
     # Missing
     # app/views/admin/reports/edit.html.erb
-    "Edit report": 
+    "Edit report": "Редактирование отчета"
 
     # Missing
     # app/views/admin/repositories/edit.html.erb
-    "Edit repository": 
+    "Edit repository": "Редактирование репозитория"
 
     # app/views/tickets/_navigation.html.erb
     "Edit summary": "Исправить заголовок"
 
     # Missing
     # app/views/admin/ticket_properties/edit.html.erb
-    "Edit ticket property": 
+    "Edit ticket property": "Редактирование свойства тикета"
 
     # Missing
     # app/views/admin/users/edit.html.erb
-    "Edit user": 
+    "Edit user": "Редактирование пользователя"
 
     # app/views/admin/users/_core.html.erb
     # app/views/notifications/account_activation_note.html.erb
@@ -472,16 +472,16 @@ ru-RU:
 
     # Missing
     # app/views/admin/projects/_form.html.erb
-    "Enabled modules": 
+    "Enabled modules": "Модули проекта"
 
     # Missing
     # app/views/admin/repositories/_form.html.erb
-    "Examples": 
+    "Examples": "Примеры"
 
     # Missing
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/extensions/index.html.erb
-    "Extensions": 
+    "Extensions": "Расширения"
 
     # app/controllers/admin/repositories_controller.rb
     "Failure! Path does not contain a valid repository.": "Failure! Path does not contain a valid repository."
@@ -528,7 +528,7 @@ ru-RU:
     # app/views/admin/users/_core.html.erb
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
-    "Full name": 
+    "Full name": "Полное имя"
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
@@ -637,7 +637,7 @@ ru-RU:
     # Missing
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
-    "Links": 
+    "Links":
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engines.rb
@@ -646,7 +646,7 @@ ru-RU:
     # Missing
     # app/helpers/application_helper.rb
     # app/views/layouts/_header.html.erb
-    "Loading...": 
+    "Loading...": "Загрузка..."
 
     # app/views/admin/projects/_form.html.erb
     "Locale": "Язык"
@@ -936,7 +936,7 @@ ru-RU:
 
     # Missing
     # app/views/rss/index.html.erb
-    "RSS": 
+    "RSS": "RSS"
 
     # app/helpers/browse_helper.rb
     "Raw": "Raw"
@@ -1236,7 +1236,7 @@ ru-RU:
     # Missing
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/index.html.erb
-    "Time zone": 
+    "Time zone": "Часовой пояс"
 
     # Missing
     # app/views/notifications/account_activation_note.html.erb
