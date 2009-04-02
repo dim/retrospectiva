@@ -16,7 +16,7 @@ class BlogController < ProjectAreaController
   require_permissions :blog_posts,
     :view    => ['index', 'show'],
     :create  => ['new', 'create'],
-    :update  => ['update'],
+    :update  => ['edit', 'update'],
     :delete  => ['destroy']
 
   enable_private_rss! :only => :index  

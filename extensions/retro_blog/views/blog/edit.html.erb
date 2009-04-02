@@ -7,7 +7,7 @@
   <%= render :partial => 'form', :locals => {:f => f} %>
 
   <% f.fieldset do -%>
-    <%= f.submit _('Update') %>
+    <%= f.submit _('Update') %> | <%= link_to _('Cancel'), project_blog_post_path(Project.current, @blog_post) %>
   <% end -%>
 <% end -%>
   
