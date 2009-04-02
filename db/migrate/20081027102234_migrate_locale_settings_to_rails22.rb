@@ -4,7 +4,7 @@ class MigrateLocaleSettingsToRails22 < ActiveRecord::Migration
     records.each do |hash|
       locale = RetroI18n.normalize_code(hash['locale'])
       next if hash['locale'] == locale
-      execute "UPDATE projects SET locale = '#{locale}' WHERE id = #{hash['id']}"
+      execute "UPDATE projects SET locale = #{quote(locale)} WHERE id = #{hash['id']}"
     end
   end
 
@@ -13,7 +13,7 @@ class MigrateLocaleSettingsToRails22 < ActiveRecord::Migration
     records.each do |hash|
       locale = hash['locale'].split(/[^a-z]/i).join('_')
       next if hash['locale'] == locale
-      execute "UPDATE projects SET locale = '#{locale}' WHERE id = #{hash['id']}"
+      execute "UPDATE projects SET locale = #{quote(locale)} WHERE id = #{hash['id']}"
     end
   end
 end

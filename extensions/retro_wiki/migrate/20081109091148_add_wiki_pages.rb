@@ -83,7 +83,7 @@ class AddWikiPages < ActiveRecord::Migration
       end      
     end.each do |project_id, records|
       titles = records.map {|i| i['title'] }.to_yaml
-      execute "UPDATE projects SET existing_wiki_page_titles = '#{titles}' WHERE id = #{project_id}" 
+      execute "UPDATE projects SET existing_wiki_page_titles = #{quote(titles)} WHERE id = #{project_id}" 
     end
     
   end

@@ -30,7 +30,7 @@ class MigrateGroupPermissionsToNewFormat < ActiveRecord::Migration
         end        
       end
       if source.is_a?(Array)
-        execute "UPDATE groups SET permissions = '#{target.to_yaml}' WHERE id = #{item['id']}"
+        execute "UPDATE groups SET permissions = #{quote(target.to_yaml)} WHERE id = #{item['id']}"
       end
     end
   end

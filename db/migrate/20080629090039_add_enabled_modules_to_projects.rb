@@ -8,7 +8,7 @@ class AddEnabledModulesToProjects < ActiveRecord::Migration
       target.reject! do |name|
         source.include?(name.split('_').first)
       end if source.is_a?(Array)
-      execute "UPDATE projects SET enabled_modules = '#{target.to_yaml}' WHERE id = #{item['id']}"
+      execute "UPDATE projects SET enabled_modules = #{quote(target.to_yaml)} WHERE id = #{item['id']}"
     end    
   end
 
