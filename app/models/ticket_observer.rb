@@ -42,7 +42,15 @@ class TicketObserver < ActiveRecord::Observer
 
       existing_tickets.merge!(ticket.id => { :state => ticket.status.state_id, :summary => ticket.summary })
       ticket.project.update_attribute(:existing_tickets, existing_tickets)
-    end      
+    end
+    
+    if RetroCM[:ticketing][:subscription][:subscribe_on_assignment] and 
+        ticket.assigned_user and ticket.assigned_user.permitted?(:tickets, :watch, :project => ticket.project)
+      
+      ticket.subscribers << ticket.assigned_user
+    end
+    
+    true
   end
 
   def after_destroy(ticket)

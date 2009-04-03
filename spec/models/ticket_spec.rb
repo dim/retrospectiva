@@ -1,6 +1,17 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Ticket do
+  fixtures :tickets, :ticket_changes, :users, :projects, :statuses, :priorities, :ticket_subscribers, :groups, :groups_projects, :groups_users, :milestones
+
+  def build_ticket
+    @ticket.project = projects(:retro)
+    @ticket.user = users(:agent)
+    @ticket.status = statuses(:open)
+    @ticket.priority = priorities(:normal)
+    @ticket.summary = 'New ticket'
+    @ticket.content = 'New content'
+    @ticket
+  end
 
   describe 'associations' do
 
@@ -47,7 +58,6 @@ describe Ticket do
   end
   
   describe 'updating' do
-    fixtures :tickets, :projects, :statuses
 
     before(:each) do
       @ticket = tickets(:another_open)
@@ -63,7 +73,6 @@ describe Ticket do
 
 
   describe 'toggle subscriptions' do
-    fixtures :tickets, :projects, :ticket_subscribers, :users
     
     before do
       @user = users(:agent)
@@ -99,10 +108,9 @@ describe Ticket do
 
     end
   end
-  
+
   
   describe 'modifiable status' do
-    fixtures :tickets, :users
 
     it 'should return false if no user is assigned' do
       tickets(:another_open).send(:modifiable?, users(:agent)).should == false
@@ -129,7 +137,6 @@ describe Ticket do
   end
   
   describe 'determination of permitted subscribers' do
-    fixtures :tickets, :groups, :groups_projects, :groups_users, :projects, :ticket_subscribers, :users
     
     before do
       @agent = users(:agent)
@@ -164,7 +171,6 @@ describe Ticket do
 
   
   describe 'assigning custom properties' do
-    fixtures :tickets, :projects, :statuses, :priorities, :ticket_properties, :ticket_property_types, :ticket_properties_tickets, :milestones
    
     describe 'a new record' do
       
@@ -231,7 +237,6 @@ describe Ticket do
 
   
   describe 'an instance' do
-    fixtures :tickets, :users, :groups_users, :groups, :projects, :groups_projects, :statuses
    
     before(:each) do
       @filter = mock(TicketFilter::Collection, :conditions => ['statuses.state_id = 1'], :joins => nil)
@@ -293,20 +298,9 @@ describe Ticket do
       
 
   describe 'on create' do
-    fixtures :tickets, :users, :groups_users, :groups, :projects, :groups_projects, :statuses, :priorities    
 
     before do
       @ticket = Ticket.new
-    end
-
-    def build_ticket
-      @ticket.project = projects(:retro)
-      @ticket.user = users(:agent)
-      @ticket.status = statuses(:open)
-      @ticket.priority = priorities(:normal)
-      @ticket.summary = 'New ticket'
-      @ticket.content = 'New content'
-      @ticket
     end
     
     def build_attachment(content, name = 'file.rb', type = 'text/plain')    
@@ -357,7 +351,6 @@ describe Ticket do
   
   
   describe 'on save' do
-    fixtures :tickets, :users, :groups_users, :groups, :projects, :groups_projects, :milestones, :statuses, :priorities
     
     before do
       @ticket = Ticket.new
@@ -431,11 +424,50 @@ describe Ticket do
       projects(:retro).reload.existing_tickets[tickets(:another_open).id][:state].should == 3      
     end
 
+    describe 'if a user was assigned' do
+
+      before do
+        RetroCM[:ticketing][:subscription].stub!(:[]).with(:subscribe_on_assignment).and_return(true)
+        @ticket = build_ticket
+        @ticket.assigned_user = users(:agent)
+      end
+
+      it 'should check for subscription-on-assignment setting' do
+        RetroCM[:ticketing][:subscription].should_receive(:[]).with(:subscribe_on_assignment).and_return(false)          
+        @ticket.save.should be(true)            
+      end
+
+      describe 'if subscription-on-assignment is inactive' do
+                
+        it 'should not subscribe the user' do
+          RetroCM[:ticketing][:subscription].should_receive(:[]).with(:subscribe_on_assignment).and_return(false)          
+          @ticket.save.should be(true)            
+          @ticket.subscribers(true).should be_empty
+        end
+
+      end
+      
+      describe 'if subscription-on-assignment is active' do
+        
+        it 'should not subscribe the user if user is not permitted to watch the ticket' do
+          @ticket.assigned_user = users(:inactive)
+          @ticket.save.should be(true)
+          @ticket.subscribers(true).should == []
+        end
+
+        it 'should subscribe the user if user is permitted to watch the ticket' do
+          @ticket.save.should be(true)
+          @ticket.subscribers(true).should == [users(:agent)]
+        end
+        
+      end
+      
+    end
+
   end
 
 
   describe 'on delete' do
-    fixtures :projects, :tickets, :statuses
 
     it 'should remove the ticket reference from the existing-tickets cache in parent project' do
       projects(:retro).existing_tickets[tickets(:another_open).id].should_not be_blank      
@@ -447,8 +479,7 @@ describe Ticket do
 
 
   describe 'previewable' do  
-    fixtures :projects, :tickets, :users, :statuses, :priorities
-      
+    
     describe 'channel' do
       before do
         @channel = Ticket.previewable.channel(:project => projects(:retro))
@@ -499,7 +530,6 @@ describe Ticket do
   end
 
   describe 'generating RSS' do
-    fixtures :projects, :tickets, :statuses, :priorities, :users
 
     before do
       Project.stub!(:current).and_return(projects(:retro))
@@ -519,7 +549,6 @@ describe Ticket do
   end
 
   describe '\'flattening\' records' do
-    fixtures :tickets, :ticket_changes, :projects, :statuses
 
     before do
       Project.stub!(:current).and_return(projects(:retro))

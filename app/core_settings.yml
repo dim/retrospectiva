@@ -175,7 +175,7 @@
       name: 'subscription'
       settings:
         - !ruby/object:RetroCM::BooleanSetting
-          name: 'subscribe_on_assignement'
+          name: 'subscribe_on_assignment'
           default: true
         - !ruby/object:RetroCM::BooleanSetting
           name: 'encourage_subscription'

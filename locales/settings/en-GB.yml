@@ -158,7 +158,7 @@ en-GB:
         subscription: 
           label: Subscription
           settings: 
-            subscribe_on_assignement: 
+            subscribe_on_assignment: 
               label: Subscribe on assignment
               description: |
                 Should a user who is assigned to a ticket be automatically subscribed to receive email notifications?

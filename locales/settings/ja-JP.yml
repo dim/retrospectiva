@@ -93,7 +93,7 @@ ja-JP:
         subscription: 
           label: 
           settings: 
-            subscribe_on_assignement: 
+            subscribe_on_assignment: 
               label: 
             encourage_subscription: 
               label: 
