@@ -38,7 +38,7 @@ describe "/milestones/index.html.erb" do
 
   describe 'if user has permission to edit milestones' do    
     before do
-      @user.should_receive(:permitted?).with(:milestones, :edit).and_return(true)
+      @user.should_receive(:permitted?).with(:milestones, :update).and_return(true)
       render "/milestones/index.html.erb"
     end
 

@@ -2,7 +2,7 @@ module MilestonesHelper
 
   def links_to_edit_and_delete(milestone)
     links = []
-    if permitted?(:milestones, :edit)
+    if permitted?(:milestones, :update)
       links << link_to(_('Edit'), edit_project_milestone_path(Project.current, milestone))
     end  
     if permitted?(:milestones, :delete)
