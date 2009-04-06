@@ -37,7 +37,7 @@ class TicketFilter::Collection < Array
       elsif result.key?(name)
         result[name].delete(id)
       end
-      remove_linked!(result) if default?
+#      remove_linked!(result) if default?
     end
   end
   
@@ -105,10 +105,10 @@ class TicketFilter::Collection < Array
       end if self[:state].selected?      
     end
 
-    def remove_linked!(options)
-      options['status']
-      p options
-    end
+#    def remove_linked!(options)
+#      options['status']
+#      p options
+#    end
 
     def before_add(key, records, options = {})
     end
