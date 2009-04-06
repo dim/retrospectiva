@@ -6,8 +6,8 @@
 $: << File.dirname(__FILE__) + '/../lib'
 # $: << File.dirname(__FILE__) + '/../../redcloth_native/lib'
 
-require 'redcloth'
 require 'rubygems'
+require 'redcloth'
 require 'test/unit'
 require File.dirname(__FILE__) + '/../init'
 
@@ -254,11 +254,16 @@ p<<iframe src=http://ha.ckers.org/scriptlet.html(. A nasty hack?\n
 
 
   def test_extracting_text_parts
+    original = "<p>Extract me</p><pre>Ignore me</pre><p>Extract me too</p>"
+    text = original.dup
+    
     result = []
-    WikiEngine.with_text_parts_only("<p>Extract me</p><pre>Ignore me</pre><p>Extract me too</p>") do |match|
+    WikiEngine.with_text_parts_only(text) do |match|
       result << match
     end
+
     assert_equal(['Extract me', 'Extract me too'], result)
+    assert_equal(original, text)
   end
 
 

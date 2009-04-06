@@ -83,10 +83,14 @@ module WikiEngine
     end
 
     def with_text_parts_only(text, &block)
-      result, tokenizer = [], HTML::Tokenizer.new(text.gsub(/<pre[^>]*>.+?<\/pre[^>]*>/im, ''))
+      result, tokenizer = [], HTML::Tokenizer.new(text)
       while token = tokenizer.next        
         node = parse_node(token)
-        result << yield(token) if node.is_a?(HTML::Text)
+        result << if node.is_a?(HTML::Text)
+          yield(token)
+        else
+          token
+        end
       end
       result.join      
     end    
