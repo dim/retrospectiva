@@ -23,7 +23,7 @@ class TicketFilter::Collection < Array
   
   def including(name, id)
     name, id = name.to_s, id.to_i
-    returning(clone_params) do |result|      
+    returning(real_params) do |result|      
       result[name] ||= []
       result[name] << id
     end
@@ -31,12 +31,13 @@ class TicketFilter::Collection < Array
 
   def excluding(name, id)
     name, id = name.to_s, id.to_i
-    returning(clone_params) do |result|
+    returning(real_params) do |result|      
       if result[name] == [id]
         result.delete(name)
       elsif result.key?(name)
         result[name].delete(id)
       end
+      remove_linked!(result) if default?
     end
   end
   
@@ -68,12 +69,6 @@ class TicketFilter::Collection < Array
     @index ||= index_by(&:name)
   end
 
-  def clone_params
-    to_params.inject({}) do |result, (key, value)|
-      result.merge key => value.dup
-    end
-  end
-  
   protected
   
     def push_global_items!
@@ -110,12 +105,24 @@ class TicketFilter::Collection < Array
       end if self[:state].selected?      
     end
 
+    def remove_linked!(options)
+      options['status']
+      p options
+    end
+
     def before_add(key, records, options = {})
     end
     
     def after_add(key, records, options = {})
     end
-  
+
+    def real_params
+      inject({}) do |result, item|
+        result[item.name] = item.selected_ids.sort if item.selected?
+        result
+      end
+    end
+
   private
 
     def property(name, records, options = {})

@@ -4,7 +4,9 @@
 #++
 
 $: << File.dirname(__FILE__) + '/../lib'
+# $: << File.dirname(__FILE__) + '/../../redcloth_native/lib'
 
+require 'redcloth'
 require 'rubygems'
 require 'test/unit'
 require File.dirname(__FILE__) + '/../init'

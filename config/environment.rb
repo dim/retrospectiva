@@ -22,8 +22,12 @@ Rails::Initializer.run do |config|
   # They can then be installed with "rake gems:install" on new installations.
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '>= 2.3.8'
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com', :version => '>= 1.0.3' 
-  config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
-
+  
+  # Skip if installed via Single-Step-Installer
+  if !File.exist?(File.join(RAILS_ROOT, 'vendor', 'gems')) || $gems_rake_task 
+    config.gem 'RedCloth', :lib => 'redcloth'
+  end
+  
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named

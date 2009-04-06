@@ -301,6 +301,8 @@ class RemoteInstaller
       end
 
       def gem(name, options = {})
+        return unless options[:version]
+        
         name = name + '-' + options[:version].gsub(/[^\d.]/, '')
         self[name] = options[:source] || 'http://gems.rubyforge.org'
       end
