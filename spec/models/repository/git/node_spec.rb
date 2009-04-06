@@ -14,7 +14,7 @@ describe Repository::Git::Node do
   describe 'an instance' do
     
     it 'should return the first 6 characters as short-revision' do
-      request_node("retrospectiva/config/environment.rb").short_revision.should == '573ae4'
+      request_node("retrospectiva/config/environment.rb").short_revision.should == '573ae4e'
     end    
     
   end

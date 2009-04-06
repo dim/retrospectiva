@@ -7,7 +7,7 @@ class Repository::Git < Repository::Abstract
   class << self
     
     def truncate_revision(revision)
-      super.first(6)
+      super.first(7)
     end
     
   end

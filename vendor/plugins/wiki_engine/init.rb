@@ -1,4 +1,5 @@
 require 'active_support'
+require 'action_controller'
 require 'wiki_engine'
-require 'wiki_engines'
+
 WikiEngine.init

@@ -1,3 +1,5 @@
+require 'wiki_engine/engines'
+
 module WikiEngine
   @@default_engine = nil
 
@@ -38,12 +40,15 @@ module WikiEngine
       engine = engine.to_s
       if !self.supported_engines.include?(engine)
         raise "The selected WIKI engine '#{engine}' is invalid! Supported engines: #{supported_engines.keys.inspect}"
-      elsif self.supported_engines[engine].blank?      
+      elsif supported_engines[engine]
+        @@default_engine = engine
+      elsif supported_engines.values.compact.any?
+        @@default_engine = supported_engines.values.first
+      else
         raise "The selected WIKI default engine '#{engine}' is missing! " + 
-                "Please install required GEM or library or switch to another engine. " + 
-                  "Available engines: #{available_engine_names.inspect}" 
+              "Please install required GEM or library or switch to another engine. " + 
+              "Available engines: #{available_engine_names.inspect}" 
       end
-      @@default_engine = engine  
     end
     alias_method :default_markup=, :default_engine=
 
@@ -53,12 +58,12 @@ module WikiEngine
     end
     alias_method :default_markup, :default_engine
 
-    # Initializes the WikiENgine. Looks for available libraries. A default engine can be specified.
+    # Initializes the WikiEngine. Looks for available libraries. A default engine can be specified.
     def init(default = :retro)
       begin
-        require 'redcloth_ng'
+        require 'redcloth'
         self.supported_engines['textile'] = TextileEngine.new
-        require 'retro_markup'
+        require 'wiki_engine/retro'
         self.supported_engines['retro'] = RetroEngine.new
       rescue LoadError; end
       
@@ -70,7 +75,7 @@ module WikiEngine
       begin
         require 'rdoc/markup/simple_markup'
         require 'rdoc/markup/simple_markup/to_html'
-        require 'rdoc_support'
+        require 'wiki_engine/rdoc'
         self.supported_engines['rdoc'] = RDocEngine.new
       rescue LoadError; end
       
@@ -78,15 +83,19 @@ module WikiEngine
     end
 
     def with_text_parts_only(text, &block)
-      result, tokenizer = [], HTML::Tokenizer.new(text)
-      while token = tokenizer.next
-        node = HTML::Node.parse(nil, 0, 0, token, false)
-        result << (node.is_a?(HTML::Text) ? yield(token) : token)
+      result, tokenizer = [], HTML::Tokenizer.new(text.gsub(/<pre[^>]*>.+?<\/pre[^>]*>/im, ''))
+      while token = tokenizer.next        
+        node = parse_node(token)
+        result << yield(token) if node.is_a?(HTML::Text)
       end
       result.join      
     end    
 
     private
+
+      def parse_node(token)
+        HTML::Node.parse(nil, 0, 0, token, false)
+      end
 
       def select_engine(engine = nil)
         engine && supported_engines[engine] ? engine : default_engine        

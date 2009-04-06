@@ -34,12 +34,12 @@ module FormatHelper
 
   def markup(text, options = {})
     options.symbolize_keys!
-    wikified = sanitize(WikiEngine.markup(text.dup, options[:engine]))
+    wikified = auto_link(sanitize(WikiEngine.markup(text, options[:engine])))
     format_internal_links(wikified, options)
   end
     
   def simple_markup(text, options = {})
-    wikified = auto_link(simple_format(escape_once(text.dup)))
+    wikified = auto_link(simple_format(escape_once(text)))
     format_internal_links(wikified, options)
   end
 

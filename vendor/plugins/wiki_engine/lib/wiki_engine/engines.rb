@@ -78,28 +78,25 @@ module WikiEngine
         "|_. attribute list |\n|<. align left |\n|>. align right|\n|=. align center |\n|<>. align justify |\n|^. valign top |\n|~. valign bottom |",
         "|\\2. two column span |\n| col 1 | col 2 |"
       ]
+      examples[_('Formats')] = [
+        "strong: I *believe* every word\n\n"+ 
+        "emphased: I _believe_ every word\n\n" + 
+        "citation: I ??believe?? every word\n\n" +
+        "inserted: I +believe+ every word\n\n" + 
+        "deleted: I -believe- every word\n\n" + 
+        "superscript: I ^believe^ every word\n\n" + 
+        "subscript: I ~believe~ every word\n\n" + 
+        "inline-code: I @believe@ every word" 
+      ]      
       examples
     end    
   end
 
 
   class TextileEngine < TextileBasedEngine     
-    def markup_examples
-      examples = super
-      examples[_('Formats')] = [
-        "strong: I *believe* every word\n\n"+ 
-        "emphased: I _believe_ every word\n\n" + 
-        "inserted: I +believe+ every word\n\n" + 
-        "deleted: I -believe- every word\n\n" + 
-        "superscript: I ^believe^ every word\n\n" + 
-        "subscript: I ~believe~ every word\n\n" + 
-        "inline-code: I @believe@ every word"
-      ]
-      examples
-    end
     
     def markup(text)      
-      RedCloth.new(text, [:filter_html, :filter_styles]).to_html(:textile)
+      RedCloth.new(text, [:sanitize_html, :filter_styles, :filter_classes, :filter_ids]).to_html
     end  
   end
 
@@ -113,15 +110,6 @@ module WikiEngine
       examples[_('Headers')] += [
         "= Header 1 =\n\n== Header 2 ==\n\n=== Header 3 ==="
       ]    
-      examples[_('Formats')] = [
-        "strong: I *believe* every word\n\n"+ 
-        "emphased: I +believe+ every word\n\n" + 
-        "inserted: I _believe_ every word\n\n" + 
-        "deleted: I -believe- every word\n\n" + 
-        "superscript: I ^believe^ every word\n\n" + 
-        "subscript: I ~believe~ every word\n\n" + 
-        "inline-code: I @believe@ every word"
-      ]
       examples[_('Blocks')] += [
         "bc. A code block",
         "{{{\n  public String toString() {\n    this.entity.getNodeName();\n  }\n}}}"    
@@ -130,7 +118,7 @@ module WikiEngine
     end
 
     def markup(text)      
-      RetroMarkup.new(text).to_html
+      WikiEngine::Retro.new(text).to_html
     end  
   end
 
@@ -193,7 +181,7 @@ module WikiEngine
     end
 
     def markup(text)      
-      RDocSupport::RDocFormatter.new(text).to_html
+      WikiEngine::RDoc.new(text).to_html
     end
   end
 

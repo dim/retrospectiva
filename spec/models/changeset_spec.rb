@@ -96,7 +96,7 @@ describe Changeset do
 
     it 'should choose short revision representation from repository type' do
       @changeset.short_revision.should == '1'
-      changesets(:git_initial).short_revision.should == 'fda71e'
+      changesets(:git_initial).short_revision.should == 'fda71ed'
     end
 
     it 'should validate presence of repository ID' do

@@ -1,0 +1,99 @@
+module WikiEngine
+
+  class Retro < RedCloth::TextileDoc
+    CODE_PATTERN   = /\{{3}\n*(.+?)\n*\}{3}/um    
+    HEADER_PATTERN = /^(={1,6})[ ]*(.+?)[ ]*=*$/
+
+    module Formatter
+      include RedCloth::Formatters::HTML
+      
+      def clean_html(text, allowed_tags = { 'br' => [] })
+        super
+      end
+    end
+  
+    def initialize(string)
+      super(string.dup, [:sanitize_html, :filter_styles, :filter_classes, :filter_ids])      
+      self.hard_breaks = false
+      
+      # normalize line breaks
+      clean_white_space!
+
+      # if entire document is indented, flush
+      # to the left side
+      flush_left!
+
+      # Extract {{{CODE}}} 
+      @code_blocks = {}      
+      gsub! CODE_PATTERN do |match|
+        placeholder = "[#{ActiveSupport::SecureRandom.hex(20)}]"
+        @code_blocks[placeholder] = CGI::escapeHTML($1.to_s.strip)
+        "\nbc. #{placeholder}\n"
+      end
+
+      # Remove evil tags (with content) 
+      strip_blocks! %w(meta i?frame i?layer app\w* link object embed bgsound form input select textarea style script)
+
+      # Rewrite MediaWiki type headers 
+      gsub!(HEADER_PATTERN) do |match|
+        "h#{$1.size}. #{$2}\n"
+      end
+
+      # Rewrite line-breaks 
+      gsub!('[[BR]]', '<br />')
+    end
+    
+    # Custom HTML formatter
+    def to_html
+      returning to(Formatter) do |html|
+        @code_blocks.each do |placeholder, code|
+          html.gsub! placeholder, code
+        end
+      end
+    end
+
+    protected
+
+      def strip_blocks!(*args)
+        args.flatten.each do |tag|
+          gsub!(/\s*<#{tag}[^>]*>.+?<\/#{tag}[^>]*>\s*/im, ' ')
+        end
+      end
+    
+      def clean_white_space!
+        gsub!( /\r\n/, "\n" )
+        gsub!( /\r/, "\n" )
+        gsub!( /\t/, ' ' )
+        gsub!( /^ +$/, '' )
+        gsub!( /\n{3,}/, "\n\n" )
+        gsub!( /"$/, "\" " )
+      end
+ 
+      def flush_left!
+        indt = 0
+        if self =~ /^ /
+          while self !~ /^ {#{indt}}\S/
+            indt += 1
+          end unless empty?
+          if indt.nonzero?
+            gsub!( /^ {#{indt}}/, '' )
+          end
+        end
+      end
+
+  end
+end
+
+#
+#    QTAGSX = [
+#      ['**', 'b'],
+#      ['*', 'strong'],
+#      ['\'\'', 'cite', :limit],
+#      ['-', 'del', :limit],
+#      ['++', 'i'],
+#      ['+', 'em', :limit],
+#      ['%', 'span', :limit],
+#      ['_', 'ins', :limit],
+#      ['^', 'sup'],
+#      ['~', 'sub']
+#    ] 
