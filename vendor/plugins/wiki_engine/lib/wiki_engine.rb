@@ -83,23 +83,28 @@ module WikiEngine
     end
 
     def with_text_parts_only(text, &block)
-      result, tokenizer = [], HTML::Tokenizer.new(text)
-      while token = tokenizer.next        
-        node = parse_node(token)
-        result << if node.is_a?(HTML::Text)
-          yield(token)
-        else
-          token
+      tokenizer = HTML::Tokenizer.new(text)
+      open_pre  = false
+      
+      returning [] do |result|           
+        
+        while token = tokenizer.next
+          node = HTML::Node.parse(nil, 0, 0, token, false)
+          
+          if !open_pre and node.is_a?(HTML::Text)
+            result << yield(token)
+          else
+            if node.is_a?(HTML::Tag) and node.name == 'pre'
+              open_pre = node.closing.nil? 
+            end
+            result << token
+          end
         end
-      end
-      result.join      
+
+      end.join      
     end    
 
-    private
-
-      def parse_node(token)
-        HTML::Node.parse(nil, 0, 0, token, false)
-      end
+    private      
 
       def select_engine(engine = nil)
         engine && supported_engines[engine] ? engine : default_engine        

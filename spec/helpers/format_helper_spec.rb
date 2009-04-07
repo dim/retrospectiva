@@ -26,6 +26,21 @@ describe FormatHelper do
         do_format('a text with a [r1a2b3c4d] changeset reference').should == 'a text with a LINK changeset reference'
       end
 
+      it 'should correctly work with multiple references' do
+        helper.should_receive(:format_internal_changeset_link).exactly(3).times.and_return('LINK')
+        do_format('a text with multiple [1a2b] [r1a2] [1a2b] references').should == 'a text with multiple LINK LINK LINK references'
+      end
+
+      it 'should correctly references located at the beginning/end of the document' do
+        helper.should_receive(:format_internal_changeset_link).exactly(3).times.and_return('LINK')
+        do_format('[1a2b] a text with multiple [r1a2] references [1a2b]').should == 'LINK a text with multiple LINK references LINK'
+      end
+
+      it 'should ignore double-brackets' do
+        helper.should_not_receive(:format_internal_changeset_link)
+        do_format('a text with a [[1a2b3c4d]] changeset reference').should == 'a text with a [[1a2b3c4d]] changeset reference'
+      end      
+
       it 'should support numeric references' do
         helper.should_receive(:format_internal_changeset_link).with('123', {}).twice.and_return('LINK')
         do_format('a text with a [123] changeset reference').should == 'a text with a LINK changeset reference'

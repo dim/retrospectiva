@@ -91,15 +91,16 @@ module FormatHelper
       return markup if Project.current.blank? and not options[:demo] 
       
       WikiEngine.with_text_parts_only(markup) do |text|
-        text.gsub(/([^\[]|^)\[(\\?)([\#|r]?)(\w+)\]([^\]]|$)/) do |match|
-          prefix, escape, type, ref, suffix = $1, $2, $3, $4, $5
-          case escape.blank? && type
+        text.gsub(/\[?(\\?)([\#|r]?)(\w+)\]/) do |match|
+          escape, type, ref = $1, $2, $3
+          
+          case escape.blank? and type
           when 'r', ''
-            prefix + format_internal_changeset_link(ref, options) + suffix
+            format_internal_changeset_link(ref, options)
           when '#'
-            prefix + format_internal_ticket_link(ref.to_i, options) + suffix
+            format_internal_ticket_link(ref.to_i, options) 
           else
-            "#{prefix}[#{type}#{ref}]#{suffix}"
+            "[#{type}#{ref}]"
           end
         end
       end

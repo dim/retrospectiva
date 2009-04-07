@@ -254,16 +254,15 @@ p<<iframe src=http://ha.ckers.org/scriptlet.html(. A nasty hack?\n
 
 
   def test_extracting_text_parts
-    original = "<p>Extract me</p><pre>Ignore me</pre><p>Extract me too</p>"
-    text = original.dup
+    original = "<p>Extract me</p><pre>Ignore me</pre><p class=\"ignore-me\">Extract me too</p>"
+    source   = original.dup
     
-    result = []
-    WikiEngine.with_text_parts_only(text) do |match|
-      result << match
+    result   = WikiEngine.with_text_parts_only(source) do |match|
+      match.gsub(/me/, 'ME')
     end
 
-    assert_equal(['Extract me', 'Extract me too'], result)
-    assert_equal(original, text)
+    assert_equal("<p>Extract ME</p><pre>Ignore me</pre><p class=\"ignore-me\">Extract ME too</p>", result)
+    assert_equal(original, source)
   end
 
 
