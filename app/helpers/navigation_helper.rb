@@ -36,7 +36,7 @@ module NavigationHelper
       Project.current.existing_revisions.include?(revision)    
 
     link_to_if condition, label, 
-      project_changeset_path(Project.current, revision), 
+      project_changeset_path(Project.current, revision, params.only(:expand_all)), 
       options.reverse_merge(:title => _('Show changeset {{revision}}', :revision => h(revision)))
   end
   

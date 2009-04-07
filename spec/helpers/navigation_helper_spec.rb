@@ -28,7 +28,7 @@ describe NavigationHelper do
     end
 
     it 'should generate the correct URL if conditions are met' do
-      helper.should_receive(:project_changeset_path).with(@project, 'REVISION').and_return('URL')
+      helper.should_receive(:project_changeset_path).with(@project, 'REVISION', {}).and_return('URL')
       helper.link_to_changeset('LABEL', 'REVISION').should == '<a href="URL" title="Show changeset REVISION">LABEL</a>'
     end
 
