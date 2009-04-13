@@ -1,7 +1,7 @@
 module FormatHelper
 
   def markup_with_wiki_words(text, options = {})
-    text.gsub!(WikiEngine.link_pattern) do |match|
+    text.gsub!(WikiEngine.wiki_word_pattern) do |match|
       match.gsub(/\|/, ':')
     end
     markup_without_wiki_words(text, options)
@@ -13,20 +13,28 @@ module FormatHelper
   end
   
   protected
-  
-    def format_internal_links_with_wiki_words(markup, options = {})
-      reference_wiki_words(format_internal_links_without_wiki_words(markup, options), options)
+
+    def internal_link_pattern_with_wiki_words
+      /(?:#{internal_link_pattern_without_wiki_words})|(?:#{WikiEngine.wiki_word_pattern})/
     end
-    alias_method_chain :format_internal_links, :wiki_words
+    alias_method_chain :internal_link_pattern, :wiki_words
 
-  private
-  
-    def reference_wiki_words(markup, options = {})
-      return markup if Project.current.blank? and not options[:demo]
+    def format_internal_link_with_wiki_words(match_data, options)
+      if match_data[0] =~ WikiEngine.wiki_word_pattern
+        format_wiki_word_link(match_data, options)
+      else
+        format_internal_link_without_wiki_words(match_data, options)
+      end
+    end
+    alias_method_chain :format_internal_link, :wiki_words
 
-      WikiEngine.link_all(markup) do |match, prefix, page, title|
+    def format_wiki_word_link(match_data, options)
+      WikiEngine.parse_wiki_word_link(match_data) do |prefix, page, title| 
+        
         if page.to_s.size < 2
-          match
+          match_data[0]
+        elsif page.to_s == 'BR'
+          '<br />'
         elsif options[:demo] and prefix != 'I'         
           link_to_function h(title)
         elsif options[:demo] and prefix == 'I'         
@@ -44,8 +52,9 @@ module FormatHelper
           "<span class=\"highlight\">#{h(title)}#{link}</span>"        
         else
           h(title)
-        end
+        end        
+      
       end
-    end  
+    end
 
 end

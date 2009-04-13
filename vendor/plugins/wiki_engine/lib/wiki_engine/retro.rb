@@ -83,17 +83,3 @@ module WikiEngine
 
   end
 end
-
-#
-#    QTAGSX = [
-#      ['**', 'b'],
-#      ['*', 'strong'],
-#      ['\'\'', 'cite', :limit],
-#      ['-', 'del', :limit],
-#      ['++', 'i'],
-#      ['+', 'em', :limit],
-#      ['%', 'span', :limit],
-#      ['_', 'ins', :limit],
-#      ['^', 'sup'],
-#      ['~', 'sub']
-#    ] 

@@ -16,3 +16,5 @@ RetroAM.permission_map do |map|
   end
 
 end
+
+require 'wiki_engine_extensions'

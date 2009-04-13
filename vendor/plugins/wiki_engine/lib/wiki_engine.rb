@@ -25,16 +25,6 @@ module WikiEngine
       text.blank? || engine.blank? ? '' : supported_engines[engine].markup(text)
     end
   
-    def link_all(text, engine = nil, &block)
-      engine = select_engine(engine)
-      text.blank? || engine.blank? ? '' : supported_engines[engine].link_all(text, &block)
-    end
-
-    def link_pattern(engine = nil)
-      engine = select_engine(engine)
-      engine.blank? ? %r{} : supported_engines[engine].link_pattern
-    end
-
     # This method can be called in environment.rb to override the default engine
     def default_engine=(engine)
       engine = engine.to_s

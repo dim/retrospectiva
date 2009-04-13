@@ -36,10 +36,6 @@ describe FormatHelper do
         do_format('[1a2b] a text with multiple [r1a2] references [1a2b]').should == 'LINK a text with multiple LINK references LINK'
       end
 
-      it 'should ignore double-brackets' do
-        helper.should_not_receive(:format_internal_changeset_link)
-        do_format('a text with a [[1a2b3c4d]] changeset reference').should == 'a text with a [[1a2b3c4d]] changeset reference'
-      end      
 
       it 'should support numeric references' do
         helper.should_receive(:format_internal_changeset_link).with('123', {}).twice.and_return('LINK')
@@ -109,7 +105,7 @@ describe FormatHelper do
     end    
 
     it 'should rerun a link if criteria is met' do
-      helper.should_receive(:project_changeset_path).with(@project, '1a2b3c4d').and_return('LINK_PATH')
+      helper.should_receive(:project_changeset_path).with(@project, '1a2b3c4d', {}).and_return('LINK_PATH')
       do_format('1a2b3c4d').should == '<a href="LINK_PATH" title="Show changeset 1a2b3c4d">[1a2b3c4d]</a>'
     end    
   end

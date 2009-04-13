@@ -17,27 +17,6 @@ module WikiEngine
     def markup
       raise "Abstract method"      
     end
-
-    def link_all(text, &block)
-      WikiEngine.with_text_parts_only(text) do |token|
-        token.gsub(link_pattern) do |match|
-          prefix, page, title = $1, $2, $3
-          page = page.gsub(%r{  +}, ' ').strip
-          title = title.blank? ? page : title.strip
-          page.starts_with?('\\') ? match.gsub(/\\/, '') : yield(match, prefix, page, title)
-        end
-      end
-    end
-    
-    def link_pattern
-      %r{
-        \[\[
-        (?:(F|I)[\|\:])?
-        (\\?[ \w-]{2,})
-        (?:[\|\:]([^\]]+))?
-        \]\]
-      }x
-    end
   end
   
   class TextileBasedEngine < AbstractEngine
