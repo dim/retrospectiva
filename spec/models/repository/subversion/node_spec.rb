@@ -63,6 +63,11 @@ describe Repository::Subversion::Node do
         @node.properties.should == {"svn:mime-type" => "application/octet-stream"}
       end
 
+      it 'should correctly identify mime-type' do
+        @node = request_node("retrospectiva/public/images/rss.png")
+        @node.mime_type.should == MIME::Types['image/png']
+      end
+
     end        
   end
   

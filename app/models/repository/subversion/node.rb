@@ -94,7 +94,7 @@ class Repository::Subversion::Node < Repository::Abstract::Node
         guesses = MIME::Types.of(name) rescue []
         guesses.first || DEFAULT_MIME_TYPE
       else
-        svn_mime_type
+        svn_type
       end
     end
 
