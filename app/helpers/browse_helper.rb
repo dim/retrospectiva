@@ -27,8 +27,9 @@ module BrowseHelper
     content = syntax_highlight(node)   
     lines, code = [], []
       
-    content.lines.each_with_index do |line, num|
-      lines << link_to_code_line(num + 1)
+    num = 0
+    content.each_line do |line|
+      lines << link_to_code_line(num += 1)
       code << line.gsub(/\r?\n/, '')
     end
     content_tag :table, %Q(
