@@ -32,6 +32,7 @@ table.code .delete td { background: #ffe8e8; border-color: #c00; }
 table.code .update .first td { border-top-style: solid; border-top-width: 1px; }
 table.code .update .last td  { border-bottom-style: solid; border-bottom-width: 1px; }
 
+/*
 table.code .r   { color: #c00; font-weight: bold; }
 table.code .pc  { color: #c00; }
 table.code .lv  { color: #c00; }
@@ -53,6 +54,93 @@ table.code .il  { color: #000; background-color: #eee; }
 table.code .idl { color: #000; font-weight: bold;}
 table.code .ta  { color: #508; }
 table.code .an  { color: #859; }
+*/
+
+table.code .af { color:#00C }
+table.code .an { color:#007 }
+table.code .at { color:#f08 }
+table.code .av { color:#700 }
+table.code .aw { color:#C00 }
+table.code .bi { color:#509; font-weight:bold }
+table.code .c  { color:#595; }
+
+table.code .ch { color:#04D }
+table.code .ch .k { color:#04D }
+table.code .ch .dl { color:#039 }
+
+table.code .cl { color:#000; font-weight:bold }
+table.code .co { color:#000; font-weight:bold }
+table.code .cr { color:#0A0 }
+table.code .cv { color:#048; font-weight:bold }
+table.code .df { color:#099; font-weight:bold }
+table.code .di { color:#088; font-weight:bold }
+table.code .dl { color:black }
+table.code .do { color:#970 }
+table.code .dt { color:#34b }
+table.code .ds { color:#D42; font-weight:bold }
+table.code .e  { color:#666; font-weight:bold }
+table.code .en { color:#800; font-weight:bold }
+table.code .er { color:#F00; background-color:#FAA }
+table.code .ex { color:#F00; font-weight:bold }
+table.code .fl { color:#039; font-weight:bold }
+table.code .fu { color:#025; font-weight:bold }
+table.code .gv { color:#d70; font-weight:bold }
+table.code .hx { color:#058; font-weight:bold }
+table.code .i  { color:#039; font-weight:bold }
+table.code .ic { color:#B44; font-weight:bold }
+
+table.code .il { color: #000; }
+table.code .il .il { background: #e8e8e8; }
+table.code .il .il .il { background: #ddd; }
+table.code .il .idl { font-weight: bold; color: #000; }
+
+table.code .im { color:#f00; }
+table.code .in { color:#B2B; font-weight:bold }
+table.code .iv { color:#048; font-weight:bold; }
+table.code .la { color:#970; font-weight:bold }
+table.code .lv { color:#963 }
+table.code .oc { color:#40E; font-weight:bold }
+table.code .of { color:#000; font-weight:bold }
+table.code .op { }
+table.code .pc { color:#025; font-weight:bold }
+table.code .pd { color:#369; font-weight:bold }
+table.code .pp { color:#579; }
+table.code .ps { color:#00C; font-weight: bold; }
+table.code .pt { color:#349; font-weight:bold }
+table.code .r, .kw  { color:#A00; font-weight:bold }
+
+table.code .ke { color: #808; }
+table.code .ke .dl { color: #606; }
+table.code .ke .ch { color: #80f; }
+table.code .vl { color: #088; }
+
+table.code .rx { background-color:#fff0ff }
+table.code .rx .k { color:#808 }
+table.code .rx .dl { color:#404 }
+table.code .rx .mod { color:#C2C }
+table.code .rx .fu  { color:#404; font-weight: bold }
+
+table.code .s { background-color:#f0f0ff; color: #369; }
+table.code .s .s { background-color:#f0f0ff; }
+table.code .s .s .s { background-color:#f0f0ff; }
+table.code .s .k { }
+table.code .s .ch { color: #b0b; }
+table.code .s .dl { color: #0060B0; }
+
+table.code .sh { background-color:#f0fff0; color:#2B2 }
+table.code .sh .k { }
+table.code .sh .dl { color:#161 }
+
+table.code .sy { color:#A00; }
+table.code .sy .k { color:#c00 }
+table.code .sy .dl { color:#630 }
+
+table.code .ta { color:#070 }
+table.code .tf { color:#070; font-weight:bold }
+table.code .ts { color:#D70; font-weight:bold }
+table.code .ty { color:#339; font-weight:bold }
+table.code .v  { color:#025 }
+table.code .xt { color:#444 }
 
   
 /* Record list */
