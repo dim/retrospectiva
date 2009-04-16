@@ -23,10 +23,11 @@ module BrowseHelper
     end.join(', ') 
   end
 
-  def format_code_with_line_numbers(contents)
-    contents = syntax_highlight(params[:path].last, contents)   
+  def format_code_with_line_numbers(node)
+    content = syntax_highlight(node)   
     lines, code = [], []
-    contents.each_with_index do |line, num|
+      
+    content.lines.each_with_index do |line, num|
       lines << link_to_code_line(num + 1)
       code << line.gsub(/\r?\n/, '')
     end
@@ -79,12 +80,9 @@ module BrowseHelper
         :class => 'block', :id => anchor
     end
 
-    EXTENSION_MAP = { 'rb'  => :ruby, 'pas' => :delphi, 'cpp' => :c, 'cs'  => :csharp }
-    
-    def syntax_highlight(file_name, content)
-      extension = File.extname(file_name).split('.').last
-      syntax = EXTENSION_MAP[extension] || extension || 'txt'
-      CodeRay.scan(content, syntax.to_sym).html
+    def syntax_highlight(node)
+      syntax = CodeRay::FileType.fetch node.path, :plaintext, false
+      CodeRay.scan(node.content, syntax).html
     end
   
 end

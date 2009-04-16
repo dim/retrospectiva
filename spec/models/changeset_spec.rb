@@ -137,7 +137,7 @@ describe Changeset do
       end  
 
       it 'should return nil if no next record can be found be for a project' do
-        changesets(:with_binary_modification).next_by_project(@project).should be_blank
+        changesets(:prop_set).next_by_project(@project).should be_blank
       end  
 
       it 'should be able to find the previous record for a project' do
@@ -159,8 +159,8 @@ describe Changeset do
         
         it 'should correctly find and assign all changesets withing the root-path scope' do
           Changeset.update_project_associations!
-          @project.changesets.reload.should have(9).records
-          @project.changesets.map(&:revision).map(&:to_i).sort.should == (1..9).to_a
+          @project.changesets.reload.should have(10).records
+          @project.changesets.map(&:revision).map(&:to_i).sort.should == ((1..11).to_a - [10])
         end
       end
   

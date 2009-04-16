@@ -404,6 +404,15 @@ r09_m01:
   repository_id: "1"
   from_revision:
   path: retrospectiva/public/images/rss.png
+r11_m01:
+  name: M
+  id: 11101
+  changeset_id: 110
+  revision: "11"
+  from_path:
+  repository_id: "1"
+  from_revision:
+  path: retrospectiva/public/images/rss.png
 other_cp01:
   name: CP
   id: 90001

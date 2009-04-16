@@ -33,19 +33,22 @@ table.code .update .first td { border-top-style: solid; border-top-width: 1px; }
 table.code .update .last td  { border-bottom-style: solid; border-bottom-width: 1px; }
 
 table.code .r   { color: #c00; font-weight: bold; }
-table.code .pc  { color: #c00; } /* eg. self, nil, etc */
-table.code .pd  { color: #02c; } /* predefined: eg. BigDecimal, String */
-table.code .pt  { color: #c00; } /* eg. int, char, boolean, etc. */
-table.code .sy  { color: #29F; } /* symbol */
-table.code .c   { color: #486; } /* comment */
-table.code .s   { color: #46c; } /* strings */
-table.code .k   { color: #46c; } /* strings */
+table.code .pc  { color: #c00; }
+table.code .lv  { color: #c00; }
+table.code .pd  { color: #02c; }
+table.code .ke  { color: #02c; }
+table.code .pt  { color: #c00; }
+table.code .sy  { color: #29F; }
+table.code .c   { color: #486; }
+table.code .s   { color: #46c; }
+table.code .k   { color: #46c; }
 table.code .dl  { color: #000; font-weight: bold; }
-table.code .cl  { color: #111; font-weight: bold; } /* class names */
-table.code .fu  { color: #111; font-weight: bold; } /* functions */
-table.code .co  { color: #111; font-weight: bold; } /* constants */
-table.code .iv  { color: #048; font-weight: bold; } /* instance variables */
-table.code .cv  { color: #048; font-weight: bold; } /* class variables */
+table.code .cl  { color: #111; font-weight: bold; }
+table.code .fu  { color: #111; font-weight: bold; }
+table.code .kw  { color: #111; font-weight: bold; }
+table.code .co  { color: #111; font-weight: bold; }
+table.code .iv  { color: #048; font-weight: bold; }
+table.code .cv  { color: #048; font-weight: bold; }
 table.code .il  { color: #000; background-color: #eee; }
 table.code .idl { color: #000; font-weight: bold;}
 table.code .ta  { color: #508; }

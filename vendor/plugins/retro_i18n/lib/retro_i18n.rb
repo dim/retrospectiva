@@ -1,3 +1,5 @@
+# coding:utf-8 
+
 require 'retro_i18n/patches'
 require 'retro_i18n/parser'
 require 'retro_i18n/locale_file'

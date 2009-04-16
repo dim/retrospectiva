@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Ticket do
-  fixtures :tickets, :ticket_changes, :users, :projects, :statuses, :priorities, :ticket_subscribers, :groups, :groups_projects, :groups_users, :milestones
+  fixtures :all
 
   def build_ticket
     @ticket.project = projects(:retro)

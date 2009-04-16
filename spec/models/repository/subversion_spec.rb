@@ -49,7 +49,7 @@ describe Repository::Subversion do
       end
       
       # should update revision-cache of involved projects 
-      projects(:retro).reload.existing_revisions.should == @should.first(9).map(&:revision)      
+      projects(:retro).reload.existing_revisions.should == ((1..11).to_a - [10]).map(&:to_s)    
     end
   end
 
@@ -78,7 +78,7 @@ describe Repository::Subversion do
   end
   
   it 'should correctly extract the latest revision' do
-    @repository.latest_revision.should == '10'
+    @repository.latest_revision.should == '11'
   end
 
   describe 'creating a unified diff' do

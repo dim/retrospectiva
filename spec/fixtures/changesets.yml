@@ -78,6 +78,13 @@ large_copy:
     * copied retrospectiva/.
   author: kou
   created_at: 2008-02-07 13:21:14
+prop_set:
+  id: 110
+  revision: "11"
+  repository_id: 1
+  log: Set an explicit mime-type
+  author: dim
+  created_at: 2009-04-14 17:07:44
 subproject:
   id: 200
   revision: "333"

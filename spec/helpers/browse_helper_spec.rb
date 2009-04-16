@@ -54,26 +54,26 @@ describe BrowseHelper do
 
   describe 'formatting code' do
 
-    before do 
-      @code = "# Comment\ndef name\nend"
-      helper.stub!(:syntax_highlight).and_return(@code)
+    before do
+      @content = "# Comment\ndef name\nend"
+      @node = mock_model Repository::Git::Node, :content => @content, :path => 'folder/file.rb'
       helper.stub!(:link_to_code_line).and_return('LINK')
       helper.stub!(:content_tag).and_return('TABLE')
     end
     
     it 'should highlight syntax' do      
-      helper.should_receive(:syntax_highlight).with('file.rb', @code).and_return(@code)
-      helper.format_code_with_line_numbers(@code).should == 'TABLE'
+      helper.should_receive(:syntax_highlight).with(@node).and_return(@content)
+      helper.format_code_with_line_numbers(@node).should == 'TABLE'
     end
 
     it 'should links create links to each line' do      
       helper.should_receive(:link_to_code_line).exactly(3).times.and_return('LINK')
-      helper.format_code_with_line_numbers(@code).should == 'TABLE'
+      helper.format_code_with_line_numbers(@node).should == 'TABLE'
     end
 
     it 'should return a HTML table' do      
       helper.should_receive(:content_tag).once.and_return('TABLE')
-      helper.format_code_with_line_numbers(@code).should == 'TABLE'
+      helper.format_code_with_line_numbers(@node).should == 'TABLE'
     end
 
   end
@@ -201,29 +201,42 @@ describe BrowseHelper do
   describe 'highlighting syntax' do        
 
     before do
-      @vendor_lib = mock_model(CodeRay, :html => 'CODE')
-      CodeRay.stub!(:scan).and_return(@vendor_lib)
+      @content = "def method_name\n  p 'Hi, it\'s me'\nend"
+      @node = mock_model Repository::Git::Node, :content => @content, :path => 'folder/file.rb'
     end
-    
+
     def do_call
-      helper.send(:syntax_highlight, 'file.rb', 'RAW')
+      helper.send(:syntax_highlight, @node)
     end
     
-    it 'should determine the file extension' do
-      File.should_receive('extname').with('file.rb').and_return('.rb')
-      do_call
+    describe 'the workflow' do
+
+      before do
+        @lib = mock_model(CodeRay, :html => 'CODE')
+        CodeRay.stub!(:scan).and_return(@lib)
+      end
+      
+      it 'should call vendor highlighter library with the right params' do
+        CodeRay.should_receive(:scan).with(@content, :ruby).and_return(@lib)
+        do_call.should == 'CODE'
+      end    
+  
+      it 'should return results as formatted HTML' do
+        @lib.should_receive(:html).and_return('CODE')
+        do_call.should == 'CODE'
+      end
     end
+    
+    describe 'in real world' do
 
-    it 'should call vendor highlighter library' do
-      CodeRay.should_receive(:scan).with('RAW', :ruby).and_return(@vendor_lib)
-      do_call.should == 'CODE'
-    end    
+      it 'should correctly highlight the code' do
+        do_call.should == %Q(
+<span class=\"r\">def</span> <span class=\"fu\">method_name</span>
+  p <span class=\"s\"><span class=\"dl\">'</span><span class=\"k\">Hi, it</span><span class=\"dl\">'</span></span>s me<span class=\"s\"><span class=\"dl\">'</span><span class=\"k\">
+end</span></span>
+).strip
 
-    it 'should return teh result as formatted HTML' do
-      @vendor_lib.should_receive(:html).and_return('CODE')
-      do_call.should == 'CODE'
-    end    
-
+      end      
+    end
   end
-
 end

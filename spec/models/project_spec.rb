@@ -16,7 +16,7 @@ describe Project do
 
     it "should have and belong to many changesets" do
       @project.should have_and_belong_to_many(:changesets)
-      @project.changesets.should have(9).records
+      @project.changesets.should have(10).records
     end
 
     it "should have many milestones" do

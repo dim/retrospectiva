@@ -53,8 +53,9 @@ class User < ActiveRecord::Base
       end
     end
     
-    def authenticate(params)      
-      if user = identify(params[:username])
+    def authenticate(params)
+      user = params.is_a?(Hash) ? identify(params[:username]) : nil
+      if user
         success = if secure_auth? 
           user.valid_password_hash?(params[:hash], params[:tan])
         else

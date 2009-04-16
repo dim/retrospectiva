@@ -35,7 +35,7 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   config.load_paths += [
-    "#{RAILS_ROOT}/vendor/coderay-0.7.4/lib"
+#    "#{RAILS_ROOT}/vendor/coderay-0.7.4/lib"
   ].flatten
 
   config.controller_paths += [

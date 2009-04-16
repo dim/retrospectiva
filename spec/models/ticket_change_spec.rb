@@ -313,7 +313,8 @@ describe TicketChange do
 
       it 'should have a valid description with updates (if any)' do
         @ticket_change = ticket_changes(:special_update_02_properties_and_content)
-        @ticket_change.previewable(:project => projects(:retro)).description.should == '<ul><li><strong>Status:</strong> Open &rarr; WontFix</li><li><strong>Priority:</strong> Normal &rarr; Minor</li></ul> ' + @ticket_change.content
+        @ticket_change.previewable(:project => projects(:retro)).description.
+          should == '<ul><li><strong>Status:</strong> Open &rarr; WontFix</li><li><strong>Priority:</strong> Normal &rarr; Minor</li></ul> ' + @ticket_change.content
       end
       
       it 'should have a valid link' do

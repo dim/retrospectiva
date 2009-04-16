@@ -48,7 +48,7 @@ describe "/browse/show_file.html.erb" do
   end
 
   it 'should show the code' do
-    template.should_receive(:format_code_with_line_numbers).with('CONTENT').and_return('<div class="code">CODE_LINES</div>')
+    template.should_receive(:format_code_with_line_numbers).with(@node).and_return('<div class="code">CODE_LINES</div>')
     do_render
     response.should have_tag('div.code', 'CODE_LINES')
   end

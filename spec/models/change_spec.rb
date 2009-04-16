@@ -1,8 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe Change do
+describe ::Change do
   before(:each) do
-    @change = Change.new
+    @change = ::Change.new
   end
 
   it 'should belong to a changeset' do
@@ -43,13 +43,13 @@ describe Change do
     fixtures :changes, :changesets, :repositories
     
     it 'should be able to identify the previous revision' do
-      changes(:r04_m02).previous_revision.should == '3'
+      changes(:git_573ae4_m02).previous_revision.should == '9d1574324929aea0eaf446ff23ddcca6d2d236a4'
     end
 
     it 'should be able to generate a unified DIFF for diffable files' do
-      changes(:r04_m02).unified_diff.should == %Q(
---- Revision 3
-+++ Revision 4
+      changes(:git_573ae4_m02).unified_diff.should == %Q(
+--- Revision 9d1574324929aea0eaf446ff23ddcca6d2d236a4
++++ Revision 573ae4e2c35ca993aef864adac5cdd3e3cf50125
 @@ -1,2 +1,10 @@
 -# Do somethiing weird
 -# ...
@@ -65,7 +65,7 @@ describe Change do
 +# ...
 +#
 \\ No newline at end of file
-).lstrip
+).strip
     end
 
     it 'should return an empty string as DIFF for non-diffable files' do
