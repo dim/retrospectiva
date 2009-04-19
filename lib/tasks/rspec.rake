@@ -1,6 +1,5 @@
 # Don't load rspec if running "rake gems:*"
 unless ARGV.any? {|a| a =~ /^gems/}
-  gem 'test-unit', '1.2.3' if RUBY_VERSION.to_f >= 1.9
 
 begin
   require 'spec/rake/spectask'
