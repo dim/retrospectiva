@@ -169,8 +169,8 @@ module ApplicationHelper
 
     def gravatar(email, options = {})
       size = options.delete(:size) || 40
-      options.reverse_merge!(:class => 'frame')
-      image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}.png?s=#{size}", options
+      options.reverse_merge!(:class => 'frame', :alt => '')
+      image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s)}.png?s=#{size}", options
     end
 
   private

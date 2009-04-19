@@ -2,6 +2,8 @@
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
 require File.dirname(__FILE__) + "/../config/environment" unless defined?(RAILS_ROOT)
+
+gem 'test-unit', '1.2.3' if RUBY_VERSION.to_f >= 1.9
 require 'test/unit'
 require 'spec/autorun'
 require 'spec/rails'
