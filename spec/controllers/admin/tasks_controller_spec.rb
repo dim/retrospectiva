@@ -5,8 +5,10 @@ describe Admin::TasksController do
 
   before do
     permit_access!
-    @tasks = [mock('Task1')]
-    Retrospectiva::Tasks.stub!(:tasks).and_return(@tasks)
+    @task = mock('Task1')
+    @tasks = [@task]
+    @parser = mock(Retrospectiva::TaskManager::Parser, :tasks => @tasks)
+    Retrospectiva::TaskManager::Parser.stub!(:new).and_return(@parser)
   end
 
   describe "handling GET /admin/tasks" do
@@ -17,7 +19,8 @@ describe Admin::TasksController do
     it_should_successfully_render_template('index')
 
     it "should query the tasks" do
-      Retrospectiva::Tasks.should_receive(:tasks).and_return(@tasks)
+      Retrospectiva::TaskManager::Parser.should_receive(:new).and_return(@parser)
+      @parser.should_receive(:tasks).and_return(@tasks)
       do_get
     end
 
@@ -32,7 +35,7 @@ describe Admin::TasksController do
   describe "handling PUT /admin/tasks/save" do
 
     before do
-      Retrospectiva::Tasks.stub!(:update).and_return true
+      Retrospectiva::TaskManager::Task.stub!(:update_or_create).and_return @task
     end
 
     def do_put
@@ -43,12 +46,12 @@ describe Admin::TasksController do
       get :save
       response.code.should == '400'
     end
-          
-    it "should update the configuration" do
-      Retrospectiva::Tasks.should_receive(:update).with('task_a' => 600).and_return true
+
+    it "should find or create the affected task" do
+      Retrospectiva::TaskManager::Task.should_receive(:create_or_update).with('task_a', 600).and_return @task
       do_put
     end
-
+          
     it "should redirect to task overview" do
       do_put
       response.should be_redirect

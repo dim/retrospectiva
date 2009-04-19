@@ -1,20 +1,19 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Admin::TasksController < AdminAreaController
   verify :params => :tasks, :only => :save
 
   def index
-    @tasks  = Retrospectiva::Tasks.tasks
+    @tasks = Retrospectiva::TaskManager::Parser.new.tasks
   end
   
   def save
-    configuration = params[:tasks].inject({}) do |result, (name, interval)|
+    params[:tasks].each do |name, interval|
       seconds = TimeInterval.in_seconds(interval[:count], interval[:units]) rescue 0
-      result.merge name => seconds
-    end
-    Retrospectiva::Tasks.update(configuration)
+      Retrospectiva::TaskManager::Task.create_or_update(name, seconds)
+    end if params[:tasks].is_a?(Hash)
     flash[:notice] = _('Task configuration was successfully updated.')
     redirect_to admin_tasks_path
   end  

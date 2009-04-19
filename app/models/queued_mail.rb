@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class QueuedMail < ActiveRecord::Base
@@ -9,16 +9,20 @@ class QueuedMail < ActiveRecord::Base
   named_scope :pending, :conditions => ['delivered_at IS NULL'], :order => 'created_at'
   
   def mailer_class
-    @mailer_class ||= mailer_class_name.constantize rescue nil
+    mailer_class_name.constantize rescue nil
   end
 
   def deliver!
-    mailer_class ? mailer_class.deliver(object) && deactivate! : false 
+    if mailer_class
+      mailer_class.deliver(object) 
+      deactivate!
+    else
+      false      
+    end
   end
   
   def deactivate!
-    t = self.class.default_timezone == :utc ? Time.now.utc : Time.now
-    update_attribute :delivered_at, t
+    update_attribute :delivered_at, Time.now.utc
   end
 
 end

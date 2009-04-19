@@ -2,10 +2,10 @@
   <td class="strong"><%=h task.name.humanize %></td>
   <td><%=h task.description %></td>
   <td>
-    <% if task.started -%>
-      <%= _('Started') %> <%=h time_interval_in_words(task.started) %>
-    <% elsif task.last_run -%>
-      <%= _('Last run') %> <%=h time_interval_in_words(task.last_run) %>
+    <% if task.running? -%>
+      <%= _('Started') %> <%=h time_interval_in_words(task.started_at) %>
+    <% elsif task.finished_at > 1.year.ago -%>
+      <%= _('Finished') %> <%=h time_interval_in_words(task.finished_at) %>
     <% else -%>
       &ndash;
     <% end -%>

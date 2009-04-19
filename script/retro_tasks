@@ -1,119 +1,23 @@
 #!/usr/bin/env ruby
 
-#--
-# Copyright (C) 2007 Dimitrij Denissenko
-# Please read LICENSE document for more information.
-#++
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'boot'))
 
+require 'active_record'
+require 'active_support'
+require 'erb'
 require 'yaml'
-require 'logger'
 
-class RetroTasks  
-  
-  def self.run
-    new.run
-  end
+Time.zone_default = Time.__send__(:get_zone, 'UTC')         
+ActiveRecord::Base.time_zone_aware_attributes = true
+ActiveRecord::Base.default_timezone = :utc
 
-  attr_reader :logger
-  
-  def initialize
-    @logger = Logger.new(log_file)
-    @logger.level = Logger::INFO
-  end
+load 'retrospectiva/task_manager.rb'
 
-  def run
-    return if tasks_to_run.empty?
-    
-    require 'rubygems'
-    load File.join(RAILS_ROOT, 'Rakefile')
-
-    tasks_to_run.each do |task_name|
-      if task = Rake.application.lookup("retro:#{task_name}")
-        update_configuration(task_name, :started => current_minute)
-        begin
-          task.invoke
-        rescue Exception => ex
-          log_exception(ex)
-        ensure
-          update_configuration(task_name, :last_run => current_minute, :started => nil)
-        end
-      else
-        delete_configuration(task_name)
-      end
-    end  
-  end
-
-  protected
-
-    def config
-      file = File.exist?(config_file) ? config_file : "#{config_file}.default"
-      (YAML.load_file(file) rescue {}) || {}    
-    end
-
-    def config_file
-      File.join(RAILS_ROOT, 'config', 'runtime', 'tasks.yml')  
-    end
-  
-    def log_file
-      File.join(RAILS_ROOT, 'log', 'tasks.log')  
-    end
-      
-    def log_exception(exception)
-      clean_trace = exception.backtrace.collect { |line| line.gsub(RAILS_ROOT, '') }
-      self.logger.fatal(
-        "\n\n#{exception.class} (#{exception.message}):\n    " +
-        clean_trace.join("\n    ") +
-        "\n\n"
-      )    
-    end
-    
-    def current_minute
-      time = Time.now.utc
-      time -= time.sec
-    end
-  
-    def tasks_to_run
-      @tasks_to_run ||= self.config.inject([]) do |result, (task, task_conf)|
-        if task_conf.is_a?(Hash)     
-          interval = Kernel.Integer(task_conf[:interval]) rescue 0       
-          if interval > 0 && !task_conf[:started]
-            last_run = task_conf[:last_run] || Time.at(0).utc
-            if (last_run + interval).to_i <= current_minute.to_i
-              result << task
-            end    
-          end  
-        end  
-        result
-      end    
-    end
-
-    def update_configuration(task_name, attributes)
-      retries = 0
-      begin	
-        task_conf = self.config[task_name].merge(attributes)
-        write_configuration( self.config.merge(task_name => task_conf) )
-      rescue
-        if (retries += 1) < 3
-          sleep 1
-          retry
-        else
-          raise
-        end
-      end
-    end  
-
-    def delete_configuration(task_name)
-      write_configuration( self.config.delete_if{|k,v| k == task_name} )
-    end  
-
-    def write_configuration(hash)
-      File.open(config_file, 'w') do |f| 
-        YAML.dump(hash, f)
-        f.close
-      end            
-    end  
-  
+manager = Retrospectiva::TaskManager.new
+if ARGV.include?('tasks')
+  puts "Tasks: " + manager.tasks.map(&:name).inspect
+elsif ARGV.include?('pending')
+  puts "Pending: " + manager.pending.map(&:name).inspect
+else 
+  manager.run
 end
-
-RAILS_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-RetroTasks.run

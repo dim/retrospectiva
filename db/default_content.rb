@@ -32,6 +32,7 @@ module Retrospectiva
         creator.create_group unless Group.exists?(:name => 'Default')
         creator.create_public unless User.exists?(:name => 'Public')
         creator.create_admin unless User.exists?(:admin => true, :active => true)
+        creator.create_tasks if Retrospectiva::TaskManager::Task.count.zero?
       end
     end
 
@@ -47,6 +48,12 @@ module Retrospectiva
       DEFAULT_STATUSES.each do |priority|
         Status.create(priority)
       end
+    end
+
+    def create_tasks
+      puts 'Creating default tasks'
+      Retrospectiva::TaskManager::Task.create :name => 'sync_repositories', :interval => 600
+      Retrospectiva::TaskManager::Task.create :name => 'process_mails', :interval => 300
     end
 
     def create_group

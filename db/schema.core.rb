@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090124095048) do
+ActiveRecord::Schema.define(:version => 20090419112736) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file_name"
@@ -185,6 +185,15 @@ ActiveRecord::Schema.define(:version => 20090124095048) do
   end
 
   add_index "tags", ["name"], :name => "i_tags_on_name"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "name",        :limit => 60
+    t.datetime "started_at",                :default => '1970-01-01 00:00:00', :null => false
+    t.datetime "finished_at",               :default => '1970-01-01 00:00:00', :null => false
+    t.integer  "interval",                  :default => 0,                     :null => false
+  end
+
+  add_index "tasks", ["name"], :name => "i_tasks_name"
 
   create_table "ticket_changes", :force => true do |t|
     t.integer  "ticket_id"
