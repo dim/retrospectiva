@@ -358,7 +358,7 @@ describe TicketsController do
 
     describe "with successful save" do
 
-      def do_post
+      def do_post(options = {})
         @ticket.should_receive(:save).and_return true
         super
       end
@@ -371,6 +371,26 @@ describe TicketsController do
       it "should redirect to the ticket" do
         do_post
         response.should redirect_to(project_ticket_path(@project, @ticket))
+      end
+
+      describe "XML request" do
+        
+        def do_post
+          super :format => 'xml'
+        end
+
+        it 'should be successful' do
+          do_post
+          response.should be_success
+        end
+        
+        it 'should return the record with the correct location' do
+          do_post
+          response.headers['Location'].should == project_ticket_url(@project, @ticket)
+          response.content_type.should == "application/xml"
+          response.body.should have_tag('ticket')
+        end
+        
       end
 
     end

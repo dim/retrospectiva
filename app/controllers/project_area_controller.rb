@@ -45,13 +45,6 @@ class ProjectAreaController < ApplicationController
       raise ActiveRecord::RecordNotFound, "Unable to find project '#{params[:project_id]}'"
     end
 
-    def respond_with_defaults(klass = nil)
-      respond_to do |format|
-        format.html
-        format.rss  { render_rss(klass) }
-      end
-    end
-
     def render_rss(klass = nil)
       klass ||= self.class.name.demodulize.gsub(/Controller$/, '').singularize.constantize
       records = instance_variable_get("@#{klass.name.tableize}".to_sym)

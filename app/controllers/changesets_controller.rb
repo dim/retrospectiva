@@ -21,8 +21,13 @@ class ChangesetsController < ProjectAreaController
       :include => [:user],
       :page => ( request.format.rss? ? 1 : params[:page] ),
       :per_page => ( request.format.rss? ? 10 : nil ),
-      :order => 'changesets.created_at DESC')
-    respond_with_defaults
+      :order => 'changesets.created_at DESC')    
+    
+    respond_to do |format|
+      format.html
+      format.rss  { render_rss(Changeset) }
+      format.xml  { render :xml => @changesets.to_xml }
+    end
   end
   
   def show
@@ -31,6 +36,11 @@ class ChangesetsController < ProjectAreaController
 
     @next_changeset = @changeset.next_by_project(Project.current)
     @previous_changeset = @changeset.previous_by_project(Project.current)
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @changeset.to_xml(:include => :changes) }
+    end
   end
   
   def diff
@@ -39,7 +49,11 @@ class ChangesetsController < ProjectAreaController
     unless @change.diffable?
       raise ActiveRecord::RecordNotFound, "Change #{@change.id} is not diffable." 
     end
-    render :layout => false
+
+    respond_to do |format|
+      format.html { render :layout => false }
+      format.text { render :text => @change.unified_diff }
+    end    
   end
 
 end

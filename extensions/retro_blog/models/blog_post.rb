@@ -92,6 +92,24 @@ class BlogPost < ActiveRecord::Base
     end
   end
 
+  def to_xml_with_comments
+    to_xml do |xml|
+      xml.comments :type => 'array' do
+        comments.each do |comment|          
+          comment.to_xml :builder => xml, :skip_instruct => true, :root => 'comment', :type => comment.class.name
+        end
+      end       
+    end
+  end
+
+  def serialize_only
+    [:id, :title, :content, :created_at]
+  end
+
+  def serialize_including
+    [:user]
+  end
+
   protected
   
     def before_validation

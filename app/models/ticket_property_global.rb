@@ -26,9 +26,13 @@ module TicketPropertyGlobal
     end
   end
 
-  module InstanceMethods  
+  module InstanceMethods    
+    def serialize_only
+      [:id, :name]
+    end
+
     protected
-      
+            
       # Refuse to manually unset the default_value
       def before_validation_on_update
         if not default_value? and default_value_was

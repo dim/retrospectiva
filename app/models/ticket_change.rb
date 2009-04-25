@@ -54,6 +54,22 @@ class TicketChange < ActiveRecord::Base
     end
   end
 
+  # Render updates as an XML array
+  def to_xml(options = {}, &block)
+    super do |xml|
+      xml.updates :type => "array" do         
+        updates.each do |attribute, update|
+          xml.update do 
+            xml.value attribute
+            xml.old update[:old]
+            xml.new update[:new]
+          end
+        end
+      end
+      yield xml if block_given?
+    end
+  end
+  
   protected
   
     def modifiable?(user)

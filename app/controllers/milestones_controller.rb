@@ -10,7 +10,6 @@ class MilestonesController < ProjectAreaController
     :delete => ['destroy']
 
   enable_private_rss! :only => :index
-  before_filter :new, :only => :create
   before_filter :edit, :only => :update
   
   def index
@@ -19,11 +18,21 @@ class MilestonesController < ProjectAreaController
     else
       Project.current.milestones.active_on(Date.today).paginate options_for_pagination
     end
-    respond_with_defaults
+
+    respond_to do |format|
+      format.html
+      format.rss  { render_rss(Milestone) }
+      format.xml  { render :xml => @milestones }
+    end
   end
 
   def new
     @milestone = Project.current.milestones.new(params[:milestone])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @milestone }
+    end
   end
 
   def edit
@@ -31,27 +40,41 @@ class MilestonesController < ProjectAreaController
   end
 
   def create
-    if @milestone.save
-      flash[:notice] = _('Milestone was successfully created.')
-      redirect_to project_milestones_path(Project.current)
-    else
-      render :action => 'new'
+    @milestone = Project.current.milestones.new(params[:milestone])
+
+    respond_to do |format|
+      if @milestone.save
+        flash[:notice] = _('Milestone was successfully created.')
+        format.html { redirect_to project_milestones_path(Project.current) }
+        format.xml  { render :xml => @milestone, :status => :created, :location => project_milestones_path(Project.current) }        
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @milestone.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
   def update
-    if @milestone.update_attributes(params[:milestone])
-      flash[:notice] = _('Milestone was successfully updated.')
-      redirect_to project_milestones_path(Project.current)
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @milestone.update_attributes(params[:milestone])
+        flash[:notice] = _('Milestone was successfully updated.')
+        format.html { redirect_to(project_milestones_path(Project.current)) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @milestone.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     Project.current.milestones.destroy(params[:id])
     flash[:notice] = _('Milestone was successfully deleted.')
-    redirect_to project_milestones_path(Project.current)
+
+    respond_to do |format|
+      format.html { redirect_to(project_milestones_path(Project.current)) }
+      format.xml  { head :ok }
+    end
   end
 
   private

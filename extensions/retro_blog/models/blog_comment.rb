@@ -8,5 +8,10 @@ class BlogComment < ActiveRecord::Base
   validates_presence_of :author, :content
   validates_association_of :blog_post
   validates_as_email :email, :allow_blank => true
-  validates_length_of :content, :maximum => 6000
+  validates_length_of :content, :in => 3..6000
+  
+  def serialize_only
+    [:id, :author, :content, :created_at]    
+  end
+  
 end

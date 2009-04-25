@@ -191,7 +191,15 @@ class Ticket < ActiveRecord::Base
       not user.public? and user.permitted?(:tickets, :view, :project => project) and user.permitted?(:tickets, :watch, :project => project)
     end
   end  
-  
+
+  def serialize_only
+    [:id, :summary, :content, :author, :milestone_id, :created_at, :updated_at]    
+  end
+
+  def serialize_including
+    [:assigned_user, :status, :priority]
+  end
+
   protected
 
     # Return true if user has the permission to modify this ticket, else false

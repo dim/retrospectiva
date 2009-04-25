@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class BlogController < ProjectAreaController
@@ -21,28 +21,48 @@ class BlogController < ProjectAreaController
 
   enable_private_rss! :only => :index  
   before_filter :find_blog_post, :only => [:show, :comment, :edit, :update, :destroy]
-  before_filter :new, :only => [:create]
   before_filter :load_categories, :only => [:index] 
   
   def index
     @blog_posts = Project.current.blog_posts.posted_by(params[:u]).categorized_as(params[:c]).paginate options_for_paginate
-    respond_with_defaults(BlogPost)
+
+    respond_to do |format|
+      format.html
+      format.rss  { render_rss(BlogPost) }
+      format.xml  { render :xml => @blog_posts.to_xml }
+    end
   end
   
   def show
     @blog_comment = @blog_post.comments.new :author => cached_user_attribute(:name, 'Anonymous'), :email => cached_user_attribute(:email)
+    
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @blog_post.to_xml_with_comments }
+    end
   end
 
   def new
     @blog_post = Project.current.blog_posts.new params[:blog_post]
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @blog_post }
+    end
   end
   
   def create
-    if @blog_post.save
-      flash[:notice] = _('Post was successfully created.')
-      redirect_to project_blog_post_path(Project.current, @blog_post)
-    else
-      render :action => 'new'
+    @blog_post = Project.current.blog_posts.new params[:blog_post]
+
+    respond_to do |format|
+      if @blog_post.save
+        flash[:notice] = _('Post was successfully created.')
+        format.html { redirect_to [Project.current, @blog_post] }
+        format.xml  { render :xml => @blog_post, :status => :created, :location => [Project.current, @blog_post] }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
@@ -50,19 +70,26 @@ class BlogController < ProjectAreaController
   end
 
   def update
-    if @blog_post.update_attributes(params[:blog_post])          
-      flash[:notice] = _('Post was successfully updated.')      
-      redirect_to project_blog_post_path(Project.current, @blog_post)
-    else
-      render :action => 'edit'
-    end    
+    respond_to do |format|
+      if @blog_post.update_attributes(params[:blog_post])          
+        flash[:notice] = _('Post was successfully updated.')      
+        format.html { redirect_to [Project.current, @blog_post] }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @blog_post.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
-    if @blog_post.destroy
-      flash[:notice] = _('Post was successfully deleted.')
+    @blog_post.destroy
+    flash[:notice] = _('Post was successfully deleted.')
+    
+    respond_to do |format|
+      format.html { redirect_to(project_blog_posts_path(Project.current)) }
+      format.xml  { head :ok }
     end
-    redirect_to project_blog_posts_path(Project.current)
   end
 
   protected 

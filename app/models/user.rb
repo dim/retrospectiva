@@ -183,6 +183,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def serialize_only
+    [:id, :username, :name]
+  end
+
   protected
 
     class PermissionSet < Hash

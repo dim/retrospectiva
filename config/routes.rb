@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
         :conditions => { :method => :delete },
         :requirements => { :id => /\d+/ }
     end
-    
+    # project.resources :ticket_reports
     project.resources :milestones
     
     project.with_options :controller => 'browse' do |browse|
@@ -36,7 +36,7 @@ ActionController::Routing::Routes.draw do |map|
     project.with_options :controller => 'search' do |search|
       search.search    'search'
     end
-    
+
   end
 
   map.with_options :controller => 'rss' do |rss|

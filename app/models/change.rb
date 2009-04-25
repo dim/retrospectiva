@@ -37,7 +37,11 @@ class Change < ActiveRecord::Base
   def diffable?
     repository.active? && name == 'M'
   end
-
+  
+  def serialize_only
+    [:id, :path, :from_path, :from_revision, :name]
+  end
+  
   protected
   
     def before_validation

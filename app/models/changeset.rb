@@ -105,6 +105,10 @@ class Changeset < ActiveRecord::Base
       :order => 'changesets.created_at DESC'
   end
 
+  def serialize_only
+    [:id, :author, :revision, :log, :created_at]
+  end
+
   protected
 
     def create_changeset_project_relations!

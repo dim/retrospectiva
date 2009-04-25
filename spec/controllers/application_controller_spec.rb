@@ -153,14 +153,14 @@ describe 'Format rendering and fallback' do
   end
 
   it 'should return 406 Not Acceptable if requested format is not part of respond-to' do
-    get :index, :project_id => @project.to_param, :format => 'xml'
+    get :index, :project_id => @project.to_param, :format => 'text'
     response.code.should == '406'
   end
   
   it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
     @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
     @changesets.should_receive(:find).twice.and_return(nil)
-    get :show, :project_id => @project.to_param, :id => '1', :format => 'xml'
+    get :show, :project_id => @project.to_param, :id => '1', :format => 'text'
     response.code.should == '406'
   end
 

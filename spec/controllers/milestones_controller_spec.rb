@@ -166,7 +166,7 @@ describe MilestonesController do
 
       it "should redirect to the milestones list" do
         do_post
-        response.should redirect_to(project_milestones_url(@project))
+        response.should redirect_to(project_milestones_path(@project))
       end
       
     end

@@ -1,9 +1,9 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class TicketsController < ProjectAreaController
-  keep_params! :only => [:index], :exclude => [:project_id]
+  keep_params! :only => [:index], :exclude => [:project_id, :report]
 
   menu_item :tickets, :except => [:new, :create] do |i|
     i.label = N_('Tickets')
@@ -46,7 +46,12 @@ class TicketsController < ProjectAreaController
     
   def index
     @tickets = paginate_tickets(request.format.rss? ? 10 : params[:per_page])    
-    respond_with_defaults
+    
+    respond_to do |format|
+      format.html
+      format.rss  { render_rss(Ticket) }
+      format.xml  { render :xml => @tickets }
+    end
   end
 
   def search
@@ -59,35 +64,55 @@ class TicketsController < ProjectAreaController
     @next_ticket = @ticket.next_ticket(filters)
     @previous_ticket = @ticket.previous_ticket(filters)    
     @ticket_change.attributes = { :author => cached_user_attribute(:name, 'Anonymous'), :email => cached_user_attribute(:email) }
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @ticket.to_xml(:include => @ticket.serialize_including + [:changes]) }
+    end
   end
 
   def new
     @ticket.author = cached_user_attribute(:name, 'Anonymous')
     @ticket.email = cached_user_attribute(:email)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @ticket }
+    end
   end
 
   def create
     @ticket.protected_attributes = params[:ticket]
     @ticket.author_host = request.remote_ip
     @ticket.toggle_subscriber(User.current) if params[:watch_ticket]
-    if @ticket.save
-      cache_user_attributes!(:name => @ticket.author, :email => @ticket.email)
-      flash[:notice] = _('Ticket was successfully created.')
-      redirect_to project_ticket_path(Project.current, @ticket)
-    else
-      render :action => 'new'
-    end
+
+    respond_to do |format|
+      if @ticket.save
+        cache_user_attributes!(:name => @ticket.author, :email => @ticket.email)
+        flash[:notice] = _('Ticket was successfully created.')
+        format.html { redirect_to [Project.current, @ticket] }
+        format.xml  { render :xml => @ticket, :status => :created, :location => [Project.current, @ticket] }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @ticket.errors, :status => :unprocessable_entity }
+      end
+    end    
   end
 
   def update
-    if @ticket_change.save
-      @ticket.toggle_subscriber(User.current) if params[:watch_ticket]
-      cache_user_attributes!(:name => @ticket_change.author, :email => @ticket_change.email)
-      flash[:notice] = _('Ticket was successfully updated.')
-      redirect_to project_ticket_path(Project.current, @ticket, :anchor => "ch#{@ticket_change.id}")
-    else
-      render :action => 'show'
-    end
+    respond_to do |format|
+      if @ticket_change.save
+        @ticket.toggle_subscriber(User.current) if params[:watch_ticket]
+        cache_user_attributes!(:name => @ticket_change.author, :email => @ticket_change.email)
+        flash[:notice] = _('Ticket was successfully updated.')
+
+        format.html { redirect_to project_ticket_path(Project.current, @ticket, :anchor => "ch#{@ticket_change.id}") }
+        format.xml  { head :ok }        
+      else
+        format.html { render :action => 'show' }
+        format.xml  { render :xml => @ticket.errors, :status => :unprocessable_entity }
+      end
+    end    
   end
 
   def download
@@ -100,25 +125,38 @@ class TicketsController < ProjectAreaController
     else
       _('You stopped watching this ticket.')
     end
-    redirect_to project_ticket_path(Project.current, @ticket)
+    
+    respond_to do |format|
+      format.html { redirect_to [Project.current, @ticket] }
+      format.xml  { head :ok }        
+    end    
   end
 
   def destroy
     if @ticket.destroy
       flash[:notice] = _('Ticket was successfully deleted.')
     end
-    redirect_to project_tickets_path(Project.current)
+
+    respond_to do |format|
+      format.html { redirect_to project_tickets_path(Project.current) }
+      format.xml  { head :ok }
+    end
   end
 
   def destroy_change
     @ticket_change = Project.current.ticket_changes.find params[:id], :include => :ticket
     @ticket = @ticket_change.ticket
+
     if @ticket_change.destroy
       updated_at = (@ticket.changes.last || @ticket).created_at
       @ticket.update_timestamp(updated_at)
       flash[:notice] = _('Ticket change was successfully deleted.')
     end
-    redirect_to project_ticket_path(Project.current, @ticket_change.ticket)
+
+    respond_to do |format|
+      format.html { redirect_to [Project.current, @ticket_change.ticket] }
+      format.xml  { head :ok }
+    end
   end
 
   def modify_summary

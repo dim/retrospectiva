@@ -22,7 +22,8 @@ describe BlogComment do
     end
   
     it 'should validate presence of content' do
-      @comment.should validate_presence_of(:content)
+      @comment.should_not be_valid?
+      @comment.should heve(1).error_on(:content)
     end
 
     it 'should validate correct email' do

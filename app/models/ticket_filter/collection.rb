@@ -137,7 +137,7 @@ class TicketFilter::Collection < Array
     end
 
     def custom_property(symbol)
-      instance = "TicketFilter::Custom::#{symbol.to_s.classify}".constantize.new
+      instance = "TicketFilter::Custom::#{symbol.to_s.camelize}".constantize.new
       property(instance.name, instance.items, instance.options)
     end
   

@@ -1,3 +1,4 @@
+# coding:utf-8 
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe BlogPost do
@@ -48,17 +49,17 @@ describe BlogPost do
     
     it 'should generate a preview' do
       BlogPost.preview_length = 100 
-      @post.preview.should == "h2. Headline\n\nDek ec hodiaŭa malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota  ..."
+      @post.preview.should == "h2. Headline\n\nDek ec hodiaua malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota  ..."
     end
 
     it 'should try remove the last text paragraph' do
       BlogPost.preview_length = 180 
-      @post.preview.should == "h2. Headline\n\nDek ec hodiaŭa malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota kaŭze tutampleksa,\nhej jesigi kilogramo po."
+      @post.preview.should == "h2. Headline\n\nDek ec hodiaua malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota kauze tutampleksa,\nhej jesigi kilogramo po."
     end
 
     it 'should try remove orphaned headlines' do
       BlogPost.preview_length = 300 
-      @post.preview.should == "h2. Headline\n\nDek ec hodiaŭa malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota kaŭze tutampleksa,\nhej jesigi kilogramo po.\n\nNula otek neoficiala ha poa, plue otek jugoslavo io, igi trans deloke helpverbo vi."
+      @post.preview.should == "h2. Headline\n\nDek ec hodiaua malprofitanto. Speco prirespondi diskriminacio ve duo, sen ho jota kauze tutampleksa,\nhej jesigi kilogramo po.\n\nNula otek neoficiala ha poa, plue otek jugoslavo io, igi trans deloke helpverbo vi."
     end
         
   end

@@ -93,6 +93,10 @@ class Milestone < ActiveRecord::Base
     read_attribute(:started_on) || write_attribute(:started_on, Date.today)
   end
   
+  def serialize_only
+    [:id, :name, :info, :started_on, :finished_on, :due]
+  end
+  
   private
     
     def calculate_percentages
