@@ -58,7 +58,7 @@ module WikiEngine
       rescue LoadError; end
       
       begin
-        require 'bluecloth'
+        require 'rdiscount'
         self.supported_engines['markdown'] = MarkDownEngine.new
       rescue LoadError; end
       
