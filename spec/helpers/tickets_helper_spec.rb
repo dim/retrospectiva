@@ -2,35 +2,49 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe TicketsHelper do
   
-  describe 'generating the search path hash for tickets (hash_for_search_tickets_path)' do
+  describe 'generating the tickets path' do
            
     before do
-      @default_params = { :controller => 'tickets', :action => 'search', :format => :js, :project_id => 'project_name', :only_path => true, :use_route => :search_project_tickets }
       Project.stub!(:current).and_return(mock_model(Project, :to_param => 'project_name'))
       assigns[:filters] = @filters = mock(TicketFilter::Collection, :to_params => {})
       helper.stub!(:params).and_return({})
     end
     
     it "should should generate the correct path" do
-      helper.hash_for_search_tickets_path.should == @default_params
+      helper.tickets_path.should == '/projects/project_name/tickets'
     end
 
     it "should include params from the ticket filters" do
       @filters.should_receive(:to_params).and_return(:state => [1,2,3])
-      helper.hash_for_search_tickets_path.
-        should == @default_params.merge(:state => [1,2,3])
+      helper.tickets_path.should == '/projects/project_name/tickets?state%5B%5D=1&amp;state%5B%5D=2&amp;state%5B%5D=3'
     end
 
-    it "should keep the report params" do
+    it "should keep report params" do
       helper.stub!(:params).and_return(:report => '1')
-      helper.hash_for_search_tickets_path.
-        should == @default_params.merge(:report => '1')
+      helper.tickets_path.should == '/projects/project_name/tickets?report=1'
+    end
+
+    it "should keep by params" do
+      helper.stub!(:params).and_return(:by => 'user')
+      helper.tickets_path.should == '/projects/project_name/tickets?by=user'
     end
 
     it "should ignore any other params" do
       helper.stub!(:params).and_return(:other => '1')
-      helper.hash_for_search_tickets_path.
-        should == @default_params
+      helper.tickets_path.should == '/projects/project_name/tickets'
+    end
+
+    it "should accept additional params" do
+      helper.tickets_path(:format => 'rss').should == '/projects/project_name/tickets.rss'
+    end
+
+    it "should accept path prefixes" do
+      helper.tickets_path(:prefix => 'search', :format => 'js').should == '/projects/project_name/tickets/search.js'
+    end
+
+    it "should work without escapes if requested" do
+      @filters.should_receive(:to_params).and_return(:status => 1, :priority => 2)
+      helper.tickets_path(:escape => false).should == '/projects/project_name/tickets?priority=2&status=1'
     end
     
   end

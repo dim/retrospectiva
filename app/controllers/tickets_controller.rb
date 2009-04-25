@@ -220,7 +220,7 @@ class TicketsController < ProjectAreaController
     end
 
     def ticket_order
-      case params[:group]
+      case params[:by]
       when 'user'
         'assigned_users_tickets.name'
       when 'priority'

@@ -15,10 +15,10 @@ module TicketsHelper
     end
   end
 
-  def hash_for_search_tickets_path
-    hash_for_search_project_tickets_path @filters.to_params.
-      merge(params[:report] ? {:report => params[:report]} : {}).
-      merge(:project_id => Project.current.to_param, :format => :js)
+  def tickets_path(options = {})
+    method = [options.delete(:prefix), 'project_tickets_path'].compact.join('_')
+    send method, Project.current,
+      params.only(:report, :by).merge(@filters.to_params).merge(options)
   end
 
   def ticket_update(update, tag = nil)
@@ -118,6 +118,11 @@ module TicketsHelper
         :colspan => ( property_types.any? ? 8 : 7 )
       "<tr class=\"#{current_cycle}\">#{spacer}</tr>" + render(ticket_group)
     end.join("\n")
+  end
+
+  def ticket_group_by(label, value, *aliases)
+    aliases.unshift(value)
+    link_to_unless aliases.include?(params[:by]), label, tickets_path(:by => value)
   end
 
   protected

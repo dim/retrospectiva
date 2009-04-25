@@ -1,2 +1,2 @@
-page.replace_html 'tickets', :partial => 'ticket', :collection => @tickets
+page.replace_html 'tickets', render_grouped(@tickets, params[:by])
 toggle_pagination(page)

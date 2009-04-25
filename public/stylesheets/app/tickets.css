@@ -1,9 +1,13 @@
+.ticket-open {}
+.ticket-in-progress {}
+.ticket-resolved { text-decoration: line-through; }
+
 .tickets table a:hover, 
 .tickets table a:focus { color:#000; background:none; }
 
 .tickets table tbody td { vertical-align: top; font-size:98%; }
 .tickets .content-header { margin-bottom:1em; border-color: #ccc; }
-.tickets .internal-navigation { border-top:0; margin-top:-10px; padding-bottom:0.5em; }
+.tickets .filter-selection { border-top:0; margin-top:-10px; padding-bottom:0.5em; }
 
 .tickets table tbody td.group,
 .tickets table tbody td.group:hover { line-height:1; padding:2px 1em; font-size:90%; background:#ddd; border-top:1px solid #ccc;border-bottom:1px solid #ccc; }

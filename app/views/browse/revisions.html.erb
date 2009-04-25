@@ -10,7 +10,7 @@
   <table class="record-list">
     <thead>
       <% if @revisions.total_pages > 1 -%>
-        <tr class="navigation">
+        <tr>
           <td colspan="6"><%= will_paginate @revisions, :params => { :project_id => Project.current.to_param } %></td>
         </tr> 
       <% end -%>

@@ -20,10 +20,6 @@
   border-top: 1px solid #eee;
 }
 
-.ticket-open {}
-.ticket-in-progress {}
-.ticket-resolved { text-decoration: line-through; }
-
 /* Markup specific settings
 -------------------------------------------------------------- */
 
@@ -61,30 +57,30 @@ form.plus_form fieldset div.markup-links { text-align: right; clear: left; float
 /* Internal navigation
 -------------------------------------------------------------- */
 
-.internal-navigation { 
+.filter-selection { 
   margin: 0 0 10px 0; 
   padding: 0.5em 1em 0 1em; 
   background-color: #f6f6f9;
   border: 1px solid #ccc;
 }
-.internal-navigation dl { 
+.filter-selection dl { 
   overflow: auto;
   margin: 0 0 0.1em; 
   padding: .25em 0; 
   clear: left; 
 }
-.internal-navigation dl dt { 
+.filter-selection dl dt { 
   width: 80px; 
   margin: 0; 
   padding: 0; 
   float: left; 
 }
-.internal-navigation dl dd        { margin: 0 0.5em 0.5em 100px; }
-.internal-navigation dd a         { padding: 1px; }    
-.internal-navigation dd a.active  { color: #000; }    
-.internal-navigation dd img       { vertical-align: middle; }
-.internal-navigation dd .option   { margin: 0 1.5em 0 0; float: left; }
-.internal-navigation input.text   { margin: 0; font-size: 0.9em; padding: 1px 3px; }
+.filter-selection dl dd        { margin: 0 0.5em 0.5em 100px; }
+.filter-selection dd a         { padding: 1px; }    
+.filter-selection dd a.active  { color: #000; }    
+.filter-selection dd img       { vertical-align: middle; }
+.filter-selection dd .option   { margin: 0 1.5em 0 0; float: left; }
+.filter-selection input.text   { margin: 0; font-size: 0.9em; padding: 1px 3px; }
     
 
 /* Tooltip

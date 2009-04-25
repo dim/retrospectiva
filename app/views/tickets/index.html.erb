@@ -4,17 +4,27 @@
 <div class="tickets">
 
   <% content_header do -%>
+    <div class="float-r small">
+      <span class="strong"><%=_ 'Group records' %>:</span>
+      <%= ticket_group_by _('None'), '', nil %>,
+      <%= ticket_group_by _('Week'), 'week' %>,
+      <%= ticket_group_by _('Month'), 'month' %>,
+      <%= ticket_group_by _('Assigned To'), 'user' %>,
+      <%= ticket_group_by _('Priority'), 'priority' %>,
+      <%= ticket_group_by _('Milestone'), 'milestone' %>
+    </div>
+    
     <%= link_to_function _('Filter tickets'), toggle_internal_navigation('filter', 'report') -%>
     <% if @reports.any? -%>
       | <%= link_to_function _('Show report'), toggle_internal_navigation('report', 'filter') -%>
     <% end -%>
   <% end -%>
   
-  <% content_tag :div, :class => 'internal-navigation clearfix', :id => 'ticket_report_selector', :style => (@report ? nil : 'display:none;') do -%>
+  <% content_tag :div, :class => 'filter-selection clearfix', :id => 'ticket_report_selector', :style => (@report ? nil : 'display:none;') do -%>
     <%= render :partial => 'reports' %>
   <% end if @reports.any? -%>
   
-  <% content_tag :div, :class => 'internal-navigation clearfix', :id => 'ticket_filter_selector', :style => (@report || @filters.default? ? 'display:none;' : nil) do -%>
+  <% content_tag :div, :class => 'filter-selection clearfix', :id => 'ticket_filter_selector', :style => (@report || @filters.default? ? 'display:none;' : nil) do -%>
     <%= ticket_filter_selector(@filters) %>
   <% end -%>
   
@@ -46,13 +56,13 @@
     </tfoot>
   
     <tbody id="tickets">
-      <%= render_grouped @tickets, params[:group] %>
+      <%= render_grouped @tickets, params[:by] %>
     </tbody>
   </table>
   
   <%= observe_field 'term',
         :frequency => 1,
-        :url => hash_for_search_tickets_path,
+        :url => tickets_path(:prefix => :search, :format => 'js'),
         :with => "'term=' + encodeURIComponent(value)" -%>
 
 </div>

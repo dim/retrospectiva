@@ -1,7 +1,8 @@
+# coding:utf-8 
 module WikiEngine
 
   class Retro < RedCloth::TextileDoc
-    CODE_PATTERN   = /\{{3}\n*(.+?)\n*\}{3}/um    
+    CODE_PATTERN   = /\{{3}\n*(.+?)\n*\}{3}/m    
     HEADER_PATTERN = /^(={1,6})[ ]*(.+?)[ ]*=*$/
 
     module Formatter

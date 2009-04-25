@@ -44,7 +44,7 @@ describe "/browse/revisions.html.erb" do
   it 'should render the pagination' do
     template.should_receive(:will_paginate).and_return('<div>PAGINATION</div>')
     do_render
-    response.should have_tag('table thead tr.navigation') do
+    response.should have_tag('table thead tr') do
       with_tag 'div', 'PAGINATION'
     end
   end
