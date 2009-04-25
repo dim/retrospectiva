@@ -144,12 +144,25 @@ module Retrospectiva
           end
 
           def authenticate_user
+            authenticate_user_via_session || authenticate_user_via_http_basic
+          end
+
+          def authenticate_user_via_session
             return nil unless session[:user_id]
             
             logger.debug("Authenticating user with ID: #{session[:user_id]}") if logger
             User.active.find_by_id session[:user_id], :include => {:groups => :projects}              
           end
-                    
+
+          def authenticate_user_via_http_basic
+            case request.format
+            when Mime::XML
+              authenticate_with_http_basic do |identifier, password| 
+                User.authenticate(:username => identifier, :password => password)
+              end || request_http_basic_authentication(RetroCM[:general][:basic][:site_name]) 
+            end
+          end
+                
           def failed_authentication!
             logger.debug("Authentication failed. Redirect to login.") if logger
             reset_session
