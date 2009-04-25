@@ -102,11 +102,7 @@ class TicketFilter::Collection < Array
     end
 
     def push_other_items!
-      unless User.current.public?
-        property :my_tickets, TicketFilter::Custom::UserFilter.items, 
-          :label => _('My Tickets'),
-          :conditions => TicketFilter::Custom::UserFilter.lambda_for_conditions
-      end
+      custom_property(:my_tickets) unless User.current.public?
     end  
 
     def pre_select!      
@@ -138,6 +134,11 @@ class TicketFilter::Collection < Array
         self << TicketFilter::Item.new(name, records, params[name], options)
         after_add(name, records, options)
       end
+    end
+
+    def custom_property(symbol)
+      instance = "TicketFilter::Custom::#{symbol.to_s.classify}".constantize.new
+      property(instance.name, instance.items, instance.options)
     end
   
     def ticket_properties
