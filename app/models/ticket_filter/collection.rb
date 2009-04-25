@@ -25,19 +25,31 @@ class TicketFilter::Collection < Array
     name, id = name.to_s, id.to_i
     returning(real_params) do |result|      
       result[name] ||= []
-      result[name] << id
+      result[name] << id      
+      if name == 'status'
+        result.delete('state')      
+      end      
     end
   end
 
   def excluding(name, id)
     name, id = name.to_s, id.to_i
-    returning(real_params) do |result|      
+    returning(real_params) do |result|
+      
       if result[name] == [id]
         result.delete(name)
       elsif result.key?(name)
         result[name].delete(id)
       end
-#      remove_linked!(result) if default?
+      
+      if name == 'status'
+        result.delete('state')        
+      elsif name == 'state' and result['status']
+        result['status'].reject! do |status_id|
+          status_hash[status_id].nil? || status_hash[status_id].state_id == id 
+        end 
+      end
+      
     end
   end
   
@@ -105,11 +117,6 @@ class TicketFilter::Collection < Array
       end if self[:state].selected?      
     end
 
-#    def remove_linked!(options)
-#      options['status']
-#      p options
-#    end
-
     def before_add(key, records, options = {})
     end
     
@@ -143,6 +150,10 @@ class TicketFilter::Collection < Array
     
     def statuses
       @statuses ||= Status.find :all, :order => 'rank'
+    end
+  
+    def status_hash
+      @status_hash ||= statuses.index_by(&:id)
     end
   
     def priorities

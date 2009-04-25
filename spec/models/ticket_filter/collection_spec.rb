@@ -127,6 +127,7 @@ describe TicketFilter::Collection do
     end
 
     describe 'whhen nothing is selected (default state)' do
+      
       it 'should retain defaults when including' do
         do_create().to_params.should == {}
         do_create().including(:state, 3).should == { 'state' => [1, 2, 3], 'status' => @statuses.map(&:id)}
@@ -135,15 +136,33 @@ describe TicketFilter::Collection do
         do_create(:state => '2').including(:state, 3).should == { 'state' => [2, 3], 'status' => [@s3.id] }
       end
   
-      it 'should remove statuses when removing states when excluding' do
+    end
+
+    describe 'when excluding states' do
+
+      it 'should automatically exclude relevant statuses' do
         do_create().to_params.should == {}
         do_create().excluding(:state, 2).should == {'state' => [1], 'status' => [@s1.id, @s2.id]}
       end
+      
+    end
 
-      it 'should remove sates when removing statuses when excluding' do
+    describe 'when excluding statuses' do
+
+      it 'should automatically exclude all states' do
         do_create().to_params.should == {}
-        do_create().excluding(:status, @s2.id).should == {'state' => [2], 'status' => [@s2.id, @s3.id]}
+        do_create().excluding(:status, @s2.id).should == {'status' => [@s1.id, @s3.id]}
       end
+
+    end
+
+    describe 'when including statuses' do
+
+      it 'should automatically exclude all states' do
+        do_create(:state => 1).to_params.should == {'state' => [1]}
+        do_create(:state => 1).including(:status, @s3.id).should == {'status' => [@s1.id, @s2.id, @s3.id]}
+      end
+
     end
 
   end

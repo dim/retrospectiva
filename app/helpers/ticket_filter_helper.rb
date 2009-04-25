@@ -23,7 +23,10 @@ module TicketFilterHelper
     end       
   
     def exclusive_filter_link(filter, record)
-      link_to record.name, project_tickets_path(Project.current, filter.name => [record.id]), 
+      options = { filter.name => [record.id] }
+      options.update(params.only(:by))
+      
+      link_to record.name, project_tickets_path(Project.current, options),
         :title => _('Select filter'), 
         :class => (filter.include?(record.id) ? 'active' : nil)  
     end
@@ -36,7 +39,8 @@ module TicketFilterHelper
       options = filter.include?(record.id) ? 
         filters.excluding(filter.name, record.id) :
         filters.including(filter.name, record.id)        
-
+      options.update(params.only(:by))
+      
       link_to icon, project_tickets_path(Project.current, options), :title => title
     end     
 
