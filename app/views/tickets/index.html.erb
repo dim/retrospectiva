@@ -18,6 +18,10 @@
     <% if @reports.any? -%>
       | <%= link_to_function _('Show report'), toggle_internal_navigation('report', 'filter') -%>
     <% end -%>
+    <% if @report or not @filters.default? -%>
+      | <%= link_to _('Clear selection'), project_tickets_path(Project.current, :_clear => 1, :by => params[:by]) %>
+    <% end -%>
+    
   <% end -%>
   
   <% content_tag :div, :class => 'filter-selection clearfix', :id => 'ticket_report_selector', :style => (@report ? nil : 'display:none;') do -%>
@@ -27,6 +31,7 @@
   <% content_tag :div, :class => 'filter-selection clearfix', :id => 'ticket_filter_selector', :style => (@report || @filters.default? ? 'display:none;' : nil) do -%>
     <%= ticket_filter_selector(@filters) %>
   <% end -%>
+
   
   <table class="record-list">
     <thead>

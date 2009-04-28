@@ -375,8 +375,18 @@ describe TicketsController do
 
       describe "XML request" do
         
+        before do
+          controller.stub!(:authenticate_with_http_basic).and_return(@user)
+        end
+        
+        
         def do_post
           super :format => 'xml'
+        end
+        
+        it 'should authenticate the user' do
+          controller.should_receive(:authenticate_with_http_basic).and_return(@user)          
+          do_post
         end
 
         it 'should be successful' do

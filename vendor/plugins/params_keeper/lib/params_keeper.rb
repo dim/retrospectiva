@@ -25,6 +25,8 @@ module ParamsKeeper
     end  
     
     def params_keeper_retrieve
+      params_keeper_reset and return true if params[:_clear]
+      
       stored = session[:params_keeper][params_keeper_key] rescue {}
       if stored && stored.keys.any? && (stored.keys & params.keys).blank?
         params.merge!(stored)
@@ -33,12 +35,17 @@ module ParamsKeeper
     end
   
     def params_keeper_store
-      exclude_keys = [:controller, :action, :format] + self.class.options_for_params_keeper[:exclude]
+      exclude_keys = [:controller, :action, :id, :format, :_clear] + self.class.options_for_params_keeper[:exclude]
       session[:params_keeper] ||= {}
       session[:params_keeper][params_keeper_key] = params.except(*exclude_keys)
       true
     end
   
-    private :params_keeper_retrieve, :params_keeper_store, :params_keeper_key
+    def params_keeper_reset
+      session[:params_keeper] ||= {}
+      session[:params_keeper][params_keeper_key] = {}
+    end
+    
+    private :params_keeper_retrieve, :params_keeper_store, :params_keeper_key, :params_keeper_reset
   end
 end

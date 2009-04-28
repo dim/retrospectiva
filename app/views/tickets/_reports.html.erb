@@ -1,12 +1,8 @@
 <dl>
   <dt><%=_ 'Reports' %>:</dt>    
 
-  <% if @report -%>
-    <dd><%= link_to _('All open tickets'), project_tickets_path(Project.current, :report => nil) %></dd>
-  <% end -%>
-
   <% @reports.each do |report| -%>
     <% next if report.user_specific? && User.current.public? -%>
-    <dd><%= link_to_unless report == @report, h(report.name), project_tickets_path(Project.current, :report => report) %></dd>
+    <dd><%= link_to_unless report == @report, h(report.name), project_tickets_path(Project.current, :report => report, :by => params[:by]) %></dd>
   <% end -%>
 </dl>

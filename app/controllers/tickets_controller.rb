@@ -3,7 +3,7 @@
 # Please read LICENSE document for more information.
 #++
 class TicketsController < ProjectAreaController
-  keep_params! :only => [:index], :exclude => [:project_id, :report]
+  keep_params! :only => [:index], :exclude => [:project_id]
 
   menu_item :tickets, :except => [:new, :create] do |i|
     i.label = N_('Tickets')
