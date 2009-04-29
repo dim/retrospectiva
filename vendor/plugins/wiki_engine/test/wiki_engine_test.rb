@@ -4,12 +4,11 @@
 #++
 
 $: << File.dirname(__FILE__) + '/../lib'
-# $: << File.dirname(__FILE__) + '/../../redcloth_native/lib'
 
 require 'rubygems'
-require 'redcloth'
 require 'test/unit'
 require File.dirname(__FILE__) + '/../init'
+require 'wiki_engine/redcloth'
 
 class WikiEngineTest < Test::Unit::TestCase
 

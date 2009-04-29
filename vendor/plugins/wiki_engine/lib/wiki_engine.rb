@@ -51,7 +51,7 @@ module WikiEngine
     # Initializes the WikiEngine. Looks for available libraries. A default engine can be specified.
     def init(default = :retro)
       begin
-        require 'redcloth'
+        require 'wiki_engine/redcloth'
         self.supported_engines['textile'] = TextileEngine.new
         require 'wiki_engine/retro'
         self.supported_engines['retro'] = RetroEngine.new

@@ -1,27 +1,41 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Admin::GroupsController < AdminAreaController
   before_filter :paginate_groups, :only => [:index]
   before_filter :find_projects, :only => [:new, :edit]
-  before_filter :new, :only => [:create]
   before_filter :edit, :only => [:update]
   
   def index
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @groups.to_xml }
+    end
   end
 
   def new
     @group = Group.new(params[:group])    
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @group }
+    end
   end
 
   def create
-    if @group.save
-      flash[:notice] = _('Group was successfully created.')
-      redirect_to admin_groups_path
-    else
-      find_projects
-      render :action => 'new'
+    @group = Group.new(params[:group])    
+
+    respond_to do |format|
+      if @group.save
+        flash[:notice] = _('Group was successfully created.')
+        format.html { redirect_to admin_groups_path }
+        format.xml  { render :xml => @group, :status => :created, :location => admin_groups_path }
+      else
+        find_projects
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -30,23 +44,33 @@ class Admin::GroupsController < AdminAreaController
   end
 
   def update
-    if @group.update_attributes(params[:group])
-      flash[:notice] = _('Group was successfully updated.')
-      redirect_to admin_groups_path
-    else
-      find_projects
-      render :action => 'edit'
+    respond_to do |format|
+      if @group.update_attributes(params[:group])
+        flash[:notice] = _('Group was successfully updated.')
+        format.html { redirect_to admin_groups_path }
+        format.xml  { head :ok }        
+      else
+        find_projects
+        format.html { render :action => 'edit' }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end    
     end    
   end
   
   def destroy
     group = Group.find params[:id]
-    if group.destroy
-      flash[:notice] = _('Group was successfully deleted.')
-    else
-      flash[:error] = ([_('Group could not be deleted. Following error(s) occured') + ':'] + group.errors.full_messages)
+
+    respond_to do |format|
+      if group.destroy
+        flash[:notice] = _('Group was successfully deleted.')
+        format.html { redirect_to(admin_groups_path) }
+        format.xml  { head :ok }
+      else
+        flash[:error] = ([_('Group could not be deleted. Following error(s) occured') + ':'] + group.errors.full_messages)
+        format.html { redirect_to(admin_groups_path) }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end
     end
-    redirect_to admin_groups_path
   end
   
   protected

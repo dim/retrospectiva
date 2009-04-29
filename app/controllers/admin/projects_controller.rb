@@ -1,28 +1,42 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Admin::ProjectsController < AdminAreaController
   before_filter :paginate_projects, :only => [:index]
   before_filter :find_repositories, :only => [:new, :edit]
-  before_filter :new, :only => [:create]
   before_filter :find_project, :only => [:edit, :update, :destroy]
   verify :xhr => true, :only => :repository_validation
 
   def index
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @projects.to_xml }
+    end
   end
 
   def new
     @project = Project.new(params[:project])
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @project }
+    end
   end
 
   def create
-    if @project.save
-      flash[:notice] = _('Project was successfully created.')
-      redirect_to admin_projects_path
-    else
-      find_repositories
-      render :action => 'new'
+    @project = Project.new(params[:project])
+
+    respond_to do |format|
+      if @project.save
+        flash[:notice] = _('Project was successfully created.')
+        format.html { redirect_to admin_projects_path }
+        format.xml  { render :xml => @project, :status => :created, :location => admin_projects_path }
+      else
+        find_repositories
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -30,22 +44,31 @@ class Admin::ProjectsController < AdminAreaController
   end
 
   def update
-    if @project.update_attributes(params[:project])
-      flash[:notice] = _('Project was successfully updated.')
-      redirect_to admin_projects_path
-    else
-      find_repositories
-      render :action => 'edit'
+    respond_to do |format|
+      if @project.update_attributes(params[:project])
+        flash[:notice] = _('Project was successfully updated.')
+        format.html { redirect_to admin_projects_path }
+        format.xml  { head :ok }        
+      else
+        find_repositories
+        format.html { render :action => 'edit' }
+        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+      end    
     end    
   end
   
   def destroy
-    if @project.destroy
-      flash[:notice] = _('Project was successfully deleted.')
-    else
-      flash[:error] = ([_('Project could not be deleted. Following error(s) occured') + ':'] + @project.errors.full_messages)
+    respond_to do |format|
+      if @project.destroy
+        flash[:notice] = _('Project was successfully deleted.')
+        format.html { redirect_to(admin_projects_path) }
+        format.xml  { head :ok }
+      else
+        flash[:error] = ([_('Project could not be deleted. Following error(s) occured') + ':'] + @project.errors.full_messages)
+        format.html { redirect_to(admin_projects_path) }
+        format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
+      end
     end
-    redirect_to admin_projects_path
   end
 
   def repository_validation
@@ -60,7 +83,10 @@ class Admin::ProjectsController < AdminAreaController
         _('Failure! Path is not a directory in this repository.')
       end
     end
-    render :inline => '&rarr; <%=h @result %>'
+    
+    respond_to do |format|
+      format.html { render :inline => '&rarr; <%=h @result %>' }
+    end
   end
 
   protected

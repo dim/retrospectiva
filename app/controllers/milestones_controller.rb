@@ -68,7 +68,8 @@ class MilestonesController < ProjectAreaController
   end
 
   def destroy
-    Project.current.milestones.destroy(params[:id])
+    @milestone = Project.current.milestones.find(params[:id])
+    @milestone.destroy
     flash[:notice] = _('Milestone was successfully deleted.')
 
     respond_to do |format|

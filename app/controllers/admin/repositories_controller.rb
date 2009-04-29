@@ -6,24 +6,33 @@ class Admin::RepositoriesController < AdminAreaController
   verify :xhr => true, :only => :validate
 
   before_filter :paginate_repositories, :only => [:index]
-  before_filter :new, :only => [:create]
+  before_filter :new_repository, :only => [:new, :create]
   before_filter :find_repository, :only => [:edit, :update]
 
   def index
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @repositories.to_xml }
+    end
   end
 
   def new
-    kind = params[:repository] ? params[:repository][:kind] : nil
-    klass = (Repository[kind] || Repository::Subversion)
-    @repository = klass.new(params[:repository])        
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @repository }
+    end
   end
   
-  def create    
-    if @repository.save
-      flash[:notice] = _('Repository was successfully created.')
-      redirect_to admin_repositories_path
-    else
-      render :action => 'new'
+  def create
+    respond_to do |format|
+      if @repository.save
+        flash[:notice] = _('Repository was successfully created.')
+        format.html { redirect_to admin_repositories_path }
+        format.xml  { render :xml => @repository, :status => :created, :location => admin_repositories_path }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @repository.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
@@ -31,19 +40,26 @@ class Admin::RepositoriesController < AdminAreaController
   end
 
   def update
-    if @repository.update_attributes(params[:repository])
-      flash[:notice] = _('Repository was successfully updated.')
-      redirect_to admin_repositories_path
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @repository.update_attributes(params[:repository])
+        flash[:notice] = _('Repository was successfully updated.')
+        format.html { redirect_to admin_repositories_path }
+        format.xml  { head :ok }        
+      else
+        format.html { render :action => 'edit' }
+        format.xml  { render :xml => @repository.errors, :status => :unprocessable_entity }
+      end  
     end  
   end
   
   def destroy
-    if Repository.destroy(params[:id])
-      flash[:notice] = _('Repository was successfully deleted.')
-    end
-    redirect_to admin_repositories_path
+    Repository.destroy(params[:id])
+    flash[:notice] = _('Repository was successfully deleted.')
+    
+    respond_to do |format|
+      format.html { redirect_to admin_repositories_path }
+      format.xml  { head :ok }
+    end    
   end
   
   def validate
@@ -60,22 +76,28 @@ class Admin::RepositoriesController < AdminAreaController
         _('Failure! Path does not contain a valid repository.')
       end
     end
-    render :inline => '&rarr; <%=h @result %>'
+
+    respond_to do |format|
+      format.html { render :inline => '&rarr; <%=h @result %>' }
+    end
   end
   
   protected
 
     def paginate_repositories
-      @repositories = Repository.paginate(
+      @repositories = Repository.paginate :page => params[:page],
         :order => 'name',
-        :per_page => params[:per_page],
-        :page => params[:page])
+        :per_page => params[:per_page]
     end
 
     def find_repository
       @repository = Repository.find(params[:id])
     end
     
-  
+    def new_repository
+      kind = params[:repository] ? params[:repository][:kind] : nil
+      klass = (Repository[kind] || Repository::Git)
+      @repository = klass.new(params[:repository])
+    end
   
 end

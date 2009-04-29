@@ -64,8 +64,8 @@ table.code .aw { color:#C00 }
 table.code .bi { color:#509; font-weight:bold }
 table.code .c  { color:#595; }
 
-table.code .ch { color:#04D }
-table.code .ch .k { color:#04D }
+table.code .ch { color:#046 }
+table.code .ch .k { color:#046 }
 table.code .ch .dl { color:#039 }
 
 table.code .cl { color:#000; font-weight:bold }
@@ -74,7 +74,7 @@ table.code .cr { color:#0A0 }
 table.code .cv { color:#048; font-weight:bold }
 table.code .df { color:#099; font-weight:bold }
 table.code .di { color:#088; font-weight:bold }
-table.code .dl { color:black }
+table.code .dl { color:#000; }
 table.code .do { color:#970 }
 table.code .dt { color:#34b }
 table.code .ds { color:#D42; font-weight:bold }
@@ -116,16 +116,16 @@ table.code .vl { color: #088; }
 
 table.code .rx { background-color:#fff0ff }
 table.code .rx .k { color:#808 }
-table.code .rx .dl { color:#404 }
+table.code .rx .ch { color:#303 }
+table.code .rx .dl { color:#303 }
 table.code .rx .mod { color:#C2C }
-table.code .rx .fu  { color:#404; font-weight: bold }
+table.code .rx .fu  { color:#303; font-weight: bold }
 
 table.code .s { background-color:#f0f0ff; color: #369; }
 table.code .s .s { background-color:#f0f0ff; }
 table.code .s .s .s { background-color:#f0f0ff; }
 table.code .s .k { }
-table.code .s .ch { color: #b0b; }
-table.code .s .dl { color: #0060B0; }
+table.code .s .dl { color: #046; }
 
 table.code .sh { background-color:#f0fff0; color:#2B2 }
 table.code .sh .k { }

@@ -40,8 +40,8 @@ describe Admin::RepositoriesController do
   describe "handling GET /admin/repositories/new" do
 
     before(:each) do
-      @repository = mock_model(Repository::Subversion)
-      Repository::Subversion.stub!(:new).and_return(@repository)
+      @repository = mock_model(Repository::Git)
+      Repository::Git.stub!(:new).and_return(@repository)
     end
 
     def do_get
@@ -51,7 +51,7 @@ describe Admin::RepositoriesController do
     it_should_successfully_render_template('new')
     
     it "should create an new repository" do
-      Repository::Subversion.should_receive(:new).and_return(@repository)
+      Repository::Git.should_receive(:new).and_return(@repository)
       do_get
     end
   
@@ -128,7 +128,7 @@ describe Admin::RepositoriesController do
 
       def do_post
         @repository.should_receive(:save).and_return(false)
-        post :create, :repository => {}
+        post :create, :repository => { :kind => 'Subversion' }
       end
 
       it_should_successfully_render_template('new', :do_post)

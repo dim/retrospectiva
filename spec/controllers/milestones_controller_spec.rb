@@ -229,15 +229,21 @@ describe MilestonesController do
   describe "handling DELETE /milestones/1" do
 
     before(:each) do
-      @milestones.stub!(:destroy).and_return(true)
+      @milestone = mock_model(Milestone, :to_param => "1", :destroy => true)
+      @milestones.stub!(:find).and_return(@milestone)
     end
   
     def do_delete
       delete :destroy, :project_id => @project.to_param, :id => "1"
     end
 
-    it "should find and destroy the milestone requested" do
-      @milestones.should_receive(:destroy).with("1").and_return(true)
+    it "should find the milestone" do
+      @milestones.should_receive(:find).with("1").and_return(@milestone)
+      do_delete
+    end
+
+    it "should destroy the milestone" do
+      @milestone.should_receive(:destroy)
       do_delete
     end
   

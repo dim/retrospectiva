@@ -75,7 +75,7 @@ module WikiEngine
   class TextileEngine < TextileBasedEngine     
     
     def markup(text)      
-      RedCloth.new(text, [:sanitize_html, :filter_styles, :filter_classes, :filter_ids]).to_html
+      WikiEngine::RedCloth.new(text, [:sanitize_html, :filter_styles, :filter_classes, :filter_ids]).to_html
     end  
   end
 
