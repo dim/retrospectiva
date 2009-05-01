@@ -47,7 +47,30 @@ module Retrospectiva
       def description(options = {})
         I18n.t "#{name}.description", options.merge(:scope => translation_scope).reverse_merge(:default => '')
       end
+
+      def node_name
+        self.class.name.demodulize.downcase
+      end
       
+      def node_options
+        {}
+      end
+
+      def to_xml(options = {}, &block)
+        options[:indent] ||= 2
+        xml = options[:builder] ||= Builder::XmlMarkup.new(:indent => options[:indent])
+        xml.instruct! unless options[:skip_instruct]
+        xml.tag! node_name, node_options do
+          xml.name name
+          xml.label label
+          yield xml if block_given?
+          
+          if records.any?
+            root = records.first.node_name.pluralize
+            records.to_xml(options.merge(:root => root))
+          end
+        end        
+      end
     end  
       
     class Section < AbstractUnit
@@ -120,8 +143,12 @@ module Retrospectiva
     class AbstractSetting < AbstractUnit
       attr_accessor :allow_blank, :default, :group, :after_change
       
+      def records
+        []
+      end
+      
       def path
-        "#{group.section.label} / #{group.label} / #{name.humanize}"
+        "#{group.section.label.dasherize}/#{group.label.dasherize}/#{label.dasherize}"
       end
       
       def default?
@@ -170,6 +197,21 @@ module Retrospectiva
 
       def translation_scope
         [:settings, group.section.name.to_sym, :groups, group.name.to_sym, :settings]
+      end
+
+      def node_name
+        'setting'
+      end
+      
+      def node_options
+        { :type => self.class.name.demodulize }
+      end
+
+      def to_xml(options = {}, &block)
+        super do |xml|
+          xml.value value
+          yield xml if block_given?
+        end
       end
 
     end
@@ -236,7 +278,7 @@ module Retrospectiva
       attr_accessor :options, :evaluate
       
       def values
-        self.options.map do |option|
+        options.map do |option|
           option.is_a?(Array) ? option.last.to_s : option.to_s
         end
       end

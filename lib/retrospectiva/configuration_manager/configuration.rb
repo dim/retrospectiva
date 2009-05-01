@@ -30,10 +30,10 @@ module Retrospectiva
         each_setting(alternative || section_hash) do |section_name, group_name, setting_name, value|
           begin                
             RetroCM[section_name][group_name][setting_name] = value
-          rescue
+          rescue Error => e
             if store_errors
               setting = RetroCM[section_name][group_name].setting(setting_name)
-              errors.add setting.path, $!
+              errors.add_to_base "[#{setting.path}] #{e.message}"
             end
           end
         end

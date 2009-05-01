@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2007 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 module Admin::SetupHelper
@@ -20,18 +20,8 @@ module Admin::SetupHelper
     end
   end
 
-  def error_messages
-    return '' if @errors.blank?
-
-    title = "<h2>#{_('Configuration could not be saved')}</h2>"
-    intro = "<p>#{_('There were problems')}:</p>"
-    items = content_tag :ul, @errors.map {|key, message| "<li>#{key}: #{message}</li>" }
-    
-    "<div id=\"errorExplanation\" class=\"errorExplanation\">#{title}\n#{intro}\n#{items}</div>"
-  end
-
   def setting_tag(setting)    
-    tag = case setting
+    case setting
     when RetroCM::TextSetting
       text_setting_tag(setting)
     when RetroCM::StringSetting
@@ -47,13 +37,8 @@ module Admin::SetupHelper
     else
       value_for(setting)
     end
-    wrap_error_tag(tag, @errors && @errors[setting.path]) 
   end
 
-  def wrap_error_tag(html_tag, has_error)
-    has_error ? field_error_proc.call(html_tag, self) : html_tag
-  end
-  
   def string_setting_tag(setting)
     value = value_for(setting).to_s
     text_field_tag(name_for(setting), h(value), options_for_string_setting_tag(setting))

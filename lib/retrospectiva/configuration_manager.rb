@@ -25,10 +25,6 @@ module Retrospectiva
       configuration.save
     end    
     
-    def errors
-      configuration.errors      
-    end
-
     def reload!
       @updated_at = configuration.updated_at
       configuration.apply(false)
@@ -48,12 +44,12 @@ module Retrospectiva
       configuration
     end    
 
+    def configuration
+      @configuration ||= Configuration.find_or_create
+    end
+
     protected
-      
-      def configuration
-        @configuration ||= Configuration.find_or_create
-      end
-      
+            
       def updated_at
         @updated_at
       end

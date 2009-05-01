@@ -7,6 +7,7 @@ describe Admin::SetupController do
     permit_access!    
     controller.stub!(:set_locale).and_return(true)
     @sections = [mock('RetroCM::Section1', :name => 'Section1')]
+    @configuration = mock_model(RetroCM::Configuration)
     RetroCM[:general][:basic].setting(:site_url).stub!(:default?).and_return(false)        
   end
 
@@ -21,6 +22,13 @@ describe Admin::SetupController do
       RetroCM.should_receive(:sections).and_return(@sections)
       do_get
       assigns[:sections].should == @sections
+    end
+
+    it "should assign the configuration for the view" do
+      controller.stub!(:validate_site_url)
+      RetroCM.should_receive(:configuration).and_return(@configuration)
+      do_get
+      assigns[:configuration].should == @configuration
     end
 
     describe 'if the Site-URL has not been changed by the user' do
@@ -78,9 +86,7 @@ describe Admin::SetupController do
     describe 'with incorrect update values' do
 
       before do
-        @errors = {'a' => 'b'}
         RetroCM.stub!(:update).and_return false
-        RetroCM.stub!(:errors).and_return @errors
       end
 
       it "should reload configuration sections" do
@@ -89,11 +95,6 @@ describe Admin::SetupController do
       end
 
       it_should_successfully_render_template('index', :do_put)
-
-      it "should assign the errors to the view" do
-        do_put
-        assigns[:errors].should == @errors
-      end
       
     end
   

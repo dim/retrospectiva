@@ -8,6 +8,6 @@
 </div>
 
 <% plus_form_for :setup, :url => admin_setup_path, :html => { :method => :put } do |f| -%>
-  <%= error_messages %>
+  <%= error_messages_for :configuration, :header_message => _('Configuration could not be saved') %>
   <%= render :partial => 'section', :collection => @sections, :locals => {:f => f} %>
 <% end -%>
