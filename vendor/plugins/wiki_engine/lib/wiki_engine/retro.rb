@@ -16,6 +16,7 @@ module WikiEngine
     def initialize(string)
       super(string.dup, [:sanitize_html, :filter_styles, :filter_classes, :filter_ids])      
       self.hard_breaks = false
+      self.no_span_caps = true
       
       # normalize line breaks
       clean_white_space!
