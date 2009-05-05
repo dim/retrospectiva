@@ -14,8 +14,6 @@ class ChangesetsController < ProjectAreaController
 
   keep_params! :only => [:index], :exclude => [:project_id]
 
-  enable_private_rss! :only => :index
-
   def index
     @changesets = Project.current.changesets.paginate(
       :include => [:user],

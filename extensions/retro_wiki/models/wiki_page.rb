@@ -18,6 +18,40 @@ class WikiPage < ActiveRecord::Base
   validates_association_of :project
 
   attr_accessible :content, :author
+
+  retro_previewable do |r|
+    r.channel do |c, options|
+      project = options[:project] || Project.current
+      c.name = 'wiki_pages'
+      c.title = _('Wiki Pages')
+      c.description = _('Wiki Pages for {{project}}', :project => project.name)
+      c.link = c.route(:project_wiki_pages_url, project)
+    end
+    r.item do |i, wiki_page, options|
+      project = options[:project] || Project.current
+      i.title = wiki_page.title
+      i.description = wiki_page.content
+      i.date = wiki_page.updated_at
+      i.link = i.guid = i.route(:project_wiki_page_url, project, wiki_page)
+    end
+  end  
+  
+  # named_scope :feedable, :order => 'wiki_pages.created_at DESC', :limit => 10
+
+  class << self
+    
+    def searchable_column_names
+      [ 'wiki_pages.title', 'wiki_pages.content' ]
+    end
+    
+    def full_text_search(query)
+      find :all,
+        :conditions => Retro::Search::exclusive(query, *searchable_column_names),
+        :limit => 100,
+        :order => 'wiki_pages.updated_at DESC'      
+    end
+        
+  end if false
   
   def to_param
     title

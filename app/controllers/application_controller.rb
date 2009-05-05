@@ -12,19 +12,6 @@ class ApplicationController < ActionController::Base
   
   helper_method :layout_markers, :permitted?
 
-  def self.enable_private_rss!(options = {})
-    pos = before_filters.index(:authorize) || before_filters.size
-    filter_chain.send :update_filter_chain, options, :before, pos do |controller|
-    
-      if controller.request.format.rss? and controller.params[:private].present? and User.current.public?
-        user = User.active.find_by_private_key controller.params[:private]      
-        User.current = user if user            
-      end
-      true
-    
-    end
-  end
-
   protected
     
     def reset_request_cache!

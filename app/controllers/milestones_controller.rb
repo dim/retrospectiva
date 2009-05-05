@@ -9,7 +9,6 @@ class MilestonesController < ProjectAreaController
     :update => ['edit', 'update'], 
     :delete => ['destroy']
 
-  enable_private_rss! :only => :index
   before_filter :edit, :only => :update
   
   def index

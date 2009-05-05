@@ -211,12 +211,6 @@ describe 'RSS access via private key' do
       lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
     end
 
-    it 'should refuse authorisation to methods that are not using the filter' do
-      bypass_rescue
-      User.should_not_receive(:find_by_private_key)
-      lambda { get :new, :project_id => '1', :format => 'rss', :private => '[PKEY]' }.should raise_error(RetroAM::NoAuthorizationError)
-    end
- 
     describe 'if a valid private key is submitted' do
       
       before do

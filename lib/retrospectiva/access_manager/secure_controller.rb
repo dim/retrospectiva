@@ -144,7 +144,9 @@ module Retrospectiva
           end
 
           def authenticate_user
-            authenticate_user_via_session || authenticate_user_via_http_basic
+            authenticate_user_via_session || 
+              authenticate_user_via_http_basic ||
+              authenticate_user_via_private_key
           end
 
           def authenticate_user_via_session
@@ -159,7 +161,17 @@ module Retrospectiva
             when Mime::XML
               authenticate_with_http_basic do |identifier, password| 
                 User.authenticate(:username => identifier, :password => password)
-              end || request_http_basic_authentication(RetroCM[:general][:basic][:site_name]) 
+              end || request_http_basic_authentication(RetroCM[:general][:basic][:site_name])
+            else
+              nil
+            end
+          end
+                
+          def authenticate_user_via_private_key
+            if request.format and request.format.rss? and params[:private].present?
+              User.active.find_by_private_key(params[:private])      
+            else
+              nil
             end
           end
                 

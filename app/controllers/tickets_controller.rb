@@ -27,8 +27,6 @@ class TicketsController < ProjectAreaController
 
   require_user 'modify_summary', 'modify_content', 'modify_change_content'
 
-  enable_private_rss! :only => :index
-  
   verify        :xhr => true, :only => [:modify_summary, :modify_content, :modify_change_content]
 
   before_filter :find_report, :only => [:index, :search]

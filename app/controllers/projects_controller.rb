@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController  
-
-  enable_private_rss! :only => [:index, :show]
   before_filter :find_projects
  
   def index
