@@ -21,6 +21,10 @@ de-DE:
     # app/views/admin/users/_groups.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ACHTUNG! Gruppeneinstellungen werden ignoriert, wenn gleichzeitig die 'Administrator'-Option gewählt wurde!"
 
+    # Missing
+    # app/views/rescue/403.html.erb
+    "Access forbidden (403)": 
+
     # app/models/notifications.rb
     "Account activation": "Aktivierung des Benutzerkontos"
 
@@ -94,9 +98,6 @@ de-DE:
     # app/models/status.rb
     "All open": "All offenen"
 
-    # app/views/tickets/_reports.html.erb
-    "All open tickets": "Alle offenen Tickets"
-
     # app/models/status.rb
     "All resolved": "Alle gelösten"
 
@@ -115,7 +116,7 @@ de-DE:
     # app/views/tickets/index.html.erb
     "Assigned To": "Vergeben an"
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Assigned to me": "Mir zugeordnete"
 
     # app/models/ticket_change.rb
@@ -142,7 +143,7 @@ de-DE:
     # app/views/browse/show_binary.html.erb
     "Binary File": "Binärdatei"
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Blocks": "Blöcke"
 
     # app/core_info.rb
@@ -206,18 +207,22 @@ de-DE:
     # app/views/accounts/show.html.erb
     "Check this option to renew your private access key.": "Aktivieren Sie diese Otion, um den privaten Zugriffsschlüssel zu aktualisieren."
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Clear selection": 
+
     # app/views/projects/index.html.erb
     "Click for info": "Anklicken für weitere Informationen"
+
+    # Missing
+    # app/views/changesets/_quick_diff.html.erb
+    "Close": 
 
     # app/helpers/format_helper.rb
     "Close preview": "Vorschau schließen"
 
-    # app/helpers/milestones_helper.rb
     # app/views/admin/projects/_form.html.erb
     "Closed": "Geschlossen"
-
-    # Unknown
-    "Closed tickets": "Geschlossene Tickets"
 
     # app/core_info.rb
     "Code": "Code"
@@ -234,7 +239,7 @@ de-DE:
     # app/helpers/browse_helper.rb
     "Compare [{{revision_a}}] with [{{revision_b}}]": "Vergleiche [{{revision_a}}] mit [{{revision_b}}]"
 
-    # app/helpers/admin/setup_helper.rb
+    # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "Die Einstellungen konnten nicht gespeichert werden"
 
     # app/views/admin/users/_core.html.erb
@@ -352,11 +357,9 @@ de-DE:
     # app/helpers/application_helper.rb
     "Display": "Anzeigen"
 
+    # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
     "Download": "Herunterladen"
-
-    # app/helpers/changesets_helper.rb
-    "Download Diff": "Diff herunterladen"
 
     # app/views/browse/_show_header.html.erb
     "Download in other formats": "In anderen Formaten herunterladen"
@@ -452,6 +455,10 @@ de-DE:
     # app/views/tickets/index.html.erb
     "Filter tickets": "Tickets filtern"
 
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    "Finished": 
+
     # app/views/milestones/_form.html.erb
     "Finished on": "Erledigt am"
 
@@ -460,7 +467,7 @@ de-DE:
     # app/views/sessions/new.html.erb
     "Forgot password": "Kennwort vergessen?"
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Formats": "Formatierungen"
 
     # app/views/admin/users/_core.html.erb
@@ -481,6 +488,10 @@ de-DE:
     # app/views/admin/groups/_form.html.erb
     "Group name": "Name der Gruppe"
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Group records": 
+
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "Die Gruppe wurde erfolgreich angelegt."
 
@@ -498,16 +509,21 @@ de-DE:
     "Groups": "Gruppen"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Headers": 
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Hallo {{user}}!"
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Hide Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Hide already completed milestones": "Abgeschlossene Meilensteine nicht anzeigen"
 
     # app/views/layouts/_header.html.erb
+    # app/views/rescue/403.html.erb
     # app/views/rescue/404.html.erb
     # app/views/rescue/422.html.erb
     # app/views/rescue/500.html.erb
@@ -522,7 +538,6 @@ de-DE:
     # app/views/tickets/index.html.erb
     "ID": "ID"
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "In progress": "In Bearbeitung"
 
@@ -555,9 +570,6 @@ de-DE:
     # app/views/browse/index.html.erb
     "Last modified": "Letzte Änderung"
 
-    # app/views/admin/tasks/_task.html.erb
-    "Last run": "Zuletzt ausgeführt"
-
     # app/views/admin/users/_core.html.erb
     "Leave password field blank, unless you actually want to change your password.": "Lassen Sie das Kennwortfeld frei, es sei denn Sie wollen Ihr Kennwort verändern."
 
@@ -565,10 +577,10 @@ de-DE:
     "Line {{number}}": "Zeile {{number}}"
 
     # app/controllers/markup_controller.rb
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Links": "Verknüpfungen"
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Lists": "Listen"
 
     # app/helpers/application_helper.rb
@@ -650,6 +662,10 @@ de-DE:
     # app/core_info.rb
     "Modify": "Ändern"
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Month": 
+
     # lib/time_interval.rb
     "Months": "Monate"
 
@@ -661,7 +677,7 @@ de-DE:
     # app/views/notifications/password_reset_instructions.html.erb
     "My Account": "Mein Konto"
 
-    # app/models/ticket_filter/collection.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "Meine Tickets"
 
     # app/views/admin/reports/_form.html.erb
@@ -707,6 +723,10 @@ de-DE:
     # app/controllers/admin/projects_controller.rb
     "No repository selected.": "Kein Repository eingerichtet."
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "None": 
+
     # app/views/admin/extensions/index.html.erb
     "Not Installed": "Nicht installiert"
 
@@ -716,12 +736,8 @@ de-DE:
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Benutzer bei aktivierung des Benutzerkontos benachrichtingen"
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "Open": "Geöffnet"
-
-    # Unknown
-    "Open tickets": "Offene Tickets"
 
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
@@ -730,7 +746,7 @@ de-DE:
     # app/views/tickets/form/_ticket_options.html.erb
     "Options": "Optionen"
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Paragraphs": "Absätze"
 
     # app/views/admin/users/_core.html.erb
@@ -862,7 +878,7 @@ de-DE:
     # app/helpers/format_helper.rb
     "Reference": 
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "References": "Verweise"
 
     # app/helpers/navigation_helper.rb
@@ -888,13 +904,14 @@ de-DE:
     # app/controllers/admin/reports_controller.rb
     "Report was successfully updated.": "Der Report wurde erfolgreich aktualisiert."
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Von mir eingebrachte"
 
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "Reported by {{author}} - {{time}}": "Gemeldet von {{author}} - {{time}}"
 
+    # app/core_info.rb
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
@@ -980,6 +997,10 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "Shortly you will receive an email with instructions on how to reset your password.": "Sie werden in Kürze eine E-Mail mit Instruktionen zum zurücksetzen des Passworts erhalten."
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Show Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "Bereits abgeschlossene Meilensteine anzeigen"
 
@@ -1034,7 +1055,7 @@ de-DE:
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Synchronisationsbefehl"
 
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Tables": "Tabellen"
 
     # app/views/admin/tasks/index.html.erb
@@ -1063,9 +1084,6 @@ de-DE:
 
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": "Das Repository ist derzeit nicht verfügbar, bitte versuchen Sie es später noch einmal."
-
-    # app/helpers/admin/setup_helper.rb
-    "There were problems": "Es traten Probleme auf"
 
     # app/helpers/admin/ticket_property_values_helper.rb
     "They will be set back to the default value.": "Sie werden auf den Standardwert zurückgesetzt."
@@ -1223,7 +1241,7 @@ de-DE:
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     "Watch this ticket": "Dieses Ticket beobachten"
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Watched by me": "Von mir beobachtet"
 
     # Missing
@@ -1233,6 +1251,10 @@ de-DE:
     # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
+
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Week": 
 
     # lib/time_interval.rb
     "Weeks": "Wochen"
@@ -1249,7 +1271,8 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "Sie können sich leider nicht anmelden, bis ein Administrator Ihr Konto aktiviert hat."
 
-    # Unknown
+    # Missing
+    # app/views/rescue/403.html.erb
     "You are not permitted to view this page.": 
 
     # app/views/sessions/destroy.html.erb

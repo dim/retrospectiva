@@ -159,7 +159,12 @@ de-DE:
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
+    # extensions/retro_wiki/models/wiki_page.rb
     "Wiki Pages": 
+
+    # Missing
+    # extensions/retro_wiki/models/wiki_page.rb
+    "Wiki Pages for {{project}}": 
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb

@@ -20,6 +20,9 @@ ru-RU:
     # extensions/retro_blog/models/blog_post.rb
     "Blog Posts for {{project}}": 
 
+    # extensions/retro_blog/views/blog/edit.html.erb
+    "Cancel": "Отмена"
+
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
@@ -41,9 +44,8 @@ ru-RU:
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Comments": 
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Content": 
+    "Content": "Содержимое"
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
@@ -60,10 +62,9 @@ ru-RU:
     # extensions/retro_blog/views/blog/show.html.erb
     "Delete": "Удалить"
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Edit": 
+    "Edit": "Редактировать"
 
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Email": "Email"

@@ -22,7 +22,8 @@ pt-BR:
     # app/views/admin/users/_groups.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ATENÇÃO: As definições de grupo serão ignoradas se a opção 'Administrador' for selecionada."
 
-    # Unknown
+    # Missing
+    # app/views/rescue/403.html.erb
     "Access forbidden (403)": 
 
     # app/models/notifications.rb
@@ -100,7 +101,7 @@ pt-BR:
     # app/models/status.rb
     "All open": "Todos em aberto"
 
-    # app/views/tickets/_reports.html.erb
+    # Unknown
     "All open tickets": "Todos os tickets em aberto"
 
     # app/models/status.rb
@@ -121,7 +122,7 @@ pt-BR:
     # app/views/tickets/index.html.erb
     "Assigned To": "Atribuído a"
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Assigned to me": "Atribuídos a mim"
 
     # Missing
@@ -151,7 +152,7 @@ pt-BR:
     "Binary File": "Arquivo binário"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Blocks": 
 
     # app/core_info.rb
@@ -222,13 +223,20 @@ pt-BR:
     # app/views/accounts/show.html.erb
     "Check this option to renew your private access key.": 
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Clear selection": 
+
     # app/views/projects/index.html.erb
     "Click for info": "Clique para informação"
+
+    # Missing
+    # app/views/changesets/_quick_diff.html.erb
+    "Close": 
 
     # app/helpers/format_helper.rb
     "Close preview": "Fechar pré-visualização"
 
-    # app/helpers/milestones_helper.rb
     # app/views/admin/projects/_form.html.erb
     "Closed": "Fechado"
 
@@ -254,7 +262,7 @@ pt-BR:
     # app/helpers/browse_helper.rb
     "Compare [{{revision_a}}] with [{{revision_b}}]": 
 
-    # app/helpers/admin/setup_helper.rb
+    # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "Configuração não pôde ser salva"
 
     # Missing
@@ -389,10 +397,11 @@ pt-BR:
     # app/helpers/application_helper.rb
     "Display": 
 
+    # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
     "Download": "Baixar"
 
-    # app/helpers/changesets_helper.rb
+    # Unknown
     "Download Diff": "Baixar diff"
 
     # app/views/browse/_show_header.html.erb
@@ -502,6 +511,10 @@ pt-BR:
     # app/views/tickets/index.html.erb
     "Filter tickets": "Filtrar tickets"
 
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    "Finished": 
+
     # app/views/milestones/_form.html.erb
     "Finished on": "Finalizado em"
 
@@ -511,7 +524,7 @@ pt-BR:
     "Forgot password": "Esqueceu a senha?"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Formats": 
 
     # Missing
@@ -534,6 +547,10 @@ pt-BR:
     # app/views/admin/groups/_form.html.erb
     "Group name": "Nome do grupo"
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Group records": 
+
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "Grupo criado com sucesso."
 
@@ -551,16 +568,21 @@ pt-BR:
     "Groups": "Grupos"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Headers": 
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Olá {{user}}!"
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Hide Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Hide already completed milestones": "Esconder marcos já concluídos"
 
     # app/views/layouts/_header.html.erb
+    # app/views/rescue/403.html.erb
     # app/views/rescue/404.html.erb
     # app/views/rescue/422.html.erb
     # app/views/rescue/500.html.erb
@@ -576,7 +598,6 @@ pt-BR:
     # app/views/tickets/index.html.erb
     "ID": 
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "In progress": "Em andamento"
 
@@ -615,7 +636,7 @@ pt-BR:
     # app/views/browse/index.html.erb
     "Last modified": 
 
-    # app/views/admin/tasks/_task.html.erb
+    # Unknown
     "Last run": "Última execução"
 
     # app/views/admin/users/_core.html.erb
@@ -627,11 +648,11 @@ pt-BR:
 
     # Missing
     # app/controllers/markup_controller.rb
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Links": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Lists": 
 
     # Missing
@@ -717,6 +738,10 @@ pt-BR:
     # app/core_info.rb
     "Modify": 
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Month": 
+
     # lib/time_interval.rb
     "Months": "Meses"
 
@@ -728,7 +753,7 @@ pt-BR:
     # app/views/notifications/password_reset_instructions.html.erb
     "My Account": "Minha conta"
 
-    # app/models/ticket_filter/collection.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "Meus Tickets"
 
     # app/views/admin/reports/_form.html.erb
@@ -780,6 +805,10 @@ pt-BR:
     "No repository selected.": "Nenhum repositório selecionado."
 
     # Missing
+    # app/views/tickets/index.html.erb
+    "None": 
+
+    # Missing
     # app/views/admin/extensions/index.html.erb
     "Not Installed": 
 
@@ -789,7 +818,6 @@ pt-BR:
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Notificar o usuário na ativação da conta"
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "Open": "Aberto"
 
@@ -805,7 +833,7 @@ pt-BR:
     "Options": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Paragraphs": 
 
     # Missing
@@ -954,7 +982,7 @@ pt-BR:
     "Reference": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "References": 
 
     # app/helpers/navigation_helper.rb
@@ -981,13 +1009,14 @@ pt-BR:
     # app/controllers/admin/reports_controller.rb
     "Report was successfully updated.": "Relatório atualizado com sucesso."
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Relatado por mim"
 
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "Reported by {{author}} - {{time}}": "Relatado por {{author}} - {{time}}"
 
+    # app/core_info.rb
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
@@ -1079,6 +1108,10 @@ pt-BR:
     # app/controllers/accounts_controller.rb
     "Shortly you will receive an email with instructions on how to reset your password.": 
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Show Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "Mostrar marcos já concluídos."
 
@@ -1140,7 +1173,7 @@ pt-BR:
     "Sync callback": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Tables": 
 
     # Missing
@@ -1173,7 +1206,7 @@ pt-BR:
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": 
 
-    # app/helpers/admin/setup_helper.rb
+    # Unknown
     "There were problems": "Houve problemas"
 
     # Missing
@@ -1348,7 +1381,7 @@ pt-BR:
     "Watch this ticket": 
 
     # Missing
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Watched by me": 
 
     # Missing
@@ -1358,6 +1391,10 @@ pt-BR:
     # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
+
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Week": 
 
     # lib/time_interval.rb
     "Weeks": "Semanas"
@@ -1376,7 +1413,8 @@ pt-BR:
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "Você não tem permissão para entrar até que sua conta seja ativada pelo administrador."
 
-    # Unknown
+    # Missing
+    # app/views/rescue/403.html.erb
     "You are not permitted to view this page.": 
 
     # app/views/sessions/destroy.html.erb

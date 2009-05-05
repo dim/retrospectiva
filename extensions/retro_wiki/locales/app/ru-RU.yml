@@ -17,9 +17,8 @@ ru-RU:
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     "Cancel": "Отмена"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Content": 
+    "Content": "Содержимое"
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
@@ -34,9 +33,8 @@ ru-RU:
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
     "Delete": "Удалить"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Edit": 
+    "Edit": "Редактировать"
 
     # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
@@ -174,7 +172,12 @@ ru-RU:
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
+    # extensions/retro_wiki/models/wiki_page.rb
     "Wiki Pages": 
+
+    # Missing
+    # extensions/retro_wiki/models/wiki_page.rb
+    "Wiki Pages for {{project}}": 
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb

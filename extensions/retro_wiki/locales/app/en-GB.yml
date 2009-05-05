@@ -92,9 +92,8 @@ en-GB:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     "Pages": 
 
-    # Missing
     # extensions/retro_wiki/ext/markup_controller.rb
-    "References": 
+    "References": "References"
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
@@ -171,7 +170,12 @@ en-GB:
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
+    # extensions/retro_wiki/models/wiki_page.rb
     "Wiki Pages": 
+
+    # Missing
+    # extensions/retro_wiki/models/wiki_page.rb
+    "Wiki Pages for {{project}}": 
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb

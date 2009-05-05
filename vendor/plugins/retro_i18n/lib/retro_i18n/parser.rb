@@ -12,7 +12,7 @@ module RetroI18n
       @files ||= paths.map do |path| 
         Dir.glob(path + '/**/*.*')
       end.flatten.select do |file|
-        File.file?(file) && File.readable?(file) 
+        File.file?(file) && File.readable?(file) && File.size(file) < 10.megabyte
       end.uniq.sort
     end    
 
@@ -26,9 +26,17 @@ module RetroI18n
 
     protected
 
+      def binary?(content)
+        s = content.split(//)
+        ((s.size - s.grep(' '..'~').size) / s.size.to_f) > 0.3
+      end
+      
       def parse!
         files.each do |file|          
-          File.read(file).scan(TRANSLATION).each do |match|
+          content = File.read(file)
+          next if binary?(content)
+          
+          content.scan(TRANSLATION).each do |match|
             next unless match.first            
             store_pattern!(match.first, file)
           end 

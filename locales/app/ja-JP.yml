@@ -21,7 +21,8 @@ ja-JP:
     # app/views/admin/users/_groups.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "注意: '管理者'オプションを選択している場合はグループの設定は無視されます！"
 
-    # Unknown
+    # Missing
+    # app/views/rescue/403.html.erb
     "Access forbidden (403)": 
 
     # app/models/notifications.rb
@@ -98,7 +99,7 @@ ja-JP:
     # app/models/status.rb
     "All open": "未解決のものすべて"
 
-    # app/views/tickets/_reports.html.erb
+    # Unknown
     "All open tickets": "未解決のチケットすべて"
 
     # app/models/status.rb
@@ -119,7 +120,7 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Assigned To": "担当者"
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Assigned to me": "自分の担当"
 
     # Missing
@@ -149,7 +150,7 @@ ja-JP:
     "Binary File": "バイナリファイル"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Blocks": 
 
     # Missing
@@ -220,13 +221,20 @@ ja-JP:
     # app/views/accounts/show.html.erb
     "Check this option to renew your private access key.": 
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Clear selection": 
+
     # app/views/projects/index.html.erb
     "Click for info": "詳細情報はここをクリック"
+
+    # Missing
+    # app/views/changesets/_quick_diff.html.erb
+    "Close": 
 
     # app/helpers/format_helper.rb
     "Close preview": "プレビューを閉じる"
 
-    # app/helpers/milestones_helper.rb
     # app/views/admin/projects/_form.html.erb
     "Closed": "閉鎖"
 
@@ -252,7 +260,7 @@ ja-JP:
     # app/helpers/browse_helper.rb
     "Compare [{{revision_a}}] with [{{revision_b}}]": 
 
-    # app/helpers/admin/setup_helper.rb
+    # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "設定を保存できませんでした"
 
     # Missing
@@ -380,10 +388,11 @@ ja-JP:
     # app/helpers/application_helper.rb
     "Display": 
 
+    # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
     "Download": "ダウンロード"
 
-    # app/helpers/changesets_helper.rb
+    # Unknown
     "Download Diff": "差分をダウンロード"
 
     # app/views/browse/_show_header.html.erb
@@ -485,6 +494,10 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "Filter tickets": "チケットを抽出"
 
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    "Finished": 
+
     # app/views/milestones/_form.html.erb
     "Finished on": "終了日"
 
@@ -494,7 +507,7 @@ ja-JP:
     "Forgot password": "パスワードを忘れましたか？"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Formats": 
 
     # Missing
@@ -516,6 +529,10 @@ ja-JP:
     # app/views/admin/groups/_form.html.erb
     "Group name": "グループ名"
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Group records": 
+
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "グループの作成に成功しました。"
 
@@ -533,16 +550,21 @@ ja-JP:
     "Groups": "グループ一覧"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Headers": 
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "ようこそ{{user}}さん！"
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Hide Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Hide already completed milestones": "完了したマイルストーンを隠す"
 
     # app/views/layouts/_header.html.erb
+    # app/views/rescue/403.html.erb
     # app/views/rescue/404.html.erb
     # app/views/rescue/422.html.erb
     # app/views/rescue/500.html.erb
@@ -558,7 +580,6 @@ ja-JP:
     # app/views/tickets/index.html.erb
     "ID": 
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "In progress": "進行中"
 
@@ -597,7 +618,7 @@ ja-JP:
     # app/views/browse/index.html.erb
     "Last modified": 
 
-    # app/views/admin/tasks/_task.html.erb
+    # Unknown
     "Last run": "最終実行時刻"
 
     # app/views/admin/users/_core.html.erb
@@ -608,11 +629,11 @@ ja-JP:
     "Line {{number}}": 
 
     # app/controllers/markup_controller.rb
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Links": "リンク"
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Lists": 
 
     # Missing
@@ -698,6 +719,10 @@ ja-JP:
     # app/core_info.rb
     "Modify": 
 
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Month": 
+
     # lib/time_interval.rb
     "Months": "ヶ月"
 
@@ -709,7 +734,7 @@ ja-JP:
     # app/views/notifications/password_reset_instructions.html.erb
     "My Account": "アカウント設定"
 
-    # app/models/ticket_filter/collection.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "自分のチケット"
 
     # app/views/admin/reports/_form.html.erb
@@ -761,6 +786,10 @@ ja-JP:
     "No repository selected.": "リポジトリが選択されていません。"
 
     # Missing
+    # app/views/tickets/index.html.erb
+    "None": 
+
+    # Missing
     # app/views/admin/extensions/index.html.erb
     "Not Installed": 
 
@@ -770,7 +799,6 @@ ja-JP:
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "アカウント有効化時にユーザに通知する"
 
-    # app/helpers/milestones_helper.rb
     # app/models/status.rb
     "Open": "未解決"
 
@@ -786,7 +814,7 @@ ja-JP:
     "Options": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Paragraphs": 
 
     # app/views/admin/users/_core.html.erb
@@ -930,7 +958,7 @@ ja-JP:
     "Reference": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "References": 
 
     # app/helpers/navigation_helper.rb
@@ -957,13 +985,14 @@ ja-JP:
     # app/controllers/admin/reports_controller.rb
     "Report was successfully updated.": "レポートの更新に成功しました。"
 
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "自分の報告"
 
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "Reported by {{author}} - {{time}}": "{{author}}が報告 - {{time}}"
 
+    # app/core_info.rb
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
@@ -1055,6 +1084,10 @@ ja-JP:
     # app/controllers/accounts_controller.rb
     "Shortly you will receive an email with instructions on how to reset your password.": 
 
+    # Missing
+    # app/helpers/changesets_helper.rb
+    "Show Quick Diffs": 
+
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "完了したマイルストーンを表示"
 
@@ -1115,7 +1148,7 @@ ja-JP:
     "Sync callback": 
 
     # Missing
-    # vendor/plugins/wiki_engine/lib/wiki_engines.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "Tables": 
 
     # Missing
@@ -1148,7 +1181,7 @@ ja-JP:
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": 
 
-    # app/helpers/admin/setup_helper.rb
+    # Unknown
     "There were problems": "問題があります"
 
     # Missing
@@ -1322,7 +1355,7 @@ ja-JP:
     "Watch this ticket": 
 
     # Missing
-    # app/models/ticket_filter/custom.rb
+    # app/models/ticket_filter/custom/my_tickets.rb
     "Watched by me": 
 
     # Missing
@@ -1332,6 +1365,10 @@ ja-JP:
     # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
+
+    # Missing
+    # app/views/tickets/index.html.erb
+    "Week": 
 
     # lib/time_interval.rb
     "Weeks": "週間"
@@ -1350,7 +1387,8 @@ ja-JP:
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "管理者があなたのアカウントを有効化するまでログインできません。"
 
-    # Unknown
+    # Missing
+    # app/views/rescue/403.html.erb
     "You are not permitted to view this page.": 
 
     # app/views/sessions/destroy.html.erb

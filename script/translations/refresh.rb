@@ -11,7 +11,7 @@ RetroI18n.locales.map(&:code).each do |locale|
   next if locale == 'en-US'
 
   file = RAILS_ROOT + "/locales/app/#{locale}.yml"
-  RetroI18n.update(file, RAILS_ROOT + '/app/', RAILS_ROOT + '/lib/', RAILS_ROOT + '/vendor/')
+  RetroI18n.update(file, RAILS_ROOT + '/app/', RAILS_ROOT + '/lib/', RAILS_ROOT + '/vendor/plugins/')
 end  
 
 #

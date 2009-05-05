@@ -20,6 +20,9 @@ en-GB:
     # extensions/retro_blog/models/blog_post.rb
     "Blog Posts for {{project}}": 
 
+    # extensions/retro_blog/views/blog/edit.html.erb
+    "Cancel": "Cancel"
+
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
