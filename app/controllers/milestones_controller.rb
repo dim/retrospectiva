@@ -81,8 +81,8 @@ class MilestonesController < ProjectAreaController
   
     def options_for_pagination
       {
-        :page => ( request.format.rss? ? 1 : params[:page] ), 
-        :per_page => ( request.format.rss? ? 10 : nil ),
+        :page => ( rss_request? ? 1 : params[:page] ), 
+        :per_page => ( rss_request? ? 10 : nil ),
         :include => {:tickets => :status},
         :order => Milestone.default_order
       }

@@ -70,6 +70,10 @@ class ApplicationController < ActionController::Base
       render_optional_error_file(status_code)    
     end
 
+    def rss_request?
+      request.format && request.format.rss?
+    end
+
   private  
 
     def layout_markers
@@ -83,7 +87,7 @@ class ApplicationController < ActionController::Base
     def render_optional_error_file(status_code)
       status = interpret_status(status_code)
       path = "#{RAILS_ROOT}/app/views/rescue/#{status[0,3]}.html.erb"
-      if File.exist?(path) and request.format.html?
+      if File.exist?(path) and ( request.format.nil? or request.format.html? )
         render :file => path, :layout => 'application', :status => status
       else
         head status

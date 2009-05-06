@@ -17,8 +17,8 @@ class ChangesetsController < ProjectAreaController
   def index
     @changesets = Project.current.changesets.paginate(
       :include => [:user],
-      :page => ( request.format.rss? ? 1 : params[:page] ),
-      :per_page => ( request.format.rss? ? 10 : nil ),
+      :page => ( rss_request? ? 1 : params[:page] ),
+      :per_page => ( rss_request? ? 10 : nil ),
       :order => 'changesets.created_at DESC')    
     
     respond_to do |format|

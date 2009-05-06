@@ -43,7 +43,7 @@ class TicketsController < ProjectAreaController
   before_filter :find_and_verify_attachment, :only => :download
     
   def index
-    @tickets = paginate_tickets(request.format.rss? ? 10 : params[:per_page])    
+    @tickets = paginate_tickets(rss_request? ? 10 : params[:per_page])    
     
     respond_to do |format|
       format.html

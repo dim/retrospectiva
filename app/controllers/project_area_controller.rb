@@ -45,14 +45,13 @@ class ProjectAreaController < ApplicationController
       raise ActiveRecord::RecordNotFound, "Unable to find project '#{params[:project_id]}'"
     end
 
-    def render_rss(klass = nil)
-      klass ||= self.class.name.demodulize.gsub(/Controller$/, '').singularize.constantize
-      records = instance_variable_get("@#{klass.name.tableize}".to_sym)
+    def render_rss(klass, records = nil)
+      records ||= instance_variable_get("@#{klass.name.tableize}".to_sym)
       render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
     end
 
     def failed_authorization!
-      if User.current.public? and request.get? and request.format.html?
+      if User.current.public? and request.get? and ( request.format.nil? or request.format.html? )
         session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
         redirect_to login_path
       else

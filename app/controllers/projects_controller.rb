@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     if User.current.public? && @projects.empty?
       flash.keep
       redirect_to login_path
-    elsif request.format.rss? 
+    elsif rss_request? 
       render_index_rss
     elsif @projects.size == 1
       flash.keep
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     @project = @projects.find(params[:id])    
     if @project.blank? 
       redirect_to projects_path
-    elsif request.format.rss?
+    elsif rss_request?
       render_show_rss(@project)
     else      
       redirect_to @project.path_to_first_menu_item

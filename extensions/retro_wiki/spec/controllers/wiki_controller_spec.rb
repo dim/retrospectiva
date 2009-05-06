@@ -21,13 +21,13 @@ describe WikiController do
     end
     
     it 'should load the pages' do
-      @pages_proxy.should_receive(:paginate).with(:page => nil, :order => 'wiki_pages.title').and_return(@pages) 
+      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.title').and_return(@pages) 
       do_get
       assigns[:pages].should == @pages 
     end
 
     it 'should order the pages by last update if requested' do
-      @pages_proxy.should_receive(:paginate).with(:page => nil, :order => 'wiki_pages.updated_at DESC').and_return(@pages) 
+      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.updated_at DESC').and_return(@pages) 
       do_get :order => 'recent'
       assigns[:pages].should == @pages 
     end

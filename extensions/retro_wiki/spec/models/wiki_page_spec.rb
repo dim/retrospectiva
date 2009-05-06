@@ -191,8 +191,53 @@ describe WikiPage do
       end
       
     end
-    
-    
+        
+  end
+
+  describe 'the class' do
+
+    describe 'full text search' do
+
+      it 'should find records matching the milestone name and description' do
+        WikiPage.full_text_search('content').should have(2).records
+        WikiPage.full_text_search('latest').should have(1).record
+      end
+
+    end
+
+    describe 'previewable' do
+
+      describe 'channel' do
+        before do
+          @channel = WikiPage.previewable.channel(:project => projects(:retro))
+        end
+
+        it 'should have correct attributes' do
+          @channel.name.should == 'wiki'
+          @channel.title.should == 'Wiki'
+          @channel.description.should == 'Wiki for Retrospectiva'
+          @channel.link.should == 'http://test.host/projects/retrospectiva/wiki'
+        end
+
+      end
+
+      describe 'items' do
+
+        before do
+          @wiki_page = wiki_pages(:intro)
+          @item = @wiki_page.previewable(:project => projects(:retro))
+        end
+
+        it 'should have correct attributes' do
+          @item.title.should == @wiki_page.title
+          @item.description.should == @wiki_page.content
+          @item.link.should == "http://test.host/projects/retrospectiva/wiki/Intro"
+          @item.date.should == @wiki_page.updated_at
+        end
+
+      end
+
+    end
   end
   
   

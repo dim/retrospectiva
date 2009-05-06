@@ -22,9 +22,9 @@ class WikiPage < ActiveRecord::Base
   retro_previewable do |r|
     r.channel do |c, options|
       project = options[:project] || Project.current
-      c.name = 'wiki_pages'
-      c.title = _('Wiki Pages')
-      c.description = _('Wiki Pages for {{project}}', :project => project.name)
+      c.name = 'wiki'
+      c.title = _('Wiki')
+      c.description = _('Wiki for {{project}}', :project => project.name)
       c.link = c.route(:project_wiki_pages_url, project)
     end
     r.item do |i, wiki_page, options|
@@ -36,7 +36,7 @@ class WikiPage < ActiveRecord::Base
     end
   end  
   
-  # named_scope :feedable, :order => 'wiki_pages.created_at DESC', :limit => 10
+  named_scope :feedable, :order => 'wiki_pages.created_at DESC', :limit => 10
 
   class << self
     
@@ -51,7 +51,7 @@ class WikiPage < ActiveRecord::Base
         :order => 'wiki_pages.updated_at DESC'      
     end
         
-  end if false
+  end
   
   def to_param
     title
@@ -60,6 +60,7 @@ class WikiPage < ActiveRecord::Base
   def number
     @number ||= versions.size + 1
   end
+  alias_method :version, :number
 
   def newer_versions
     0
@@ -71,6 +72,14 @@ class WikiPage < ActiveRecord::Base
 
   def historic?
     false
+  end
+
+  def serialize_only
+    [:author, :title, :content, :created_at, :updated_at]
+  end
+
+  def serialize_methods
+    [:version]
   end
   
   protected

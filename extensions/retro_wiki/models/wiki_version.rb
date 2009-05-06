@@ -22,6 +22,7 @@ class WikiVersion < ActiveRecord::Base
   def number
     @number ||= versions.index(self) + 1
   end
+  alias_method :version, :number
   
   def updated_at
     created_at
@@ -33,6 +34,14 @@ class WikiVersion < ActiveRecord::Base
   
   def historic?
     true
+  end
+
+  def serialize_only
+    [:author, :content]
+  end
+  
+  def serialize_methods
+    [:title, :version, :updated_at]
   end
   
 end
