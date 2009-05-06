@@ -5,6 +5,7 @@ ja-JP:
 
     # Missing
     # extensions/retro_blog/lib/blog_controller.rb
+    # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
@@ -13,12 +14,14 @@ ja-JP:
 
     # Missing
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/models/blog_post.rb
     "Blog Posts": 
+
+    # Unknown
+    "Blog Posts for {{project}}": 
 
     # Missing
     # extensions/retro_blog/models/blog_post.rb
-    "Blog Posts for {{project}}": 
+    "Blog for {{project}}": 
 
     # extensions/retro_blog/views/blog/edit.html.erb
     "Cancel": "中止"

@@ -4,18 +4,19 @@ de-DE:
     "Author": "Autor"
 
     # extensions/retro_blog/lib/blog_controller.rb
+    # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
     "Blog": "Blog"
 
+    # Missing
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/models/blog_post.rb
-    "Blog Posts": "Blog Einträge"
+    "Blog Posts": 
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog Posts for {{project}}": "Blog Einträge für {{project}}"
+    "Blog for {{project}}": "Blog für {{project}}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     "Cancel": "Abbrechen"

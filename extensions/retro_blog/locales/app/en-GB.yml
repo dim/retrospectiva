@@ -3,46 +3,40 @@ en-GB:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Author": "Author"
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
+    # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Blog": 
+    "Blog": "Blog"
 
     # Missing
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/models/blog_post.rb
     "Blog Posts": 
 
-    # Missing
     # extensions/retro_blog/models/blog_post.rb
-    "Blog Posts for {{project}}": 
+    "Blog for {{project}}": "Blog for {{project}}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     "Cancel": "Cancel"
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Categories": 
+    "Categories": "Categories"
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Comment": "Comment"
 
-    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully created.": 
+    "Comment was successfully created.": "Comment was successfully created."
 
-    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully deleted.": 
+    "Comment was successfully deleted.": "Comment was successfully deleted."
 
-    # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Comments": 
+    "Comments": "Comments"
 
     # extensions/retro_blog/views/blog/_form.html.erb
     "Content": "Content"
@@ -52,10 +46,9 @@ en-GB:
     # extensions/retro_blog/views/blog/new.html.erb
     "Create": "Create"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create Post": 
+    "Create Post": "Create Post"
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
@@ -69,55 +62,43 @@ en-GB:
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Email": "Email"
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Leave a comment": 
+    "Leave a comment": "Leave a comment"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "My Posts": 
+    "My Posts": "My Posts"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Navigation": 
+    "Navigation": "Navigation"
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully created.": 
+    "Post was successfully created.": "Post was successfully created."
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully deleted.": 
+    "Post was successfully deleted.": "Post was successfully deleted."
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully updated.": 
+    "Post was successfully updated.": "Post was successfully updated."
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Read more": 
+    "Read more": "Read more"
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment.html.erb
-    "Really delete this comment?": 
+    "Really delete this comment?": "Really delete this comment?"
 
-    # Missing
     # extensions/retro_blog/views/blog/show.html.erb
-    "Really delete this post?": 
+    "Really delete this post?": "Really delete this post?"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Recent Posts": 
+    "Recent Posts": "Recent Posts"
 
-    # Missing
     # extensions/retro_blog/views/blog/index.html.erb
-    "There are no posts available.": 
+    "There are no posts available.": "There are no posts available."
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Title": 
+    "Title": "Title"
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
@@ -126,7 +107,6 @@ en-GB:
     # extensions/retro_blog/ext_info.rb
     "View": "View"
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": 
+    "{{count}} comments": "{{count}} comments"
 

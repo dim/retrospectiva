@@ -147,6 +147,7 @@ de-DE:
     "View": "Anzeigen"
 
     # extensions/retro_wiki/lib/wiki_controller.rb
+    # extensions/retro_wiki/models/wiki_page.rb
     # extensions/retro_wiki/views/wiki/_header.html.erb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
@@ -159,12 +160,11 @@ de-DE:
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
-    # extensions/retro_wiki/models/wiki_page.rb
     "Wiki Pages": 
 
     # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Wiki Pages for {{project}}": 
+    "Wiki for {{project}}": 
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
