@@ -6,7 +6,7 @@ describe BlogComment do
   describe 'an instance' do
 
     before do 
-      @comment = blog_comments(:release_positive)
+      @comment = BlogComment.new
     end
   
     it 'should belong to a post' do
@@ -22,8 +22,7 @@ describe BlogComment do
     end
   
     it 'should validate presence of content' do
-      @comment.should_not be_valid?
-      @comment.should heve(1).error_on(:content)
+      @comment.should have(1).error_on(:content)
     end
 
     it 'should validate correct email' do
@@ -34,9 +33,9 @@ describe BlogComment do
     end
 
     it 'should validate maximal length of content' do
-      @comment.content = 'A' * 600
+      @comment.content = 'A' * 6000
       @comment.should have(:no).errors_on(:content)
-      @comment.content = 'A' * 601
+      @comment.content = 'A' * 6001
       @comment.should have(1).error_on(:content)
     end
 

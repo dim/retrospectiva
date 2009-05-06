@@ -5,7 +5,7 @@
 class BlogComment < ActiveRecord::Base
   belongs_to :blog_post
 
-  validates_presence_of :author, :content
+  validates_presence_of :author
   validates_association_of :blog_post
   validates_as_email :email, :allow_blank => true
   validates_length_of :content, :in => 3..6000

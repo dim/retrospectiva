@@ -110,22 +110,12 @@ describe BlogPost do
         @channel = BlogPost.previewable.channel(:project => projects(:retro))
       end
       
-      it 'should have a valid name' do
-        @channel.name.should == 'blog_posts'
-      end
-      
-      it 'should have a valid title' do
-        @channel.title.should == 'Blog Posts'
-      end
-      
-      it 'should have a valid description' do
-        @channel.description.should == 'Blog Posts for Retrospectiva'
-      end
-      
-      it 'should have a valid link' do
+      it 'should correct attributes' do
+        @channel.name.should == 'blog'
+        @channel.title.should == 'Blog'
+        @channel.description.should == 'Blog for Retrospectiva'
         @channel.link.should == 'http://test.host/projects/retrospectiva/blog'
-      end      
-
+      end
     end
 
     describe 'items' do
@@ -133,22 +123,12 @@ describe BlogPost do
         @item = @post.previewable(:project => projects(:retro))
       end
       
-      it 'should have a valid title' do
+      it 'should correct attributes' do
         @item.title.should == @post.title
-      end
-      
-      it 'should have a valid description' do
         @item.description.should == @post.preview
-      end
-      
-      it 'should have a valid link' do
         @item.link.should == "http://test.host/projects/retrospectiva/blog/#{@post.id}"
-      end
-      
-      it 'should have a date' do
         @item.date.should == @post.created_at
       end      
-      
     end
     
   end

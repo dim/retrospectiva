@@ -20,9 +20,9 @@ class BlogPost < ActiveRecord::Base
   retro_previewable do |r|
     r.channel do |c, options|
       project = options[:project] || Project.current
-      c.name = 'blog_posts'
-      c.title = _('Blog Posts')
-      c.description = _('Blog Posts for {{project}}', :project => project.name)
+      c.name = 'blog'
+      c.title = _('Blog')
+      c.description = _('Blog for {{project}}', :project => project.name)
       c.link = c.route(:project_blog_posts_url, project)
     end
     r.item do |i, blog_post, options|
