@@ -38,6 +38,7 @@
 .markup table td, 
 .markup table th { vertical-align: middle; }
 .markup table { border: 1px solid #bbb; padding: 1px; }
+.markup pre   { overflow:auto; } 
 
 .markup-preview {
   width: 740px; height: 300px;
