@@ -299,7 +299,7 @@ describe Admin::UsersController do
   describe "handling DELETE /users/1" do
 
     before(:each) do
-      @user = mock_model(User, :to_param => "1", :destroy => true)
+      @user = stub_model(User, :to_param => "1", :destroy => true)
       User.stub!(:find).and_return(@user)
     end
   

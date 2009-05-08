@@ -48,8 +48,6 @@ class WikiController < ProjectAreaController
     version = find_version(params[:version])
     @wiki_page.content = version.content if version
     @wiki_page.author = cached_user_attribute(:name, 'Anonymous')
-    
-    respond_to :html
   end
   
   def update
@@ -70,7 +68,6 @@ class WikiController < ProjectAreaController
   end
   
   def rename
-    respond_to :html    
   end
 
   def update_title

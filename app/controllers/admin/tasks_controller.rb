@@ -7,6 +7,10 @@ class Admin::TasksController < AdminAreaController
 
   def index
     @tasks = Retrospectiva::TaskManager::Parser.new.tasks
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @tasks.to_xml(:root => 'tasks', :except => ['id']) }
+    end
   end
   
   def save
@@ -15,7 +19,11 @@ class Admin::TasksController < AdminAreaController
       Retrospectiva::TaskManager::Task.create_or_update(name, seconds)
     end if params[:tasks].is_a?(Hash)
     flash[:notice] = _('Task configuration was successfully updated.')
-    redirect_to admin_tasks_path
+    
+    respond_to do |format|
+      format.html { redirect_to admin_tasks_path }
+      format.xml { head :ok }
+    end     
   end  
 
 end

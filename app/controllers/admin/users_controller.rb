@@ -1,14 +1,17 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Admin::UsersController < AdminAreaController
   before_filter :paginate_users, :only => [:index, :search]
-  before_filter :find_user, :only => [:edit, :update, :destroy]
+  before_filter :find_user, :only => [:show, :edit, :update, :destroy]
   before_filter :find_groups, :only => [:new, :edit]
-  before_filter :new, :only => [:create]
 
   def index
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @users }
+    end
   end
 
   def search
@@ -17,17 +20,32 @@ class Admin::UsersController < AdminAreaController
 
   def new
     @user = User.new(params[:user])
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @user }
+    end
   end
 
   def create
-    @user.send(:attributes=, params[:user], false)
-    if @user.save
-      flash[:notice] = _('User was successfully created.')
-      redirect_to admin_users_path
-    else
-      find_groups
-      render :action => 'new'
+    @user = User.new(params[:user])
+
+    respond_to do |format|
+      @user.send(:attributes=, params[:user], false)
+      if @user.save
+        flash[:notice] = _('User was successfully created.')
+        format.html { redirect_to admin_users_path }
+        format.xml  { render :xml => @user, :status => :created, :location => admin_user_path(@user) }                
+      else
+        find_groups
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }        
+      end    
     end    
+  end
+
+  def show
+    respond_to :xml
   end
 
   def edit
@@ -36,21 +54,34 @@ class Admin::UsersController < AdminAreaController
   def update
     active_was = @user.active?
     @user.send(:attributes=, params[:user], false)
-    if @user.save
-      successful_update(active_was)
-    else
-      find_groups
-      render :action => 'edit'
+    
+    respond_to do |format|
+      if @user.save
+        successful_update(active_was)
+        format.html { redirect_to admin_users_path }
+        format.xml { head :ok }
+      else
+        find_groups
+        format.html { render :action => 'edit' }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }                
+      end
     end
   end
 
   def destroy
-    if @user.destroy
-      flash[:notice] = _('User was successfully deleted.')
-    else
-      flash[:error] = [_('User could not be deleted. Following error(s) occurred') + ':'] + @user.errors.full_messages
+    @user.destroy
+    
+    respond_to do |format|
+      if @user.errors.empty?
+        flash[:notice] = _('User was successfully deleted.')
+        format.html { redirect_to admin_users_path }
+        format.xml { head :ok }
+      else
+        flash[:error] = [_('User could not be deleted. Following error(s) occurred') + ':'] + @user.errors.full_messages
+        format.html { redirect_to admin_users_path }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }                
+      end
     end
-    redirect_to admin_users_path
   end
 
   protected
@@ -87,7 +118,6 @@ class Admin::UsersController < AdminAreaController
           Notifications.queue_account_activation_note(@user)
         end
       end      
-      redirect_to admin_users_path      
     end
 
   private

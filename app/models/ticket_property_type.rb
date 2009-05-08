@@ -29,6 +29,10 @@ class TicketPropertyType < ActiveRecord::Base
     false
   end
 
+  def serialize_except
+    [:project_id]
+  end
+
   protected
 
     def validate

@@ -7,7 +7,6 @@ class Admin::SetupController < AdminAreaController
   before_filter :load_configuration, :only => :index
   verify :params => :retro_cf, :only => :save
   
-  
   def index    
     respond_to do |format|
       format.html
