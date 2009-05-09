@@ -13,11 +13,7 @@ module Admin::SetupHelper
       label += ' ' + link
     end
     
-    if setting.is_a?(RetroCM::BooleanSetting) 
-      setting_tag(setting) + ' ' + f.click_choice(label, :for => tag_id_for(setting)) + '<br/>' 
-    else
-      f.label_tag(label, :for => tag_id_for(setting)) + ' ' + setting_tag(setting)
-    end
+    f.label_tag(label, :for => tag_id_for(setting)) + ' ' + setting_tag(setting)
   end
 
   def setting_tag(setting)    
@@ -53,14 +49,14 @@ module Admin::SetupHelper
     text_area_tag(name_for(setting), h(value_for(setting).to_s), options_for(setting).merge(:rows => 5, :cols => 120 ))
   end
 
-  def boolean_setting_tag(setting)
-    check_box_tag(name_for(setting), 1, value_for(setting), options_for(setting)) +
-      hidden_field_tag(name_for(setting), 0, :id => tag_id_for(setting) + '_hidden')
+  def boolean_setting_tag(setting)    
+    choices = options_for_select([[_('Yes'), 1], [_('No'), 0]], value_for(setting) ? 1 : 0)
+    select_tag name_for(setting), choices, options_for(setting)  
   end
 
   def select_setting_tag(setting)
-    options = options_for_select(setting.options, value_for(setting))
-    select_tag(name_for(setting), options, options_for(setting))  
+    choices = options_for_select(setting.options, value_for(setting))
+    select_tag name_for(setting), choices, options_for(setting)  
   end
 
   protected

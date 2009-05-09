@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class AccountsController < ApplicationController
@@ -17,17 +17,25 @@ class AccountsController < ApplicationController
   before_filter :new_user, :only => [:new, :create]
 
   def show
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => user_xml }
+    end
   end
 
   def update
     @user.attributes = params[:user]
     @user.reset_private_key if params[:reset_private_key]
-    if @user.save
-      flash[:notice]  = _('User account was successfully updated.')
-      redirect_to account_path
-    else
-      render :action => 'show'
-    end    
+    respond_to do |format|
+      if @user.save
+        flash[:notice]  = _('User account was successfully updated.')
+        format.html { redirect_to account_path }
+        format.xml  { render :xml => user_xml, :status => :created, :location => account_path }        
+      else
+        format.html { render :action => 'show' }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end    
+    end
   end
 
   def new
@@ -157,4 +165,8 @@ class AccountsController < ApplicationController
       raise ::ActionController::UnknownAction, 'Action is hidden', caller
     end  
 
+    def user_xml
+      @user.to_xml(:merge => {:only => [:email, :time_zone]})      
+    end
+  
 end

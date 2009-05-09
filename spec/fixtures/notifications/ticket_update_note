@@ -45,8 +45,8 @@ Alternatively, copy and paste this link to your browser address bar.
   proportional to the size of your repository, but your demand of
   ~100M of RAM seems quite reasonable to me.
 
-  Please don’t worry being Out Of Memory after a few days, the
-  memory allocation will not grow any further.
+  Please don’t worry being Out Of Memory after a few days, the memory
+  allocation will not grow any further.
 
   Regards[[BR]] Dimitrij
 
