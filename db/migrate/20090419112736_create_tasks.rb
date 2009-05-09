@@ -9,13 +9,16 @@ class CreateTasks < ActiveRecord::Migration
     end
     add_index :tasks, :name, :name => 'i_tasks_name'
 
+    sql = lambda {|name, interval| "INSERT INTO tasks (#{quote_column_name('name')}, #{quote_column_name('interval')}) VALUES (#{quote(name.to_s)}, #{interval.to_i})" }
+
     begin
       YAML.load_file(RAILS_ROOT + '/config/runtime/tasks.yml').each do |name, config|
-        Retrospectiva::TaskManager::Task.create! :name => name, :interval => config[:interval].to_i
+        next if name.blank?
+        insert_sql sql.call(name, config[:interval]) 
       end
     rescue
-      Retrospectiva::TaskManager::Task.create! :name => 'sync_repositories', :interval => 600
-      Retrospectiva::TaskManager::Task.create! :name => 'process_mails', :interval => 300
+      insert_sql sql.call('sync_repositories', 600) 
+      insert_sql sql.call('process_mails', 300) 
     end
   end
 
