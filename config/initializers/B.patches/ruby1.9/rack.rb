@@ -20,7 +20,7 @@ module Rack
           content_length -= boundary_size
 
           read_buffer = ''
-          read_buffer.force_encoding("ascii-8bit") if RUBY_VERSION >= "1.9" 
+          read_buffer.force_encoding("ascii-8bit") 
 
           status = input.read(boundary_size, read_buffer)
           raise EOFError, "bad content body"  unless status == boundary + EOL
@@ -104,4 +104,4 @@ module Rack
       end
     end
   end
-end
+end if RUBY_VERSION.to_f >= 1.9
