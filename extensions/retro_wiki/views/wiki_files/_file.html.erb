@@ -9,7 +9,7 @@
   <td><%=h number_to_human_size(file.size) %></td>
   
   <td class="actions righted w-4">
-    <% if permitted?(:wiki_pages, :upload) -%>
+    <% if permitted?(:wiki_files, :destroy) -%>
       <%= link_to _('Delete'), project_wiki_file_path(Project.current, file),
 						:confirm => _('Are you really sure?'), 
 						:method => :delete %>
