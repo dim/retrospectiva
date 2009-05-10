@@ -103,8 +103,7 @@ class Admin::ProjectsController < AdminAreaController
     end
 
     def find_project
-      @project = Project.find_by_short_name(params[:id])
-      project_not_found(params[:id]) unless @project
+      @project = Project.find_by_short_name! params[:id]
     end
 
 end

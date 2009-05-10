@@ -138,6 +138,18 @@ class Project < ActiveRecord::Base
     repository.present? and repository.active?
   end
   
+  def identifier
+    short_name
+  end
+
+  def serialize_only
+    [:name, :info, :locale, :central]
+  end
+
+  def serialize_methods
+    [:identifier]
+  end
+  
   protected
 
     def validate

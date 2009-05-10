@@ -447,10 +447,12 @@ describe User do
     end
 
     describe 'if path contains a project-ID' do
+
       it 'should extract the ID and try to find the project' do
         Project.should_receive(:find_by_short_name).with('retrospectiva').and_return(projects(:retro))
         @user.has_access?('/projects/retrospectiva/changesets')
       end
+      
     end
 
     it 'should extract the controller and action name and \'ask\' the controller for permission' do

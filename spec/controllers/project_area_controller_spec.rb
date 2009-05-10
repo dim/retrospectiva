@@ -90,7 +90,7 @@ describe "Authorization" do
   before do
     @project = mock_current_project! :enabled_modules => [], :name => 'Retro'
     @projects = [@project]
-    @projects.stub!(:find).and_return(@project)
+    @projects.stub!(:find!).and_return(@project)
     @user = mock_current_user! :name => 'Doesnt Matter'
     @user.stub!(:active_projects).and_return(@projects)
     @user.stub!(:has_access?).and_return(true)      

@@ -37,14 +37,9 @@ class ProjectAreaController < ApplicationController
   protected
   
     def find_project
-      Project.current = User.current.active_projects.find(params[:project_id])
-      Project.current || project_not_found!
+      Project.current = User.current.active_projects.find! params[:project_id]
     end
     
-    def project_not_found!
-      raise ActiveRecord::RecordNotFound, "Unable to find project '#{params[:project_id]}'"
-    end
-
     def render_rss(klass, records = nil)
       records ||= instance_variable_get("@#{klass.name.tableize}".to_sym)
       render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'

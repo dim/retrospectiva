@@ -83,8 +83,7 @@ class Admin::TicketPropertyValuesController < AdminAreaController
     end
   
     def find_project
-      @project = Project.find_by_short_name params[:project_id]
-      project_not_found(params[:project_id]) unless @project
+      @project = Project.find_by_short_name! params[:project_id]
     end
     
     def new_ticket_property

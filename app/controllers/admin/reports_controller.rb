@@ -56,10 +56,9 @@ class Admin::ReportsController < AdminAreaController
   private
   
     def find_project
-      @project = Project.find_by_short_name params[:project_id], 
+      @project = Project.find_by_short_name! params[:project_id], 
         :include => [:ticket_reports],
         :order => 'ticket_reports.rank'
-      project_not_found(params[:project_id]) unless @project
     end
 
 end

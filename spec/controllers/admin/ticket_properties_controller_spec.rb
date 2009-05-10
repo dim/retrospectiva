@@ -9,7 +9,7 @@ describe Admin::TicketPropertiesController do
   before do
     permit_access!
     @project = mock_model(Project)
-    Project.stub!(:find_by_short_name).and_return(@project)
+    Project.stub!(:find_by_short_name!).and_return(@project)
     @ticket_properties = [mock_model(TicketPropertyType)]
     @project.stub!(:ticket_property_types).and_return(@ticket_properties)
   end
@@ -23,7 +23,7 @@ describe Admin::TicketPropertiesController do
     it_should_successfully_render_template('index')
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_get
       assigns[:project].should == @project
     end
@@ -55,7 +55,7 @@ describe Admin::TicketPropertiesController do
     it_should_successfully_render_template('new')
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_get
       assigns[:project].should == @project
     end
@@ -91,7 +91,7 @@ describe Admin::TicketPropertiesController do
     end      
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_post
       assigns[:project].should == @project
     end
@@ -148,7 +148,7 @@ describe Admin::TicketPropertiesController do
     it_should_successfully_render_template('edit')
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_get
       assigns[:project].should == @project
     end
@@ -184,7 +184,7 @@ describe Admin::TicketPropertiesController do
     end      
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_put
       assigns[:project].should == @project
     end
@@ -240,7 +240,7 @@ describe Admin::TicketPropertiesController do
     end      
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_delete
       assigns[:project].should == @project
     end
@@ -270,7 +270,7 @@ describe Admin::TicketPropertiesController do
     end
 
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       do_put
       assigns[:project].should == @project
     end

@@ -9,14 +9,14 @@ describe Admin::ReportsController do
   before do
     permit_access!
     @project = mock_model(Project)
-    Project.stub!(:find_by_short_name).and_return(@project)
+    Project.stub!(:find_by_short_name!).and_return(@project)
     @ticket_reports = [mock_model(TicketReport)]
     @project.stub!(:ticket_reports).and_return(@ticket_reports)
   end
 
   def self.it_should_find_the_related_project(method = :do_get)
     it "should find the related project" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       send(method)
       assigns[:project].should == @project
     end

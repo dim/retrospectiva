@@ -1,7 +1,7 @@
 module AdminTicketProperyValuesControllerInclude
 
   def it_should_find_the_related_project(method = :do_get)
-    Project.should_receive(:find_by_short_name).and_return(@project)
+    Project.should_receive(:find_by_short_name!).and_return(@project)
     send(method)
     assigns[:project].should == @project
   end

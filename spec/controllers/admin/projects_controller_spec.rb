@@ -44,7 +44,7 @@ describe Admin::ProjectsController do
     before(:each) do
       @project = mock_model(Project)
       Project.stub!(:new).and_return(@project)
-      Repository.stub!(:find_by_short_name).and_return([])
+      Repository.stub!(:find_by_short_name!).and_return([])
     end
 
     def do_get
@@ -81,7 +81,7 @@ describe Admin::ProjectsController do
 
     before(:each) do
       @project = mock_model(Project)
-      Project.stub!(:find_by_short_name).and_return(@project)
+      Project.stub!(:find_by_short_name!).and_return(@project)
       Repository.stub!(:find).and_return([])
     end
   
@@ -90,7 +90,7 @@ describe Admin::ProjectsController do
     end
   
     it "should find the project requested" do
-      Project.should_receive(:find_by_short_name).with('1').and_return(@project)
+      Project.should_receive(:find_by_short_name!).with('1').and_return(@project)
       do_get
     end
   
@@ -169,7 +169,7 @@ describe Admin::ProjectsController do
 
     before(:each) do
       @project = mock_model(Project, :to_param => "1")
-      Project.stub!(:find_by_short_name).and_return(@project)
+      Project.stub!(:find_by_short_name!).and_return(@project)
       Repository.stub!(:find).and_return([])
     end
 
@@ -181,7 +181,7 @@ describe Admin::ProjectsController do
       end
 
       it "should find the project requested" do
-        Project.should_receive(:find_by_short_name).with("1").and_return(@project)
+        Project.should_receive(:find_by_short_name!).with("1").and_return(@project)
         do_put
         assigns(:project).should equal(@project)
       end
@@ -218,7 +218,7 @@ describe Admin::ProjectsController do
 
     before(:each) do
       @project = mock_model(Project, :to_param => "1", :destroy => true)
-      Project.stub!(:find_by_short_name).and_return(@project)
+      Project.stub!(:find_by_short_name!).and_return(@project)
     end
   
     def do_delete
@@ -226,7 +226,7 @@ describe Admin::ProjectsController do
     end
 
     it "should find and destroy the project requested" do
-      Project.should_receive(:find_by_short_name).and_return(@project)
+      Project.should_receive(:find_by_short_name!).and_return(@project)
       @project.should_receive(:destroy).and_return(true)
       do_delete
     end

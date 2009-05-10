@@ -180,7 +180,7 @@ describe 'RSS access via private key' do
     @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
     @project = mock_model(Project, :name => 'Retro')
     @projects = [@project]
-    @projects.stub!(:find).and_return(@project)
+    @projects.stub!(:find!).and_return(@project)
     @user.stub!(:active_projects).and_return(@projects)
 
     @milestones = []

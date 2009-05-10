@@ -81,9 +81,8 @@ class Admin::TicketPropertiesController < AdminAreaController
     end
   
     def find_project
-      @project = Project.find_by_short_name params[:project_id], 
+      @project = Project.find_by_short_name! params[:project_id], 
         :include => [:ticket_property_types],
         :order => 'ticket_property_types.rank'
-      project_not_found(params[:project_id]) unless @project
     end
 end

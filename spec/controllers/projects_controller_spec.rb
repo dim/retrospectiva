@@ -234,86 +234,57 @@ describe ProjectsController do
   describe 'GET /show' do
 
     before do
+      @changeset = stub_model(Changeset, :to_param => '123')
+      @ticket = stub_model(Ticket, :to_param => '456', :status => mock_model(Status, :name => 'Open'))
+      
+      controller.stub!(:find_feedable_records).and_return([@changeset, @ticket])
       controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)
-      @projects = [mock_model(Project, :to_param => '1', :path_to_first_menu_item => '/projects/1/changesets')]
+      
+      @projects = [mock_model(Project, :to_param => 'retro', :name => 'Retro', :path_to_first_menu_item => '/projects/retro/changesets')]
       @user.should_receive(:active_projects).and_return(@projects)
+      @projects.stub!(:find!).and_return(@projects.first)      
     end
 
-    def do_get(project_name)
-      get :show, :id => project_name
+    def do_get(project_name, format = 'html')
+      get :show, :id => project_name, :format => format
     end
     
-    describe 'when the project can be found for the logged-in user' do
+    describe 'for HTML requests' do
            
       it 'should redirect to the first available menu item' do
-        @projects.should_receive(:find).with('retrospectiva').and_return(@projects.first)      
-        do_get 'retrospectiva'
+        @projects.should_receive(:find!).with('retro').and_return(@projects.first)      
+        do_get 'retro'
         response.should be_redirect
         response.should redirect_to(project_changesets_path(@projects.first))        
       end
 
     end
 
-    describe 'when the project cannot be found for the logged-in user' do
+    describe 'for RSS requests' do
 
-      it 'should redirect to index' do
-        @projects.should_receive(:find).with('non-existing').and_return(nil)
-        do_get 'non-existing'
-        response.should be_redirect
-        response.should redirect_to(projects_path)
+      it 'should load the feedable records' do
+        controller.should_receive(:find_feedable_records).with(@projects.first).and_return([@changeset, @ticket])
+        do_get  'retro', 'rss'
       end
-
-    end    
+  
+      it 'should render RSS (with all feedable records)' do
+        do_get  'retro', 'rss'
+        response.should have_tag('rss') do
+          with_tag('channel') do
+            with_tag('title', 'Retro')
+            with_tag('description', 'All news for Retro')
+            with_tag('item', 2)
+            with_tag('item link', 'http://test.host/projects/retro/tickets/456')
+            with_tag('item link', 'http://test.host/projects/retro/changesets/123')
+          end
+        end
+      end
+      
+    end
 
   end
 
   
-  describe 'GET /show.rss' do
-
-    before do
-      @changeset = stub_model(Changeset, :to_param => '123')
-      @ticket = stub_model(Ticket, :to_param => '456', :status => mock_model(Status, :name => 'Open'))
-      
-      controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)      
-      controller.stub!(:find_feedable_records).and_return([@changeset, @ticket])
-      
-      @project = stub_model(Project, :to_param => 'retro', :name => 'Retro')
-      @projects = [@project]
-      @projects.stub!(:find).and_return(@project)
-
-      @user.stub!(:active_projects).and_return(@projects)      
-    end
-    
-    def do_get
-      get :show, :id => @project.to_param, :format => 'rss'
-    end
-
-    it 'should find the project' do
-      @projects.should_receive(:find).with('retro').and_return(@project)
-      do_get
-    end
-
-    it 'should load the feedable records' do
-      controller.should_receive(:find_feedable_records).with(@project).and_return([@changeset, @ticket])
-      do_get
-    end
-
-    it 'should render RSS (with all feedable records)' do
-      do_get
-      response.should have_tag('rss') do
-        with_tag('channel') do
-          with_tag('title', 'Retro')
-          with_tag('description', 'All news for Retro')
-          with_tag('item', 2)
-          with_tag('item link', 'http://test.host/projects/retro/tickets/456')
-          with_tag('item link', 'http://test.host/projects/retro/changesets/123')
-        end
-      end
-    end
-        
-  end
-    
-    
   describe 'helper methods' do    
 
     describe 'find-feedable-records' do

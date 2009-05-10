@@ -131,9 +131,11 @@ describe ChangesetsController do
     end
 
     describe 'if change is not diffable' do
+      before do
+        rescue_action_in_public!        
+      end
     
       it "should display a 404 page" do
-        rescue_action_in_public!
         @change.should_receive(:diffable?).and_return(false)
         do_get
         response.code.should == '404'

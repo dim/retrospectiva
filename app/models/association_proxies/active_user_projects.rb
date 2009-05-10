@@ -22,5 +22,11 @@ class AssociationProxies::ActiveUserProjects < Array
       nil
     end
   end
+  
+  def find!(param)
+    result = find(param)
+    raise ActiveRecord::RecordNotFound, "Unable to find project #{param.inspect}" unless result
+    result
+  end
 
 end
