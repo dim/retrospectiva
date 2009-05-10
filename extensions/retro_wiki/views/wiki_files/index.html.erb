@@ -6,7 +6,7 @@
   <% content_header do -%>
     <%= link_to _('Home'), project_wiki_page_path(Project.current, Project.current.wiki_title) %> |
     <%= link_to _('Pages'), project_wiki_pages_path(Project.current) %>
-    <% if permitted?(:wiki_pages, :upload) -%>
+    <% if permitted?(:wiki_files, :create) -%>
       | <%= link_to _('Upload'), new_project_wiki_file_path(Project.current) %>
     <% end -%>
   <% end -%>
