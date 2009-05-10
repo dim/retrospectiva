@@ -18,7 +18,7 @@ describe "/sessions/new.html.erb" do
 
   it 'should show link to home' do
     render '/sessions/new'
-    template.should have_tag('a[href=?]', home_path)
+    template.should have_tag('a[href=?]', root_path)
   end
 
   it 'should show one single link below the form' do

@@ -101,7 +101,7 @@ class AccountsController < ApplicationController
     end
 
     def user_is_public?
-      redirect_to home_path unless User.current.public?
+      redirect_to root_path unless User.current.public?
     end
 
     def new_user

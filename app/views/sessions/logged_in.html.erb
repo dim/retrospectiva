@@ -5,7 +5,7 @@
 <p><%=_ 'Hi {{user}}!', :user => h(User.current.name) %> <%=_ 'You are logged in to the system.' %></p>
       
 <div class="content-footer">
-  <%= link_to _('Home'), home_path %> | <%= link_to _('Logout'), logout_path %>  
+  <%= link_to _('Home'), root_path %> | <%= link_to _('Logout'), logout_path %>  
 </div>
 
 

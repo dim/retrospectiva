@@ -23,7 +23,7 @@ describe AccountsController do
       it 'should redirect to home if user is NOT public' do
         @user.stub!(:public?).and_return(false)
         send(method)
-        response.should redirect_to(home_path)
+        response.should redirect_to(root_path)
       end
     end
 

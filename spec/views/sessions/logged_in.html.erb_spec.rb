@@ -12,7 +12,7 @@ describe "/sessions/logged_in.html.erb" do
   end
 
   it 'should show a link to home' do
-    response.should have_tag('a[href=?]', home_path)
+    response.should have_tag('a[href=?]', root_path)
   end
 
   it 'should show a link to logout' do

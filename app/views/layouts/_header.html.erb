@@ -2,7 +2,7 @@
 
 <div id="header">
   <div class="clearfix">
-    <div id="logo"><%= link_to image_tag('logo.png', :alt => _('Home'), :title => _('Home')), home_path, :class => 'transparent' %></div>
+    <div id="logo"><%= link_to image_tag('logo.png', :alt => _('Home'), :title => _('Home')), root_path, :class => 'transparent' %></div>
     <div id="status_info">
       <div id="login_info"><%= links_to_account_management %></div>
       <div id="project_info"><%= Project.current ? h(Project.current.name) : '&nbsp;' %></div>      

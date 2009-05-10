@@ -95,7 +95,7 @@ describe SessionsController do
       describe 'if no back-to location is set' do
         it 'should redirect to home' do
           do_post
-          response.should redirect_to(home_path)
+          response.should redirect_to(root_path)
         end
       end
 

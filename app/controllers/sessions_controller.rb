@@ -29,7 +29,7 @@ class SessionsController < ApplicationController
   protected
     
     def successful_login(user, message = nil)
-      back_to = session[:back_to].present? ? session[:back_to] : home_path 
+      back_to = session[:back_to].present? ? session[:back_to] : root_path 
       message ||= _('Login was successful.')
 
       session[:user_id] = user.id
