@@ -3,7 +3,7 @@
 
 <div class="righted bottom-5">
   <%= @sections.map do |section| 
-        link_to h(section.label), :anchor => h(section.name) + '_section'
+        link_to h(section.label), "##{section.name}_section"
       end.join(' | ') -%>
 </div>
 
