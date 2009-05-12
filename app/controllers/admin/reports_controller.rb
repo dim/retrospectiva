@@ -40,9 +40,9 @@ class Admin::ReportsController < AdminAreaController
   end
   
   def destroy
-    if @project.ticket_reports.destroy(params[:id])
-      flash[:notice] = _('Report was successfully deleted.')
-    end
+    @ticket_report = @project.ticket_reports.find(params[:id])
+    @ticket_report.destroy
+    flash[:notice] = _('Report was successfully deleted.')
     redirect_to admin_project_reports_path(@project)
   end
 

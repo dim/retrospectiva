@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Admin::RepositoriesController < AdminAreaController
@@ -7,7 +7,7 @@ class Admin::RepositoriesController < AdminAreaController
 
   before_filter :paginate_repositories, :only => [:index]
   before_filter :new_repository, :only => [:new, :create]
-  before_filter :find_repository, :only => [:edit, :update]
+  before_filter :find_repository, :only => [:edit, :update, :destroy]
 
   def index
     respond_to do |format|
@@ -52,8 +52,8 @@ class Admin::RepositoriesController < AdminAreaController
     end  
   end
   
-  def destroy
-    Repository.destroy(params[:id])
+  def destroy    
+    @repository.destroy
     flash[:notice] = _('Repository was successfully deleted.')
     
     respond_to do |format|

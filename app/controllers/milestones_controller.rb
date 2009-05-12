@@ -9,7 +9,7 @@ class MilestonesController < ProjectAreaController
     :update => ['edit', 'update'], 
     :delete => ['destroy']
 
-  before_filter :edit, :only => :update
+  before_filter :find_milestone, :only => [:edit, :update, :destroy]
   
   def index
     @milestones = if params[:completed] == '1'
@@ -34,10 +34,6 @@ class MilestonesController < ProjectAreaController
     end
   end
 
-  def edit
-    @milestone = Project.current.milestones.find(params[:id])
-  end
-
   def create
     @milestone = Project.current.milestones.new(params[:milestone])
 
@@ -51,6 +47,9 @@ class MilestonesController < ProjectAreaController
         format.xml  { render :xml => @milestone.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -67,7 +66,6 @@ class MilestonesController < ProjectAreaController
   end
 
   def destroy
-    @milestone = Project.current.milestones.find(params[:id])
     @milestone.destroy
     flash[:notice] = _('Milestone was successfully deleted.')
 
@@ -78,6 +76,10 @@ class MilestonesController < ProjectAreaController
   end
 
   private
+  
+    def find_milestone
+      @milestone = Project.current.milestones.find(params[:id])      
+    end
   
     def options_for_pagination
       {

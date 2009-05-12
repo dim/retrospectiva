@@ -5,7 +5,7 @@
 class Admin::GroupsController < AdminAreaController
   before_filter :paginate_groups, :only => [:index]
   before_filter :find_projects, :only => [:new, :edit]
-  before_filter :edit, :only => [:update]
+  before_filter :find_group, :only => [:edit, :update, :destroy]
   
   def index
     respond_to do |format|
@@ -40,7 +40,6 @@ class Admin::GroupsController < AdminAreaController
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
@@ -58,15 +57,13 @@ class Admin::GroupsController < AdminAreaController
   end
   
   def destroy
-    group = Group.find params[:id]
-
     respond_to do |format|
-      if group.destroy
+      if @group.destroy
         flash[:notice] = _('Group was successfully deleted.')
         format.html { redirect_to(admin_groups_path) }
         format.xml  { head :ok }
       else
-        flash[:error] = ([_('Group could not be deleted. Following error(s) occured') + ':'] + group.errors.full_messages)
+        flash[:error] = ([_('Group could not be deleted. Following error(s) occured') + ':'] + @group.errors.full_messages)
         format.html { redirect_to(admin_groups_path) }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
@@ -74,6 +71,10 @@ class Admin::GroupsController < AdminAreaController
   end
   
   protected
+    
+    def find_group
+      @group = Group.find(params[:id])     
+    end
     
     def find_projects
       @projects = Project.find(:all, :order => 'name')

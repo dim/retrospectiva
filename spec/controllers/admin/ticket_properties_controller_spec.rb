@@ -231,8 +231,8 @@ describe Admin::TicketPropertiesController do
   describe "handling DELETE /admin/project_name/ticket_properties/1" do
     
     before do
-      @ticket_property_type = mock_model(TicketPropertyType, :to_param => '1')
-      @ticket_properties.stub!(:destroy).and_return(@ticket_property_type)
+      @ticket_property_type = mock_model(TicketPropertyType, :to_param => '1', :destroy => true)
+      @ticket_properties.stub!(:find).and_return(@ticket_property_type)
     end
 
     def do_delete
@@ -246,7 +246,8 @@ describe Admin::TicketPropertiesController do
     end
 
     it "should delete the ticket property" do
-      @ticket_properties.should_receive(:destroy).with('1').and_return(@ticket_property_type)
+      @ticket_properties.should_receive(:find).and_return(@ticket_property_type)
+      @ticket_property_type.should_receive(:destroy).and_return(@ticket_property_type)
       do_delete
     end
 

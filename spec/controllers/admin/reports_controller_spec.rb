@@ -216,8 +216,8 @@ describe Admin::ReportsController do
   describe "handling DELETE /admin/project_name/reports/1" do
     
     before do
-      @ticket_report = mock_model(TicketReport, :to_param => '1')
-      @ticket_reports.stub!(:destroy).and_return(@ticket_report)
+      @ticket_report = mock_model(TicketReport, :to_param => '1', :destroy => true)
+      @ticket_reports.stub!(:find).and_return(@ticket_report)
     end
 
     def do_delete
@@ -227,7 +227,8 @@ describe Admin::ReportsController do
     it_should_find_the_related_project(:do_delete)
 
     it "should delete the ticket report" do
-      @ticket_reports.should_receive(:destroy).with('1').and_return(@ticket_report)
+      @ticket_reports.should_receive(:find).and_return(@ticket_report)
+      @ticket_report.should_receive(:destroy).and_return(@ticket_report)
       do_delete
     end
 

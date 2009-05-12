@@ -5,7 +5,7 @@
 class Admin::TicketPropertiesController < AdminAreaController 
   before_filter :find_project
   before_filter :new_property_type, :only => [:new, :create]
-  before_filter :edit, :only => [:update]
+  before_filter :find_property_type, :only => [:edit, :update, :destroy]
 
   def index
     @ticket_properties = @project.ticket_property_types
@@ -37,7 +37,6 @@ class Admin::TicketPropertiesController < AdminAreaController
   end
 
   def edit
-    @ticket_property_type = @project.ticket_property_types.find(params[:id])
   end
 
   def update
@@ -54,7 +53,7 @@ class Admin::TicketPropertiesController < AdminAreaController
   end
 
   def destroy
-    @project.ticket_property_types.destroy(params[:id])
+    @ticket_property_type.destroy
     flash[:notice] = _('Ticket property was successfully deleted.')
 
     respond_to do |format|
@@ -78,6 +77,10 @@ class Admin::TicketPropertiesController < AdminAreaController
   
     def new_property_type
       @ticket_property_type = @project.ticket_property_types.new(params[:ticket_property_type])     
+    end
+  
+    def find_property_type
+      @ticket_property_type = @project.ticket_property_types.find(params[:id])      
     end
   
     def find_project
