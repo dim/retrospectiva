@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 module TicketFilterHelper
@@ -7,8 +7,8 @@ module TicketFilterHelper
   def ticket_filter_selector(filters)
     filters.map do |filter|
       title = content_tag :dt, h(filter.label) + ':'
-      links = content_tag :dd, ticket_filter_links(filters, filter) 
-      content_tag(:dl, title + links)
+      links = content_tag :dd, ticket_filter_links(filters, filter)
+      content_tag :dl, title + links
     end.join("\n")
   end
 

@@ -1,3 +1,5 @@
+#container { min-width:950px; }
+
 #header {
   background: #000 url(../../images/bg.header.png) top left repeat-x; 
   border-bottom: 1px solid #fff;
@@ -65,7 +67,7 @@
 #footer #left-side select { padding: 1px; }
 
 #content {
-  padding: 20px 0 60px 30px;
+  padding: 20px 30px 60px 30px;
   max-width: 1160px;
 }
 

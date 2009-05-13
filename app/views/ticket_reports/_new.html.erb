@@ -1,0 +1,12 @@
+<hr />
+<h3><%=_ 'Save as Report' %></h3>
+
+<% remote_form_for @ticket_report, :url => project_ticket_reports_path(Project.current, :format => 'js') do |f| -%>
+  <%= f.error_messages %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+
+  <fieldset class="clear prepend-3">
+    <%= f.submit _('Create') %> | <%= link_to_function _('Cancel'), "$('ticket_report_form').update('')" %>
+  </fieldset>
+<% end -%>
+<%= javascript_tag "$('ticket_report_name').activate()" %>

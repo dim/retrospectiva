@@ -263,7 +263,7 @@ describe Admin::TicketPropertiesController do
   describe "handling PUT /admin/project_name/ticket_properties/sort" do
     
     before do
-      TicketPropertyType.stub!(:update_all).and_return(true)
+      @ticket_properties.stub!(:update_all).and_return(true)
     end
     
     def do_put
@@ -277,12 +277,12 @@ describe Admin::TicketPropertiesController do
     end
     
     it "should update the records" do
-      TicketPropertyType.should_receive(:update_all).
-        with(['rank = ?', 0], ['id = ? AND project_id = ?', 3, @project.id]).and_return(true)
-      TicketPropertyType.should_receive(:update_all).
-        with(['rank = ?', 1], ['id = ? AND project_id = ?', 1, @project.id]).and_return(true)
-      TicketPropertyType.should_receive(:update_all).
-        with(['rank = ?', 2], ['id = ? AND project_id = ?', 2, @project.id]).and_return(true)
+      @ticket_properties.should_receive(:update_all).
+        with(['rank = ?', 0], ['id = ?', 3]).and_return(true)
+      @ticket_properties.should_receive(:update_all).
+        with(['rank = ?', 1], ['id = ?', 1]).and_return(true)
+      @ticket_properties.should_receive(:update_all).
+        with(['rank = ?', 2], ['id = ?', 2]).and_return(true)
       do_put
     end
 

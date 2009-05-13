@@ -4,7 +4,7 @@
 
 <h2><%= _('Global') %></h2>
 <div class="box">
-  <ul class="non-sortable">  
+  <ul class="non-sortable span-16">  
     <li>
       <div class="actions float-r"><%= link_to _('View'), property_values_path(@project, 'Status') %></div>
       <span class="strong"><%= _('Status') %></span>    
@@ -21,7 +21,7 @@
 
 <div class="bottom-5 strong"><%= link_to _('Create a new ticket property'), new_property_path %></div>
 <div class="box">
-  <ul id="ticket_properties" class="sortable">  
+  <ul id="ticket_properties" class="sortable span-16">  
     <%= render :partial => 'ticket_property', :collection => @ticket_properties %>
   </ul>
   <%= sortable_element "ticket_properties", :url => sort_properties_path(@project), :method => :put %>

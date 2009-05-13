@@ -35,10 +35,10 @@ RetroAM.permission_map do |map|
     end    
   end
 
-#  map.resource :reports, :label => N_('Reports') do |reports|
-#    reports.permission :create, :label => N_('Create')
-#    reports.permission :delete, :label => N_('Delete')
-#  end
+  map.resource :reports, :label => N_('Reports') do |reports|
+    reports.permission :create, :label => N_('Create')
+    reports.permission :delete, :label => N_('Delete')
+  end
 
   # Default resource
   map.resource :content, :label => N_('Content') do |content|

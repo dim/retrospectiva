@@ -3,16 +3,6 @@ body { margin:0; }
 .container { margin:0; }
 .border,
 .colborder {border-color: #ddd;}
-.w-1 {width:30px;}
-.w-2 {width:70px;}
-.w-3 {width:110px;}
-.w-4 {width:150px;}
-.w-5 {width:190px;}
-.w-6 {width:230px;}
-.w-7 {width:270px;}
-.w-8 {width:310px;}
-.w-9 {width:350px;}
-.w-10 {width:390px;}
 
 /* Use other style */
 body { 
@@ -105,6 +95,11 @@ ol          { list-style-type: decimal; line-height: 1.5; }
 
 .centered   { text-align: center; }
 .righted    { text-align: right; }
+
+.box       { padding: 1.5em; margin-bottom: 1.5em; background: #f9f9f9; border: 1px solid #999; }
+.frame     { padding: 1px; border: 1px solid #ccc; }
+.top-link  { text-align: right; margin: 0.5em 0 1.5em 0; }
+.help      { cursor:help; }
 
 .transparent,
 .transparent:focus,

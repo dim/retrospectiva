@@ -13,7 +13,7 @@
       <%=h user.groups.map(&:name).join(', ') %>
     <% end -%>    
   </td>
-  <td class="actions righted w-4">
+  <td class="actions righted span-4">
     <%= link_to _('Edit'), edit_admin_user_path(user) %>
 
     <% if user.current? || user.public? || user.last_admin? -%>

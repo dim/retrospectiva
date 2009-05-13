@@ -1,7 +1,0 @@
-<% @page_title = _('Edit report') -%>
-<%= render :partial => 'header' %>
-
-<%= render :partial => '/admin/shared/edit_form', :locals => {
-      :record => @ticket_report,
-      :member_path => admin_project_report_path(@project, @ticket_report),
-      :collection_path => admin_project_reports_path(@project) } %>

@@ -22,9 +22,9 @@ form.plus_form label         { color: #222; display: block; padding-bottom: 2px;
 form.plus_form label.explain { display:block; font-weight: normal; font-size: 85%; color: #999; margin: 0 0 3px 5px; }
 form.plus_form label.choice  { display:inline; font-weight: normal; padding-bottom: 0; vertical-align:middle; }
 
-form.plus_form .required { color: #c90020; }
-form.plus_form .quiet { color: #666; }
-form.plus_form .quieter { color: #999; }
+form .required { color: #c90020; }
+form .quiet { color: #666; }
+form .quieter { color: #999; }
 
 input.text, input.title, textarea, select { margin: auto; }
 input.text, input.file                    { padding: 2px 1px; }

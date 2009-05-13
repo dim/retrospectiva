@@ -3,7 +3,8 @@
     <%= link_to _('View'), property_values_path(@project, ticket_property) -%>
     <%= link_to _('Edit'), edit_property_path(@project, ticket_property) -%>
     <%= link_to _('Delete'), property_path(@project, ticket_property),
-          options_for_destroy_link(ticket_property) -%>
+          :method => :delete, 
+					:confirm => _('Really delete this ticket property?') %>
   </div>
   <span class="strong"><%=h ticket_property.name %></span>
 </li>

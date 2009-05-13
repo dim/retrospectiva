@@ -1,0 +1,13 @@
+<li id="ticket_report_<%=h report.id %>" class="no-frame">
+  <span class="big">  
+    <%= link_to_unless report == @report, h(report.name), project_tickets_path(Project.current, :report => report, :by => params[:by]) %>
+  </span>
+  
+  <% if permitted?(:reports, :destroy) -%>
+    <span class="small">
+      (<%= link_to _('Delete'), project_ticket_report_path(Project.current, report),
+    		:confirm => _('Really delete this report?'),
+    		:method => :delete %>)
+    </span>
+  <% end -%>
+</li>

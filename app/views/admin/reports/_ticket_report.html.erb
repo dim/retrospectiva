@@ -1,8 +1,0 @@
-<li id="ticket_report_<%=h ticket_report.id %>">
-  <div class="actions float-r">
-    <%= link_to _('Edit'), edit_admin_project_report_path(@project, ticket_report) %>
-    <%= link_to _('Delete'), admin_project_report_path(@project, ticket_report), 
-          options_for_destroy_link(ticket_report) %>
-  </div>
-  <span class="strong"><%=h ticket_report.name %></span>
-</li>

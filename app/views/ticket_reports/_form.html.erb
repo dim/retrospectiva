@@ -1,0 +1,26 @@
+<% @ticket_report.filters.each do |name, filter_ids| -%>
+  <% Array(filter_ids).compact.each do |id| -%>
+    <%= hidden_field_tag "ticket_report[filters][#{name}][]", id.to_i, 
+					:id => "ticket_report_filters_#{name}_#{id.to_i}" %>
+  <% end -%>
+<% end -%>
+
+<fieldset class="clear">
+  <div class="span-3">
+    <%= f.label :name, _('Name') + ':' %> <span class="required">*</span>
+  </div>
+  <div class="column">
+    <%= f.text_field :name %>
+  </div>
+</fieldset>
+
+<fieldset class="clear">
+  <div class="span-3">
+    <%= f.label :time_interval, _('Only Last') + ':' %>
+  </div>
+  <div class="column">
+    <%= time_interval_select :ticket_report, :time_interval, 
+        { :skip => ['minutes', 'hours'], :range => 1..24 }, 
+        { :include_blank => true } %>
+  </div>
+</fieldset>

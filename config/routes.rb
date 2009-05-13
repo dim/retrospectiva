@@ -10,20 +10,31 @@ ActionController::Routing::Routes.draw do |map|
     account.forgot_password 'forgot_password', :controller => 'accounts', :action => 'forgot_password'
   end
   
+  def pt_collection_methods
+    { :search => :any, :users => :post }
+  end
+
+  def pt_member_methods
+    { :modify_summary => :put, :modify_content => :put, :modify_change_content => :put, :toggle_subscription => :post }
+  end
+  
   map.resources :projects do |project|
     project.filter 'central_project'
 
     project.resources :changesets, :member => { :diff => :get }
     
-    project.resources :tickets, 
-      :collection => { :search => :any, :users => :post }, 
-      :member => { :modify_summary => :put, :modify_content => :put, :modify_change_content => :put, :toggle_subscription => :post } do |ticket|
-      ticket.download 'download/:id/:file_name', :controller => 'tickets', :action => 'download', :file_name => /.+/
-      ticket.destroy_change ':id', :controller => 'tickets', :action => 'destroy_change',
+    project.resources :tickets, :collection => pt_collection_methods, :member => pt_member_methods do |ticket|
+      ticket.download 'download/:id/:file_name', 
+        :controller => 'tickets', 
+        :action => 'download', 
+        :file_name => /.+/
+      ticket.destroy_change ':id', 
+        :controller => 'tickets', 
+        :action => 'destroy_change',
         :conditions => { :method => :delete },
         :requirements => { :id => /\d+/ }
     end
-    # project.resources :ticket_reports
+    project.resources :ticket_reports, :collection => { :sort => :put }
     project.resources :milestones
     
     project.with_options :controller => 'browse' do |browse|
@@ -51,9 +62,8 @@ ActionController::Routing::Routes.draw do |map|
   map.admin 'admin', :controller => 'admin/dashboard'
   map.namespace :admin do |admin|
     admin.resources :projects, :collection => { :repository_validation => :any } do |projects|
-      projects.resources :reports, :collection => { :sort => :put }
-      projects.resources :ticket_properties, :collection => { :sort => :put } do |ticket_properties|
-        ticket_properties.resources :values, 
+      projects.resources :ticket_properties, :collection => { :sort => :put } do |properties|
+        properties.resources :values, 
           :controller => 'ticket_property_values', 
           :collection => { :sort => :put }
       end

@@ -10,7 +10,7 @@
 </div>
 <div class="box">
   <h2><%= _('Property values') %></h2>
-  <ul id="property_values" class="sortable">
+  <ul id="property_values" class="sortable span-16">
     <%= render :partial => 'property_value', :collection => @property_values %>
   </ul>
   <%= sortable_element "property_values", :url => sort_property_values_path(@project, @property_type), :method => :put %>

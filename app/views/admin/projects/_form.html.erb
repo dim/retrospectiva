@@ -29,7 +29,7 @@
 
 <% f.fieldset do -%>  
   <%= f.label_tag _('Enabled modules') + ':' %>
-  <ul id="enabled_modules" class="sortable">
+  <ul id="enabled_modules" class="sortable span-16">
     <%= enabled_modules_selection(f) %>    
   </ul>
   <%= javascript_tag("Sortable.create('enabled_modules')") %>

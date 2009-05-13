@@ -1,0 +1,1 @@
+page.redirect_to project_tickets_path(Project.current, :report => @ticket_report)

@@ -29,11 +29,22 @@
   <% end if @reports.any? -%>
   
   <% content_tag :div, :class => 'filter-selection clearfix', :id => 'ticket_filter_selector', :style => (@report || @filters.default? ? 'display:none;' : nil) do -%>
+    <% content_tag :div, :class => 'float-r' do -%>
+      <%= link_to_remote _('Save as Report'),
+				:url => new_project_ticket_report_path(Project.current, :ticket_report => {:filters => @filters.to_params}, :format => 'js'),
+				:method => 'get',
+				:html => {:class => 'small'} %>
+    <% end if permitted?(:reports, :create) and not @filters.default? -%>
+    
     <%= ticket_filter_selector(@filters) %>
+    
+    <% if permitted?(:reports, :create) and not @filters.default? -%>
+      <div id="ticket_report_form"></div>
+    <% end -%>    
   <% end -%>
 
   
-  <table class="record-list">
+  <table class="record-list" summary="<%=_ 'Tickets' %>">
     <thead>
       <tr>
         <td colspan="4"><%= will_paginate @tickets, :params => { :project_id => Project.current.to_param } %></td>

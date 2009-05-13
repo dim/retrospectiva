@@ -1,8 +1,14 @@
 <dl>
   <dt><%=_ 'Reports' %>:</dt>    
 
+  <dd><ul id="ticket_reports" class="<%= permitted?(:reports, :create) ? 'sortable' : 'no-bullets' %>">
   <% @reports.each do |report| -%>
     <% next if report.user_specific? && User.current.public? -%>
-    <dd><%= link_to_unless report == @report, h(report.name), project_tickets_path(Project.current, :report => report, :by => params[:by]) %></dd>
+    <%= render :partial => 'report', :locals => {:report => report} %>
   <% end -%>
+  </ul></dd>
 </dl>
+<%= sortable_element("ticket_reports", 
+	:url => sort_project_ticket_reports_path(Project.current), 
+	:method => :put) if permitted?(:reports, :create) %>
+

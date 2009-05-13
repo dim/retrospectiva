@@ -25,3 +25,5 @@ fieldset {padding-top:0;}
 
 /* app */
 * html #ticket_report_selector dl { height: 140px; }
+* html #container { width:expression(document.body.clientWidth < 950 ? "950px": "auto"); }
+* html #content { width:expression(document.body.clientWidth > 1160 ? "1160px" : "auto"); }

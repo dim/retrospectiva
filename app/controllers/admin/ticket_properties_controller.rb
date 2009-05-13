@@ -64,7 +64,7 @@ class Admin::TicketPropertiesController < AdminAreaController
 
   def sort
     params[:ticket_properties].each_with_index do |id, rank|      
-      TicketPropertyType.update_all ['rank = ?', rank], ['id = ? AND project_id = ?', id.to_i, @project.id]
+      @project.ticket_property_types.update_all ['rank = ?', rank], ['id = ?', id.to_i]
     end if params[:ticket_properties].is_a?(Enumerable)
 
     respond_to do |format|
