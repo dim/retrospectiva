@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   FN_PATTERN = '[~\#\-!\w\.\+]'
 
   validates_length_of :name, :in => 2..80
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
   validates_format_of :name, 
     :with => /^[A-Za-z]/ 
   validates_format_of :root_path, 

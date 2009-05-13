@@ -9,7 +9,8 @@ class TicketPropertyType < ActiveRecord::Base
   belongs_to :project
 
   validates_presence_of :project_id
-  validates_uniqueness_of :name, 
+  validates_uniqueness_of :name,
+    :case_sensitive => false,
     :scope => :project_id,
     :allow_nil => true
   validates_format_of :name,

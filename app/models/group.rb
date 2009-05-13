@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
   validates_format_of :name, 
     :with => %r{^[A-Za-z0-9]+( [A-Za-z0-9]+)*$}, 
     :message => 'may only contain latin characters and digits separated by spaces'
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
 
   serialize :permissions, Hash
 

@@ -17,7 +17,7 @@ class Milestone < ActiveRecord::Base
   belongs_to :project
 
   validates_presence_of :name, :project_id, :started_on
-  validates_uniqueness_of :name, :scope => :project_id
+  validates_uniqueness_of :name, :case_sensitive => false, :scope => :project_id
   validates_length_of :info, :maximum => 50000, :allow_blank => true
 
   retro_previewable do |r|

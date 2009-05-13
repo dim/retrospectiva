@@ -3,7 +3,7 @@ class TicketReport < ActiveRecord::Base
   serialize :filter_options, Hash
 
   validates_presence_of :name, :project_id
-  validates_uniqueness_of :name, :scope => :project_id
+  validates_uniqueness_of :name, :case_sensitive => false, :scope => :project_id
   validates_numericality_of :time_interval, 
     :integer_only => true,
     :greater_than_or_equal => 1.day,

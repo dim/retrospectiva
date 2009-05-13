@@ -25,7 +25,8 @@ class Repository < ActiveRecord::Base
   end
 
   validates_presence_of :name, :path
-  validates_uniqueness_of :name, :path
+  validates_uniqueness_of :name, :case_sensitive => false
+  validates_uniqueness_of :path
   validates_inclusion_of :kind, :in => Repository.types
   
   def diff_scanner

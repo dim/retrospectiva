@@ -14,7 +14,7 @@ class WikiPage < ActiveRecord::Base
   validates_format_of :title, :with => /\A\w[^\.\?\/;,]{1,}\Z/
   validates_presence_of :content
   validates_presence_of :author
-  validates_uniqueness_of :title, :scope => :project_id
+  validates_uniqueness_of :title, :case_sensitive => false, :scope => :project_id
   validates_association_of :project
 
   attr_accessible :content, :author

@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class TicketProperty < ActiveRecord::Base
@@ -7,7 +7,7 @@ class TicketProperty < ActiveRecord::Base
   belongs_to :ticket_property_type
     
   validates_presence_of :ticket_property_type_id
-  validates_uniqueness_of :name, :scope => :ticket_property_type_id  
+  validates_uniqueness_of :name, :case_sensitive => false, :scope => :ticket_property_type_id  
   validates_length_of :name, :in => 2..40
   
   def type

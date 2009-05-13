@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 module TicketPropertyGlobal
@@ -10,7 +10,7 @@ module TicketPropertyGlobal
       has_many :tickets
 
       validates_presence_of :name
-      validates_uniqueness_of :name    
+      validates_uniqueness_of :name, :case_sensitive => false   
       
       include InstanceMethods
     end    
