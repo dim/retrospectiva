@@ -5,10 +5,6 @@ module AdminAreaHelper
     content_tag :h3, tokens.join(' / '), :id => 'breadcrumbs', :class => 'bottom-10'
   end
 
-  def options_for_destroy_link(record)
-    { :method => :delete, :confirm => _('Really delete this {{record}}?', :record => record.class.human_name) }
-  end
-
   def top_navigation_for(collection, label, new_path, *colspan, &block)
     additional_content = block_given? ? capture(&block) : ''    
     content = render :partial => 'admin/shared/thead_navigation', :locals => { 

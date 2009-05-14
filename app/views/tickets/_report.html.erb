@@ -5,9 +5,7 @@
   
   <% if permitted?(:reports, :destroy) -%>
     <span class="small">
-      (<%= link_to _('Delete'), project_ticket_report_path(Project.current, report),
-    		:confirm => _('Really delete this report?'),
-    		:method => :delete %>)
+      (<%= link_to _('Delete'), project_ticket_report_path(Project.current, report), options_for_destroy_link %>)
     </span>
   <% end -%>
 </li>

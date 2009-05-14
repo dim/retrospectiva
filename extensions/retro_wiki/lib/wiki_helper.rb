@@ -24,9 +24,7 @@ module WikiHelper
     end
      
     if permitted?(:wiki_pages, :delete)
-      links << link_to_wiki_page(_('Delete'), @wiki_page, 
-        :confirm => _('Are you really sure?'),
-        :method => :delete )
+      links << link_to_wiki_page(_('Delete'), @wiki_page, options_for_destroy_link)
     end
 
     links.join(' | ')

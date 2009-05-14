@@ -115,6 +115,10 @@ ja-JP:
     # app/controllers/accounts_controller.rb
     "An email including the activation code and the instructions was sent to you.": "有効化コードと作業内容を含んだEメールを送信しました。"
 
+    # Missing
+    # app/helpers/application_helper.rb
+    "Are you sure?": 
+
     # app/views/tickets/_ticket_info.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
@@ -177,6 +181,7 @@ ja-JP:
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
+    # app/views/ticket_reports/_new.html.erb
     "Cancel": "中止"
 
     # Missing
@@ -280,6 +285,7 @@ ja-JP:
     # app/views/admin/shared/_new_form.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     # app/views/milestones/new.html.erb
+    # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
     "Create": "作成"
 
@@ -299,8 +305,7 @@ ja-JP:
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": "新しいプロパティ値の作成"
 
-    # app/views/admin/reports/index.html.erb
-    # app/views/admin/reports/new.html.erb
+    # Unknown
     "Create a new report": "新しいレポートの作成"
 
     # app/views/admin/repositories/index.html.erb
@@ -360,12 +365,12 @@ ja-JP:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/_property_value.html.erb
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
+    # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     "Delete": "削除"
 
@@ -407,7 +412,6 @@ ja-JP:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -428,7 +432,7 @@ ja-JP:
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": "プロパティ値を編集"
 
-    # app/views/admin/reports/edit.html.erb
+    # Unknown
     "Edit report": "レポートの編集"
 
     # app/views/admin/repositories/edit.html.erb
@@ -488,7 +492,7 @@ ja-JP:
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": 
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Filter options": "抽出オプション一覧"
 
     # app/views/tickets/index.html.erb
@@ -737,12 +741,12 @@ ja-JP:
     # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "自分のチケット"
 
-    # app/views/admin/reports/_form.html.erb
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/ticket_properties/_form.html.erb
     # app/views/admin/ticket_property_values/_value_form.html.erb
     # app/views/browse/index.html.erb
     # app/views/milestones/_form.html.erb
+    # app/views/ticket_reports/_form.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
     "Name": "名前"
 
@@ -772,6 +776,7 @@ ja-JP:
     "Next ticket": "次のチケット"
 
     # Missing
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "No": 
 
@@ -798,6 +803,10 @@ ja-JP:
 
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "アカウント有効化時にユーザに通知する"
+
+    # Missing
+    # app/views/ticket_reports/_form.html.erb
+    "Only Last": 
 
     # app/models/status.rb
     "Open": "未解決"
@@ -893,8 +902,6 @@ ja-JP:
     # app/views/admin/groups/index.html.erb
     # app/views/admin/projects/_header.html.erb
     # app/views/admin/projects/index.html.erb
-    # app/views/admin/reports/_header.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/admin/ticket_properties/_header.html.erb
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -938,19 +945,16 @@ ja-JP:
     # app/helpers/browse_helper.rb
     "Raw": "そのまま"
 
-    # Missing
-    # app/helpers/milestones_helper.rb
+    # Unknown
     "Really delete this milestone record?": 
 
-    # app/helpers/admin/ticket_property_values_helper.rb
-    # app/helpers/admin_area_helper.rb
+    # Unknown
     "Really delete this {{record}}?": "本当にこの{{record}}を削除しますか？"
 
-    # app/views/tickets/_change.html.erb
+    # Unknown
     "Really delete ticket change?": "本当にチケットの変更を削除しますか？"
 
-    # Missing
-    # app/views/tickets/_ticket_intro.html.erb
+    # Unknown
     "Really delete ticket?": 
 
     # Missing
@@ -976,13 +980,13 @@ ja-JP:
     # app/views/accounts/show.html.erb
     "Renew my private key": 
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully created.": "レポートの作成に成功しました。"
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "レポートの削除に成功しました。"
 
-    # app/controllers/admin/reports_controller.rb
+    # Unknown
     "Report was successfully updated.": "レポートの更新に成功しました。"
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -993,8 +997,6 @@ ja-JP:
     "Reported by {{author}} - {{time}}": "{{author}}が報告 - {{time}}"
 
     # app/core_info.rb
-    # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
     "Reports": "レポート一覧"
 
@@ -1050,6 +1052,11 @@ ja-JP:
     # app/views/admin/setup/_section.html.erb
     # app/views/admin/tasks/index.html.erb
     "Save all": "すべて保存"
+
+    # Missing
+    # app/views/ticket_reports/_new.html.erb
+    # app/views/tickets/index.html.erb
+    "Save as Report": 
 
     # Missing
     # app/helpers/application_helper.rb
@@ -1373,10 +1380,11 @@ ja-JP:
     # lib/time_interval.rb
     "Weeks": "週間"
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Within the last": "最近〜以内"
 
     # Missing
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "Yes": 
 
@@ -1472,7 +1480,7 @@ ja-JP:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "{{path}}から移動"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "priority record": "優先度"
 
     # app/helpers/tickets_helper.rb
@@ -1481,7 +1489,7 @@ ja-JP:
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "{{value}}に設定"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "status record": "状態"
 
     # Missing

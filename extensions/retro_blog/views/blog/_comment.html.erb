@@ -11,9 +11,7 @@
   <div class="bottom-10 span-19 last" id="blog-comment-content-<%= comment.id %>">
     <% content_tag :div, :class => 'float-r actions smaller' do -%>        
       <%= in_place_edit_external_control _('Edit'), "blog_comment_#{comment.id}" %>
-      <%= link_to _('Delete'), project_blog_post_comment_path(Project.current, @blog_post, comment),
-            :confirm => _('Really delete this comment?'),
-            :method => :delete %>
+      <%= link_to _('Delete'), project_blog_post_comment_path(Project.current, @blog_post, comment), options_for_destroy_link %> 
     <% end if User.current.admin? -%>
     
     <div id="blog_comment_<%= comment.id %>" class="markup"><%= simple_markup(comment.content) %></div>

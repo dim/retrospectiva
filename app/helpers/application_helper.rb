@@ -151,6 +151,10 @@ module ApplicationHelper
     end
   end
 
+  def options_for_destroy_link(confirmation_suffix = nil)
+    { :method => :delete, :confirm => _('Are you sure?') + confirmation_suffix.to_s }
+  end
+
   protected
     
     def enkode(text)

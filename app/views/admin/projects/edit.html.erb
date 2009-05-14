@@ -3,5 +3,5 @@
 
 <%= render :partial => '/admin/shared/edit_form', :locals => {
       :record => @project,
-      :member_path => admin_project_path(@project),
+      :member_path => admin_project_path(@project.short_name_was),
       :collection_path => admin_projects_path } %>

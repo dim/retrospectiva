@@ -103,12 +103,10 @@ ja-JP:
     # extensions/retro_blog/views/blog/_post.html.erb
     "Read more": 
 
-    # Missing
-    # extensions/retro_blog/views/blog/_comment.html.erb
+    # Unknown
     "Really delete this comment?": 
 
-    # Missing
-    # extensions/retro_blog/views/blog/show.html.erb
+    # Unknown
     "Really delete this post?": 
 
     # Missing

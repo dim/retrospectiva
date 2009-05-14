@@ -15,9 +15,7 @@
           <%= in_place_edit_external_control _('Edit'), "ticket_change_content_#{change.id}" %>
         <% end -%>
         <% if permitted?(:tickets, :delete) -%>
-          <%= link_to _('Delete'), project_ticket_destroy_change_path(Project.current, @ticket, change),
-                :confirm => _('Really delete ticket change?'),
-                :method => :delete %>
+          <%= link_to _('Delete'), project_ticket_destroy_change_path(Project.current, @ticket, change), options_for_destroy_link %>
         <% end -%>
       </div>
     <% end -%>

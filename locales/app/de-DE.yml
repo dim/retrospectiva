@@ -21,9 +21,8 @@ de-DE:
     # app/views/admin/users/_groups.html.erb
     "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "ACHTUNG! Gruppeneinstellungen werden ignoriert, wenn gleichzeitig die 'Administrator'-Option gewählt wurde!"
 
-    # Missing
     # app/views/rescue/403.html.erb
-    "Access forbidden (403)": 
+    "Access forbidden (403)": "Zugang verweigert (403)"
 
     # app/models/notifications.rb
     "Account activation": "Aktivierung des Benutzerkontos"
@@ -76,24 +75,20 @@ de-DE:
     # app/views/rss/_all.html.erb
     "All Projects": "Alle Projekte"
 
-    # Missing
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": 
+    "All feeds for {{project}}": "Alle Feeds für {{project}}"
 
-    # Missing
     # app/views/rss/_all.html.erb
-    "All feeds from all projects": 
+    "All feeds from all projects": "Alle Feeds für alle Projekte"
 
     # app/models/status.rb
     "All in progress": "Alle in Bearbetung"
 
-    # Missing
     # app/controllers/projects_controller.rb
-    "All news for all projects": 
+    "All news for all projects": "Alle News für alle Projekte"
 
-    # Missing
     # app/controllers/projects_controller.rb
-    "All news for {{project}}": 
+    "All news for {{project}}": "Alle News für {{project}}"
 
     # app/models/status.rb
     "All open": "All offenen"
@@ -110,6 +105,9 @@ de-DE:
 
     # app/controllers/accounts_controller.rb
     "An email including the activation code and the instructions was sent to you.": "Eine Email mit einem Aktivierungsschlüssel und weiteren Instruktionen wurde Ihnen zugesandt."
+
+    # app/helpers/application_helper.rb
+    "Are you sure?": "Sind Sie sicher?"
 
     # app/views/tickets/_ticket_info.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
@@ -169,6 +167,7 @@ de-DE:
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
+    # app/views/ticket_reports/_new.html.erb
     "Cancel": "Abbrechen"
 
     # app/models/user.rb
@@ -207,16 +206,14 @@ de-DE:
     # app/views/accounts/show.html.erb
     "Check this option to renew your private access key.": "Aktivieren Sie diese Otion, um den privaten Zugriffsschlüssel zu aktualisieren."
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Clear selection": 
+    "Clear selection": "Auswahl zurücksetzen"
 
     # app/views/projects/index.html.erb
     "Click for info": "Anklicken für weitere Informationen"
 
-    # Missing
     # app/views/changesets/_quick_diff.html.erb
-    "Close": 
+    "Close": "Schließen"
 
     # app/helpers/format_helper.rb
     "Close preview": "Vorschau schließen"
@@ -257,6 +254,7 @@ de-DE:
     # app/views/admin/shared/_new_form.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     # app/views/milestones/new.html.erb
+    # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
     "Create": "Erstellen"
 
@@ -276,8 +274,7 @@ de-DE:
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": "Neuen Eigenschaftswert anlegen"
 
-    # app/views/admin/reports/index.html.erb
-    # app/views/admin/reports/new.html.erb
+    # Unknown
     "Create a new report": "Neuen Bericht anlegen"
 
     # app/views/admin/repositories/index.html.erb
@@ -331,12 +328,12 @@ de-DE:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/_property_value.html.erb
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
+    # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     "Delete": "Löschen"
 
@@ -352,7 +349,7 @@ de-DE:
     "Details": "Details"
 
     # app/views/browse/_revision.html.erb
-    "Diff": "Diff"
+    "Diff": "Änderungen"
 
     # app/helpers/application_helper.rb
     "Display": "Anzeigen"
@@ -372,7 +369,6 @@ de-DE:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -393,7 +389,7 @@ de-DE:
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": "Eigenschaftswert bearbeiten"
 
-    # app/views/admin/reports/edit.html.erb
+    # Unknown
     "Edit report": "Bericht bearbeiten"
 
     # app/views/admin/repositories/edit.html.erb
@@ -443,21 +439,19 @@ de-DE:
     "Feeds": "Feed"
 
     # app/views/browse/show_binary.html.erb
-    "File content cannot be displayed for binary files.": "Detainhalte von Binärdateien können nicht angezeigt werden."
+    "File content cannot be displayed for binary files.": "Inhalte von Binärdateien können nicht angezeigt werden."
 
-    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
-    "File size exceeds the maximum limit": 
+    "File size exceeds the maximum limit": "Dateigröße überschreitet das obere Limit."
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Filter options": "Filter-Optionen"
 
     # app/views/tickets/index.html.erb
     "Filter tickets": "Tickets filtern"
 
-    # Missing
     # app/views/admin/tasks/_task.html.erb
-    "Finished": 
+    "Finished": "Beendet"
 
     # app/views/milestones/_form.html.erb
     "Finished on": "Erledigt am"
@@ -488,9 +482,8 @@ de-DE:
     # app/views/admin/groups/_form.html.erb
     "Group name": "Name der Gruppe"
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Group records": 
+    "Group records": "Gruppen"
 
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "Die Gruppe wurde erfolgreich angelegt."
@@ -508,16 +501,14 @@ de-DE:
     # app/views/admin/users/index.html.erb
     "Groups": "Gruppen"
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Headers": 
+    "Headers": "Überschriften"
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Hallo {{user}}!"
 
-    # Missing
     # app/helpers/changesets_helper.rb
-    "Hide Quick Diffs": 
+    "Hide Quick Diffs": "Änderungen ausblenden"
 
     # app/views/milestones/index.html.erb
     "Hide already completed milestones": "Abgeschlossene Meilensteine nicht anzeigen"
@@ -662,9 +653,8 @@ de-DE:
     # app/core_info.rb
     "Modify": "Ändern"
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Month": 
+    "Month": "Monat"
 
     # lib/time_interval.rb
     "Months": "Monate"
@@ -680,12 +670,12 @@ de-DE:
     # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "Meine Tickets"
 
-    # app/views/admin/reports/_form.html.erb
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/ticket_properties/_form.html.erb
     # app/views/admin/ticket_property_values/_value_form.html.erb
     # app/views/browse/index.html.erb
     # app/views/milestones/_form.html.erb
+    # app/views/ticket_reports/_form.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
     "Name": "Name"
 
@@ -711,6 +701,7 @@ de-DE:
     # app/views/tickets/_navigation.html.erb
     "Next ticket": "Nächstes Ticket"
 
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "No": "Nein"
 
@@ -723,9 +714,8 @@ de-DE:
     # app/controllers/admin/projects_controller.rb
     "No repository selected.": "Kein Repository eingerichtet."
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "None": 
+    "None": "Nichts"
 
     # app/views/admin/extensions/index.html.erb
     "Not Installed": "Nicht installiert"
@@ -735,6 +725,9 @@ de-DE:
 
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Benutzer bei aktivierung des Benutzerkontos benachrichtingen"
+
+    # app/views/ticket_reports/_form.html.erb
+    "Only Last": "Nur die letzten"
 
     # app/models/status.rb
     "Open": "Geöffnet"
@@ -820,8 +813,6 @@ de-DE:
     # app/views/admin/groups/index.html.erb
     # app/views/admin/projects/_header.html.erb
     # app/views/admin/projects/index.html.erb
-    # app/views/admin/reports/_header.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/admin/ticket_properties/_header.html.erb
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -853,7 +844,7 @@ de-DE:
     "Public user cannot be modified.": "Öffentlicher Benutzer kann nicht modifiziert werden."
 
     # app/helpers/changesets_helper.rb
-    "Quick Diff": "Quick diff"
+    "Quick Diff": "Änderungen"
 
     # app/views/rss/index.html.erb
     "RSS": "RSS"
@@ -861,22 +852,20 @@ de-DE:
     # app/helpers/browse_helper.rb
     "Raw": "Original"
 
-    # app/helpers/milestones_helper.rb
+    # Unknown
     "Really delete this milestone record?": "Diesen Meilenstein wirklich löschen?"
 
-    # app/helpers/admin/ticket_property_values_helper.rb
-    # app/helpers/admin_area_helper.rb
+    # Unknown
     "Really delete this {{record}}?": "{{record}} wirklich löschen?"
 
-    # app/views/tickets/_change.html.erb
+    # Unknown
     "Really delete ticket change?": "Diese Änderung des Tickets wirklich löschen?"
 
-    # app/views/tickets/_ticket_intro.html.erb
+    # Unknown
     "Really delete ticket?": "Soll das Ticket wirklich gelöscht werden?"
 
-    # Missing
     # app/helpers/format_helper.rb
-    "Reference": 
+    "Reference": "Referenz"
 
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     "References": "Verweise"
@@ -895,13 +884,13 @@ de-DE:
     # app/views/accounts/show.html.erb
     "Renew my private key": "Meinen privaten Schlüssel aktualisieren"
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully created.": "Der Report wurde erfolgreich erstellt."
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "Der Report wurde erfolgreich gelöscht."
 
-    # app/controllers/admin/reports_controller.rb
+    # Unknown
     "Report was successfully updated.": "Der Report wurde erfolgreich aktualisiert."
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -912,8 +901,6 @@ de-DE:
     "Reported by {{author}} - {{time}}": "Gemeldet von {{author}} - {{time}}"
 
     # app/core_info.rb
-    # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
     "Reports": "Reporte"
 
@@ -967,6 +954,10 @@ de-DE:
     # app/views/admin/tasks/index.html.erb
     "Save all": "Alle speichern"
 
+    # app/views/ticket_reports/_new.html.erb
+    # app/views/tickets/index.html.erb
+    "Save as Report": "Als Bericht speichern"
+
     # app/helpers/application_helper.rb
     "Saving...": "Wird gespeichert..."
 
@@ -997,9 +988,8 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "Shortly you will receive an email with instructions on how to reset your password.": "Sie werden in Kürze eine E-Mail mit Instruktionen zum zurücksetzen des Passworts erhalten."
 
-    # Missing
     # app/helpers/changesets_helper.rb
-    "Show Quick Diffs": 
+    "Show Quick Diffs": "Änderungen einblenden"
 
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "Bereits abgeschlossene Meilensteine anzeigen"
@@ -1153,7 +1143,7 @@ de-DE:
     "Toggle description for setting '{{name}}'": "'{{name}}'-Beschreibung anzeigen"
 
     # app/views/browse/diff.html.erb
-    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Die Differenzen zwischen revision '{{source}}' und '{{target}}' für die ausgewählte Datei konnten nicht angezeigt werden."
+    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Änderungen zwischen Revision '{{source}}' und '{{target}}' für die ausgewählte Datei konnten nicht angezeigt werden."
 
     # app/controllers/browse_controller.rb
     "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "Revision {{revision}} für '{{path}}' konnte nicht gefunden werden, zeige Revision {{latest}}."
@@ -1252,16 +1242,16 @@ de-DE:
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Week": 
+    "Week": "Woche"
 
     # lib/time_interval.rb
     "Weeks": "Wochen"
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Within the last": "In den letzen"
 
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "Yes": "Ja"
 
@@ -1271,9 +1261,8 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "Sie können sich leider nicht anmelden, bis ein Administrator Ihr Konto aktiviert hat."
 
-    # Missing
     # app/views/rescue/403.html.erb
-    "You are not permitted to view this page.": 
+    "You are not permitted to view this page.": "Sie sind nicht berechtigt diese Seite zu sehen."
 
     # app/views/sessions/destroy.html.erb
     "You are now logged out of the system.": "Sie sind nun abgemeldet."
@@ -1350,7 +1339,7 @@ de-DE:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "verschoben aus {{path}}"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "priority record": "Priorität"
 
     # app/helpers/tickets_helper.rb
@@ -1359,7 +1348,7 @@ de-DE:
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "auf {{value}} gesetzt"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "status record": "Status"
 
     # app/views/browse/_node.html.erb

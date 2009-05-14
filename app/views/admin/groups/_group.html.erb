@@ -10,7 +10,7 @@
     <% if group.default? -%>
       <%= inactive_link _('Delete') %>
     <% else -%>
-      <%= link_to _('Delete'), admin_group_path(group), options_for_destroy_link(group) %>
+      <%= link_to _('Delete'), admin_group_path(group), options_for_destroy_link %>
     <% end -%>
   </td>
 </tr>

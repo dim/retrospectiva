@@ -1,8 +1,6 @@
 de-DE:
   application:
-    # Missing
-    # extensions/retro_wiki/lib/wiki_helper.rb
-    # extensions/retro_wiki/views/wiki_files/_file.html.erb
+    # Unknown
     "Are you really sure?": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb

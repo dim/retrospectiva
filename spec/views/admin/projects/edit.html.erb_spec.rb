@@ -6,7 +6,7 @@ describe "/admin/projects/edit.html.erb" do
     mock_current_user! :admin? => true
     assigns[:project] = @project = mock_model(Project, :name => 'P1', 
       :locale => nil, :repository_id => nil, :root_path => nil, :enabled_modules => [], 
-      :closed => false, :info => 'I1', :central => false)
+      :closed => false, :info => 'I1', :central => false, :short_name_was => 'p1')
     assigns[:repositories] = [mock_model(Repository::Abstract, :name => 'R1')]
   end
 

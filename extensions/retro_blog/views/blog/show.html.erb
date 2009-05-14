@@ -8,9 +8,7 @@
       <%= link_to _('Edit'), edit_project_blog_post_path(Project.current, @blog_post) %>
     <% end -%>
     <% if permitted?(:blog_posts, :delete) -%>
-      <%= link_to _('Delete'), project_blog_post_path(Project.current, @blog_post),
-          :confirm => _('Really delete this post?'),
-          :method => :delete %>
+      <%= link_to _('Delete'), project_blog_post_path(Project.current, @blog_post), options_for_destroy_link %>
     <% end -%>
   <% end if permitted?(:blog_posts, :update) || permitted?(:blog_posts, :delete) -%>
   

@@ -84,10 +84,10 @@ en-GB:
     # extensions/retro_blog/views/blog/_post.html.erb
     "Read more": "Read more"
 
-    # extensions/retro_blog/views/blog/_comment.html.erb
+    # Unknown
     "Really delete this comment?": "Really delete this comment?"
 
-    # extensions/retro_blog/views/blog/show.html.erb
+    # Unknown
     "Really delete this post?": "Really delete this post?"
 
     # extensions/retro_blog/views/blog/_navigation.html.erb

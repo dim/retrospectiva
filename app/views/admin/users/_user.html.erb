@@ -19,7 +19,7 @@
     <% if user.current? || user.public? || user.last_admin? -%>
       <span class="inactive"><%= _('Delete') %></span>
     <% else -%>
-      <%= link_to _('Delete'), admin_user_path(user), options_for_destroy_link(user) -%>
+      <%= link_to _('Delete'), admin_user_path(user), options_for_destroy_link -%>
     <% end -%>
   </td>
 </tr>

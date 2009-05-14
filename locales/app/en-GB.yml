@@ -106,6 +106,9 @@ en-GB:
     # app/controllers/accounts_controller.rb
     "An email including the activation code and the instructions was sent to you.": "An email including the activation code and the instructions was sent to you."
 
+    # app/helpers/application_helper.rb
+    "Are you sure?": "Are you sure?"
+
     # app/views/tickets/_ticket_info.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
@@ -164,6 +167,7 @@ en-GB:
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
+    # app/views/ticket_reports/_new.html.erb
     "Cancel": "Cancel"
 
     # app/models/user.rb
@@ -250,6 +254,7 @@ en-GB:
     # app/views/admin/shared/_new_form.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     # app/views/milestones/new.html.erb
+    # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
     "Create": "Create"
 
@@ -269,8 +274,7 @@ en-GB:
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": "Create a new property value"
 
-    # app/views/admin/reports/index.html.erb
-    # app/views/admin/reports/new.html.erb
+    # Unknown
     "Create a new report": "Create a new report"
 
     # app/views/admin/repositories/index.html.erb
@@ -324,12 +328,12 @@ en-GB:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/_property_value.html.erb
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
+    # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     "Delete": "Delete"
 
@@ -365,7 +369,6 @@ en-GB:
     # app/helpers/milestones_helper.rb
     # app/views/admin/groups/_group.html.erb
     # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/_ticket_report.html.erb
     # app/views/admin/repositories/_repository.html.erb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -386,7 +389,7 @@ en-GB:
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": "Edit property value"
 
-    # app/views/admin/reports/edit.html.erb
+    # Unknown
     "Edit report": "Edit report"
 
     # app/views/admin/repositories/edit.html.erb
@@ -441,7 +444,7 @@ en-GB:
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": "File size exceeds the maximum limit"
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Filter options": "Filter options"
 
     # app/views/tickets/index.html.erb
@@ -666,12 +669,12 @@ en-GB:
     # app/models/ticket_filter/custom/my_tickets.rb
     "My Tickets": "My Tickets"
 
-    # app/views/admin/reports/_form.html.erb
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/ticket_properties/_form.html.erb
     # app/views/admin/ticket_property_values/_value_form.html.erb
     # app/views/browse/index.html.erb
     # app/views/milestones/_form.html.erb
+    # app/views/ticket_reports/_form.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
     "Name": "Name"
 
@@ -697,6 +700,7 @@ en-GB:
     # app/views/tickets/_navigation.html.erb
     "Next ticket": "Next ticket"
 
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "No": "No"
 
@@ -720,6 +724,9 @@ en-GB:
 
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Notify user on account activation"
+
+    # app/views/ticket_reports/_form.html.erb
+    "Only Last": "Only Last"
 
     # app/models/status.rb
     "Open": "Open"
@@ -805,8 +812,6 @@ en-GB:
     # app/views/admin/groups/index.html.erb
     # app/views/admin/projects/_header.html.erb
     # app/views/admin/projects/index.html.erb
-    # app/views/admin/reports/_header.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/admin/ticket_properties/_header.html.erb
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/admin/ticket_property_values/edit.html.erb
@@ -846,17 +851,16 @@ en-GB:
     # app/helpers/browse_helper.rb
     "Raw": "Raw"
 
-    # app/helpers/milestones_helper.rb
+    # Unknown
     "Really delete this milestone record?": "Really delete this milestone record?"
 
-    # app/helpers/admin/ticket_property_values_helper.rb
-    # app/helpers/admin_area_helper.rb
+    # Unknown
     "Really delete this {{record}}?": "Really delete this {{record}}?"
 
-    # app/views/tickets/_change.html.erb
+    # Unknown
     "Really delete ticket change?": "Really delete ticket change?"
 
-    # app/views/tickets/_ticket_intro.html.erb
+    # Unknown
     "Really delete ticket?": "Really delete ticket?"
 
     # app/helpers/format_helper.rb
@@ -879,13 +883,13 @@ en-GB:
     # app/views/accounts/show.html.erb
     "Renew my private key": "Renew my private key"
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully created.": "Report was successfully created."
 
-    # app/controllers/admin/reports_controller.rb
+    # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "Report was successfully deleted."
 
-    # app/controllers/admin/reports_controller.rb
+    # Unknown
     "Report was successfully updated.": "Report was successfully updated."
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -896,8 +900,6 @@ en-GB:
     "Reported by {{author}} - {{time}}": "Reported by {{author}} - {{time}}"
 
     # app/core_info.rb
-    # app/views/admin/projects/_project.html.erb
-    # app/views/admin/reports/index.html.erb
     # app/views/tickets/_reports.html.erb
     "Reports": "Reports"
 
@@ -950,6 +952,10 @@ en-GB:
     # app/views/admin/setup/_section.html.erb
     # app/views/admin/tasks/index.html.erb
     "Save all": "Save all"
+
+    # app/views/ticket_reports/_new.html.erb
+    # app/views/tickets/index.html.erb
+    "Save as Report": "Save as Report"
 
     # app/helpers/application_helper.rb
     "Saving...": "Saving..."
@@ -1228,9 +1234,8 @@ en-GB:
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": "We're sorry, but something went wrong."
 
-    # Missing
     # app/views/rescue/500.html.erb
-    "We've been notified about this issue and we'll take a look at it shortly.": 
+    "We've been notified about this issue and we'll take a look at it shortly.": "We've been notified about this issue and we'll take a look at it shortly."
 
     # app/views/tickets/index.html.erb
     "Week": "Week"
@@ -1238,9 +1243,10 @@ en-GB:
     # lib/time_interval.rb
     "Weeks": "Weeks"
 
-    # app/views/admin/reports/_form.html.erb
+    # Unknown
     "Within the last": "Within the last"
 
+    # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "Yes": "Yes"
 
@@ -1327,7 +1333,7 @@ en-GB:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "moved from {{path}}"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "priority record": "priority record"
 
     # app/helpers/tickets_helper.rb
@@ -1336,7 +1342,7 @@ en-GB:
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "set to {{value}}"
 
-    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # Unknown
     "status record": "status record"
 
     # app/views/browse/_node.html.erb
