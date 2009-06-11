@@ -44,6 +44,14 @@ module WikiHelper
     
     links.join(' | ')
   end
+  
+  def anchorize(html)
+    html.gsub(/(\<h1[^>]*\>)(.+?)\<\/h1\>/ui) do |match|
+      tag, text = $1, $2
+      anchor = "--#{CGI::unescapeHTML(strip_tags(text)).parameterize}"
+      "#{tag}#{text} <a id=\"#{anchor}\" href=\"##{anchor}\" class=\"wiki-anchor\">&para;</a></h1>"
+    end
+  end
 
   private
 

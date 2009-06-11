@@ -1,2 +1,3 @@
 <% @page_title = _('Wiki') + ": #{@wiki_page.title}" -%>
 <% slim_page -%>
+<% layout_markers[:header] << x_stylesheet_link_tag('retro_wiki') -%>
