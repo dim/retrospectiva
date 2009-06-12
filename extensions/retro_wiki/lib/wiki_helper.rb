@@ -48,7 +48,11 @@ module WikiHelper
   def anchorize(html)
     html.gsub(/(\<h1[^>]*\>)(.+?)\<\/h1\>/ui) do |match|
       tag, text = $1, $2
-      anchor = "--#{CGI::unescapeHTML(strip_tags(text)).parameterize}"
+      anchor = ActiveSupport::Inflector.transliterate(strip_tags(text))
+      anchor.gsub!(/\&\w+\;/, '')
+      anchor.gsub!(/\W/, '-')
+      anchor.squeeze!('-')
+      anchor.gsub!(/-$/i, '')
       "#{tag}#{text} <a id=\"#{anchor}\" href=\"##{anchor}\" class=\"wiki-anchor\">&para;</a></h1>"
     end
   end
