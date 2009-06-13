@@ -35,7 +35,7 @@ describe ChangesetsController do
 
   describe "handling GET /changesets.rss" do
     before(:each) do
-      Changeset.stub!(:to_rss)
+      Changeset.stub!(:to_rss).and_return("RSS")
       @proxy.stub!(:paginate).and_return(@changesets)
     end
     
@@ -56,7 +56,7 @@ describe ChangesetsController do
     end
 
     it "should render the found milestones as RSS" do
-      Changeset.should_receive(:to_rss).with(@changesets).and_return("RSS")
+      Changeset.should_receive(:to_rss).with(@changesets, {}).and_return("RSS")
       do_get :completed => '1'
       response.body.should == "RSS"
       response.content_type.should == "application/rss+xml"
@@ -131,11 +131,9 @@ describe ChangesetsController do
     end
 
     describe 'if change is not diffable' do
-      before do
-        rescue_action_in_public!        
-      end
     
       it "should display a 404 page" do
+        rescue_action_in_public!
         @change.should_receive(:diffable?).and_return(false)
         do_get
         response.code.should == '404'

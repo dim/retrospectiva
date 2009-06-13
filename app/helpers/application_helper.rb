@@ -17,19 +17,25 @@ module ApplicationHelper
     content_tag('div', title, :class => 'page-title')  
   end
 
-  def content_styles(*args)    
-    [args].flatten.each do |style_class|
-      content_style(style_class)
+  def content_styles(*styles)    
+    @content_styles ||= [] 
+    if styles.any?
+      @content_styles += Array(styles)
+      @content_styles.uniq!
     end
-    layout_markers[:content_styles]
+    " #{@content_styles.join(' ')}"
   end
-  
-  def content_style(style_class)    
-    layout_markers[:content_styles] << " #{style_class}"
-  end
+  alias_method :content_style, :content_styles
   
   def slim_page
     content_style('slim')
+  end
+
+  def auto_discover_feed(type = :rss, url_options = {}, tag_options = {})
+    url_options.reverse_merge!(:format => type)
+    content_for :header do
+      auto_discovery_link_tag type, url_options, tag_options
+    end
   end
   
   def image_spacer(options = {})    

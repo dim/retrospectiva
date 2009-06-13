@@ -65,6 +65,7 @@ class TicketsController < ProjectAreaController
 
     respond_to do |format|
       format.html
+      format.rss  { render_rss(Ticket, [@ticket], :limit => 30) }
       format.xml  { render :xml => @ticket.to_xml(:include => @ticket.serialize_including + [:changes]) }
     end
   end

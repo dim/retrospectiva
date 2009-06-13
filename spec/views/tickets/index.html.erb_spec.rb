@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/tickets/index.html.erb" do
   
   before(:each) do
+    template.stub!(:auto_discover_feed)
     @user = mock_current_user! :permitted? => false, :public? => false
     @project = mock_current_project! :ticket_property_types => []
     @status = mock_model Status, 

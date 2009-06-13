@@ -40,9 +40,9 @@ class ProjectAreaController < ApplicationController
       Project.current = User.current.active_projects.find! params[:project_id]
     end
     
-    def render_rss(klass, records = nil)
+    def render_rss(klass, records = nil, options = {})
       records ||= instance_variable_get("@#{klass.name.tableize}".to_sym)
-      render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
+      render :xml => klass.to_rss(records, options).to_s, :content_type => 'application/rss+xml'
     end
 
 end

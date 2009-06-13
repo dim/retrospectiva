@@ -84,7 +84,7 @@ describe MilestonesController do
     end
 
     it "should render the found milestones as RSS" do
-      Milestone.should_receive(:to_rss).with(@milestones).and_return("RSS")
+      Milestone.should_receive(:to_rss).with(@milestones, {}).and_return("RSS")
       do_get :completed => '1'
       response.body.should == "RSS"
       response.content_type.should == "application/rss+xml"

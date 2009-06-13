@@ -3,7 +3,9 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/projects/index.html.erb" do
 
   describe 'if no projects were found' do
+
     before do 
+      template.stub!(:auto_discover_feed)
       assigns[:projects] = []
       render '/projects/index'
     end

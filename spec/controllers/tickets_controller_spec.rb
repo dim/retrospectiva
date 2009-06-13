@@ -158,7 +158,7 @@ describe TicketsController do
     end
 
     it "should render the found tickets as RSS" do
-      Ticket.should_receive(:to_rss).with(@tickets).and_return("RSS")
+      Ticket.should_receive(:to_rss).with(@tickets, {}).and_return("RSS")
       do_get
       response.body.should == "RSS"
       response.content_type.should == "application/rss+xml"
@@ -170,8 +170,6 @@ describe TicketsController do
 
     before(:each) do
       @tickets_proxy.stub!(:paginate).and_return(@tickets)
-      Ticket.stub!(:to_rss).and_return("RSS")
-
       @reports_proxy = @project.stub_association!(:ticket_reports, :find_by_id => nil, :find => [])
       TicketFilter::Collection.stub!(:new).and_return mock('TicketFilter::Collection', :joins => nil, :conditions => nil)
       Ticket.stub!(:default_includes).and_return([:DEFAULTS])

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   delegate :permitted?, :to => :'User.current'
   protected :permitted?
   
-  helper_method :layout_markers, :permitted?
+  helper_method :permitted?
 
   protected
     
@@ -91,14 +91,6 @@ class ApplicationController < ActionController::Base
     end
 
   private  
-
-    def layout_markers
-      @layout_markers ||= {
-        :header => RetroCM[:content][:custom][:header].to_s,
-        :footer => RetroCM[:content][:custom][:footer].to_s,
-        :content_styles => ''
-      }
-    end
 
     def render_optional_error_file(status_code)
       status = interpret_status(status_code)

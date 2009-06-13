@@ -1,11 +1,13 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 module BlogHelper
 
   def include_blog_stylesheet
-    layout_markers[:header] << x_stylesheet_link_tag('retro_blog')
+    content_for :header do
+      x_stylesheet_link_tag('retro_blog')      
+    end
   end
 
   def category_links(post)

@@ -18,7 +18,7 @@ describe ProjectAreaController do
     end
     
     def authorize?(action_name = 'index', request_params = {})
-      ProjectAreaController.authorize?(action_name, request_params, @user, @project)
+      controller.class.authorize?(action_name, request_params, @user, @project)
     end    
 
     it 'should find the requested menu-item' do

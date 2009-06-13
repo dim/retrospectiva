@@ -131,13 +131,13 @@ describe ApplicationController do
 end
 
 describe 'Format rendering and fallback' do
-  controller_name :changesets
+  controller_name :milestones
 
   before do
-    rescue_action_in_public!
-    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
-    @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
-    @project.stub!(:changesets).and_return(@changesets)
+    rescue_action_in_public!     
+    @milestones = []
+    @milestones.stub!(:active_on).and_return(@milestones)
+    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1', :milestones => @milestones         
   end
   
   it 'should render HTML if no specific format requested' do
@@ -158,9 +158,7 @@ describe 'Format rendering and fallback' do
   end
   
   it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
-    @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
-    @changesets.should_receive(:find).twice.and_return(nil)
-    get :show, :project_id => @project.to_param, :id => '1', :format => 'text'
+    get :index, :project_id => @project.to_param, :id => '1', :format => 'text'
     response.code.should == '406'
   end
 
