@@ -70,7 +70,7 @@ module NavigationHelper
       html << link_to(_('Login'), login_path)
       html << link_to(_('Register'), new_account_path) if cf[:account_management] && cf[:self_registration]
     else
-      html << _('Logged in as {{username}}', :username => h(User.current.username))
+      html << _('Logged in as {{name}}', :name => h(User.current.name))
       html << link_to(_('My Account'), account_path) if cf[:account_management]
       html << link_to(_('Logout'), logout_path)
     end

@@ -12,6 +12,7 @@ class AccountsController < ApplicationController
   before_filter :user_is_non_public?, :only => [:show, :update]
   before_filter :user_is_public?, :only => [:new, :create, :activate, :forgot_password]
 
+  before_filter :assert_user_parameter, :only => [:create, :update]
   before_filter :purge_expired_accounts, :only => [:create, :activate]
   before_filter :assign_user, :only => [:show, :update]
   before_filter :new_user, :only => [:new, :create]
@@ -42,7 +43,6 @@ class AccountsController < ApplicationController
   end
   
   def create
-    params[:user] ||= {}
     @user.attributes = params[:user]
     @user.username = params[:user][:username]
     @user.email = params[:user][:email]    
@@ -102,6 +102,11 @@ class AccountsController < ApplicationController
 
     def user_is_public?
       redirect_to root_path unless User.current.public?
+    end
+    
+    def assert_user_parameter
+      params[:user] = {} unless params[:user].is_a?(Hash)
+      true
     end
 
     def new_user

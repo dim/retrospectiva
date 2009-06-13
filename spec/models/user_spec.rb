@@ -74,8 +74,17 @@ describe User do
       @user.should validate_uniqueness_of(:username)
     end
 
-    it "should validate confirmation of plain pasword" do
-      @user.should validate_confirmation_of(:plain_password)
+    it "should validate confirmation of plain password" do      
+      @user.plain_password = 'abcdefgh'
+      @user.should have(1).error_on(:plain_password)
+
+      @user.plain_password = 'abcdefgh'
+      @user.plain_password_confirmation = 'hgfedcba'
+      @user.should have(1).error_on(:plain_password)
+
+      @user.plain_password = 'abcdefgh'
+      @user.plain_password_confirmation = 'abcdefgh'
+      @user.should have(:no).error_on(:plain_password)
     end
     
     it "should validate presence of name" do
@@ -240,16 +249,29 @@ describe User do
       @user.email = 'new@one.com'
     end
 
-    it "should validate presence of plain pasword" do
+    it "should validate presence of plain password" do
       @user.should validate_presence_of(:plain_password)
     end
 
-    it "should validate length of plain pasword (6-40 characters)" do
+    it "should validate length of plain password (6-40 characters)" do
       @user.should validate_length_of(:plain_password, :within => 6..40)
     end
 
-    it "should validate length of plain pasword (6-40 characters)" do
+    it "should validate length of plain password (6-40 characters)" do
       @user.should validate_length_of(:plain_password, :within => 6..40)
+    end
+    
+    it "should validate confirmation of plain password" do      
+      @user.plain_password = 'abcdefgh'
+      @user.should have(1).error_on(:plain_password)
+
+      @user.plain_password = 'abcdefgh'
+      @user.plain_password_confirmation = 'hgfedcba'
+      @user.should have(1).error_on(:plain_password)
+
+      @user.plain_password = 'abcdefgh'
+      @user.plain_password_confirmation = 'abcdefgh'
+      @user.should have(:no).error_on(:plain_password)
     end
     
     describe 'if retrospectiva is set-up to automatically assign new users to certain groups' do

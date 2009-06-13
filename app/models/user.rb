@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   validates_inclusion_of :time_zone, :in => ActiveSupport::TimeZone::MAPPING.keys
 
   attr_accessible :name, :plain_password, :plain_password_confirmation, :time_zone
-  attr_accessor  :plain_password, :plain_password_confirmation
+  attr_accessor_with_default :plain_password, ''
+  attr_accessor_with_default :plain_password_confirmation, ''
   
   named_scope :active, :conditions => ['active = ?', true]
   
