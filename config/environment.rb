@@ -25,7 +25,7 @@ Rails::Initializer.run do |config|
   
   # Skip if installed via Single-Step-Installer
   if !File.exist?(File.join(RAILS_ROOT, 'vendor', 'gems')) || $gems_rake_task 
-    config.gem 'RedCloth', :lib => 'redcloth'
+    config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
   end
   
   # Only load the plugins named here, in the order given. By default, all plugins 
