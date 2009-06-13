@@ -3,8 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ProjectsController do
 
   before do 
-    @user = mock_model(User, :public? => false, :time_zone => 'London')
-    User.stub!(:current).and_return(@user)
+    @user = mock_current_user!
   end
   
   describe 'loading active projects' do
@@ -80,12 +79,11 @@ describe ProjectsController do
         @user.stub!(:active_projects).and_return([])
       end
       
+      def do_get
+        get :index
+      end
 
       describe 'and the user is a logged-in user' do      
-
-        def do_get
-          get :index
-        end
 
         it_should_successfully_render_template('index')
 
@@ -103,23 +101,14 @@ describe ProjectsController do
 
       
       describe 'and the user is a public user' do      
-
-        before do
-          @user.should_receive(:public?).and_return(true)        
-        end        
-
-        def do_get
-          get :index
-        end
-
-        it 'should redirect to login' do
+        before { @user.stub!(:public?).and_return(true) }
+        
+        it 'should redirect to login' do                  
           do_get
-          response.should be_redirect
           response.should redirect_to(login_path)
         end        
 
       end
-
     end      
 
 

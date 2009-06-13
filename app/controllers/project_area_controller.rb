@@ -45,13 +45,4 @@ class ProjectAreaController < ApplicationController
       render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
     end
 
-    def failed_authorization!
-      if User.current.public? and request.get? and ( request.format.nil? or request.format.html? )
-        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
-        redirect_to login_path
-      else
-        super
-      end
-    end
-
 end

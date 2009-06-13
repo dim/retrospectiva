@@ -33,7 +33,6 @@ module Retrospectiva
         # should be granted or refused.
         def authorize?(action_name, request_params = {}, user = User.current, project = nil)
           action_name = action_name.to_s
-          
           if user.blank?
             false
           elsif user.admin?

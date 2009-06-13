@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   
   before_filter :authenticate
+  before_filter :store_back_to_path
   before_filter :set_locale
   before_filter :set_time_zone
   after_filter  :reset_request_cache!
@@ -13,6 +14,13 @@ class ApplicationController < ActionController::Base
   helper_method :layout_markers, :permitted?
 
   protected
+    
+    def store_back_to_path
+      if public_html_request?
+        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
+      end
+      true
+    end
     
     def reset_request_cache!
       User.current = nil
@@ -72,6 +80,14 @@ class ApplicationController < ActionController::Base
 
     def rss_request?
       request.format && request.format.rss?
+    end
+
+    def public_html_request?
+      User.current.public? and request.get? and ( request.format.nil? or request.format.html? )      
+    end
+
+    def failed_authorization!
+      public_html_request? ? redirect_to(login_path) : super
     end
 
   private  
