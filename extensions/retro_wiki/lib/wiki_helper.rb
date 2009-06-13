@@ -57,6 +57,12 @@ module WikiHelper
     end
   end
 
+  def include_wiki_stylesheet
+    content_for :header do
+      x_stylesheet_link_tag('retro_wiki')      
+    end
+  end
+
   private
 
     def note_after_link(content)
