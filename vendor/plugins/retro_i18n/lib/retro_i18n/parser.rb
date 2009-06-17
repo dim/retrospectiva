@@ -10,7 +10,7 @@ module RetroI18n
     
     def files
       @files ||= paths.map do |path| 
-        Dir.glob(path + '/**/*.*')
+        Dir[path]
       end.flatten.select do |file|
         File.file?(file) && File.readable?(file) && File.size(file) < 10.megabyte
       end.uniq.sort
@@ -26,20 +26,12 @@ module RetroI18n
 
     protected
 
-      def binary?(content)
-        s = content.split(//)
-        ((s.size - s.grep(' '..'~').size) / s.size.to_f) > 0.3
-      end
-      
       def parse!
         files.each do |file|          
-          content = File.read(file)
-          next if binary?(content)
-          
-          content.scan(TRANSLATION).each do |match|
-            next unless match.first            
+          File.read(file).scan(TRANSLATION).each do |match|
+            next unless match.first
             store_pattern!(match.first, file)
-          end 
+          end
         end
       end
 
@@ -47,7 +39,7 @@ module RetroI18n
         string = clean_pattern(string)
         pattern_type = string =~ DYNAMIC ? :dynamic : :simple
         reference = File.expand_path(file).gsub(/^#{Regexp.escape(RAILS_ROOT)}\/?/, '')
-        
+
         @patterns[pattern_type][string] ||= []
         @patterns[pattern_type][string] << reference
       end

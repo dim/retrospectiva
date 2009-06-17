@@ -1,6 +1,6 @@
 en-GB:
   application:
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
+    # Unknown
     "Author": "Author"
 
     # extensions/retro_blog/lib/blog_controller.rb
@@ -26,7 +26,6 @@ en-GB:
     "Categories": "Categories"
 
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Comment": "Comment"
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
@@ -42,7 +41,6 @@ en-GB:
     "Content": "Content"
 
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/new.html.erb
     "Create": "Create"
 
@@ -59,10 +57,9 @@ en-GB:
     # extensions/retro_blog/views/blog/show.html.erb
     "Edit": "Edit"
 
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
+    # Unknown
     "Email": "Email"
 
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": "Leave a comment"
 

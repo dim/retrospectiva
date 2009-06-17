@@ -774,10 +774,9 @@ ru-RU:
     # app/views/tickets/_navigation.html.erb
     "Next ticket": "Следующий тикет"
 
-    # Missing
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "No": "Нет" 
+    "No": "Нет"
 
     # Missing
     # app/models/ticket_change.rb
@@ -789,13 +788,11 @@ ru-RU:
     # app/controllers/admin/projects_controller.rb
     "No repository selected.": "Не выбран репозитарий."
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "None": "Никакой" 
+    "None": "Никакой"
 
-    # Missing
     # app/views/admin/extensions/index.html.erb
-    "Not Installed": "Не установлен" 
+    "Not Installed": "Не установлен"
 
     # app/views/admin/ticket_property_values/index.html.erb
     "Note": "Заметка"
@@ -812,17 +809,15 @@ ru-RU:
     # Unknown
     "Open tickets": "Открытые тикеты"
 
-    # Missing
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_property_values/_priority_form.html.erb
     # app/views/admin/users/_form.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
-    "Options": "Функции" 
+    "Options": "Функции"
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Paragraphs": "Параграфы" 
+    "Paragraphs": "Параграфы"
 
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb
@@ -849,13 +844,11 @@ ru-RU:
     # app/views/admin/repositories/_form.html.erb
     "Please specify an optional system call, which will be executed before each repository synchronization.": 
 
-    # Missing
     # app/models/status.rb
-    "Positive": "Положительный" 
+    "Positive": "Положительный"
 
-    # Missing
     # app/helpers/format_helper.rb
-    "Preview": "Просмотреть" 
+    "Preview": "Просмотреть"
 
     # app/helpers/changesets_helper.rb
     "Previous changeset": "Предыдущее изменение"
@@ -1028,7 +1021,6 @@ ru-RU:
     # app/controllers/browse_controller.rb
     "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revision {{revision}} seems not to be valid, showing revision {{latest}}."
 
-    # Missing
     # app/helpers/browse_helper.rb
     "Revisions": "Ревизии"
 
@@ -1066,9 +1058,8 @@ ru-RU:
     # app/helpers/ticket_filter_helper.rb
     "Select filter": "Использовать фильтр"
 
-    # Missing
     # app/views/accounts/forgot_password.html.erb
-    "Send": Отправить 
+    "Send": "Отправить"
 
     # app/controllers/admin/setup_controller.rb
     "Settings were successfully saved.": "Настройки сохранены."
@@ -1112,9 +1103,8 @@ ru-RU:
     # app/views/admin/ticket_property_values/_status_form.html.erb
     "State": "Состояние"
 
-    # Missing
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    "Statement": "Утверждение" 
+    "Statement": "Утверждение"
 
     # app/helpers/tickets_helper.rb
     # app/models/status.rb
@@ -1152,8 +1142,9 @@ ru-RU:
     # app/views/admin/tasks/index.html.erb
     "Task": 
 
+    # Missing
     # app/controllers/admin/tasks_controller.rb
-    "Task configuration was successfully updated.":
+    "Task configuration was successfully updated.": 
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/tasks/index.html.erb

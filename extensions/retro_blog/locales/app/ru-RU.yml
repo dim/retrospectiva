@@ -1,6 +1,6 @@
 ru-RU:
   application:
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
+    # Unknown
     "Author": "Автор"
 
     # Missing
@@ -32,7 +32,6 @@ ru-RU:
     "Categories": 
 
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     "Comment": "Комментарий"
 
     # Missing
@@ -51,7 +50,6 @@ ru-RU:
     "Content": "Содержимое"
 
     # extensions/retro_blog/ext_info.rb
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/new.html.erb
     "Create": "Создать"
 
@@ -69,11 +67,10 @@ ru-RU:
     # extensions/retro_blog/views/blog/show.html.erb
     "Edit": "Редактировать"
 
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
+    # Unknown
     "Email": "Email"
 
     # Missing
-    # extensions/retro_blog/views/blog/_comment_form.rhtml
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": 
 

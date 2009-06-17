@@ -32,9 +32,9 @@ class BlogCommentsController < ProjectAreaController
   end
 
   def destroy
-    if @blog_post.comments.destroy(params[:id])
-      flash[:notice] = _('Comment was successfully deleted.')
-    end
+    @blog_comment = @blog_post.comments.find params[:id]
+    @blog_comment.destroy
+    flash[:notice] = _('Comment was successfully deleted.')
     redirect_to project_blog_post_path(Project.current, @blog_post)
   end
 

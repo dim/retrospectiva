@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
+
+# Run in test mode for safety reasons and to prevent extensions from being loaded
+ENV["RAILS_ENV"] ||= 'test'
+
 require File.dirname(__FILE__) + '/../../config/environment'
 require File.dirname(__FILE__) + '/retro_i18n/settings_file'
 
@@ -11,7 +15,7 @@ RetroI18n.locales.map(&:code).each do |locale|
   next if locale == 'en-US'
 
   file = RAILS_ROOT + "/locales/app/#{locale}.yml"
-  RetroI18n.update(file, RAILS_ROOT + '/app/', RAILS_ROOT + '/lib/', RAILS_ROOT + '/vendor/plugins/')
+  RetroI18n.update file, RAILS_ROOT + '/app/**/*.{rb,erb,rjs}', RAILS_ROOT + '/lib/**/*.rb', RAILS_ROOT + '/vendor/plugins/**/*.rb'
 end  
 
 #
@@ -32,7 +36,7 @@ Dir[RAILS_ROOT + '/extensions/*/locales/app/'].each do |locales_path|
   extension_path = locales_path.gsub(/\/locales\/.*$/, '')
 
   # Parse all translations from the extensions/extension_name directory 
-  patterns = RetroI18n::Parser.new(extension_path).patterns[:simple]
+  patterns = RetroI18n::Parser.new(extension_path + '/**/*.{rb,erb,rjs}').patterns[:simple]
 
   RetroI18n.locales.map(&:code).each do |locale|
     next if locale == 'en-US'
