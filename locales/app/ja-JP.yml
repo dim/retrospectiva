@@ -653,7 +653,7 @@ ja-JP:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{username}}": "{{username}}でログイン中"
+    "Logged in as {{name}}": "{{name}}でログイン中"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": "ログアウトしました"

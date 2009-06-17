@@ -671,7 +671,7 @@ pt-BR:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{username}}": "Identificado como {{username}}"
+    "Logged in as {{name}}": "Identificado como {{name}}"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": "Saiu"

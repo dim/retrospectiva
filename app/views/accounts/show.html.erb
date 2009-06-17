@@ -6,7 +6,7 @@
 <% plus_form_for @user, :url => account_path do |f| -%>  
   <%= f.error_messages %>
   <%= render :partial => 'admin/users/core', :locals => {:f => f, :disabled => true } %>
-  <%= view_extensions :user, :fields, :public, :locals => { :f => f } %>
+  <%= view_extensions :user, :fields, :public, :existing, :locals => { :f => f } %>
 
   <% f.fieldset do -%>
     <%= f.label_tag _('Options') + ':' -%>

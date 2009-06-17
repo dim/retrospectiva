@@ -2,6 +2,7 @@ module WikiEngine
 
   begin
     require 'rubygems'
+    gem 'RedCloth', '>= 4.1.9'
     require 'RedCloth'
     RedCloth = ::RedCloth
   rescue LoadError

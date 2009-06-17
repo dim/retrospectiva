@@ -66,8 +66,9 @@ class Ticket < ActiveRecord::Base
     end
 
     # Override default method to include both Tickets and TicketChanges into the feed
-    def to_rss(records)
-      super(flatten_and_sort(records).last(records.size).reverse)
+    def to_rss(records, options = {})
+      limit = options.delete(:limit) || records.size
+      super(flatten_and_sort(records).last(limit).reverse)
     end
 
     protected

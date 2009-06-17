@@ -7,6 +7,7 @@ describe "/wiki/rename.html.erb" do
     @wiki_page = stub_model(WikiPage, :title => 'New', :title_was => 'Old')
     Project.stub!(:current).and_return(@project)
     assigns[:wiki_page] = @wiki_page 
+    template.stub!(:x_stylesheet_link_tag).and_return('')
   end
 
   def do_render

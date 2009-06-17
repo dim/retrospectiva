@@ -11,7 +11,7 @@
 <% plus_form_for @user, :url => account_path, :html => html_options_for_account_form do |f| -%>  
   <%= f.error_messages %>
   <%= render :partial => 'admin/users/core', :locals => {:f => f, :disabled => false } %>
-  <%= view_extensions :user, :fields, :public, :locals => { :f => f } %>
+  <%= view_extensions :user, :fields, :public, :new, :locals => { :f => f } %>
 
   <% f.fieldset do -%>
     <%= f.submit _('Create') %>

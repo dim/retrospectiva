@@ -586,7 +586,7 @@ en-GB:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{username}}": "Logged in as {{username}}"
+    "Logged in as {{name}}": "Logged in as {{name}}"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": "Logged out"

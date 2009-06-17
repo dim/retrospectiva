@@ -4,6 +4,7 @@ describe "/milestones/index.html.erb" do
   include MilestonesHelper
   
   before(:each) do
+    template.stub!(:auto_discover_feed)
     template.stub!(:progress_bars).and_return('[PROGRESS BARS]')
     template.stub!(:ticket_stats_and_links).and_return('[TICKET STATS + LINKS]')
     @user = mock_current_user! :permitted? => false

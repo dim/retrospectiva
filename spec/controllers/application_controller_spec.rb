@@ -131,13 +131,13 @@ describe ApplicationController do
 end
 
 describe 'Format rendering and fallback' do
-  controller_name :changesets
+  controller_name :milestones
 
   before do
-    rescue_action_in_public!
-    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1'        
-    @changesets = [stub_model(Changeset, :to_param => '1', :project => @project)]
-    @project.stub!(:changesets).and_return(@changesets)
+    rescue_action_in_public!     
+    @milestones = []
+    @milestones.stub!(:active_on).and_return(@milestones)
+    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1', :milestones => @milestones         
   end
   
   it 'should render HTML if no specific format requested' do
@@ -158,9 +158,7 @@ describe 'Format rendering and fallback' do
   end
   
   it 'should return 406 Not Acceptable if requested format is invalid (no respond-to specified)' do
-    @changesets.should_receive(:find_by_revision!).and_return(@changesets.first)
-    @changesets.should_receive(:find).twice.and_return(nil)
-    get :show, :project_id => @project.to_param, :id => '1', :format => 'text'
+    get :index, :project_id => @project.to_param, :id => '1', :format => 'text'
     response.code.should == '406'
   end
 
@@ -323,5 +321,140 @@ describe 'Caching user attributes' do
       end            
     end    
     
+  end
+end
+
+
+
+
+describe 'Back-to path storage' do
+  controller_name :search
+
+  before do
+    permit_access_with_current_project!
+    controller.stub!(:load_channels).and_return([])
+    @user = mock_current_user! :name => 'Doesnt Matter' 
+  end       
+  
+  def do_get
+    get :index, :project_id => 'one'
+  end
+  
+  describe 'if user is logged-in' do
+    before do      
+      @user.stub!(:public?).and_return(false)
+    end
+    
+    it 'should NOT store the request path' do
+      do_get
+      session[:back_to].should be_nil
+    end
+    
+  end
+
+  describe 'if user is not logged-in' do
+    before do
+      @user.stub!(:public?).and_return(true)
+    end
+    
+    it 'should store the request path' do
+      do_get
+      session[:back_to].should == '/projects/one/search'
+    end
+    
+    describe 'and if relative URL root is set' do
+      
+      before do
+        ActionController::Base.stub!(:relative_url_root).and_return('/dev')
+      end
+      
+      it 'should store the request path correctly' do
+        do_get
+        session[:back_to].should == '/dev/projects/one/search'
+      end
+      
+    end
+    
+  end  
+end
+
+describe "Authorization" do
+  controller_name :search
+  
+  before do
+    controller.stub!(:find_project).and_return(true)
+    controller.stub!(:load_channels).and_return([])
+    @user = mock_current_user! :name => 'Doesnt Matter'
+  end       
+  
+  def do_get
+    get :index, :project_id => 'one'
+  end
+  
+  describe 'if a user is already logged in' do
+    
+    before do
+      @user.stub!(:public?).and_return(false)
+    end
+    
+    describe 'and if user is permitted to see page' do
+      before do
+        controller.class.stub!(:authorize?).and_return(true)          
+      end
+      
+      it 'should display the page' do
+        do_get
+        response.should be_success
+      end
+
+    end    
+
+    describe 'and if user is not permitted to see page' do
+      before do
+        rescue_action_in_public!
+        controller.stub!(:consider_all_requests_local).and_return(false)
+        controller.class.stub!(:authorize?).and_return(false)          
+      end
+      
+      it 'should display forbidden page' do
+        do_get
+        response.code.should == '403'
+        response.should render_template(RAILS_ROOT + '/app/views/rescue/403.html.erb')
+      end
+
+    end    
+
+  end
+
+  describe 'if a user is NOT logged in' do
+    
+    before do
+      @user.stub!(:public?).and_return(true)
+    end
+          
+    describe 'and if user is permitted to see page' do
+      before do
+        controller.class.stub!(:authorize?).and_return(true)          
+      end
+      
+      it 'should display the page' do
+        do_get
+        response.should be_success
+      end
+
+    end    
+
+    describe 'and if user is not permitted to see page' do
+      before do
+        controller.class.stub!(:authorize?).and_return(false)          
+      end
+              
+      it 'should redirect to login page' do
+        do_get
+        response.should redirect_to(login_path)
+      end
+      
+    end    
+
   end
 end

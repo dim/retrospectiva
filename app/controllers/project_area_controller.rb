@@ -40,18 +40,9 @@ class ProjectAreaController < ApplicationController
       Project.current = User.current.active_projects.find! params[:project_id]
     end
     
-    def render_rss(klass, records = nil)
+    def render_rss(klass, records = nil, options = {})
       records ||= instance_variable_get("@#{klass.name.tableize}".to_sym)
-      render :xml => klass.to_rss(records).to_s, :content_type => 'application/rss+xml'
-    end
-
-    def failed_authorization!
-      if User.current.public? and request.get? and ( request.format.nil? or request.format.html? )
-        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
-        redirect_to login_path
-      else
-        super
-      end
+      render :xml => klass.to_rss(records, options).to_s, :content_type => 'application/rss+xml'
     end
 
 end

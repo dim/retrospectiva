@@ -15,7 +15,8 @@
 
 <%= javascript_include_tag 'prototype', 'effects', 'controls', 'dragdrop','application', 'sha1', :cache => true %>
 
-<%= layout_markers[:header] %>
+<%= RetroCM[:content][:custom][:header] %>
+<%= yield :header %>
 <%= stylesheet_link_tag 'theme' %>
 </head>
 <body id="top">

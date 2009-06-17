@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   
   before_filter :authenticate
+  before_filter :store_back_to_path
   before_filter :set_locale
   before_filter :set_time_zone
   after_filter  :reset_request_cache!
@@ -10,9 +11,16 @@ class ApplicationController < ActionController::Base
   delegate :permitted?, :to => :'User.current'
   protected :permitted?
   
-  helper_method :layout_markers, :permitted?
+  helper_method :permitted?
 
   protected
+    
+    def store_back_to_path
+      if public_html_request?
+        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
+      end
+      true
+    end
     
     def reset_request_cache!
       User.current = nil
@@ -74,15 +82,15 @@ class ApplicationController < ActionController::Base
       request.format && request.format.rss?
     end
 
-  private  
-
-    def layout_markers
-      @layout_markers ||= {
-        :header => RetroCM[:content][:custom][:header].to_s,
-        :footer => RetroCM[:content][:custom][:footer].to_s,
-        :content_styles => ''
-      }
+    def public_html_request?
+      User.current.public? and request.get? and ( request.format.nil? or request.format.html? )      
     end
+
+    def failed_authorization!
+      public_html_request? ? redirect_to(login_path) : super
+    end
+
+  private  
 
     def render_optional_error_file(status_code)
       status = interpret_status(status_code)
