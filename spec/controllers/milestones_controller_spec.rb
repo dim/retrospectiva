@@ -10,6 +10,7 @@ describe MilestonesController do
 
   describe "handling GET /milestones" do
     before(:each) do
+      @milestones.stub!(:in_default_order).and_return(@milestones)
       @milestones.stub!(:active_on).and_return(@milestones)
       @milestones.stub!(:paginate).and_return(@milestones)
     end
@@ -23,11 +24,11 @@ describe MilestonesController do
     describe 'by default' do
       
       it "should find active milestones" do
+        @milestones.should_receive(:in_default_order).with().and_return(@milestones)
         @milestones.should_receive(:active_on).with(Date.today).and_return(@milestones)
         @milestones.should_receive(:paginate).with(
           :per_page=>nil, 
           :page=>nil, 
-          :order => Milestone.default_order, 
           :include => {:tickets => :status}
         ).and_return(@milestones)
         do_get
@@ -42,7 +43,6 @@ describe MilestonesController do
         @milestones.should_receive(:paginate).with(
           :per_page=>nil, 
           :page=>nil, 
-          :order => Milestone.default_order, 
           :include => {:tickets => :status}
         ).and_return(@milestones)
         do_get :completed => '1'
@@ -58,6 +58,7 @@ describe MilestonesController do
 
   describe "handling GET /milestones.rss" do
     before(:each) do
+      @milestones.stub!(:in_default_order).and_return(@milestones)
       @milestones.stub!(:active_on).and_return(@milestones)
       @milestones.stub!(:paginate).and_return(@milestones)
       Milestone.stub!(:to_rss).and_return("RSS")
@@ -77,7 +78,6 @@ describe MilestonesController do
       @milestones.should_receive(:paginate).with(
         :per_page=>10, 
         :page=>1, 
-        :order => Milestone.default_order, 
         :include => {:tickets => :status}
       ).and_return(@milestones)
       do_get

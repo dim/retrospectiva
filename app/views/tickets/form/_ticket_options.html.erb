@@ -6,16 +6,16 @@
   
     <tr>
       <th><%= f.label :status_id, _('Status') + ':' %></th>
-      <td><%= f.collection_select :status_id, Status.find(:all, :order => 'rank'), 'id', 'name' %></td>
+      <td><%= f.collection_select :status_id, Status.all(:order => 'rank'), 'id', 'name' %></td>
       <th><%= f.label :assigned_user, _('Assigned To') + ':' %></th>
       <td><%= user_select(f) %></td>
     </tr>
   
     <tr>
       <th><%= f.label :priority_id, _('Priority') + ':' %></th>
-      <td><%= f.collection_select :priority_id, Priority.find(:all, :order => 'rank'), 'id', 'name' -%></td>
+      <td><%= f.collection_select :priority_id, Priority.all(:order => 'rank'), 'id', 'name' -%></td>
       <th><%= f.label :milestone_id, _('Milestone') + ':' %></th>
-      <td><%= f.collection_select :milestone_id, Project.current.milestones.active_on(@ticket.created_at), 'id', 'name', { :include_blank => true } -%></td>
+      <td><%= f.collection_select :milestone_id, Project.current.milestones.in_default_order.active_on(@ticket.created_at), 'id', 'name', { :include_blank => true } -%></td>
     </tr>
   
     <%= view_extensions :ticket, :options, :middle, :locals => { :f => f } %>

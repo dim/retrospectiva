@@ -20,6 +20,7 @@ describe TicketFilter::Collection do
     @milestones = [stub_model(Milestone, :name => 'Mi1')]
     @project.stub!(:milestones).and_return(@milestones)
     @milestones.stub!(:find).and_return(@milestones)      
+    @milestones.stub!(:in_default_order).and_return(@milestones)      
     
     @ticket_properties = [stub_model(TicketProperty, :name => '1.0.0')]
     @ticket_property_types = [stub_model(TicketPropertyType, :name => 'Tpt1', :class_name => 'Release', :ticket_properties => @ticket_properties)]
@@ -51,7 +52,8 @@ describe TicketFilter::Collection do
     end
     
     it 'should find and assign the milestone records' do
-      @milestones.should_receive(:find).with(:all, :order => 'rank').and_return(@milestones)      
+      @milestones.should_receive(:in_default_order).with().and_return(@milestones)      
+      @milestones.should_receive(:find).with(:all).and_return(@milestones)      
       do_create.send(:milestones).should == @milestones
     end
 

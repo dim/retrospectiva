@@ -13,9 +13,9 @@ class MilestonesController < ProjectAreaController
   
   def index
     @milestones = if params[:completed] == '1'
-      Project.current.milestones.paginate options_for_pagination
+      Project.current.milestones.in_default_order.paginate options_for_pagination
     else
-      Project.current.milestones.active_on(Date.today).paginate options_for_pagination
+      Project.current.milestones.in_default_order.active_on(Date.today).paginate options_for_pagination
     end
 
     respond_to do |format|
@@ -85,8 +85,7 @@ class MilestonesController < ProjectAreaController
       {
         :page => ( rss_request? ? 1 : params[:page] ), 
         :per_page => ( rss_request? ? 10 : nil ),
-        :include => {:tickets => :status},
-        :order => Milestone.default_order
+        :include => {:tickets => :status}
       }
     end    
 

@@ -12,7 +12,9 @@
     </tr>
     <tr>    
       <% RetroAM.permission_map.values.sort.each do |resource| -%>
-        <th class="wee" title="<%=h _(resource.label) %>"><%=h truncate(_(resource.label), :length => 10, :omission => '.') %></th>
+        <th class="wee" title="<%=h _(resource.label) %>">
+          <%=h _(resource.label).split.map { |word| truncate(word, :length => 7, :omission => '.') }.join(' ') %>
+        </th>
       <% end -%>
     </tr>
   </thead>

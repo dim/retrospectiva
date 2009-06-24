@@ -80,20 +80,6 @@ module TicketsHelper
     end
   end
 
-  def user_select_with_auto_complete(f)
-    selected = f.object.assigned_user
-    path = users_project_tickets_path(Project.current, :authenticity_token => form_authenticity_token)
-    code = %Q(
-      new Ajax.Autocompleter('assigned_user', 'user_selection', '#{path}', {
-        afterUpdateElement: function(text, li) { $('#{f.object_name}_assigned_user_id').value = li.id; }
-      });
-    ).squish
-    content_tag :div,
-      text_field_tag(:assigned_user, selected ? h(selected.name) : nil) +
-      f.hidden_field(:assigned_user_id, :wrap => false) +
-      '<div id="user_selection"></div>' + javascript_tag(code)
-  end
-
   def subscription_icon(ticket)
     if ticket.subscribers.include?(User.current)
       image_tag 'watching.png', :alt => _('You are watching this ticket'), :title => _('You are watching this ticket')
@@ -160,5 +146,20 @@ module TicketsHelper
     def wrap_update(value, tag = nil)
       tag ? content_tag(tag, h(value)) : h(value)
     end
+
+    def user_select_with_auto_complete(f)
+      selected = f.object.assigned_user
+      path = users_project_tickets_path(Project.current, :authenticity_token => form_authenticity_token)
+      code = %Q(
+        new Ajax.Autocompleter('assigned_user', 'user_selection', '#{path}', {
+          afterUpdateElement: function(text, li) { $('#{f.object_name}_assigned_user_id').value = li.id; }
+        });
+      ).squish
+      content_tag :div,
+        text_field_tag(:assigned_user, selected ? h(selected.name) : nil) +
+        f.hidden_field(:assigned_user_id, :wrap => false) +
+        '<div id="user_selection"></div>' + javascript_tag(code)
+    end
+
 
 end

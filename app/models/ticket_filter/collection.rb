@@ -162,6 +162,6 @@ class TicketFilter::Collection < Array
     end
   
     def milestones
-      @milestones ||= project.milestones.find :all, :order => 'rank'
+      @milestones ||= project.milestones.in_default_order.find :all
     end  
 end

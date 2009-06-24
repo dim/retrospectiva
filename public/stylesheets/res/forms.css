@@ -26,5 +26,5 @@ form .required { color: #c90020; }
 form .quiet { color: #666; }
 form .quieter { color: #999; }
 
-input.text, input.title, textarea, select { margin: auto; }
-input.text, input.file                    { padding: 2px 1px; }
+input.text, input.file { padding: 2px 1px; }
+textarea { height:auto; }

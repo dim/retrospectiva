@@ -44,11 +44,11 @@ class Milestone < ActiveRecord::Base
     end
 
     def default_order
-      'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due ASC, milestones.finished_on DESC'
+      'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due ASC, milestones.finished_on DESC, milestones.started_on ASC'
     end
 
     def reverse_order
-      'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due DESC, milestones.finished_on ASC'
+      'CASE WHEN milestones.due IS NULL THEN 1 ELSE 0 END, milestones.due DESC, milestones.finished_on ASC, milestones.started_on DESC'
     end
 
     def searchable_column_names
@@ -70,6 +70,12 @@ class Milestone < ActiveRecord::Base
   named_scope :active_on, lambda { |date| { 
     :conditions => ['( milestones.finished_on IS NULL OR milestones.finished_on >= ? )', date] 
   }}    
+  
+  named_scope :in_default_order,
+    :order => default_order
+
+  named_scope :in_reverse_order,
+    :order => reverse_order
   
   def ticket_counts
     @tickets_counts ||= Status.states.inject({}) do |result, state|

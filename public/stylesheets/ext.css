@@ -96,7 +96,7 @@ ol          { list-style-type: decimal; line-height: 1.5; }
 .centered   { text-align: center; }
 .righted    { text-align: right; }
 
-.box       { padding: 1.5em; margin-bottom: 1.5em; background: #f9f9f9; border: 1px solid #999; }
+.box       { padding: 1.5em; margin-bottom: 1.5em; background: #f9f9f9; border: 1px solid #aaa; }
 .frame     { padding: 1px; border: 1px solid #ccc; }
 .top-link  { text-align: right; margin: 0.5em 0 1.5em 0; }
 .help      { cursor:help; }

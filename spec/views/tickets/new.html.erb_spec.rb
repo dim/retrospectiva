@@ -6,7 +6,8 @@ describe "/tickets/new.html.erb" do
     @user = mock_current_user! :permitted? => false, :public? => false
     @project = mock_current_project!
     @project.stub_association!(:users, :with_permission => [])
-    @project.stub_association!(:milestones, :active_on => [])
+    @milestones = @project.stub_association!(:milestones, :active_on => [])
+    @milestones.stub!(:in_default_order).and_return(@milestones)
     
     @property_type = mock_model(TicketPropertyType, :name => 'Component', :ticket_properties => [mock_model(TicketProperty)])
     @project.stub!(:ticket_property_types).and_return([@property_types])

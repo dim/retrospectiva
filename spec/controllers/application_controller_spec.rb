@@ -136,6 +136,7 @@ describe 'Format rendering and fallback' do
   before do
     rescue_action_in_public!     
     @milestones = []
+    @milestones.stub!(:in_default_order).and_return(@milestones)
     @milestones.stub!(:active_on).and_return(@milestones)
     @project = permit_access_with_current_project! :name => 'Any', :to_param => '1', :milestones => @milestones         
   end
@@ -182,6 +183,7 @@ describe 'RSS access via private key' do
     @user.stub!(:active_projects).and_return(@projects)
 
     @milestones = []
+    @milestones.stub!(:in_default_order).and_return(@milestones)
     @milestones.stub!(:active_on).and_return(@milestones)
     @project.stub!(:milestones).and_return(@milestones)
 

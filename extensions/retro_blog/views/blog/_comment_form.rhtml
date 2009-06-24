@@ -14,9 +14,9 @@
     </div>
   <% end -%>
 
-  <% f.fieldset 'full-w' do -%>
+  <% f.fieldset do -%>
     <%= f.label :content, _('Comment') + ':' %>
-    <%= f.text_area :content, :rows => 4 %>
+    <%= f.text_area :content, :rows => 8, :class => 'span-18' %>
   <% end -%>
 
   <% f.fieldset do -%>
