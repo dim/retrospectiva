@@ -9,7 +9,7 @@ class Repository::Subversion < Repository::Abstract
   end
   
   def latest_revision
-    fs.youngest_rev.to_s
+    active? ? fs.youngest_rev.to_s : 0
   end
   memoize :latest_revision
 
