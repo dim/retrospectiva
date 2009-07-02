@@ -17,8 +17,9 @@ class Repository::Git < Repository::Abstract
   end
 
   def latest_revision
-    @latest_revision ||= (repo.rev_list('HEAD', :n => 1).first || 'HEAD')
+    (repo.rev_list('HEAD', :n => 1).first || 'HEAD')
   end
+  memoize :latest_revision
 
   def unified_diff(path, revision_a, revision_b)
     return '' unless active?
@@ -54,8 +55,9 @@ class Repository::Git < Repository::Abstract
   end
 
   def repo
-    @repo ||= Grit::Repo.new(path.chomp('/'))
+    Grit::Repo.new(path.chomp('/'))
   end
+  memoize :repo
 
   protected 
 

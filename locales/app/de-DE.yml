@@ -617,7 +617,7 @@ de-DE:
 
     # Missing
     # app/views/rescue/422.html.erb
-    "Maybe you tried to change something you didn't have access to.": 
+    "Maybe you tried to change something you didn't have access to.": "Sie haben eventuell keine Berechtigungen diese Änderung durchzuführen."
 
     # app/helpers/tickets_helper.rb
     # app/models/milestone.rb
@@ -1066,11 +1066,11 @@ de-DE:
 
     # Missing
     # app/views/rescue/422.html.erb
-    "The change you wanted was rejected.": 
+    "The change you wanted was rejected.": "Ihre Änderungsanfrage wurde abgelehnt."
 
     # Missing
     # app/views/rescue/404.html.erb
-    "The page you were looking for doesn't exist.": 
+    "The page you were looking for doesn't exist.": "Die gesuchte Seite existiert nicht."
 
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": "Das Repository ist derzeit nicht verfügbar, bitte versuchen Sie es später noch einmal."
@@ -1236,11 +1236,11 @@ de-DE:
 
     # Missing
     # app/views/rescue/500.html.erb
-    "We're sorry, but something went wrong.": 
+    "We're sorry, but something went wrong.": "Entschuldigung, aber irgendetwas ist schiefgegangen."
 
     # Missing
     # app/views/rescue/500.html.erb
-    "We've been notified about this issue and we'll take a look at it shortly.": 
+    "We've been notified about this issue and we'll take a look at it shortly.": "Der Administrator wurde benachrichtigt und wird sich das Problem anschauen."
 
     # app/views/tickets/index.html.erb
     "Week": "Woche"
@@ -1296,7 +1296,7 @@ de-DE:
 
     # Missing
     # app/views/rescue/404.html.erb
-    "You may have mistyped the address or the page may have moved.": 
+    "You may have mistyped the address or the page may have moved.": "Eventuell haben Sie sich bei der Adresse vertippt oder die Seite ist verschoben worden."
 
     # app/controllers/accounts_controller.rb
     "You need to activate your account within the next {{count}} hours to be able to login.": "Sie müssen Ihr Benutzerkonto innerhalb der nächsten {{count}} Stunde(n) aktivieren, um sich anmelden zu können."
