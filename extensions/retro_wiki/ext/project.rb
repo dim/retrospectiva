@@ -28,8 +28,9 @@ Project.class_eval do
   end
           
   serialize :existing_wiki_page_titles, Array
+  before_update :update_main_wiki_page_title
   
-  def wiki_title
+  def wiki_title(name = self.name)
     name.gsub(/[\.\?\/;,]/, '-').gsub(/-{2,}/, '-')
   end
 
@@ -37,5 +38,19 @@ Project.class_eval do
     value = read_attribute(:existing_wiki_page_titles)
     value.is_a?(Array) ? value : []
   end
+
+  def reset_existing_wiki_page_titles!
+    update_attribute :existing_wiki_page_titles, wiki_pages.map(&:title)
+  end
+
+  protected
+    
+    def update_main_wiki_page_title
+      if name_changed?
+        page = wiki_pages.find_by_title(wiki_title(name_was))
+        page.update_attribute(:title, wiki_title) if page
+      end
+      true
+    end
 
 end

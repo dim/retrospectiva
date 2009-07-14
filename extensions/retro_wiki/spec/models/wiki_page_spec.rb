@@ -110,11 +110,11 @@ describe WikiPage do
       @page = @project.wiki_pages.new :content => 'Content', :author => 'Me'
       @page.title = 'Another Title'
     end
-    
+
     it 'should update the page-title cache of the parent project' do
-      @project.existing_wiki_page_titles.should == ['Intro', 'New Page']
+      @project.existing_wiki_page_titles.should == ['Retrospectiva', 'New Page']
       @page.save.should be(true)
-      @project.reload.existing_wiki_page_titles.should == ['Intro', 'New Page', 'Another Title']
+      @project.reload.existing_wiki_page_titles.should == ['Retrospectiva', 'New Page', 'Another Title']
     end    
     
   end
@@ -126,9 +126,9 @@ describe WikiPage do
     end
     
     it 'should update the page-title cache of the parent project' do
-      @project.existing_wiki_page_titles.should == ['Intro', 'New Page']
-      wiki_pages(:intro).destroy.should_not be(false)
-      @project.reload.existing_wiki_page_titles.should == ['New Page']
+      @project.existing_wiki_page_titles.should == ['Retrospectiva', 'New Page']
+      wiki_pages(:new).destroy.should_not be(false)
+      @project.reload.existing_wiki_page_titles.should == ['Retrospectiva']
     end    
     
   end
@@ -185,9 +185,9 @@ describe WikiPage do
       end
       
       it 'should store the old version' do
-        @project.existing_wiki_page_titles.should == ['Intro', 'New Page']
+        @project.existing_wiki_page_titles.should == ['Retrospectiva', 'New Page']
         @page.save.should be(true)
-        @project.reload.existing_wiki_page_titles.should == ['Intro', 'Renamed']
+        @project.reload.existing_wiki_page_titles.should == ['Retrospectiva', 'Renamed']
       end
       
     end

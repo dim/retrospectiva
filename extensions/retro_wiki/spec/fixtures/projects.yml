@@ -7,6 +7,6 @@ retro:
   closed: false
   short_name: retrospectiva
   existing_wiki_page_titles:
-    - Intro
+    - Retrospectiva
     - New Page
   repository_id: 1
