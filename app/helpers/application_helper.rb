@@ -6,11 +6,6 @@ module ApplicationHelper
   include NavigationHelper
   include PlusForms::Helper
   
-  def error_messages_for(*args)
-    options = args.extract_options!.reverse_merge(:object_name => _("(#{args.first}_record)"))
-    super(*(args << options))
-  end
-
   def page_title(title = nil, options = {})
     title ||= @page_title
     title = escape_once(title) unless options[:escape] == false

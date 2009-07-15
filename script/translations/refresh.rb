@@ -36,7 +36,7 @@ Dir[RAILS_ROOT + '/extensions/*/locales/app/'].each do |locales_path|
   extension_path = locales_path.gsub(/\/locales\/.*$/, '')
 
   # Parse all translations from the extensions/extension_name directory 
-  patterns = RetroI18n::Parser.new(extension_path + '/**/*.{rb,erb,rjs}').patterns[:simple]
+  patterns = RetroI18n::Parser.new(extension_path + '/**/*.{rb,erb,rjs}').patterns
 
   RetroI18n.locales.map(&:code).each do |locale|
     next if locale == 'en-US'

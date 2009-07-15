@@ -30,7 +30,7 @@ module RetroI18n
   
     # Example: RetroI18n.update('locales/de-DE.yml', 'app/', 'lib/')
     def update(target, *source_paths)
-      patterns = Parser.new(*source_paths).patterns[:simple]
+      patterns = Parser.new(*source_paths).patterns
       LocaleFile.new(target).update(patterns)
     end
   

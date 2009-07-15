@@ -615,7 +615,6 @@ de-DE:
     # app/helpers/format_helper.rb
     "Markup reference": "Markup Referenz"
 
-    # Missing
     # app/views/rescue/422.html.erb
     "Maybe you tried to change something you didn't have access to.": "Sie haben eventuell keine Berechtigungen diese Änderung durchzuführen."
 
@@ -1064,11 +1063,9 @@ de-DE:
     # app/controllers/accounts_controller.rb
     "Thank you.": "Vielen Dank."
 
-    # Missing
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": "Ihre Änderungsanfrage wurde abgelehnt."
 
-    # Missing
     # app/views/rescue/404.html.erb
     "The page you were looking for doesn't exist.": "Die gesuchte Seite existiert nicht."
 
@@ -1083,6 +1080,19 @@ de-DE:
 
     # app/views/tickets/show.html.erb
     "Ticket": "Ticket"
+
+    # Missing
+    # app/models/ticket_change.rb
+    "Ticket \#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
+
+    # Missing
+    # app/models/ticket.rb
+    "Ticket \#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
+
+    # Missing
+    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_update_note.html.erb
+    "Ticket \#{{id}}: '{{summary}}'": 
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Ticketänderung wurde erfolgreich gelöscht."
@@ -1234,11 +1244,9 @@ de-DE:
     # app/models/ticket_filter/custom/my_tickets.rb
     "Watched by me": "Von mir beobachtet"
 
-    # Missing
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": "Entschuldigung, aber irgendetwas ist schiefgegangen."
 
-    # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": "Der Administrator wurde benachrichtigt und wird sich das Problem anschauen."
 
@@ -1294,7 +1302,6 @@ de-DE:
     # app/models/user.rb
     "You cannot delete your own account.": "Sie können Ihr eigenes Konto nicht löschen."
 
-    # Missing
     # app/views/rescue/404.html.erb
     "You may have mistyped the address or the page may have moved.": "Eventuell haben Sie sich bei der Adresse vertippt oder die Seite ist verschoben worden."
 
