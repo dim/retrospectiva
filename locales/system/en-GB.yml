@@ -24,4 +24,15 @@ en-GB:
             active:
               must_be_active: must be enabled. Public must be active
               own_account_must_be_active: must be enabled. You cannot deactivate your own account
-              
+            name:
+              invalid: 'must start with a character'
+            username:
+              invalid: 'must not contain spaces'
+        group:
+          attributes:
+            name:
+              invalid: 'may only contain latin characters and digits separated by spaces' 
+        ticket_property_type:
+          attributes:
+            name:
+              invalid: "may only contain one or many capitalized words. Examples: 'Component', 'Release Name'"

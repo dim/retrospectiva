@@ -4,10 +4,8 @@ describe "/admin/projects/new.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    assigns[:project] = @project = mock_model(Project, :name => 'P1', 
-      :locale => nil, :repository_id => nil, :root_path => nil, :enabled_modules => [], 
-      :closed => false, :info => 'I1', :central => false)
-    assigns[:repositories] = [mock_model(Repository::Abstract, :name => 'R1')]
+    assigns[:project] = @project = stub_model(Project, :new_record? => true, :short_name_was => 'any', :short_name => 'any')
+    assigns[:repositories] = [stub_model(Repository::Git, :name => 'R1')]
   end
 
   def do_render

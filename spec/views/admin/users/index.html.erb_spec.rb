@@ -4,11 +4,8 @@ describe "/admin/users/index.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    @user = mock_model(User,
-      :email => 'me@home.com', :username => 'me', :name => 'Full Name', 
-      :active? => true , :admin? => false, :groups => [], :public? => false, 
-      :current? => false, :last_admin? => false, :time_zone => 'London')
-    user_2 = mock_model(User)
+    @user = stub_model(User, :groups => [stub_model(Group)])
+    user_2 = stub_model(User)
 
     assigns[:users] = [@user, user_2].paginate(:per_page => 1)
   end

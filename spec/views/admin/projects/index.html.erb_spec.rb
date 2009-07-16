@@ -4,8 +4,8 @@ describe "/admin/projects/index.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    @project = mock_model(Project, :name => 'P1', :active? => true, :central? => false)
-    project_2 = mock_model(Project)
+    @project = stub_model(Project, :name => 'P1', :short_name => 'any')
+    project_2 = stub_model(Project)
 
     assigns[:projects] = [@project, project_2].paginate(:per_page => 1)
   end

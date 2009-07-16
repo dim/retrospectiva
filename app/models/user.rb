@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :username, :allow_blank => true, :case_sensitive => false
   validates_length_of     :username, :within => 3..40
+  validates_format_of     :username, :with => /^[^\s]+$/
 
   validates_presence_of   :name, :email, :unless => :public?
   validates_uniqueness_of :email, :allow_blank => true, :case_sensitive => false, :unless => :public?

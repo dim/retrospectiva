@@ -74,6 +74,23 @@ describe User do
       @user.should validate_uniqueness_of(:username)
     end
 
+    it "should validate correct format of username" do
+      @user.username = 'User Name'
+      @user.should have(1).error_on(:username)
+      @user.username = "User\tName"
+      @user.should have(1).error_on(:username)
+      @user.username = 'Username '
+      @user.should have(1).error_on(:username)
+      @user.username = ' Username'
+      @user.should have(1).error_on(:username)
+      @user.username = '@home'
+      @user.should have(:no).error_on(:username)
+      @user.username = 'Username123'
+      @user.should have(:no).error_on(:username)
+      @user.username = 'Username.123!'
+      @user.should have(:no).error_on(:username)
+    end
+
     it "should validate confirmation of plain password" do      
       @user.plain_password = 'abcdefgh'
       @user.should have(1).error_on(:plain_password)

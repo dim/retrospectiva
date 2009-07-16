@@ -4,10 +4,8 @@ describe "/admin/groups/index.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    @group = mock_model(Group, 
-      :name => 'G1', :access_to_all_projects => true,
-      :project_names => ['All'], :permitted? => true, :default? => false)
-    group_2 = mock_model(Group)
+    @group = stub_model(Group, :project_names => %w(P1 P2) )
+    group_2 = stub_model(Group)
 
     assigns[:groups] = [@group, group_2].paginate(:per_page => 1)
   end
@@ -24,7 +22,7 @@ describe "/admin/groups/index.html.erb" do
   it "should show link to create new group" do
     do_render
     response.should have_tag('a[href=?]', '/admin/groups/new', 'Create a new group')
-  end            
+  end
 
   it "should show link to administration dashboard" do
     do_render

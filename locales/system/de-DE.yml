@@ -24,6 +24,10 @@ de-DE:
             active:
               must_be_active: muss eingeschaltet sein. Public muss aktiv sein
               own_account_must_be_active: muss eingeschaltet sein. Eigenes Benutzerkonto kann nicht deaktiviert werden
+            name:
+              invalid: 'muss mit einem Buchstaben beginnen'
+            username:
+              invalid: 'darf keine Leerzeichen enthalten'
     models:
       attachment: 'Anhang'
       change: 'Änderung'

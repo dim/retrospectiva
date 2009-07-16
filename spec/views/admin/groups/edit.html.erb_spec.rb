@@ -4,11 +4,7 @@ describe "/admin/groups/edit.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    assigns[:group] = @group = mock_model(Group, 
-      :name => 'G1', 
-      :access_to_all_projects? => true, 
-      :access_to_all_projects => true, 
-      :permitted? => true)
+    assigns[:group] = @group = stub_model(Group, :project_names => %w(P1 P2), :new_record? => false)
     assigns[:projects] = [mock_model(Project, :name => 'P1')]
   end
 

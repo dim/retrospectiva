@@ -4,11 +4,7 @@ describe "/admin/users/new.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    assigns[:user] = @user = mock_model(User,
-      :email => 'me@home.com', :username => 'me', :name => 'Full Name', :scm_name => 'me', 
-      :plain_password => nil, :plain_password_confirmation => nil,
-      :active => true, :admin => false, :public? => false, :new_record? => true,
-      :current? => false, :last_admin? => false, :time_zone => 'London')
+    assigns[:user] = @user = stub_model(User, :new_record? => true, :groups => [])
     assigns[:groups] = [mock_model(Group, :name => 'G1')]
   end
 

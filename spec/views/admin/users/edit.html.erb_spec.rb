@@ -4,12 +4,8 @@ describe "/admin/users/edit.html.erb" do
   
   before(:each) do
     mock_current_user! :admin? => true
-    assigns[:user] = @user = mock_model(User,
-      :email => 'me@home.com', :username => 'me', :name => 'Full Name', :scm_name => 'me',      
-      :plain_password => nil, :plain_password_confirmation => nil,
-      :active => true, :admin => false, :public? => false, :new_record? => false,
-      :current? => false, :last_admin? => false, :time_zone => 'London')
-    assigns[:groups] = [mock_model(Group, :name => 'G1')]
+    assigns[:user] = @user = stub_model(User, :new_record? => false, :groups => [stub_model(Group)])
+    assigns[:groups] = [stub_model(Group, :name => 'G1')]
   end
 
   def do_render
