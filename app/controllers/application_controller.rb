@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
   protected
     
     def store_back_to_path
-      if public_html_request?
-        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"
+      if User.current.public? && ( request.format.nil? || request.format.html? ) 
+        session[:back_to] = "#{ActionController::Base.relative_url_root}#{request.path}"            
       end
-      true
+      true 
     end
     
     def reset_request_cache!
@@ -82,12 +82,17 @@ class ApplicationController < ActionController::Base
       request.format && request.format.rss?
     end
 
-    def public_html_request?
-      User.current.public? and request.get? and ( request.format.nil? or request.format.html? )      
-    end
-
     def failed_authorization!
-      public_html_request? ? redirect_to(login_path) : super
+      if User.current.public?
+        case request.format
+        when Mime::XML, Mime::RSS
+          request_http_basic_authentication(RetroCM[:general][:basic][:site_name])
+        else
+          request.get? ? redirect_to(login_path) : super
+        end
+      else
+        super
+      end
     end
 
   private  

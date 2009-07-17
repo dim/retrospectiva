@@ -157,10 +157,10 @@ module Retrospectiva
 
           def authenticate_user_via_http_basic
             case request.format
-            when Mime::XML
+            when Mime::XML, Mime::RSS
               authenticate_with_http_basic do |identifier, password| 
                 User.authenticate(:username => identifier, :password => password)
-              end || request_http_basic_authentication(RetroCM[:general][:basic][:site_name])
+              end
             else
               nil
             end

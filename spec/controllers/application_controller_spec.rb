@@ -206,9 +206,10 @@ describe 'RSS access via private key' do
   
   describe 'if RSS content is requested' do
  
-    it 'should refuse authorisation without a private key' do
+    it 'should fallback to HTTP-Basic if user cannot be authenticated via private key' do
       bypass_rescue
-      lambda { get :index, :project_id => '1', :format => 'rss' }.should raise_error(RetroAM::NoAuthorizationError)
+      get :index, :project_id => '1', :format => 'rss'
+      response.code.should == '401'
     end
 
     describe 'if a valid private key is submitted' do
@@ -381,16 +382,21 @@ describe 'Back-to path storage' do
 end
 
 describe "Authorization" do
-  controller_name :search
+  controller_name :milestones
   
   before do
+    @milestones = [stub_model(Milestone, :name => '1.0', :updated_at => 2.days.ago)]
+    @milestones.stub!(:in_default_order).and_return(@milestones)
+    @milestones.stub!(:active_on).and_return(@milestones)
+    @milestones.stub!(:paginate).and_return(@milestones)
+
+    @user    = mock_current_user! :name => 'Doesnt Matter'
+    @project = mock_current_project! :milestones => @milestones, :name => 'Retro'
     controller.stub!(:find_project).and_return(true)
-    controller.stub!(:load_channels).and_return([])
-    @user = mock_current_user! :name => 'Doesnt Matter'
-  end       
+  end
   
-  def do_get
-    get :index, :project_id => 'one'
+  def do_get(options = {})
+    get :index, options.reverse_merge(:project_id => 'one')
   end
   
   describe 'if a user is already logged in' do
@@ -399,29 +405,43 @@ describe "Authorization" do
       @user.stub!(:public?).and_return(false)
     end
     
-    describe 'and if user is permitted to see page' do
+    describe 'and is permitted to see page' do
       before do
         controller.class.stub!(:authorize?).and_return(true)          
       end
       
-      it 'should display the page' do
+      it 'should display the page (for HTML)' do
         do_get
+        response.should be_success
+      end
+
+      it 'should display the page (for XML/RSS)' do
+        do_get(:format => 'xml')
+        response.should be_success
+        do_get(:format => 'rss')
         response.should be_success
       end
 
     end    
 
-    describe 'and if user is not permitted to see page' do
+    describe 'and is not permitted to see page' do
       before do
         rescue_action_in_public!
         controller.stub!(:consider_all_requests_local).and_return(false)
         controller.class.stub!(:authorize?).and_return(false)          
       end
       
-      it 'should display forbidden page' do
+      it 'should display forbidden page (for HTML)' do
         do_get
         response.code.should == '403'
         response.should render_template(RAILS_ROOT + '/app/views/rescue/403.html.erb')
+      end
+
+      it 'should display the page (for XML/RSS)' do
+        do_get(:format => 'xml')
+        response.code.should == '403'
+        do_get(:format => 'rss')
+        response.code.should == '403'
       end
 
     end    
@@ -434,26 +454,41 @@ describe "Authorization" do
       @user.stub!(:public?).and_return(true)
     end
           
-    describe 'and if user is permitted to see page' do
+    describe 'and is permitted to see page' do
+      
       before do
         controller.class.stub!(:authorize?).and_return(true)          
       end
       
-      it 'should display the page' do
+      it 'should display the page (for HTML)' do
         do_get
+        response.should be_success
+      end
+
+      it 'should display the page (for XML/RSS)' do
+        do_get(:format => 'xml')
+        response.should be_success
+        do_get(:format => 'rss')
         response.should be_success
       end
 
     end    
 
-    describe 'and if user is not permitted to see page' do
+    describe 'and is not permitted to see page' do
       before do
         controller.class.stub!(:authorize?).and_return(false)          
       end
               
-      it 'should redirect to login page' do
+      it 'should redirect to login page (for HTML)' do
         do_get
         response.should redirect_to(login_path)
+      end
+
+      it 'should request HTTP Basic credentials (for XML/RSS)' do
+        do_get(:format => 'xml')
+        response.code.should == '401'
+        do_get(:format => 'rss')
+        response.code.should == '401'
       end
       
     end    
