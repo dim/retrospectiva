@@ -1,7 +1,7 @@
 pt-BR:
   application:
     # Unknown
-    "Author": "Autor"
+    Author: Autor
 
     # Missing
     # extensions/retro_blog/lib/blog_controller.rb
@@ -10,7 +10,7 @@ pt-BR:
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Blog": 
+    Blog: 
 
     # Missing
     # extensions/retro_blog/ext_info.rb
@@ -24,15 +24,15 @@ pt-BR:
     "Blog for {{project}}": 
 
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Cancel": "Cancelar"
+    Cancel: Cancelar
 
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Categories": 
+    Categories: 
 
     # extensions/retro_blog/ext_info.rb
-    "Comment": "Comentário"
+    Comment: Comentário
 
     # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
@@ -44,15 +44,15 @@ pt-BR:
 
     # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Comments": 
+    Comments: 
 
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Content": 
+    Content: 
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create": "Criar"
+    Create: Criar
 
     # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
@@ -62,15 +62,15 @@ pt-BR:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Delete": "Remover"
+    Delete: Remover
 
     # Missing
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Edit": 
+    Edit: 
 
     # Unknown
-    "Email": "E-mail"
+    Email: E-mail
 
     # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
@@ -82,7 +82,7 @@ pt-BR:
 
     # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Navigation": 
+    Navigation: 
 
     # Missing
     # extensions/retro_blog/lib/blog_controller.rb
@@ -117,14 +117,14 @@ pt-BR:
 
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Title": 
+    Title: 
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Update": "Atualizar"
+    Update: Atualizar
 
     # extensions/retro_blog/ext_info.rb
-    "View": "Ver"
+    View: Ver
 
     # Missing
     # extensions/retro_blog/views/blog/_post.html.erb

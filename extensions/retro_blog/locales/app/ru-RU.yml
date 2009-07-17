@@ -1,16 +1,15 @@
 ru-RU:
   application:
     # Unknown
-    "Author": "Автор"
+    Author: Автор
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Blog": 
+    Blog: Ежедневник
 
     # Missing
     # extensions/retro_blog/ext_info.rb
@@ -19,20 +18,19 @@ ru-RU:
     # Unknown
     "Blog Posts for {{project}}": 
 
-    # Missing
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": 
+    "Blog for {{project}}": "Ежедневник проекта {{project}}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Cancel": "Отмена"
+    Cancel: Отмена
 
     # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Categories": 
+    Categories: 
 
     # extensions/retro_blog/ext_info.rb
-    "Comment": "Комментарий"
+    Comment: Комментарий
 
     # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
@@ -42,45 +40,40 @@ ru-RU:
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully deleted.": 
 
-    # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Comments": 
+    Comments: Комментарии
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Content": "Содержимое"
+    Content: Содержимое
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create": "Создать"
+    Create: Создать
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create Post": 
+    "Create Post": Опубликовать
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Delete": "Удалить"
+    Delete: Удалить
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Edit": "Редактировать"
+    Edit: Редактировать
 
     # Unknown
-    "Email": "Email"
+    Email: Email
 
-    # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Leave a comment": 
+    "Leave a comment": "Написать комментарий"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "My Posts": 
+    "My Posts": "Только мои"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Navigation": 
+    Navigation: Сообщения
 
     # Missing
     # extensions/retro_blog/lib/blog_controller.rb
@@ -104,27 +97,24 @@ ru-RU:
     # Unknown
     "Really delete this post?": 
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Recent Posts": 
+    "Recent Posts": "Самые новые"
 
     # Missing
     # extensions/retro_blog/views/blog/index.html.erb
     "There are no posts available.": 
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Title": 
+    Title: Заголовок
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Update": "Обновить"
+    Update: Обновить
 
     # extensions/retro_blog/ext_info.rb
-    "View": "Подробнее"
+    View: Подробнее
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": 
+    "{{count}} comments": "комментариев: {{count}}"
 

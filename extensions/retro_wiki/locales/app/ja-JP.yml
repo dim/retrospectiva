@@ -4,7 +4,7 @@ ja-JP:
     "Are you really sure?": 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Author": "作者"
+    Author: 作者
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
@@ -13,15 +13,15 @@ ja-JP:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Cancel": "中止"
+    Cancel: 中止
 
     # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Content": 
+    Content: 
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Create": "作成"
+    Create: 作成
 
     # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
@@ -30,16 +30,16 @@ ja-JP:
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
-    "Delete": "削除"
+    Delete: 削除
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Edit": 
+    Edit: 
 
     # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "File": 
+    File: 
 
     # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
@@ -57,7 +57,7 @@ ja-JP:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Files": 
+    Files: 
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
@@ -66,13 +66,13 @@ ja-JP:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Home": "ホーム"
+    Home: ホーム
 
     # extensions/retro_wiki/ext/markup_controller.rb
-    "Links": "リンク"
+    Links: リンク
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Name": "名前"
+    Name: 名前
 
     # Missing
     # extensions/retro_wiki/models/wiki_page.rb
@@ -90,31 +90,31 @@ ja-JP:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Pages": 
+    Pages: 
 
     # Missing
     # extensions/retro_wiki/ext/markup_controller.rb
-    "References": 
+    References: 
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/rename.html.erb
-    "Rename": 
+    Rename: 
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Rollback": 
+    Rollback: 
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Save": "保存"
+    Save: 保存
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": 
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Size": "サイズ"
+    Size: サイズ
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
@@ -128,18 +128,18 @@ ja-JP:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Title": 
+    Title: 
 
     # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Type": 
+    Type: 
 
     # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "Unable to download file": 
 
     # extensions/retro_wiki/ext_info.rb
-    "Update": "更新"
+    Update: 更新
 
     # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
@@ -148,14 +148,14 @@ ja-JP:
     # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Upload": 
+    Upload: 
 
     # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Version": 
+    Version: 
 
     # extensions/retro_wiki/ext_info.rb
-    "View": "表示"
+    View: 表示
 
     # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
@@ -164,7 +164,7 @@ ja-JP:
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Wiki": 
+    Wiki: 
 
     # Missing
     # extensions/retro_wiki/ext_info.rb
@@ -183,7 +183,7 @@ ja-JP:
 
     # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "updated": 
+    updated: 
 
     # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb

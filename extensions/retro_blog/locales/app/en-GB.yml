@@ -1,7 +1,7 @@
 en-GB:
   application:
     # Unknown
-    "Author": "Author"
+    Author: Author
 
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/models/blog_post.rb
@@ -9,7 +9,7 @@ en-GB:
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Blog": "Blog"
+    Blog: Blog
 
     # Missing
     # extensions/retro_blog/ext_info.rb
@@ -19,14 +19,14 @@ en-GB:
     "Blog for {{project}}": "Blog for {{project}}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Cancel": "Cancel"
+    Cancel: Cancel
 
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Categories": "Categories"
+    Categories: Categories
 
     # extensions/retro_blog/ext_info.rb
-    "Comment": "Comment"
+    Comment: Comment
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully created.": "Comment was successfully created."
@@ -35,14 +35,14 @@ en-GB:
     "Comment was successfully deleted.": "Comment was successfully deleted."
 
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Comments": "Comments"
+    Comments: Comments
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Content": "Content"
+    Content: Content
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create": "Create"
+    Create: Create
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
@@ -51,14 +51,14 @@ en-GB:
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Delete": "Delete"
+    Delete: Delete
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    "Edit": "Edit"
+    Edit: Edit
 
     # Unknown
-    "Email": "Email"
+    Email: Email
 
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": "Leave a comment"
@@ -67,7 +67,7 @@ en-GB:
     "My Posts": "My Posts"
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "Navigation": "Navigation"
+    Navigation: Navigation
 
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully created.": "Post was successfully created."
@@ -95,14 +95,14 @@ en-GB:
     "There are no posts available.": "There are no posts available."
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    "Title": "Title"
+    Title: Title
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    "Update": "Update"
+    Update: Update
 
     # extensions/retro_blog/ext_info.rb
-    "View": "View"
+    View: View
 
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": "{{count}} comments"

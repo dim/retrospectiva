@@ -20,6 +20,8 @@ module RetroI18n
     end
     
     def save(patterns, options = {})
+      yaml = Ya2YAML.new :syck_compatible => true    
+      
       File.open(path, 'w+') do |file|
         file << "#{locale}:\n  application:\n"
         
@@ -32,8 +34,8 @@ module RetroI18n
             references.uniq.sort.each do |reference|
               file << "    # #{reference}\n"
             end
-          end
-          file << "    \"#{string}\": #{t(string).blank? ? '' : t(string).inspect}\n\n"
+          end          
+          file << "    #{yaml.emit_string(string, 3)}: #{t(string).blank? ? nil : yaml.emit_string(t(string), 3)}\n\n"
         end
       end && true
     end
@@ -47,10 +49,6 @@ module RetroI18n
     end
     
     protected
-      
-      def quote(string)
-        "\"#{string}\""
-      end
       
       def load_translations
         (YAML.load_file(path)[locale]['application'] || {}) rescue {}

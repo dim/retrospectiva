@@ -4,7 +4,7 @@ en-GB:
     "Are you really sure?": "Are you really sure?"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Author": "Author"
+    Author: Author
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Back in time": "Back in time"
@@ -12,14 +12,14 @@ en-GB:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Cancel": "Cancel"
+    Cancel: Cancel
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Content": "Content"
+    Content: Content
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Create": "Create"
+    Create: Create
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Created on {{date}} by {{author}}": "Created on {{date}} by {{author}}"
@@ -27,14 +27,14 @@ en-GB:
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
-    "Delete": "Delete"
+    Delete: Delete
 
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Edit": "Edit"
+    Edit: Edit
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "File": "File"
+    File: File
 
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "File cannot be deleted.": "File cannot be deleted."
@@ -48,7 +48,7 @@ en-GB:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Files": "Files"
+    Files: Files
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Forward in time": "Forward in time"
@@ -56,13 +56,13 @@ en-GB:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Home": "Home"
+    Home: Home
 
     # extensions/retro_wiki/ext/markup_controller.rb
-    "Links": "Links"
+    Links: Links
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Name": "Name"
+    Name: Name
 
     # extensions/retro_wiki/models/wiki_page.rb
     "Nothing changed": "Nothing changed"
@@ -76,27 +76,27 @@ en-GB:
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Pages": "Pages"
+    Pages: Pages
 
     # extensions/retro_wiki/ext/markup_controller.rb
-    "References": "References"
+    References: References
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/rename.html.erb
-    "Rename": "Rename"
+    Rename: Rename
 
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Rollback": "Rollback"
+    Rollback: Rollback
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    "Save": "Save"
+    Save: Save
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": "Show current"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Size": "Size"
+    Size: Size
 
     # extensions/retro_wiki/views/wiki/index.html.erb
     "Sort alphabetically": "Sort alphabetically"
@@ -107,29 +107,29 @@ en-GB:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Title": "Title"
+    Title: Title
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    "Type": "Type"
+    Type: Type
 
     # extensions/retro_wiki/lib/wiki_files_controller.rb
     "Unable to download file": "Unable to download file"
 
     # extensions/retro_wiki/ext_info.rb
-    "Update": "Update"
+    Update: Update
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Updated on {{date}} by {{author}}": "Updated on {{date}} by {{author}}"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Upload": "Upload"
+    Upload: Upload
 
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Version": "Version"
+    Version: Version
 
     # extensions/retro_wiki/ext_info.rb
-    "View": "View"
+    View: View
 
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/models/wiki_page.rb
@@ -137,7 +137,7 @@ en-GB:
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    "Wiki": "Wiki"
+    Wiki: Wiki
 
     # extensions/retro_wiki/ext_info.rb
     "Wiki Files": "Wiki Files"
@@ -149,7 +149,7 @@ en-GB:
     "Wiki for {{project}}": "Wiki for {{project}}"
 
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "updated": "updated"
+    updated: updated
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "{{count}} more": "{{count}} more"

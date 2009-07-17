@@ -5,6 +5,7 @@ require 'retro_i18n/parser'
 require 'retro_i18n/locale_file'
 require 'retro_i18n/structs'
 require 'retro_i18n/methods'
+require 'retro_i18n/ya2yaml'
 
 Dir[File.dirname(__FILE__) + '/../locales/*.{rb,yml}'].each do |path|
   I18n.load_path << path

@@ -1,12 +1,10 @@
 ru-RU:
   application:
-    # Missing
     # app/views/notifications/account_validation.html.erb
-    "1. Click this link": 
+    "1. Click this link": "1. перейти по этой ссылке"
 
-    # Missing
     # app/views/notifications/account_validation.html.erb
-    "2. Surf to {{url}} and enter the following activation code": 
+    "2. Surf to {{url}} and enter the following activation code": "2. Перейти по ссылке {{url}} и ввести код активации"
 
     # app/controllers/admin/users_controller.rb
     "A notification was sent to the user.": "Пользователю отправлено уведомление."
@@ -14,9 +12,8 @@ ru-RU:
     # app/views/milestones/_form.html.erb
     "A short description or other info you want displayed (optional)": "Краткая информация или любые другие сведения (не обязательно)"
 
-    # Missing
     # app/views/browse/show_file.html.erb
-    "A viewable MIME type was not detected. Trying to display the file content as plain text.": 
+    "A viewable MIME type was not detected. Trying to display the file content as plain text.": "MIME тип не определен. Отображается как текст."
 
     # Missing
     # app/views/admin/projects/_project.html.erb
@@ -35,7 +32,7 @@ ru-RU:
     "Account validation": "Проверка учетной записи"
 
     # app/views/accounts/activate.html.erb
-    "Activate": "Активировать"
+    Activate: Активировать
 
     # app/views/accounts/activate.html.erb
     "Activate account": "Активировать аккаунт"
@@ -48,24 +45,23 @@ ru-RU:
     # app/views/admin/users/_form.html.erb
     # app/views/admin/users/_user.html.erb
     # app/views/admin/users/index.html.erb
-    "Active": "Активирован"
+    Active: Активирован
 
-    # Missing
     # app/helpers/ticket_filter_helper.rb
-    "Add filter": 
+    "Add filter": "Определить фильтр"
 
     # app/helpers/changesets_helper.rb
-    "Added": "добавлен"
+    Added: добавлен
 
     # app/helpers/navigation_helper.rb
-    "Admin": "Администрирование"
+    Admin: Администрирование
 
     # app/views/admin/shared/_header.html.erb
-    "Administration": "Администрирование"
+    Administration: Администрирование
 
     # app/views/admin/users/_form.html.erb
     # app/views/admin/users/_user.html.erb
-    "Administrator": "Администратор"
+    Administrator: Администратор
 
     # app/views/changesets/show.html.erb
     "Affected files": "Измненные файлы"
@@ -74,95 +70,85 @@ ru-RU:
     # app/models/group.rb
     # app/views/rss/_all.html.erb
     # app/views/rss/_feed.html.erb
-    "All": "Все"
+    All: Все
 
     # app/controllers/projects_controller.rb
     # app/views/rss/_all.html.erb
     "All Projects": "Все проекты"
 
-    # Missing
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": 
+    "All feeds for {{project}}": "Все сообщения для проекта {{project}}"
 
-    # Missing
     # app/views/rss/_all.html.erb
-    "All feeds from all projects": 
+    "All feeds from all projects": "Любые новые сообщения"
 
     # app/models/status.rb
     "All in progress": "Все в работе"
 
-    # Missing
     # app/controllers/projects_controller.rb
-    "All news for all projects": 
+    "All news for all projects": "Любые записи в ежедневнике"
 
-    # Missing
     # app/controllers/projects_controller.rb
-    "All news for {{project}}": 
+    "All news for {{project}}": "Изменения в ежедневнике проекта {{project}}"
 
     # app/models/status.rb
     "All open": "Все открытые"
 
-    # Unknown
-    "All open tickets": "Все тикеты в работе"
-
     # app/models/status.rb
     "All resolved": "Все решенные"
 
-    # Missing
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
     # app/views/notifications/password_reset_instructions.html.erb
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "Alternatively, copy and paste this link to your browser address bar.": 
+    "Alternatively, copy and paste this link to your browser address bar.": "Попробуйте скопировать эту ссылку в адресную строку броузера."
 
     # app/controllers/accounts_controller.rb
     "An email including the activation code and the instructions was sent to you.": "На ваш email выслан код активации с краткой инструкцией."
 
-    # Missing
     # app/helpers/application_helper.rb
-    "Are you sure?": 
+    "Are you sure?": "Без сомнений?"
 
     # app/views/tickets/_ticket_info.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Assigned To": "Исполнитель"
+    "Assigned To": Исполнитель
 
     # app/models/ticket_filter/custom/my_tickets.rb
     "Assigned to me": "У меня на исполнении"
 
     # app/models/ticket_change.rb
-    "Assigned user": "Исполнитель"
+    "Assigned user": Исполнитель
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "Attachment": "Приложение"
+    Attachment: Приложение
 
     # app/views/browse/revisions.html.erb
-    "Author": "Автор"
+    Author: Автор
 
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
-    "Back": "Назад"
+    Back: Назад
 
     # app/views/tickets/_navigation.html.erb
     "Back to ticket list": "Вернуться к списку тикетов"
 
     # app/helpers/navigation_helper.rb
-    "Back to top": "Наверх"
+    "Back to top": Наверх
 
     # app/views/browse/show_binary.html.erb
     "Binary File": "Файл данных"
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Blocks": 
+    Blocks: Блоки
 
     # app/core_info.rb
     # app/views/browse/diff.html.erb
     # app/views/browse/revisions.html.erb
-    "Browse": "Просмотр"
+    Browse: Просмотр
 
     # app/controllers/browse_controller.rb
     "Browse Code": "Просмотр кода"
@@ -177,108 +163,92 @@ ru-RU:
     # app/views/browse/show_image.html.erb
     "Browse source": "Исходные коды"
 
-    # Missing
     # app/helpers/navigation_helper.rb
-    "Browse {{title}}": 
+    "Browse {{title}}": "Пролистать {{title}}"
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
     # app/views/ticket_reports/_new.html.erb
-    "Cancel": "Отмена"
+    Cancel: Отмена
 
-    # Missing
     # app/models/user.rb
-    "Cannot delete. User '{{username}}' is the last available admin.": 
+    "Cannot delete. User '{{username}}' is the last available admin.": "Самого главного удалять нельзя!"
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
-    "Central": "Центральный"
+    Central: Центральный
 
-    # Missing
     # app/views/notifications/ticket_update_note.html.erb
-    "Changed by {{author}} - {{time}}": 
+    "Changed by {{author}} - {{time}}": "Изменения внес {{author}}, {{time}}"
 
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
     # app/views/changesets/show.html.erb
-    "Changeset": "Изменение"
+    Changeset: Изменение
 
     # app/helpers/changesets_helper.rb
     "Changeset index": "Оглавление изменений"
 
-    # Missing
     # app/models/changeset.rb
-    "Changeset {{revision}}": 
+    "Changeset {{revision}}": "Изменение {{revision}}"
 
     # app/controllers/changesets_controller.rb
     # app/core_info.rb
     # app/models/changeset.rb
     # app/views/changesets/index.html.erb
-    "Changesets": "Изменения"
+    Changesets: Изменения
 
-    # Missing
     # app/models/changeset.rb
-    "Changesets for {{project}}": 
+    "Changesets for {{project}}": "Изменения в ревизиях проекта {{project}}"
 
-    # Missing
     # app/views/admin/projects/_form.html.erb
-    "Check this option to make this your default project.": 
+    "Check this option to make this your default project.": "это основной проект"
 
-    # Missing
     # app/views/accounts/show.html.erb
-    "Check this option to renew your private access key.": 
+    "Check this option to renew your private access key.": "необходимо обновить личный ключ"
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Clear selection": 
+    "Clear selection": "Убрать отметки"
 
     # app/views/projects/index.html.erb
     "Click for info": "Щелкни чтобы получить информацию"
 
-    # Missing
     # app/views/changesets/_quick_diff.html.erb
-    "Close": 
+    Close: Закрыть
 
     # app/helpers/format_helper.rb
     "Close preview": "Закрыть просмотр"
 
     # app/views/admin/projects/_form.html.erb
-    "Closed": "Закрыт"
-
-    # Unknown
-    "Closed tickets": "Закрытые тикеты"
+    Closed: Закрыт
 
     # app/core_info.rb
-    "Code": "Код"
+    Code: Код
 
     # app/views/tickets/_update_form.html.erb
-    "Comment": "Комментарий"
+    Comment: Комментарий
 
-    # Missing
     # app/views/tickets/show.html.erb
-    "Comments and Changes": 
+    "Comments and Changes": "Комментарии и дополнения"
 
-    # Missing
     # app/views/browse/index.html.erb
-    "Commit": 
+    Commit: Коммит
 
-    # Missing
     # app/helpers/browse_helper.rb
-    "Compare [{{revision_a}}] with [{{revision_b}}]": 
+    "Compare [{{revision_a}}] with [{{revision_b}}]": "Сравнить ревизию [{{revision_a}}] с [{{revision_b}}]"
 
     # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "Невозможно сохранить конфигурацию"
 
-    # Missing
     # app/views/admin/users/_core.html.erb
-    "Confirmation": 
+    Confirmation: Подтверждение
 
     # app/core_info.rb
     # app/views/tickets/form/_update_content.html.erb
-    "Content": "Содержимое"
+    Content: Содержимое
 
     # app/helpers/changesets_helper.rb
-    "Copied": "Скопировано"
+    Copied: Скопировано
 
     # app/core_info.rb
     # app/views/accounts/new.html.erb
@@ -287,7 +257,7 @@ ru-RU:
     # app/views/milestones/new.html.erb
     # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
-    "Create": "Создать"
+    Create: Создать
 
     # app/views/admin/groups/index.html.erb
     # app/views/admin/groups/new.html.erb
@@ -305,9 +275,6 @@ ru-RU:
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": "Создание нового варианта значения для свойства"
 
-    # Unknown
-    "Create a new report": "Создание нового отчета"
-
     # app/views/admin/repositories/index.html.erb
     # app/views/admin/repositories/new.html.erb
     "Create a new repository": "Создание нового репозитория"
@@ -320,41 +287,36 @@ ru-RU:
     # app/views/admin/users/new.html.erb
     "Create a new user": "Создание нового пользователя"
 
-    # Missing
     # app/views/tickets/_ticket.html.erb
-    "Created {{period}} ago by {{author}}": 
+    "Created {{period}} ago by {{author}}": "Разместил {{author}} {{period}} назад"
 
-    # Missing
     # app/helpers/browse_helper.rb
-    "Current": 
+    Current: Текущий
 
-    # Missing
     # app/helpers/navigation_helper.rb
-    "Dashboard": 
+    Dashboard: "Панель управления"
 
     # app/views/browse/revisions.html.erb
-    "Date": "Дата"
+    Date: Дата
 
     # lib/time_interval.rb
-    "Days": "Дни"
+    Days: Дни
 
-    # Missing
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
     # app/views/notifications/password_reset_instructions.html.erb
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "Dear user!": 
+    "Dear user!": "Дорогой мой пользователь!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
-    "Default": "По умолчанию"
+    Default: "По умолчанию"
 
     # app/models/group.rb
     "Default group cannot be deleted": "Не допускается удалять группу по умолчанию"
 
-    # Missing
     # app/models/group.rb
-    "Default group cannot be modified.": 
+    "Default group cannot be modified.": "Основная группа не меняется"
 
     # app/views/admin/ticket_property_values/_priority_form.html.erb
     "Default value": "Значение по умолчанию"
@@ -371,34 +333,28 @@ ru-RU:
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "Delete": "Удалить"
+    Delete: Удалить
 
     # app/helpers/changesets_helper.rb
-    "Deleted": "Удален"
+    Deleted: Удален
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/tasks/index.html.erb
     # app/views/tickets/form/_summary_and_description.html.erb
-    "Description": "Описание"
+    Description: Описание
 
     # app/views/tickets/new.html.erb
-    "Details": "Детали"
+    Details: Детали
 
-    # Missing
     # app/views/browse/_revision.html.erb
-    "Diff": 
+    Diff: Разница
 
-    # Missing
     # app/helpers/application_helper.rb
-    "Display": 
+    Display: Отображать
 
-    # Missing
     # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
-    "Download": 
-
-    # Unknown
-    "Download Diff": 
+    Download: Скачать
 
     # app/views/browse/_show_header.html.erb
     "Download in other formats": "Загрузить в другом формате"
@@ -417,7 +373,7 @@ ru-RU:
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "Edit": "Редактировать"
+    Edit: Редактировать
 
     # app/views/admin/groups/edit.html.erb
     "Edit group": "Редактирование группы"
@@ -430,9 +386,6 @@ ru-RU:
 
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": "Редактирование варианта значения"
-
-    # Unknown
-    "Edit report": "Редактирование отчета"
 
     # app/views/admin/repositories/edit.html.erb
     "Edit repository": "Редактирование репозитория"
@@ -450,7 +403,7 @@ ru-RU:
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
-    "Email": "Email"
+    Email: Email
 
     # app/views/admin/users/edit.html.erb
     "Email notification": "Уведомления на Email"
@@ -459,49 +412,38 @@ ru-RU:
     "Enabled modules": "Модули проекта"
 
     # app/views/admin/repositories/_form.html.erb
-    "Examples": "Примеры"
+    Examples: Примеры
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/extensions/index.html.erb
-    "Extensions": "Расширения"
+    Extensions: Расширения
 
-    # Missing
     # app/controllers/admin/repositories_controller.rb
-    "Failure! Path does not contain a valid repository.": 
+    "Failure! Path does not contain a valid repository.": "Путь не содержит репозитария."
 
-    # Missing
     # app/controllers/admin/repositories_controller.rb
-    "Failure! Path does not exist.": 
+    "Failure! Path does not exist.": "Путь не существует."
 
-    # Missing
     # app/controllers/admin/projects_controller.rb
-    "Failure! Path is not a directory in this repository.": 
+    "Failure! Path is not a directory in this repository.": "Путь отсутвует в репозитарии."
 
-    # Missing
     # app/controllers/admin/repositories_controller.rb
-    "Failure! You are not permitted to browse this path.": 
+    "Failure! You are not permitted to browse this path.": "Обзор запрещен."
 
-    # Missing
     # app/helpers/navigation_helper.rb
-    "Feeds": 
+    Feeds: "Будь в теме!"
 
-    # Missing
     # app/views/browse/show_binary.html.erb
-    "File content cannot be displayed for binary files.": 
+    "File content cannot be displayed for binary files.": "Двоичные файлы не отображаются."
 
-    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
-    "File size exceeds the maximum limit": 
-
-    # Unknown
-    "Filter options": "Управление фильтром"
+    "File size exceeds the maximum limit": "Превышен максимально допустимы размер"
 
     # app/views/tickets/index.html.erb
     "Filter tickets": "Использовать фильтр"
 
-    # Missing
     # app/views/admin/tasks/_task.html.erb
-    "Finished": 
+    Finished: Завершен
 
     # app/views/milestones/_form.html.erb
     "Finished on": "Фактически выполнено"
@@ -511,9 +453,8 @@ ru-RU:
     # app/views/sessions/new.html.erb
     "Forgot password": "Забыли пароль?"
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Formats": 
+    Formats: Форматы
 
     # app/views/admin/users/_core.html.erb
     # app/views/notifications/account_activation_note.html.erb
@@ -522,10 +463,10 @@ ru-RU:
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
-    "Global": "Глобальные"
+    Global: Глобальные
 
     # app/views/admin/groups/index.html.erb
-    "Group": "Группа"
+    Group: Группа
 
     # app/controllers/admin/groups_controller.rb
     "Group could not be deleted. Following error(s) occured": "Не возможно удалить группу. Произошли следующие ошибки"
@@ -533,9 +474,8 @@ ru-RU:
     # app/views/admin/groups/_form.html.erb
     "Group name": "Имя группы"
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Group records": 
+    "Group records": Сгруппировать
 
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "Создана новая группа."
@@ -551,18 +491,17 @@ ru-RU:
     # app/views/admin/groups/index.html.erb
     # app/views/admin/users/_groups.html.erb
     # app/views/admin/users/index.html.erb
-    "Groups": "Группы"
+    Groups: Группы
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Headers": 
+    Headers: 
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Привет {{user}}!"
 
-    # Missing
     # app/helpers/changesets_helper.rb
-    "Hide Quick Diffs": 
+    "Hide Quick Diffs": "Скрыть область разницы"
 
     # app/views/milestones/index.html.erb
     "Hide already completed milestones": "Скрыть законченные этапы"
@@ -575,93 +514,80 @@ ru-RU:
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/logged_in.html.erb
     # app/views/sessions/new.html.erb
-    "Home": "Вернуться"
+    Home: Вернуться
 
     # lib/time_interval.rb
-    "Hours": "Часы"
+    Hours: Часы
 
     # app/views/tickets/index.html.erb
-    "ID": "ID"
+    ID: ID
 
     # app/models/status.rb
     "In progress": "В процессе"
 
-    # Missing
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/users/_user.html.erb
-    "Inactive": 
+    Inactive: "Не активен"
 
-    # Missing
     # app/helpers/application_helper.rb
-    "Info": 
+    Info: Информация
 
-    # Missing
     # app/views/admin/extensions/index.html.erb
-    "Installed": 
+    Installed: Установленные
 
     # app/views/admin/tasks/index.html.erb
-    "Interval": "Интервал"
+    Interval: Интервал
 
-    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
-    "Invalid file size": 
+    "Invalid file size": "Некорректный размер файла"
 
-    # Missing
     # app/views/browse/diff.html.erb
-    "Invalid or empty DIFF": 
+    "Invalid or empty DIFF": "Некорректная или пустая разница"
 
-    # Missing
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Kind": 
+    Kind: Тип
 
     # app/views/tickets/index.html.erb
     "Last Update": "Последнее обновление"
 
-    # Missing
     # app/views/browse/index.html.erb
-    "Last modified": 
-
-    # Unknown
-    "Last run": "Последний запуск"
+    "Last modified": "Последнее изменение"
 
     # app/views/admin/users/_core.html.erb
     "Leave password field blank, unless you actually want to change your password.": "Если пароль менять не требуется, оставьте поля для ввода и подтверждения пароля пустыми."
 
-    # Missing
     # app/helpers/browse_helper.rb
-    "Line {{number}}": 
+    "Line {{number}}": "Строка {{number}}"
 
-    # Missing
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Links": 
+    Links: Ссылки
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Lists": 
+    Lists: Списки
 
     # app/helpers/application_helper.rb
     # app/views/layouts/_header.html.erb
-    "Loading...": "Загрузка..."
+    Loading...: Загрузка...
 
     # app/views/admin/projects/_form.html.erb
-    "Locale": "Язык"
+    Locale: Язык
 
     # app/views/browse/revisions.html.erb
-    "Log": "Журнал"
+    Log: Журнал
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
     "Logged in as {{name}}": "Пользователь {{name}}"
 
     # app/views/sessions/destroy.html.erb
-    "Logged out": "Вышел"
+    "Logged out": Вышел
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/new.html.erb
-    "Login": "Вход"
+    Login: Вход
 
     # app/controllers/sessions_controller.rb
     "Login was not successful. Invalid username or password.": "Неудачный вход. Имя или пароль ползователя указаны неправильно."
@@ -671,20 +597,19 @@ ru-RU:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logout": "Выход"
+    Logout: Выход
 
     # app/views/admin/groups/_form.html.erb
     "Make all projects available to this group": "Предоставить группе доступ ко всем проектам"
 
     # app/views/admin/dashboard/index.html.erb
-    "Manage": "Изменить"
+    Manage: Изменить
 
     # app/helpers/format_helper.rb
     "Markup reference": "Подсказка по разметке"
 
-    # Missing
     # app/views/rescue/422.html.erb
-    "Maybe you tried to change something you didn't have access to.": 
+    "Maybe you tried to change something you didn't have access to.": "Похоже что этого делать нельзя"
 
     # app/helpers/tickets_helper.rb
     # app/models/milestone.rb
@@ -692,7 +617,7 @@ ru-RU:
     # app/models/ticket_filter/collection.rb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Milestone": "Этап"
+    Milestone: Этап
 
     # app/controllers/milestones_controller.rb
     "Milestone was successfully created.": "Этап создан."
@@ -709,28 +634,25 @@ ru-RU:
     # app/views/milestones/edit.html.erb
     # app/views/milestones/index.html.erb
     # app/views/milestones/new.html.erb
-    "Milestones": "Этапы"
+    Milestones: Этапы
 
-    # Missing
     # app/models/milestone.rb
-    "Milestones for {{project}}": 
+    "Milestones for {{project}}": "Этапы проекта {{project}}"
 
     # lib/time_interval.rb
-    "Minutes": "Минут"
+    Minutes: Минут
 
-    # Missing
     # app/core_info.rb
-    "Modify": 
+    Modify: Изменить
 
-    # Missing
     # app/views/tickets/index.html.erb
-    "Month": 
+    Month: Месяц
 
     # lib/time_interval.rb
-    "Months": "Месяцы"
+    Months: Месяцы
 
     # app/helpers/changesets_helper.rb
-    "Moved": "Перенесен"
+    Moved: Перенесен
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/show.html.erb
@@ -747,19 +669,16 @@ ru-RU:
     # app/views/milestones/_form.html.erb
     # app/views/ticket_reports/_form.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
-    "Name": "Имя"
+    Name: Имя
 
-    # Missing
     # app/models/status.rb
-    "Negative": 
+    Negative: Отрицательный
 
-    # Missing
     # app/models/status.rb
-    "Neutral": 
+    Neutral: Нейтральный
 
-    # Missing
     # app/views/admin/ticket_property_values/new.html.erb
-    "New": 
+    New: Новый
 
     # app/controllers/tickets_controller.rb
     "New Ticket": "Новый тикет"
@@ -776,11 +695,10 @@ ru-RU:
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "No": "Нет"
+    "No": Нет
 
-    # Missing
     # app/models/ticket_change.rb
-    "No changes were made": 
+    "No changes were made": "Изменений нет"
 
     # app/views/projects/index.html.erb
     "No projects available": "Нет проектов"
@@ -789,13 +707,13 @@ ru-RU:
     "No repository selected.": "Не выбран репозитарий."
 
     # app/views/tickets/index.html.erb
-    "None": "Никакой"
+    None: Никакой
 
     # app/views/admin/extensions/index.html.erb
     "Not Installed": "Не установлен"
 
     # app/views/admin/ticket_property_values/index.html.erb
-    "Note": "Заметка"
+    Note: Заметка
 
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Информировать пользователя при активации аккаунта"
@@ -804,31 +722,27 @@ ru-RU:
     "Only Last": "За последние"
 
     # app/models/status.rb
-    "Open": "Открыт"
-
-    # Unknown
-    "Open tickets": "Открытые тикеты"
+    Open: Открыт
 
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_property_values/_priority_form.html.erb
     # app/views/admin/users/_form.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
-    "Options": "Функции"
+    Options: Функции
 
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Paragraphs": "Параграфы"
+    Paragraphs: Параграфы
 
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb
-    "Password": "Пароль"
+    Password: Пароль
 
-    # Missing
     # app/models/notifications.rb
-    "Password reset": 
+    "Password reset": "Сбросить пароль"
 
     # app/views/admin/repositories/_form.html.erb
-    "Path": "Путь"
+    Path: Путь
 
     # app/controllers/browse_controller.rb
     "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Путь '{{path}}' не существует в ревизии {{revision}}, показана ревизия {{latest}}."
@@ -838,17 +752,16 @@ ru-RU:
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
-    "Permissions": "Разрешения"
+    Permissions: Разрешения
 
-    # Missing
     # app/views/admin/repositories/_form.html.erb
-    "Please specify an optional system call, which will be executed before each repository synchronization.": 
+    "Please specify an optional system call, which will be executed before each repository synchronization.": "Для синхронизации следует указать системный вызов"
 
     # app/models/status.rb
-    "Positive": "Положительный"
+    Positive: Положительный
 
     # app/helpers/format_helper.rb
-    "Preview": "Просмотреть"
+    Preview: Просмотреть
 
     # app/helpers/changesets_helper.rb
     "Previous changeset": "Предыдущее изменение"
@@ -863,21 +776,19 @@ ru-RU:
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Priority": "Важность"
+    Priority: Важность
 
     # app/views/admin/projects/index.html.erb
-    "Project": "Проект"
+    Project: Проект
 
-    # Missing
     # app/controllers/admin/projects_controller.rb
-    "Project could not be deleted. Following error(s) occured": 
+    "Project could not be deleted. Following error(s) occured": "Проект удалить нельзя."
 
     # app/views/admin/projects/_form.html.erb
     "Project name": "Название проекта"
 
-    # Missing
     # app/views/admin/ticket_properties/index.html.erb
-    "Project specific": 
+    "Project specific": Специальные
 
     # app/controllers/admin/projects_controller.rb
     "Project was successfully created.": "Проект создан."
@@ -900,67 +811,58 @@ ru-RU:
     # app/views/admin/ticket_property_values/index.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     # app/views/projects/index.html.erb
-    "Projects": "Проекты"
+    Projects: Проекты
 
     # app/views/browse/_node_info.html.erb
     # app/views/tickets/index.html.erb
-    "Properties": "Свойства"
+    Properties: Свойства
 
-    # Missing
     # app/controllers/admin/ticket_property_values_controller.rb
-    "Property value was successfully created.": 
+    "Property value was successfully created.": "Свойство успешно создано."
 
-    # Missing
     # app/controllers/admin/ticket_property_values_controller.rb
-    "Property value was successfully deleted.": 
+    "Property value was successfully deleted.": "Свойство удалено."
 
-    # Missing
     # app/controllers/admin/ticket_property_values_controller.rb
-    "Property value was successfully updated.": 
+    "Property value was successfully updated.": "Свойство обновлено"
 
-    # Missing
     # app/views/admin/ticket_property_values/index.html.erb
-    "Property values": 
+    "Property values": "Значения свойства"
 
-    # Missing
     # app/models/user.rb
-    "Public user cannot be deleted.": 
+    "Public user cannot be deleted.": "Анонимный аккаунт не подлежит удалению."
 
-    # Missing
     # app/models/user.rb
-    "Public user cannot be modified.": 
+    "Public user cannot be modified.": "Анонимный аккаунт не подлежит изменению."
 
     # app/helpers/changesets_helper.rb
     "Quick Diff": "Показать различия"
 
     # app/views/rss/index.html.erb
-    "RSS": "RSS"
+    RSS: RSS
 
     # app/helpers/browse_helper.rb
-    "Raw": "Raw"
+    Raw: Raw
 
-    # Missing
     # app/helpers/format_helper.rb
-    "Reference": 
+    Reference: Ссылка
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "References": 
+    References: Ссылки
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/new.html.erb
     # app/views/sessions/new.html.erb
-    "Register": "Регистрация"
+    Register: Регистрация
 
     # app/views/accounts/show.html.erb
-    "Remember to update your RSS subscriptions afterwards.": "Remember to update your RSS subscriptions afterwards."
+    "Remember to update your RSS subscriptions afterwards.": "Следует обновить свои ссылки на RSS."
 
     # app/helpers/ticket_filter_helper.rb
     "Remove filter": "Убрать фильтр"
 
-    # Missing
     # app/views/accounts/show.html.erb
-    "Renew my private key": 
+    "Renew my private key": "Заменить мой личный код для RSS"
 
     # app/controllers/ticket_reports_controller.rb
     "Report was successfully created.": "Отчет создан."
@@ -968,33 +870,28 @@ ru-RU:
     # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "Отчет удален."
 
-    # Unknown
-    "Report was successfully updated.": "Отчет обновлен."
-
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Составлен мной"
 
-    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "Reported by {{author}} - {{time}}": 
+    "Reported by {{author}} - {{time}}": "Разместил {{author}}, {{time}}"
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
-    "Reports": "Отчеты"
+    Reports: Отчеты
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/repositories/_header.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Repositories": "Репозитарии"
+    Repositories: Репозитарии
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Repository": "Репозитарий"
+    Repository: Репозитарий
 
-    # Missing
     # app/views/browse/repository_unavailable.html.erb
-    "Repository Unavailable": 
+    "Repository Unavailable": "репозитарий не доступен"
 
     # app/views/admin/projects/_form.html.erb
     "Repository path": "Путь к репозитарию"
@@ -1009,40 +906,37 @@ ru-RU:
     "Repository was successfully updated.": "Репозитарий изменен."
 
     # app/models/status.rb
-    "Resolved": "Закрыт"
+    Resolved: Закрыт
 
     # app/views/admin/dashboard/index.html.erb
     "Retrospectiva administration": "Администрирование Retrospectiva"
 
     # app/views/browse/_node_info.html.erb
     # app/views/browse/revisions.html.erb
-    "Revision": "Ревизия"
+    Revision: Ревизия
 
     # app/controllers/browse_controller.rb
     "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revision {{revision}} seems not to be valid, showing revision {{latest}}."
 
     # app/helpers/browse_helper.rb
-    "Revisions": "Ревизии"
+    Revisions: Ревизии
 
-    # Missing
     # app/views/admin/users/_form.html.erb
-    "SCM name": 
+    "SCM name": "SCM имя"
 
     # app/helpers/application_helper.rb
-    "Save": "Сохранить"
+    Save: Сохранить
 
     # app/views/admin/setup/_section.html.erb
     # app/views/admin/tasks/index.html.erb
     "Save all": "Сохранить все"
 
-    # Missing
     # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/index.html.erb
-    "Save as Report": 
+    "Save as Report": "Сохранить в виде отчета"
 
-    # Missing
     # app/helpers/application_helper.rb
-    "Saving...": 
+    Saving...: Сохранение....
 
     # app/controllers/search_controller.rb
     # app/core_info.rb
@@ -1050,7 +944,7 @@ ru-RU:
     # app/views/admin/users/index.html.erb
     # app/views/search/index.html.erb
     # app/views/tickets/index.html.erb
-    "Search": "Поиск"
+    Search: Поиск
 
     # app/views/tickets/_navigation.html.erb
     "See last change": "Посмотреть последние изменения"
@@ -1059,52 +953,48 @@ ru-RU:
     "Select filter": "Использовать фильтр"
 
     # app/views/accounts/forgot_password.html.erb
-    "Send": "Отправить"
+    Send: Отправить
 
     # app/controllers/admin/setup_controller.rb
     "Settings were successfully saved.": "Настройки сохранены."
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/setup/index.html.erb
-    "Setup": "Настройки"
+    Setup: Настройки
 
-    # Missing
     # app/controllers/accounts_controller.rb
-    "Shortly you will receive an email with instructions on how to reset your password.": 
+    "Shortly you will receive an email with instructions on how to reset your password.": "На почту отправлено сообщение с инструкциями о сбросе пароля."
 
-    # Missing
     # app/helpers/changesets_helper.rb
-    "Show Quick Diffs": 
+    "Show Quick Diffs": "Отобразить панель разницы"
 
     # app/views/milestones/index.html.erb
     "Show already completed milestones": "Показать законченные этапы"
 
-    # Missing
     # app/helpers/navigation_helper.rb
-    "Show changeset {{revision}}": 
+    "Show changeset {{revision}}": "Показать изменения {{revision}}"
 
     # app/views/browse/_node_info.html.erb
-    "Show latest": "Показать послений"
+    "Show latest": "Показать последний"
 
     # app/views/tickets/index.html.erb
     "Show report": "Показать отчет"
 
     # app/views/browse/index.html.erb
-    "Size": "Размер"
+    Size: Размер
 
     # app/views/admin/tasks/_task.html.erb
-    "Started": "Начато"
+    Started: Начато
 
-    # Missing
     # app/views/milestones/_form.html.erb
-    "Started on": 
+    "Started on": Начато
 
     # app/models/ticket_filter/collection.rb
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    "State": "Состояние"
+    State: Состояние
 
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    "Statement": "Утверждение"
+    Statement: Утверждение
 
     # app/helpers/tickets_helper.rb
     # app/models/status.rb
@@ -1114,11 +1004,10 @@ ru-RU:
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Status": "Статус"
+    Status: Статус
 
-    # Missing
     # app/views/tickets/_navigation.html.erb
-    "Stop watching this ticket": 
+    "Stop watching this ticket": "Отписаться от изменений по тикету"
 
     # app/controllers/admin/repositories_controller.rb
     "Success! Path contains a valid repository (latest revision: {{latest}}).": "Успешно! Путь содержит действительный репозитарий (последняя ревизия: {{latest}})."
@@ -1128,81 +1017,57 @@ ru-RU:
 
     # app/views/tickets/form/_summary_and_description.html.erb
     # app/views/tickets/index.html.erb
-    "Summary": "Краткое описание"
+    Summary: "Краткое описание"
 
-    # Missing
     # app/views/admin/repositories/_form.html.erb
-    "Sync callback": 
+    "Sync callback": "Sync callback"
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Tables": 
+    Tables: Таблицы
 
-    # Missing
     # app/views/admin/tasks/index.html.erb
-    "Task": 
+    Task: Задачи
 
-    # Missing
     # app/controllers/admin/tasks_controller.rb
-    "Task configuration was successfully updated.": 
+    "Task configuration was successfully updated.": "Конфигурация задачи сохранена."
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/tasks/index.html.erb
-    "Tasks": "Задания"
+    Tasks: Задания
 
     # app/helpers/browse_helper.rb
-    "Text": "Текст"
+    Text: Текст
 
-    # Missing
     # app/controllers/accounts_controller.rb
-    "Thank you.": 
+    "Thank you.": Благодарю!
 
-    # Missing
     # app/views/rescue/422.html.erb
-    "The change you wanted was rejected.": 
+    "The change you wanted was rejected.": "Измения отвергнуты"
 
-    # Missing
     # app/views/rescue/404.html.erb
-    "The page you were looking for doesn't exist.": 
+    "The page you were looking for doesn't exist.": "Страница не найдена"
 
-    # Missing
     # app/views/browse/repository_unavailable.html.erb
-    "The repository is currently unavailable, please try it again later.": 
+    "The repository is currently unavailable, please try it again later.": "Репозитарий не доступен. Попробуйте позже."
 
-    # Unknown
-    "There were problems": "Случились какие то проблемы"
-
-    # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
-    "They will be set back to the default value.": 
+    "They will be set back to the default value.": "Возвращены значения по умолчанию."
 
     # app/views/admin/users/edit.html.erb
     "This setting only applies if you enable the 'Activate' checkbox": "Эти настройки примениму только к активированному аккаунта"
 
     # app/views/tickets/show.html.erb
-    "Ticket": "Тикет"
+    Ticket: Тикет
 
-    # Missing
     # app/models/ticket_change.rb
-    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "Тикет #{{id}} ({{status}}) изменил {{author}} - {{summary}}"
 
-    # Missing
     # app/models/ticket.rb
-    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Тикет #{{id}} ({{status}}) создал {{author}} - {{summary}}"
 
-    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "Ticket #{{id}}: '{{summary}}'": 
-
-    # Unknown
-    "Ticket \#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \#{{id}}: '{{summary}}'": 
+    "Ticket #{{id}}: '{{summary}}'": "Тикет #{{id}}: '{{summary}}'"
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Изменения по тикету удалено."
@@ -1226,9 +1091,8 @@ ru-RU:
     # app/controllers/tickets_controller.rb
     "Ticket was successfully created.": "Тикет создан."
 
-    # Missing
     # app/controllers/tickets_controller.rb
-    "Ticket was successfully deleted.": 
+    "Ticket was successfully deleted.": "Тикет удален"
 
     # app/controllers/tickets_controller.rb
     "Ticket was successfully updated.": "Тикет изменен."
@@ -1238,7 +1102,7 @@ ru-RU:
     # app/models/ticket.rb
     # app/views/milestones/_milestone.html.erb
     # app/views/tickets/index.html.erb
-    "Tickets": "Тикеты"
+    Tickets: Тикеты
 
     # app/models/ticket.rb
     "Tickets for {{project}}": "Тикеты для {{project}}"
@@ -1247,26 +1111,21 @@ ru-RU:
     # app/views/admin/users/index.html.erb
     "Time zone": "Часовой пояс"
 
-    # Missing
     # app/views/notifications/account_activation_note.html.erb
-    "To access the login page click this link": 
+    "To access the login page click this link": "Для входа испульзуйте эту ссылку"
 
-    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "To access the ticket click this link": 
+    "To access the ticket click this link": "Эта ссылка для перехода к тикетам"
 
-    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
-    "To access your account, click the link below": 
+    "To access your account, click the link below": "Ссылка для изменения своиего аккаунта"
 
-    # Missing
     # app/views/notifications/account_validation.html.erb
-    "To complete the registration process you need to verify your email address. To make up this process you have two options": 
+    "To complete the registration process you need to verify your email address. To make up this process you have two options": "Для завершения регистрации необходима проверка email"
 
-    # Missing
     # app/helpers/admin/setup_helper.rb
-    "Toggle description for setting '{{name}}'": 
+    "Toggle description for setting '{{name}}'": "Исправить описание для параметра {{name}}"
 
     # Missing
     # app/views/browse/diff.html.erb
@@ -1276,9 +1135,8 @@ ru-RU:
     # app/controllers/browse_controller.rb
     "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": 
 
-    # Missing
     # app/views/tickets/_ticket_info.html.erb
-    "Unassigned": 
+    Unassigned: "Не присвоен"
 
     # app/views/browse/show_file.html.erb
     "Unknown File Type": "Не известный тип файла"
@@ -1290,17 +1148,16 @@ ru-RU:
     # app/views/admin/users/edit.html.erb
     # app/views/milestones/edit.html.erb
     # app/views/tickets/_update_form.html.erb
-    "Update": "Обновить"
+    Update: Обновить
 
     # app/helpers/changesets_helper.rb
-    "Updated": "Обновлен"
+    Updated: Обновлен
 
-    # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
-    "Upload is not permitted": 
+    "Upload is not permitted": "Загрузки не разрешены"
 
     # app/views/admin/users/index.html.erb
-    "User": "Пользователь"
+    User: Пользователь
 
     # app/controllers/admin/users_controller.rb
     "User account was activated.": "Пользовательский аккаунт активирован."
@@ -1332,7 +1189,7 @@ ru-RU:
     # app/views/admin/users/edit.html.erb
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
-    "Username": "Псевдоним"
+    Username: Псевдоним
 
     # app/views/accounts/forgot_password.html.erb
     # app/views/sessions/new.html.erb
@@ -1341,138 +1198,119 @@ ru-RU:
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/users/_header.html.erb
     # app/views/admin/users/index.html.erb
-    "Users": "Пользователи"
+    Users: Пользователи
 
     # app/core_info.rb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_properties/index.html.erb
-    "View": "Подробнее"
+    View: Подробнее
 
-    # Missing
     # app/views/browse/diff.html.erb
-    "View changes": 
+    "View changes": "Посмотреть на изменения"
 
     # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
     "WARNING: There are currently {{count}} tickets assigned with this property.": 
 
-    # Missing
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "Watch": 
+    Watch: Следить
 
-    # Missing
     # app/views/tickets/_navigation.html.erb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "Watch this ticket": 
+    "Watch this ticket": "Следить за изменениями"
 
-    # Missing
     # app/models/ticket_filter/custom/my_tickets.rb
-    "Watched by me": 
+    "Watched by me": "В моей подписке"
 
-    # Missing
     # app/views/rescue/500.html.erb
-    "We're sorry, but something went wrong.": 
+    "We're sorry, but something went wrong.": "Очень жаль, но чтот о не так"
 
     # Missing
     # app/views/rescue/500.html.erb
     "We've been notified about this issue and we'll take a look at it shortly.": 
 
     # app/views/tickets/index.html.erb
-    "Week": "Неделя"
+    Week: Неделя
 
     # lib/time_interval.rb
-    "Weeks": "Недели"
+    Weeks: Недели
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "Yes": "Да"
+    "Yes": Да
 
-    # Missing
     # app/views/sessions/logged_in.html.erb
-    "You are logged in to the system.": 
+    "You are logged in to the system.": "Успешный вход."
 
     # app/controllers/accounts_controller.rb
     "You are not allowed to login until your account has been activated by the administrator.": "Вход в систему не разрешен пока администратор не активирует Ваш аккаунт."
 
-    # Missing
     # app/views/rescue/403.html.erb
-    "You are not permitted to view this page.": 
+    "You are not permitted to view this page.": "Просмотр страницы запрещен."
 
     # app/views/sessions/destroy.html.erb
     "You are now logged out of the system.": "Вы завершили работу с системой."
 
-    # Missing
     # app/controllers/tickets_controller.rb
-    "You are now watching this ticket.": 
+    "You are now watching this ticket.": "Теперь тикет в подписке"
 
-    # Missing
     # app/views/notifications/account_activation_note.html.erb
-    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": 
+    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Аккаунт для {{site}} успешно активирован."
 
-    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
-    "You are receiving this message because you are subscribed to receive notifications about": 
+    "You are receiving this message because you are subscribed to receive notifications about": "Вы подписаны на"
 
     # Missing
     # app/views/notifications/account_validation.html.erb
     "You are receiving this message because you have applied for an user account at {{site}}.": 
 
-    # Missing
     # app/views/notifications/ticket_update_note.html.erb
-    "You are receiving this message because you have subscribed to receive notification about changes of": 
+    "You are receiving this message because you have subscribed to receive notification about changes of": "Вы подписаны на"
 
-    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
-    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": 
+    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "Запрос на сброс пароля {{forgot_password}} для {{site}}"
 
-    # Missing
     # app/helpers/tickets_helper.rb
-    "You are watching this ticket": 
+    "You are watching this ticket": "В подписке"
 
     # app/views/admin/ticket_property_values/index.html.erb
     "You can sort the items by dragging them and dropping them into the right position.": "You can sort the items by dragging them and dropping them into the right position."
 
-    # Missing
     # app/models/user.rb
-    "You cannot delete your own account.": 
+    "You cannot delete your own account.": "Нельзя удалить самого себя."
 
-    # Missing
     # app/views/rescue/404.html.erb
-    "You may have mistyped the address or the page may have moved.": 
+    "You may have mistyped the address or the page may have moved.": "Ошибка в адресе, либо страница перемещена."
 
     # app/controllers/accounts_controller.rb
     "You need to activate your account within the next {{count}} hours to be able to login.": "Вы должны ективировать свой аккаунт в течении следующих {{count}} часов."
 
-    # Missing
     # app/controllers/tickets_controller.rb
-    "You stopped watching this ticket.": 
+    "You stopped watching this ticket.": "Подписка закрыта"
 
-    # Missing
     # app/views/notifications/password_reset_instructions.html.erb
-    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": 
+    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "Переход на страницу личного аккаунта, где можно сменить свой пароль."
 
-    # Missing
     # app/views/admin/projects/_project.html.erb
-    "You will lose all related data as well!": 
+    "You will lose all related data as well!": "Будут потеряны все связанные данные!"
 
-    # Missing
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
-    "Your registration details": 
+    "Your registration details": "Информация о регистрации"
 
     # app/views/search/index.html.erb
     "Your search for '{{term}}' did not match any results.": "Поиск {{term}} не дал результатов."
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "added": "добавлен"
+    added: добавлен
 
     # app/helpers/tickets_helper.rb
     "changed from {{old_value}} to {{new_value}}": "изменен с {{old_value}} на {{new_value}}"
 
     # app/views/milestones/_milestone.html.erb
-    "completed": "завершено"
+    completed: завершено
 
     # app/helpers/changesets_helper.rb
     "copied from {{path}}": "скопирован с {{path}}"
@@ -1481,13 +1319,10 @@ ru-RU:
     "in {{period}}": "за {{period}}"
 
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "max.": "максимум"
+    max.: максимум
 
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "перенесено с {{path}}"
-
-    # Unknown
-    "priority record": 
 
     # app/helpers/tickets_helper.rb
     "reset (from {{value}})": "сброшено (было {{value}})"
@@ -1495,12 +1330,8 @@ ru-RU:
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "установлено в {{value}}"
 
-    # Unknown
-    "status record": 
-
-    # Missing
     # app/views/browse/_node.html.erb
-    "{{count}} file(s)": 
+    "{{count}} file(s)": "файлов: {{count}}"
 
     # app/helpers/format_helper.rb
     "{{period}} ago": "{{period}} назад"

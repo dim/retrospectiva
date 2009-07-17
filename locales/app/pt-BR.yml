@@ -33,7 +33,7 @@ pt-BR:
     "Account validation": "Validação de conta"
 
     # app/views/accounts/activate.html.erb
-    "Activate": "Ativar"
+    Activate: Ativar
 
     # app/views/accounts/activate.html.erb
     "Activate account": "Ativar conta"
@@ -46,24 +46,24 @@ pt-BR:
     # app/views/admin/users/_form.html.erb
     # app/views/admin/users/_user.html.erb
     # app/views/admin/users/index.html.erb
-    "Active": "Ativo"
+    Active: Ativo
 
     # app/helpers/ticket_filter_helper.rb
     "Add filter": "Adicionar filtro"
 
     # app/helpers/changesets_helper.rb
-    "Added": "adicionado"
+    Added: adicionado
 
     # Missing
     # app/helpers/navigation_helper.rb
-    "Admin": 
+    Admin: 
 
     # app/views/admin/shared/_header.html.erb
-    "Administration": "Administração"
+    Administration: Administração
 
     # app/views/admin/users/_form.html.erb
     # app/views/admin/users/_user.html.erb
-    "Administrator": "Administrador"
+    Administrator: Administrador
 
     # app/views/changesets/show.html.erb
     "Affected files": "Arquivos afetados"
@@ -72,7 +72,7 @@ pt-BR:
     # app/models/group.rb
     # app/views/rss/_all.html.erb
     # app/views/rss/_feed.html.erb
-    "All": "Todos"
+    All: Todos
 
     # Missing
     # app/controllers/projects_controller.rb
@@ -136,15 +136,15 @@ pt-BR:
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "Attachment": "Anexo"
+    Attachment: Anexo
 
     # app/views/browse/revisions.html.erb
-    "Author": "Autor"
+    Author: Autor
 
     # Missing
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
-    "Back": 
+    Back: 
 
     # app/views/tickets/_navigation.html.erb
     "Back to ticket list": "Voltar à lista de tickets"
@@ -157,12 +157,12 @@ pt-BR:
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Blocks": 
+    Blocks: 
 
     # app/core_info.rb
     # app/views/browse/diff.html.erb
     # app/views/browse/revisions.html.erb
-    "Browse": "Navegar"
+    Browse: Navegar
 
     # app/controllers/browse_controller.rb
     "Browse Code": "Ver código"
@@ -184,7 +184,7 @@ pt-BR:
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
     # app/views/ticket_reports/_new.html.erb
-    "Cancel": "Cancelar"
+    Cancel: Cancelar
 
     # Missing
     # app/models/user.rb
@@ -193,7 +193,7 @@ pt-BR:
     # Missing
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
-    "Central": 
+    Central: 
 
     # app/views/notifications/ticket_update_note.html.erb
     "Changed by {{author}} - {{time}}": "Modificado por {{author}} - {{time}}"
@@ -202,7 +202,7 @@ pt-BR:
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
     # app/views/changesets/show.html.erb
-    "Changeset": 
+    Changeset: 
 
     # app/helpers/changesets_helper.rb
     "Changeset index": "Índice de Commit"
@@ -214,7 +214,7 @@ pt-BR:
     # app/core_info.rb
     # app/models/changeset.rb
     # app/views/changesets/index.html.erb
-    "Changesets": "Commits"
+    Changesets: Commits
 
     # Missing
     # app/models/changeset.rb
@@ -237,23 +237,23 @@ pt-BR:
 
     # Missing
     # app/views/changesets/_quick_diff.html.erb
-    "Close": 
+    Close: 
 
     # app/helpers/format_helper.rb
     "Close preview": "Fechar pré-visualização"
 
     # app/views/admin/projects/_form.html.erb
-    "Closed": "Fechado"
+    Closed: Fechado
 
     # Unknown
     "Closed tickets": "Tickets fechados"
 
     # Missing
     # app/core_info.rb
-    "Code": 
+    Code: 
 
     # app/views/tickets/_update_form.html.erb
-    "Comment": "Comentário"
+    Comment: Comentário
 
     # Missing
     # app/views/tickets/show.html.erb
@@ -261,7 +261,7 @@ pt-BR:
 
     # Missing
     # app/views/browse/index.html.erb
-    "Commit": 
+    Commit: 
 
     # Missing
     # app/helpers/browse_helper.rb
@@ -272,15 +272,15 @@ pt-BR:
 
     # Missing
     # app/views/admin/users/_core.html.erb
-    "Confirmation": 
+    Confirmation: 
 
     # Missing
     # app/core_info.rb
     # app/views/tickets/form/_update_content.html.erb
-    "Content": 
+    Content: 
 
     # app/helpers/changesets_helper.rb
-    "Copied": "Copiado"
+    Copied: Copiado
 
     # app/core_info.rb
     # app/views/accounts/new.html.erb
@@ -289,7 +289,7 @@ pt-BR:
     # app/views/milestones/new.html.erb
     # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
-    "Create": "Criar"
+    Create: Criar
 
     # Missing
     # app/views/admin/groups/index.html.erb
@@ -335,17 +335,17 @@ pt-BR:
 
     # Missing
     # app/helpers/browse_helper.rb
-    "Current": 
+    Current: 
 
     # Missing
     # app/helpers/navigation_helper.rb
-    "Dashboard": 
+    Dashboard: 
 
     # app/views/browse/revisions.html.erb
-    "Date": "Data"
+    Date: Data
 
     # lib/time_interval.rb
-    "Days": "Dias"
+    Days: Dias
 
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
@@ -355,7 +355,7 @@ pt-BR:
     "Dear user!": "Caro usuário!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
-    "Default": "Padrão"
+    Default: Padrão
 
     # app/models/group.rb
     "Default group cannot be deleted": "Grupo padrão não pode ser removido"
@@ -380,31 +380,31 @@ pt-BR:
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "Delete": "Remover"
+    Delete: Remover
 
     # app/helpers/changesets_helper.rb
-    "Deleted": "Removido"
+    Deleted: Removido
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/tasks/index.html.erb
     # app/views/tickets/form/_summary_and_description.html.erb
-    "Description": "Descrição"
+    Description: Descrição
 
     # Missing
     # app/views/tickets/new.html.erb
-    "Details": 
+    Details: 
 
     # Missing
     # app/views/browse/_revision.html.erb
-    "Diff": 
+    Diff: 
 
     # Missing
     # app/helpers/application_helper.rb
-    "Display": 
+    Display: 
 
     # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
-    "Download": "Baixar"
+    Download: Baixar
 
     # Unknown
     "Download Diff": "Baixar diff"
@@ -427,7 +427,7 @@ pt-BR:
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "Edit": 
+    Edit: 
 
     # Missing
     # app/views/admin/groups/edit.html.erb
@@ -467,7 +467,7 @@ pt-BR:
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
-    "Email": "E-mail"
+    Email: E-mail
 
     # app/views/admin/users/edit.html.erb
     "Email notification": "Notificação por e-mail"
@@ -478,12 +478,12 @@ pt-BR:
 
     # Missing
     # app/views/admin/repositories/_form.html.erb
-    "Examples": 
+    Examples: 
 
     # Missing
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/extensions/index.html.erb
-    "Extensions": 
+    Extensions: 
 
     # app/controllers/admin/repositories_controller.rb
     "Failure! Path does not contain a valid repository.": "Falha! Caminho não contém um repositório válido."
@@ -499,7 +499,7 @@ pt-BR:
 
     # Missing
     # app/helpers/navigation_helper.rb
-    "Feeds": 
+    Feeds: 
 
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "Conteúdo do arquivo não pode ser exibido para arquivos binários."
@@ -516,7 +516,7 @@ pt-BR:
 
     # Missing
     # app/views/admin/tasks/_task.html.erb
-    "Finished": 
+    Finished: 
 
     # app/views/milestones/_form.html.erb
     "Finished on": "Finalizado em"
@@ -528,7 +528,7 @@ pt-BR:
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Formats": 
+    Formats: 
 
     # Missing
     # app/views/admin/users/_core.html.erb
@@ -539,10 +539,10 @@ pt-BR:
     # Missing
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
-    "Global": 
+    Global: 
 
     # app/views/admin/groups/index.html.erb
-    "Group": "Grupo"
+    Group: Grupo
 
     # app/controllers/admin/groups_controller.rb
     "Group could not be deleted. Following error(s) occured": "O grupo não pôde ser removido. O(s) seguinte(s) erro(s) ocorreu(ram)"
@@ -568,11 +568,11 @@ pt-BR:
     # app/views/admin/groups/index.html.erb
     # app/views/admin/users/_groups.html.erb
     # app/views/admin/users/index.html.erb
-    "Groups": "Grupos"
+    Groups: Grupos
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Headers": 
+    Headers: 
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Olá {{user}}!"
@@ -592,14 +592,14 @@ pt-BR:
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/logged_in.html.erb
     # app/views/sessions/new.html.erb
-    "Home": "Início"
+    Home: Início
 
     # lib/time_interval.rb
-    "Hours": "Horas"
+    Hours: Horas
 
     # Missing
     # app/views/tickets/index.html.erb
-    "ID": 
+    ID: 
 
     # app/models/status.rb
     "In progress": "Em andamento"
@@ -607,18 +607,18 @@ pt-BR:
     # Missing
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/users/_user.html.erb
-    "Inactive": 
+    Inactive: 
 
     # Missing
     # app/helpers/application_helper.rb
-    "Info": 
+    Info: 
 
     # Missing
     # app/views/admin/extensions/index.html.erb
-    "Installed": 
+    Installed: 
 
     # app/views/admin/tasks/index.html.erb
-    "Interval": "Intervalo"
+    Interval: Intervalo
 
     # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
@@ -630,7 +630,7 @@ pt-BR:
     # Missing
     # app/views/admin/repositories/_form.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Kind": 
+    Kind: 
 
     # app/views/tickets/index.html.erb
     "Last Update": "Última atualização"
@@ -652,35 +652,35 @@ pt-BR:
     # Missing
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Links": 
+    Links: 
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Lists": 
+    Lists: 
 
     # Missing
     # app/helpers/application_helper.rb
     # app/views/layouts/_header.html.erb
-    "Loading...": 
+    Loading...: 
 
     # app/views/admin/projects/_form.html.erb
-    "Locale": "Localização"
+    Locale: Localização
 
     # app/views/browse/revisions.html.erb
-    "Log": "Log"
+    Log: Log
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
     "Logged in as {{name}}": "Identificado como {{name}}"
 
     # app/views/sessions/destroy.html.erb
-    "Logged out": "Saiu"
+    "Logged out": Saiu
 
     # Missing
     # app/helpers/navigation_helper.rb
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/new.html.erb
-    "Login": 
+    Login: 
 
     # app/controllers/sessions_controller.rb
     "Login was not successful. Invalid username or password.": "Identificação sem sucesso. Nome de usuário ou senha inválidos."
@@ -690,13 +690,13 @@ pt-BR:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logout": "Sair"
+    Logout: Sair
 
     # app/views/admin/groups/_form.html.erb
     "Make all projects available to this group": "Disponibilizar todos os projetos para este grupo"
 
     # app/views/admin/dashboard/index.html.erb
-    "Manage": "Gerenciar"
+    Manage: Gerenciar
 
     # app/helpers/format_helper.rb
     "Markup reference": "Referência de Markup"
@@ -711,7 +711,7 @@ pt-BR:
     # app/models/ticket_filter/collection.rb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Milestone": "Marco"
+    Milestone: Marco
 
     # app/controllers/milestones_controller.rb
     "Milestone was successfully created.": "Marco criado com sucesso."
@@ -728,28 +728,28 @@ pt-BR:
     # app/views/milestones/edit.html.erb
     # app/views/milestones/index.html.erb
     # app/views/milestones/new.html.erb
-    "Milestones": "Marcos"
+    Milestones: Marcos
 
     # Missing
     # app/models/milestone.rb
     "Milestones for {{project}}": 
 
     # lib/time_interval.rb
-    "Minutes": "Minutos"
+    Minutes: Minutos
 
     # Missing
     # app/core_info.rb
-    "Modify": 
+    Modify: 
 
     # Missing
     # app/views/tickets/index.html.erb
-    "Month": 
+    Month: 
 
     # lib/time_interval.rb
-    "Months": "Meses"
+    Months: Meses
 
     # app/helpers/changesets_helper.rb
-    "Moved": "Movido"
+    Moved: Movido
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/show.html.erb
@@ -766,19 +766,19 @@ pt-BR:
     # app/views/milestones/_form.html.erb
     # app/views/ticket_reports/_form.html.erb
     # app/views/tickets/form/_name_and_email.html.erb
-    "Name": "Nome"
+    Name: Nome
 
     # Missing
     # app/models/status.rb
-    "Negative": 
+    Negative: 
 
     # Missing
     # app/models/status.rb
-    "Neutral": 
+    Neutral: 
 
     # Missing
     # app/views/admin/ticket_property_values/new.html.erb
-    "New": 
+    New: 
 
     # app/controllers/tickets_controller.rb
     "New Ticket": "Novo ticket"
@@ -810,14 +810,14 @@ pt-BR:
 
     # Missing
     # app/views/tickets/index.html.erb
-    "None": 
+    None: 
 
     # Missing
     # app/views/admin/extensions/index.html.erb
     "Not Installed": 
 
     # app/views/admin/ticket_property_values/index.html.erb
-    "Note": "Nota"
+    Note: Nota
 
     # app/views/admin/users/edit.html.erb
     "Notify user on account activation": "Notificar o usuário na ativação da conta"
@@ -827,7 +827,7 @@ pt-BR:
     "Only Last": 
 
     # app/models/status.rb
-    "Open": "Aberto"
+    Open: Aberto
 
     # Unknown
     "Open tickets": "Tickets abertos"
@@ -838,22 +838,22 @@ pt-BR:
     # app/views/admin/ticket_property_values/_priority_form.html.erb
     # app/views/admin/users/_form.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
-    "Options": 
+    Options: 
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Paragraphs": 
+    Paragraphs: 
 
     # Missing
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb
-    "Password": 
+    Password: 
 
     # app/models/notifications.rb
     "Password reset": "Redefinição de senha"
 
     # app/views/admin/repositories/_form.html.erb
-    "Path": "Caminho"
+    Path: Caminho
 
     # app/controllers/browse_controller.rb
     "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Caminho '{{path}}' não existe na revisão {{revision}}, mostrando revisão {{latest}}."
@@ -863,7 +863,7 @@ pt-BR:
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
-    "Permissions": "Permissões"
+    Permissions: Permissões
 
     # Missing
     # app/views/admin/repositories/_form.html.erb
@@ -871,11 +871,11 @@ pt-BR:
 
     # Missing
     # app/models/status.rb
-    "Positive": 
+    Positive: 
 
     # Missing
     # app/helpers/format_helper.rb
-    "Preview": 
+    Preview: 
 
     # app/helpers/changesets_helper.rb
     "Previous changeset": "Commit anterior"
@@ -890,10 +890,10 @@ pt-BR:
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Priority": "Prioridade"
+    Priority: Prioridade
 
     # app/views/admin/projects/index.html.erb
-    "Project": "Projeto"
+    Project: Projeto
 
     # Missing
     # app/controllers/admin/projects_controller.rb
@@ -927,11 +927,11 @@ pt-BR:
     # app/views/admin/ticket_property_values/index.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     # app/views/projects/index.html.erb
-    "Projects": "Projetos"
+    Projects: Projetos
 
     # app/views/browse/_node_info.html.erb
     # app/views/tickets/index.html.erb
-    "Properties": "Propriedades"
+    Properties: Propriedades
 
     # Missing
     # app/controllers/admin/ticket_property_values_controller.rb
@@ -962,11 +962,11 @@ pt-BR:
 
     # Missing
     # app/views/rss/index.html.erb
-    "RSS": 
+    RSS: 
 
     # Missing
     # app/helpers/browse_helper.rb
-    "Raw": 
+    Raw: 
 
     # Unknown
     "Really delete this milestone record?": 
@@ -982,16 +982,16 @@ pt-BR:
 
     # Missing
     # app/helpers/format_helper.rb
-    "Reference": 
+    Reference: 
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "References": 
+    References: 
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/new.html.erb
     # app/views/sessions/new.html.erb
-    "Register": "Registrar"
+    Register: Registrar
 
     # app/views/accounts/show.html.erb
     "Remember to update your RSS subscriptions afterwards.": "Lembre-se de atualizar sua inscrições RSS depois."
@@ -1021,16 +1021,16 @@ pt-BR:
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
-    "Reports": "Relatórios"
+    Reports: Relatórios
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/repositories/_header.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Repositories": "Repositórios"
+    Repositories: Repositórios
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/repositories/index.html.erb
-    "Repository": "Repositório"
+    Repository: Repositório
 
     # Missing
     # app/views/browse/repository_unavailable.html.erb
@@ -1049,28 +1049,28 @@ pt-BR:
     "Repository was successfully updated.": "Repositório atualizado com sucesso."
 
     # app/models/status.rb
-    "Resolved": "Resolvido"
+    Resolved: Resolvido
 
     # app/views/admin/dashboard/index.html.erb
     "Retrospectiva administration": "Administração do Retrospectiva"
 
     # app/views/browse/_node_info.html.erb
     # app/views/browse/revisions.html.erb
-    "Revision": "Revisão"
+    Revision: Revisão
 
     # app/controllers/browse_controller.rb
     "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revisão {{revision}} parece não ser válida, mostrando revisão {{latest}}."
 
     # Missing
     # app/helpers/browse_helper.rb
-    "Revisions": 
+    Revisions: 
 
     # Missing
     # app/views/admin/users/_form.html.erb
     "SCM name": 
 
     # app/helpers/application_helper.rb
-    "Save": "Salvar"
+    Save: Salvar
 
     # app/views/admin/setup/_section.html.erb
     # app/views/admin/tasks/index.html.erb
@@ -1083,7 +1083,7 @@ pt-BR:
 
     # Missing
     # app/helpers/application_helper.rb
-    "Saving...": 
+    Saving...: 
 
     # app/controllers/search_controller.rb
     # app/core_info.rb
@@ -1091,7 +1091,7 @@ pt-BR:
     # app/views/admin/users/index.html.erb
     # app/views/search/index.html.erb
     # app/views/tickets/index.html.erb
-    "Search": "Procurar"
+    Search: Procurar
 
     # app/views/tickets/_navigation.html.erb
     "See last change": "Ver última modificação"
@@ -1101,14 +1101,14 @@ pt-BR:
 
     # Missing
     # app/views/accounts/forgot_password.html.erb
-    "Send": 
+    Send: 
 
     # app/controllers/admin/setup_controller.rb
     "Settings were successfully saved.": "Definições salvas com sucesso."
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/setup/index.html.erb
-    "Setup": "Configuração"
+    Setup: Configuração
 
     # Missing
     # app/controllers/accounts_controller.rb
@@ -1132,10 +1132,10 @@ pt-BR:
     "Show report": "Mostrar relatório"
 
     # app/views/browse/index.html.erb
-    "Size": "Tamanho"
+    Size: Tamanho
 
     # app/views/admin/tasks/_task.html.erb
-    "Started": "Iniciado"
+    Started: Iniciado
 
     # Missing
     # app/views/milestones/_form.html.erb
@@ -1143,11 +1143,11 @@ pt-BR:
 
     # app/models/ticket_filter/collection.rb
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    "State": "Estado"
+    State: Estado
 
     # Missing
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    "Statement": 
+    Statement: 
 
     # Missing
     # app/helpers/tickets_helper.rb
@@ -1158,7 +1158,7 @@ pt-BR:
     # app/views/admin/ticket_properties/index.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Status": 
+    Status: 
 
     # Missing
     # app/views/tickets/_navigation.html.erb
@@ -1172,7 +1172,7 @@ pt-BR:
 
     # app/views/tickets/form/_summary_and_description.html.erb
     # app/views/tickets/index.html.erb
-    "Summary": "Sumário"
+    Summary: Sumário
 
     # Missing
     # app/views/admin/repositories/_form.html.erb
@@ -1180,21 +1180,21 @@ pt-BR:
 
     # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    "Tables": 
+    Tables: 
 
     # Missing
     # app/views/admin/tasks/index.html.erb
-    "Task": 
+    Task: 
 
     # app/controllers/admin/tasks_controller.rb
     "Task configuration was successfully updated.": "Configuração da tarefa foi atualizada com sucesso."
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/tasks/index.html.erb
-    "Tasks": "Tarefas"
+    Tasks: Tarefas
 
     # app/helpers/browse_helper.rb
-    "Text": "Texto"
+    Text: Texto
 
     # Missing
     # app/controllers/accounts_controller.rb
@@ -1224,7 +1224,7 @@ pt-BR:
 
     # Missing
     # app/views/tickets/show.html.erb
-    "Ticket": 
+    Ticket: 
 
     # Missing
     # app/models/ticket_change.rb
@@ -1238,15 +1238,6 @@ pt-BR:
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "Ticket #{{id}}: '{{summary}}'": 
-
-    # Unknown
-    "Ticket \#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \#{{id}}: '{{summary}}'": 
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Modificação de ticket removida com sucesso."
@@ -1283,7 +1274,7 @@ pt-BR:
     # app/models/ticket.rb
     # app/views/milestones/_milestone.html.erb
     # app/views/tickets/index.html.erb
-    "Tickets": 
+    Tickets: 
 
     # Missing
     # app/models/ticket.rb
@@ -1321,7 +1312,7 @@ pt-BR:
 
     # Missing
     # app/views/tickets/_ticket_info.html.erb
-    "Unassigned": 
+    Unassigned: 
 
     # app/views/browse/show_file.html.erb
     "Unknown File Type": "Tipo de arquivo desconhecido"
@@ -1333,17 +1324,17 @@ pt-BR:
     # app/views/admin/users/edit.html.erb
     # app/views/milestones/edit.html.erb
     # app/views/tickets/_update_form.html.erb
-    "Update": "Atualizar"
+    Update: Atualizar
 
     # app/helpers/changesets_helper.rb
-    "Updated": "Atualizado"
+    Updated: Atualizado
 
     # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "Upload is not permitted": 
 
     # app/views/admin/users/index.html.erb
-    "User": "Usuário"
+    User: Usuário
 
     # app/controllers/admin/users_controller.rb
     "User account was activated.": "Conta de usuário ativada."
@@ -1374,7 +1365,7 @@ pt-BR:
     # app/views/admin/users/edit.html.erb
     # app/views/notifications/account_activation_note.html.erb
     # app/views/notifications/account_validation.html.erb
-    "Username": "Nome de usuário"
+    Username: "Nome de usuário"
 
     # Missing
     # app/views/accounts/forgot_password.html.erb
@@ -1384,12 +1375,12 @@ pt-BR:
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/users/_header.html.erb
     # app/views/admin/users/index.html.erb
-    "Users": "Usuários"
+    Users: Usuários
 
     # app/core_info.rb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_properties/index.html.erb
-    "View": "Ver"
+    View: Ver
 
     # app/views/browse/diff.html.erb
     "View changes": "Ver modificações"
@@ -1401,7 +1392,7 @@ pt-BR:
     # Missing
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "Watch": 
+    Watch: 
 
     # Missing
     # app/views/tickets/_navigation.html.erb
@@ -1422,10 +1413,10 @@ pt-BR:
 
     # Missing
     # app/views/tickets/index.html.erb
-    "Week": 
+    Week: 
 
     # lib/time_interval.rb
-    "Weeks": "Semanas"
+    Weeks: Semanas
 
     # Unknown
     "Within the last": "Nos últimos"
@@ -1508,13 +1499,13 @@ pt-BR:
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    "added": "adicionado"
+    added: adicionado
 
     # app/helpers/tickets_helper.rb
     "changed from {{old_value}} to {{new_value}}": "alterado de {{old_value}} para {{new_value}}"
 
     # app/views/milestones/_milestone.html.erb
-    "completed": "concluído"
+    completed: concluído
 
     # app/helpers/changesets_helper.rb
     "copied from {{path}}": "copiado de {{path}}"
@@ -1523,7 +1514,7 @@ pt-BR:
     "in {{period}}": "em {{period}}"
 
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
-    "max.": "máx."
+    max.: máx.
 
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "movido de {{path}}"
