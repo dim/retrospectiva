@@ -1228,15 +1228,24 @@ pt-BR:
 
     # Missing
     # app/models/ticket_change.rb
-    "Ticket \#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
 
     # Missing
     # app/models/ticket.rb
-    "Ticket \#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
 
     # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
+    "Ticket #{{id}}: '{{summary}}'": 
+
+    # Unknown
+    "Ticket \#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
+
+    # Unknown
+    "Ticket \#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
+
+    # Unknown
     "Ticket \#{{id}}: '{{summary}}'": 
 
     # app/controllers/tickets_controller.rb

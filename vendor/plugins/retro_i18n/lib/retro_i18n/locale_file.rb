@@ -28,14 +28,14 @@ module RetroI18n
           elsif references.blank?
             file << "    # Unknown\n"
           else
-            file << "    # Missing\n" unless t(string)
+            file << "    # Missing\n" if t(string).blank?
             references.uniq.sort.each do |reference|
               file << "    # #{reference}\n"
             end
           end
-          file << "    #{string.inspect}: #{t(string) ? t(string).inspect : ''}\n\n"
+          file << "    \"#{string}\": #{t(string).blank? ? '' : t(string).inspect}\n\n"
         end
-      end && true    
+      end && true
     end
 
     def translations
@@ -47,6 +47,10 @@ module RetroI18n
     end
     
     protected
+      
+      def quote(string)
+        "\"#{string}\""
+      end
       
       def load_translations
         (YAML.load_file(path)[locale]['application'] || {}) rescue {}
