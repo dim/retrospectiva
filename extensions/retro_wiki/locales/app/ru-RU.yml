@@ -1,8 +1,5 @@
 ru-RU:
   application:
-    # Unknown
-    "Are you really sure?": 
-
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Author: Автор
 
@@ -31,33 +28,28 @@ ru-RU:
     Delete: Удалить
 
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Edit: Редактировать
+    Edit: Исправить
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    File: 
+    File: Файл
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File cannot be deleted.": 
+    "File cannot be deleted.": "Файл нельзя удалить."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully added.": 
+    "File was successfully added.": "Файл успешно добавлен."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully deleted.": 
+    "File was successfully deleted.": "Файл успешно удален."
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Files: Вложения
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Forward in time": 
+    "Forward in time": Вперед
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
@@ -70,17 +62,14 @@ ru-RU:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Name: Имя
 
-    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Nothing changed": 
+    "Nothing changed": "Без изменений"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully created.": 
+    "Page was successfully created.": "Страница создана"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully updated.": 
+    "Page was successfully updated.": "Страница изменена"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
@@ -95,58 +84,50 @@ ru-RU:
     # extensions/retro_wiki/views/wiki/rename.html.erb
     Rename: Переименовать
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Rollback: 
+    Rollback: Откатить
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: Сохранить
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Show current": 
+    "Show current": "Актуальная версия"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Size: Размер
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort alphabetically": 
+    "Sort alphabetically": "В алфавитном порядке"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort by last update": 
+    "Sort by last update": "В порядке изменений"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Title: Заголовок
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Type: 
+    Type: Тип
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "Unable to download file": 
+    "Unable to download file": "Невозможно загрузить файл"
 
     # extensions/retro_wiki/ext_info.rb
-    Update: Обновить
+    Update: Исправить
 
     # extensions/retro_wiki/views/wiki/show.html.erb
     "Updated on {{date}} by {{author}}": "Последнее обновление от {{date}}, корректор {{author}}"
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Upload: 
+    Upload: Загрузить
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    Version: 
+    Version: Версия
 
     # extensions/retro_wiki/ext_info.rb
-    View: Подробнее
+    View: Просмотр
 
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/models/wiki_page.rb
@@ -156,13 +137,11 @@ ru-RU:
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Wiki: Wiki
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Files": 
+    "Wiki Files": "Загрузки на Wiki"
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Pages": 
+    "Wiki Pages": "Страницы Wiki"
 
     # Unknown
     "Wiki Pages for {{project}}": 
@@ -170,9 +149,8 @@ ru-RU:
     # extensions/retro_wiki/models/wiki_page.rb
     "Wiki for {{project}}": "Wiki проекта {{project}}"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    updated: 
+    updated: изменено
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     "{{count}} more": "еще {{count}}"

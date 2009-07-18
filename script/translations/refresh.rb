@@ -35,17 +35,17 @@ end
 Dir[RAILS_ROOT + '/extensions/*/locales/app/'].each do |locales_path|
   extension_path = locales_path.gsub(/\/locales\/.*$/, '')
 
-  # Parse all translations from the extensions/extension_name directory 
-  patterns = RetroI18n::Parser.new(extension_path + '/**/*.{rb,erb,rjs}').patterns
-
   RetroI18n.locales.map(&:code).each do |locale|
     next if locale == 'en-US'
     
     file_path = "#{locales_path}/#{locale}.yml"  
         
+    # Parse all translations from the extensions/extension_name directory 
+    patterns = RetroI18n::Parser.new(extension_path + '/**/*.{rb,erb,rjs}').patterns
+
     # Load and update all existing Extension translations  
     target   = RetroI18n::LocaleFile.new(file_path)  
-    target.update(patterns.dup)
+    target.update(patterns)
     
     # Load all existing Core translations  
     source_path = file_path.gsub(/\/extensions\/.+?\//, '/')

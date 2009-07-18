@@ -1,6 +1,6 @@
 pt-BR:
   application:
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Author: Autor
 
     # Missing
@@ -32,6 +32,7 @@ pt-BR:
     Categories: 
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Comment: Comentário
 
     # Missing
@@ -51,6 +52,7 @@ pt-BR:
     Content: 
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     Create: Criar
 
@@ -69,10 +71,11 @@ pt-BR:
     # extensions/retro_blog/views/blog/show.html.erb
     Edit: 
 
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Email: E-mail
 
     # Missing
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": 
 

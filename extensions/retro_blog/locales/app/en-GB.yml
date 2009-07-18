@@ -1,6 +1,6 @@
 en-GB:
   application:
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Author: Author
 
     # extensions/retro_blog/lib/blog_controller.rb
@@ -26,6 +26,7 @@ en-GB:
     Categories: Categories
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Comment: Comment
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
@@ -41,6 +42,7 @@ en-GB:
     Content: Content
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     Create: Create
 
@@ -57,9 +59,10 @@ en-GB:
     # extensions/retro_blog/views/blog/show.html.erb
     Edit: Edit
 
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Email: Email
 
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": "Leave a comment"
 
@@ -80,12 +83,6 @@ en-GB:
 
     # extensions/retro_blog/views/blog/_post.html.erb
     "Read more": "Read more"
-
-    # Unknown
-    "Really delete this comment?": "Really delete this comment?"
-
-    # Unknown
-    "Really delete this post?": "Really delete this post?"
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb

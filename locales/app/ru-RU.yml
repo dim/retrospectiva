@@ -226,7 +226,7 @@ ru-RU:
     Code: Код
 
     # app/views/tickets/_update_form.html.erb
-    Comment: Комментарий
+    Comment: Комментировать
 
     # app/views/tickets/show.html.erb
     "Comments and Changes": "Комментарии и дополнения"
@@ -257,7 +257,7 @@ ru-RU:
     # app/views/milestones/new.html.erb
     # app/views/ticket_reports/_new.html.erb
     # app/views/tickets/new.html.erb
-    Create: Создать
+    Create: Создавать
 
     # app/views/admin/groups/index.html.erb
     # app/views/admin/groups/new.html.erb
@@ -333,7 +333,7 @@ ru-RU:
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_report.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    Delete: Удалить
+    Delete: Удаление
 
     # app/helpers/changesets_helper.rb
     Deleted: Удален
@@ -350,7 +350,7 @@ ru-RU:
     Diff: Разница
 
     # app/helpers/application_helper.rb
-    Display: Отображать
+    Display: Показать
 
     # app/helpers/changesets_helper.rb
     # app/views/browse/diff.html.erb
@@ -373,7 +373,7 @@ ru-RU:
     # app/views/admin/users/_user.html.erb
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
-    Edit: Редактировать
+    Edit: Изменение
 
     # app/views/admin/groups/edit.html.erb
     "Edit group": "Редактирование группы"
@@ -493,9 +493,8 @@ ru-RU:
     # app/views/admin/users/index.html.erb
     Groups: Группы
 
-    # Missing
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
-    Headers: 
+    Headers: Заголовки
 
     # app/views/sessions/logged_in.html.erb
     "Hi {{user}}!": "Привет {{user}}!"
@@ -1148,7 +1147,7 @@ ru-RU:
     # app/views/admin/users/edit.html.erb
     # app/views/milestones/edit.html.erb
     # app/views/tickets/_update_form.html.erb
-    Update: Обновить
+    Update: Обновлять
 
     # app/helpers/changesets_helper.rb
     Updated: Обновлен
@@ -1203,7 +1202,7 @@ ru-RU:
     # app/core_info.rb
     # app/views/admin/ticket_properties/_ticket_property.html.erb
     # app/views/admin/ticket_properties/index.html.erb
-    View: Подробнее
+    View: Просматривать
 
     # app/views/browse/diff.html.erb
     "View changes": "Посмотреть на изменения"

@@ -1,6 +1,6 @@
 ja-JP:
   application:
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Author: 作者
 
     # Missing
@@ -32,6 +32,7 @@ ja-JP:
     Categories: 
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Comment: コメント
 
     # Missing
@@ -51,6 +52,7 @@ ja-JP:
     Content: 
 
     # extensions/retro_blog/ext_info.rb
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     Create: 作成
 
@@ -69,10 +71,11 @@ ja-JP:
     # extensions/retro_blog/views/blog/show.html.erb
     Edit: 
 
-    # Unknown
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     Email: Eメール
 
     # Missing
+    # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": 
 
