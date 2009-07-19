@@ -42,6 +42,10 @@ module Retrospectiva
       def ready?
         active? and not running? 
       end
+      
+      def stale?
+        running? and started_at < 10.minutes.ago
+      end
 
       # Is the task due to run?
       def due?

@@ -5,13 +5,13 @@ describe Admin::TasksController do
 
   before do
     permit_access!
-    @task = mock('Task1')
+    @task = mock_model(Retrospectiva::TaskManager::Task)
     @tasks = [@task]
     @parser = mock(Retrospectiva::TaskManager::Parser, :tasks => @tasks)
     Retrospectiva::TaskManager::Parser.stub!(:new).and_return(@parser)
   end
 
-  describe "handling GET /admin/tasks" do
+  describe "GET index" do
     def do_get
       get :index      
     end
@@ -32,7 +32,7 @@ describe Admin::TasksController do
   end
 
 
-  describe "handling PUT /admin/tasks/save" do
+  describe "PUT save" do
 
     before do
       Retrospectiva::TaskManager::Task.stub!(:update_or_create).and_return @task
@@ -56,6 +56,41 @@ describe Admin::TasksController do
       do_put
       response.should be_redirect
       response.should redirect_to(admin_tasks_path)
+    end
+    
+  end
+
+  describe "PUT update (reset)" do
+
+    def now
+      @now ||= Time.zone.now 
+    end
+
+    before do
+      @task.stub!(:stale?).and_return(false)
+      @task.stub!(:started_at).and_return(now)
+      Retrospectiva::TaskManager::Task.stub!(:find).and_return @task
+    end
+
+    def do_put
+      put :update, :id => '37'
+    end
+
+    it "should assign the task" do
+      Retrospectiva::TaskManager::Task.should_receive(:find).with('37').and_return @task
+      do_put
+      assigns[:task].should == @task
+    end
+          
+    it "should redirect to task overview" do
+      do_put
+      response.should redirect_to(admin_tasks_path)
+    end
+
+    it "should reset task if stale" do
+      @task.should_receive(:stale?).and_return(true)
+      @task.should_receive(:update_attribute).with(:finished_at, now)
+      do_put
     end
     
   end

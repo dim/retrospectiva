@@ -11,4 +11,5 @@
     <% end -%>
   </td>
   <td><%= select_interval(task) %></td>
+  <td class="actions right">&nbsp;<%= link_to _('Reset'), admin_task_path(task), :method => :put if task.stale? %></td>
 </tr>

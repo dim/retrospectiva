@@ -26,4 +26,13 @@ class Admin::TasksController < AdminAreaController
     end     
   end  
 
+  def update
+    @task = Retrospectiva::TaskManager::Task.find(params[:id])
+    @task.update_attribute(:finished_at, @task.started_at) if @task.stale?
+    respond_to do |format|
+      format.html { redirect_to admin_tasks_path }
+      format.xml { head :ok }
+    end    
+  end
+
 end
