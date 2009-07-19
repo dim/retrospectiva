@@ -1,0 +1,27 @@
+es-AR:
+  activerecord:
+    errors:
+      messages:
+        cannot_be_selected: no puede ser seleccionado
+        cannot_be_disabled: no puede ser deshabilitado  
+        must_be_specified: debe ser especificado
+      models:
+        project:
+          attributes:
+            name:
+              invalid: debe comenzar con un caracter en latin
+              overlap: se superpone con un proyecto existente
+        ticket_change:
+          attributes:
+            content:
+              blank: no puede ser vacio si un archivo adjunto es enviado
+        user:
+          attributes:
+            admin:
+              not_for_public: debe estar deshabilitado. Public no puede tener permisos de administrador
+              last_available: debe estar habilitado. User es el último administrador disponible
+              invalid_downgrade: debe estar habilitado. No puede rebajar su propia cuenta
+            active:
+              must_be_active: debe estar activo. Public debe ser activo
+              own_account_must_be_active: debe estar activo. No puede desactivar su propia cuenta
+              

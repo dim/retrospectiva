@@ -26,8 +26,9 @@ RetroI18n.define do |l|
   l.store 'en-US',     'English (US)', 0 
   l.store 'en-GB',     'English (GB)', 1
   l.store 'fr-FR',     'Français', 0
-  l.store 'fi-FI',     'Suomi', 0
+  l.store 'fi-FI',     'Suomi', 0  
   l.store 'es-ES',     'Español', 0
+  l.store 'es-AR',     'Español (de Argentina)', 0
   l.store 'it-IT',     'Italiano', 0
   l.store 'ja-JP',     '日本語 (Japanese)', 0
   l.store 'nl-NL',     'Nederlands', 0
