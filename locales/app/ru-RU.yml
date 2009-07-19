@@ -904,6 +904,10 @@ ru-RU:
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": "Репозитарий изменен."
 
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    Reset: Восстановить
+
     # app/models/status.rb
     Resolved: Закрыт
 
@@ -915,7 +919,7 @@ ru-RU:
     Revision: Ревизия
 
     # app/controllers/browse_controller.rb
-    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revision {{revision}} seems not to be valid, showing revision {{latest}}."
+    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": 
 
     # app/helpers/browse_helper.rb
     Revisions: Ревизии

@@ -903,6 +903,9 @@ de-DE:
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": "Repository wurde erfolgreich aktualisiert."
 
+    # app/views/admin/tasks/_task.html.erb
+    Reset: Zurücksetzen
+
     # app/models/status.rb
     Resolved: Gelöst
 

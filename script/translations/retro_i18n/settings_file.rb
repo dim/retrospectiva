@@ -3,15 +3,19 @@ module RetroI18n
 
     class SettingsHash < ActiveSupport::OrderedHash
     
-      def to_yaml( opts = {} )
-        fake = Hash.new
-        YAML::quick_emit( fake.object_id, opts ) do |out|          
-          out.map( fake.taguri, fake.to_yaml_style ) do |map|
-            each do |k, v|
-              map.add( k, v )
-            end
+      def ya2yaml( emitter, level = 1 )
+        prefix = " " * (2 * (level - 1))
+        map do |key, value|        
+          text = case value
+          when SettingsHash
+            value.ya2yaml( emitter, level + 1 )
+          when String
+            emitter.emit_string(value.strip, level)
+          else
+            nil
           end
-        end
+          "\n#{prefix}#{emitter.emit_string(key, level)}: #{text}"
+        end.join
       end 
       
     end
@@ -35,13 +39,16 @@ module RetroI18n
     end      
 
     def save
-      hash = { locale => { 'settings' => updated_translations } }
+      yaml    = Ya2YAML.new :syck_compatible => true
+      content = updated_translations.ya2yaml(yaml, 3)
+      
       File.open(path, 'w+') do |file|
-        file << hash.to_yaml.gsub(/\A[-]+ *\n/m, '')
+        file << "#{locale}:\n  settings:"
+        file << content 
       end
     end
     alias_method :update, :save
-    
+
     protected
       
       def merge_unit!(result, unit)        

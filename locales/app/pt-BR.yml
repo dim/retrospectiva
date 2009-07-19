@@ -101,9 +101,6 @@ pt-BR:
     # app/models/status.rb
     "All open": "Todos em aberto"
 
-    # Unknown
-    "All open tickets": "Todos os tickets em aberto"
-
     # app/models/status.rb
     "All resolved": "Todos os resolvidos"
 
@@ -245,9 +242,6 @@ pt-BR:
     # app/views/admin/projects/_form.html.erb
     Closed: Fechado
 
-    # Unknown
-    "Closed tickets": "Tickets fechados"
-
     # Missing
     # app/core_info.rb
     Code: 
@@ -310,9 +304,6 @@ pt-BR:
     # app/views/admin/ticket_property_values/index.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": 
-
-    # Unknown
-    "Create a new report": "Criar um novo relatório"
 
     # Missing
     # app/views/admin/repositories/index.html.erb
@@ -406,9 +397,6 @@ pt-BR:
     # app/views/browse/diff.html.erb
     Download: Baixar
 
-    # Unknown
-    "Download Diff": "Baixar diff"
-
     # app/views/browse/_show_header.html.erb
     "Download in other formats": "Baixar em outros formatos"
 
@@ -444,9 +432,6 @@ pt-BR:
     # Missing
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": 
-
-    # Unknown
-    "Edit report": 
 
     # Missing
     # app/views/admin/repositories/edit.html.erb
@@ -507,9 +492,6 @@ pt-BR:
     # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": 
-
-    # Unknown
-    "Filter options": "Opções de filtro"
 
     # app/views/tickets/index.html.erb
     "Filter tickets": "Filtrar tickets"
@@ -638,9 +620,6 @@ pt-BR:
     # Missing
     # app/views/browse/index.html.erb
     "Last modified": 
-
-    # Unknown
-    "Last run": "Última execução"
 
     # app/views/admin/users/_core.html.erb
     "Leave password field blank, unless you actually want to change your password.": "Deixe o campo de senha em branco, a menos que você realmente vá alterar sua senha."
@@ -829,9 +808,6 @@ pt-BR:
     # app/models/status.rb
     Open: Aberto
 
-    # Unknown
-    "Open tickets": "Tickets abertos"
-
     # Missing
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
@@ -968,18 +944,6 @@ pt-BR:
     # app/helpers/browse_helper.rb
     Raw: 
 
-    # Unknown
-    "Really delete this milestone record?": 
-
-    # Unknown
-    "Really delete this {{record}}?": "Realmente remover este {{record}}?"
-
-    # Unknown
-    "Really delete ticket change?": "Realmente remover modificação de ticket?"
-
-    # Unknown
-    "Really delete ticket?": 
-
     # Missing
     # app/helpers/format_helper.rb
     Reference: 
@@ -1008,9 +972,6 @@ pt-BR:
 
     # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "Relatório removido com sucesso."
-
-    # Unknown
-    "Report was successfully updated.": "Relatório atualizado com sucesso."
 
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Relatado por mim"
@@ -1047,6 +1008,10 @@ pt-BR:
 
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": "Repositório atualizado com sucesso."
+
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    Reset: 
 
     # app/models/status.rb
     Resolved: Resolvido
@@ -1211,9 +1176,6 @@ pt-BR:
     # Missing
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": 
-
-    # Unknown
-    "There were problems": "Houve problemas"
 
     # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
@@ -1418,9 +1380,6 @@ pt-BR:
     # lib/time_interval.rb
     Weeks: Semanas
 
-    # Unknown
-    "Within the last": "Nos últimos"
-
     # Missing
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
@@ -1519,17 +1478,11 @@ pt-BR:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "movido de {{path}}"
 
-    # Unknown
-    "priority record": 
-
     # app/helpers/tickets_helper.rb
     "reset (from {{value}})": "redefinido (de {{value}})"
 
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "definido para {{value}}"
-
-    # Unknown
-    "status record": 
 
     # Missing
     # app/views/browse/_node.html.erb

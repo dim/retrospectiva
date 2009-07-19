@@ -274,9 +274,6 @@ en-GB:
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": "Create a new property value"
 
-    # Unknown
-    "Create a new report": "Create a new report"
-
     # app/views/admin/repositories/index.html.erb
     # app/views/admin/repositories/new.html.erb
     "Create a new repository": "Create a new repository"
@@ -389,9 +386,6 @@ en-GB:
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": "Edit property value"
 
-    # Unknown
-    "Edit report": "Edit report"
-
     # app/views/admin/repositories/edit.html.erb
     "Edit repository": "Edit repository"
 
@@ -443,9 +437,6 @@ en-GB:
 
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": "File size exceeds the maximum limit"
-
-    # Unknown
-    "Filter options": "Filter options"
 
     # app/views/tickets/index.html.erb
     "Filter tickets": "Filter tickets"
@@ -851,18 +842,6 @@ en-GB:
     # app/helpers/browse_helper.rb
     Raw: Raw
 
-    # Unknown
-    "Really delete this milestone record?": "Really delete this milestone record?"
-
-    # Unknown
-    "Really delete this {{record}}?": "Really delete this {{record}}?"
-
-    # Unknown
-    "Really delete ticket change?": "Really delete ticket change?"
-
-    # Unknown
-    "Really delete ticket?": "Really delete ticket?"
-
     # app/helpers/format_helper.rb
     Reference: Reference
 
@@ -888,9 +867,6 @@ en-GB:
 
     # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": "Report was successfully deleted."
-
-    # Unknown
-    "Report was successfully updated.": "Report was successfully updated."
 
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Reported by me"
@@ -926,6 +902,9 @@ en-GB:
 
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": "Repository was successfully updated."
+
+    # app/views/admin/tasks/_task.html.erb
+    Reset: Reset
 
     # app/models/status.rb
     Resolved: Resolved
@@ -1081,27 +1060,15 @@ en-GB:
     # app/views/tickets/show.html.erb
     Ticket: Ticket
 
-    # Missing
     # app/models/ticket_change.rb
-    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}"
 
-    # Missing
     # app/models/ticket.rb
-    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
+    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}"
 
-    # Missing
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
-    "Ticket #{{id}}: '{{summary}}'": 
-
-    # Unknown
-    "Ticket \\#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \\#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \\#{{id}}: '{{summary}}'": 
+    "Ticket #{{id}}: '{{summary}}'": "Ticket #{{id}}: '{{summary}}'"
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Ticket change was successfully deleted."
@@ -1265,9 +1232,6 @@ en-GB:
     # lib/time_interval.rb
     Weeks: Weeks
 
-    # Unknown
-    "Within the last": "Within the last"
-
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
     "Yes": "Yes"
@@ -1355,17 +1319,11 @@ en-GB:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "moved from {{path}}"
 
-    # Unknown
-    "priority record": "priority record"
-
     # app/helpers/tickets_helper.rb
     "reset (from {{value}})": "reset (from {{value}})"
 
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "set to {{value}}"
-
-    # Unknown
-    "status record": "status record"
 
     # app/views/browse/_node.html.erb
     "{{count}} file(s)": "{{count}} file(s)"

@@ -101,9 +101,6 @@ ja-JP:
     # app/models/status.rb
     "All open": 未解決のものすべて
 
-    # Unknown
-    "All open tickets": 未解決のチケットすべて
-
     # app/models/status.rb
     "All resolved": 解決済みのものすべて
 
@@ -245,9 +242,6 @@ ja-JP:
     # app/views/admin/projects/_form.html.erb
     Closed: 閉鎖
 
-    # Unknown
-    "Closed tickets": 解決済みチケット数
-
     # Missing
     # app/core_info.rb
     Code: 
@@ -306,9 +300,6 @@ ja-JP:
     # app/views/admin/ticket_property_values/index.html.erb
     # app/views/admin/ticket_property_values/new.html.erb
     "Create a new property value": 新しいプロパティ値の作成
-
-    # Unknown
-    "Create a new report": 新しいレポートの作成
 
     # app/views/admin/repositories/index.html.erb
     # app/views/admin/repositories/new.html.erb
@@ -399,9 +390,6 @@ ja-JP:
     # app/views/browse/diff.html.erb
     Download: ダウンロード
 
-    # Unknown
-    "Download Diff": 差分をダウンロード
-
     # app/views/browse/_show_header.html.erb
     "Download in other formats": 別の形式でダウンロード
 
@@ -433,9 +421,6 @@ ja-JP:
 
     # app/views/admin/ticket_property_values/edit.html.erb
     "Edit property value": プロパティ値を編集
-
-    # Unknown
-    "Edit report": レポートの編集
 
     # app/views/admin/repositories/edit.html.erb
     "Edit repository": リポジトリの編集
@@ -493,9 +478,6 @@ ja-JP:
     # Missing
     # vendor/plugins/has_attachment/lib/attachment.rb
     "File size exceeds the maximum limit": 
-
-    # Unknown
-    "Filter options": 抽出オプション一覧
 
     # app/views/tickets/index.html.erb
     "Filter tickets": チケットを抽出
@@ -623,9 +605,6 @@ ja-JP:
     # Missing
     # app/views/browse/index.html.erb
     "Last modified": 
-
-    # Unknown
-    "Last run": 最終実行時刻
 
     # app/views/admin/users/_core.html.erb
     "Leave password field blank, unless you actually want to change your password.": パスワードを変更しない場合は何も入力しないでください。
@@ -813,9 +792,6 @@ ja-JP:
     # app/models/status.rb
     Open: 未解決
 
-    # Unknown
-    "Open tickets": 未解決チケット数
-
     # Missing
     # app/views/accounts/show.html.erb
     # app/views/admin/projects/_form.html.erb
@@ -947,18 +923,6 @@ ja-JP:
     # app/helpers/browse_helper.rb
     Raw: そのまま
 
-    # Unknown
-    "Really delete this milestone record?": 
-
-    # Unknown
-    "Really delete this {{record}}?": "本当にこの{{record}}を削除しますか？"
-
-    # Unknown
-    "Really delete ticket change?": 本当にチケットの変更を削除しますか？
-
-    # Unknown
-    "Really delete ticket?": 
-
     # Missing
     # app/helpers/format_helper.rb
     Reference: 
@@ -987,9 +951,6 @@ ja-JP:
 
     # app/controllers/ticket_reports_controller.rb
     "Report was successfully deleted.": レポートの削除に成功しました。
-
-    # Unknown
-    "Report was successfully updated.": レポートの更新に成功しました。
 
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": 自分の報告
@@ -1026,6 +987,10 @@ ja-JP:
 
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": リポジトリの更新に成功しました。
+
+    # Missing
+    # app/views/admin/tasks/_task.html.erb
+    Reset: 
 
     # app/models/status.rb
     Resolved: 解決済み
@@ -1190,9 +1155,6 @@ ja-JP:
     # app/views/browse/repository_unavailable.html.erb
     "The repository is currently unavailable, please try it again later.": 
 
-    # Unknown
-    "There were problems": 問題があります
-
     # Missing
     # app/helpers/admin/ticket_property_values_helper.rb
     "They will be set back to the default value.": 
@@ -1216,15 +1178,6 @@ ja-JP:
     # app/views/notifications/ticket_creation_note.html.erb
     # app/views/notifications/ticket_update_note.html.erb
     "Ticket #{{id}}: '{{summary}}'": 
-
-    # Unknown
-    "Ticket \\#{{id}} ({{status}}) changed by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \\#{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
-
-    # Unknown
-    "Ticket \\#{{id}}: '{{summary}}'": 
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": チケットの変更の削除に成功しました。
@@ -1406,9 +1359,6 @@ ja-JP:
     # lib/time_interval.rb
     Weeks: 週間
 
-    # Unknown
-    "Within the last": 最近〜以内
-
     # Missing
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
@@ -1510,17 +1460,11 @@ ja-JP:
     # app/helpers/changesets_helper.rb
     "moved from {{path}}": "{{path}}から移動"
 
-    # Unknown
-    "priority record": 優先度
-
     # app/helpers/tickets_helper.rb
     "reset (from {{value}})": "解除（以前は{{value}}）"
 
     # app/helpers/tickets_helper.rb
     "set to {{value}}": "{{value}}に設定"
-
-    # Unknown
-    "status record": 状態
 
     # Missing
     # app/views/browse/_node.html.erb

@@ -1,115 +1,104 @@
-es-AR: 
-  settings: 
+es-AR:
+  settings:
     general: 
       label: General
       groups: 
         basic: 
-          label: Basic settings
+          label: "Basic settings"
           settings: 
             site_name: 
-              label: Website name
-              description: |
+              label: "Website name"
+              description: |-
                 Por favor configurar un nombre para su sitio web (e.g. 'Mi Proyecto').
                 This name will be displayed to users on the page and in emails.
-
             site_url: 
-              label: Website URL
-              description: |
+              label: "Website URL"
+              description: |-
                 Por favor ingrese la URL de su web site (e.g. 'http://retro.miproyecto.com').
                 Esta URL va a ser usada en los emails de notificación.
-
             session_key: 
-              label: Session key
-              description: |
+              label: "Session key"
+              description: |-
                 Por favor ingrese una clave única de sesión para su sítio web (e.g. '_mipagina_session').
                 Permite diferenciar entre sesiones de instalación de Retrospectiva.
                 La clave de sesión debe consistir solamente de caracteres alfanuméricos y guiones bajos.
-
             locale: 
-              label: Global locale
-              description: Especificar el lugar de su sitio aqui.
+              label: "Global locale"
+              description: "Especificar el lugar de su sitio aqui."
             session_expiration: 
-              label: Expiration of sessions (minutes)
-              description: |
-                Despues de cuantos minutos de estar no-activo deberia expirar la sesión de visita? [1-43200]
-
+              label: "Expiration of sessions (minutes)"
+              description: "Despues de cuantos minutos de estar no-activo deberia expirar la sesión de visita? [1-43200]"
         attachments: 
           label: Attachments
           settings: 
             max_size: 
-              label: Maximal attachment size (kB)
+              label: "Maximal attachment size (kB)"
         user_management: 
-          label: User management
+          label: "User management"
           settings: 
             secure_auth: 
-              label: Use secure authentication
-              description: El mecanismo de autentificación segura, encripta el password del lado del cliente antes de ser transmitted.
+              label: "Use secure authentication"
+              description: "El mecanismo de autentificación segura, encripta el password del lado del cliente antes de ser transmitted."
             account_management: 
-              label: Allow unprivileged users to manage their accounts
-              description: Debería permitirse a los usuarios no-administradores cambiar su propia configuración de cuenta (no critica), (e.g. 'contraseña').
+              label: "Allow unprivileged users to manage their accounts"
+              description: "Debería permitirse a los usuarios no-administradores cambiar su propia configuración de cuenta (no critica), (e.g. 'contraseña')."
             self_registration: 
-              label: Allow self-registration
-              description: Debería estar permitido a los usuarios registrarse al sistema.
+              label: "Allow self-registration"
+              description: "Debería estar permitido a los usuarios registrarse al sistema."
             assign_to_groups: 
-              label: Automatically assign new users to the following groups (IDs, comma-separated)
-              description: |
+              label: "Automatically assign new users to the following groups (IDs, comma-separated)"
+              description: |-
                 Esta configuración sólo es aplicable si 'self-registration' está activo. Valores invalidos van a ser ignorados.
                 Si desea especificar grupos adicionales (cada usuario es miembro de 'Default'), los usuarios nuevos deberian ser automaticamente asignados a, por favor llene  aquí la lista de IDs de usuarios separado por comas .
-
             activation: 
-              label: Activate user accounts
-              description: |
+              label: "Activate user accounts"
+              description: |-
                 This setting only applies if 'self-registration' is enabled.
                 Options:
                   - auto: Las cuentas de usuario son activadas automaticamente en la registración
                   - email: Las nuevas cuentas de usuario necesitan ser activadas entrando el código de activación enviado por email
                   - admin: Las nuevas cuentas de usuario están deshabilitadas por defecto (necesitan ser activadas manaualmente por el administrador)
-
             expiration: 
-              label: Expiration of non-activated user accounts (hours)
-              description: |
+              label: "Expiration of non-activated user accounts (hours)"
+              description: |-
                 Esta configuración sólo es aplicable si 'self-registration' está activo y la activación de cuenta está configurada como 'email'
                 Después de cuantas horas deben las cuentas de usuario no-activadas deben ser borradas de nuevo? [1-43200]
-
     email: 
-      label: Email settings
+      label: "Email settings"
       groups: 
         general: 
           label: General
           settings: 
             from: 
-              label: From address
-              description: |
+              label: "From address"
+              description: |-
                 Defina el formulario: encabezado de mails salientes aquí. Usar o una dirección simple de email (e.g. 'dontreply@miproyecto.com') o un título de dirección (e.g. 'noficador de MiProyecto <dontreply@miproyecto>') 
                 Por favor utilice una dirección con FQDN, debido a que varios servidores de mail rechazan nombres de dominios no calificados en From: header.
-
         smtp: 
-          label: SMTP server
+          label: "SMTP server"
           settings: 
             address: 
               label: Address
-              description: Le permite usar un servidor de mail remoto.
+              description: "Le permite usar un servidor de mail remoto."
             port: 
               label: Port
-              description: En la escasa chance de que se servidor d emil no corra en el puerto 25, puede cambiarlo.
+              description: "En la escasa chance de que se servidor d emil no corra en el puerto 25, puede cambiarlo."
             domain: 
               label: Domain
-              description: Si necesita especificar un dominio HELO, puede hacerlo aquí.
+              description: "Si necesita especificar un dominio HELO, puede hacerlo aquí."
             authentication: 
               label: Authentication
-              description: Si su servidor de mail requiere autentificación, necesita especificar el tipo de autentificación aquí.
+              description: "Si su servidor de mail requiere autentificación, necesita especificar el tipo de autentificación aquí."
             user_name: 
               label: Username
-              description: |
+              description: |-
                 Si su servidor de mail requiere autentificación, coloque el nombre de usuario en esta configuración.
                 Si deja este espacio en blanco, la autentificación no va a hacerse.
-
             password: 
               label: Password
-              description: |
+              description: |-
                 Si su servidor de mail requiere autentificación, configure la contraseña en esta configuración.
                 Si deja este espacio en blanco, ningún tipo de autentificación va a ser hecho.
-
     content: 
       label: Content
       groups: 
@@ -117,41 +106,36 @@ es-AR:
           label: Format
           settings: 
             datetime: 
-              label: Date & time
-              description: Por favor ingrese el formato de salida de la hora y fecha.
+              label: "Date & time"
+              description: "Por favor ingrese el formato de salida de la hora y fecha."
             date: 
-              label: Date only
-              description: Por favor ingrese el formato de salido de las fechas
+              label: "Date only"
+              description: "Por favor ingrese el formato de salido de las fechas"
             time: 
-              label: Time only
-              description: Por favor configure de salida de la hora
+              label: "Time only"
+              description: "Por favor configure de salida de la hora"
             changeset_logs: 
-              label: Changeset logs
-              description: Should commit comments be displayed wikified?
+              label: "Changeset logs"
+              description: "Should commit comments be displayed wikified?"
         markup: 
           label: Markup
           settings: 
             default: 
-              label: Default language
+              label: "Default language"
             global_ticket_refs: 
-              label: Global ticket references
-              description: |
+              label: "Global ticket references"
+              description: |-
                 Esta configuración solo se aplica si esta trabajando con multiples proyectos.
                 Por defecto, las referencias de los tickets en contenido marcado (e.g. [#4711]) son automáticamente convertidos a vínculos solo si la referencia a los tickets pertenece al proyecto seleccionado. Por favor seleccione esta opción si desea hacer tickets vinculables entre proyectos.
-
         custom: 
           label: Custom
           settings: 
             header: 
-              label: HTML header
-              description: |
-                Cualquier código colocado aquí va a hacer agregado al final de la etiqueta <head> HTML en cada página
-
+              label: "HTML header"
+              description: "Cualquier código colocado aquí va a hacer agregado al final de la etiqueta <head> HTML en cada página"
             footer: 
-              label: HTML footer
-              description: |
-                Cualquier código colocado aquí va a hacer agregado al final de cada página HTML, justo después de cerrar la etiqueta </body>.
-
+              label: "HTML footer"
+              description: "Cualquier código colocado aquí va a hacer agregado al final de cada página HTML, justo después de cerrar la etiqueta </body>."
     ticketing: 
       label: Ticketing
       groups: 
@@ -159,34 +143,28 @@ es-AR:
           label: Subscription
           settings: 
             subscribe_on_assignment: 
-              label: Subscribe on assignment
-              description: |
-                Deberia un usuario que fue asigado a un ticket ser automaticamente subscripto a recibir notificaciones por email?
-
+              label: "Subscribe on assignment"
+              description: "Deberia un usuario que fue asigado a un ticket ser automaticamente subscripto a recibir notificaciones por email?"
             encourage_subscription: 
-              label: Encourage subscription
-              description: |
-                Deberia la caja para comprobar la subscripción submit/comment del formulario habilitarse por default?
-
+              label: "Encourage subscription"
+              description: "Deberia la caja para comprobar la subscripción submit/comment del formulario habilitarse por default?"
         user_assignment: 
-          label: User assignment
+          label: "User assignment"
           settings: 
             field_type: 
-              label: Field type
-              description: |
+              label: "Field type"
+              description: |-
                 Por default, los usuarios deben ser asignados por tickets seleccionando sus nombres de usuario de un menu 'drop-down'.
                 By default, users can be assigned to tickets by selecting their usernames from a 'drop-down' menu.
                 Si quiere revelar los nombres de los contribudores de su proyecto, selecciones el modo 'text-field',
                 Donde los nombres de usuario deben ser explicitados en un campo de texto.
-
         author_modifiable: 
-          label: Edit own records
-          description: |
+          label: "Edit own records"
+          description: |-
             Deberia ser posible para los usuarios modificar sus propios tickets y cambios de registro de tickets?
             Por defecto, solo los administradores tiene el derecho de cambiar estos.
-
           settings: 
             tickets: 
               label: Tickets
             ticket_changes: 
-              label: Ticket Changes
+              label: "Ticket Changes"
