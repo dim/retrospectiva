@@ -389,30 +389,30 @@ describe BrowseController do
     end
 
     it 'should correctly resolve project-browse-path' do
-      project_browse_path('name', nil).should == '/projects/name/browse/'
-      project_browse_path('name', []).should == '/projects/name/browse/'
+      project_browse_path('name', nil).should == '/projects/name/browse'
+      project_browse_path('name', []).should == '/projects/name/browse'
       project_browse_path('name').should == '/projects/name/browse'
       project_browse_path('name', 'file.rb').should == '/projects/name/browse/file.rb'
-      project_browse_path('name', nil, :rev => 'AF03').should == '/projects/name/browse/?rev=AF03'
+      project_browse_path('name', nil, :rev => 'AF03').should == '/projects/name/browse?rev=AF03'
     end
   
     it 'should correctly resolve project-revisions-path' do
-      project_revisions_path('name', nil).should == '/projects/name/revisions/'
-      project_revisions_path('name', []).should == '/projects/name/revisions/'        
+      project_revisions_path('name', nil).should == '/projects/name/revisions'
+      project_revisions_path('name', []).should == '/projects/name/revisions'        
       project_revisions_path('name').should == '/projects/name/revisions'
       project_revisions_path('name', ['main', 'sub', 'file.rb']).should == '/projects/name/revisions/main/sub/file.rb'         
     end
   
     it 'should correctly resolve project-download-path' do
-      project_download_path('name', nil).should == '/projects/name/download/'
-      project_download_path('name', []).should == '/projects/name/download/'        
+      project_download_path('name', nil).should == '/projects/name/download'
+      project_download_path('name', []).should == '/projects/name/download'        
       project_download_path('name').should == '/projects/name/download'
       project_download_path('name', ['main', 'sub', 'file.rb']).should == '/projects/name/download/main/sub/file.rb'         
     end
     
     it 'should correctly resolve project-diff-path' do
-      project_diff_path('name', nil).should == '/projects/name/diff/'         
-      project_diff_path('name', []).should == '/projects/name/diff/'         
+      project_diff_path('name', nil).should == '/projects/name/diff'
+      project_diff_path('name', []).should == '/projects/name/diff'
       project_diff_path('name').should == '/projects/name/diff'
       project_diff_path('name', ['main', 'sub', 'file.rb']).should == '/projects/name/diff/main/sub/file.rb'         
     end

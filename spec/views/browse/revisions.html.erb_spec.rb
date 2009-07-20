@@ -32,7 +32,7 @@ describe "/browse/revisions.html.erb" do
 
   it 'should display a link to browse in the content-header' do
     do_render
-    response.should have_tag('div.content-header a[href=?]', "/projects/#{@project.id}/browse/", 'Browse')
+    response.should have_tag('div.content-header a[href=?]', "/projects/#{@project.id}/browse", 'Browse')
     response.should have_tag('div.content-header a[title=?]', "Browse root")
   end
   

@@ -20,7 +20,7 @@ describe BrowseHelper do
     it 'should create click-able path tokens with root-path prefix, wrapped in a h2 tag' do      
       helper.browseable_path.should == 
         "<h2 class=\"browseable-path\">" +
-          "<a href=\"/projects/retrospectiva/browse/?rev=R123\" title=\"Browse root [R123]\">root</a>"+
+          "<a href=\"/projects/retrospectiva/browse?rev=R123\" title=\"Browse root [R123]\">root</a>"+
           "/"+
           "<a href=\"/projects/retrospectiva/browse/folder?rev=R123\" title=\"Browse folder [R123]\">folder</a>"+
           "/"+
@@ -31,7 +31,7 @@ describe BrowseHelper do
     it 'should allow to make the last iten non-clickable' do      
       helper.browseable_path(false).should == 
         "<h2 class=\"browseable-path\">" +
-          "<a href=\"/projects/retrospectiva/browse/?rev=R123\" title=\"Browse root [R123]\">root</a>"+
+          "<a href=\"/projects/retrospectiva/browse?rev=R123\" title=\"Browse root [R123]\">root</a>"+
           "/"+
           "<a href=\"/projects/retrospectiva/browse/folder?rev=R123\" title=\"Browse folder [R123]\">folder</a>"+
           "/"+
