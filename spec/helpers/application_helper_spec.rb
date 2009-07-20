@@ -13,6 +13,12 @@ describe ApplicationHelper do
       helper.send(:gravatar, nil, :size => 10, :alt => 'user-image').
         should == "<img alt=\"user-image\" class=\"frame\" src=\"http://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e.png?s=10\" />" 
     end
+
+    it 'should be case insensitive' do
+      helper.send(:gravatar, 'me@home.com').should == helper.send(:gravatar, 'ME@home.com')
+    end
+  
   end
+
   
 end
