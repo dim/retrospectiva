@@ -40,7 +40,7 @@ class TicketFilter::Item < Array
     when Proc
       @options[:joins].call(self)
     when String
-      ActiveRecord::Base.send :sanitize_sql, [@options[:joins], selected_ids]
+      ActiveRecord::Base.send :sanitize_sql_array, [@options[:joins], selected_ids]
     else
       nil
     end

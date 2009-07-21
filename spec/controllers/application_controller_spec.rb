@@ -272,7 +272,7 @@ describe 'Caching user attributes' do
     it 'should behave correctly' do
       cookies['retrospectiva__c'].should be_nil
       do_post
-      cookies['retrospectiva__c'].should  == "---+%0Aname%3A+Agent%0Aemail%3A+agent%40mail.com%0A"
+      cookies['retrospectiva__c'].should  == "--- \nname: Agent\nemail: agent@mail.com\n"
     end    
 
   end
@@ -280,7 +280,7 @@ describe 'Caching user attributes' do
   describe 'retrieving' do
     
     before do
-      cookies['retrospectiva__c'] = "---+%0Aname%3A+Author%0Aemail%3A+something%40mail.com%0A"      
+      cookies['retrospectiva__c'] = "--- \nname: Author\nemail: something@mail.com\n" 
     end
 
     def do_get

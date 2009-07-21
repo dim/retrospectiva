@@ -7,8 +7,8 @@ require 'yaml'
 class RemoteInstaller
   BRANCH = ARGV[0] || "master"
   URL = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
-  RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz"
-  RAKE_URL = "http://rubyforge.org/frs/download.php/52697/rake-0.8.4.tgz"
+  RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz"
+  RAKE_URL  = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
   RAILS_URL = lambda { |rails_version| "http://github.com/rails/rails/tarball/v#{rails_version}" }
 
   def self.run!
