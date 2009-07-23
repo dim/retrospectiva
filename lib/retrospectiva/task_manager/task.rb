@@ -51,7 +51,11 @@ module Retrospectiva
       def due?
         due_at.to_i <= current_minute.to_i
       end
-  
+
+      def unused?
+        current_minute.to_i - due_at.to_i > 120        
+      end
+
       def log_run(logger)
         update_attribute :started_at, Time.now.utc
         logger.info "[+] #{started_at} | Started #{name}"
