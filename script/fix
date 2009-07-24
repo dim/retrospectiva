@@ -120,21 +120,32 @@ end
 
 def test_tasks
   headline("Checking Retrospectiva tasks")
-  config_file = File.join(ROOT_PATH, 'config', 'runtime', 'tasks.yml')  
 
+	manager  = Retrospectiva::TaskManager.new
   tasks_ok = true
-  if File.readable?(config_file)
-    message('+', "A tasks configuration #{relativize_path(config_file)} was found.")
-    if File.mtime(config_file) > Time.now - 60
-      message('+', 'Tasks have been processed recently.')    
-    else
-      tasks_ok = false
-      message('-', "Tasks have NOT been run since #{File.mtime(config_file).strftime('%Y-%m-%d %H:%M')}. ")
-      message('-', "Please set-up a periodic (cron) job as described in the documentation.")
+  
+  if manager.tasks.any?
+    message('+', "Task configuration was found.")
+    
+		unused = manager.tasks.select(&:unused?)
+    stale = manager.tasks.select(&:stale?)
+
+		if unused.blank? and stale.blank?
+      message('+', 'All Tasks are active.')
     end
+    
+    if unused.any?
+      tasks_ok = false            
+      message('-', "At least one task is DUE since #{unused.map(&:due_at).max}. ")
+    end
+    
+    if stale.any?
+      tasks_ok = false
+      message('-', "At least one task is STALE since #{stale.map(&:started_at).max}. ")
+		end		
   else
     tasks_ok = false
-    message('-', "No task configuration found. Please login as administrator to Retrospectiva and set-up tasks in the 'Admin' menu!")
+    message('-', "Task have not been configured yet. Please login as an admin to set-up tasks!")
   end
 
   if tasks_ok
