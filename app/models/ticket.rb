@@ -33,7 +33,7 @@ class Ticket < ActiveRecord::Base
       c.link = c.route(:project_tickets_url, project)
     end
     r.item do |i, ticket, options|
-      project = options[:project] || Project.current
+      project = options[:project] || ticket.project
       i.title = _('Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}', :id => ticket.id, :status => ticket.status.name, :author => ticket.author, :summary => ticket.summary)
       i.description = ticket.content
       i.date = ticket.created_at

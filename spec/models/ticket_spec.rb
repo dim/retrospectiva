@@ -301,6 +301,7 @@ describe Ticket do
 
     before do
       @ticket = Ticket.new
+      Notifications.stub!(:queue_ticket_creation_note)
     end
     
     def build_attachment(content, name = 'file.rb', type = 'text/plain')    
@@ -345,6 +346,25 @@ describe Ticket do
       @ticket = build_ticket
       @ticket.save.should be(true)            
       projects(:retro).existing_tickets[@ticket.id][:summary].should == 'New ticket'
+    end
+
+    it 'should send a notification to the subscribed users' do
+      @ticket = build_ticket
+      @ticket.subscribers << users(:agent)
+      Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'agent@somedomain.com')
+      @ticket.save.should be(true)
+    end
+    
+    describe 'if subscription on assignment is enabled' do
+      before { RetroCM[:ticketing][:subscription].stub!(:[]).with(:subscribe_on_assignment).and_return(true) }
+      
+      it 'should first subscribe the user and then send the notification' do
+        @ticket = build_ticket
+        @ticket.assigned_user = users(:agent)
+        Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'agent@somedomain.com')
+        @ticket.save.should be(true)        
+      end
+      
     end
 
   end
@@ -506,7 +526,7 @@ describe Ticket do
     describe 'items' do
       before do
         @ticket = tickets(:open)
-        @item = @ticket.previewable(:project => projects(:retro))
+        @item = @ticket.previewable
       end
       
       it 'should have a valid title' do

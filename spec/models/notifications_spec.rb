@@ -31,7 +31,7 @@ describe Notifications do
         RetroCM[:email][:smtp].stub!(:settings).and_return @settings.values
       end
       
-      it 'should correncty_assign settings' do
+      it 'should correctly assign settings' do
         ActionMailer::Base.should_receive(:smtp_settings=).with(
           :enable_starttls_auto => true,                
           :address => 'mail.mydomain.com', 

@@ -8,7 +8,6 @@ class TicketChangeObserver < ActiveRecord::Observer
     if change.email.blank?
       change.email = nil     
     end
-    true
   end
   
   def before_validation_on_create(change)
@@ -22,20 +21,16 @@ class TicketChangeObserver < ActiveRecord::Observer
     end
 
     change.updates = change.updates_index    
-    true
-  end
-
-  def before_create(change)
-    # Make sure we force ticket to save, even if nothing has changed
-    change.ticket.updated_at_will_change!
-    change.ticket.save
   end
 
   def after_create(change)
+    # Update ticket timestamp
+    change.ticket.touch
+
+    # Notify subscribers
     change.ticket.permitted_subscribers.each do |user|
       Notifications.queue_ticket_update_note(change, :recipients => user.email)                 
     end    
   end
-
 
 end
