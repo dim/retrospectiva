@@ -25,6 +25,8 @@ module BrowseHelper
 
   def format_code_with_line_numbers(node)
     content = syntax_highlight(node)   
+    content.force_encoding('utf-8') if RUBY_VERSION.to_f >= 1.9
+
     lines, code = [], []
       
     num = 0
@@ -82,7 +84,7 @@ module BrowseHelper
     end
 
     def syntax_highlight(node)
-      syntax = CodeRay::FileType.fetch node.path, :plaintext, false
+      syntax  = CodeRay::FileType.fetch node.path, :plaintext, false
       CodeRay.scan(node.content, syntax).html
     end
   
