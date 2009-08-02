@@ -1,7 +1,9 @@
+# encoding:utf-8
 #--
 # Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
+
 
 $: << File.dirname(__FILE__) + '/../lib'
 
@@ -97,6 +99,33 @@ Sed sit amet velit. Integer lobortis magna. Cras odio.'
     assert_equal(html, markup)
   end
 
+  def test_spacing_in_code_parts
+    text = %Q(Some introduction:
+
+{{{
+ruby script/server -e production
+}}}
+)
+    html = "<p>Some introduction:</p>
+<pre><code>ruby script/server -e production</code></pre>"
+
+    markup = WikiEngine.markup(text, 'retro')    
+    assert_equal(html, markup)
+  end
+
+  def test_inline_code_parts
+    text = %Q(Some introduction and then {{{    
+inline:
+  code
+}}}
+)
+    html = "<p>Some introduction and then</p>
+<pre><code>inline:
+  code</code></pre>"
+
+    markup = WikiEngine.markup(text, 'retro')    
+    assert_equal(html, markup)
+  end
 
 
   def test_code_escaping
@@ -232,7 +261,7 @@ p<<iframe src=http://ha.ckers.org/scriptlet.html(. A nasty hack?\n
 
     html = "<p style=\"text-align:right;\">Right aligned line</p>
 <p style=\"padding-left:3em;text-align:left;\">Left aligned and indented line</p>
-<p style=\"padding-left:1em;padding-right:1em;text-align:left;\">IF A &lt; B <span>THEN</span> B &gt; A</p>
+<p style=\"padding-left:1em;padding-right:1em;text-align:left;\">IF A &lt; B THEN B &gt; A</p>
 <p>Test</p>
 <p>Test</p>
 <p>Test</p>
@@ -262,12 +291,6 @@ p<<iframe src=http://ha.ckers.org/scriptlet.html(. A nasty hack?\n
 
     assert_equal("<p>Extract ME</p><pre>Ignore me</pre><p class=\"ignore-me\">Extract ME too</p>", result)
     assert_equal(original, source)
-  end
-
-
-  def test_general_markup
-    
-    
   end
 
 end

@@ -2,7 +2,7 @@
 module WikiEngine
 
   class Retro < RedCloth::TextileDoc
-    CODE_PATTERN   = /\{{3}\n*(.+?)\n*\}{3}/m    
+    CODE_PATTERN   = /(\s+)\{{3}\n*(.+?)\n*\}{3}/m    
     HEADER_PATTERN = /^(={1,6})[ ]*(.+?)[ ]*=*$/
 
     module Formatter
@@ -28,9 +28,9 @@ module WikiEngine
       # Extract {{{CODE}}} 
       @code_blocks = {}      
       gsub! CODE_PATTERN do |match|
-        placeholder = "[#{ActiveSupport::SecureRandom.hex(20)}]"
-        @code_blocks[placeholder] = CGI::escapeHTML($1.to_s.strip)
-        "\nbc. #{placeholder}\n"
+        placeholder = "((#{ActiveSupport::SecureRandom.hex(20)}))"
+        @code_blocks[placeholder] = ERB::Util.h($2.to_s.strip)
+        "\n\nbc. #{placeholder}\n"
       end
 
       # Remove evil tags (with content) 
