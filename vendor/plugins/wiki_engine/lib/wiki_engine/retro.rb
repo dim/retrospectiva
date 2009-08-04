@@ -29,7 +29,8 @@ module WikiEngine
       @code_blocks = {}      
       gsub! CODE_PATTERN do |match|
         placeholder = "((#{ActiveSupport::SecureRandom.hex(20)}))"
-        @code_blocks[placeholder] = ERB::Util.h($2.to_s.strip)
+        code = $2.to_s.sub(/\A *[\n\r]+/m, '').sub(/[\n\r]+ *\Z/m, '')
+        @code_blocks[placeholder] = ERB::Util.h(code)
         "\n\nbc. #{placeholder}\n"
       end
 

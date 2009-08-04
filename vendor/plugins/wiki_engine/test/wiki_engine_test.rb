@@ -113,6 +113,19 @@ ruby script/server -e production
     assert_equal(html, markup)
   end
 
+  def test_correct_whitespaces_in_code_parts
+    text = %Q(Some introduction {{{  
+ Baud Rate: 9600
+Parity Bit: even
+    }}}
+)
+    html = "<p>Some introduction</p>
+<pre><code> Baud Rate: 9600\nParity Bit: even</code></pre>"
+
+    markup = WikiEngine.markup(text, 'retro')    
+    assert_equal(html, markup)
+  end
+
   def test_inline_code_parts
     text = %Q(Some introduction and then {{{    
 inline:
