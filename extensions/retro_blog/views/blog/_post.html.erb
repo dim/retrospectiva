@@ -8,9 +8,9 @@
     
     <p class="small quiet">
       <%= user_gravatar post.user, :size => 22 %> 
-      <%= RetroI18n._ h('{{user}} on {{date}}'), 
+      <%= RetroI18n._('{{user}} on {{date}}',
           :user => link_to(h(post.user.name), project_blog_posts_path(Project.current, params.only(:c).merge(:u => post.user))), 
-          :date => date_format(post.created_at) %> |
+          :date => date_format(post.created_at)) %> |
       <% if post.categories.any? -%>
         <%= category_links(post) %> |
       <% end -%>

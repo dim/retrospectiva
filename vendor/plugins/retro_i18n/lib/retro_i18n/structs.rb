@@ -4,12 +4,18 @@ module RetroI18n
 
   class LocaleDefinition < Array    
 
-    def [](code)
-      find {|i| i.code == code } || find {|i| i.code == I18n.default_locale } 
+    def find(code)
+      code = RetroI18n.normalize_code(code)
+      detect {|i| i.code == code } || default  
     end
+    alias_method :[], :find
     
-    def store(*args)
-      push RetroI18n::Locale.new(*args)
+    def store(code, name, priority)
+      push RetroI18n::Locale.new(RetroI18n.normalize_code(code), name, priority)
+    end
+
+    def default
+      detect {|i| i.code == RetroI18n.normalize_code(I18n.default_locale) }
     end
     
   end
