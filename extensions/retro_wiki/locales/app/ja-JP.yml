@@ -1,67 +1,58 @@
 ja-JP:
   application:
-    # Unknown
-    "Are you really sure?": 
+    # extensions/retro_wiki/lib/wiki_helper.rb
+    # extensions/retro_wiki/views/wiki_files/_file.html.erb
+    "Are you really sure?": "本当によいですか？"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Author: 作者
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Back in time": 
+    "Back in time": "前に戻る"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Cancel: 中止
 
-    # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    Content: 
+    Content: "内容"
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Create: 作成
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Created on {{date}} by {{author}}": 
+    "Created on {{date}} by {{author}}": "{{author}}が{{date}}に作成しました"
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
     Delete: 削除
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Edit: 
+    Edit: "編集"
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    File: 
+    File: "ファイル"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File cannot be deleted.": 
+    "File cannot be deleted.": "ファイルを削除できません。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully added.": 
+    "File was successfully added.": "ファイルを追加しました。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully deleted.": 
+    "File was successfully deleted.": "ファイルを削除しました。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Files: 
+    Files: "ファイル一覧"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Forward in time": 
+    "Forward in time": "次へ進む"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
@@ -74,118 +65,93 @@ ja-JP:
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Name: 名前
 
-    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Nothing changed": 
+    "Nothing changed": "変更点はありません。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully created.": 
+    "Page was successfully created.": "ページを作成しました。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully updated.": 
+    "Page was successfully updated.": "ページを更新しました。"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Pages: 
+    Pages: "ページ一覧"
 
-    # Missing
     # extensions/retro_wiki/ext/markup_controller.rb
-    References: 
+    References: "参照"
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/rename.html.erb
-    Rename: 
+    Rename: "名前変更"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Rollback: 
+    Rollback: "戻す"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: 保存
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Show current": 
+    "Show current": "最新版を表示"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Size: サイズ
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort alphabetically": 
+    "Sort alphabetically": "アルファベット順で並び替え"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort by last update": 
+    "Sort by last update": "最終更新日で並び替え"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Title: 
+    Title: "タイトル"
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Type: 
+    Type: "種類"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "Unable to download file": 
+    "Unable to download file": "ファイルをダウンロードできませんでした。"
 
     # extensions/retro_wiki/ext_info.rb
     Update: 更新
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Updated on {{date}} by {{author}}": 
+    "Updated on {{date}} by {{author}}": "{{date}}に{{author}}が更新しました"
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Upload: 
+    Upload: "アップロード"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    Version: 
+    Version: "バージョン"
 
     # extensions/retro_wiki/ext_info.rb
     View: 表示
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/models/wiki_page.rb
     # extensions/retro_wiki/views/wiki/_header.html.erb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Wiki: 
+    Wiki: "Wiki"
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Files": 
+    "Wiki Files": "Wikiファイル一覧"
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Pages": 
+    "Wiki Pages": "Wikiページ一覧"
 
-    # Unknown
-    "Wiki Pages for {{project}}": 
-
-    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Wiki for {{project}}": 
+    "Wiki for {{project}}": "{{project}}のWiki"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    updated: 
+    updated: "更新日: "
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "{{count}} more": 
+    "{{count}} more": "あと{{count}}個"
 
