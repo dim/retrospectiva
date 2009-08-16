@@ -2,7 +2,7 @@
 module WikiEngine
 
   class Retro < RedCloth::TextileDoc
-    CODE_PATTERN   = /(\s+)\{{3}\n*(.+?)\n*\}{3}/m    
+    CODE_PATTERN   = /(\s*)\{{3}\n*(.+?)\n*\}{3}/m    
     HEADER_PATTERN = /^(={1,6})[ ]*(.+?)[ ]*=*$/
 
     module Formatter
@@ -29,11 +29,12 @@ module WikiEngine
       @code_blocks = {}      
       gsub! CODE_PATTERN do |match|
         placeholder = "((#{ActiveSupport::SecureRandom.hex(20)}))"
-        code = $2.to_s.sub(/\A *[\n\r]+/m, '').sub(/[\n\r]+ *\Z/m, '')
+        prefix = $1.to_s.empty? ? '' : "\n\n"
+        code   = $2.to_s.sub(/\A *[\n\r]+/m, '').sub(/[\n\r]+ *\Z/m, '')
         @code_blocks[placeholder] = ERB::Util.h(code)
-        "\n\nbc. #{placeholder}\n"
+        "#{prefix}bc. #{placeholder}\n"
       end
-
+      
       # Remove evil tags (with content) 
       strip_blocks! %w(meta i?frame i?layer app\w* link object embed bgsound form input select textarea style script)
 

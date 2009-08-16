@@ -16,14 +16,14 @@ class WikiEngineTest < Test::Unit::TestCase
 
 
   def test_basic
-    text = 'h2. Lorem ipsum
+    text = %Q(h2. Lorem ipsum
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.
 Phasellus non dolor. Vestibulum sodales fringilla eros. Pellentesque viverra. 
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 Nunc sem lectus, consectetuer a, volutpat eu, pretium ac, nisl. Sed vitae augue.
-Sed sit amet velit. Integer lobortis magna. Cras odio.'
+Sed sit amet velit. Integer lobortis magna. Cras odio.)
 
     html = "<h2>Lorem ipsum</h2>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.
@@ -37,14 +37,14 @@ Sed sit amet velit. Integer lobortis magna. Cras odio.</p>"
   end
 
   def test_advanced
-    text = 'h2. Lorem ipsum
+    text = %Q(h2. Lorem ipsum
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.
 
 * One
 * Two 
 
-Cum +sociis+ natoque *penatibus* et magnis _dis_ parturient montes.'
+Cum +sociis+ natoque *penatibus* et magnis _dis_ parturient montes.)
 
     html = "<h2>Lorem ipsum</h2>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.</p>
@@ -61,12 +61,12 @@ Cum +sociis+ natoque *penatibus* et magnis _dis_ parturient montes.'
 
 
   def test_html_code_removal
-    text = 'Lorem ipsum dolor
+    text = %Q(Lorem ipsum dolor
   <script> 
     this.location.href = "http://www.myspampage.com"
   </script> 
 sit amet, <span style="color:red;">consectetuer</span> adipiscing elit. <br/>
-Ut pulvinar <frame>mauris</frame> sed <iframe>lorem</iframe>.'
+Ut pulvinar <frame>mauris</frame> sed <iframe>lorem</iframe>.)
 
     html = "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br/>
 Ut pulvinar sed .</p>"
@@ -78,7 +78,7 @@ Ut pulvinar sed .</p>"
 
 
   def test_code_parts
-    text = 'Lorem ipsum dolor sit amet. 
+    text = %Q(Lorem ipsum dolor sit amet. 
 {{{
 consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.
 }}}
@@ -86,7 +86,7 @@ Phasellus non dolor. Vestibulum sodales fringilla eros. Pellentesque viverra.
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 {{{Nunc sem lectus, consectetuer a, volutpat eu, pretium ac, nisl. Sed vitae augue.}}}
-Sed sit amet velit. Integer lobortis magna. Cras odio.'
+Sed sit amet velit. Integer lobortis magna. Cras odio.)
 
     html = "<p>Lorem ipsum dolor sit amet.</p>
 <pre><code>consectetuer adipiscing elit. Ut pulvinar mauris sed lorem.</code></pre>
@@ -140,9 +140,22 @@ inline:
     assert_equal(html, markup)
   end
 
+  def test_code_parts_only
+    text = %Q({{{
+inline:
+  code
+}}})
+    html = "<pre><code>inline:
+  code
+</code></pre>"
+
+    markup = WikiEngine.markup(text, 'retro')
+    assert_equal(html, markup)    
+  end
+
 
   def test_code_escaping
-    text = 'Intro:
+    text = %Q(Intro:
 {{{
 <html>
 
@@ -156,7 +169,7 @@ inline:
 
 </html>
 }}}
-'
+)
 
     html = "<p>Intro:</p>
 <pre><code>&lt;html&gt;
@@ -241,10 +254,6 @@ Phasellus non [[dolor]]. Vestibulum sodales fringilla eros. Pellentesque viverra
   end
 
 
-
-
-
-
   def test_wiki_refs
     text = 'I am crazy about "Retrospectiva":retrospectiva
     
@@ -255,8 +264,6 @@ Phasellus non [[dolor]]. Vestibulum sodales fringilla eros. Pellentesque viverra
     markup = WikiEngine.markup(text, 'retro')    
     assert_equal(html, markup)
   end
-
-
 
 
   def test_security
