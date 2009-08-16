@@ -110,3 +110,7 @@ de-DE:
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": "{{count}} Kommentare"
 
+    # Missing
+    # extensions/retro_blog/views/blog/_post.html.erb
+    "{{user}} on {{date}}": 
+

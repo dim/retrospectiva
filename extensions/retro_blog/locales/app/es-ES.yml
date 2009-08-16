@@ -122,3 +122,7 @@ es-ES:
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": 
 
+    # Missing
+    # extensions/retro_blog/views/blog/_post.html.erb
+    "{{user}} on {{date}}": 
+

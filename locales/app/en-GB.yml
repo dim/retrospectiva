@@ -1,9 +1,9 @@
 en-GB:
   application:
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "1. Click this link": "1. Click this link"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "2. Surf to {{url}} and enter the following activation code": "2. Surf to {{url}} and enter the following activation code"
 
     # app/controllers/admin/users_controller.rb
@@ -96,11 +96,11 @@ en-GB:
     # app/models/status.rb
     "All resolved": "All resolved"
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Alternatively, copy and paste this link to your browser address bar.": "Alternatively, copy and paste this link to your browser address bar."
 
     # app/controllers/accounts_controller.rb
@@ -177,7 +177,7 @@ en-GB:
     # app/views/admin/projects/index.html.erb
     Central: Central
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Changed by {{author}} - {{time}}": "Changed by {{author}} - {{time}}"
 
     # app/views/browse/_revision.html.erb
@@ -301,11 +301,11 @@ en-GB:
     # lib/time_interval.rb
     Days: Days
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Dear user!": "Dear user!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
@@ -399,8 +399,8 @@ en-GB:
     "Edit user": "Edit user"
 
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     # app/views/tickets/form/_name_and_email.html.erb
     Email: Email
 
@@ -448,7 +448,7 @@ en-GB:
     "Finished on": "Finished on"
 
     # app/views/accounts/forgot_password.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     # app/views/sessions/new.html.erb
     "Forgot password": "Forgot password"
 
@@ -456,8 +456,8 @@ en-GB:
     Formats: Formats
 
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Full name": "Full name"
 
     # app/views/admin/projects/_form.html.erb
@@ -654,7 +654,7 @@ en-GB:
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/show.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "My Account": "My Account"
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -871,8 +871,8 @@ en-GB:
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Reported by me"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Reported by {{author}} - {{time}}": "Reported by {{author}} - {{time}}"
 
     # app/core_info.rb
@@ -1066,8 +1066,8 @@ en-GB:
     # app/models/ticket.rb
     "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Ticket #{{id}}: '{{summary}}'": "Ticket #{{id}}: '{{summary}}'"
 
     # app/controllers/tickets_controller.rb
@@ -1112,17 +1112,17 @@ en-GB:
     # app/views/admin/users/index.html.erb
     "Time zone": "Time zone"
 
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "To access the login page click this link": "To access the login page click this link"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "To access the ticket click this link": "To access the ticket click this link"
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "To access your account, click the link below": "To access your account, click the link below"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "To complete the registration process you need to verify your email address. To make up this process you have two options": "To complete the registration process you need to verify your email address. To make up this process you have two options"
 
     # app/helpers/admin/setup_helper.rb
@@ -1185,8 +1185,8 @@ en-GB:
     # app/views/accounts/activate.html.erb
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/edit.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     Username: Username
 
     # app/views/accounts/forgot_password.html.erb
@@ -1251,19 +1251,19 @@ en-GB:
     # app/controllers/tickets_controller.rb
     "You are now watching this ticket.": "You are now watching this ticket."
 
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "You are receiving this message because the user account you have applied for at {{site}} has been activated."
 
-    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": "You are receiving this message because you are subscribed to receive notifications about"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "You are receiving this message because you have applied for an user account at {{site}}.": "You are receiving this message because you have applied for an user account at {{site}}."
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "You are receiving this message because you have subscribed to receive notification about changes of"
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}."
 
     # app/helpers/tickets_helper.rb
@@ -1284,14 +1284,14 @@ en-GB:
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": "You stopped watching this ticket."
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password."
 
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": "You will lose all related data as well!"
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Your registration details": "Your registration details"
 
     # app/views/search/index.html.erb

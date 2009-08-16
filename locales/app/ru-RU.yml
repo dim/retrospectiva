@@ -1,9 +1,9 @@
 ru-RU:
   application:
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "1. Click this link": "1. перейти по этой ссылке"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "2. Surf to {{url}} and enter the following activation code": "2. Перейти по ссылке {{url}} и ввести код активации"
 
     # app/controllers/admin/users_controller.rb
@@ -97,11 +97,11 @@ ru-RU:
     # app/models/status.rb
     "All resolved": "Все решенные"
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Alternatively, copy and paste this link to your browser address bar.": "Попробуйте скопировать эту ссылку в адресную строку броузера."
 
     # app/controllers/accounts_controller.rb
@@ -178,7 +178,7 @@ ru-RU:
     # app/views/admin/projects/index.html.erb
     Central: Центральный
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Changed by {{author}} - {{time}}": "Изменения внес {{author}}, {{time}}"
 
     # app/views/browse/_revision.html.erb
@@ -302,11 +302,11 @@ ru-RU:
     # lib/time_interval.rb
     Days: Дни
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Dear user!": "Дорогой мой пользователь!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
@@ -400,8 +400,8 @@ ru-RU:
     "Edit user": "Редактирование пользователя"
 
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     # app/views/tickets/form/_name_and_email.html.erb
     Email: Email
 
@@ -449,7 +449,7 @@ ru-RU:
     "Finished on": "Фактически выполнено"
 
     # app/views/accounts/forgot_password.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     # app/views/sessions/new.html.erb
     "Forgot password": "Забыли пароль?"
 
@@ -457,8 +457,8 @@ ru-RU:
     Formats: Форматы
 
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Full name": "Полное имя"
 
     # app/views/admin/projects/_form.html.erb
@@ -655,7 +655,7 @@ ru-RU:
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/show.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "My Account": "Мой аккаунт"
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -872,8 +872,8 @@ ru-RU:
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Составлен мной"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Reported by {{author}} - {{time}}": "Разместил {{author}}, {{time}}"
 
     # app/core_info.rb
@@ -904,7 +904,6 @@ ru-RU:
     # app/controllers/admin/repositories_controller.rb
     "Repository was successfully updated.": "Репозитарий изменен."
 
-    # Missing
     # app/views/admin/tasks/_task.html.erb
     Reset: Восстановить
 
@@ -918,6 +917,7 @@ ru-RU:
     # app/views/browse/revisions.html.erb
     Revision: Ревизия
 
+    # Missing
     # app/controllers/browse_controller.rb
     "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": 
 
@@ -1068,8 +1068,8 @@ ru-RU:
     # app/models/ticket.rb
     "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Тикет #{{id}} ({{status}}) создал {{author}} - {{summary}}"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Ticket #{{id}}: '{{summary}}'": "Тикет #{{id}}: '{{summary}}'"
 
     # app/controllers/tickets_controller.rb
@@ -1114,17 +1114,17 @@ ru-RU:
     # app/views/admin/users/index.html.erb
     "Time zone": "Часовой пояс"
 
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "To access the login page click this link": "Для входа испульзуйте эту ссылку"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "To access the ticket click this link": "Эта ссылка для перехода к тикетам"
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "To access your account, click the link below": "Ссылка для изменения своиего аккаунта"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "To complete the registration process you need to verify your email address. To make up this process you have two options": "Для завершения регистрации необходима проверка email"
 
     # app/helpers/admin/setup_helper.rb
@@ -1190,8 +1190,8 @@ ru-RU:
     # app/views/accounts/activate.html.erb
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/edit.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     Username: Псевдоним
 
     # app/views/accounts/forgot_password.html.erb
@@ -1258,20 +1258,20 @@ ru-RU:
     # app/controllers/tickets_controller.rb
     "You are now watching this ticket.": "Теперь тикет в подписке"
 
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Аккаунт для {{site}} успешно активирован."
 
-    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": "Вы подписаны на"
 
     # Missing
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "You are receiving this message because you have applied for an user account at {{site}}.": 
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "Вы подписаны на"
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "Запрос на сброс пароля {{forgot_password}} для {{site}}"
 
     # app/helpers/tickets_helper.rb
@@ -1292,14 +1292,14 @@ ru-RU:
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": "Подписка закрыта"
 
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "Переход на страницу личного аккаунта, где можно сменить свой пароль."
 
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": "Будут потеряны все связанные данные!"
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Your registration details": "Информация о регистрации"
 
     # app/views/search/index.html.erb

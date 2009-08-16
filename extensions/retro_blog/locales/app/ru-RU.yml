@@ -112,3 +112,7 @@ ru-RU:
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": "комментариев: {{count}}"
 
+    # Missing
+    # extensions/retro_blog/views/blog/_post.html.erb
+    "{{user}} on {{date}}": 
+

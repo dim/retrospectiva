@@ -9,10 +9,10 @@ ja-JP:
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    Blog: "ブログ"
+    Blog: ブログ
 
     # extensions/retro_blog/ext_info.rb
-    "Blog Posts": "ブログの投稿"
+    "Blog Posts": ブログの投稿
 
     # extensions/retro_blog/models/blog_post.rb
     "Blog for {{project}}": "{{project}}のブログ"
@@ -22,23 +22,23 @@ ja-JP:
 
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    Categories: "カテゴリ"
+    Categories: カテゴリ
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Comment: コメント
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully created.": "コメントを作成しました。"
+    "Comment was successfully created.": コメントを作成しました。
 
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully deleted.": "コメントを削除しました。"
+    "Comment was successfully deleted.": コメントを削除しました。
 
     # extensions/retro_blog/views/blog/_comments.html.erb
-    Comments: "コメント"
+    Comments: コメント
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    Content: "内容"
+    Content: 内容
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
@@ -47,7 +47,7 @@ ja-JP:
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create Post": "投稿"
+    "Create Post": 投稿
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
@@ -56,48 +56,48 @@ ja-JP:
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    Edit: "編集"
+    Edit: 編集
 
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Email: Eメール
 
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Leave a comment": "コメントを残す"
+    "Leave a comment": コメントを残す
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "My Posts": "自分の投稿"
+    "My Posts": 自分の投稿
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    Navigation: "ナビゲーション"
+    Navigation: ナビゲーション
 
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully created.": "投稿しました。"
+    "Post was successfully created.": 投稿しました。
 
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully deleted.": "投稿を削除しました。"
+    "Post was successfully deleted.": 投稿を削除しました。
 
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully updated.": "投稿を更新しました。"
+    "Post was successfully updated.": 投稿を更新しました。
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Read more": "続きを読む"
+    "Read more": 続きを読む
 
-    # extensions/retro_blog/views/blog/_comment.html.erb
-    "Really delete this comment?": "本当にコメントを削除してよいですか？"
+    # Unknown
+    "Really delete this comment?": 本当にコメントを削除してよいですか？
 
-    # extensions/retro_blog/views/blog/show.html.erb
-    "Really delete this post?": "本当に投稿を削除してよいですか？"
+    # Unknown
+    "Really delete this post?": 本当に投稿を削除してよいですか？
 
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Recent Posts": "最近の投稿"
+    "Recent Posts": 最近の投稿
 
     # extensions/retro_blog/views/blog/index.html.erb
-    "There are no posts available.": "投稿がありません。"
+    "There are no posts available.": 投稿がありません。
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    Title: "タイトル"
+    Title: タイトル
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb

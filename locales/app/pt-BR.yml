@@ -1,9 +1,9 @@
 pt-BR:
   application:
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "1. Click this link": "1. Clique neste link"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "2. Surf to {{url}} and enter the following activation code": "2. Vá para {{url}} e digite o seguinte código de ativação"
 
     # app/controllers/admin/users_controller.rb
@@ -104,11 +104,11 @@ pt-BR:
     # app/models/status.rb
     "All resolved": "Todos os resolvidos"
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Alternatively, copy and paste this link to your browser address bar.": "Alternativamente copie e cole este link para a barra de endereço do seu navegador."
 
     # app/controllers/accounts_controller.rb
@@ -192,7 +192,7 @@ pt-BR:
     # app/views/admin/projects/index.html.erb
     Central: 
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Changed by {{author}} - {{time}}": "Modificado por {{author}} - {{time}}"
 
     # Missing
@@ -338,11 +338,11 @@ pt-BR:
     # lib/time_interval.rb
     Days: Dias
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Dear user!": "Caro usuário!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
@@ -449,8 +449,8 @@ pt-BR:
     "Edit user": 
 
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     # app/views/tickets/form/_name_and_email.html.erb
     Email: E-mail
 
@@ -504,7 +504,7 @@ pt-BR:
     "Finished on": "Finalizado em"
 
     # app/views/accounts/forgot_password.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     # app/views/sessions/new.html.erb
     "Forgot password": "Esqueceu a senha?"
 
@@ -514,8 +514,8 @@ pt-BR:
 
     # Missing
     # app/views/admin/users/_core.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Full name": 
 
     # Missing
@@ -732,7 +732,7 @@ pt-BR:
 
     # app/helpers/navigation_helper.rb
     # app/views/accounts/show.html.erb
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "My Account": "Minha conta"
 
     # app/models/ticket_filter/custom/my_tickets.rb
@@ -976,8 +976,8 @@ pt-BR:
     # app/models/ticket_filter/custom/my_tickets.rb
     "Reported by me": "Relatado por mim"
 
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Reported by {{author}} - {{time}}": "Relatado por {{author}} - {{time}}"
 
     # app/core_info.rb
@@ -1197,8 +1197,8 @@ pt-BR:
     "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": 
 
     # Missing
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "Ticket #{{id}}: '{{summary}}'": 
 
     # app/controllers/tickets_controller.rb
@@ -1248,19 +1248,19 @@ pt-BR:
     "Time zone": 
 
     # Missing
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "To access the login page click this link": 
 
     # Missing
-    # app/views/notifications/ticket_creation_note.html.erb
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "To access the ticket click this link": 
 
     # Missing
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "To access your account, click the link below": 
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "To complete the registration process you need to verify your email address. To make up this process you have two options": "Para completar o processo de registro você precisa verificar seu endereço de e-mail. Para fazer isso você tem duas opções:"
 
     # app/helpers/admin/setup_helper.rb
@@ -1325,8 +1325,8 @@ pt-BR:
     # app/views/accounts/activate.html.erb
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/edit.html.erb
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     Username: "Nome de usuário"
 
     # Missing
@@ -1403,20 +1403,20 @@ pt-BR:
     # app/controllers/tickets_controller.rb
     "You are now watching this ticket.": 
 
-    # app/views/notifications/account_activation_note.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
     "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Você está recebendo esta mensagem porque a conta de usuário que você solicitou em {{site}} foi ativada."
 
-    # app/views/notifications/ticket_creation_note.html.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": "Você está recebendo esta mensagem porque você está inscrito para receber notificações sobre"
 
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "You are receiving this message because you have applied for an user account at {{site}}.": "Você está recebendo esta mensagem porque você solicitou uma conta de usuário em {{site}}."
 
-    # app/views/notifications/ticket_update_note.html.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "Você está recebendo esta mensagem porque você se inscreveu para receber notificações sobre mudaças em"
 
     # Missing
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": 
 
     # Missing
@@ -1442,15 +1442,15 @@ pt-BR:
     "You stopped watching this ticket.": 
 
     # Missing
-    # app/views/notifications/password_reset_instructions.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
     "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": 
 
     # Missing
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": 
 
-    # app/views/notifications/account_activation_note.html.erb
-    # app/views/notifications/account_validation.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
     "Your registration details": "Seus detalhes de registro:"
 
     # app/views/search/index.html.erb
