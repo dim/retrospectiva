@@ -28,7 +28,7 @@ class TicketChangeObserver < ActiveRecord::Observer
     change.ticket.touch
 
     # Notify subscribers
-    change.ticket.permitted_subscribers.each do |user|
+    change.ticket.permitted_subscribers(change.user).each do |user|
       Notifications.queue_ticket_update_note(change, :recipients => user.email)                 
     end    
   end

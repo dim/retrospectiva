@@ -154,12 +154,13 @@ en-US:
           settings:
             subscribe_on_assignment:
               label: 'Subscribe on assignment'
-              description: |
-                Should a user who is assigned to a ticket be automatically subscribed to receive email notifications?
+              description: "Should a user who is assigned to a ticket be automatically subscribed to receive email notifications?"
             encourage_subscription:
               label: 'Encourage subscription'
-              description: |
-                Should the subscription check box in the ticket submit/comment form be enabled by default?
+              description: "Should the subscription check box in the ticket submit/comment form be enabled by default?"
+            notify_author:
+              label: 'Notify author'
+              description: "Should the author of the ticket/change be notified as well (only if subscribed)?"
         user_assignment:
           label: 'User assignment'
           settings:

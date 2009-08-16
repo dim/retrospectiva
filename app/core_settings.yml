@@ -172,29 +172,32 @@
   name: 'ticketing'
   groups: 
     - !ruby/object:RetroCM::Group
-      name: 'subscription'
+      name: subscription
       settings:
         - !ruby/object:RetroCM::BooleanSetting
-          name: 'subscribe_on_assignment'
+          name: subscribe_on_assignment
           default: true
         - !ruby/object:RetroCM::BooleanSetting
-          name: 'encourage_subscription'
+          name: encourage_subscription
           default: true
+        - !ruby/object:RetroCM::BooleanSetting
+          name: notify_author
+          default: false
     - !ruby/object:RetroCM::Group
-      name: 'user_assignment'
+      name: user_assignment
       settings:
         - !ruby/object:RetroCM::SelectSetting
-          name: 'field_type'
+          name: field_type
           options:
             - 'drop-down' 
             - 'text-field'
-          default: 'drop-down'
+          default: drop-down
     - !ruby/object:RetroCM::Group
-      name: 'author_modifiable'
+      name: author_modifiable
       settings:
         - !ruby/object:RetroCM::BooleanSetting
-          name: 'tickets'
+          name: tickets
           default: false
         - !ruby/object:RetroCM::BooleanSetting
-          name: 'ticket_changes'
+          name: ticket_changes
           default: false

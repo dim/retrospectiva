@@ -187,11 +187,12 @@ class Ticket < ActiveRecord::Base
     end
   end
     
-  def permitted_subscribers
+  def permitted_subscribers(exclude = nil)
+    exclude = nil if RetroCM[:ticketing][:subscription][:notify_author]
     subscribers.select do |user|
-      not user.public? and user.permitted?(:tickets, :view, :project => project) and user.permitted?(:tickets, :watch, :project => project)
+      not user.public? and exclude != user and user.permitted?(:tickets, :view, :project => project) and user.permitted?(:tickets, :watch, :project => project)
     end
-  end  
+  end
 
   def serialize_only
     [:id, :summary, :content, :author, :milestone_id, :created_at, :updated_at]    

@@ -68,7 +68,7 @@ class TicketObserver < ActiveRecord::Observer
 
     # Notify subscribers
     def send_creation_notification!(ticket)
-      ticket.permitted_subscribers.each do |user|
+      ticket.permitted_subscribers(ticket.user).each do |user|
         Notifications.queue_ticket_creation_note(ticket, :recipients => user.email)                 
       end
     end

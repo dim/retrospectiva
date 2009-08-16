@@ -139,6 +139,7 @@ describe Ticket do
   describe 'determination of permitted subscribers' do
     
     before do
+      RetroCM[:ticketing][:subscription].stub!(:[]).with(:notify_author).and_return(false)
       @agent = users(:agent)
       @ticket = tickets(:open)
     end
@@ -162,9 +163,19 @@ describe Ticket do
     end
 
     it 'should always exclude the public user' do
-      @agent.should_receive(:public?).and_return(true)
-      @ticket.stub!(:subscribers).and_return([@agent])
+      @ticket.stub!(:subscribers).and_return([users(:Public)])
       @ticket.permitted_subscribers.should have(:no).records
+    end
+
+    it 'should by default exclude the creator (if passed)' do
+      @ticket.permitted_subscribers.should == [@agent]
+      @ticket.permitted_subscribers(@agent).should == []
+    end
+
+    it 'should include the creator (if configured to do so)' do
+      RetroCM[:ticketing][:subscription].should_receive(:[]).with(:notify_author).twice.and_return(true)
+      @ticket.permitted_subscribers.should == [@agent]      
+      @ticket.permitted_subscribers(@agent).should == [@agent]
     end
 
   end
@@ -350,19 +361,22 @@ describe Ticket do
 
     it 'should send a notification to the subscribed users' do
       @ticket = build_ticket
-      @ticket.subscribers << users(:agent)
-      Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'agent@somedomain.com')
+      @ticket.subscribers << users(:admin)
+      Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'admin@administration.com')
       @ticket.save.should be(true)
     end
     
     describe 'if subscription on assignment is enabled' do
-      before { RetroCM[:ticketing][:subscription].stub!(:[]).with(:subscribe_on_assignment).and_return(true) }
+      before do
+        RetroCM[:ticketing][:subscription].stub!(:[]).with(:notify_author).and_return(false)
+        RetroCM[:ticketing][:subscription].stub!(:[]).with(:subscribe_on_assignment).and_return(true)
+      end
       
       it 'should first subscribe the user and then send the notification' do
         @ticket = build_ticket
-        @ticket.assigned_user = users(:agent)
-        Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'agent@somedomain.com')
-        @ticket.save.should be(true)        
+        @ticket.assigned_user = users(:admin)
+        Notifications.should_receive(:queue_ticket_creation_note).with(@ticket, :recipients => 'admin@administration.com')
+        @ticket.save.should be(true)
       end
       
     end
@@ -447,6 +461,7 @@ describe Ticket do
     describe 'if a user was assigned' do
 
       before do
+        RetroCM[:ticketing][:subscription].stub!(:[]).with(:notify_author).and_return(false)
         RetroCM[:ticketing][:subscription].stub!(:[]).with(:subscribe_on_assignment).and_return(true)
         @ticket = build_ticket
         @ticket.assigned_user = users(:agent)
