@@ -51,7 +51,7 @@ module WikiEngine
     def to_html
       returning to(Formatter) do |html|
         @code_blocks.each do |placeholder, code|
-          html.gsub! placeholder, code
+          html.sub!(placeholder) { code }
         end
       end
     end
