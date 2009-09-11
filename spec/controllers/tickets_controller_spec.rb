@@ -58,7 +58,7 @@ describe TicketsController do
       @tickets_proxy.should_receive(:paginate).with({
         :joins=>nil, :conditions=>nil,
         :order=>"tickets.updated_at DESC, ticket_changes.created_at",
-        :page=>nil, :per_page=>nil,
+        :page=>nil, :per_page=>nil, :total_entries=>nil,
         :include=>[:DEFAULTS]
       }).and_return(@tickets)
       do_get
@@ -82,7 +82,7 @@ describe TicketsController do
           :joins=>nil,
           :conditions=>["( content = ? )", 'TERM'],
           :order=>"tickets.updated_at DESC, ticket_changes.created_at",
-          :page=>nil, :per_page=>nil,
+          :page=>nil, :per_page=>nil, :total_entries=>nil,
           :include=>[:DEFAULTS]
         }).and_return(@tickets)
         do_get
@@ -118,7 +118,7 @@ describe TicketsController do
           :joins=>nil,
           :conditions=>['( tickets.updated_at > ? )', '[SINCE]'],
           :order=>"tickets.updated_at DESC, ticket_changes.created_at",
-          :page=>nil, :per_page=>nil,
+          :page=>nil, :per_page=>nil, :total_entries=>nil,
           :include=>[:DEFAULTS]
         }).and_return(@tickets)
         do_get
@@ -134,7 +134,7 @@ describe TicketsController do
       Ticket.stub!(:to_rss).and_return("RSS")
 
       @reports_proxy = @project.stub_association!(:ticket_reports, :find_by_id => nil, :find => [])
-      TicketFilter::Collection.stub!(:new).and_return mock('TicketFilter::Collection', :joins => nil, :conditions => nil)
+      TicketFilter::Collection.stub!(:new).and_return mock('TicketFilter::Collection', :joins => [:status], :conditions => ['1 = 0'])
       Ticket.stub!(:default_includes).and_return([:DEFAULTS])
     end
 
@@ -150,7 +150,7 @@ describe TicketsController do
     it "should find all tickets" do
       @tickets_proxy.should_receive(:paginate).with(
         :order=>"tickets.updated_at DESC, ticket_changes.created_at",
-        :page=>nil, :per_page=>10,
+        :page=>nil, :per_page=>10, :total_entries=>10,
         :include=>[:DEFAULTS], :joins=>nil,
         :conditions=>nil).
         and_return(@tickets)
@@ -189,7 +189,7 @@ describe TicketsController do
       Retro::Search.should_receive(:conditions).with('name', *Ticket.searchable_column_names).and_return(['content = ?', 'name'])
       @tickets_proxy.should_receive(:paginate).with(
         :order=>"tickets.updated_at DESC, ticket_changes.created_at",
-        :page=>nil, :per_page=>nil,
+        :page=>nil, :per_page=>nil, :total_entries=>30, 
         :include=>[:DEFAULTS], :joins=>nil,
         :conditions=>["( content = ? )", 'name']).
         and_return(@tickets)

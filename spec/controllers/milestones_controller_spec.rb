@@ -27,8 +27,7 @@ describe MilestonesController do
         @milestones.should_receive(:in_default_order).with().and_return(@milestones)
         @milestones.should_receive(:active_on).with(Date.today).and_return(@milestones)
         @milestones.should_receive(:paginate).with(
-          :per_page=>nil, 
-          :page=>nil, 
+          :per_page=>nil, :total_entries=>nil, :page=>nil, 
           :include => {:tickets => :status}
         ).and_return(@milestones)
         do_get
@@ -41,8 +40,7 @@ describe MilestonesController do
       it "should find all milestones" do
         @milestones.should_not_receive(:active_on)
         @milestones.should_receive(:paginate).with(
-          :per_page=>nil, 
-          :page=>nil, 
+          :per_page=>nil, :total_entries=>nil, :page=>nil, 
           :include => {:tickets => :status}
         ).and_return(@milestones)
         do_get :completed => '1'
@@ -76,8 +74,7 @@ describe MilestonesController do
     it "should find milestones" do
       @milestones.should_receive(:active_on).with(Date.today).and_return(@milestones)
       @milestones.should_receive(:paginate).with(
-        :per_page=>10, 
-        :page=>1, 
+        :per_page=>10, :total_entries=>10, :page=>1, 
         :include => {:tickets => :status}
       ).and_return(@milestones)
       do_get

@@ -25,7 +25,7 @@ describe ChangesetsController do
 
     it "should find changesets" do
       @proxy.should_receive(:paginate).
-        with(:per_page=>nil, :page=>nil, :order=>'changesets.created_at DESC', :include=>[:user]).
+        with(:per_page=>nil, :page=>nil, :total_entries=>nil, :order=>'changesets.created_at DESC', :include=>[:user]).
         and_return(@changesets)
       do_get
     end
@@ -50,7 +50,7 @@ describe ChangesetsController do
   
     it "should find changesets" do
       @proxy.should_receive(:paginate).
-        with(:per_page=>10, :page=>1, :order=>'changesets.created_at DESC', :include=>[:user]).
+        with(:per_page=>10, :total_entries=>10, :page=>1, :order=>'changesets.created_at DESC', :include=>[:user]).
         and_return(@changesets)
       do_get
     end

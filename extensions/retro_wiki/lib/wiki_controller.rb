@@ -115,13 +115,14 @@ class WikiController < ProjectAreaController
     end
 
     def options_for_paginate
-      { :page => ( rss_request? ? 1 : params[:page] ), 
-        :per_page => ( rss_request? ? 10 : nil ),
+      { :page => ( request.format.rss? ? 1 : params[:page] ), 
+        :per_page => ( request.format.rss? ? 10 : nil ),
+        :total_entries => ( request.format.rss? ? 10 : nil ),
         :order => pagination_order }
     end
         
     def pagination_order
-      rss_request? || params[:order] == 'recent' ? 'wiki_pages.updated_at DESC' : 'wiki_pages.title'
+      request.format.rss? || params[:order] == 'recent' ? 'wiki_pages.updated_at DESC' : 'wiki_pages.title'
     end
 
   private

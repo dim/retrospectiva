@@ -61,14 +61,6 @@ class ApplicationController < ActionController::Base
       end.delete_if {|k, | k.nil? }
     end
 
-    # Override ActionController::Base method to prevent invalid format calls (causes 500 error)
-    # 
-    # Previously: /ticket/123.xml => 500
-    # Override:   /ticket/123.xml => 406
-    def default_render
-      response.content_type.blank? ? respond_to(:html) : super 
-    end
-
     def rescue_action_in_public(exception) #:doc:
       status_code = response_code_for_rescue(exception)
       case status_code
@@ -76,10 +68,6 @@ class ApplicationController < ActionController::Base
         ExceptionNotifier.deliver_exception_notification(exception, self, request, {})
       end
       render_optional_error_file(status_code)    
-    end
-
-    def rss_request?
-      request.format && request.format.rss?
     end
 
     def failed_authorization!

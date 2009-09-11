@@ -43,7 +43,7 @@ class TicketsController < ProjectAreaController
   before_filter :find_and_verify_attachment, :only => :download
     
   def index
-    @tickets = paginate_tickets(rss_request? ? 10 : params[:per_page])    
+    @tickets = paginate_tickets(request.format.rss? ? 10 : params[:per_page], request.format.rss? ? 10 : nil)    
     
     respond_to do |format|
       format.html
@@ -53,7 +53,7 @@ class TicketsController < ProjectAreaController
   end
 
   def search
-    @tickets = paginate_tickets(nil)
+    @tickets = paginate_tickets(nil, Ticket.per_page)
     respond_to(:js)
   end
 
@@ -241,22 +241,29 @@ class TicketsController < ProjectAreaController
 
   private
 
-    def paginate_tickets(per_page)
-      conditions = PlusFilter::Conditions.new(@filters.conditions) do |c|
-        c << ['tickets.updated_at > ?', @report.since] if @report && @report.since
-        c << Retro::Search.conditions(params[:term], *Ticket.searchable_column_names)
-      end.to_a
-
+    def paginate_tickets(per_page, total_entries = nil)
       Project.current.tickets.paginate(
         :page => params[:page],
         :per_page => per_page,
-        :conditions => conditions,
+        :total_entries => total_entries,
+        :conditions => conditions_for_paginate,
         :include => Ticket.default_includes,
-        :joins => @filters.joins,
+        :joins => ( request.format.rss? ? nil : @filters.joins ),
         :order => [ticket_order, 'tickets.updated_at DESC', 'ticket_changes.created_at'].compact.join(', '))
     end
 
+    def conditions_for_paginate
+      return nil if request.format.rss?
+      
+      PlusFilter::Conditions.new(@filters.conditions) do |c|
+        c << ['tickets.updated_at > ?', @report.since] if @report && @report.since
+        c << Retro::Search.conditions(params[:term], *Ticket.searchable_column_names)
+      end.to_a
+    end
+
     def ticket_order
+      return nil if request.format.rss?
+
       case params[:by]
       when 'user'
         'assigned_users_tickets.name'

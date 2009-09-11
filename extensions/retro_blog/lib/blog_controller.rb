@@ -104,8 +104,9 @@ class BlogController < ProjectAreaController
   private
   
     def options_for_paginate
-      { :page => ( rss_request? ? 1 : params[:page] ), 
-        :per_page => ( rss_request? ? 5 : nil ),
+      { :page => ( request.format.rss? ? 1 : params[:page] ), 
+        :per_page => ( request.format.rss? ? 5 : nil ),
+        :total_entries => ( request.format.rss? ? 5 : nil ),
         :include => [:categories, :user, :comments],
         :order => 'blog_posts.created_at DESC' }
     end
