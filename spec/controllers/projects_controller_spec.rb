@@ -19,7 +19,8 @@ describe ProjectsController do
         :path_to_first_menu_item= => nil,
         :path_to_first_menu_item => '/projects/1/tickets'
       @projects = [@project]
-      @user.stub!(:active_projects).and_return(@projects)
+      @projects.stub!(:active).and_return(@projects)      
+      @user.stub!(:projects).and_return(@projects)
       @user.stub!(:has_access?).and_return(true)
     end
 
@@ -28,7 +29,7 @@ describe ProjectsController do
     end
   
     it 'should find all active projects for the logged-in user' do
-      @user.should_receive(:active_projects).and_return(@projects)      
+      @user.should_receive(:projects).and_return(@projects)      
       do_get
     end
 
@@ -76,7 +77,9 @@ describe ProjectsController do
     describe 'if user has no access to projects' do
 
       before do
-        @user.stub!(:active_projects).and_return([])
+        @projects = []      
+        @projects.stub!(:active).and_return(@projects)      
+        @user.stub!(:projects).and_return(@projects)
       end
       
       def do_get
@@ -88,7 +91,7 @@ describe ProjectsController do
         it_should_successfully_render_template('index')
 
         it 'should find all active projects for the logged-in user' do
-          @user.should_receive(:active_projects).and_return([])      
+          @user.should_receive(:projects).and_return(@projects)      
           do_get
         end
 
@@ -117,7 +120,8 @@ describe ProjectsController do
       before do
         @project = mock_model(Project, :to_param => '1', :path_to_first_menu_item => '/projects/1/changesets')
         @projects = [@project]
-        @user.stub!(:active_projects).and_return(@projects)
+        @projects.stub!(:active).and_return(@projects)      
+        @user.stub!(:projects).and_return(@projects)
       end
       
       def do_get
@@ -125,7 +129,7 @@ describe ProjectsController do
       end
 
       it 'should load and assign all active user projects' do
-        @user.should_receive(:active_projects).and_return(@projects)
+        @user.should_receive(:projects).and_return(@projects)
         do_get
         assigns[:projects].should have(1).record
       end
@@ -147,7 +151,8 @@ describe ProjectsController do
 
       before do
         @projects = [mock_model(Project), mock_model(Project)]
-        @user.stub!(:active_projects).and_return(@projects)
+        @projects.stub!(:active).and_return(@projects)      
+        @user.stub!(:projects).and_return(@projects)
       end
 
       def do_get
@@ -179,7 +184,10 @@ describe ProjectsController do
       
       @project_a = stub_model(Project, :to_param => 'retro', :name => 'Retro')
       @project_b = stub_model(Project, :to_param => 'sub', :name => 'Sub')
-      @user.stub!(:active_projects).and_return([@project_a, @project_b])      
+
+      @projects = [@project_a, @project_b]      
+      @projects.stub!(:active).and_return(@projects)      
+      @user.stub!(:projects).and_return(@projects)
 
       controller.stub!(:find_feedable_records).with(@project_a).and_return([@changeset])
       controller.stub!(:find_feedable_records).with(@project_b).and_return([@ticket])    
@@ -230,7 +238,8 @@ describe ProjectsController do
       controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)
       
       @projects = [mock_model(Project, :to_param => 'retro', :name => 'Retro', :path_to_first_menu_item => '/projects/retro/changesets')]
-      @user.should_receive(:active_projects).and_return(@projects)
+      @projects.stub!(:active).and_return(@projects)      
+      @user.should_receive(:projects).and_return(@projects)
       @projects.stub!(:find!).and_return(@projects.first)      
     end
 

@@ -144,7 +144,7 @@ module FormatHelper
   private 
 
     def find_project_for_ticket(ticket_id)
-      projects = RetroCM[:content][:markup][:global_ticket_refs] ? User.current.active_projects : [Project.current]
+      projects = RetroCM[:content][:markup][:global_ticket_refs] ? User.current.projects.active : [Project.current]
       projects.detect do |project|
         !project.existing_tickets[ticket_id].blank?
       end

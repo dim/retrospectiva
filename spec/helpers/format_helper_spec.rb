@@ -153,7 +153,7 @@ describe FormatHelper do
       it 'should search for tickets within all user-accessible projects' do
         RetroCM[:content][:markup].should_receive(:[]).with(:global_ticket_refs).and_return(true)        
         @user.should_receive(:admin?).and_return(true)
-        @user.should_receive(:active_projects).and_return(AssociationProxies::ActiveUserProjects.new(@user))
+        @user.should_receive(:projects).and_return(AssociationProxies::UserProjects.instantiate(@user))
         do_find.should be_nil
       end      
     end
@@ -161,7 +161,7 @@ describe FormatHelper do
     describe 'if global ticket references are disabled' do
       it 'should search for tickets within all user-accessible projects' do
         RetroCM[:content][:markup].should_receive(:[]).with(:global_ticket_refs).and_return(false)
-        @user.should_not_receive(:active_projects)
+        @user.should_not_receive(:projects)
         @project.should_receive(:existing_tickets).and_return(1234 => {:state => 1, :summary => 'S1'})
         do_find.should == @project
       end

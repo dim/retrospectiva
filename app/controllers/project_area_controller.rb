@@ -37,7 +37,8 @@ class ProjectAreaController < ApplicationController
   protected
   
     def find_project
-      Project.current = User.current.active_projects.find! params[:project_id]
+      project = Project.find_by_short_name! params[:project_id]      
+      Project.current = User.current.projects.active.find(project.short_name)
     end
     
     def render_rss(klass, records = nil, options = {})

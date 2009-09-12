@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   protected
 
     def find_projects
-      @projects = User.current.active_projects
+      @projects = User.current.projects.active
       @projects.reject! do |project|
         project_has_no_accessible_menu_items?(project)
       end
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
     end
 
     def render_index_rss
-      @records = User.current.active_projects.inject([]) do |result, project|                
+      @records = User.current.projects.active.inject([]) do |result, project|                
         find_feedable_records(project).each do |record|
           result << [record, project]
         end        

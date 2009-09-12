@@ -42,7 +42,7 @@ special_update_02_properties_and_content:
   content: |
     Yes, this is the expected behaviour when you are working with with SVN repositories. Retrospectiva (as a typical RubyOnRails application) uses ~40M of RAM, the rest is consumed by the Ruby-SVN bindings (for various reasons). The memory consumption is directly proportional to the size of your repository, but your demand of ~100M of RAM seems quite reasonable to me.
 
-    Please don’t worry being Out Of Memory after a few days, the memory allocation will not grow any further.
+    Don’t worry, the memory allocation will not continue growing.
 
     Regards[[BR]]
     Dimitrij  

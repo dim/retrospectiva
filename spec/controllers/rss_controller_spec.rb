@@ -13,12 +13,13 @@ describe RssController do
       @project_a = mock_model(Project, :to_param => '1')
       @project_b = mock_model(Project, :to_param => '1')
       @projects = [@project_a, @project_b]
-      @user.stub!(:active_projects).and_return(@projects)      
+      @projects.stub!(:active).and_return(@projects)      
+      @user.stub!(:projects).and_return(@projects)      
       controller.stub!(:load_channels).and_return({})
     end      
 
     it 'should load the active user projects' do
-      @user.should_receive(:active_projects).and_return(@projects)
+      @user.should_receive(:projects).and_return(@projects)
       get :index            
     end
     

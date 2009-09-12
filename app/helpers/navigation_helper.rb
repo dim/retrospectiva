@@ -6,7 +6,7 @@ module NavigationHelper
 
   def base_navigation
     links = []
-    if User.current.active_projects.size > 1 || true
+    if User.current.projects.active.size > 1 || true
       klass = controller.is_a?(ProjectsController) ? 'active' : nil
       links << link_to(_('Projects'), projects_path, :class => klass)
     end

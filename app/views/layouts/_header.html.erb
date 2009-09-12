@@ -11,7 +11,7 @@
 
   <div id="menu" class="clearfix">
     <%= yield :main_navigation %>    
-    <% if User.current.active_projects.size > 1 || User.current.admin? -%>
+    <% if User.current.projects.active.size > 1 || User.current.admin? -%>
       <ul id="base-navigation"><%= base_navigation %></ul>
     <% end -%>
   </div>

@@ -83,3 +83,69 @@ describe ProjectAreaController do
   end
 
 end
+
+
+describe 'real-world behaviour' do
+  controller_name :milestones
+    
+  before do
+    @user = mock_current_user! :name => 'Public', :public? => true, :admin? => false, :permitted? => false
+    @project = mock_model Project, 
+      :name => 'Retro', :short_name => 'retro',
+      :enabled_modules => ['milestones']
+
+    @projects = [@project]    
+    @projects.stub!(:active).and_return(@projects)
+    @projects.stub!(:find).and_return(@project)    
+
+    @milestones = []
+    @milestones.stub!(:in_default_order).and_return(@milestones)
+    @milestones.stub!(:active_on).and_return(@milestones)
+    @project.stub!(:milestones).and_return(@milestones)
+  end
+  
+  def do_get(name = 'retro')
+    get :index, :project_id => name
+  end
+  
+  it 'should find the project' do
+    Project.should_receive(:find_by_short_name!).and_return(@project)
+    @user.stub!(:projects).and_return(@projects)
+    do_get
+  end
+
+  describe 'if a project genuinely does not exist' do
+    
+    it 'should raise an error (404)' do
+      lambda { do_get('not-there') }.should raise_error(ActiveRecord::RecordNotFound)      
+    end    
+    
+  end
+
+  describe 'if a project exists' do
+   
+    before do
+      Project.stub!(:find_by_short_name!).and_return(@project)      
+      @user.stub!(:projects).and_return(@projects)
+    end
+    
+    it 'should find the project within active user-projects' do
+      @user.should_receive(:projects).and_return(@projects)
+      @projects.should_receive(:active).and_return(@projects)
+      @projects.should_receive(:find).with('retro').and_return(@project)
+      do_get
+    end
+    
+    describe 'if the project cannot be found within active user-projects' do
+      
+      it 'should redirect to login' do
+        @projects.should_receive(:find).with('retro').and_return(nil)
+        do_get
+        response.should redirect_to(login_path)
+      end
+      
+    end       
+  
+  end  
+end
+

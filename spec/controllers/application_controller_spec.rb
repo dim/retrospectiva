@@ -177,10 +177,13 @@ describe 'RSS access via private key' do
     
   before do
     @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
-    @project = mock_model(Project, :name => 'Retro')
-    @projects = [@project]
-    @projects.stub!(:find!).and_return(@project)
-    @user.stub!(:active_projects).and_return(@projects)
+    @project = mock_model(Project, :name => 'Retro', :short_name => 'retro')
+
+    Project.stub!(:find_by_short_name!).and_return(@project)
+    @projects = [@project]    
+    @projects.stub!(:active).and_return(@projects)
+    @projects.stub!(:find).and_return(@project)
+    @user.stub!(:projects).and_return(@projects)
 
     @milestones = []
     @milestones.stub!(:in_default_order).and_return(@milestones)
@@ -431,17 +434,22 @@ describe "Authorization" do
         controller.class.stub!(:authorize?).and_return(false)          
       end
       
-      it 'should display forbidden page (for HTML)' do
+      it 'should return a 403 page (for HTML)' do
         do_get
         response.code.should == '403'
         response.should render_template(RAILS_ROOT + '/app/views/rescue/403.html.erb')
       end
 
-      it 'should display the page (for XML/RSS)' do
+      it 'should return a 403 head (for XML/RSS)' do
         do_get(:format => 'xml')
         response.code.should == '403'
+        response.body.should be_blank
+      end
+
+      it 'should return a 403 head (for RSS)' do
         do_get(:format => 'rss')
         response.code.should == '403'
+        response.body.should be_blank
       end
 
     end    

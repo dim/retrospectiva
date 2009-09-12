@@ -9,9 +9,9 @@ describe User do
     end
 
     it "should not cache public user" do
-      User.public_user.active_projects.should == [projects(:retro)]
+      User.public_user.projects.should == [projects(:retro)]
       groups(:Default).update_attribute(:access_to_all_projects, true)
-      User.public_user.active_projects.should == projects(:retro, :sub)
+      User.public_user.projects.should == projects(:closed, :retro, :sub)
     end
   
     describe 'mass-assignement' do
@@ -60,6 +60,10 @@ describe User do
     it "should have many contributed ticket changes" do
       users(:agent).should have_many(:ticket_changes)
       users(:agent).ticket_changes.should have(1).record
+    end
+
+    it "should have many projects" do
+      users(:agent).should have(1).projects
     end
 
   end

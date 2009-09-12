@@ -1,21 +1,37 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe AssociationProxies::ActiveUserProjects do
+describe AssociationProxies::UserProjects do
   fixtures :users, :groups_users, :groups, :groups_projects, :projects
+
+  describe 'in general' do
+    before do
+      @proxy = AssociationProxies::UserProjects.instantiate(users(:admin))
+    end
+    
+    it 'should select projects' do
+      @proxy.should have(3).records
+    end
+
+    it 'should be able to limit to active projects' do
+      @proxy.active.should have(2).record
+      @proxy.active.should be_instance_of(AssociationProxies::UserProjects)
+    end
+
+  end
   
   describe 'when user is an admin' do
     before do
-      @proxy = AssociationProxies::ActiveUserProjects.new(users(:admin))
+      @proxy = AssociationProxies::UserProjects.instantiate(users(:admin))
     end
 
-    it 'should select all available, non-closed projects' do
-      @proxy.should have(2).records
+    it 'should select all available records' do
+      @proxy.should have(3).records
     end
   end
 
   describe 'when user is not an admin' do
     before do
-      @proxy = AssociationProxies::ActiveUserProjects.new(users(:agent))
+      @proxy = AssociationProxies::UserProjects.instantiate(users(:agent))
     end
 
     it 'should select projects the user is assigned to' do
@@ -25,7 +41,7 @@ describe AssociationProxies::ActiveUserProjects do
 
   describe 'finding a project' do
     before do
-      @proxy = AssociationProxies::ActiveUserProjects.new(users(:admin))
+      @proxy = AssociationProxies::UserProjects.instantiate(users(:admin))
     end
 
     describe 'if a string is passed' do

@@ -5,7 +5,7 @@ describe BlogCommentsController do
 
   before do
     @project = permit_access_with_current_project! :name => 'Retro', :wiki_title => 'Retro'
-    @user = mock_current_user! :permitted? => true, :active_projects => @project
+    @user = mock_current_user! :permitted? => true, :projects => [@project]
     
     @blog_post = mock_model(BlogPost)
 

@@ -116,9 +116,9 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest("#{SecureToken.spend(token)}:#{password}") == hash    
   end
 
-  # Returns all active projects available for the user
-  def active_projects
-    @active_projects ||= AssociationProxies::ActiveUserProjects.new(self)
+  # Returns all projects available for the user
+  def projects
+    @projects ||= AssociationProxies::UserProjects.instantiate(self)
   end
 
   # Resets the password attribute, expects plain password

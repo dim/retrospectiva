@@ -1,14 +1,18 @@
-class AssociationProxies::ActiveUserProjects < Array
+class AssociationProxies::UserProjects < Array
 
-  def initialize(user)
+  def self.instantiate(user)
     records = if user.admin?
-      Project.find_all_by_closed(false, :order => 'name')
+      Project.all(:order => 'name')
     else
       user.groups.map do |group|
-        group.projects.select(&:active?)
+        group.projects
       end.flatten.uniq.sort_by(&:name)
     end
-    super(records)    
+    new(records)    
+  end
+  
+  def active
+    self.class.new(select(&:active?))
   end
   
   def find(param)
