@@ -1,0 +1,24 @@
+active_50: 
+  story: active
+  percent_completed: 50
+  created_on: <%= 1.day.ago.to_date.to_s(:db) %>
+almost_complete_10: 
+  story: almost_complete
+  percent_completed: 10
+  created_on: <%= 3.days.ago.to_date.to_s(:db) %>
+almost_complete_50: 
+  story: almost_complete
+  percent_completed: 50
+  created_on: <%= 2.days.ago.to_date.to_s(:db) %>
+almost_complete_90: 
+  story: almost_complete
+  percent_completed: 90
+  created_on: <%= 1.day.ago.to_date.to_s(:db) %>
+complete_90: 
+  story: complete
+  percent_completed: 90
+  created_on: <%= 5.days.ago.to_date.to_s(:db) %>
+complete_100: 
+  story: complete
+  percent_completed: 100
+  created_on: <%= 4.days.ago.to_date.to_s(:db) %>

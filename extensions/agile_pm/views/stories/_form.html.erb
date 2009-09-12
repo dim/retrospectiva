@@ -1,0 +1,21 @@
+<fieldset>
+  <div>
+    <%= f.label :title, _('Title') + ':', :required => true %>
+    <%= f.text_field :title, :size => 60 %>
+  </div>
+  <div>
+    <%= f.label :estimated_hours, _('Estimated Hours') + ':', :required => true %>
+    <%= f.text_field :estimated_hours, :size => 6 %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <%= f.label :goal_id, _('Goal') + ':' %>
+  <%= f.collection_select :goal_id, @sprint.goals, :id, :title, :include_blank => true %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :description, _('Description') + ':' %>
+  <%= markup_area :story, :description %>
+</fieldset>
+

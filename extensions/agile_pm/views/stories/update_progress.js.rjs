@@ -1,0 +1,3 @@
+page.replace_html "story_#{@story.id}_progress", "#{@progress_update.percent_completed}%" 
+page.replace "sprint_#{@sprint.id}_hours_chart", :partial => 'stories/charts/hours'
+page.replace "sprint_#{@sprint.id}_stories_chart", :partial => 'stories/charts/stories'

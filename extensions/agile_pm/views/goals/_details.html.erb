@@ -1,0 +1,7 @@
+<h1><%=h truncate(@goal.title) %></h1>  
+
+<% if @goal.description.present? -%>
+  <%= markup @goal.description %>
+<% else -%>
+  <p><%=_ 'No description' %></p>
+<% end -%>

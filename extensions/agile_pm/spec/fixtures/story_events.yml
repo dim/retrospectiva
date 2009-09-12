@@ -1,0 +1,6 @@
+comment: 
+  story: active
+  type: StoryComment
+  content: Minor Update
+  creator: creator
+  created_at: <%= 2.hours.ago %>

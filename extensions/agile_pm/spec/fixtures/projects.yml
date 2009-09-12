@@ -1,0 +1,8 @@
+--- 
+retro:
+  name: Retrospectiva
+  root_path: retrospectiva/
+  info: Retrospectiva
+  closed: false
+  short_name: retrospectiva
+  repository_id: 1

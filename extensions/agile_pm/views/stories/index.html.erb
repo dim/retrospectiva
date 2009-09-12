@@ -1,0 +1,43 @@
+<% @page_title = _('Stories') -%>
+<% include_agile_pm_stylesheet -%>
+<% include_plus_chart_js -%>
+<% slim_page -%>
+
+<div class="agile-pm">
+
+  <div class="span-16 append-1">
+    <%= page_title %>  
+    <%= render :partial => 'navigation' %>  
+
+    <table><tbody>
+      <% if @stories.any? -%>
+        
+        <% if !User.current.public? and @stories[User.current] -%>
+          <tr><th colspan="4"><%=_ 'My Stories' %></th></tr>
+          <%= render @stories[User.current] -%>
+        <% end -%>
+  
+        <% @stories.except(User.current).each do |user, stories| -%>
+          <tr><th colspan="4"><%= user.present? ? h(user.name) : _('Pending') %></th></tr>        
+          <%= render stories -%>              
+        <% end -%>
+        
+      <% else -%>
+        <tr><th><%=_ 'There are no stories in this category' %></th></tr>
+      <% end -%>
+    </tbody></table>
+    
+  </div>
+  
+  <div class="agile-pm-navigation span-7 last">
+    <h2><%=_ 'Milestones' %> / <%=_ 'Sprints' %></h2>    
+    <%= render :partial => 'milestone', :collection => @milestones.select {|m| m.sprints.any? } -%>
+
+    <h2><%=_ 'Progress' %></h2>
+    <%= render :partial => 'stories/charts/hours' %>
+    <%= render :partial => 'stories/charts/stories' %>
+  </div>
+
+</div> 
+ 
+<%= render :partial => 'agile_pm/lightbox' %>

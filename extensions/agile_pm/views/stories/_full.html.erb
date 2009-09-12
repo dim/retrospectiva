@@ -1,0 +1,9 @@
+<h3 title="<%=h @story.title %>" class="bottom-5">
+  <%=h truncate(@story.title, :length => 80) %> &ndash
+  <span class="tiny">
+    <%=_ '{{count}}h', :count => @story.revised_hours %>
+    (<%=_ '{{count}}h', :count => @story.estimated_hours %>)
+  </span>
+</h3>
+<hr/>  
+<%= render :partial => 'event', :collection => [@story] + @story.events %>  

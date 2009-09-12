@@ -1,0 +1,9 @@
+<% content_tag :div, :id => "sprint_#{@sprint.id}_hours_chart" do -%>
+  <h4><%=_ 'Hours' %> (<%= number_with_delimiter @sprint.stories.total_hours %>)</h4>    
+  <div class="tiny" id="sprint_hour_stats"></div>
+  <%= plus_chart 'sprint_hour_stats', @sprint.stories.total_hours, 
+  			{ :value => @sprint.stories.completed_hours, :className => 'completed', :title => _('Completed') },
+  			{ :value => @sprint.stories.active_hours, :className => 'active', :title => _('Active') },
+  			{ :value => @sprint.stories.pending_hours, :className => 'pending', :title => _('Pending') }
+  %>
+<% end -%>

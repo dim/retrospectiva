@@ -1,0 +1,286 @@
+en-GB:
+  application:
+    # extensions/agile_pm/models/story_status_update.rb
+    Accepted: Accepted
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    Active: Active
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Are you sure?": "Are you sure?"
+
+    # extensions/agile_pm/views/goals/show.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
+    Back: Back
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    Backlog: Backlog
+
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    Cancel: Cancel
+
+    # extensions/agile_pm/views/goals/show.js.rjs
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    Close: Close
+
+    # extensions/agile_pm/models/story_comment.rb
+    # extensions/agile_pm/views/stories/_comment_form.html.erb
+    Comment: Comment
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    # extensions/agile_pm/models/story_status_update.rb
+    # extensions/agile_pm/views/goals/_milestone.html.erb
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    Completed: Completed
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Completed on {{date}}": "Completed on {{date}}"
+
+    # extensions/agile_pm/models/goal.rb
+    "Could have": "Could have"
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/_comment_form.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    Create: Create
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_actions.html.erb
+    Delete: Delete
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Description: Description
+
+    # extensions/agile_pm/views/goals/show.js.rjs
+    Details: Details
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    Due: Due
+
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_actions.html.erb
+    Edit: Edit
+
+    # extensions/agile_pm/views/stories/_form.html.erb
+    "Estimated Hours": "Estimated Hours"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Finish: Finish
+
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    "Finishes On": "Finishes On"
+
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Goal: Goal
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully created.": "Goal was successfully created."
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully deleted.": "Goal was successfully deleted."
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully updated.": "Goal was successfully updated."
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/goals_controller.rb
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/goals/no_milestones.html.erb
+    # extensions/agile_pm/views/goals/show.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    Goals: Goals
+
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    Hide: Hide
+
+    # extensions/agile_pm/views/sprints/show.json.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    Hours: Hours
+
+    # extensions/agile_pm/views/sprints/show.json.erb
+    # extensions/agile_pm/views/stories/charts/_backlog.html.erb
+    Kick-off: Kick-off
+
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    Link: Link
+
+    # extensions/agile_pm/views/goals/_header.html.erb
+    # extensions/agile_pm/views/sprints/_header.html.erb
+    Milestone: Milestone
+
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Milestones: Milestones
+
+    # extensions/agile_pm/models/goal.rb
+    "Must have": "Must have"
+
+    # extensions/agile_pm/views/stories/index.html.erb
+    "My Stories": "My Stories"
+
+    # extensions/agile_pm/views/goals/_sprint.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    "New Goal": "New Goal"
+
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    "New Sprint": "New Sprint"
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    "New Story": "New Story"
+
+    # extensions/agile_pm/views/goals/_details.html.erb
+    # extensions/agile_pm/views/stories/_event.html.erb
+    "No description": "No description"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Pending: Pending
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Priority: Priority
+
+    # extensions/agile_pm/views/stories/index.html.erb
+    Progress: Progress
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Re-open: Re-open
+
+    # extensions/agile_pm/models/story_status_update.rb
+    Re-opened: Re-opened
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Requester: Requester
+
+    # extensions/agile_pm/models/story_revision.rb
+    Revision: Revision
+
+    # extensions/agile_pm/models/goal.rb
+    "Should have": "Should have"
+
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    Show: Show
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Sprint: Sprint
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully created.": "Sprint was successfully created."
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully deleted.": "Sprint was successfully deleted."
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully updated.": "Sprint was successfully updated."
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Sprints: Sprints
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Start: Start
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    Started: Started
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Started on {{date}}": "Started on {{date}}"
+
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    "Starts On": "Starts On"
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/stories_controller.rb
+    # extensions/agile_pm/views/stories/_sprint.html.erb
+    # extensions/agile_pm/views/stories/backlog.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    # extensions/agile_pm/views/stories/no_sprints.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
+    Stories: Stories
+
+    # extensions/agile_pm/views/stories/charts/_backlog.html.erb
+    Story: Story
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was accepted.": "Story was accepted."
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was completed.": "Story was completed."
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was re-opened.": "Story was re-opened."
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was successfully created.": "Story was successfully created."
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Take Over": "Take Over"
+
+    # extensions/agile_pm/views/goals/_sprint.html.erb
+    "There are currently no goals defined.": "There are currently no goals defined."
+
+    # extensions/agile_pm/views/goals/no_milestones.html.erb
+    "There are no milestones present": "There are no milestones present"
+
+    # extensions/agile_pm/views/stories/no_sprints.html.erb
+    "There are no sprints present": "There are no sprints present"
+
+    # extensions/agile_pm/views/stories/backlog.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    "There are no stories in this category": "There are no stories in this category"
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Title: Title
+
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_header.html.erb
+    Unassigned: Unassigned
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    Update: Update
+
+    # extensions/agile_pm/ext_info.rb
+    View: View
+
+    # extensions/agile_pm/models/goal.rb
+    "Won't have": "Won't have"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "You cannot put it back!": "You cannot put it back!"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    # extensions/agile_pm/models/story_revision.rb
+    # extensions/agile_pm/views/stories/_full.html.erb
+    # extensions/agile_pm/views/stories/charts/_story_line.html.erb
+    # extensions/agile_pm/views/stories/revise_hours.js.rjs
+    "{{count}}h": "{{count}}h"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "{{period}} ago": "{{period}} ago"
+

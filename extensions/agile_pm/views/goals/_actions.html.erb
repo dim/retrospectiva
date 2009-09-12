@@ -1,0 +1,4 @@
+<% content_tag wrap, :class => classes do -%>
+  <%= link_to(_('Edit'), edit_goal_path(goal)) if permitted?(:goals, :update) %>
+  <%= link_to(_('Delete'), goal_path(goal), options_for_destroy_link) if permitted?(:goals, :delete) %>
+<% end if permitted?(:goals, :update) or permitted?(:goals, :delete) -%>

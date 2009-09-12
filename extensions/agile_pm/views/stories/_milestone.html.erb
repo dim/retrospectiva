@@ -1,0 +1,10 @@
+<div class="box">
+  <div class="tiny float-r"><%= link_to_function _('Show') + '/' + _('Hide'), "$(this).up().next('div').toggle();" %></div>
+  <h3 class="bottom-5">
+    <%=h milestone.name %>  
+    <%= boolean_format(milestone.completed?, _('Completed')) if milestone.completed? %>
+  </h3>
+  <div style="<%= 'display:none' if milestone.completed? and !milestone.sprints.include?(@sprint) %>">
+    <%= render :partial => 'sprint', :collection => milestone.sprints, :locals => { :milestone => milestone } %>
+  </div>     
+</div>

@@ -1,0 +1,11 @@
+<tr><td colspan="4">
+  <div id="<%= sprint_dom_id %>_chart_swf"></div>   
+  <% javascript_tag do -%>
+    swfobject.embedSWF("<%= x_image_path('open-flash-chart.swf') %>", "<%= sprint_dom_id %>_chart_swf", "600", "200", "9.0.0","<%= x_image_path('expressInstall.swf') %>", false,
+    {
+      'flashvars': "<%= {'data-file' => sprint_path(sprint, :format => :json)}.to_query %>"
+    }, {
+      'class': "sprint-chart"
+    });
+  <% end -%>
+</td></tr>

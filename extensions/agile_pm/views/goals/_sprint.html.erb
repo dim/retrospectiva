@@ -1,0 +1,33 @@
+<table class="sprint">
+  <thead>
+  
+    <tr> 
+      <th>
+        <%= link_to_function title, hide_all_show_one(sprint_dom_id), :href => "##{sprint_dom_id}" %>
+        <%= sprint_management_links(sprint) %>
+      </th>      
+      <th class="righted tiny">&nbsp;<%= sprint_info %></th>
+    </tr>
+  
+  </thead>
+
+  <tbody>
+
+    <tr id="<%=h sprint_dom_id %>" class="sprint-details">      
+      <td colspan="2">            
+        <% content_tag :p, :class => 'small strong righted' do -%>
+          <%= link_to _('New Goal'), new_goal_path(:milestone_id => @milestone, :sprint_id => sprint) %>
+        <% end if permitted?(:goals, :create) and not @milestone.completed? -%>            
+
+        <% if @goals[sprint] and @goals[sprint].any? -%>
+          <table class="goals"><tbody>
+            <%= render @goals[sprint] %>
+            <%= render :partial => 'chart', :locals => { :sprint => sprint, :sprint_dom_id => sprint_dom_id } if sprint %>
+          </tbody></table>          
+        <% else -%>
+          <p class="centered"><%=_ 'There are currently no goals defined.' %></p>
+        <% end -%>
+      </td> 
+    </tr>    
+  </tbody>
+</table>

@@ -1,0 +1,5 @@
+page.replace_html :lightbox, :partial => 'popup'
+page << %Q(  
+  $('fadebox').setStyle({ height:$(document).viewport.getHeight() + 'px' }).show();
+  $('lightbox').show();
+)

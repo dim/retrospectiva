@@ -1,0 +1,19 @@
+<% @page_title = _('Goals') -%>
+<% slim_page -%>
+
+<div class="agile-pm">
+  <%= render :partial => 'header' %>  
+
+  <% plus_form_for @sprint, :url => sprint_path(@sprint) do |f| -%>  
+    <%= f.info h(truncate(@sprint.title)) %>
+    <%= f.error_messages %>
+
+    <%= render :partial => 'form', :locals => { :f => f } %>
+
+    <fieldset class="buttons">
+      <%= submit_tag _('Update') %> | <%= link_to _('Cancel'), sprint_location %>
+    </fieldset>
+  <% end -%>   
+
+</div>
+  

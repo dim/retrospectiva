@@ -1,0 +1,9 @@
+<div id="lightbox" style="display:none;"></div>
+<div id="fadebox" style="display:none;"></div>
+<% javascript_tag do -%>
+  $('fadebox').setOpacity(0.8).
+    observe('click', function() {
+      $('lightbox').hide();
+      $('fadebox').hide();
+    });
+<% end -%>

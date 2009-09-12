@@ -1,0 +1,16 @@
+<% @page_title = _('Stories') -%>
+<% include_agile_pm_stylesheet -%>
+
+<div class="agile-pm">
+
+  <%= page_title %>
+  <%= render :partial => 'navigation' %>  
+  
+  <h5>&ensp;<%= @milestone.name %> &raquo; <%= sprints_navigation(@milestone) %></h5>
+  <% if @sprint.stories.any? -%>
+    <%= render :partial => 'stories/charts/backlog' %>    
+  <% else -%>
+    <h6><%=_ 'There are no stories in this category' %></h6>
+  <% end -%>
+</div>  
+<%= render :partial => 'agile_pm/lightbox' %>

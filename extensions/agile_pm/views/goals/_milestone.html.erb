@@ -1,0 +1,7 @@
+<h3 class="bottom-5">
+  <%= link_to_milestone milestone, milestone == @milestone %>  
+  <%= boolean_format(milestone.completed?, _('Completed')) if milestone.completed? %>
+</h3>
+<dl class="tiny quiet">
+  <%= milestone_runtime(milestone) {|name, date| "<dt>#{name}</dt><dd>#{date}</dd>" } %>
+</dl>

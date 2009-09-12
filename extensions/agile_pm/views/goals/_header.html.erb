@@ -1,0 +1,9 @@
+<% content_header do -%>
+  <%= h(truncate(Project.current.name)) %> / 
+  <%= link_to _('Milestone') + ' ' + h(truncate(@milestone.name)), goals_path %> / 
+  <% if @goal.sprint -%>
+    <%= link_to h(truncate(@goal.sprint.title)), sprint_location %>
+  <% else -%>
+    <%= link_to _('Unassigned'), sprint_location %>
+  <% end -%>
+<% end -%>

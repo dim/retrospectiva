@@ -1,0 +1,23 @@
+<tr>      
+  <td title="<%=h story.title %>: <%=h story.description %>">
+    <%= link_to_remote h(truncate(story.title)), 
+				:url => story_path(story, :format => :js),
+				:html => { :class => 'strong' },
+				:method => :get %><br/>
+    <span class="quieter">
+      <%=_ '{{count}}h', :count => story.revised_hours %> / 
+      <%=_ '{{count}}h', :count => story.estimated_hours %>
+    </span>        
+  </td>    
+  <td class="span-1 righted">
+    <%= story.assigned? ? user_gravatar(story.assigned, :size => 24) : image_spacer(:size => '24x24') %>
+  </td>    
+  <td class="centered pending day" title="<%= story_status(story) %>">
+    <%= number_with_delimiter(story.revised_hours.round) %>
+  </td>
+  <% @sprint.each_day do |date| -%>
+    <td class="centered <%=h story.status_on(date) %> day" title="<%=l date, :format => :long %>">
+      <%= number_with_delimiter(story.remaining_hours(date).round) %>
+    </td>
+  <% end -%>
+</tr>

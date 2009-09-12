@@ -1,0 +1,286 @@
+ja-JP:
+  application:
+    # extensions/agile_pm/models/story_status_update.rb
+    Accepted: 受け入れた
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    Active: 実行中
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Are you sure?": 本当によいですか？
+
+    # extensions/agile_pm/views/goals/show.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
+    Back: 戻る
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    Backlog: 未処理
+
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    Cancel: 中止
+
+    # extensions/agile_pm/views/goals/show.js.rjs
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    Close: 閉じる
+
+    # extensions/agile_pm/models/story_comment.rb
+    # extensions/agile_pm/views/stories/_comment_form.html.erb
+    Comment: コメント
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    # extensions/agile_pm/models/story_status_update.rb
+    # extensions/agile_pm/views/goals/_milestone.html.erb
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    Completed: 完了
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Completed on {{date}}": "{{date}}に完了"
+
+    # extensions/agile_pm/models/goal.rb
+    "Could have": "FIXME: できれば(Could have)"
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/_comment_form.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    Create: 作成
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_actions.html.erb
+    Delete: 削除
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Description: 説明
+
+    # extensions/agile_pm/views/goals/show.js.rjs
+    Details: 詳細
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    Due: 期限
+
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_actions.html.erb
+    Edit: 編集
+
+    # extensions/agile_pm/views/stories/_form.html.erb
+    "Estimated Hours": 見積り時間
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Finish: 終了
+
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    "Finishes On": 終了日
+
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Goal: 目標
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully created.": 目標を作成しました。
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully deleted.": 目標を削除しました。
+
+    # extensions/agile_pm/lib/goals_controller.rb
+    "Goal was successfully updated.": 目標を更新しました。
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/goals_controller.rb
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    # extensions/agile_pm/views/goals/no_milestones.html.erb
+    # extensions/agile_pm/views/goals/show.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    Goals: 目標一覧
+
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    Hide: 隠す
+
+    # extensions/agile_pm/views/sprints/show.json.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    Hours: 時間
+
+    # extensions/agile_pm/views/sprints/show.json.erb
+    # extensions/agile_pm/views/stories/charts/_backlog.html.erb
+    Kick-off: キックオフ
+
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    Link: リンク
+
+    # extensions/agile_pm/views/goals/_header.html.erb
+    # extensions/agile_pm/views/sprints/_header.html.erb
+    Milestone: マイルストーン
+
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Milestones: マイルストーン一覧
+
+    # extensions/agile_pm/models/goal.rb
+    "Must have": "FIXME: 必須(Must have)"
+
+    # extensions/agile_pm/views/stories/index.html.erb
+    "My Stories": 自分のストーリ一覧
+
+    # extensions/agile_pm/views/goals/_sprint.html.erb
+    # extensions/agile_pm/views/goals/new.html.erb
+    "New Goal": 新しい目標
+
+    # extensions/agile_pm/views/goals/index.html.erb
+    # extensions/agile_pm/views/sprints/new.html.erb
+    "New Sprint": 新しいスプリント
+
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    "New Story": 新しいストーリ
+
+    # extensions/agile_pm/views/goals/_details.html.erb
+    # extensions/agile_pm/views/stories/_event.html.erb
+    "No description": 説明なし
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    # extensions/agile_pm/views/stories/_navigation.html.erb
+    # extensions/agile_pm/views/stories/charts/_hours.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Pending: 保留
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Priority: 優先度
+
+    # extensions/agile_pm/views/stories/index.html.erb
+    Progress: 進捗
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Re-open: 再未解決
+
+    # extensions/agile_pm/models/story_status_update.rb
+    Re-opened: 再未解決
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Requester: 要求者
+
+    # extensions/agile_pm/models/story_revision.rb
+    Revision: 変更
+
+    # extensions/agile_pm/models/goal.rb
+    "Should have": "FIXME: ほぼ必須(Should have)"
+
+    # extensions/agile_pm/views/stories/_milestone.html.erb
+    Show: 表示
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    Sprint: スプリント
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully created.": スプリントを作成しました。
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully deleted.": スプリントを削除しました。
+
+    # extensions/agile_pm/lib/sprints_controller.rb
+    "Sprint was successfully updated.": スプリントを更新しました。
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/stories/index.html.erb
+    Sprints: スプリント一覧
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    Start: 開始
+
+    # extensions/agile_pm/lib/agile_pm_helper.rb
+    Started: 開始
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Started on {{date}}": "{{date}}から開始"
+
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    "Starts On": 開始日
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/lib/stories_controller.rb
+    # extensions/agile_pm/views/stories/_sprint.html.erb
+    # extensions/agile_pm/views/stories/backlog.html.erb
+    # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    # extensions/agile_pm/views/stories/new.html.erb
+    # extensions/agile_pm/views/stories/no_sprints.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
+    Stories: ストーリ一覧
+
+    # extensions/agile_pm/views/stories/charts/_backlog.html.erb
+    Story: ストーリ
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was accepted.": ストーリを受け付けました。
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was completed.": ストーリが完了しました。
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was re-opened.": ストーリを再度未解決にしました。
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was successfully created.": ストーリを作成しました。
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "Take Over": 引き継ぐ
+
+    # extensions/agile_pm/views/goals/_sprint.html.erb
+    "There are currently no goals defined.": 目標が定義されていません。
+
+    # extensions/agile_pm/views/goals/no_milestones.html.erb
+    "There are no milestones present": マイルストーンがありません
+
+    # extensions/agile_pm/views/stories/no_sprints.html.erb
+    "There are no sprints present": スプリントがありません
+
+    # extensions/agile_pm/views/stories/backlog.html.erb
+    # extensions/agile_pm/views/stories/index.html.erb
+    "There are no stories in this category": このカテゴリにストーリがありません
+
+    # extensions/agile_pm/views/goals/_form.html.erb
+    # extensions/agile_pm/views/sprints/_form.html.erb
+    # extensions/agile_pm/views/stories/_form.html.erb
+    Title: タイトル
+
+    # extensions/agile_pm/lib/goals_helper.rb
+    # extensions/agile_pm/views/goals/_header.html.erb
+    Unassigned: 未割り当て
+
+    # extensions/agile_pm/ext_info.rb
+    # extensions/agile_pm/views/goals/edit.html.erb
+    # extensions/agile_pm/views/sprints/edit.html.erb
+    Update: 更新
+
+    # extensions/agile_pm/ext_info.rb
+    View: 表示
+
+    # extensions/agile_pm/models/goal.rb
+    "Won't have": "FIXME: 含めない(Won't have)"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "You cannot put it back!": 戻すことはできません！
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    # extensions/agile_pm/models/story_revision.rb
+    # extensions/agile_pm/views/stories/_full.html.erb
+    # extensions/agile_pm/views/stories/charts/_story_line.html.erb
+    # extensions/agile_pm/views/stories/revise_hours.js.rjs
+    "{{count}}h": "{{count}}時間"
+
+    # extensions/agile_pm/lib/stories_helper.rb
+    "{{period}} ago": "{{period}}以前"
+

@@ -1,0 +1,61 @@
+pending: 
+  title: Pending Story
+  estimated_hours: 16
+  revised_hours: 16
+  sprint: current
+  creator: creator
+
+
+#  active:
+#
+#  2 days ago: 12  (0%)
+#  1 day  ago: 6   (50%) 
+active: 
+  title: Active Story
+  estimated_hours: 12
+  revised_hours: 12
+  sprint: current
+  creator: creator
+  assigned: worker
+  started_at: <%= 23.hours.ago.to_s(:db) %>  
+
+
+#  almost_complete:
+#
+#  4 days ago: 24   (0%)
+#  3 days ago: 21.6 (10%)
+#  2 days ago: 12   (50%)
+#  1 day  ago: 2.4  (90%) 
+almost_complete: 
+  title: Almost complete
+  estimated_hours: 16
+  revised_hours: 24
+  sprint: current
+  creator: creator
+  assigned: worker
+  started_at: <%= 3.days.ago.to_s(:db) %>  
+
+
+#  complete:
+#
+#  6 days ago: 7   (0%)
+#  5 days ago: 0.7 (90%)
+#  4 days ago: 0   (100%) 
+complete: 
+  title: Complete
+  estimated_hours: 8
+  revised_hours: 7
+  sprint: current
+  creator: creator
+  assigned: worker
+  started_at: <%= 5.days.ago.to_s(:db) %>  
+  completed_at: <%= 4.days.ago.to_s(:db) %>  
+  
+orphanned:
+  title: Orphanned
+  estimated_hours: 8
+  revised_hours: 8
+  sprint: previous
+  creator: creator
+  started_at: <%= 18.days.ago.to_s(:db) %>  
+  completed_at: <%= 17.days.ago.to_s(:db) %>  

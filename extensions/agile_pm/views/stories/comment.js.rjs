@@ -1,0 +1,5 @@
+if @story_comment.errors.any?
+  page.replace :story_comment_form, :partial => 'comment_form'
+else
+  page.replace_html :lightbox, :partial => 'popup'  
+end

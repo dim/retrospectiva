@@ -1,0 +1,14 @@
+<table class="record-list backlog small">
+  <thead>
+    <tr>      
+      <th colspan="2"><%=_ 'Story' %></th>    
+      <th class="day centered"><%=_ 'Kick-off' %></th>
+      <% @sprint.each_day do |date| -%>
+        <th class="day centered" title="<%=l date, :format => :long %>"><%=l date, :format => '%d' %></th>
+      <% end -%>
+    </tr>
+  </thead>  
+  <tbody>
+    <%= render :partial => 'stories/charts/story_line', :collection => @sprint.stories.by_status, :as => :story -%>  
+  </tbody>  
+</table>

@@ -1,0 +1,5 @@
+<h6 class="small"><%= link_to_sprint milestone, sprint, sprint == @sprint %></h6>
+<dl class="tiny quiet bottom-5">
+  <dd><%= date_format(sprint.starts_on) %> &ndash <%= date_format(sprint.finishes_on) %></dd>
+  <dd><%=_ "Stories" %>: <%= sprint.stories.size %></dd>
+</dl>

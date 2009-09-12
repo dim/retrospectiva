@@ -1,0 +1,29 @@
+<% @page_title = _('Goals') -%>
+<% include_agile_pm_stylesheet -%>
+<% include_swf_object_js -%>
+<% slim_page -%>
+
+<div class="agile-pm">
+
+  <div class="span-16 append-1">
+    <%= page_title %>  
+    <% content_header do -%>
+      <%= link_to _('New Sprint'), new_project_milestone_sprint_path(Project.current, @milestone) %>
+    <% end if permitted?(:sprints, :create)-%>    
+    
+    <%= render_sprint_table @milestone.sprints %>    
+    <%= render_unassigned_table %>    
+    <%= javascript_tag hide_all_show_current(@current_sprint) %>    
+  </div>
+  
+  <div class="agile-pm-navigation span-7 last">
+    <div class="box">
+      <h2><%=_ 'Milestones' %></h2>    
+      <%= render :partial => 'milestone', :collection => @milestones -%>
+    </div>
+  </div>
+
+</div>
+<%= render :partial => 'agile_pm/lightbox' %>
+
+  

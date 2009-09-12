@@ -1,0 +1,15 @@
+<tr class="<%= cycle('odd', 'even') %>">
+  <td class="centered span-1"><%= goal.requester ? user_gravatar(goal.requester, :size => 24) : image_spacer(:size => '24x24', :class => 'framed') %></td>
+  <td class="strong" title="<%=h goal.title %>">
+    <%= link_to_remote h(truncate(goal.title, :length => 50)), 
+					:url => goal_path(goal, :format => :js),
+					:method => :get %>
+  </td>
+  <td class="righted span-1 strong">
+    <%= x_image_tag "priority-#{goal.priority_id}.gif", :alt => h(goal.priority.name), :title => h(goal.priority.name) %>
+  </td>
+  <%= render :partial => 'actions', :locals => { 
+				:goal => goal,
+				:wrap => :td, :classes => "actions righted tiny span-3"
+			} %>
+</tr>

@@ -1,0 +1,16 @@
+previous: 
+  title: Sprint 1
+  milestone: upcoming
+  starts_on: <%= 3.weeks.ago.to_s(:db) %>
+  finishes_on: <%= 1.week.ago.to_s(:db) %>
+current: 
+  title: Sprint 2
+  milestone: upcoming
+  starts_on: <%= 1.week.ago.to_s(:db) %>
+  finishes_on: <%= 1.week.from_now.to_s(:db) %>
+future: 
+  title: Sprint 3
+  milestone: upcoming
+  starts_on: <%= 2.weeks.from_now.to_s(:db) %>
+  finishes_on: <%= 4.weeks.from_now.to_s(:db) %>
+  

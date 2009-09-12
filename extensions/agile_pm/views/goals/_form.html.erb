@@ -1,0 +1,23 @@
+<fieldset>
+  <%= f.label :title, _('Title') + ':', :required => true %>
+  <%= f.text_field :title, :size => 60 %>
+</fieldset>
+<fieldset>
+  <div>
+    <%= f.label :priority_id, _('Priority') + ':', :required => true %>
+    <%= f.collection_select :priority_id, Goal.priorities.reverse, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :sprint_id, _('Sprint') + ':' %>
+    <%= f.collection_select :sprint_id, @sprints, :id, :title, :include_blank => true %>
+  </div>
+  <div>
+    <%= f.label :requester_id, _('Requester') + ':' %>
+    <%= f.collection_select :requester_id, @users, :id, :name %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <%= f.label :description, _('Description') + ':' %>
+  <%= markup_area :goal, :description %>
+</fieldset>

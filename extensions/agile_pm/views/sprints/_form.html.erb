@@ -1,0 +1,15 @@
+<fieldset>
+  <%= f.label :title, _('Title') + ':', :required => true %>
+  <%= f.text_field :title %>
+  <%= javascript_tag "$('sprint_title').focus()" %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :starts_on_3i, _('Starts On') + ':', :required => true %>
+  <%= f.date_select :starts_on %>
+</fieldset>
+
+<fieldset>
+  <%= f.label :finishes_on_3i, _('Finishes On') + ':', :required => true %>
+  <%= f.date_select :finishes_on %>
+</fieldset>

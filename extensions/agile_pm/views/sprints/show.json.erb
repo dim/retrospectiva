@@ -1,0 +1,38 @@
+<%= 
+y_max     = @sprint.time_line.values.max.to_i * 1.25
+y_max     = 10 if y_max < 10
+potential = 10 ** ( Math.log10(y_max).floor - 1 )
+y_steps   = [50, 100, 250].map {|i| i * potential }.find { |i| y_max < i } / 10 
+y_labels 	= [0]
+y_labels << y_labels.last + y_steps while y_labels.last < y_max
+x_labels  = [_('Kick-off')] + @sprint.time_line.keys.compact.map {|i| l(i, :format => :short) }
+
+{
+  'title' => '',
+  'bg_colour' => '#FFFFFF',     
+  'elements' => [
+    {
+			'type'      => 'line',
+      'text'      => _('Hours'),
+      'font-size' => 12,
+      'colour'    => '#3377BB', 
+      'width'     => 2,
+      'dot-style' => { 'dot-size' => 3, 'type' => 'solid-dot' },
+      'values'    => @sprint.time_line.values,
+		}
+  ],
+  'y_axis' => {
+    'colour' => '#cccccc', 
+    'grid-colour' => '#eeeeee',
+    'min'         => 0,
+    'max'         => y_max,
+		'labels' 			=> y_labels.map {|i| number_with_delimiter(i) },
+		'steps'				=> y_steps
+  },
+  'x_axis' => {
+    'colour'      => '#cccccc', 
+    'grid-colour' => '#eeeeee', 
+    'tick-height' => 5,
+    'labels' 			=> { 'size' => 10, 'rotate' => 'diagonal', 'labels' => x_labels }
+  }
+}.to_json %>

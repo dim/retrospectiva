@@ -1,0 +1,52 @@
+.plus-chart:after { content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden; }
+* html .plus-chart {height:1%;}
+
+.plus-chart-stack { background:#fff; border:1px solid #aaa; padding:1px; padding-right:0; }
+.plus-chart-stack .plus-chart-stack-item { margin-right:1px; text-align:center; color:#fff; line-height:20px; overflow:hidden; }
+
+
+.agile-pm table.sprint              { border:1px solid #aaa; }
+.agile-pm table.sprint thead th     { background:#eee; }
+.agile-pm table.sprint thead tr th  { border-top:1px solid #fff; }
+.agile-pm table.sprint tbody tr td  { border-top:1px solid #bbb; }
+.agile-pm table.sprint table.goals tbody td { border-top:0; vertical-align:middle; }
+
+.agile-pm .apm-nav-link { padding: 1px 4px; border:1px solid #ccc; font-weight: bold; }
+.agile-pm a.apm-nav-link { border-color:#ddd; }
+.agile-pm dl { margin-top:2px; }
+.agile-pm span.apm-nav-link { background:#ddd; color:#333; border:1px solid #999; }
+
+.agile-pm .inplaceeditor-form { margin:0; padding:0; font-size:80%;}
+.agile-pm .editor_field { width:4em; }
+
+.agile-pm .agile-pm-navigation .box { padding: 0.5em 1.5em; }
+
+.agile-pm .story-event { border-bottom: 1px solid #ccc; margin-bottom: 1.5em; }
+.agile-pm .story-event-form fieldset { margin:0; }
+.agile-pm .story-event-form form textarea,
+.agile-pm .story-event-form .markup-preview { width: 656px; height:100px; }
+
+.agile-pm .plus-chart { margin-bottom: 1.4em; }
+.agile-pm .plus-chart-stack .completed { background: #37b; }
+.agile-pm .plus-chart-stack .active { background: #7ad; }
+.agile-pm .plus-chart-stack .pending { background: #e0eef5; color:#000; }
+
+
+.agile-pm .backlog { border-collapse:separate; border-spacing:1px; width:auto; line-height:1.25; }
+.agile-pm .backlog td,
+.agile-pm .backlog th { padding:2px 5px; vertical-align:middle; white-space:nowrap; }
+.agile-pm .backlog th img { vertical-align:middle; }
+.agile-pm .backlog th.day, 
+.agile-pm .backlog td.day { width:50px; font-weight: bold; }
+.agile-pm .backlog .pending { background: #e0eef5; }
+.agile-pm .backlog .active { background: #7ad; color:#fff;}
+.agile-pm .backlog .completed { background: #37b; color:#fff; }
+
+
+#fadebox { position:absolute;top:0;left:0; width:100%; background:#eee;z-index:900; }
+#lightbox {
+  border:2px solid #999;
+  padding:2em;
+  position:absolute;width:760px;height:380px;z-index:1000;top:6em;left:50%;  
+  background: #fff; overflow: auto; margin-left:-380px;
+}

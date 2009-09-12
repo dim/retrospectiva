@@ -1,0 +1,15 @@
+unscheduled:
+  name: Unsheduled
+  project: retro
+  info: None
+completed:
+  name: Completed
+  project: retro
+  info: None
+  started_on: <%= 4.weeks.ago.to_s(:db) %>
+  finished_on: <%= 2.weeks.ago.to_s(:db) %>
+upcoming:
+  name: Upcoming
+  project: retro
+  info: None
+  started_on: <%= 2.weeks.ago.to_s(:db) %>

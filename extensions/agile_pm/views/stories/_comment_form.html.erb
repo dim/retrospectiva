@@ -1,0 +1,23 @@
+<div class="span-19 last bottom-10 clear story-event-form" id="story_comment_form">
+
+  <div class="span-2 centered top-1">
+    <%= user_gravatar(User.current, :size => 30) %>
+  </div>
+
+  <div class="span-17 last">
+    <% remote_form_for @story_comment, :url => comment_story_path(@story, :format => :js) do |f| -%>    
+      <fieldset>
+        <% content_tag :div, :class => 'tiny top-5 float-r' do -%>
+          <%= @story_comment.errors.full_messages.to_sentence %>
+        <% end if @story_comment.errors.any? -%>
+        <%= f.label :content, _('Comment') + ':' %>
+        <%= markup_area :story_comment, :content %>
+      </fieldset>
+    
+      <fieldset>
+        <%= f.submit _('Create') %>
+      </fieldset>    
+    <% end -%>
+  </div>
+  
+</div>

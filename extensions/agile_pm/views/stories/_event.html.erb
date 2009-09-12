@@ -1,0 +1,21 @@
+<div class="span-19 last story-event clear">
+
+  <div class="span-2 centered top-1">
+    <%= event.creator ? user_gravatar(event.creator, :size => 30) : image_spacer(:size => '30x30', :class => 'framed') %>
+  </div>
+  
+  <div class="span-17 last">
+
+    <h6><%= event.creator ? h(truncate(event.creator.name, :length => 50)) : 'Anonymous' %></h6>
+    <div class="tiny quiet bottom-5">
+      <%=h datetime_format(event.created_at) %> &ndash; <%=h time_interval_in_words(event.created_at) %>
+    </div>   
+        
+    <% if event.description.present? -%>
+      <%= markup event.description %>
+    <% else -%>
+      <p><%=_ 'No description' %></p>
+    <% end -%>
+  </div>
+  
+</div>

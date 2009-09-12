@@ -1,0 +1,24 @@
+<tr class="<%= cycle 'odd', 'even' %>">
+  <td class="span-1">
+    <%= story.assigned? ? user_gravatar(story.assigned, :size => 30) : image_spacer(:size => '30x30', :class => 'frame') %>
+  </td>
+  
+  <td class="centered">
+    <div class="strong"><%= completed_status(story) %></div>
+    <div class="small"><%= hours_comparison(story) %></div>  
+  </td>  
+
+  <td>
+    <div class="strong">
+      <%= link_to_remote h(truncate(story.title, :length => 50)), 
+					:url => story_path(story, :format => :js),
+					:method => :get %>      
+    </div>
+    <div class="small"><%= "S#{story.id} &ndash; " + story_status(story) %></div>
+  </td>
+
+  <td class="actions righted span-4">
+    &nbsp;<%= story_actions(story).join(' ') %>
+  </td>
+
+</tr>

@@ -1,0 +1,22 @@
+links  = [
+  link_to(_('Details'), goal_path(@goal)),
+  link_to_function(_('Close'), "$('lightbox').hide(); $('fadebox').hide(); $$('.sprint-chart').each(function(el){ el.setStyle({ 'visibility': 'visible' }) });")
+]
+
+prefix = %Q(
+  <div class="float-r">#{links.join(' | ')}</div>
+  <h6>#{_(@goal.priority.name)}</h6>
+  <hr/>
+).squish
+
+suffix = %Q(
+  <hr class="space" />
+).squish
+
+
+page.replace_html :lightbox, prefix + render(:partial => 'details') + suffix
+page << %Q(  
+  $$('.sprint-chart').each(function(el){ el.setStyle({ 'visibility': 'hidden' }) });
+  $('fadebox').setStyle({ height:$(document).viewport.getHeight() + 'px' }).show();
+  $('lightbox').show(); 
+)

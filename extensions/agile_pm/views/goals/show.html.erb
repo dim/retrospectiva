@@ -1,0 +1,16 @@
+<% @page_title = _('Goals') -%>
+<% slim_page -%>
+
+<div class="agile-pm">
+  <%= render :partial => 'header' %>  
+  <div class="box">
+    <%= render :partial => 'actions', :locals => { 
+					:goal => @goal,
+					:wrap => :div, :classes => "float-r actions"
+				} %>
+    <h5><%=_ @goal.priority.name %></h5>
+    <%= render :partial => 'details' %>
+  </div>  
+  <%= link_to _('Back'), sprint_location %>
+</div>
+  

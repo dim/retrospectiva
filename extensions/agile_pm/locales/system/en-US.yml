@@ -1,0 +1,6 @@
+en-US:
+  activerecord:
+    errors:
+      models:
+        sprint:
+          before_starts_on: must not be before start date
