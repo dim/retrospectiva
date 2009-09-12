@@ -6,26 +6,32 @@ require 'yaml'
 
 class RemoteInstaller
   BRANCH = ARGV[0] || "master"
-  URL = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
-  RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/57643/rubygems-1.3.4.tgz"
-  RAKE_URL  = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
-  RAILS_URL = lambda { |rails_version| "http://github.com/rails/rails/tarball/v#{rails_version}" }
+  RETRO_URL          = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
+  RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
+  RAKE_URL     = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
+  VENDOR_URL   = "http://cloud.github.com/downloads/dim/retrospectiva/vendor.tar.gz"
 
   def self.run!
     new.run!
+  end
+  
+  def initialize
+    @rake = false
+    @rubygems = false
   end
 
   def run!
     puts "\n  Retrospectiva Remote Installer\n  ==============================\n\n"
 
-    check_prerequisites || exit(1)
+    check_prerequisites || instruct!
     install_retrospectiva!
+    install_rubygems!
     install_rake!
-    install_rails!
-    install_gems!
+    install_vendor!
     load_rake!
     configure_db!
     create_database!
+    build_gems!
 
     next_steps!
   end
@@ -33,19 +39,22 @@ class RemoteInstaller
   protected
 
     def check_prerequisites
+      check_lib('sqlite3')
+    end
+    
+    def check_lib(name)
       begin
-        require_library_or_gem 'sqlite3'
+        require_library_or_gem name
         true
-      rescue LoadError
-        sqlite3_instruct!
+      rescue LoadError        
         false
       end
     end
 
     def install_retrospectiva!
       unless File.exist?(ARCHIVE_PATH)
-        step "Downloading Retrospectiva '#{BRANCH}' branch from '#{URL}'"
-        download! URL, ARCHIVE_PATH
+        step "Downloading Retrospectiva '#{BRANCH}' branch from '#{RETRO_URL}'"
+        download! RETRO_URL, ARCHIVE_PATH
       end
 
       unless File.exist?(INSTALL_PATH)
@@ -56,21 +65,31 @@ class RemoteInstaller
       end
     end
 
-    def install_rails!
-      unless File.exist?(RAILS_ARCHIVE)        
-        step "Downloading Rails v#{rails_version} from '#{RAILS_URL.call(rails_version)}'"
-        download! RAILS_URL.call(rails_version), RAILS_ARCHIVE
+    def install_rubygems!
+      if check_lib('rubygems')
+        @rubygems = true
+        return
+      end
+      
+      unless File.exist?(RUBYGEMS_ARCHIVE)
+        step "Downloading RubyGems from '#{RUBYGEMS_URL}'"
+        download! RUBYGEMS_URL, RUBYGEMS_ARCHIVE
       end
 
-      unless File.exist?(RAILS_PATH)
-        step "Unpacking Rails to '#{RAILS_PATH}'", true
-        unpack! RAILS_ARCHIVE, VENDOR_PATH
-        temp_folder = Dir[File.join(VENDOR_PATH, 'rails-rails-*')].first
-        FileUtils.mv temp_folder, RAILS_PATH
+      unless File.exist?(RUBYGEMS_PATH)
+        step "Unpacking RubyGems to '#{RUBYGEMS_PATH}'", true
+        unpack! RUBYGEMS_ARCHIVE, VENDOR_PATH
+        temp_folder = Dir[File.join(VENDOR_PATH, 'rubygems-*')].first
+        FileUtils.mv temp_folder, RUBYGEMS_PATH
       end
     end
 
     def install_rake!
+      if check_lib('rake')
+        @rake = true
+        return
+      end
+
       unless File.exist?(RAKE_ARCHIVE)
         step "Downloading Rake from '#{RAKE_URL}'"
         download! RAKE_URL, RAKE_ARCHIVE
@@ -84,21 +103,14 @@ class RemoteInstaller
       end
     end
 
-    def install_gems!
-      required_gems.each do |name, source|
-        unless File.exist?(gem_archive_path(name))
-          gem_url = source + "/gems/#{name}.gem"
-          step "Downloading GEM #{name} from '#{source}'"
-          download! gem_url, gem_archive_path(name)
-        end
-
-        unless File.exist?(gem_path(name))
-          FileUtils.mkdir_p(gem_path(name))
-          step "Unpacking GEM #{name}", true
-          system "tar xf #{gem_archive_path(name)} --exclude metadata.gz -O | tar xz -C #{gem_path(name)} 2> /dev/null"
-          system "tar xf #{gem_archive_path(name)} --exclude data.tar.gz -O | gzip -d > #{File.join(gem_path(name), '.specification')} 2> /dev/null"
-        end
+    def install_vendor!
+      unless File.exist?(VENDOR_ARCHIVE)
+        step "Downloading vendor libraries from '#{VENDOR_URL}'"
+        download! VENDOR_URL, VENDOR_ARCHIVE
       end
+
+      step "Unpacking vendor libraries to '#{VENDOR_PATH}'", true
+      unpack! VENDOR_ARCHIVE, VENDOR_PATH
     end
 
     def configure_db!
@@ -120,17 +132,24 @@ class RemoteInstaller
       end
     end
 
-    def next_steps!
+    def build_gems!
+      step "Building GEMs", true
+      silence_stream(STDOUT) do
+        Rake.application['gems:build'].invoke
+      end
+    end
+
+    def next_steps!      
       instructions = %Q(
         Next Steps:
 
         * Add the following line to your crontab (crontab -e):
-           * *  * * *  RAILS_ENV=production ruby #{INSTALL_PATH}/script/retro_tasks
+           * *  * * *  RAILS_ENV=production #{ruby_path} #{INSTALL_PATH}/script/retro_tasks
 
-        * Run Retrospectiva (not recommended for production):
-           cd retrospectiva; ruby script/server -e production
+        * Run Retrospectiva:
+           cd retrospectiva; #{ruby_path} script/server -e production
 
-        * Deploy as Apache2 Virtual Host:
+        * Deploy as Apache2/NingX Virtual Host:
            Please visit http://www.modrails.com/ for more information
       )
 
@@ -151,7 +170,7 @@ class RemoteInstaller
       puts instructions + "\n"
     end
 
-    def sqlite3_instruct!
+    def instruct!
       puts "  Support for SQLite3 is MISSING on your machine\n"
 
       if sqlite3_howto
@@ -161,6 +180,8 @@ class RemoteInstaller
         end
         puts "\n  Re-run the installer afterwards\n\n"
       end
+      
+      exit(1)
     end
 
   private
@@ -170,20 +191,14 @@ class RemoteInstaller
     INSTALL_PATH = File.join(ROOT_PATH, "retrospectiva")
 
     VENDOR_PATH = File.join(INSTALL_PATH, "vendor")
-    RUBYGEMS_PATH = File.join(VENDOR_PATH, "rubygems")
-    RAILS_PATH = File.join(VENDOR_PATH, "rails")
     RAKE_PATH = File.join(VENDOR_PATH, "rake")
-    GEMS_PATH = File.join(VENDOR_PATH, "gems")
+    RUBYGEMS_PATH = File.join(VENDOR_PATH, "rubygems")
 
     RUBYGEMS_ARCHIVE = File.join(VENDOR_PATH, "rubygems.tgz")
-    RAILS_ARCHIVE = File.join(VENDOR_PATH, "rails.tgz")
     RAKE_ARCHIVE = File.join(VENDOR_PATH, "rake.tgz")
+    VENDOR_ARCHIVE = File.join(VENDOR_PATH, "vendor.tgz")
     DATABASE_CONFIG = File.join(INSTALL_PATH, 'config', 'database.yml')
     DATABASE_FILE = File.join(INSTALL_PATH, 'db', 'production.db')
-
-    def required_gems
-      @required_gems ||= GemsConfig.new(environment.scan(/config\.gem .+$/))
-    end
 
     def download!(url, path)
       system "wget -q -O #{path} #{url}"
@@ -191,22 +206,6 @@ class RemoteInstaller
 
     def unpack!(file, path)
       system "tar xzf #{file} -C #{path}"
-    end
-
-    def gem_path(name)
-      File.join(GEMS_PATH, name)
-    end
-
-    def gem_archive_path(file_name)
-      File.join(VENDOR_PATH, file_name + '.gem')
-    end
-
-    def rails_version
-      @rails_version ||= environment.match(/RAILS_GEM_VERSION\D+([\d\.]+)/)[1]
-    end
-
-    def environment
-      @environment ||= File.read(File.join(INSTALL_PATH, 'config', 'environment.rb'))
     end
 
     def step(description, nl = false)
@@ -217,10 +216,17 @@ class RemoteInstaller
       super(command) || abort("[E] Command '#{command}' failed during execution")
     end
 
+    def ruby_path
+      [
+        ENV['_'],
+        @rubygems ? nil : "-I#{File.join(RUBYGEMS_PATH, 'lib')}"
+      ].compact.join(' ')
+    end
+
     def load_rake!
       ENV['RAILS_ENV'] = 'production'
-      lib_path = File.join(RAKE_PATH, 'lib')
-      $: << lib_path
+      $: << File.join(RAKE_PATH, 'lib') unless @rake
+      $: << File.join(RUBYGEMS_PATH, 'lib') unless @rubygems
       load File.join(INSTALL_PATH, 'Rakefile')
     end
 
@@ -291,23 +297,6 @@ class RemoteInstaller
       end
     end
 
-    class GemsConfig < Hash
-
-      def initialize(lines)
-        super()
-        lines.each do |line|
-          eval line.gsub(/^\s*config\./, '')
-        end
-      end
-
-      def gem(name, options = {})
-        return unless options[:version]
-        
-        name = name + '-' + options[:version].gsub(/[^\d.]/, '')
-        self[name] = options[:source] || 'http://gems.rubyforge.org'
-      end
-
-    end
 end
 
 module Kernel
