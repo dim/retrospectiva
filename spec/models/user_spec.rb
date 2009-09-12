@@ -7,6 +7,12 @@ describe User do
     it "should be able to find the public user" do
       User.public_user.should == users(:Public)
     end
+
+    it "should not cache public user" do
+      User.public_user.active_projects.should == [projects(:retro)]
+      groups(:Default).update_attribute(:access_to_all_projects, true)
+      User.public_user.active_projects.should == projects(:retro, :sub)
+    end
   
     describe 'mass-assignement' do
       it 'should only be allowed for [name, plain_password & confirmation]' do
