@@ -18,6 +18,11 @@ class Repository::Abstract::Node
     @selected_revision = selected_revision.to_s
   end
 
+  # Returns the cache key, which is used to generate the ETag
+  def cache_key
+    "#{User.current.id}:#{repos.id}:#{path}:#{revision}"
+  end
+
   # Returns the last actual revision for the current node
   # (the one where the node was modified for tha last time)
   def revision

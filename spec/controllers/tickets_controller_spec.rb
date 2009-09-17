@@ -12,6 +12,8 @@ describe TicketsController do
     @project = permit_access_with_current_project! :name => 'Any'
     @tickets = [mock_model(Ticket)]
     @tickets_proxy = @project.stub_association!(:tickets)
+    @tickets_proxy.stub!(:count)
+    @tickets_proxy.stub!(:maximum)
     @changes_proxy = @project.stub_association!(:ticket_changes)
     @user = mock_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
   end
@@ -34,6 +36,12 @@ describe TicketsController do
 
     def do_get(options = {})
       get :index, options.merge(:project_id => @project.to_param)
+    end
+
+    it "should check freshness" do
+      @tickets_proxy.should_receive(:count)
+      @tickets_proxy.should_receive(:maximum).with(:updated_at)
+      do_get
     end
 
     it "should render the template" do
@@ -208,7 +216,7 @@ describe TicketsController do
 
       @ticket_change = mock_model(TicketChange, :attributes= => {})
 
-      @ticket = mock_model(Ticket, :next_ticket => @next, :previous_ticket => @previous)
+      @ticket = mock_model(Ticket, :next_ticket => @next, :previous_ticket => @previous, :updated_at => 2.minutes.ago)
       @tickets_proxy.stub!(:find_by_id).and_return(@ticket)
 
       @changes_proxy = @ticket.stub_association!(:changes, :new => @ticket_change)
@@ -234,6 +242,11 @@ describe TicketsController do
       @tickets_proxy.should_receive(:find_by_id).with('1', :order => 'ticket_changes.created_at', :include => [:DEFAULTS]).and_return(@ticket)
       do_get
       assigns[:ticket].should == @ticket
+    end
+
+    it 'should check freshness' do
+      @ticket.should_receive(:updated_at)
+      do_get
     end
 
     it 'should redirect to list if ticket cannot be found' do

@@ -7,6 +7,8 @@ describe WikiFilesController do
     @project = permit_access_with_current_project! :name => 'Retro', :wiki_title => 'Retro'
     @user = mock_current_user! :permitted? => true, :projects => [@project]
     @files_proxy = @project.stub_association!(:wiki_files)
+    @files_proxy.stub!(:count).and_return(5)
+    @files_proxy.stub!(:maximum)
   end
 
   describe 'GET /index' do
@@ -18,6 +20,12 @@ describe WikiFilesController do
     
     def do_get
       get :index, :project_id => @project.to_param
+    end
+
+    it 'should check freshness' do
+      @files_proxy.should_receive(:count).with().and_return(5)
+      @files_proxy.should_receive(:maximum).with(:created_at)
+      do_get
     end
     
     it 'should load the files' do
@@ -38,7 +46,7 @@ describe WikiFilesController do
   describe 'GET /show' do
     
     before do
-      @file = mock_model(WikiFile, :readable? => true, :send_arguments => ['path', {}])
+      @file = mock_model(WikiFile, :readable? => true, :send_arguments => ['path', {}], :created_at => 2.days.ago)
       @files_proxy.stub!(:find_by_wiki_title!).and_return(@file)
       controller.stub!(:send_file) 
       controller.stub!(:render) 
@@ -54,11 +62,16 @@ describe WikiFilesController do
       assigns[:wiki_file].should == @file 
     end
 
-    it 'should chekc if file is readbale' do
+    it 'should check if file is readbale' do
       @file.should_receive(:readable?).and_return(true)
       do_get
     end
     
+    it 'should check freshness' do
+      @file.should_receive(:created_at)
+      do_get
+    end
+
     describe 'if file is not readable' do
       before do
         @file.stub!(:readable?).and_return(false)

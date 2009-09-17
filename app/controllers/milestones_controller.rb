@@ -9,6 +9,7 @@ class MilestonesController < ProjectAreaController
     :update => ['edit', 'update'], 
     :delete => ['destroy']
 
+  before_filter :check_freshness_of_index, :only => [:index]
   before_filter :find_milestone, :only => [:edit, :update, :destroy]
   
   def index
@@ -76,6 +77,10 @@ class MilestonesController < ProjectAreaController
   end
 
   private
+    
+    def check_freshness_of_index
+      fresh_when :etag => Project.current.milestones.count, :last_modified => Project.current.milestones.maximum(:updated_at)
+    end
   
     def find_milestone
       @milestone = Project.current.milestones.find(params[:id])      

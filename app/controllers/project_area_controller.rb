@@ -35,6 +35,11 @@ class ProjectAreaController < ApplicationController
   end
   
   protected
+    
+    def fresh_when(options = {})
+      options[:etag] = [User.current, Project.current, flash] + Array(options[:etag])
+      super      
+    end    
   
     def find_project
       project = Project.find_by_short_name! params[:project_id]      

@@ -14,8 +14,10 @@ class WikiFilesController < ProjectAreaController
     :create => ['new', 'create'],
     :delete => ['destroy']
 
+  before_filter :check_freshness_of_index, :only => [:index]
   before_filter :find_file, :only => [:show, :destroy]
   before_filter :verify_readablity, :only => [:show]
+  before_filter :check_freshness_of_file, :only => [:show]
   before_filter :assert_file_params, :only => [:new, :create]
   before_filter :new, :only => [:create]
 
@@ -51,6 +53,14 @@ class WikiFilesController < ProjectAreaController
   end
 
   protected
+  
+    def check_freshness_of_index
+      fresh_when :etag => Project.current.wiki_files.count, :last_modified => Project.current.wiki_files.maximum(:created_at)      
+    end
+
+    def check_freshness_of_file
+      fresh_when :etag => @wiki_file, :last_modified => @wiki_file.created_at      
+    end
   
     def find_file
       @wiki_file = Project.current.wiki_files.find_by_wiki_title! params[:id]

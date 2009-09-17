@@ -1,13 +1,13 @@
 <% if flash[:error] -%>
   <div class="content error"><%= [flash[:error]].flatten.join('<br/>') %></div>
-  <% flash[:error] = nil -%>
+  <% flash.delete(:error) -%>
 <% end -%>
 <% if flash[:notice] -%>
   <div class="content notice"><%= [flash[:notice]].flatten.join('<br/>') %></div>
-  <% flash[:notice] = nil -%>
+  <% flash.delete(:notice) -%>
 <% end -%>
 <% if flash[:warning] -%>
   <div class="content warning"><%= [flash[:warning]].flatten.join('<br/>') %></div>
-  <% flash[:warning] = nil -%>
+  <% flash.delete(:warning) -%>
 <% end -%>
   

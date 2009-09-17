@@ -39,6 +39,16 @@ describe BlogComment do
       @comment.should have(1).error_on(:content)
     end
 
+    it 'should touch the blog post on save' do
+      blog_comments(:release_negative).save.should be_true
+      blog_posts(:release).updated_at.should > 1.minute.ago
+    end
+
+    it 'should touch the blog post on destroy' do
+      blog_comments(:release_negative).destroy
+      blog_posts(:release).updated_at.should > 1.minute.ago
+    end
+
   end
 
 end

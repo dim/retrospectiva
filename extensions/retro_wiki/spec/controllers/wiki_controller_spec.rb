@@ -14,20 +14,28 @@ describe WikiController do
     before do
       @pages = [mock_model(WikiPage), mock_model(WikiPage)]
       @pages_proxy.stub!(:paginate).and_return(@pages) 
+      @pages_proxy.stub!(:count).and_return(1)
+      @pages_proxy.stub!(:maximum)
     end
     
     def do_get(options = {})
       get :index, options.merge(:project_id => @project.to_param)
     end
+
+    it 'should check feshness' do
+      @pages_proxy.should_receive(:count).and_return(1)
+      @pages_proxy.should_receive(:maximum).with(:updated_at)
+      do_get
+    end
     
     it 'should load the pages' do
-      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.title').and_return(@pages) 
+      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.title', :total_entries => nil).and_return(@pages) 
       do_get
       assigns[:pages].should == @pages 
     end
 
     it 'should order the pages by last update if requested' do
-      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.updated_at DESC').and_return(@pages) 
+      @pages_proxy.should_receive(:paginate).with(:page => nil, :per_page => nil, :order => 'wiki_pages.updated_at DESC', :total_entries => nil).and_return(@pages) 
       do_get :order => 'recent'
       assigns[:pages].should == @pages 
     end
@@ -44,8 +52,9 @@ describe WikiController do
   describe 'GET /show' do
     
     before do
-      @version = mock_model(WikiVersion)
-      @page = mock_model(WikiPage, :versions => [@version])
+      @version = mock_model(WikiVersion, :updated_at => 14.days.ago)
+      @page = mock_model(WikiPage, :versions => [@version], :updated_at => 10.days.ago)
+      @page.stub!(:find_version).and_return(nil)
       @pages_proxy.stub!(:find_by_title).and_return(@page)
     end
     
@@ -54,14 +63,21 @@ describe WikiController do
     end
     
     it 'should load the page' do
+      @page.should_receive(:find_version).with(nil).and_return(nil)
       @pages_proxy.should_receive(:find_by_title).with('My Title', :include => [:versions]).and_return(@page)
       do_get
       assigns[:wiki_page].should == @page 
     end
 
+    it 'should check freshness' do
+      @page.should_receive(:updated_at).and_return(10.days.ago)
+      do_get
+    end
+
     describe 'if a version parameter was given' do
       
       it 'should load the version' do        
+        @page.should_receive(:find_version).with('1').and_return(@version)
         do_get(:version => '1')
         assigns[:wiki_page].should == @version 
       end
@@ -109,6 +125,7 @@ describe WikiController do
     before do
       @version = mock_model(WikiVersion, :content => 'Old Content')
       @page = mock_model(WikiPage, :versions => [@version], :author= => nil)
+      @page.stub!(:find_version).and_return(nil)
       @pages_proxy.stub!(:find_or_build).and_return(@page)
       controller.stub!(:cached_user_attribute)
     end
@@ -119,6 +136,7 @@ describe WikiController do
 
     it 'should load the page' do
       @pages_proxy.should_receive(:find_or_build).with('My Title').and_return(@page)
+      @page.should_receive(:find_version).and_return(nil)
       do_get
       assigns[:wiki_page].should == @page
     end
@@ -126,6 +144,7 @@ describe WikiController do
     describe 'if a version parameter was given' do
       
       it 'should assign(rollback) its content to the page' do
+        @page.should_receive(:find_version).and_return(@version)
         @page.should_receive(:content=).with('Old Content')
         do_get(:version => '1')
       end

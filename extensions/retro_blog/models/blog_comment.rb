@@ -14,4 +14,12 @@ class BlogComment < ActiveRecord::Base
     [:id, :author, :content, :created_at]    
   end
   
+  def before_save
+    blog_post.touch
+  end
+
+  def before_destroy
+    blog_post.touch
+  end
+  
 end

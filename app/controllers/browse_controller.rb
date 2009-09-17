@@ -16,6 +16,7 @@ class BrowseController < ProjectAreaController
   verify :params => [:compare_with], :only => :diff
 
   before_filter :fetch_node
+  before_filter :check_freshness_of_node, :only => ['index']
   before_filter :verify_file_node, :only => ['download', 'diff']
 
   def index
@@ -48,6 +49,10 @@ class BrowseController < ProjectAreaController
   end
 
   protected
+    
+    def check_freshness_of_node
+      fresh_when :etag => @node, :last_modified => @node.date
+    end
 
     def render_node
       case @node.content_type

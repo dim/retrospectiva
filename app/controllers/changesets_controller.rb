@@ -12,8 +12,12 @@ class ChangesetsController < ProjectAreaController
   require_permissions :code, 
     :browse => ['diff']  
 
-  keep_params! :only => [:index], :exclude => [:project_id]
+  keep_params! :only => [:index], :exclude => [:project_id]  
+  before_filter :check_freshness_of_index, :only => [:index]  
 
+  before_filter :find_changeset, :only => [:show, :diff]
+  before_filter :check_freshness_of_changeset, :only => [:show, :diff]  
+  
   def index
     @changesets = Project.current.changesets.paginate(
       :include => [:user],
@@ -30,9 +34,6 @@ class ChangesetsController < ProjectAreaController
   end
   
   def show
-    @changeset = Project.current.changesets.find_by_revision! params[:id],
-      :include => [:changes, :user]
-
     @next_changeset = @changeset.next_by_project(Project.current)
     @previous_changeset = @changeset.previous_by_project(Project.current)
     
@@ -43,7 +44,6 @@ class ChangesetsController < ProjectAreaController
   end
   
   def diff
-    @changeset = Project.current.changesets.find_by_revision! params[:id]
     @change = @changeset.changes.find(params[:change_id])
     unless @change.diffable?
       raise ActiveRecord::RecordNotFound, "Change #{@change.id} is not diffable." 
@@ -54,5 +54,20 @@ class ChangesetsController < ProjectAreaController
       format.text { render :text => @change.unified_diff }
     end    
   end
+  
+  protected
+
+    def find_changeset
+      @changeset = Project.current.changesets.find_by_revision! params[:id],
+        :include => [:changes, :user]      
+    end
+  
+    def check_freshness_of_index
+      fresh_when :etag => Project.current.changesets.count, :last_modified => Project.current.changesets.maximum(:created_at)     
+    end
+
+    def check_freshness_of_changeset
+      fresh_when :etag => @changeset, :last_modified => @changeset.created_at     
+    end
 
 end

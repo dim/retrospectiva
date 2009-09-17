@@ -82,6 +82,18 @@ class WikiPage < ActiveRecord::Base
     [:version]
   end
   
+  def find_version(num)
+    num = num.to_i
+
+    if num == version
+      self
+    elsif num > 0
+      versions[num - 1]
+    else
+      nil
+    end
+  end
+  
   protected
 
     def before_validation

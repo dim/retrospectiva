@@ -132,13 +132,10 @@ end
 
 describe 'Format rendering and fallback' do
   controller_name :milestones
+  include Spec::TypicalMilestonesControllerSetup 
 
   before do
     rescue_action_in_public!     
-    @milestones = []
-    @milestones.stub!(:in_default_order).and_return(@milestones)
-    @milestones.stub!(:active_on).and_return(@milestones)
-    @project = permit_access_with_current_project! :name => 'Any', :to_param => '1', :milestones => @milestones         
   end
   
   it 'should render HTML if no specific format requested' do
@@ -174,35 +171,21 @@ end
 
 describe 'RSS access via private key' do
   controller_name :milestones
-    
+  include Spec::TypicalMilestonesControllerSetup
+
   before do
-    @user = mock_current_user! :name => 'Agent', :public? => true, :admin? => false, :permitted? => false
-    @project = mock_model(Project, :name => 'Retro', :short_name => 'retro')
-
-    Project.stub!(:find_by_short_name!).and_return(@project)
-    @projects = [@project]    
-    @projects.stub!(:active).and_return(@projects)
-    @projects.stub!(:find).and_return(@project)
-    @user.stub!(:projects).and_return(@projects)
-
-    @milestones = []
-    @milestones.stub!(:in_default_order).and_return(@milestones)
-    @milestones.stub!(:active_on).and_return(@milestones)
-    @project.stub!(:milestones).and_return(@milestones)
-
-    MilestonesController.stub!(:module_enabled?).and_return(true)
-    MilestonesController.stub!(:module_accessible?).and_return(true)
+    @user.stub!(:permitted?).and_return(false) 
   end
   
   describe 'if key is valid but non-RSS content is requested' do
     
     it 'should not try to authorize the user via key' do
       User.should_not_receive(:find_by_private_key)
-      get :index, :project_id => '1', :private => '[PKEY]'
+      get :index, :project_id => 'retro', :private => '[PKEY]'
     end
 
     it 'should redirect to login as usually' do
-      get :index, :project_id => '1', :private => '[PKEY]'
+      get :index, :project_id => 'retro', :private => '[PKEY]'
       response.should redirect_to(login_path)
     end
   end
@@ -211,7 +194,7 @@ describe 'RSS access via private key' do
  
     it 'should fallback to HTTP-Basic if user cannot be authenticated via private key' do
       bypass_rescue
-      get :index, :project_id => '1', :format => 'rss'
+      get :index, :project_id => 'retro', :format => 'rss'
       response.code.should == '401'
     end
 
@@ -223,7 +206,7 @@ describe 'RSS access via private key' do
       end
       
       def do_get(options = {})
-        get :index, { :project_id => '1', :format => 'rss', :private => '[PKEY]' }.merge(options)
+        get :index, { :project_id => 'retro', :format => 'rss', :private => '[PKEY]' }.merge(options)
       end
       
       it 'should find the user by the key' do
@@ -258,6 +241,8 @@ describe 'Caching user attributes' do
     @tickets = []
     @tickets.stub!(:find).and_return(@ticket)
     @tickets.stub!(:new).and_return(@ticket)
+    @tickets.stub!(:count)
+    @tickets.stub!(:maximum)
 
     @project = permit_access_with_current_project! :name => 'Any', :tickets => @tickets
     @user = mock_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
@@ -386,18 +371,8 @@ end
 
 describe "Authorization" do
   controller_name :milestones
-  
-  before do
-    @milestones = [stub_model(Milestone, :name => '1.0', :updated_at => 2.days.ago)]
-    @milestones.stub!(:in_default_order).and_return(@milestones)
-    @milestones.stub!(:active_on).and_return(@milestones)
-    @milestones.stub!(:paginate).and_return(@milestones)
-
-    @user    = mock_current_user! :name => 'Doesnt Matter'
-    @project = mock_current_project! :milestones => @milestones, :name => 'Retro'
-    controller.stub!(:find_project).and_return(true)
-  end
-  
+  include Spec::TypicalMilestonesControllerSetup
+    
   def do_get(options = {})
     get :index, options.reverse_merge(:project_id => 'one')
   end

@@ -19,7 +19,9 @@ class BlogController < ProjectAreaController
     :update  => ['edit', 'update'],
     :delete  => ['destroy']
 
+  before_filter :check_freshness_of_index, :only => [:index]
   before_filter :find_blog_post, :only => [:show, :comment, :edit, :update, :destroy]
+  before_filter :check_freshness_of_post, :only => [:show]
   before_filter :load_categories, :only => [:index] 
   
   def index
@@ -99,6 +101,14 @@ class BlogController < ProjectAreaController
 
     def load_categories
       @categories = Project.current.blog_posts.categories
+    end
+
+    def check_freshness_of_index
+      fresh_when :last_modified => Project.current.blog_posts.maximum(:updated_at)
+    end
+
+    def check_freshness_of_post
+      fresh_when :etag => @blog_post, :last_modified => @blog_post.updated_at 
     end
 
   private

@@ -9,6 +9,7 @@ describe BlogController do
     @posts_proxy = @project.stub_association!(:blog_posts)
     @posts_proxy.stub!(:posted_by).and_return(@posts_proxy)
     @posts_proxy.stub!(:categorized_as).and_return(@posts_proxy)
+    @posts_proxy.stub!(:maximum)
     
     controller.stub!(:cached_user_attribute).with(:name, 'Anonymous').and_return('User Name')
     controller.stub!(:cached_user_attribute).with(:email).and_return('user@host.com')
@@ -18,7 +19,7 @@ describe BlogController do
     
     before do
       @posts = [mock_model(BlogPost), mock_model(BlogPost)]
-      @posts_proxy.stub!(:paginate).and_return(@posts) 
+      @posts_proxy.stub!(:paginate).and_return(@posts)
 
       @categories = ['News', 'Releases']
       @posts_proxy.stub!(:categories).and_return(@categories)
@@ -28,6 +29,11 @@ describe BlogController do
       get :index, options.merge(:project_id => @project.to_param)
     end
     
+    it 'should check the freshness' do
+      @posts_proxy.should_receive(:maximum).with(:updated_at)
+      do_get
+    end
+    
     it 'should load the posts' do
       @posts_proxy.should_receive(:posted_by).with('1').and_return(@posts_proxy) 
       @posts_proxy.should_receive(:categorized_as).with('News').and_return(@posts_proxy) 
@@ -35,7 +41,8 @@ describe BlogController do
         :page => params[:page],
         :include => [:categories, :user, :comments],
         :per_page=>nil,
-        :order=>'blog_posts.created_at DESC'
+        :order=>'blog_posts.created_at DESC',
+        :total_entries=>nil
       ).and_return(@posts) 
       do_get(:u => '1', :c => 'News')
       assigns[:blog_posts].should == @posts 
@@ -66,7 +73,7 @@ describe BlogController do
   describe 'GET /show' do
     
     before do
-      @blog_post = mock_model(BlogPost)
+      @blog_post = mock_model(BlogPost, :updated_at => 10.minutes.ago)
       @comment = mock_model(BlogComment)
       @comments_proxy = @blog_post.stub_association!(:comments, :new => @comment)      
       @posts_proxy.stub!(:find).and_return(@blog_post)

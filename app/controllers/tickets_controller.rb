@@ -28,12 +28,15 @@ class TicketsController < ProjectAreaController
   require_user 'modify_summary', 'modify_content', 'modify_change_content'
 
   verify        :xhr => true, :only => [:modify_summary, :modify_content, :modify_change_content]
-
+  
+  before_filter :check_freshness_of_index, :only => [:index]  
   before_filter :find_report, :only => [:index, :search]
   before_filter :setup_filters, :only => [:index, :search]
-
   before_filter :find_reports, :only => [:index]
+  
   before_filter :find_ticket, :only => [:show, :update, :destroy, :toggle_subscription]
+  before_filter :check_freshness_of_ticket, :only => [:show]  
+  
   before_filter :new_change, :only => [:show, :update]
   before_filter :new_ticket, :only => [:new, :create]
 
@@ -41,8 +44,8 @@ class TicketsController < ProjectAreaController
   before_filter :find_change_and_verify_permissions, :only => [:modify_change_content]
 
   before_filter :find_and_verify_attachment, :only => :download
-    
-  def index
+  
+  def index    
     @tickets = paginate_tickets(request.format.rss? ? 10 : params[:per_page], request.format.rss? ? 10 : nil)    
     
     respond_to do |format|
@@ -185,6 +188,14 @@ class TicketsController < ProjectAreaController
   end
 
   protected
+  
+    def check_freshness_of_index
+      fresh_when :etag => Project.current.tickets.count, :last_modified => Project.current.tickets.maximum(:updated_at)
+    end
+
+    def check_freshness_of_ticket
+      fresh_when :etag => @ticket, :last_modified => @ticket.updated_at
+    end
 
     def find_report
       @report = Project.current.ticket_reports.find_by_id params[:report]

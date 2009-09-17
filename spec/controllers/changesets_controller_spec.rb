@@ -7,6 +7,8 @@ describe ChangesetsController do
     @project = permit_access_with_current_project! :name => 'Any'
     @changesets = [mock_model(Changeset, :revision => 'R10', :log => 'L1', :author => 'A1', :created_at => 1.month.ago)]
     @proxy = @project.stub_association!(:changesets)
+    @proxy.stub!(:count).and_return(5)
+    @proxy.stub!(:maximum)
   end
   
   describe "handling GET /changesets" do
@@ -18,6 +20,12 @@ describe ChangesetsController do
       get :index, :project_id => @project.to_param    
     end
 
+    it 'should check freshness' do
+      @proxy.should_receive(:count).and_return(5)
+      @proxy.should_receive(:maximum).with(:created_at)
+      do_get
+    end
+    
     it "should find the changesets" do
       do_get
       assigns[:changesets].should == @changesets
@@ -71,6 +79,7 @@ describe ChangesetsController do
         @proxy.stub!(:find_by_revision!).and_return(@changeset)
         @changeset.stub!(:next_by_project).and_return(@next_changeset)
         @changeset.stub!(:previous_by_project).and_return(nil)
+        @changeset.stub!(:created_at)        
       end
       
       def do_get
@@ -85,6 +94,10 @@ describe ChangesetsController do
         assigns[:changeset].should == @changeset
       end
 
+      it 'should check freshness' do
+        @changeset.should_receive(:created_at).and_return(1.day.ago)
+        do_get
+      end
 
       it "should find the previous and next changeset" do
         @changeset.should_receive(:next_by_project).
@@ -118,7 +131,7 @@ describe ChangesetsController do
       
     it "should find the changeset" do
       @proxy.should_receive(:find_by_revision!).
-        with(@changeset.to_param).and_return(@changeset)
+        with(@changeset.to_param, :include => [:changes, :user]).and_return(@changeset)
       do_get
       assigns[:changeset].should == @changeset
     end

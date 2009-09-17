@@ -140,8 +140,8 @@ describe BlogCommentsController do
   describe 'DELETE /destroy' do
     
     before do
-      @blog_comment = mock_model(BlogComment)
-      @comments_proxy.stub!(:destroy).and_return(true)
+      @blog_comment = mock_model(BlogComment, :destroy => true)
+      @comments_proxy.stub!(:find).and_return(@blog_comment)
     end
     
     def do_delete
@@ -155,7 +155,7 @@ describe BlogCommentsController do
     end
 
     it 'should delete the comment' do
-      @comments_proxy.should_receive(:destroy).with('1').and_return(true)
+      @blog_comment.should_receive(:destroy).with().and_return(true)
       do_delete
     end
 

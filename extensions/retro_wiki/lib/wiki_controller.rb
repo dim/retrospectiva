@@ -20,13 +20,17 @@ class WikiController < ProjectAreaController
     :delete => ['destroy'],
     :upload => ['upload']
 
+  before_filter :check_freshness_of_index, :only => :index
+  before_filter :paginate_pages, :only => [:index]
+  
   before_filter :find_page_or_redirect, :only => :show
+  before_filter :find_version, :only => :show
+  before_filter :check_freshness_of_page, :only => :show
+  
   before_filter :find_page!, :only => [:rename, :update_title, :destroy]
   before_filter :find_or_build_page, :only => [:edit, :update]
   
   def index
-    @pages = Project.current.wiki_pages.paginate options_for_paginate 
-
     respond_to do |format|
       format.html
       format.rss  { render_rss(WikiPage, @pages) }
@@ -35,9 +39,6 @@ class WikiController < ProjectAreaController
   end
   
   def show
-    version = find_version(params[:version])
-    @wiki_page = version if version
-
     respond_to do |format|
       format.html
       format.xml  { render :xml => @wiki_page.to_xml(:root => 'wiki_page') }
@@ -45,7 +46,7 @@ class WikiController < ProjectAreaController
   end
   
   def edit
-    version = find_version(params[:version])
+    version = @wiki_page.find_version(params[:version])
     @wiki_page.content = version.content if version
     @wiki_page.author = cached_user_attribute(:name, 'Anonymous')
   end
@@ -95,6 +96,14 @@ class WikiController < ProjectAreaController
   end
   
   protected
+
+    def check_freshness_of_index
+      fresh_when :etag => Project.current.wiki_pages.count, :last_modified => Project.current.wiki_pages.maximum(:updated_at)
+    end
+
+    def paginate_pages
+      @pages = Project.current.wiki_pages.paginate options_for_paginate      
+    end
   
     def find_page_or_redirect
       @wiki_page = Project.current.wiki_pages.find_by_title params[:id], :include => [:versions]
@@ -104,6 +113,15 @@ class WikiController < ProjectAreaController
       else
         redirect_to project_wiki_pages_path(Project.current)
       end
+    end
+
+    def find_version
+      version = @wiki_page.find_version(params[:version])
+      @wiki_page = version if version
+    end
+
+    def check_freshness_of_page
+      fresh_when :etag => @wiki_page, :last_modified => @wiki_page.updated_at
     end
 
     def find_page!
@@ -125,9 +143,4 @@ class WikiController < ProjectAreaController
       request.format.rss? || params[:order] == 'recent' ? 'wiki_pages.updated_at DESC' : 'wiki_pages.title'
     end
 
-  private
-
-    def find_version(number)
-      number.to_i > 0 ? @wiki_page.versions[number.to_i - 1] : nil
-    end
 end

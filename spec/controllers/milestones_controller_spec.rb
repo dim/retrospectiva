@@ -5,7 +5,9 @@ describe MilestonesController do
 
   before do
     @milestones = [mock_model(Milestone)]
-    @project = permit_access_with_current_project! :milestones => @milestones, :name => 'Retrospectiva'    
+    @project = permit_access_with_current_project! :milestones => @milestones, :name => 'Retrospectiva'
+    @milestones.stub!(:count)
+    @milestones.stub!(:maximum)
   end
 
   describe "handling GET /milestones" do
@@ -22,6 +24,12 @@ describe MilestonesController do
     it_should_successfully_render_template('index')
       
     describe 'by default' do
+
+      it 'should check freshness' do
+        @milestones.should_receive(:count).and_return(5)
+        @milestones.should_receive(:maximum).with(:updated_at)
+        do_get
+      end
       
       it "should find active milestones" do
         @milestones.should_receive(:in_default_order).with().and_return(@milestones)

@@ -10,6 +10,7 @@ describe BrowseController do
       :dir? => false, 
       :content_type => :text, 
       :size => 40,
+      :date => 2.months.ago,
       :content => 'Some fake file content',
       :path => 'lib/file.rb',
       :name => 'file.rb'
@@ -45,6 +46,11 @@ describe BrowseController do
 
     it "should try to find the changeset fo the node" do
       @proxy.should_receive(:find_by_revision).with('120', :include => [:user]).and_return(nil)
+      do_get
+    end
+
+    it "should check freshness" do
+      @node.should_receive(:date).and_return(2.months.ago)
       do_get
     end
 
