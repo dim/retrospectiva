@@ -1,7 +1,9 @@
+require 'erb'
+
 YAML.module_eval do
   def self.load_configuration(path, default_value)
     path = "#{path}.default" unless File.exist?(path)
-    (YAML.load_file(path) rescue default_value) || default_value
+    (YAML.load(ERB.new(File.read(path)).result) rescue default_value) || default_value
   end
 end
 

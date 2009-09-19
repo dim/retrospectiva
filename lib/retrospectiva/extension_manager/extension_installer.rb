@@ -1,4 +1,5 @@
 require 'tempfile'
+require 'yaml'
 
 module Retrospectiva
   module ExtensionManager

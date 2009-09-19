@@ -8,3 +8,4 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+require 'retrospectiva/extension_manager/rake_tasks'
