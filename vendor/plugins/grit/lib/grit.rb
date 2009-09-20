@@ -8,12 +8,7 @@ require 'time'
 require 'timeout'
 require 'logger'
 require 'digest/sha1'
-
-if defined? RUBY_ENGINE && RUBY_ENGINE == 'jruby'
-  require 'open3'
-else
-  require 'open3_detach'
-end
+require 'open3'
 
 # third party
 begin
