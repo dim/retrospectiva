@@ -1,7 +1,7 @@
 module TinyGit
   module Object
     class Commit < Abstract
-      PRETTY = %Q(%H%n%T%n%P%n%an <%ae> %aD%n%cn <%ce> %cD%n%s%n%b%n%x00%x00%x00EOM%x00%x00%x00)
+      PRETTY = %Q(%H%n%T%n%P%n%an <%ae> %aD%n%cn <%ce> %cD%n%s%n%b)
       
       def initialize(base, sha, options = {})
         super(base, sha)
@@ -106,8 +106,11 @@ module TinyGit
             result[key] = lines.shift
           end
 
-          while (line = lines.shift) != "\000\000\000EOM\000\000\000"
-            result['message'] << line 
+          
+          while lines.any?
+            line = lines.shift
+            break if line.nil? or line =~ /^#{Change::PATTERN}/
+            result['message'] << line
           end
           
           result.update( 
