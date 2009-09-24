@@ -24,7 +24,6 @@ module TinyGit
         @trees
       end
       alias_method :subtrees, :trees
-      alias_method :subdirectories, :trees
        
       def tree?
         true
@@ -41,7 +40,7 @@ module TinyGit
               if hash[:type] == 'tree'
                 @trees[hash[:path]] = TinyGit::Object::Tree.new(@base, hash[:sha], hash[:mode])
               elsif hash[:type] == 'blob'
-                @trees[hash[:path]] = TinyGit::Object::Blob.new(@base, hash[:sha], hash[:mode])
+                @blobs[hash[:path]] = TinyGit::Object::Blob.new(@base, hash[:sha], hash[:mode])
               end
             end
           end

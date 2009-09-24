@@ -31,7 +31,7 @@ module TinyGit
           
         result = TinyGit.result_cache[call]
         if result
-          @logger.debug "  TinyGit CACHED (0.0ms)  #{call}"
+          @logger.debug "  TinyGit CACHED (0.0ms)  #{call}" if @logger
           result
         else
           TinyGit.result_cache[call] = run_command_without_cache(call) 

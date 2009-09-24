@@ -1,3 +1,5 @@
+require 'uri'
+
 module TinyGit
   class Change
     PATTERN = %r|

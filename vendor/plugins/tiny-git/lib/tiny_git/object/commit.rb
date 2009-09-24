@@ -13,27 +13,23 @@ module TinyGit
         @message = nil
         @options = options.dup
         
-        init_with = @options.delete(:init_with)
-        set_commit(init_with) if init_with
+        set_commit(@options.delete(:init))
       end
       
       def message
         check_commit
-        @message
+        @message.join("\n").chomp
       end
       
       # the first line of the message
       def summary
-        @summary ||= message[/[^\n]*/]
-      end
-      
-      def name
-        @base.lib.namerev(sha)
+        check_commit
+        @message.first
       end
       
       def tree
         check_commit
-        Tree.new(@base, @tree)
+        @tree ||= Tree.new(@base, @tree_data)
       end
       
       def parent
@@ -43,7 +39,7 @@ module TinyGit
       # array of all parent commits
       def parents
         check_commit
-        @parents        
+        @parents ||= @parent_data.map{ |sha| TinyGit::Object::Commit.new(@base, sha) }        
       end
       
       # true if this is a merge commit
@@ -66,19 +62,6 @@ module TinyGit
         committer.date
       end
       
-      def set_commit(data)
-        if data['sha']
-          @sha = data['sha']
-        end
-        @committer = TinyGit::Author.new(data['committer'])
-        @author = TinyGit::Author.new(data['author'])
-        @tree = TinyGit::Object::Tree.new(@base, data['tree'])
-        @parents = data['parent'].map{ |sha| TinyGit::Object::Commit.new(@base, sha) }
-        @message = data['message'].chomp
-        @change_data = data['changes']
-        @summary = nil
-      end
-      
       def commit?
         true
       end
@@ -90,6 +73,18 @@ module TinyGit
 
       private
   
+        def set_commit(data)
+          return if data.nil?
+          
+          @sha = data['sha'] if data['sha']
+          @committer   = TinyGit::Author.new(data['committer'])
+          @author      = TinyGit::Author.new(data['author'])
+          @message     = data['message']
+          @parent_data = data['parent']
+          @tree_data   = data['tree']
+          @change_data = data['changes']
+        end
+        
         # see if this object has been initialized and do so if not
         def check_commit
           return if @tree
@@ -101,23 +96,16 @@ module TinyGit
         end
         
         def process_commit_data(lines)
-          result = { 'message' => [] }
+          result = { 'message' => [], 'changes' => [] }
           ['sha', 'tree', 'parent', 'author', 'committer'].each do |key|
             result[key] = lines.shift
           end
 
-          
-          while lines.any?
-            line = lines.shift
-            break if line.nil? or line =~ /^#{Change::PATTERN}/
-            result['message'] << line
+          lines.each do |line|
+            result[line =~ /^#{Change::PATTERN}/ ? 'changes' : 'message'] << line 
           end
           
-          result.update( 
-            'changes' => lines,
-            'parent'  => result['parent'].split(" "), 
-            'message' => result['message'].join("\n")
-          )  
+          result.update('parent'  => result['parent'].split(" "))  
         end
       
     end

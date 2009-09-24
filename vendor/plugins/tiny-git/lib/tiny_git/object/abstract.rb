@@ -30,8 +30,6 @@ module TinyGit
       
       def commit?; false; end
 
-      def tag?; false; end
-     
     end
   end  
 end

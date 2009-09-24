@@ -21,7 +21,8 @@ module TinyGit
 
     def cat_file(sha, *arguments)
       arguments.unshift(sha)
-      command(:cat_file, *arguments)
+      result = command(:cat_file, *arguments)
+      result =~ /\A[^\n]+\n\Z/m ? result.chomp : result
     end
 
     def log(range, *arguments)
@@ -40,10 +41,8 @@ module TinyGit
       call = "#{TinyGit.git_binary} --git-dir='#{self.git_dir}' #{cmd.to_s.gsub(/_/, '-')} #{(opt_args + ext_args).join(' ')}"
       out  = run_command(call)
 
-      if $?.exitstatus > 0
-        if $?.exitstatus == 1 && out == ''
-          return ''
-        end
+      if $? && $?.exitstatus > 0
+        return '' if $?.exitstatus == 1 && out == ''
         raise TinyGit::GitExecuteError.new(call + ':' + out.to_s) 
       end
       out

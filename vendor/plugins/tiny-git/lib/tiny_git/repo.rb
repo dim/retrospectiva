@@ -8,7 +8,7 @@ module TinyGit
     attr_reader :git_dir
 
     def initialize(path, logger = nil)
-      @git_dir = if File.exist?(File.join(path, '.git', 'index'))
+      @git_dir = if File.exist?(File.join(path, '.git', 'HEAD'))
         File.join(path, '.git')
       else
         path
