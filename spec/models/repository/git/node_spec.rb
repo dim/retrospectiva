@@ -72,7 +72,8 @@ describe Repository::Git::Node do
       end      
 
       it 'should correctly identify the date of last modification' do
-        @node.date.utc.to_i.should == changesets(:git_with_modified).created_at.utc.to_i
+        @node.date.should == changesets(:git_with_modified).created_at
+        @node.date.should be_kind_of(Time)
       end      
 
       it 'should correctly identify the change-log' do
@@ -109,7 +110,7 @@ describe Repository::Git::Node do
     end
 
     it 'should return the content-length as size' do
-      @node.size.should == @node.content.size
+      @node.size.should == 1797
     end
 
     it 'should have a mime-type' do

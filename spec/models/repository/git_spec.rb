@@ -97,9 +97,11 @@ describe Repository::Git do
   describe 'creating a unified diff' do
     describe 'with valid path and between two valid revisions' do
       it 'should return the diff content' do
-        udiff = @repository.unified_diff("retrospectiva/script/weird.rb", "9d1574324929aea0eaf446ff23ddcca6d2d236a4", "573ae4e2c35ca993aef864adac5cdd3e3cf50125")
-        udiff.size.should == 326
-        Digest::SHA1.hexdigest(udiff).should == 'e41b24fc67bcc0c44c9543967e5643fe3dd18221'
+        @repository.unified_diff(
+          "retrospectiva/script/weird.rb", 
+          "9d1574324929aea0eaf446ff23ddcca6d2d236a4", 
+          "573ae4e2c35ca993aef864adac5cdd3e3cf50125"
+        ).should == File.read(ActiveSupport::TestCase.fixture_path + '/repository/example_git.diff')
       end
     end
 

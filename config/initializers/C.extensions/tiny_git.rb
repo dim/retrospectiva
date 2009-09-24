@@ -1,4 +1,4 @@
-module Grit
+module TinyGit
   module Caching
     class Middleware
       
@@ -7,13 +7,15 @@ module Grit
       end
   
       def call(env)
-        Grit.cache do
+        TinyGit.cache do
           @app.call(env)
         end
       end
             
     end
   end
+  
+  Rails.configuration.middleware.use Caching::Middleware
 end if SCM_GIT_ENABLED
 
-Rails.configuration.middleware.use Grit::Caching::Middleware if SCM_GIT_ENABLED
+

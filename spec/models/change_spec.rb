@@ -47,25 +47,8 @@ describe ::Change do
     end
 
     it 'should be able to generate a unified DIFF for diffable files' do
-      changes(:git_573ae4_m02).unified_diff.should == %Q(
---- Revision 9d1574324929aea0eaf446ff23ddcca6d2d236a4
-+++ Revision 573ae4e2c35ca993aef864adac5cdd3e3cf50125
-@@ -1,2 +1,10 @@
--# Do somethiing weird
--# ...
-\\ No newline at end of file
-+######################
-+# Changes:
-+# 
-+# - fixed typo
-+#
-+####################
-+#
-+# Do something weird
-+# ...
-+#
-\\ No newline at end of file
-).strip
+      changes(:git_573ae4_m02).unified_diff.
+        should == File.read(ActiveSupport::TestCase.fixture_path + '/repository/example_git.diff') 
     end
 
     it 'should return an empty string as DIFF for non-diffable files' do

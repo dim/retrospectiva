@@ -1,5 +1,9 @@
---- Revision 9d1574324929aea0eaf446ff23ddcca6d2d236a4
-+++ Revision 573ae4e2c35ca993aef864adac5cdd3e3cf50125
+#--- 9d1574324929aea0eaf446ff23ddcca6d2d236a4
+#+++ 573ae4e2c35ca993aef864adac5cdd3e3cf50125
+diff --git a/retrospectiva/script/weird.rb b/retrospectiva/script/weird.rb
+index 67704f6..6fe1614 100644
+--- a/retrospectiva/script/weird.rb
++++ b/retrospectiva/script/weird.rb
 @@ -1,2 +1,10 @@
 -# Do somethiing weird
 -# ...

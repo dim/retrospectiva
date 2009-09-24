@@ -1,24 +1,25 @@
 #--
-# Copyright (C) 2008 Dimitrij Denissenko
+# Copyright (C) 2009 Dimitrij Denissenko
 # Please read LICENSE document for more information.
 #++
 class Repository::Git::Node < Repository::Abstract::Node
-  
+ 
   def initialize(repos, path, selected_rev = nil, skip_check = false)
     super(repos, sanitize_path(path), selected_rev || repos.latest_revision)
     raise_invalid_node_error! unless skip_check || exists?
   end
 
   def revision
-    @revision ||= repos.repo.rev_list(selected_revision, path, :n => 1).first 
+    repos.repo.rev_list(selected_revision, '--', path, :max_count => 1).first 
   end
+  memoize :revision
 
   def author
     commit.author.name
   end
 
   def date
-    commit.authored_date    
+    commit.author.date    
   end
   
   def log
@@ -26,32 +27,32 @@ class Repository::Git::Node < Repository::Abstract::Node
   end
 
   def dir?
-    node.is_a?(Grit::Tree)
+    node[:type] == 'tree'
   end
 
   def sub_nodes
     return [] unless dir?
 
-    @sub_nodes ||= node.contents.map do |content|
-      next nil unless content.acts_like?(:node)      
-      self.class.new(repos, path + '/' + content.name, selected_revision, true)
+    node[:contents].map do |hash|
+      self.class.new(repos, hash[:path], selected_revision, true)
     end.compact.sort_by {|n| [n.content_code, n.name.downcase] }
   end
+  memoize :sub_nodes
 
   def content
-    @content ||= dir? ? nil : node.data
+    dir? ? nil : blob.contents
   end
 
   def mime_type
-    dir? ? nil : MIME::Types[node.mime_type].first
+    dir? ? nil : guess_mime_type
   end
 
   def size
-    dir? ? 0 : node.size
+    dir? ? 0 : blob.size
   end
 
   def sub_node_count
-    dir? ? node.contents.size : 0
+    dir? ? node[:contents].size : 0
   end
 
   # Returns true if the selected node revision mathces the latest repository revision
@@ -59,23 +60,41 @@ class Repository::Git::Node < Repository::Abstract::Node
     selected_revision == 'HEAD' || selected_revision == repos.latest_revision
   end
 
-
   protected
 
     def exists?
-      node.acts_like?(:node) and revision.present?
+      ['blob', 'tree'].include?(node[:type]) and revision.present?
+    rescue TinyGit::GitExecuteError
+      false
     end
     
     def commit
       @commit ||= repos.repo.commit(revision)
     end
+
+    def blob
+      @blob ||= dir? ? nil : repos.repo.blob(node[:sha])
+    end
     
     def node
-      @node ||= fetch_node rescue nil
+      if root?
+        { :sha => selected_revision, :type => 'tree', :contents => repos.repo.ls_tree(selected_revision) }
+      else
+        tree = sanitize_tree(repos.repo.ls_tree(selected_revision, '--', path, File.join(path, '*'), :t => true))
+        hash = tree.find {|i| i[:path] == path }
+        hash ? tree.delete(hash).merge(:contents => tree) : {}
+      end
     end
-
+    memoize :node
+        
     def sanitize_path(value)
       value.split('/').reject(&:blank?).join('/')
+    end
+    
+    def sanitize_tree(tree)
+      tree.select do |hash| 
+        hash.is_a?(Hash) and hash[:path].starts_with?(path)
+      end
     end
     
     def root?
@@ -84,12 +103,9 @@ class Repository::Git::Node < Repository::Abstract::Node
   
   private
 
-    def fetch_node
-      if root?
-        repos.repo.tree(selected_revision)
-      else 
-        repos.repo.tree(selected_revision, [path]).contents.first
-      end
+    def guess_mime_type
+      guesses = MIME::Types.type_for(name) rescue []
+      guesses.any? ? guesses.first : MIME::Types['application/octet-stream'].first
     end
 
 end  

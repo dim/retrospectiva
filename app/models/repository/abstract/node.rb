@@ -3,6 +3,8 @@
 # Please read LICENSE document for more information.
 #++
 class Repository::Abstract::Node
+  extend ActiveSupport::Memoizable
+
   class InvalidPath < StandardError
   end
   class InvalidPathForRevision < StandardError
