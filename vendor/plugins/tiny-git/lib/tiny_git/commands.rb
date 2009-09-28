@@ -39,24 +39,25 @@ module TinyGit
       ext_args = args.reject { |a| a.empty? }.map { |a| (a == '--' || a[0].chr == '|') ? a : "'#{escape(a)}'" }
 
       call = "#{TinyGit.git_binary} --git-dir='#{self.git_dir}' #{cmd.to_s.gsub(/_/, '-')} #{(opt_args + ext_args).join(' ')}"
-      out  = run_command(call)
-
-      if $? && $?.exitstatus > 0
-        return '' if $?.exitstatus == 1 && out == ''
-        raise TinyGit::GitExecuteError.new(call + ':' + out.to_s) 
-      end
-      out
+      run_command(call)
     end
 
     private
       
       def run_command(call)
-        result = ''
+        out = ''
+        
         seconds = Benchmark.realtime do
-          result = `#{call} 2>&1`
-        end          
+          out = `#{call} 2>&1`
+        end
+
+        if $? && $?.exitstatus > 0
+          return '' if $?.exitstatus == 1 && out == ''
+          raise TinyGit::GitExecuteError.new(call + ':' + out.to_s) 
+        end
+
         @logger.debug "  TinyGit (#{sprintf("%.1f", seconds * 1000)}ms) #{call}" if @logger
-        result
+        out
       end
 
       # Transform Ruby style options into git command line options
