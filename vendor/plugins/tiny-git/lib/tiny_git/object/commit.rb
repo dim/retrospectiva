@@ -12,6 +12,7 @@ module TinyGit
         @committer = nil
         @message = nil
         @options = options.dup
+        @checked = false
         
         set_commit(@options.delete(:init))
       end
@@ -83,11 +84,12 @@ module TinyGit
           @parent_data = data['parent']
           @tree_data   = data['tree']
           @change_data = data['changes']
+          @checked     = true
         end
         
         # see if this object has been initialized and do so if not
         def check_commit
-          return if @tree
+          return if @checked
             
           options = @options.merge(:max_count => 1, :raw => true, :pretty => "format:'#{PRETTY}'")
           lines   = @base.command_lines(:log, @objectish, options)
