@@ -22,7 +22,7 @@ class Ticket < ActiveRecord::Base
 
   named_scope :for_preview, 
     :include => [{ :changes => :user }, :status, :user, :project],
-    :order => 'tickets.created_at DESC, ticket_changes.created_at'      
+    :order => 'tickets.updated_at DESC, ticket_changes.created_at'      
   
   retro_previewable do |r|
     r.channel do |c, options|
