@@ -50,12 +50,8 @@ module TinyGit
         seconds = Benchmark.realtime do
           out = `#{call} 2>&1`
         end
-
-        if $? && $?.exitstatus > 0
-          return '' if $?.exitstatus == 1 && out == ''
-          raise TinyGit::GitExecuteError.new(call + ':' + out.to_s) 
-        end
-
+        raise_execution_error(call, out) unless success?($?, out)
+        
         @logger.debug "  TinyGit (#{sprintf("%.1f", seconds * 1000)}ms) #{call}" if @logger
         out
       end
@@ -79,6 +75,17 @@ module TinyGit
 
       def escape(s)
         "'" + s.to_s.gsub('\'', '\'\\\'\'') + "'"
+      end
+
+      def raise_execution_error(call, out)
+        raise TinyGit::GitExecuteError.new("#{out.strip} (#{call})")        
+      end
+
+      def success?(status, out)
+        return true unless status.is_a?(Process::Status)
+        
+        s = status.exitstatus.to_i
+        s.zero? or ( s == 1 and out.blank? )
       end
 
   end  

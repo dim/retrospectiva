@@ -51,6 +51,10 @@ describe TinyGit::Repo do
     new_repo.cat_file('commit', 'ae62392').size.should == 320
     new_repo.cat_file('commit', 'ae62392').should =~ /\n{1}\Z/m
   end
+
+  it 'should catch and re-raise GIT errors' do
+    lambda { new_repo.cat_file('9999999', :s => true) }.should raise_error(TinyGit::GitExecuteError)
+  end  
   
 end
 
