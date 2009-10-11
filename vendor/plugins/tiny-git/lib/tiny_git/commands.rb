@@ -86,7 +86,7 @@ module TinyGit
         return 0 unless status.is_a?(Process::Status)
         
         s = status.exitstatus.to_i
-        s.zero? or ( s == 1 and out.blank? ) ? 0 : s 
+        s.zero? || ( s == 1 && out.blank? ) ? 0 : s 
       end
 
   end  
