@@ -45,15 +45,16 @@ module TinyGit
     private
       
       def run_command(call)
-        out = ''
+        output = ''
         
         seconds = Benchmark.realtime do
-          out = `#{call} 2>&1`
+          output = `#{call} 2>&1`
         end
-        raise_execution_error(call, out) unless success?($?, out)
+        status  = exit_status($?, output)
+        raise_execution_error(status, output, call) unless status.zero?
         
         @logger.debug "  TinyGit (#{sprintf("%.1f", seconds * 1000)}ms) #{call}" if @logger
-        out
+        output
       end
 
       # Transform Ruby style options into git command line options
@@ -77,15 +78,15 @@ module TinyGit
         "'" + s.to_s.gsub('\'', '\'\\\'\'') + "'"
       end
 
-      def raise_execution_error(call, out)
-        raise TinyGit::GitExecuteError.new("#{out.strip} (#{call})")        
+      def raise_execution_error(status, output, call)
+        raise TinyGit::GitExecuteError.new(status, output, call)        
       end
 
-      def success?(status, out)
-        return true unless status.is_a?(Process::Status)
+      def exit_status(status, out)
+        return 0 unless status.is_a?(Process::Status)
         
         s = status.exitstatus.to_i
-        s.zero? or ( s == 1 and out.blank? )
+        s.zero? or ( s == 1 and out.blank? ) ? 0 : s 
       end
 
   end  

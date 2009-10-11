@@ -1,5 +1,13 @@
 module TinyGit  
-  class GitExecuteError < StandardError 
+  class GitExecuteError < StandardError
+    
+    attr_reader :status, :output, :call
+    
+    def initialize(status, output, call)
+      @status, @output, @call = status, output.strip, call.strip
+      super "[#{@status}] #{@output} (#{@call})"
+    end
+    
   end
 
   class Repo    

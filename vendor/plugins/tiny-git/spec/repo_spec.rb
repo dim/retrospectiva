@@ -53,7 +53,8 @@ describe TinyGit::Repo do
   end
 
   it 'should catch and re-raise GIT errors' do
-    lambda { new_repo.cat_file('9999999', :s => true) }.should raise_error(TinyGit::GitExecuteError)
+    msg = "[128] fatal: Not a valid object name 9999999 (/usr/bin/env git --git-dir='./spec/test_rep/.git' cat-file -s ''9999999'')" 
+    lambda { new_repo.cat_file('9999999', :s => true) }.should raise_error(TinyGit::GitExecuteError, msg)
   end  
   
 end
