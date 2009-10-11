@@ -41,6 +41,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   memoize :sub_nodes
 
   def content
+    @content = true
     dir? ? nil : blob.contents
   end
 
@@ -49,7 +50,7 @@ class Repository::Git::Node < Repository::Abstract::Node
   end
 
   def size
-    dir? ? 0 : blob.size
+    dir? ? 0 : (@content ? blob.contents.size : blob.size)
   end
 
   def sub_node_count
@@ -79,7 +80,7 @@ class Repository::Git::Node < Repository::Abstract::Node
     
     def node
       if root?
-        { :sha => selected_revision, :type => 'tree', :contents => repos.repo.ls_tree(selected_revision) }
+        { :sha => selected_revision, :type => 'tree', :contents => sanitize_tree(repos.repo.ls_tree(selected_revision)) }
       elsif @blob_info
         @blob_info
       else
@@ -96,7 +97,7 @@ class Repository::Git::Node < Repository::Abstract::Node
     
     def sanitize_tree(tree)
       tree.select do |hash| 
-        hash.is_a?(Hash) and hash[:path].starts_with?(path)
+        hash.is_a?(Hash) and hash[:path].starts_with?(path) and ['blob', 'tree'].include?(hash[:type])
       end
     end
     

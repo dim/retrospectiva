@@ -120,7 +120,7 @@ class Repository::Abstract::Node
   # Guesses if the file is binary.
   # Logic taken from http://blog.zenspider.com/archives/2006/08/i_miss_perls_b.html
   def binary?
-    return true if dir? || content.blank?
+    return true if size.zero?
     unless @binary
       s = content.split(//)
       @binary = ((s.size - s.grep(' '..'~').size) / s.size.to_f) > 0.3
