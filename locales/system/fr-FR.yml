@@ -1,0 +1,38 @@
+fr-FR:
+  activerecord:
+    errors:
+      messages:
+        cannot_be_selected: ne peut être sélectionné
+        cannot_be_disabled: ne peut être désactivé
+        must_be_specified: doit être spécifié
+      models:
+        project:
+          attributes:
+            name:
+              invalid: doit commencer par un caractère latin
+              overlap: est en conflit avec un projet existant
+        ticket_change:
+          attributes:
+            content:
+              blank: ne peut être vide si une pièce jointe a été soumise
+        user:
+          attributes:
+            admin:
+              not_for_public: "doit être désactivé. Public ne peut jamais avoir les droits d'admin"
+              last_available: doit être activé. Cet utilisateur est le dernier admin
+              invalid_downgrade: doit être activé. Vous ne pouvez pas diminuer vos droits
+            active:
+              must_be_active: doit être activé. Public doit être actif
+              own_account_must_be_active: doit être activé. Vous ne pouvez pas désactiver votre propre compte
+            name:
+              invalid: doit commencer par un caractère
+            username:
+              invalid: "ne peut pas contenir d'espace"
+        group:
+          attributes:
+            name:
+              invalid: peut seulement contenir des caractères latins et des chiffres séparés par des espaces
+        ticket_property_type:
+          attributes:
+            name:
+              invalid: "peut seulement contenir un ou plusieurs mots en capitales. Exemples : 'Composant', 'Nom De La Release'"
