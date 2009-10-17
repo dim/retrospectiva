@@ -1,0 +1,171 @@
+fr-FR:
+  settings:
+    general:
+      label: Général
+      groups:
+        basic:
+          label: "Réglages de base"
+          settings:
+            site_name:
+              label: "Nom du site web"
+              description: |-
+                Veuillez entrer un nom pour votre site web (par exemple 'Mon Projet').
+                Ce nom sera affiché aux utilisateurs sur les pages web et dans les emails.
+            site_url:
+              label: "URL du site web"
+              description: |-
+                "Veuillez configurer l'URL de votre site web (par exemple, 'http://retro.monprojet.com')."
+                Cette URL sera utilisée dans les emails de notification.
+            session_key:
+              label: "Clé de session"
+              description: |-
+                Veuillez configurer une clé de session unique pour votre site web (par exemple, '_monprojet_session').
+                Cela permet de différentier les sessions entre les installations de Retrospectiva.
+                Cette clé de session doit être composée uniquement des caractères alphanumériques et du souligné.
+            locale:
+              label: "Locale globale"
+              description: "Spécifier la locale de votre site web ici."
+            session_expiration:
+              label: "Expiration des sessions (en minutes)"
+              description: "Après combien de temps la session d'un visiteur inactif devient-elle invalide ? [1-43200]"
+        attachments:
+          label: Pièces jointes
+          settings:
+            max_size:
+              label: "Taille maximale d'une pièce jointe (en kB)"
+        user_management:
+          label: "Gestion des utilisateurs"
+          settings:
+            secure_auth:
+              label: "Utiliser l'authentification sécurisée"
+              description: "Le mécanisme d'authentification sécurisée chiffre les mots de passe du coté du lcient avant qu'ils ne soient effectivement envoyés."
+            account_management:
+              label: "Permettre aux utilisateurs non-privilégiés de gérer leurs comptes"
+              description: "Est-ce que les utilisateurs qui ne sont pas des administrateurs sont autorisés à changer les réglages (non-sensibles) de leurs comptes (par exemple, le mot de passe) ?"
+            self_registration:
+              label: "Autoriser l'inscription publique"
+              description: "Est-ce que les utilisateurs peuvent s'inscrire eux-mêmes au système ?"
+            assign_to_groups:
+              label: "Assigner automatiquement les nouveaux utilisateurs dans les groupes suivants (IDs, séparés par des virgules)"
+              description: |-
+                "Ce réglage ne s'applique que si l'inscription publique est activée. Les valeurs invalides sont ignorées."
+                Si vous désirez assigner automatiquement les nouveaux utilisateurs à des groupes additionels (chaque utilisateur sera un membre du groupe 'Default'), veuillez renseigner ici une liste des IDs des groupes séparés par des virgules.
+            activation:
+              label: "Activer les comptes utilisateurs"
+              description: |-
+                "Ce réglage ne s'applique que si l'inscription publique est activée."
+                Options:
+                  - auto: "Les comptes des utilisateurs sont automatiquement activés à l'inscription."
+                  - email: "Les comptes des nouveaux utilisateurs doivent être activés en entrant un code d'activation envoyé par email"
+                  - admin: Les nouveaux comptes utilisateurs sont désactivés par défaut (un administrateur doit les activer manuellement)
+            expiration:
+              label: "Temps d'expiration des comptes utilisateurs non-activés (en heures)"
+              description: |-
+                "Ce réglage ne s'applique que si l'inscription publique est activée et que l'activation des comptes est réglée sur 'email'."
+                "Après combien d'heures les comptes utilisateurs non-activés doivent-ils être supprimés ? [1-43200]"
+    email:
+      label: "Réglages des emails"
+      groups:
+        general:
+          label: Général
+          settings:
+            from:
+              label: "Adresse de l'expéditeur"
+              description: |-
+                "Définir ici l'entête From: pour les emails sortants. Utiliser soit une adresse email simple (exemple : 'dontreply@monprojet.com') ou la combinaison d'un titre et d'une adresse (exemple : 'MonProjet <dontreply@monprojet.com>')."
+                "Veuillez utiliser une adresse avec un FQDN, car de nombreux serveurs d'emails rejettent les emails avec des domaines non qualifiés dans l'entête From:."
+        smtp:
+          label: "Serveur SMTP"
+          settings:
+            address:
+              label: Adresse
+              description: "Vous permet d'utiliser un serveur SMTP distant."
+            port:
+              label: Port
+              description: "Si jamais votre serveur SMTP tourne sur un port différent du 25, vous pouvez le spécifier ici."
+            domain:
+              label: Domaine
+              description: "Si vous avez besoin de spécifier un domaine HELO, vous pouvez le faire ici."
+            authentication:
+              label: Authentification
+              description: "Si votre serveur d'emails nécessite une authentification, vous pouvez en préciser le type ici."
+            user_name:
+              label: "Nom d'utilisateur"
+              description: |-
+                "Si votre serveur d'emails nécessite une authentification, veuillez entrer le nom d'utilisateur dans ce champ."
+                Si vous laissez ce champ vide, aucune authentification ne sera effectuée.
+            password:
+              label: Mot de passe
+              description: |-
+                "Si votre serveur d'emails nécessite une authentification, veuillez entrer le mot de passe dans ce champ."
+                Si vous laissez ce champ vide, aucune authentification ne sera effectuée.
+    content:
+      label: Contenu
+      groups:
+        format:
+          label: Format
+          settings:
+            datetime:
+              label: "Date et heure"
+              description: "Veuillez entrer un format pour afficher les dates et heures"
+            date:
+              label: "Date seulement"
+              description: "Veuillez entrer un format pour afficher les dates"
+            time:
+              label: "Heure seulement"
+              description: "Veuillez entrer un format pour afficher les heures"
+            changeset_logs:
+              label: "Logs des modifications"
+              description: "Est-ce que les commentaires des commits doivent être affichés wikifiés ?"
+        markup:
+          label: Balisage
+          settings:
+            default:
+              label: "Langage par défaut"
+            global_ticket_refs:
+              label: "Références globales aux tickets"
+              description: |-
+                "Ce réglage ne s'applique que si vous travaillez sur plusieurs projets."
+                Par défaut, les références aux tickets dans les contenus (exemple : [#4711]) sont automatiquement convertis en liens si le ticket référencé apprtient au projet actuellement sélectionné. Veuillez sélectionner cette option si vous souhaitez que les tickets entre projets puissent être liés.
+        custom:
+          label: Personnalisation
+          settings:
+            header:
+              label: "Entête HTML"
+              description: "Tout code publié ici sera ajouté à la fin de la balise HTML <head> sur chaque page."
+            footer:
+              label: "Bas de page HTML"
+              description: "Tout code publié ici sera ajouté à la fin de chaque page HTML, juste avant la fermeture de la balise </body>."
+    ticketing:
+      label: Tickets
+      groups:
+        subscription:
+          label: Abonnement
+          settings:
+            subscribe_on_assignment:
+              label: "S'abonner sur attribution"
+              description: "Est-ce qu'un utilisateur à qui est assigné un ticket doit être automatiquement abonné aux emails de notification"
+            encourage_subscription:
+              label: "Encourager l'abonnement"
+              description: "Est-ce que la case à cocher pour l'abonnement dans le formulaire de commentaire/modification d'un ticket doit être sélectionnée par défaut ?"
+            notify_author:
+              label: "Notifier l'auteur"
+              description: "Est-ce que l'auteur d'un ticket/changement doit en être notifié également (dans le cas où il serait abonné uniquement) ?"
+        user_assignment:
+          label: "Attributions aux utilisateurs"
+          settings:
+            field_type:
+              label: "Type du champ"
+              description: |-
+                Par défaut, les utilisateurs peuvent être assignés aux tickets en sélectionnant leurs noms dans un menu déroulant ('drop-down').
+                Si vous ne souhaitez pas révéler les noms des contributeurs de votre projet, choississez le mode champ texte ('text-field'), où les noms des utilisateurs doivent être explicitement entrés dans le champ de saisie.
+        author_modifiable:
+          label: "Modifier ses propres traces"
+          description: |-
+            Est-ce que les utilisateurs sont autorisés à modifier leurs propres tickets et leurs traces des changement de tickets ?
+            Par défaut, seuls les administrateurs peuvent le faire.
+          settings:
+            tickets:
+              label: Tickets
+            ticket_changes:
+              label: "Modifications d'un ticket"
