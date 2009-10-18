@@ -58,8 +58,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users, :collection => { :search => :any }
     admin.resources :groups
     admin.resources :tasks, :collection => { :save => :put }
-    admin.setup 'setup.:format', :controller => 'setup', :format => 'html', :conditions => { :method => :get }    
-    admin.setup 'setup.:format', :controller => 'setup', :action => 'save', :format => 'html', :conditions => { :method => :put }    
+    admin.setup 'setup.:format', :controller => 'setup', :conditions => { :method => :get }    
+    admin.setup 'setup.:format', :controller => 'setup', :action => 'save', :conditions => { :method => :put }    
     admin.extensions 'extensions', :controller => 'extensions'
   end
 
