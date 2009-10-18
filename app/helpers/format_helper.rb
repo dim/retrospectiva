@@ -34,10 +34,10 @@ module FormatHelper
 
   def markup(text, options = {})
     options.symbolize_keys!
-    wikified = auto_link(sanitize(WikiEngine.markup(text, options[:engine])))
+    wikified = auto_link(post_markup(WikiEngine.markup(text, options[:engine])))    
     format_internal_links(wikified, options)
   end
-    
+
   def simple_markup(text, options = {})
     wikified = auto_link(simple_format(escape_once(text)))
     format_internal_links(wikified, options)
@@ -48,6 +48,10 @@ module FormatHelper
   end
 
   protected 
+
+    def post_markup(content)
+      sanitize(content) 
+    end
 
     def markup_editor(name, method, options = {}, html_options = {})
       html_options.reverse_merge!(

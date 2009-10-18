@@ -35,9 +35,6 @@ module WikiEngine
         "#{prefix}bc. #{placeholder}\n"
       end
       
-      # Remove evil tags (with content) 
-      strip_blocks! %w(meta i?frame i?layer app\w* link object embed bgsound form input select textarea style script)
-
       # Rewrite MediaWiki type headers 
       gsub!(HEADER_PATTERN) do |match|
         "h#{$1.size}. #{$2}\n"
