@@ -113,6 +113,10 @@
           name: 'password'
           allow_blank: true
           after_change: 'Notifications.reload_settings'
+        - !ruby/object:RetroCM::BooleanSetting
+          name: 'enable_starttls_auto'
+          default: true
+          after_change: 'Notifications.reload_settings'
 ###########################################
 #
 # Content section

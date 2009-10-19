@@ -12,7 +12,7 @@ class Notifications < ActionMailer::Base
     def reload_settings
       settings = RetroCM[:email][:smtp].settings.inject({}) do |result, setting|
         result.merge setting.name.to_sym => setting.value 
-      end.merge(:enable_starttls_auto => true)
+      end
       
       settings[:authentication] = settings[:authentication].to_sym      
       if settings[:authentication] == :none || settings[:user_name].blank? || settings[:password].blank?

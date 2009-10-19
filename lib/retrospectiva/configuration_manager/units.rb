@@ -165,7 +165,7 @@ module Retrospectiva
         begin
           @value = new_value
           validate_and_link!
-          eval(after_change) if after_change
+          eval(after_change) if after_change && old_value != @value
         rescue
           @value = old_value
           raise $!
