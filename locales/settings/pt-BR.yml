@@ -1,111 +1,172 @@
 pt-BR:
   settings:
     general: 
-      label: 
+      label: Geral
       groups: 
         basic: 
-          label: 
+          label: "Ajustes básicos"
           settings: 
             site_name: 
-              label: 
+              label: "Nome do website"
+              description: |-
+                Atribua um nome para seu web site (ex. 'Meu Projeto').
+                Este nome será exibido para usuários na página e em e-mails.
             site_url: 
-              label: 
+              label: "URL do website"
+              description: |-
+                Informe a URL do seu web site. (ex. 'http://retro.meuprojeto.com.br').
+                Esta URL será utilizada em e-mails de notificação.
             session_key: 
-              label: 
+              label: "Chave de sessão"
+              description: |-
+                Defina uma chave de sessão única para seu web site (ex. '_minhapagina_sessao').
+                Ela permite diferenciar sessões entre instalações do Retrospectiva.
+                A chave de sessão deve consistir de apenas caracteres alfanuméricos e sublinhados.
             locale: 
-              label: 
+              label: "Idioma global"
+              description: "Especifique o idioma de seu web site aqui."
             session_expiration: 
-              label: 
+              label: "Expiração de sessões (minutos)"
+              description: "Após quantos minutos sem atividade a sessão do visitante deveria expirar? [1-43200]"
         attachments: 
-          label: 
+          label: Anexos
           settings: 
             max_size: 
-              label: 
+              label: "Tamanho máximo do anexo (kB)"
         user_management: 
-          label: 
+          label: "Gerenciamento de usuário"
           settings: 
             secure_auth: 
-              label: 
+              label: "Utilizar autenticação segura"
+              description: "O mecanismo de autenticação segura criptografa senhas no lado do cliente antes delas serem transmitidas de fato."
             account_management: 
-              label: 
+              label: "Permitir que usuários não privilegiados gerencie suas contas"
+              description: "Usuários não-administradores podem alterar seus próprios ajustes (não críticos) de conta (ex. 'senha')."
             self_registration: 
-              label: 
+              label: "Permitir auto-registro"
+              description: "Usuários podem registar-se no sistema."
             assign_to_groups: 
-              label: 
+              label: "Atribuir automaticamente novos usuários para os seguintes grupos (IDs, separados por vírgula)"
+              description: |-
+                Estas configurações apenas se aplicam se 'auto-registro' estiver habilitado. Valores inválidos serão ignorados.
+                Se você desejar especificar grupos adicionais (todo usuário é um membro de 'Default'), novos usuários serão automaticamente atribuídos aos seguintes grupos. Por favor, preencha em uma lista de IDs de grupo separados por vírgula, aqui.
             activation: 
-              label: 
+              label: "Ativar contas de usuários"
+              description: |-
+                Este ajuste apenas se aplica se 'auto-registro' estiver habilitado.
+                Options:
+                  - auto: Contas de usuário são automaticamente ativadas após o registro
+                  - email: Novas contas de usuário precisam ser ativadas através de um código de ativação enviado por e-mail
+                  - admin: Novas contas de usuário são desabilitadas por padrão (precisam ser ativadas por administradores)
             expiration: 
-              label: 
+              label: "Expiração de contas de usuário não ativadas (horas)"
+              description: |-
+                Este ajuste aplica-se apenas se 'auto-registro' estiver habilitado e a ativação da conta estiver ajustada para 'e-mail'.
+                Após quantas horas as contas de usuário não ativadas deveriam ser excluídas novamente? [1-43200]
     email: 
-      label: 
+      label: "Configurações de e-mail"
       groups: 
         general: 
-          label: 
+          label: Geral
           settings: 
             from: 
-              label: 
+              label: "Endereço do remetente"
+              description: |-
+                Define the From: ajuste o cabeçalho dos e-mails de saída aqui. Utilize um endereço de e-mail simples (ex. 'naoresponda@meuprojeto.com.br') ou uma combinação título-endereço (ex. 'Notificador de MeuProjeto <naoresponda@meuprojeto.com.br>')
+                Por favor, utilize um endereço com um FQDN, uma vez que muitos servidores de e-mail rejeitam nomes de domínios não qualificados no cabeçalho 'From:'.
         smtp: 
-          label: 
+          label: "Servidor SMTP"
           settings: 
             address: 
-              label: 
+              label: Endereço
+              description: "Permite-lhe utilizar um servidor de e-mail remoto."
             port: 
-              label: 
+              label: Porta
+              description: "Caso seu servidor de e-mail não utilize a porta 25, você pode ajustá-la aqui."
             domain: 
-              label: 
+              label: Domínio
+              description: "Se você precisar especificar um domínio HELO, você pode fazê-lo aqui."
             authentication: 
-              label: 
+              label: Autenticação
+              description: "Se seu servidor de e-mail requer autenticação, você precisa especificar o tipo de autenticação aqui."
             user_name: 
-              label: 
+              label: "Nome de usuário"
+              description: |-
+                Se seu servidor de correio requer autenticação, informe o nome de usuário neste campo.
+                Se você deixar este valor em branco, nenhuma autenticação será realizada.
             password: 
-              label: 
+              label: Senha
+              description: |-
+                Se seu servidor de correio exigir autenticação, informe a senha neste campo.
+                Se você deixar este valor em branco, nenhuma autenticação será realizada.
     content: 
-      label: 
+      label: Conteúdo
       groups: 
         format: 
-          label: 
+          label: Formato
           settings: 
             datetime: 
-              label: 
+              label: "Data & hora"
+              description: "Especifique um formato para datas e horas"
             date: 
-              label: 
+              label: "Data apenas"
+              description: "Especifique um formato para datas"
             time: 
-              label: 
+              label: "Horas apenas"
+              description: "Especifique um formato para horas"
             changeset_logs: 
-              label: 
+              label: "Logs de alterações"
+              description: "Comentários de commits deveriam ser exibidos na forma de wiki?"
         markup: 
-          label: 
+          label: Marcação
           settings: 
             default: 
-              label: 
+              label: "Linguagem padrão"
             global_ticket_refs: 
-              label: 
+              label: "Referência global de tarefas"
+              description: |-
+                Esta configuração só se aplica se você estiver trabalhando com múltiplos projetos.
+                Por padrão, referências de tarefas no conteúdo de marcação (ex. [#4711]) são automaticamente convertidos para links apenas se as tarefas referenciadas pertencem ao projeto selecionado atualmente. Selecione esta opção se você desejar tornar suas tarefas 'linkáveis' a outros projetos.
         custom: 
-          label: 
+          label: Personalização
           settings: 
             header: 
-              label: 
+              label: "Cabeçalho do HTML"
+              description: "Qualquer código postado aqui será adicionado ao final do cabeçalho HTML (tag <head>) em todas as páginas."
             footer: 
-              label: 
+              label: "Rodapé do HTML"
+              description: "Qualquer código postado aqui será adicionado ao final de toda página HTML, logo antes de fechar a tag </body>."
     ticketing: 
-      label: 
+      label: Tarefas
       groups: 
         subscription: 
-          label: 
+          label: Inscrição
           settings: 
             subscribe_on_assignment: 
-              label: 
+              label: "Inscrever-se na atribuição"
+              description: "Um usuário deveria ser inscrito para receber notificações por e-mail sempre que uma tarefa lhe for atribuída?"
             encourage_subscription: 
-              label: 
+              label: "Encorajar inscrição"
+              description: "A opçao de inscrição deveria estar habilitada por padrão no formulário para enviar/comentar uma tarefa?"
+            notify_author: 
+              label: "Notificar autor"
+              description: "O autor da tarefa/modificação também deveria ser notificado (apenas se inscrito)?"
         user_assignment: 
-          label: 
+          label: "Atribuições do usuário"
           settings: 
             field_type: 
-              label: 
+              label: "Tipo de campo"
+              description: |-
+                Por padrão, usuários podem ser atribuídos a tarefas selecionando seu nome de usuário a partir de um menu de seleção.
+                Se você não quiser revelar os nomes dos contribuidores do seu projeto, selecione o modo 'campo-texto',
+                onde nomes de usuários devem ser entrados explicitamente em um campo de texto.
         author_modifiable: 
-          label: 
+          label: "Editar os próprios registros"
+          description: |-
+            Os usuários são capazes de modificar suas próprias tarefas e registros de mudanças na tarefa?
+            Por padrão, apenas administradores têm o direito de alterar estes.
           settings: 
             tickets: 
-              label: 
+              label: Tarefas
             ticket_changes: 
-              label: 
+              label: "Mudanças na tarefa"

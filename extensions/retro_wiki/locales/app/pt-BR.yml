@@ -1,192 +1,159 @@
 pt-BR:
   application:
     # Unknown
-    "Are you really sure?": 
+    "Are you really sure?": "Você tem certeza?"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Author: Autor
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Back in time": 
+    "Back in time": "Voltar no tempo"
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Cancel: Cancelar
 
-    # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
-    Content: 
+    Content: Conteúdo
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
     Create: Criar
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Created on {{date}} by {{author}}": 
+    "Created on {{date}} by {{author}}": "Criado em {{date}} por {{author}}"
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki_files/_file.html.erb
     Delete: Remover
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Edit: 
+    Edit: Editar
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    File: 
+    File: Arquivo
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File cannot be deleted.": 
+    "File cannot be deleted.": "Arquivo não pode ser excluído."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully added.": 
+    "File was successfully added.": "Arquivo adicionado com sucesso."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "File was successfully deleted.": 
+    "File was successfully deleted.": "Arquivo excluído com sucesso."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Files: 
+    Files: Arquivos
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Forward in time": 
+    "Forward in time": "Avançar no tempo"
 
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Home: Início
 
-    # Missing
     # extensions/retro_wiki/ext/markup_controller.rb
-    Links: 
+    Links: Links
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Name: Nome
 
-    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Nothing changed": 
+    "Nothing changed": "Nada mudou"
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully created.": 
+    "Page was successfully created.": "A página foi criada com sucesso."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
-    "Page was successfully updated.": 
+    "Page was successfully updated.": "A página foi atualizada com sucesso."
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Pages: 
+    Pages: Páginas
 
-    # Missing
     # extensions/retro_wiki/ext/markup_controller.rb
-    References: 
+    References: Referências
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
     # extensions/retro_wiki/views/wiki/rename.html.erb
-    Rename: 
+    Rename: Renomear
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    Rollback: 
+    Rollback: Desfazer
 
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: Salvar
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "Show current": 
+    "Show current": "Exibir atual"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     Size: Tamanho
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort alphabetically": 
+    "Sort alphabetically": "Ordenar alfabeticamente"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    "Sort by last update": 
+    "Sort by last update": "Ordenar pela última atualização"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/edit.html.erb
     # extensions/retro_wiki/views/wiki/rename.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Title: 
+    Title: Título
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
-    Type: 
+    Type: Tipo
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_files_controller.rb
-    "Unable to download file": 
+    "Unable to download file": "Não foi possível baixar o arquivo"
 
     # extensions/retro_wiki/ext_info.rb
     Update: Atualizar
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Updated on {{date}} by {{author}}": 
+    "Updated on {{date}} by {{author}}": "Atualizado em {{date}} por {{author}}"
 
-    # Missing
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Upload: 
+    Upload: "Enviar arquivo"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    Version: 
+    Version: Versão
 
     # extensions/retro_wiki/ext_info.rb
     View: Ver
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_controller.rb
     # extensions/retro_wiki/models/wiki_page.rb
     # extensions/retro_wiki/views/wiki/_header.html.erb
     # extensions/retro_wiki/views/wiki/index.html.erb
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
-    Wiki: 
+    Wiki: Wiki
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Files": 
+    "Wiki Files": "Arquivos Wiki"
 
-    # Missing
     # extensions/retro_wiki/ext_info.rb
-    "Wiki Pages": 
+    "Wiki Pages": "Páginas Wiki"
 
     # Unknown
     "Wiki Pages for {{project}}": 
 
-    # Missing
     # extensions/retro_wiki/models/wiki_page.rb
-    "Wiki for {{project}}": 
+    "Wiki for {{project}}": "Wiki para {{project}}"
 
-    # Missing
     # extensions/retro_wiki/views/wiki/index.html.erb
-    updated: 
+    updated: atualizado
 
-    # Missing
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "{{count}} more": 
+    "{{count}} more": "{{count}} more"
 

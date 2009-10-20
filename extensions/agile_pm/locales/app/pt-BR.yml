@@ -1,26 +1,22 @@
 pt-BR:
   application:
-    # Missing
     # extensions/agile_pm/models/story_status_update.rb
-    Accepted: 
+    Accepted: Aceito
 
     # extensions/agile_pm/views/stories/_navigation.html.erb
     # extensions/agile_pm/views/stories/charts/_hours.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
     Active: Ativo
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Are you sure?": 
+    "Are you sure?": "Você tem certeza?"
 
-    # Missing
     # extensions/agile_pm/views/goals/show.html.erb
     # extensions/agile_pm/views/stories/show.html.erb
-    Back: 
+    Back: Voltar
 
-    # Missing
     # extensions/agile_pm/views/stories/_navigation.html.erb
-    Backlog: 
+    Backlog: Backlog
 
     # extensions/agile_pm/views/goals/edit.html.erb
     # extensions/agile_pm/views/goals/new.html.erb
@@ -29,16 +25,14 @@ pt-BR:
     # extensions/agile_pm/views/stories/new.html.erb
     Cancel: Cancelar
 
-    # Missing
     # extensions/agile_pm/views/goals/show.js.rjs
     # extensions/agile_pm/views/stories/_popup.html.erb
-    Close: 
+    Close: Fechar
 
     # extensions/agile_pm/models/story_comment.rb
     # extensions/agile_pm/views/stories/_comment_form.html.erb
     Comment: Comentário
 
-    # Missing
     # extensions/agile_pm/lib/agile_pm_helper.rb
     # extensions/agile_pm/models/story_status_update.rb
     # extensions/agile_pm/views/goals/_milestone.html.erb
@@ -46,15 +40,13 @@ pt-BR:
     # extensions/agile_pm/views/stories/_navigation.html.erb
     # extensions/agile_pm/views/stories/charts/_hours.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
-    Completed: 
+    Completed: Concluído
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Completed on {{date}}": 
+    "Completed on {{date}}": "Concluído em {{date}}"
 
-    # Missing
     # extensions/agile_pm/models/goal.rb
-    "Could have": 
+    "Could have": "Poderia ter"
 
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/goals/new.html.erb
@@ -72,48 +64,37 @@ pt-BR:
     # extensions/agile_pm/views/stories/_form.html.erb
     Description: Descrição
 
-    # Missing
     # extensions/agile_pm/views/goals/show.js.rjs
-    Details: 
+    Details: Detalhes
 
-    # Missing
     # extensions/agile_pm/lib/agile_pm_helper.rb
-    Due: 
+    Due: Devido
 
-    # Missing
     # extensions/agile_pm/lib/goals_helper.rb
     # extensions/agile_pm/views/goals/_actions.html.erb
-    Edit: 
+    Edit: Editar
 
-    # Missing
     # extensions/agile_pm/views/stories/_form.html.erb
-    "Estimated Hours": 
+    "Estimated Hours": "Horas Estimadas"
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    Finish: 
+    Finish: Terminar
 
-    # Missing
     # extensions/agile_pm/views/sprints/_form.html.erb
-    "Finishes On": 
+    "Finishes On": "Termina Em"
 
-    # Missing
     # extensions/agile_pm/views/stories/_form.html.erb
-    Goal: 
+    Goal: Objetivo
 
-    # Missing
     # extensions/agile_pm/lib/goals_controller.rb
-    "Goal was successfully created.": 
+    "Goal was successfully created.": "Objetivo criado com sucesso."
 
-    # Missing
     # extensions/agile_pm/lib/goals_controller.rb
-    "Goal was successfully deleted.": 
+    "Goal was successfully deleted.": "O objetivo foi excluído com sucesso."
 
-    # Missing
     # extensions/agile_pm/lib/goals_controller.rb
-    "Goal was successfully updated.": 
+    "Goal was successfully updated.": "O objetivo foi atualizado com sucesso."
 
-    # Missing
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/lib/goals_controller.rb
     # extensions/agile_pm/views/goals/edit.html.erb
@@ -123,24 +104,21 @@ pt-BR:
     # extensions/agile_pm/views/goals/show.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
     # extensions/agile_pm/views/sprints/new.html.erb
-    Goals: 
+    Goals: Objetivos
 
-    # Missing
     # extensions/agile_pm/views/stories/_milestone.html.erb
-    Hide: 
+    Hide: Esconder
 
     # extensions/agile_pm/views/sprints/show.json.erb
     # extensions/agile_pm/views/stories/charts/_hours.html.erb
     Hours: Horas
 
-    # Missing
     # extensions/agile_pm/views/sprints/show.json.erb
     # extensions/agile_pm/views/stories/charts/_backlog.html.erb
-    Kick-off: 
+    Kick-off: Kick-off
 
-    # Missing
     # extensions/agile_pm/views/stories/_popup.html.erb
-    Link: 
+    Link: Link
 
     # extensions/agile_pm/views/goals/_header.html.erb
     # extensions/agile_pm/views/sprints/_header.html.erb
@@ -150,109 +128,87 @@ pt-BR:
     # extensions/agile_pm/views/stories/index.html.erb
     Milestones: Marcos
 
-    # Missing
     # extensions/agile_pm/models/goal.rb
-    "Must have": 
+    "Must have": "Deve ter"
 
-    # Missing
     # extensions/agile_pm/views/stories/index.html.erb
-    "My Stories": 
+    "My Stories": "Minhas Estórias"
 
-    # Missing
     # extensions/agile_pm/views/goals/_sprint.html.erb
     # extensions/agile_pm/views/goals/new.html.erb
-    "New Goal": 
+    "New Goal": "Novo Objetivo"
 
-    # Missing
     # extensions/agile_pm/views/goals/index.html.erb
     # extensions/agile_pm/views/sprints/new.html.erb
-    "New Sprint": 
+    "New Sprint": "Nova Entrega"
 
-    # Missing
     # extensions/agile_pm/views/stories/_navigation.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
-    "New Story": 
+    "New Story": "Nova Estória"
 
-    # Missing
     # extensions/agile_pm/views/goals/_details.html.erb
     # extensions/agile_pm/views/stories/_event.html.erb
-    "No description": 
+    "No description": "Nenhuma descrição"
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
     # extensions/agile_pm/views/stories/_navigation.html.erb
     # extensions/agile_pm/views/stories/charts/_hours.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
-    Pending: 
+    Pending: Pendente
 
     # extensions/agile_pm/views/goals/_form.html.erb
     Priority: Prioridade
 
-    # Missing
     # extensions/agile_pm/views/stories/index.html.erb
-    Progress: 
+    Progress: Progresso
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    Re-open: 
+    Re-open: Re-abrir
 
-    # Missing
     # extensions/agile_pm/models/story_status_update.rb
-    Re-opened: 
+    Re-opened: Re-aberto
 
-    # Missing
     # extensions/agile_pm/views/goals/_form.html.erb
-    Requester: 
+    Requester: Requisitante
 
     # extensions/agile_pm/models/story_revision.rb
     Revision: Revisão
 
-    # Missing
     # extensions/agile_pm/models/goal.rb
-    "Should have": 
+    "Should have": "Deveria ter"
 
-    # Missing
     # extensions/agile_pm/views/stories/_milestone.html.erb
-    Show: 
+    Show: Exibir
 
-    # Missing
     # extensions/agile_pm/views/goals/_form.html.erb
-    Sprint: 
+    Sprint: Entrega
 
-    # Missing
     # extensions/agile_pm/lib/sprints_controller.rb
-    "Sprint was successfully created.": 
+    "Sprint was successfully created.": "A entrega foi criada com sucesso."
 
-    # Missing
     # extensions/agile_pm/lib/sprints_controller.rb
-    "Sprint was successfully deleted.": 
+    "Sprint was successfully deleted.": "A entrega foi excluída com sucesso."
 
-    # Missing
     # extensions/agile_pm/lib/sprints_controller.rb
-    "Sprint was successfully updated.": 
+    "Sprint was successfully updated.": "A entrega foi atualizada com sucesso."
 
-    # Missing
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/stories/index.html.erb
-    Sprints: 
+    Sprints: Entregas
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    Start: 
+    Start: Início
 
     # extensions/agile_pm/lib/agile_pm_helper.rb
     Started: Iniciado
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Started on {{date}}": 
+    "Started on {{date}}": "Iniciado em {{date}}"
 
-    # Missing
     # extensions/agile_pm/views/sprints/_form.html.erb
-    "Starts On": 
+    "Starts On": "Inicia Em"
 
-    # Missing
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/lib/stories_controller.rb
     # extensions/agile_pm/views/stories/_sprint.html.erb
@@ -262,59 +218,47 @@ pt-BR:
     # extensions/agile_pm/views/stories/new.html.erb
     # extensions/agile_pm/views/stories/no_sprints.html.erb
     # extensions/agile_pm/views/stories/show.html.erb
-    Stories: 
+    Stories: Estórias
 
-    # Missing
     # extensions/agile_pm/views/stories/charts/_backlog.html.erb
-    Story: 
+    Story: Estória
 
-    # Missing
     # extensions/agile_pm/lib/stories_controller.rb
-    "Story was accepted.": 
+    "Story was accepted.": "A estória foi aceita."
 
-    # Missing
     # extensions/agile_pm/lib/stories_controller.rb
-    "Story was completed.": 
+    "Story was completed.": "A estória foi concluída."
 
-    # Missing
     # extensions/agile_pm/lib/stories_controller.rb
-    "Story was re-opened.": 
+    "Story was re-opened.": "A estória foi reaberta."
 
-    # Missing
     # extensions/agile_pm/lib/stories_controller.rb
-    "Story was successfully created.": 
+    "Story was successfully created.": "A estória foi criada com sucesso."
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Take Over": 
+    "Take Over": Assumir
 
-    # Missing
     # extensions/agile_pm/views/goals/_sprint.html.erb
-    "There are currently no goals defined.": 
+    "There are currently no goals defined.": "Não há objetivos definidos atualmente."
 
-    # Missing
     # extensions/agile_pm/views/goals/no_milestones.html.erb
-    "There are no milestones present": 
+    "There are no milestones present": "Não há marcos presentes"
 
-    # Missing
     # extensions/agile_pm/views/stories/no_sprints.html.erb
-    "There are no sprints present": 
+    "There are no sprints present": "Não há entregas presentes"
 
-    # Missing
     # extensions/agile_pm/views/stories/backlog.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
-    "There are no stories in this category": 
+    "There are no stories in this category": "Não há estórias nesta categoria"
 
-    # Missing
     # extensions/agile_pm/views/goals/_form.html.erb
     # extensions/agile_pm/views/sprints/_form.html.erb
     # extensions/agile_pm/views/stories/_form.html.erb
-    Title: 
+    Title: Título
 
-    # Missing
     # extensions/agile_pm/lib/goals_helper.rb
     # extensions/agile_pm/views/goals/_header.html.erb
-    Unassigned: 
+    Unassigned: "Não atribuída"
 
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/goals/edit.html.erb
@@ -324,21 +268,18 @@ pt-BR:
     # extensions/agile_pm/ext_info.rb
     View: Ver
 
-    # Missing
     # extensions/agile_pm/models/goal.rb
-    "Won't have": 
+    "Won't have": "Não terá"
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "You cannot put it back!": 
+    "You cannot put it back!": "Você não pode colocá-la de volta!"
 
-    # Missing
     # extensions/agile_pm/lib/stories_helper.rb
     # extensions/agile_pm/models/story_revision.rb
     # extensions/agile_pm/views/stories/_full.html.erb
     # extensions/agile_pm/views/stories/charts/_story_line.html.erb
     # extensions/agile_pm/views/stories/revise_hours.js.rjs
-    "{{count}}h": 
+    "{{count}}h": "{{count}}h"
 
     # extensions/agile_pm/lib/stories_helper.rb
     "{{period}} ago": "{{period}} atrás"
