@@ -44,6 +44,7 @@ class ProjectAreaController < ApplicationController
     def find_project
       project = Project.find_by_short_name! params[:project_id]      
       Project.current = User.current.projects.active.find(project.short_name)
+      I18n.locale = Project.current.locale if Project.current && Project.current.locale    
     end
     
     def render_rss(klass, records = nil, options = {})
