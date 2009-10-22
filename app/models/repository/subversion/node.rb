@@ -61,7 +61,7 @@ class Repository::Subversion::Node < Repository::Abstract::Node
   end
 
   def content
-    dir? ? nil : @content
+    dir? ? nil : @content.to_s
   end
 
   def mime_type

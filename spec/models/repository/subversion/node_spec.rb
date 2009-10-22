@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe Repository::Subversion::Node do
   fixtures :repositories, :changesets
   
-  def request_node(path, revision = nil)    
-    Repository::Subversion::Node.new(repositories(:svn), path, revision)
+  def request_node(path, revision = nil, skip_content = false)
+    Repository::Subversion::Node.new(repositories(:svn), path, revision, skip_content)
   end
 
   describe 'requesting a node' do    
@@ -78,7 +78,7 @@ describe Repository::Subversion::Node do
 
     it 'should correctly identify the node as a file node' do
       @node.should_not be_dir
-    end          
+    end
 
     it 'should not return any sub-nodes' do
       @node.sub_nodes.should == []
@@ -88,8 +88,12 @@ describe Repository::Subversion::Node do
       @node.sub_node_count == 0
     end
 
-    it 'should have a contnent' do
+    it 'should have a content' do
       @node.content.should_not be_blank      
+    end
+
+    it 'should have a textual content' do
+      request_node("retrospectiva/config/environment.rb", nil, false).content.should == ''      
     end
 
     it 'should return the content-length as size' do
