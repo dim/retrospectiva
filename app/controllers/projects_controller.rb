@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
         redirect_to(projects_path)
       else        
         # Fail with 404 if the project genuinely doesn't exist
-        Project.active.find params[:id]
+        Project.active.find_by_short_name! params[:id]
         # Fail authorization otherwise
         failed_authorization!  
       end
