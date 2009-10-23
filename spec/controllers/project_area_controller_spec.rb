@@ -90,7 +90,7 @@ describe 'real-world behaviour' do
     
   before do
     @user = mock_current_user! :name => 'Public', :public? => true, :admin? => false, :permitted? => false
-    @project = mock_model Project, 
+    @project = stub_model Project,
       :name => 'Retro', :short_name => 'retro',
       :enabled_modules => ['milestones']
 

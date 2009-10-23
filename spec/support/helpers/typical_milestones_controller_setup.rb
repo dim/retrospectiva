@@ -9,7 +9,7 @@ module Spec::TypicalMilestonesControllerSetup
       @milestones.stub!(:count)    
       @milestones.stub!(:maximum)    
 
-      @project = mock_model(Project, :name => 'Retro', :short_name => 'retro', :milestones => @milestones)
+      @project = stub_model(Project, :name => 'Retro', :short_name => 'retro', :milestones => @milestones)
       @projects = [@project]    
       @projects.stub!(:active).and_return(@projects)
       @projects.stub!(:find).and_return(@project)

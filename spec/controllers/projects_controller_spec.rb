@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ProjectsController do
 
   before do 
-    @user = mock_current_user!
+    @user = mock_current_user! :name => 'Someone'
   end
   
   describe 'loading active projects' do
@@ -237,10 +237,9 @@ describe ProjectsController do
       controller.stub!(:find_feedable_records).and_return([@changeset, @ticket])
       controller.stub!(:project_has_no_accessible_menu_items?).and_return(false)
       
-      @projects = [mock_model(Project, :to_param => 'retro', :name => 'Retro', :path_to_first_menu_item => '/projects/retro/changesets')]
-      @projects.stub!(:active).and_return(@projects)      
-      @user.should_receive(:projects).and_return(@projects)
-      @projects.stub!(:find!).and_return(@projects.first)      
+      @project  = mock_model Project, :to_param => 'retro', :name => 'Retro', :path_to_first_menu_item => '/projects/retro/changesets', :active? => true
+      @projects = AssociationProxies::UserProjects.new([@project])
+      @user.stub!(:projects).and_return(@projects)
     end
 
     def do_get(project_name, format = 'html')
@@ -248,20 +247,53 @@ describe ProjectsController do
     end
     
     describe 'for HTML requests' do
-           
+                 
       it 'should redirect to the first available menu item' do
-        @projects.should_receive(:find!).with('retro').and_return(@projects.first)      
         do_get 'retro'
         response.should be_redirect
-        response.should redirect_to(project_changesets_path(@projects.first))        
+        response.should redirect_to(project_changesets_path(@project))        
       end
 
+      describe 'if project is not accessible and other projects are present' do
+        
+        it 'should redirect to the projects overview page' do
+          do_get 'other'
+          response.should be_redirect
+          response.should redirect_to(projects_path)        
+        end
+      
+      end
+
+      describe 'if project is not accessible and no other projects are present' do
+        before do
+          @projects = AssociationProxies::UserProjects.new
+          @user.stub!(:projects).and_return(@projects)         
+        end
+
+        describe 'but project is does actually exist (just the user has no permission to see it)' do
+                    
+          it 'should fail authorization' do
+            Project.should_receive(:find).with('other').and_return(stub_model(Project))
+            lambda { do_get 'other' }.should raise_error(Retrospectiva::AccessManager::NoAuthorizationError)
+          end
+        
+        end
+
+        describe 'and project is genuinely doesn\'t exist' do
+                    
+          it 'should fail with 404' do            
+            lambda { do_get 'other' }.should raise_error(ActiveRecord::RecordNotFound)
+          end
+        
+        end
+                
+      end
     end
 
     describe 'for RSS requests' do
 
       it 'should load the feedable records' do
-        controller.should_receive(:find_feedable_records).with(@projects.first).and_return([@changeset, @ticket])
+        controller.should_receive(:find_feedable_records).with(@project).and_return([@changeset, @ticket])
         do_get  'retro', 'rss'
       end
   

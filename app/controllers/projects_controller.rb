@@ -13,19 +13,17 @@ class ProjectsController < ApplicationController
         format.xml  { head :found, :location => project_path(@projects.first, :format => 'xml') }              
       else
         format.html
-        format.rss  { render_index_rss }
+        format.rss  { index_rss }
         format.xml  { render :xml => @projects }              
       end    
     end    
   end
   
   def show
-    @project = @projects.find! params[:id]
-  
     respond_to do |format|
-      format.html { redirect_to @project.path_to_first_menu_item }
-      format.rss  { render_show_rss(@project) }
-      format.xml  { render :xml => @project }
+      format.html { show_html } 
+      format.rss  { find_project!; show_rss(@project) }
+      format.xml  { find_project!; render :xml => @project }
     end
   end
   
@@ -36,6 +34,10 @@ class ProjectsController < ApplicationController
       @projects.reject! do |project|
         project_has_no_accessible_menu_items?(project)
       end
+    end
+
+    def find_project!
+      @project = @projects.find! params[:id]
     end
 
     def project_has_no_accessible_menu_items?(project)
@@ -51,7 +53,7 @@ class ProjectsController < ApplicationController
       end.nil?
     end
 
-    def render_index_rss
+    def index_rss
       @records = User.current.projects.active.inject([]) do |result, project|                
         find_feedable_records(project).each do |record|
           result << [record, project]
@@ -68,7 +70,22 @@ class ProjectsController < ApplicationController
       end
     end
 
-    def render_show_rss(project)
+    def show_html
+      @project = @projects.find params[:id]
+      
+      if @project      
+        redirect_to @project.path_to_first_menu_item
+      elsif @projects.any?
+        redirect_to(projects_path)
+      else        
+        # Fail with 404 if the project genuinely doesn't exist
+        Project.active.find params[:id]
+        # Fail authorization otherwise
+        failed_authorization!  
+      end
+    end
+    
+    def show_rss(project)
       render_rss project.name, 
         _('All news for {{project}}', :project => project.name), 
         project_url(project) do |items|

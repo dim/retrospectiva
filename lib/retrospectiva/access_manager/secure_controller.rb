@@ -183,8 +183,8 @@ module Retrospectiva
           def failed_authorization!
             project = Project.current ? Project.current.name : 'nil'
             user = User.current ? User.current.name : 'nil'
-            permissions = self.class.require_permissions[action_name]
-            
+            permissions = self.class.authorized_controller? ? self.class.require_permissions[action_name] : nil 
+
             raise Retrospectiva::AccessManager::NoAuthorizationError, 
               "No authorization for #{self.class.name}/#{action_name} - params: #{params.except(:controller, :action).inspect}, user: #{user}, project: #{project}, permissions: #{permissions.inspect}"
           end

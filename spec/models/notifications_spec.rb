@@ -20,7 +20,8 @@ describe Notifications do
         :domain => mock('Setting::Domain', :name => 'domain', :value => 'mydomain.com'),
         :authentication => mock('Setting::AuthType', :name => 'authentication', :value => 'plain'),
         :user_name => mock('Setting::User', :name => 'user_name', :value => 'me'),
-        :password => mock('Setting::Pass', :name => 'password', :value => 'secret')
+        :password => mock('Setting::Pass', :name => 'password', :value => 'secret'),
+        :enable_starttls_auto => mock('Setting::AutoTLS', :name => 'enable_starttls_auto', :value => true)
       }
     end
     
