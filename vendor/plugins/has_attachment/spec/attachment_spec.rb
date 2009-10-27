@@ -91,10 +91,17 @@ describe Attachment do
         build_attachment('A').content_type.should == 'text/plain'
       end
 
-      it 'should identify textual content types' do
-        build_attachment('TEXT', 'file.txt', 'text/plain').should be_textual
-        build_attachment('GIF89', 'file.gif', 'image/gif').should_not be_textual
-        build_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_textual
+      it 'should identify html content types' do
+        build_attachment('TEXT', 'file.txt', 'text/plain').should_not be_html
+        build_attachment('HTML', 'file.html', 'text/html').should be_html
+      end
+
+      it 'should identify plain textual content types' do
+        build_attachment('TEXT', 'file.txt', 'text/plain').should be_plain
+        build_attachment('CSV', 'file.csv', 'text/csv').should be_plain
+        build_attachment('HTML', 'file.html', 'text/html').should_not be_plain
+        build_attachment('GIF89', 'file.gif', 'image/gif').should_not be_plain
+        build_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_plain
       end
 
       it 'should identify image content types' do

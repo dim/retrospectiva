@@ -541,7 +541,7 @@ describe TicketsController do
       @attachment = mock_model Attachment,
         :file_name => 'file.txt',
         :attachable => @ticket,
-        :textual? => true,
+        :plain? => true,
         :inline? => true,
         :readable? => true,
         :send_arguments => ['path', {}]

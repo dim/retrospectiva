@@ -73,18 +73,22 @@ class Attachment < ActiveRecord::Base
     content_type.match(/^image\/(png|jpg|jpeg|gif)/i).present?
   end
 
-  def textual?
-    content_type.match(/^text/i).present?
+  def html?
+    content_type == Mime::HTML
+  end    
+
+  def plain?
+    !html? and content_type.starts_with?('text/')
   end    
 
   def inline?
-    textual? || image?
+    html? || plain? || image?
   end
   
   def send_arguments
     [physical_path, {
       :filename => file_name,
-      :type => textual? ? 'text/plain' : content_type,
+      :type => plain? ? 'text/plain' : content_type,
       :disposition => ( inline? ? 'inline' : 'attachment' )
     }]
   end
