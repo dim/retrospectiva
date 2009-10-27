@@ -273,7 +273,7 @@ describe ProjectsController do
         describe 'but project is does actually exist (just the user has no permission to see it)' do
                     
           it 'should fail authorization' do
-            Project.should_receive(:find).with('other').and_return(stub_model(Project))
+            Project.should_receive(:find_by_short_name!).with('other').and_return(stub_model(Project))
             lambda { do_get 'other' }.should raise_error(Retrospectiva::AccessManager::NoAuthorizationError)
           end
         
