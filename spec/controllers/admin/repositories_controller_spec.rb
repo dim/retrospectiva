@@ -205,8 +205,10 @@ describe Admin::RepositoriesController do
     before do
       File.stub!(:exists?).and_return(true)
       File.stub!(:readable?).and_return(true)
-      File.stub!(:executable?).and_return(true)
-      @repository = mock_model(Repository::Abstract, :latest_revision => 'R10')
+      File.stub!(:executable?).and_return(true)      
+      Repository::Subversion.stub!(:enabled?).and_return(true)
+      
+      @repository = mock_model(Repository::Abstract, :active? => true, :latest_revision => 'R10')
       Repository.stub!(:[]).and_return(Repository::Subversion)
       Repository::Subversion.stub!(:new).and_return(@repository)
     end
@@ -218,6 +220,18 @@ describe Admin::RepositoriesController do
 
     def do_get
       xhr :get, :validate, :kind => 'Subversion', :path => '/home/me/repositories/project'
+    end
+
+    it 'should handle invalid repository types' do
+      Repository.should_receive(:[]).with('Subversion').and_return(nil)
+      do_get
+      response.body.should match(/Support for Subversion is not enabled/)
+    end
+
+    it 'should handle disabled repository types' do
+      Repository::Subversion.should_receive(:enabled?).and_return(false)
+      do_get
+      response.body.should match(/Support for Subversion is not enabled/)
     end
 
     it 'should return correct message if path doesn\'t exist' do
@@ -244,7 +258,7 @@ describe Admin::RepositoriesController do
     end
 
     it 'should return a failure message if path does not contain a repository' do
-      @repository.should_receive(:latest_revision).and_raise 'Error, there is no repository here'
+      @repository.should_receive(:active?).and_return(false)
       do_get
       response.body.should match(/Failure/)
     end

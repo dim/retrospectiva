@@ -16,6 +16,11 @@ class Repository::Abstract < ::Repository
       revision.to_s
     end
     
+    # Determines of the repository support is enabled
+    def enabled?
+      raise NotImplementedError, 'enabled? is an abstract method'
+    end
+
     private
 
       def subclasses_preloaded?
@@ -31,7 +36,7 @@ class Repository::Abstract < ::Repository
 
   # Determines of the repository is ready to be used
   def active?
-    node('').present? rescue false
+    self.class.enabled? && ( node('').present? rescue false )
   end
   memoize :active?
 

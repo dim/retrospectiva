@@ -9,11 +9,11 @@ class Repository::Git < Repository::Abstract
     def truncate_revision(revision)
       super.first(7)
     end
-    
-  end
 
-  def active?
-    SCM_GIT_ENABLED and super
+    def enabled?
+      SCM_GIT_ENABLED
+    end
+    
   end
 
   def latest_revision

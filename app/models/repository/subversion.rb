@@ -4,8 +4,12 @@
 #++
 class Repository::Subversion < Repository::Abstract
 
+  def self.enabled?
+    SCM_SUBVERSION_ENABLED
+  end
+
   def active?
-    SCM_SUBVERSION_ENABLED and ( open_fs.present? rescue false )
+    self.class.enabled? and ( open_fs.present? rescue false )
   end
   
   def latest_revision

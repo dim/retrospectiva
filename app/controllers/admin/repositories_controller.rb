@@ -63,16 +63,20 @@ class Admin::RepositoriesController < AdminAreaController
   end
   
   def validate
-    path = params[:path].blank? ? '' : params[:path]
-    @result = if !File.exists?(path)
+    path  = params[:path].blank? ? '' : params[:path]
+    klass = Repository[params[:kind]]
+
+    @result = if klass.nil? or !klass.enabled? 
+      _('Support for {{system}} is not enabled.', :system => params[:kind].to_s.classify)
+    elsif !File.exists?(path)
       _('Failure! Path does not exist.')
     elsif !File.readable?(path) || !File.executable?(path)
       _('Failure! You are not permitted to browse this path.')
     else
-      begin        
-        repos = Repository[params[:kind]].new(:path => params[:path])
+      repos = klass.new(:path => params[:path])
+      if repos.active?
         _('Success! Path contains a valid repository (latest revision: {{latest}}).', :latest => repos.latest_revision)
-      rescue 
+      else
         _('Failure! Path does not contain a valid repository.')
       end
     end

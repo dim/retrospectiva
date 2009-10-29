@@ -92,8 +92,8 @@ describe Repository::Subversion::Node do
       @node.content.should_not be_blank      
     end
 
-    it 'should have a textual content' do
-      request_node("retrospectiva/config/environment.rb", nil, false).content.should == ''      
+    it 'should be able to skip content' do
+      request_node("retrospectiva/config/environment.rb", nil, true).content.should == ''      
     end
 
     it 'should return the content-length as size' do
@@ -145,4 +145,4 @@ describe Repository::Subversion::Node do
     end
   end
   
-end if SCM_SUBVERSION_ENABLED
+end if Repository::Subversion.enabled?
