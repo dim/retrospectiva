@@ -13,7 +13,7 @@ describe 'TinyGit - Caching' do
     TinyGit.result_cache.should == {}      
     TinyGit.cache do
       3.times { TEST_REP.rev_parse 'HEAD' }
-      TinyGit.result_cache.should == { "/usr/bin/env git --git-dir='#{TEST_REP.git_dir}' rev-parse ''HEAD''"=>"[RESULT]" }
+      TinyGit.result_cache.should == { "/usr/bin/env git --git-dir=\"#{TEST_REP.git_dir}\" rev-parse \"HEAD\""=>"[RESULT]" }
     end
     TinyGit.result_cache.should == {}    
   end

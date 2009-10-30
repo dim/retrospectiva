@@ -5,8 +5,8 @@ module TinyGit
       arguments.unshift(sha)
       command_lines(:ls_tree, *arguments).map do |line|
         (info, path) = line.split("\t")
-        (mode, type, sha) = info.split
-        {:sha => sha, :path => path, :type => type, :mode => mode}
+        (mode, type, sha) = info.split        
+        {:sha => sha, :path => unescape(path), :type => type, :mode => mode}
       end
     end
 
@@ -36,9 +36,9 @@ module TinyGit
     
     def command(cmd, *args)
       opt_args = transform_options(args.extract_options!)
-      ext_args = args.reject { |a| a.empty? }.map { |a| (a == '--' || a[0].chr == '|') ? a : "'#{escape(a)}'" }
+      ext_args = args.reject { |a| a.empty? }.map { |a| (a == '--' || a[0].chr == '|') ? a : escape(a) }
 
-      call = "#{TinyGit.git_binary} --git-dir='#{self.git_dir}' #{cmd.to_s.gsub(/_/, '-')} #{(opt_args + ext_args).join(' ')}"
+      call = "#{TinyGit.git_binary} --git-dir=#{escape(self.git_dir)} #{cmd.to_s.gsub(/_/, '-')} #{(opt_args + ext_args).join(' ')}"
       run_command(call)
     end
 
@@ -75,7 +75,14 @@ module TinyGit
       end
 
       def escape(s)
-        "'" + s.to_s.gsub('\'', '\'\\\'\'') + "'"
+        s.to_s.inspect
+      end
+
+      UNESCAPE_MAP = { '\\\\' => '\\', '\\"'  => '"' }
+      
+      def unescape(s)
+        return s unless s =~ /["]/ 
+        s.gsub(/^["]/, '').gsub(/["]$/, '').gsub(/(\\\\|\\["])/) { UNESCAPE_MAP[$1] }
       end
 
       def raise_execution_error(status, output, call)

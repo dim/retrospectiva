@@ -19,6 +19,13 @@ describe TinyGit::Object::Tree do
     tree.trees.should have(1).items
   end
 
+  it 'should correctly parse sub-nodes' do
+    tree('e01e2d50919b243e68d463bbeea14be7adf5a5b1').blobs.keys.sort.should == [
+      'another \ one.txt',
+      'this file\'s name is (a "little") strange.txt'      
+    ]    
+  end
+
   it 'should have a full sha' do
     tree('b090a05').to_s.should == 'b090a05'
     tree('b090a05').sha.should == 'b090a05f9f70e6af595610118a817c2e51760c65'    
