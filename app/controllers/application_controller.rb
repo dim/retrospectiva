@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     end
     
     def cookie_cache
-      value = YAML.load(CGI::unescape(cookies["retrospectiva__c"].to_s)) rescue nil
+      value = YAML.load(Rack::Utils.unescape(cookies["retrospectiva__c"].to_s)) rescue nil
       value.is_a?(Hash) ? value : {}      
     end
 

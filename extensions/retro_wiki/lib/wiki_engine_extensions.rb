@@ -18,9 +18,10 @@ module WikiEngine
     
     WIKI_WORD_PATTERN = /
       \[\[
-      (?:(F|I)[\|\:])?
-      (\\?[ \w-]{2,})
-      (?:[\|\:]([^\]]+))?
+        (?:(F|I)[|:])?
+        (\\?\w[ \w-]+)
+        (?:[|:]([A-Za-z].+?))?
+        (?:[|:](\d+(?:x|\W*\#215\W?)\d+))?
       \]\]
     /x.freeze unless const_defined?(:WIKI_WORD_PATTERN)
     
@@ -29,14 +30,15 @@ module WikiEngine
     end
 
     def parse_wiki_word_link(match_data, &block)
-      prefix, page, title = extract_wiki_word_parts(match_data)
-      page = page.to_s.gsub(/ +/, ' ').strip
+      prefix, page, title, size = extract_wiki_word_parts(match_data)
+      page  = page.to_s.gsub(/ +/, ' ').strip
       title = title.blank? ? page : title.strip
-      page.starts_with?('\\') ? match_data[0].gsub(/\\/, '') : yield(prefix, page, title)      
+      size  = size ? size.sub(/\W+215\W/, 'x') : nil
+      page.starts_with?('\\') ? match_data[0].sub(/\\/, '') : yield(prefix, page, title, size)      
     end
   
-    def extract_wiki_word_parts(match_data)      
-      match_data[-3..-1]
+    def extract_wiki_word_parts(match_data)
+      match_data[-4..-1]
     end
 
   end

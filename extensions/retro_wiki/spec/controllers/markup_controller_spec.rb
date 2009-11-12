@@ -21,7 +21,7 @@ describe MarkupController do
       do_get
       assigns[:examples].should == @examples
       assigns[:examples]['Links'].should have(5).records
-      assigns[:examples]['References'].should have(2).records
+      assigns[:examples]['References'].should have(3).records
     end
     
   end

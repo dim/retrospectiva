@@ -4,7 +4,7 @@ module Spec
       def validate_presence_of(attribute)
         return simple_matcher("model to validate the presence of #{attribute}") do |model|
           model.send("#{attribute}=", nil)
-          !model.valid? && model.errors.invalid?(attribute)
+          !model.valid? && model.errors[attribute].present?
         end
       end
 
@@ -12,10 +12,10 @@ module Spec
         return simple_matcher("model to validate the association of #{attribute}") do |model|
           model.send("#{attribute}=", nil)
           reflection = model.class.reflect_on_association(attribute.to_sym)
-          !model.valid? && model.errors.invalid?(reflection.primary_key_name)
+          !model.valid? && model.errors[reflection.primary_key_name].present?
         end
       end
-
+      
       def validate_length_of(attribute, options)
         if options.has_key? :within
           min = options[:within].first
@@ -34,13 +34,13 @@ module Spec
           if !min.nil? && min >= 1
             model.send("#{attribute}=", 'a' * (min - 1))
 
-            invalid = !model.valid? && model.errors.invalid?(attribute)
+            invalid = !model.valid? && model.errors[attribute].present?
           end
           
           if !max.nil?
             model.send("#{attribute}=", 'a' * (max + 1))
 
-            invalid ||= !model.valid? && model.errors.invalid?(attribute)
+            invalid ||= !model.valid? && model.errors[attribute].present?
           end
           invalid
         end
@@ -49,14 +49,14 @@ module Spec
       def validate_uniqueness_of(attribute)
         return simple_matcher("model to validate the uniqueness of #{attribute}") do |model|
           model.class.stub!(:exists?).and_return(true)
-          !model.valid? && model.errors.invalid?(attribute)
+          !model.valid? && model.errors[attribute].present?
         end
       end
 
       def validate_confirmation_of(attribute)
         return simple_matcher("model to validate the confirmation of #{attribute}") do |model|
           model.send("#{attribute}_confirmation=", 'asdf')
-          !model.valid? && model.errors.invalid?(attribute)
+          !model.valid? && model.errors[attribute].present?
         end
       end
     end

@@ -48,7 +48,15 @@ describe FormatHelper do
       describe 'for image links' do
 
         it 'should create a dummy image link' do
-          do_format('a text with a [[I:Wiki]] image reference', :demo => true).should == "a text with a <img alt=\"Wiki\" src=\"http://retrospectiva.org/images/logo_small.png\" /> image reference"
+          do_format('a text with a [[I:Wiki]] image reference', :demo => true).should == %Q(a text with a <img alt="Wiki" src="http://retrospectiva.org/images/logo_small.png" /> image reference)
+        end      
+
+        it 'should include the size if present' do
+          do_format("Resized image:<br/> [[I:Logo:Optional Alt Text:45x7]]", :demo => true).should == %Q(Resized image:<br/> <img alt="Optional Alt Text" height="7" src="http://retrospectiva.org/images/logo_small.png" width="45" />)
+        end      
+
+        it 'should accept html-escaped size if present' do
+          do_format("Resized image:<br/> [[I:Logo:Optional Alt Text:45&#215;7]]", :demo => true).should == %Q(Resized image:<br/> <img alt="Optional Alt Text" height="7" src="http://retrospectiva.org/images/logo_small.png" width="45" />)
         end      
 
       end
@@ -101,6 +109,16 @@ describe FormatHelper do
         helper.should_receive(:permitted?).with(:wiki_pages, :view)
         do_format('a text with a [[I:Wiki]] image reference').should == "a text with a <img alt=\"Wiki\" src=\"/projects/#{@project.id}/wiki_files/Wiki.gif\" /> image reference"
       end           
+
+      it 'should include the size if present' do
+        helper.should_receive(:permitted?).with(:wiki_pages, :view)
+        do_format('a text with a [[I:Wiki:300x250]] image reference').should == %Q(a text with a <img alt="Wiki" height="250" src="/projects/#{@project.id}/wiki_files/Wiki.gif" width="300" /> image reference)
+      end      
+
+      it 'should accept html-escaped size if present' do
+        helper.should_receive(:permitted?).with(:wiki_pages, :view)
+        do_format('a text with a [[I:Wiki:300&#215;250]] image reference').should == %Q(a text with a <img alt="Wiki" height="250" src="/projects/#{@project.id}/wiki_files/Wiki.gif" width="300" /> image reference)
+      end      
 
     end
 

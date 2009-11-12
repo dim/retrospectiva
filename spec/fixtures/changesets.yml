@@ -96,9 +96,7 @@ git_initial:
   id: 300
   revision: fda71ed24f9db74abc627f21d82fcc43852f5ad1
   repository_id: 2
-  log: |-
-    Initial commit.
-    Added dummy fixture files to the test repository.
+  log: Initial commit. Added dummy fixture files to the test repository.
   author: dim
   created_at: 2007-02-17 21:00:52
 git_with_deleted: 
@@ -127,8 +125,7 @@ git_with_renamed:
   revision: 44e3e065f9b3cd482cee5013047920d2f6b44a22
   repository_id: 2
   log: |-
-    Deleted one file.
-    Renamed one file.
+    Deleted one file. Renamed one file.
   author: dim
   created_at: 2007-02-17 21:08:45
 git_with_image:
@@ -143,8 +140,7 @@ git_with_references:
   revision: 97875dc61b331bd791c623e717c3de9e6c004afa
   repository_id: 2
   log: |-
-    Copied a file.
-    This comments also contains ticket [#2] & [#100] and changeset [r4] & [r100] references.
+    Copied a file. This comments also contains ticket [#2] & [#100] and changeset [r4] & [r100] references.
   author: dim
   created_at: 2007-02-18 17:25:01
 git_with_binary: 

@@ -8,9 +8,8 @@ module Spec
         end
     
         def matches?(observer)
-          @observer = observer.instance
-          @observed_classes = @observer.send(:observed_classes).flatten
-          @observed_classes.include?(@expected_model_class)
+          @observer = observer.is_a?(ActiveRecord::Observer) ? @observer.class : observer
+          @observer.observed_class == @expected_model_class
         end
     
         def failure_message

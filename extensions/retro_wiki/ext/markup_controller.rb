@@ -8,8 +8,9 @@ MarkupController.class_eval do
       "Use a backslash to escape [[\\Wiki]] links."
     ) 
     @examples[_('References')] += [
-      "Uploaded image: [[I:Logo:Alt Text]]",
-      "Download an [[F:Document:uploaded file]]",
+      "Uploaded image:<br/> [[I:Logo:Optional Alt Text]]",
+      "Resized image:<br/> [[I:Logo:Optional Alt Text:45x7]]",
+      "Download an [[F:Document:Custom Document]]",
     ]
   end  
   alias_method_chain :reference, :retro_wiki_extension

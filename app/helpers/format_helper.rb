@@ -102,7 +102,7 @@ module FormatHelper
     end
 
     def internal_link_pattern
-      /\[?(\\?)([\#|r]?)(\w+)\]/
+      /\[?(\\?)([#|r]?)(\w+)\]/
     end
 
     def format_internal_link(match_data, options)
