@@ -25,7 +25,7 @@ describe StoriesController do
 
     def it_assigns_the_story(method = :do_get)
       it "assigns sprint as @sprint" do
-        @stories.should_receive(:find).with('73').and_return(@story)
+        @stories.should_receive(:find).with('73', :include => :goal).and_return(@story)
         send(method)
         assigns[:story].should == @story
       end
@@ -49,11 +49,12 @@ describe StoriesController do
     @story.stub!(:comments).and_return(@comments)    
     @story.stub!(:progress_updates).and_return(@progress_updates)    
     @stories = [@story]
+    @stories.stub!(:in_default_order).and_return(@stories)
     @stories.stub!(:pending).and_return(@stories)
     @stories.stub!(:completed).and_return(@stories)
     @stories.stub!(:active).and_return(@stories)
     @stories.stub!(:all).and_return(@stories)
-    @stories.stub!(:find).with('73').and_return(@story)
+    @stories.stub!(:find).with('73', :include => :goal).and_return(@story)
     @stories.stub!(:new).and_return(@story)
     
     @sprint = mock_model(Sprint, :title => 'Sprint 1')

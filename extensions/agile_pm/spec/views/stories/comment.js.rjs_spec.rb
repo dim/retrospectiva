@@ -17,7 +17,7 @@ describe "/stories/comment.js.rjs" do
   it "should render the details in a lightbox when no errors" do
     render
     response.should have_rjs :replace_html, 'lightbox' do
-      with_tag 'h3', 'My Story'
+      with_tag 'h3', /My Story/
     end
   end
 

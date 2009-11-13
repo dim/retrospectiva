@@ -37,7 +37,11 @@ class Story < ActiveRecord::Base
     :conditions => ['started_at IS NULL OR assigned_to IS NULL']
   named_scope :completed,
     :conditions => ['completed_at IS NOT NULL']
-     
+  named_scope :in_default_order, 
+    :include => [:goal], 
+    :order => "CASE goals.priority_id WHEN NULL THEN 0 ELSE goals.priority_id END DESC, stories.created_at"
+  
+  
   def percent_completed
     progress_updates.last ? progress_updates.last.percent_completed : 0
   end

@@ -35,7 +35,7 @@ class StoriesController < ProjectAreaController
   end
   
   def index
-    @stories = find_stories.
+    @stories = find_stories.in_default_order.
       all(:include => [:progress_updates, :creator, :assigned]).
       group_by(&:assigned)
 
@@ -191,7 +191,7 @@ class StoriesController < ProjectAreaController
     end
     
     def find_story
-      @story = @sprint.stories.find(params[:id])     
+      @story = @sprint.stories.find(params[:id], :include => :goal)     
     end
     
     def find_stories
