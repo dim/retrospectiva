@@ -7,7 +7,6 @@
     formats:
       default: "%d.%m.%Y"
       short: "%e. %b"
-      medium: "%e. %b %Y"
       long: "%e. %B %Y"
     day_names: [søndag, mandag, tirsdag, onsdag, torsdag, fredag, lørdag]
     abbr_day_names: [søn, man, tir, ons, tor, fre, lør]

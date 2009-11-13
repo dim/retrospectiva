@@ -1,15 +1,14 @@
-# German translations for Ruby on Rails
+# German translations for Ruby on Rails 
 # by Clemens Kofler (clemens@railway.at)
- 
+
 de-DE:
   date:
     formats:
       default: "%d.%m.%Y"
       short: "%e. %b"
-      medium: "%e. %b %Y"
       long: "%e. %B %Y"
       only_day: "%e"
- 
+
     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
@@ -18,12 +17,11 @@ de-DE:
   
   time:
     formats:
-      default: "%A, %e. %B %Y, %H:%M Uhr"
-      short: "%e. %B, %H:%M Uhr"
-      long: "%A, %e. %B %Y, %H:%M Uhr"
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
       time: "%H:%M"
-      medium: "%e. %b %Y"
- 
+
     am: "vormittags"
     pm: "nachmittags"
       
@@ -69,7 +67,7 @@ de-DE:
       day: "Tag"
       month: "Monat"
       year: "Jahr"
- 
+
   number:
     format:
       precision: 2
@@ -79,9 +77,9 @@ de-DE:
       format:
         unit: '€'
         format: '%n%u'
-        separator:
-        delimiter:
-        precision:
+        separator: 
+        delimiter: 
+        precision: 
     percentage:
       format:
         delimiter: ""
@@ -98,27 +96,27 @@ de-DE:
         format: "%n %u"
         units:
           byte:
-            one: "Byte"
+            one:   "Byte"
             other: "Bytes"
           kb: "KB"
           mb: "MB"
           gb: "GB"
           tb: "TB"
- 
+
   support:
     array:
       words_connector: ", "
       two_words_connector: " und "
       last_word_connector: " und "
- 
+
   activerecord:
     errors:
       template:
         header:
-          one: "Konnte dieses {{model}} Objekt nicht speichern: 1 Fehler."
-          other: "Konnte dieses {{model}} Objekt nicht speichern: {{count}} Fehler."
+          one:    "Konnte dieses {{model}} Objekt nicht speichern: 1 Fehler."
+          other:  "Konnte dieses {{model}} Objekt nicht speichern: {{count}} Fehler."
         body: "Bitte überprüfen Sie die folgenden Felder:"
- 
+
       messages:
         inclusion: "ist kein gültiger Wert"
         exclusion: "ist nicht verfügbar"
@@ -139,4 +137,5 @@ de-DE:
         less_than_or_equal_to: "muss kleiner oder gleich {{count}} sein"
         odd: "muss ungerade sein"
         even: "muss gerade sein"
-      
+        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: {{errors}}"
+      models:
