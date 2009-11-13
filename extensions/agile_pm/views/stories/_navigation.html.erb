@@ -1,10 +1,9 @@
 <% content_header do -%>
-  <%= link_to_if action_name != 'index' || ['pending', 'completed'].include?(params[:show]), 
-				_('Active') + " (#{@sprint.stories.active_count})", stories_path %> |  
-  <%= link_to_unless_current _('Pending') + " (#{@sprint.stories.pending_count})", stories_path(:show => 'pending') %> |  
-  <%= link_to_unless_current _('Completed') + " (#{@sprint.stories.completed_count})", stories_path(:show => 'completed') %> |  
-  <%= link_to_unless_current _('Backlog'), backlog_stories_path %>  
-  <% if permitted?(:stories, :create)-%>    
+  <%= link_to_unless current_view?(:active), _('Active') + " (#{@sprint.stories.active_count})", stories_path(:show => 'active') %> |  
+  <%= link_to_unless current_view?(:pending),  _('Pending') + " (#{@sprint.stories.pending_count})", stories_path(:show => 'pending') %> |  
+  <%= link_to_unless current_view?(:completed), _('Completed') + " (#{@sprint.stories.completed_count})", stories_path(:show => 'completed') %> |  
+  <%= link_to_unless current_view?(:backlog), _('Backlog'), backlog_stories_path %>  
+  <% if permitted?(:stories, :create) -%>
     | <%= link_to _('New Story'), new_story_path %>
-  <% end -%>   
-<% end -%>    
+  <% end -%>
+<% end -%>

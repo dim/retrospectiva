@@ -3,14 +3,14 @@
 
 <div class="agile-pm">
   
-  <% plus_form_for @story, :url => stories_path do |f| -%>  
-    <%= f.info _('New Story') %>
+  <% plus_form_for @story, :url => story_path(@story) do |f| -%>  
+    <%= f.info h(@story.title) %>
     <%= f.error_messages %>
 
     <%= render :partial => 'form', :locals => { :f => f } %>
 
     <fieldset>
-      <%= f.submit _('Create') %> | <%= link_to _('Cancel'), stories_path %>
+      <%= submit_tag _('Update') %> | <%= link_to _('Cancel'), stories_path %>
     </fieldset>
   <% end -%>   
 

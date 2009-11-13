@@ -1,5 +1,6 @@
 <div class="float-r">
   <%= link_to _('Link'), story_path(@story) %> |
+  <%= link_to _('Edit'), edit_story_path(@story) %> |
   <%= link_to_function(_('Close'), "$('lightbox').hide(); $('fadebox').hide();") %>
 </div>
 

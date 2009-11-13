@@ -4,6 +4,7 @@
 #++
 class StoriesController < ProjectAreaController
   retrospectiva_extension('agile_pm')
+  keep_params! :only => [:index], :include => [:show]
 
   menu_item :stories do |i|
     i.label = N_('Stories')
@@ -16,6 +17,7 @@ class StoriesController < ProjectAreaController
   require_permissions :stories,
     :view   => ['home', 'index', 'show', 'chart', 'backlog'],
     :create => ['new', 'create'],
+    :modify => ['edit', 'update'],
     :update => ['accept', 'complete', 'reopen', 'comment', 'update_progress'],
     :delete => ['destroy']
 
@@ -23,7 +25,7 @@ class StoriesController < ProjectAreaController
   before_filter :guess_sprint, :only => [:home]  
   before_filter :find_milestones, :only => [:index]  
   before_filter :find_story, 
-    :only => [:show, :accept, :complete, :reopen, :comment, :update_progress, :revise_hours]  
+    :only => [:show, :edit, :update, :accept, :complete, :reopen, :comment, :update_progress, :revise_hours]  
   helper_method :stories_path, :story_path
   
   def home
@@ -79,6 +81,23 @@ class StoriesController < ProjectAreaController
         format.xml  { render :xml => @story, :status => :created, :location => story_path(@story) }        
       else        
         format.html { render :action => "new" }
+        format.xml  { render :xml => @story.errors, :status => :unprocessable_entity }
+      end
+    end    
+  end
+
+  def edit
+    respond_to :html
+  end
+
+  def update
+    respond_to do |format|
+      if @story.update_attributes(params[:story])
+        flash[:notice] = _('Story was successfully updated.')
+        format.html { redirect_to stories_path }
+        format.xml  { render :xml => @story, :status => :updated, :location => story_path(@story) }        
+      else        
+        format.html { render :action => "edit" }
         format.xml  { render :xml => @story.errors, :status => :unprocessable_entity }
       end
     end    

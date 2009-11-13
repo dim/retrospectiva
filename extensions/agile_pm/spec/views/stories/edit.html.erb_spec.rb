@@ -1,14 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe "/stories/new.html.erb" do
+describe "/stories/edit.html.erb" do
   
   before(:each) do
-    @project = mock_current_project!
-
     @sprint = assigns[:sprint] = stub_model(Sprint, :goals => [stub_model(Goal)])
-    @story  = assigns[:story]  = stub_model(Story)        
-    
+    @story   = assigns[:story] = stub_model(Story, :title => 'My Story', :created_at => 4.days.ago)
     template.stub!(:permitted?).and_return(true)
+    template.stub!(:story_path).and_return('/path/to/story/123')
     template.stub!(:stories_path).and_return('/path/to/stories')
   end
 
@@ -18,6 +16,6 @@ describe "/stories/new.html.erb" do
       with_tag 'fieldset', 5
     end
   end
-
   
 end
+

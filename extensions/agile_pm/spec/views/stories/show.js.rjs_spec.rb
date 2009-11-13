@@ -28,6 +28,7 @@ describe "/stories/show.js.rjs" do
     render
     response.should have_rjs :replace_html, 'lightbox' do
       with_tag 'a', 'Link'
+      with_tag 'a', 'Edit'
       with_tag 'a', 'Close'
     end
   end

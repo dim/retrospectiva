@@ -12,7 +12,7 @@ class ChangesetsController < ProjectAreaController
   require_permissions :code, 
     :browse => ['diff']  
 
-  keep_params! :only => [:index], :exclude => [:project_id]  
+  keep_params! :only => [:index], :include => [:page]  
   before_filter :check_freshness_of_index, :only => [:index]  
 
   before_filter :find_changeset, :only => [:show, :diff]

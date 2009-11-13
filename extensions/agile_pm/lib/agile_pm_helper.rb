@@ -36,6 +36,10 @@ module AgilePmHelper
     project_milestone_sprint_story_path(Project.current, @milestone, @sprint, *args)              
   end    
 
+  def edit_story_path(*args)
+    edit_project_milestone_sprint_story_path(Project.current, @milestone, @sprint, *args)              
+  end    
+
   def backlog_stories_path(*args)
     backlog_project_milestone_sprint_stories_path(Project.current, @milestone, @sprint, *args)              
   end    

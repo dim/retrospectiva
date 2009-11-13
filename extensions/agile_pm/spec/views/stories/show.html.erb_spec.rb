@@ -7,6 +7,7 @@ describe "/stories/show.html.erb" do
     @story   = assigns[:story] = stub_model(Story, :events => [@event], :title => 'My Story', :created_at => 4.days.ago)    
     template.stub!(:permitted?).and_return(true)
     template.stub!(:stories_path).and_return('/path/to/stories')
+    template.stub!(:edit_story_path).and_return('/path/to/story/123/edit')
   end
 
   it "should render the story and all events" do

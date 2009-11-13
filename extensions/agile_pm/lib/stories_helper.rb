@@ -5,6 +5,22 @@
 module StoriesHelper
   include AgilePmHelper
 
+  def current_view
+    @current_view ||= if action_name == 'backlog'
+      :backlog
+    elsif action_name == 'index' && ['pending', 'completed'].include?(params[:show])
+      params[:show].to_sym
+    elsif action_name == 'index'
+      :active
+    else
+      nil
+    end
+  end
+  
+  def current_view?(name)
+    current_view == name
+  end
+
   def link_to_sprint(milestone, sprint, active = false)    
     path = project_milestone_sprint_stories_path(Project.current, milestone, sprint)
     name = h(truncate(sprint.title))
