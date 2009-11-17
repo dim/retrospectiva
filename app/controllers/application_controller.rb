@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
       status_code = response_code_for_rescue(exception)
       case status_code
       when :internal_server_error
-        ExceptionNotifier.deliver_exception_notification(exception, self, request, {})
+        ExceptionNotifier.deliver_exception_notification(exception, self, request, {}) if ExceptionNotifier.exception_recipients.any?
       end
       render_optional_error_file(status_code)    
     end

@@ -33,6 +33,7 @@ describe ApplicationController do
     before do
       controller.stub!(:render)
       ExceptionNotifier.stub!(:deliver_exception_notification)
+      ExceptionNotifier.stub!(:exception_recipients).and_return(['[DUMMY]'])
     end
     
     
@@ -104,6 +105,12 @@ describe ApplicationController do
 
       it 'should send a notification email' do
         ExceptionNotifier.should_receive(:deliver_exception_notification)
+        do_rescue
+      end
+      
+      it 'should NOT send a notification email if no recipients were defined' do
+        ExceptionNotifier.should_receive(:exception_recipients).and_return([])
+        ExceptionNotifier.should_not_receive(:deliver_exception_notification)
         do_rescue
       end
     
