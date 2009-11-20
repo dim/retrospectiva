@@ -20,9 +20,9 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'rack', :lib => 'rack', :source => 'http://gems.rubyforge.org', :version => '1.0.0'
-  config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com', :version => '>= 2.3.8'
-  config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on', :source => 'http://gems.github.com', :version => '>= 1.0.3' 
+  config.gem 'rack', :lib => 'rack', :version => '1.0.0'
+  config.gem 'will_paginate', :lib => 'will_paginate', :version => '>= 2.3.8'
+  config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.3' 
   
   # Skip if installed via Single-Step-Installer
   if !File.exist?(File.join(RAILS_ROOT, 'vendor', 'gems')) || $gems_rake_task 
