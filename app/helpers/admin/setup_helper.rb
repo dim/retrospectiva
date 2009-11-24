@@ -35,18 +35,16 @@ module Admin::SetupHelper
     end
   end
 
-  def string_setting_tag(setting)
-    value = value_for(setting).to_s
-    text_field_tag(name_for(setting), h(value), options_for_string_setting_tag(setting))
+  def string_setting_tag(setting, tag_method = :text_field_tag, options = {})
+    send tag_method, name_for(setting), value_for(setting).to_s, options_for_string_setting_tag(setting).merge(options)
   end
 
   def password_setting_tag(setting)
-    value = value_for(setting).to_s
-    password_field_tag(name_for(setting), h(value), options_for_string_setting_tag(setting))
+    string_setting_tag setting, :password_field_tag
   end
 
   def text_setting_tag(setting)    
-    text_area_tag(name_for(setting), h(value_for(setting).to_s), options_for(setting).merge(:rows => 5, :cols => 120 ))
+    string_setting_tag setting, :text_area_tag, :rows => 5, :cols => 120
   end
 
   def boolean_setting_tag(setting)    
