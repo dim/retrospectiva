@@ -6,7 +6,7 @@ require 'yaml'
 
 class RemoteInstaller
   BRANCH = ARGV[0] || "master"
-  RETRO_URL          = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
+  RETRO_URL    = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
   RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
   RAKE_URL     = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
   VENDOR_URL   = "http://cloud.github.com/downloads/dim/retrospectiva/vendor.tar.gz"
@@ -201,7 +201,13 @@ class RemoteInstaller
     DATABASE_FILE = File.join(INSTALL_PATH, 'db', 'production.db')
 
     def download!(url, path)
-      system "wget -q -O #{path} #{url}"
+      if system("curl --version > /dev/null")
+        system "curl -s -L #{url} > #{path}"
+      elsif system("wget --version > /dev/null")
+        system "wget -q -O #{path} #{url}"
+      else
+        raise "Unable to find curl or wget in your system path."
+      end
     end
 
     def unpack!(file, path)
