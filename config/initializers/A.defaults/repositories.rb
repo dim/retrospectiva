@@ -12,6 +12,6 @@ SCM_SUBVERSION_ENABLED = begin
   require 'svn/repos'
   require 'svn/client'
   true
-rescue LoadError
+rescue LoadError, Exception => e
   false
 end unless Object.const_defined?(:SCM_SUBVERSION_ENABLED) && Object.const_get(:SCM_SUBVERSION_ENABLED) == false
