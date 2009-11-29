@@ -128,6 +128,9 @@ fr-FR:
     # app/views/browse/revisions.html.erb
     Author: Auteur
 
+    # app/views/accounts/show.html.erb
+    Avatar: Avatar
+
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
     Back: Retour
@@ -460,6 +463,9 @@ fr-FR:
     # app/views/notifications/account_validation.text.plain.erb
     "Full name": "Nom complet"
 
+    # app/views/accounts/show.html.erb
+    "Get one avatar at": "Obtenez un avatar sur"
+
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
     Global: Global
@@ -474,7 +480,7 @@ fr-FR:
     "Group name": "Nom du groupe"
 
     # app/views/tickets/index.html.erb
-    "Group records": "Traces du groupe"
+    "Group records": "Regrouper les tickets par "
 
     # app/controllers/admin/groups_controller.rb
     "Group was successfully created.": "Le groupe a bien été créé."
@@ -580,12 +586,12 @@ fr-FR:
     "Logged in as {{name}}": "Authentifié en tant que {{name}}"
 
     # app/views/sessions/destroy.html.erb
-    "Logged out": "Déloggé"
+    "Logged out": Déloggé
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/destroy.html.erb
     # app/views/sessions/new.html.erb
-    Login: "S'authentifier"
+    Login: S'authentifier
 
     # app/controllers/sessions_controller.rb
     "Login was not successful. Invalid username or password.": "L'authentification a échoué. Le nom d'utilisateur ou le mot de passe n'est pas valide."
@@ -693,7 +699,7 @@ fr-FR:
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "No": "Non"
+    "No": Non
 
     # app/models/ticket_change.rb
     "No changes were made": "Aucune modification n'a été faite"
@@ -734,7 +740,7 @@ fr-FR:
 
     # app/views/admin/users/_core.html.erb
     # app/views/sessions/new.html.erb
-    Password: Mot de passe
+    Password: "Mot de passe"
 
     # app/models/notifications.rb
     "Password reset": "Réinitialiser le mot de passe"
@@ -877,7 +883,7 @@ fr-FR:
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
-    Reports: Rapports
+    Reports: "Rapports "
 
     # app/views/admin/dashboard/index.html.erb
     # app/views/admin/repositories/_header.html.erb
@@ -937,7 +943,7 @@ fr-FR:
     "Save as Report": "Enregistrer comme rapport"
 
     # app/helpers/application_helper.rb
-    Saving...: Enregistrement en cours...
+    Saving...: "Enregistrement en cours..."
 
     # app/controllers/search_controller.rb
     # app/core_info.rb
@@ -945,7 +951,7 @@ fr-FR:
     # app/views/admin/users/index.html.erb
     # app/views/search/index.html.erb
     # app/views/tickets/index.html.erb
-    Search: Rechercher
+    Search: "Rechercher "
 
     # app/views/tickets/_navigation.html.erb
     "See last change": "Voir la dernière modification"
@@ -1020,6 +1026,9 @@ fr-FR:
     # app/views/tickets/index.html.erb
     Summary: Résumé
 
+    # app/controllers/admin/repositories_controller.rb
+    "Support for {{system}} is not enabled.": "Le support pour {{system}} n'est pas activé."
+
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Sync callback"
 
@@ -1040,7 +1049,7 @@ fr-FR:
     Text: Texte
 
     # app/controllers/accounts_controller.rb
-    "Thank you.": "Merci."
+    "Thank you.": Merci.
 
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": "La modification demandée a été rejetée."
@@ -1234,7 +1243,7 @@ fr-FR:
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "Yes": "Oui"
+    "Yes": Oui
 
     # app/views/sessions/logged_in.html.erb
     "You are logged in to the system.": "Vous êtes authentifié dans le système."

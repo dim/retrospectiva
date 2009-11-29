@@ -1,10 +1,8 @@
 fr-FR:
   application:
-    # Missing
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Author: Auteur
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
@@ -13,126 +11,98 @@ fr-FR:
     # extensions/retro_blog/views/blog/show.html.erb
     Blog: Blog
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     "Blog Posts": "Billets de blog"
 
-    # Missing
     # extensions/retro_blog/models/blog_post.rb
     "Blog for {{project}}": "Blog pour {{project}}"
 
-    # Missing
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Annuler
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
     Categories: Catégories
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Comment: Commentaire
 
-    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully created.": "Le commentaire a bien été créé."
 
-    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
     "Comment was successfully deleted.": "Le commentaire a bien été supprimé."
 
-    # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
     Comments: Commentaires
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     Content: Contenu
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     Create: Créer
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     "Create Post": "Créer un billet"
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
     Delete: Supprimer
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
     Edit: Modifier
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Email: Email
 
-    # Missing
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
     "Leave a comment": "Laisser un commentaire"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     "My Posts": "Mes billets"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     Navigation: Navigation
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully created.": "Le billet a bien été créé."
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully deleted.": "Le billet a bien été supprimé."
 
-    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     "Post was successfully updated.": "Le billet a bien été mis à jour."
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
     "Read more": "Lire la suite"
 
-    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb
     "Recent Posts": "Les billets récents"
 
-    # Missing
     # extensions/retro_blog/views/blog/index.html.erb
     "There are no posts available.": "Il n'y a pas de billet disponible"
 
-    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     Title: Titre
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     Update: "Mettre à jour"
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
     View: Voir
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": "{{count}} commentaires"
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{user}} on {{date}}": "{{user}} le {{date}}"
 
