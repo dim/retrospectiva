@@ -1,6 +1,22 @@
 module Retrospectiva
   module ConfigurationManager
     
+    class ConfigurationProxy < OpenStruct
+      
+      def initialize
+        super :section_hash => {}, :updated_at => Time.now, :errors => []
+      end
+      
+      def save(*args)
+        true
+      end
+
+      def apply(*args)
+        true
+      end
+
+    end
+    
     class Configuration < ActiveRecord::Base
       set_table_name 'configuration'
       serialize :section_hash, Hash
@@ -8,7 +24,7 @@ module Retrospectiva
       def self.find_or_create
         find(:first) || create(:section_hash => {})
       rescue ActiveRecord::StatementInvalid
-        OpenStruct.new(:section_hash => {}, :updated_at => Time.now, :save => true, :errors => [], :apply => true)
+        ConfigurationProxy.new
       end        
 
       def section_hash
