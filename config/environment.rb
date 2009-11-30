@@ -20,14 +20,9 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'rack', :lib => 'rack', :version => '>= 1.0.1'
   config.gem 'will_paginate', :lib => 'will_paginate', :version => '>= 2.3.8'
   config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.3' 
-  
-  # Skip if installed via Single-Step-Installer
-  if !File.exist?(File.join(RAILS_ROOT, 'vendor', 'gems')) || $gems_rake_task 
-    config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
-  end
+  config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
   
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -1,9 +1,3 @@
-#!/usr/bin/env ruby
-
-unless Object.const_defined?(:RAILS_ROOT)
-  require File.dirname(__FILE__) + '/../config/environment'
-end
-
 module Retrospectiva
   class DefaultContent
     

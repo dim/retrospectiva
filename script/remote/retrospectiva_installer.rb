@@ -29,9 +29,9 @@ class RemoteInstaller
     install_rake!
     install_vendor!
     load_rake!
+    build_gems!
     configure_db!
     create_database!
-    build_gems!
 
     next_steps!
   end
@@ -125,9 +125,10 @@ class RemoteInstaller
 
     def create_database!
       unless File.exist?(DATABASE_FILE) and File.size(DATABASE_FILE) > 0
-        step "Creating database content", true
+        step "Creating database", true
         silence_stream(STDOUT) do
-          Rake.application['db:retro:load'].invoke
+          FileUtils.cp File.join(INSTALL_PATH, 'db', 'schema.core.rb'), File.join(INSTALL_PATH, 'db', 'schema.rb')
+          Rake.application['db:setup'].invoke
         end
       end
     end
