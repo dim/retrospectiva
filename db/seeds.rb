@@ -1,3 +1,5 @@
+ActiveSupport::Dependencies.hook!
+
 module Retrospectiva
   class DefaultContent
     

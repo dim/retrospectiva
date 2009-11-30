@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file
 
-RETROSPECTIVA_VERSION = '1.9.910'
+RETROSPECTIVA_VERSION = '1.9.1130'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
@@ -20,6 +20,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
+  config.gem 'rack', :lib => 'rack', :version => '~> 1.0.0'
   config.gem 'will_paginate', :lib => 'will_paginate', :version => '>= 2.3.8'
   config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.3' 
   config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
