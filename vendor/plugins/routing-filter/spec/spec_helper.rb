@@ -3,7 +3,7 @@ $: << File.dirname(__FILE__) + '/../lib/'
 
 require 'rubygems'
 require 'actionpack'
-require 'activesupport'
+require 'active_support'
 require 'action_controller'
 require 'action_controller/test_process'
 require 'active_support/vendor'

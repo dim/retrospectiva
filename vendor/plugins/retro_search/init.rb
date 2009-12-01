@@ -1,2 +1,2 @@
-require 'activesupport'
+require 'active_support'
 require 'retro/search'

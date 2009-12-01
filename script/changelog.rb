@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'activesupport'
-require 'actionmailer'
+require 'active_support'
+require 'action_mailer'
 
 RAILS_ROOT = File.expand_path(File.dirname(__FILE__) + '/..')
 
