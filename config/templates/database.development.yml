@@ -1,35 +1,45 @@
-production:
-  adapter: mysql
-  database: retrospectiva
-  username: root
-  password: 
-  encoding: utf8
-  socket: /var/run/mysqld/mysqld.sock
-
 development:
   adapter: mysql
-  database: retrospectiva_development
-  username: root
-  password: 
   encoding: utf8
-  socket: /var/run/mysqld/mysqld.sock
-
-<%= ['sqlite3', 'lt3'].include?(ENV['TDB']) ? 'test' : 'test_sqlite3' %>:
-  adapter: sqlite3
-  database: tmp/test_db
-  timeout: 5000
-
-<%= ['postgresql', 'pg'].include?(ENV['TDB']) ? 'test' : 'test_postgresql' %>:
-  adapter: postgresql
-  database: retrospectiva_test
+  reconnect: false
+  database: retrospectiva_development
+  pool: 5
   username: root
   password:
   host: localhost
 
+<%= ['sqlite3', 'lt3'].include?(ENV['TDB']) ? 'test' : 'test_sqlite3' %>:
+  adapter: sqlite3
+  database: tmp/test_db
+  pool: 5
+  timeout: 5000
+
+<%= ['postgresql', 'pg'].include?(ENV['TDB']) ? 'test' : 'test_postgresql' %>:
+  adapter: postgresql
+  encoding: unicode
+  database: retrospectiva_test
+  pool: 5
+  username: root
+  password:
+  host: localhost
+  port: 5432
+  
 <%= ['mysql', 'my', '', nil].include?(ENV['TDB']) ? 'test' : 'test_mysql' %>:
   adapter: mysql
+  encoding: utf8
+  reconnect: false
   database: retrospectiva_test
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+production:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: retrospectiva
+  pool: 5
   username: root
   password: 
-  encoding: utf8
-  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
