@@ -1,23 +1,6 @@
-## Override rails' default AUTO_LINK_RE to fix a bug
-#AUTO_LINK_RE = %r{
-#  (                          # leading text
-#    <\w+.*?>|                # leading HTML tag, or
-#    [^=!:'"/]|               # leading punctuation, or 
-#    ^                        # beginning of line
-#  )
-#  (
-#    (?:https?://)|           # protocol spec, or
-#    (?:www\.)                # www.*
-#  ) 
-#  (
-#    [-\w]+                   # subdomain or domain
-#    (?:\.[-\w]+)*            # remaining subdomains or domain
-#    (?::\d+)?                # port
-#    (?:/(?:[~\w\+@%=\(\)-]|(?:[,.;:'][^\s<$]))*)* # path
-#    (?:\?[\w\+@%&=.;:-]+)?   # query string
-#    (?:\#[\w\-]*)?           # trailing anchor
-#  )
-#  ([[:punct:]]|<|$|)         # trailing text
-#}x
-#
-#
+require 'fileutils'
+
+# Create a schema.rb file if it is missing
+unless File.exist?(File.join(File.dirname(__FILE__), '..', 'db', 'schema.rb'))
+  FileUtils.cp File.join(File.dirname(__FILE__), '..', 'db', 'schema.core.rb'), File.join(File.dirname(__FILE__), '..', 'db', 'schema.rb')
+end
