@@ -1,5 +1,5 @@
 namespace :retro do
-  task :base do
+  task :base => :environment do
     ActiveSupport::Dependencies.hook!    
   end
 
