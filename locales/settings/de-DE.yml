@@ -1,17 +1,17 @@
 de-DE:
   settings:
     general: 
-      label: 
+      label: Allgemein
       groups: 
         basic: 
-          label: 
+          label:  Grundeinstellungen
           settings: 
             site_name: 
-              label: 
+              label: "Name der Webseite"
             site_url: 
-              label: 
+              label: "URL der Webseite"
             session_key: 
-              label: 
+              label: "Session Key"
             locale: 
               label: 
             session_expiration: 
@@ -22,10 +22,10 @@ de-DE:
             max_size: 
               label: 
         user_management: 
-          label: 
+          label: Benutzerverwaltung
           settings: 
             secure_auth: 
-              label: 
+              label: "Sichere Authentifizierung benutzen"
             account_management: 
               label: 
             self_registration: 
@@ -33,44 +33,46 @@ de-DE:
             assign_to_groups: 
               label: 
             activation: 
-              label: 
+              label: "Benutzerkonto aktivieren"
             expiration: 
               label: 
     email: 
-      label: 
+      label: "E-Mail-Einstellungen"
       groups: 
         general: 
-          label: 
+          label: Allgemein
           settings: 
             from: 
-              label: 
+              label: Absenderadresse
         smtp: 
-          label: 
+          label: "SMTP-Server"
           settings: 
             address: 
-              label: 
+              label: Adresse
             port: 
-              label: 
+              label: Port
             domain: 
-              label: 
+              label: Domain
             authentication: 
-              label: 
+              label: Authentifizierung
             user_name: 
-              label: 
+              label:  Benutzername
             password: 
-              label: 
+              label: Passwort
+            enable_starttls_auto: 
+              label: "STARTTLS automatisch erkennen"
     content: 
-      label: 
+      label: Inhalt
       groups: 
         format: 
           label: 
           settings: 
             datetime: 
-              label: 
-            date: 
-              label: 
+              label: "Datum und Uhrzeit"
+            date:
+              label: Datum
             time: 
-              label: 
+              label: Zeit
             changeset_logs: 
               label: 
         markup: 
@@ -97,6 +99,8 @@ de-DE:
               label: 
             encourage_subscription: 
               label: 
+            notify_author: 
+              label: 'Autor benachrichtigen'
         user_assignment: 
           label: 
           settings: 
