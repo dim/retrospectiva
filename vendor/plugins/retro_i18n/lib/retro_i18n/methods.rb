@@ -10,10 +10,10 @@ module RetroI18n
     # Translate 
     def _(string, *args)
       options = args.extract_options!
-      options.reverse_merge!(:default => string) if I18n.locale.to_sym == I18n.default_locale.to_sym
+      options.update(:default => string) if self.graceful || I18n.locale.to_sym == I18n.default_locale.to_sym
       I18n.t "application>>>#{string}", options
     end
-  
+
     # Return the names map, as an array, useful for select tags. Example:
     #
     #   RetroI18n.choices # => [['English (US)', 'en-US'], ['Deutsch', 'de-DE'], ... ]

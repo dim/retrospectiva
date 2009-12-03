@@ -15,6 +15,9 @@ module RetroI18n
   mattr_accessor :locales
   self.locales = LocaleDefinition.new
 
+  mattr_accessor :graceful
+  self.graceful = true
+
   extend Methods
 end
 
