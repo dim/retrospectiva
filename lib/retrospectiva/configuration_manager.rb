@@ -35,14 +35,9 @@ module Retrospectiva
     end
     
     def synchronize
-      reload_configuration
+      configuration.reload 
       reload_required? && reload!      
     end
-
-    def reload_configuration
-      @configuration = nil
-      configuration
-    end    
 
     def configuration
       @configuration ||= Configuration.find_or_create

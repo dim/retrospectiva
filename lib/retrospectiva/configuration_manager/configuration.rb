@@ -7,6 +7,10 @@ module Retrospectiva
         super :section_hash => {}, :updated_at => Time.now, :errors => []
       end
       
+      def reload(*args)
+        true
+      end
+      
       def save(*args)
         true
       end
