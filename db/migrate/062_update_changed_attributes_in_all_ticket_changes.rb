@@ -1,30 +1,32 @@
 class UpdateChangedAttributesInAllTicketChanges < ActiveRecord::Migration
   def self.up
-    TicketChange.find(:all).each do |change|
-      unless change.changes.blank?
-        change.changes.keys.each do |key|
-          if ['Author', 'Email'].include?(key.humanize)
-            change.changes.delete(key)
-          elsif key.humanize != key
-            change.changes[key.humanize] = change.changes.delete(key)
-          end
+    select_all("SELECT * FROM ticket_changes").each do |change|
+      changes = YAML.load(change['changes'])
+      next if changes.blank?
+
+      changes.keys.each do |key|
+        if ['Author', 'Email'].include?(key.humanize)
+          changes.delete(key)
+        elsif key.humanize != key
+          changes[key.humanize] = changes.delete(key)
         end
-        change.save
       end
+      update_sql "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
     end rescue true
   end
 
   def self.down
-    TicketChange.find(:all).each do |change|
-      unless change.changes.blank?
-        change.changes.keys.each do |key|
-          fkey = key.dup.gsub(%r{ }, '_').downcase + '_id'
-          if fkey != key
-            change.changes[fkey] = change.changes.delete(key)
-          end
+    select_all("SELECT * FROM ticket_changes").each do |change|
+      changes = YAML.load(change['changes'])
+      next if changes.blank?
+
+      changes.keys.each do |key|
+        fkey = key.dup.gsub(%r{ }, '_').downcase + '_id'
+        if fkey != key
+          changes[fkey] = changes.delete(key)
         end
-        change.save
       end
+      update_sql "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
     end rescue true
   end
   

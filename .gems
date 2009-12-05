@@ -1,0 +1,3 @@
+will_paginate --version '>= 2.3.8'
+acts-as-taggable-on --version '>= 1.0.3' 
+RedCloth --version '>= 4.1.9'

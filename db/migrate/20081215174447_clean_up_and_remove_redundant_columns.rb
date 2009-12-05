@@ -28,10 +28,10 @@ class CleanUpAndRemoveRedundantColumns < ActiveRecord::Migration
   def self.down    
     change_column :projects, :closed, :boolean, :null => true
 
-    add_column 'ticket_changes', "approved",                 :default => false, :null => false
-    add_column 'ticket_changes', "spam",                     :default => false, :null => false
-    add_column 'tickets', "approved",                 :default => false, :null => false
-    add_column 'tickets', "spam",                     :default => false, :null => false
+    add_column 'ticket_changes', "approved", :boolean, :default => false, :null => false
+    add_column 'ticket_changes', "spam", :boolean, :default => false, :null => false
+    add_column 'tickets', "approved", :boolean, :default => false, :null => false
+    add_column 'tickets', "spam", :boolean, :default => false, :null => false
     
     remove_index :changes, :name => "i_changes_on_from_path"
     remove_index :changes, :name => "i_changes_on_path"
