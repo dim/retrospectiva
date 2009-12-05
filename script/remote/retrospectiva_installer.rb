@@ -10,20 +10,22 @@ class RemoteInstaller
   RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
   RAKE_URL     = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
   VENDOR_URL   = "http://cloud.github.com/downloads/dim/retrospectiva/vendor-#{BRANCH}.tar.gz"
+  DOWNLOADERS  = [:curl, :wget]
 
   def self.run!
     new.run!
   end
-  
+    
   def initialize
-    @rake = false
-    @rubygems = false
+    @rake       = false
+    @rubygems   = false
   end
 
   def run!
     puts "\n  Retrospectiva Remote Installer\n  ==============================\n\n"
 
     check_prerequisites || instruct!
+    detect_downloader
     install_retrospectiva!
     install_rubygems!
     install_rake!
@@ -40,6 +42,12 @@ class RemoteInstaller
 
     def check_prerequisites
       check_lib('sqlite3')
+    end
+    
+    def detect_downloader
+      @downloader = DOWNLOADERS.detect do |m|
+        system("#{m} --version 1> /dev/null 2> /dev/null", false)
+      end || abort("[E] Unable to find #{DOWNLOADERS.join(' or ')} in your system path.")      
     end
     
     def check_lib(name)
@@ -202,12 +210,11 @@ class RemoteInstaller
     DATABASE_FILE = File.join(INSTALL_PATH, 'db', 'production.db')
 
     def download!(url, path)
-      if system("curl --version > /dev/null")
+      case @downloader
+      when :curl
         system "curl -s -L #{url} > #{path}"
-      elsif system("wget --version > /dev/null")
+      when :wget
         system "wget -q -O #{path} #{url}"
-      else
-        raise "Unable to find curl or wget in your system path."
       end
     end
 
@@ -219,8 +226,8 @@ class RemoteInstaller
       puts "  #{description}" + (nl ? "\n" : '')
     end
 
-    def system(command)
-      super(command) || abort("[E] Command '#{command}' failed during execution")
+    def system(command, raise_on_error = true)
+      super(command) || (raise_on_error && abort("[E] Command '#{command}' failed during execution"))
     end
 
     def ruby_path
