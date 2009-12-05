@@ -11,7 +11,7 @@ class UpdateChangedAttributesInAllTicketChanges < ActiveRecord::Migration
           changes[key.humanize] = changes.delete(key)
         end
       end
-      update_sql "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
+      update "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
     end rescue true
   end
 
@@ -26,7 +26,7 @@ class UpdateChangedAttributesInAllTicketChanges < ActiveRecord::Migration
           changes[fkey] = changes.delete(key)
         end
       end
-      update_sql "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
+      update "UPDATE ticket_changes SET changes = #{quote(changes.to_yaml)} WHERE id = #{change['id']}"
     end rescue true
   end
   

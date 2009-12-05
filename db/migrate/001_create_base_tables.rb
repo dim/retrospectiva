@@ -1,5 +1,8 @@
 class CreateBaseTables < ActiveRecord::Migration
   def self.up
+    versions = ActiveRecord::Migrator.get_all_versions
+    return if versions.any? and versions.first.to_i == 48
+    
     create_table "attachments" do |t|
       t.string   "original_filename"
       t.string   "content_type"
@@ -161,5 +164,27 @@ class CreateBaseTables < ActiveRecord::Migration
   end
   
   def self.down
+    drop_table "attachments"
+    drop_table "changes"
+    drop_table "changesets"
+    drop_table "factory_hashcashes"
+    drop_table "groups"
+    drop_table "groups_projects"
+    drop_table "groups_users"
+    drop_table "milestones"
+    drop_table "priorities"
+    drop_table "projects"
+    drop_table "repositories"
+    drop_table "sessions"
+    drop_table "status"
+    drop_table "tans"
+    drop_table "taggings"
+    drop_table "tags"
+    drop_table "ticket_changes"
+    drop_table "ticket_reports"
+    drop_table "tickets"
+    drop_table "users"
+    drop_table "components"
+    drop_table "releases"
   end
 end

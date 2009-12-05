@@ -66,7 +66,7 @@ class Changeset < ActiveRecord::Base
          AND changesets_projects.project_id = projects.id 
         WHERE changesets_projects.changeset_id IS NULL
       }.squish
-      connection.send :update_sql, sql
+      connection.send :update, sql
     end
 
     def delete_all(*args)
