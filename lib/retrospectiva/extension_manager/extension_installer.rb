@@ -4,12 +4,12 @@ require 'yaml'
 module Retrospectiva
   module ExtensionManager
     module ExtensionInstaller
-      include ActiveSupport::Memoizable
       extend self
-      
-      CONFIG_FILE = File.join(RAILS_ROOT, 'config', 'runtime', 'extensions.yml')
-            
+      delegate :extension_path, :available_extensions, :to => :"Retrospectiva::ExtensionManager"
+
       def install(extension)
+        return if installed_extension_names.include?(extension.name) 
+
         @installed_extension_names << extension.name
         returning write_extension_table do
           dump_schema
@@ -17,12 +17,14 @@ module Retrospectiva
       end
 
       def uninstall(extension)
+        return unless installed_extension_names.include?(extension.name)
+
         @installed_extension_names.delete(extension.name)        
         returning write_extension_table do
           dump_schema
         end
       end
-      
+
       def download(uri)
         name = File.basename(uri, '.git').split('.').last
         if system("git clone --depth 1 #{uri} #{extension_path(name)}")
@@ -34,25 +36,41 @@ module Retrospectiva
       end
 
       def installed_extension_names
-        @installed_extension_names ||= if RAILS_ENV == 'test'
-          ENV['RETRO_EXT'].to_s.split(/[\s,]+/).reject(&:blank?) 
-        else
-          YAML.load_configuration(CONFIG_FILE, [])
-        end
+        @installed_extension_names ||= read_extension_table
+      end
+      
+      def reload
+        @installed_extension_names = nil
+        installed_extension_names
       end
 
       private
 
+        def config_file
+          Rails.root.join('config', 'runtime', 'extensions.yml')
+        end
+
+        def test_mode?
+          Rails.env.test?
+        end
+
+        def read_extension_table
+          if test_mode?
+            ENV['RETRO_EXT'].to_s.split(/[\s,]+/).reject(&:blank?)
+          else
+            YAML.load_configuration(config_file, [])
+          end
+        end
+
         def write_extension_table
           sanitize!
-          File.open(CONFIG_FILE, 'w') do |f| 
+          File.open(config_file, 'w') do |f| 
             YAML.dump(installed_extension_names, f )
           end            
         end
 
         def sanitize!
-          valid_names = ExtensionManager.available_extensions.map(&:name)
-          @installed_extension_names = (installed_extension_names & valid_names).uniq
+          @installed_extension_names = (installed_extension_names & available_extensions.map(&:name)).uniq
         end
         
         def dump_schema
@@ -61,10 +79,6 @@ module Retrospectiva
             ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
           end        
         end
-
-        def extension_path(name = nil)
-          ExtensionManager.extension_path(name)
-        end   
 
     end
   end
