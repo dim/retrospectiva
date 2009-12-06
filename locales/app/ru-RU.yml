@@ -436,9 +436,6 @@ ru-RU:
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "Двоичные файлы не отображаются."
 
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "File size exceeds the maximum limit": "Превышен максимально допустимы размер"
-
     # app/views/tickets/index.html.erb
     "Filter tickets": "Использовать фильтр"
 
@@ -536,9 +533,6 @@ ru-RU:
 
     # app/views/admin/tasks/index.html.erb
     Interval: Интервал
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Invalid file size": "Некорректный размер файла"
 
     # app/views/browse/diff.html.erb
     "Invalid or empty DIFF": "Некорректная или пустая разница"
@@ -1155,9 +1149,6 @@ ru-RU:
 
     # app/helpers/changesets_helper.rb
     Updated: Обновлен
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Upload is not permitted": "Загрузки не разрешены"
 
     # app/views/admin/users/index.html.erb
     User: Пользователь

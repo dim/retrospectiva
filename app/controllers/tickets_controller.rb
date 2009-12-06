@@ -118,7 +118,7 @@ class TicketsController < ProjectAreaController
   end
 
   def download
-    send_file *@attachment.send_arguments
+    @attachment.redirect? ? redirect_to(@attachment.redirect) : send_file(*@attachment.send_arguments)
   end
 
   def toggle_subscription

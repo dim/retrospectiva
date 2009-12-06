@@ -5,6 +5,9 @@ pt-BR:
         cannot_be_selected: não pode ser selecionado
         cannot_be_disabled: não pode ser desabilitado   
         must_be_specified: deve ser especificado
+        file_size_exceeds_limit: "Tamanho do arquivo excede o limite máximo"
+        invalid_file_size: "Tamanho de arquivo inválido"
+        upload_not_permitted: "Upload não é permitido"
       models:
         project:
           attributes:

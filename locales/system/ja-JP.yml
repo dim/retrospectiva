@@ -1,0 +1,8 @@
+ja-JP:
+  activerecord:
+    errors:
+      messages:
+        file_size_exceeds_limit: ファイルサイズが制限を越えました。
+        invalid_file_size: 不正なファイルサイズ
+        upload_not_permitted: アップロードは許可されていません
+                

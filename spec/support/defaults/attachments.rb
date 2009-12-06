@@ -1,1 +1,1 @@
-Attachment.storage_path = '/dev/null'
+Attachment.storage = { :type => :file_system, :path => '/dev/null' }

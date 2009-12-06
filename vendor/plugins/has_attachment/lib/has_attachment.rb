@@ -1,3 +1,6 @@
+require 'attachment'
+require 'has_attachment/storage'
+
 module HasAttachment
   
   def self.included(base)
@@ -5,7 +8,7 @@ module HasAttachment
   end
   
   module ClassMethods
-    
+
     def has_attachment(options = {})
       has_one :attachment, options.merge(:as => :attachable)
       include InstanceMethods
@@ -22,4 +25,8 @@ module HasAttachment
     
   end
   
+end
+
+ActiveRecord::Base.class_eval do
+  include HasAttachment
 end

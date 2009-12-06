@@ -26,7 +26,7 @@ class WikiFilesController < ProjectAreaController
   end
   
   def show
-    send_file *@wiki_file.send_arguments
+    @wiki_file.redirect? ? redirect_to(@wiki_file.redirect) : send_file(*@wiki_file.send_arguments)
   end
   
   def new

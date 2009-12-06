@@ -435,9 +435,6 @@ en-GB:
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": "File content cannot be displayed for binary files."
 
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "File size exceeds the maximum limit": "File size exceeds the maximum limit"
-
     # app/views/tickets/index.html.erb
     "Filter tickets": "Filter tickets"
 
@@ -535,9 +532,6 @@ en-GB:
 
     # app/views/admin/tasks/index.html.erb
     Interval: Interval
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Invalid file size": "Invalid file size"
 
     # app/views/browse/diff.html.erb
     "Invalid or empty DIFF": "Invalid or empty DIFF"
@@ -1151,9 +1145,6 @@ en-GB:
 
     # app/helpers/changesets_helper.rb
     Updated: Updated
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Upload is not permitted": "Upload is not permitted"
 
     # app/views/admin/users/index.html.erb
     User: User

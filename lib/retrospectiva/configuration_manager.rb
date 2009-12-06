@@ -1,6 +1,7 @@
 require 'retrospectiva/configuration_manager/exceptions'
 require 'retrospectiva/configuration_manager/configuration'
 require 'retrospectiva/configuration_manager/units'
+require 'retrospectiva/configuration_manager/core_ext'
 
 module Retrospectiva
   module ConfigurationManager  

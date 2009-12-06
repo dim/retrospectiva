@@ -1,0 +1,7 @@
+ru-RU:
+  activerecord:
+    errors:
+      messages:
+        file_size_exceeds_limit: "Превышен максимально допустимы размер"
+        invalid_file_size: "Некорректный размер файла"
+        upload_not_permitted: "Загрузки не разрешены"

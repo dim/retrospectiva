@@ -5,6 +5,9 @@ en-US:
         cannot_be_selected: cannot be selected
         cannot_be_disabled: cannot be disabled        
         must_be_specified: must be specified
+        file_size_exceeds_limit: File size exceeds the maximum limit
+        invalid_file_size: Invalid file size
+        upload_not_permitted: Upload is not permitted
       models:
         project:
           attributes:
@@ -36,4 +39,3 @@ en-US:
           attributes:
             name:
               invalid: "may only contain one or many capitalized words. Examples: 'Component', 'Release Name'"
-              

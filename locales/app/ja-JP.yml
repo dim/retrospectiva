@@ -438,9 +438,6 @@ ja-JP:
     # app/views/browse/show_binary.html.erb
     "File content cannot be displayed for binary files.": バイナリファイルの中身を表示することはできません。
 
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "File size exceeds the maximum limit": ファイルサイズが制限を越えました。
-
     # app/views/tickets/index.html.erb
     "Filter tickets": チケットを抽出
 
@@ -538,9 +535,6 @@ ja-JP:
 
     # app/views/admin/tasks/index.html.erb
     Interval: 間隔
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Invalid file size": 不正なファイルサイズ
 
     # app/views/browse/diff.html.erb
     "Invalid or empty DIFF": 不正な差分あるいは差分がありません
@@ -1159,9 +1153,6 @@ ja-JP:
 
     # app/helpers/changesets_helper.rb
     Updated: 更新
-
-    # vendor/plugins/has_attachment/lib/attachment.rb
-    "Upload is not permitted": アップロードは許可されていません
 
     # app/views/admin/users/index.html.erb
     User: ユーザ

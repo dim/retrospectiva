@@ -1,25 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe Attachment do
-
-  before :each do
-    File.open(Attachment.storage_path + '/1', 'w') {|f| f << "#!/usr/bin/env ruby\nputs 'This is a ruby script!'" }
-    File.open(Attachment.storage_path + '/2', 'w') {|f| f << "GIF89a^A^@^A^@�^@^@���^@^@^@!�^D^A^@^@^@^@,^@^@^@^@^A^@^A^@^@^B^BD^A^@;if" }
-    File.open(Attachment.storage_path + '/3', 'w') {|f| f << "..." }
-  end      
-
-  def build_attachment(content, name = 'file.rb', type = 'text/plain')    
-    @stream = ActionController::UploadedStringIO.new(content)
-    @stream.original_path = name
-    @stream.content_type = type
-    Attachment.new(@stream)
+  include DefautAttachmentSpec
+  it 'should have a global maximum file size' do
+    Attachment.max_size = 4.megabytes
+    Attachment.max_size.should == 4.megabytes
   end
-
-  it 'should use the RetroCM setting to determine the maximum file size' do
-    RetroCM[:general][:attachments].should_receive(:[]).with(:max_size).and_return(2048)
-    Attachment.max_size.should == 2048.kilobytes
-  end
-  
+    
   describe 'initialising' do
     
     describe 'if passed stream is invalid' do
@@ -44,16 +31,17 @@ describe Attachment do
       end      
 
       it 'should not be valid' do
-        @a1.should have(1).error_on(:content)
-        @a1.should have(1).error_on(:content_type)
-        @a1.should have(1).error_on(:file_name)
+        @a1.should_not be_valid
+        Array(@a1.errors[:content]).compact.should have(1).item
+        Array(@a1.errors[:content_type]).compact.should have(1).item
+        Array(@a1.errors[:file_name]).compact.should have(1).item
       end
     
     end
 
     describe 'if passed stream is empty' do
       before do 
-        @a1 = build_attachment('')
+        @a1 = new_attachment('')
       end
     
       it 'should be marked as not ready to save' do
@@ -69,135 +57,96 @@ describe Attachment do
       end      
 
       it 'should not be valid' do
-        @a1.should have(1).error_on(:content)
-        @a1.should have(1).error_on(:content_type)
-        @a1.should have(1).error_on(:file_name)
+        @a1.should_not be_valid
+        Array(@a1.errors[:content]).compact.should have(1).item
+        Array(@a1.errors[:content_type]).compact.should have(1).item
+        Array(@a1.errors[:file_name]).compact.should have(1).item
       end
     end
-
+  
     describe 'if passed stream is valid' do
       
       it 'should be ready to save' do
-        build_attachment('A').should be_ready_to_save
+        new_attachment('A').should be_ready_to_save
       end
 
       it 'should sanitize and store the file name' do
-        build_attachment('A', '/root/my_doc.rb').file_name.should == 'my_doc.rb'
-        build_attachment('A', 'C:\Documents\my_doc.rb').file_name.should == 'my_doc.rb'
-        build_attachment('A', 'C:\\Documents\\my_doc.rb').file_name.should == 'my_doc.rb'
+        new_attachment('A', '/root/my_doc.rb').file_name.should == 'my_doc.rb'
+        new_attachment('A', 'C:\Documents\my_doc.rb').file_name.should == 'my_doc.rb'
+        new_attachment('A', 'C:\\Documents\\my_doc.rb').file_name.should == 'my_doc.rb'
       end
       
       it 'should store the content type' do
-        build_attachment('A').content_type.should == 'text/plain'
+        new_attachment('A').content_type.should == 'text/plain'
       end
 
       it 'should identify html content types' do
-        build_attachment('TEXT', 'file.txt', 'text/plain').should_not be_html
-        build_attachment('HTML', 'file.html', 'text/html').should be_html
+        new_attachment('TEXT', 'file.txt', 'text/plain').should_not be_html
+        new_attachment('HTML', 'file.html', 'text/html').should be_html
       end
 
       it 'should identify plain textual content types' do
-        build_attachment('TEXT', 'file.txt', 'text/plain').should be_plain
-        build_attachment('CSV', 'file.csv', 'text/csv').should be_plain
-        build_attachment('HTML', 'file.html', 'text/html').should_not be_plain
-        build_attachment('GIF89', 'file.gif', 'image/gif').should_not be_plain
-        build_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_plain
+        new_attachment('TEXT', 'file.txt', 'text/plain').should be_plain
+        new_attachment('CSV', 'file.csv', 'text/csv').should be_plain
+        new_attachment('HTML', 'file.html', 'text/html').should_not be_plain
+        new_attachment('GIF89', 'file.gif', 'image/gif').should_not be_plain
+        new_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_plain
       end
 
       it 'should identify image content types' do
-        build_attachment('TEXT', 'file.txt', 'text/plain').should_not be_image
-        build_attachment('GIF89', 'file.gif', 'image/gif').should be_image
-        build_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_image
+        new_attachment('TEXT', 'file.txt', 'text/plain').should_not be_image
+        new_attachment('GIF89', 'file.gif', 'image/gif').should be_image
+        new_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_image
       end
 
       it 'should identify inline content types' do
-        build_attachment('TEXT', 'file.txt', 'text/plain').should be_inline
-        build_attachment('GIF89', 'file.gif', 'image/gif').should be_inline
-        build_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_inline
+        new_attachment('TEXT', 'file.txt', 'text/plain').should be_inline
+        new_attachment('GIF89', 'file.gif', 'image/gif').should be_inline
+        new_attachment('PDF', 'file.pdf', 'application/pdf').should_not be_inline
       end
 
       it 'should have a size' do
-        build_attachment('A').size.should == 1
-        build_attachment('ABC').size.should == 3
+        new_attachment('A').size.should == 1
+        new_attachment('ABC').size.should == 3
       end
 
-      it 'should have a content' do
-        build_attachment('A').read.should == 'A'
-        build_attachment('ABC').read.should == 'ABC'
-      end
-      
     end
 
   end
-
+  
   describe 'saving' do
 
     before do
-      @attachment = build_attachment('ABC')
+      @attachment = new_attachment('ABC')
     end
 
     it 'should validate presence of content' do
-      @attachment.should validate_presence_of(:content)
+      @attachment.stub!(:content).and_return(nil)
+      @attachment.should_not be_valid
+      Array(@attachment.errors[:content]).compact.should have(1).item
     end
 
     it 'should validate presence of content type' do
-      @attachment.should validate_presence_of(:content_type)
+      @attachment.stub!(:content_type).and_return(nil)
+      @attachment.should_not be_valid
+      Array(@attachment.errors[:content_type]).compact.should have(1).item
     end
 
     it 'should validate presence of file-name' do
-      @attachment.should validate_presence_of(:file_name)
+      @attachment.stub!(:file_name).and_return(nil)
+      @attachment.should_not be_valid
+      Array(@attachment.errors[:file_name]).compact.should have(1).item
     end
 
     it 'should validate presence of file-name' do
       Attachment.stub!(:max_size).and_return(5)
+      @attachment.should be_valid
       @attachment.should have(:no).errors
+
       Attachment.stub!(:max_size).and_return(2)
-      @attachment.should have(1).error_on(:base)
-    end
-
-    it 'should verify that storage directory is present' do
-      @attachment.should have(:no).errors
-      File.should_receive(:directory?).with(Attachment.storage_path).and_return(false)
-      @attachment.should have(1).error_on(:base)
-    end
-
-    it 'should verify that file can be written' do
-      @attachment.should have(:no).errors
-      File.should_receive(:writable?).with(Attachment.storage_path).and_return(false)
-      @attachment.should have(1).error_on(:base)
-    end
-
+      @attachment.should_not be_valid
+      @attachment.should have(1).error
+    end  
   end
-
-  describe 'existing' do
-    fixtures :attachments
-
-    describe 'if file is present' do
-     
-      it 'should have a size' do
-        attachments(:text).size.should == 49
-        attachments(:image).size.should == 83
-        attachments(:binary).size.should == 3
-      end
-
-      it 'should be readable' do
-        attachments(:text).should be_readable
-      end
-            
-    end
-
-    describe 'if file is missing' do
-
-      it 'should have a size of zero' do
-        attachments(:missing).size.should be_zero
-      end
-      
-      it 'should not be readble' do
-        attachments(:missing).should_not be_readable
-      end
-    
-    end
-    
-  end
-
+  
 end
