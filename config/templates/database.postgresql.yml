@@ -9,7 +9,7 @@
 #       Choose the win32 build.
 #       Install PostgreSQL and put its /bin directory on your path.
 production:
-  adapter: postgresql
+  adapter: postgres
   encoding: unicode
   database: retrospectiva
   pool: 5
