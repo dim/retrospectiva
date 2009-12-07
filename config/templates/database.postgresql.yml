@@ -11,9 +11,9 @@
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= app_name %>_development
+  database: retrospectiva
   pool: 5
-  username: <%= app_name %>
+  username: retrospectiva
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
