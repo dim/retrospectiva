@@ -1,0 +1,41 @@
+cs-CZ:
+  activerecord:
+    errors:
+      messages:
+        cannot_be_selected: nemůže být vybráno
+        cannot_be_disabled: nemůže být vypnuto
+        must_be_specified: musí být specifikováno
+        file_size_exceeds_limit: Velikost soubor je příliš velká
+        invalid_file_size: Neplatná velikost souboru
+        upload_not_permitted: Nahrávání není povoleno
+      models:
+        project:
+          attributes:
+            name:
+              invalid: musí obsahovat písmeno nebo číslo na první pozici
+              overlap: překrývá se s existujícím projektem
+        ticket_change:
+          attributes:
+            content:
+              blank: nemůže být prázdné, když je přiložena příloha
+        user:
+          attributes:
+            admin:
+              not_for_public: musí být vypnuto. Veřejnost nemůže nikdy mít práva správce
+              last_available: musí být povoleno. Uživatel je poslední zbylý správce
+              invalid_downgrade: musí být povoleno. Nemůžete si snížit sám oprávnění.
+            active:
+              must_be_active: musí být povoleno. Veřejnost musí být aktivní
+              own_account_must_be_active: musí být povoleno. Nemůžete deaktivovat svůj vlastní účet.
+            name:
+              invalid: 'musí začínat na písmeno'
+            username:
+              invalid: 'nesmí obsahovat mezery'
+        group:
+          attributes:
+            name:
+              invalid: 'smí obsahovat pouze písmena a číslice oddělené mezerami' 
+        ticket_property_type:
+          attributes:
+            name:
+              invalid: "Smí obsahovat pouze jeden nebo více slov začínajících velkým písmenem. Příklady: 'Komponenta', 'Jméno vydání'"

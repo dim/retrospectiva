@@ -1,0 +1,176 @@
+en-GB:
+  settings:
+    general: 
+      label: Obecné
+      groups: 
+        basic: 
+          label: "Základní nastavení"
+          settings: 
+            site_name: 
+              label: "Jméno webu"
+              description: |-
+                Prosím nastavte jméno webu (např. 'Můj projekt').
+                Toto jméno bude zobrazeno na stránkách a v e-mailech. 
+            site_url: 
+              label: "URL webu"
+              description: |-
+                Prosím nastavte URL webu (e.g. 'http://retro.mujprojekt.cz').
+                Tato URL bude použita v e-mailech.
+            session_key: 
+              label: "Klíč sezení"
+              description: |-
+                Prosím nastavte klíč sezení webu (e.g. '_mujweb_sezeni').
+                Tímto je umožněno oddělit různé instalce retrospectivy.
+                Klíč sezení smí obsahovat jen alfanumerické znaky a podtržítko.
+            locale: 
+              label: "Lokalizace"
+              description: "Nastavte lokalizaci webu."
+            session_expiration: 
+              label: "Expirace sezení (minuty)"
+              description: "Po jak dlouhé době (v minutách) expiruje sezení neaktivního uživatele? [1-43200]"
+        attachments: 
+          label: Přílohy
+          settings: 
+            max_size: 
+              label: "Maximální velikost příloh (kB)"
+        user_management: 
+          label: "Správa uživatelů"
+          settings: 
+            secure_auth: 
+              label: "Použít bezpečné přihlášení"
+              description: "Bezpečné přihlášení zakóduje heslo na straně klienta."
+            account_management: 
+              label: "Povolit neprivilegovaným spravovat své účty"
+              description: "Mohou ne-správci měnit svá (ne-kritické) nastavení, (např. 'heslo')."
+            self_registration: 
+              label: "Povolit registraci"
+              description: "Uživatelé se mohou sami registrovat do systému."
+            assign_to_groups: 
+              label: "Automaticky přidat nově registrované uživatele do těchto skupin (ID oddělená mezerami)"
+              description: |-
+                Je bráno v potaz jen pokud je povolena registrace. Neplatné hodnoty budou ignorovány.             
+            activation: 
+              label: "Aktivace uživatelských účtů"
+              description: |-
+                Je bráno v potaz jen pokud je povolena registrace.
+                Volby:
+                  - auto: Účty jsou aktivovány automaticky
+                  - email: Účty jsou aktivovány zadáním aktivačního kódu zaslaného na e-mail
+                  - admin: Účty musí být manuálně aktivovány správce systému
+            expiration: 
+              label: "Expirace neaktivovaných účtů (hodiny)"
+              description: |-
+                Je bráno v potaz jen pokud je povolena registrace a aktivace uživatelských účtů je nastavena na 'email'.
+                Po jaké době mají být neaktivní účty opět smazány? [1-43200]
+    email: 
+      label: "Nastavení e-mailu"
+      groups: 
+        general: 
+          label: Obecné
+          settings: 
+            from: 
+              label: "Od"
+              description: |-
+                Nastavuje From: hlavičku odchozích e-mailů. Použijte buď adresu (např. 'neodpovidejte@mujprojekt.cz') nebo adresu se jménem (např. 'MůjProjekt - Oznámení <neodpovidejte@mujprojekt.cz>')
+                Prosím použijte adresu s FQDN, protože některé servery nedporují hlavičku From: bez FQDN.
+        smtp: 
+          label: "SMTP server"
+          settings: 
+            address: 
+              label: Adresa
+              description: "Umožňuje použít vzdálený SMTP server."
+            port: 
+              label: Port
+              description: "Pokud Váš mail server neběží na portu 25."
+            domain: 
+              label: Doména
+              description: "Pokud potřebujete specifikovat HELO doménu."
+            authentication: 
+              label: Přihlášení
+              description: "Pokud Váš mail-server vyžaduje přihlášení."
+            user_name: 
+              label: Uživatelské jméno
+              description: |-
+                Uživatelské jméno pro přihlášení k mail severu, pokud je vyžadováno.
+                Pokud bude pole prázdné, nebude autentifikace použita.
+            password: 
+              label: Heslo
+              description: |-
+                Heslo pro přihlášení k mail severu, pokud je vyžadováno.
+                Pokud bude pole prázdné, nebude autentifikace použita.
+            enable_starttls_auto:
+              label: 'Automaticky detekovat STARTTLS'
+              description: |
+                Pokud true, bude použita detekce STARTTLS na Vašem serveru a použito, pokud bude dostupné. 
+
+    content: 
+      label: Obsah
+      groups: 
+        format: 
+          label: Formát
+          settings: 
+            datetime: 
+              label: "Datum a čas"
+              description: "Prosím nastavte formát data a času."
+            date: 
+              label: "Datum"
+              description: "Formát pokud je zobrzaováno pouze datum"
+            time: 
+              label: "Čas"
+              description: "formát pokud je zobrazován pouze čas"
+            changeset_logs: 
+              label: "Záznamy změn"
+              description: "Mají být komentáře zobrazeny s formátováním wiki?"
+        markup: 
+          label: Styly
+          settings: 
+            default: 
+              label: "Jazyk"
+            global_ticket_refs: 
+              label: "Globální mapování lístků"
+              description: |-
+                Toto nastavení je použito jen pokud máte více projektů.
+                Normálně jsou reference lístků (např. [#4711]) mapovány na odkazy pouze pokud lístek náleží k aktuálnímu projektu. Tato volba umožňuje globální mapování lístků mezi projekty.
+        custom: 
+          label: Vlastní
+          settings: 
+            header: 
+              label: "HTML hlavička"
+              description: "Tento HTML kód bude přidán do sekce <head></head>."
+            footer: 
+              label: "HTML patička"
+              description: "Tento kód bude přídán na konec každé stránky před tag </body>."
+    ticketing: 
+      label: Lístky
+      groups: 
+        subscription: 
+          label: Přihlášení
+          settings: 
+            subscribe_on_assignment: 
+              label: "Přihlásit při přiřazení"
+              description: "Má být uživatel, který je přiřazen k lístku, automaticky přihlášen k odběru novinek?"
+            encourage_subscription: 
+              label: "Podporovan přihlášení"
+              description: "Má uživateli automaticky nabídnuto přihlášení k odběru novinek?"
+            notify_author:
+              label: 'Obeznámit autora'
+              description: "Má být autor také informován (pouze pokud je přihlášen)?"
+        user_assignment: 
+          label: "Přiřazení uživatelů"
+          settings: 
+            field_type: 
+              label: "Typ pole"
+              description: |-
+                Normálně jsou uživatelé přiřazováni výběrem uživatelského jména ze slect-boxu.
+                Pokud ovšem nechce zobrazovat jména pracovníků na projektu, vyberte 'text-field',
+                kde uživatelské jméno musí být explicitně vypsáno.
+        author_modifiable: 
+          label: "Editovat vlastní záznami"
+          description: |-
+            Má být uživatelům umožněno měnit vlastní lístky a informace k lístkům?
+            Normálně pouze správci mají právo měnit lístky.
+          settings: 
+            tickets: 
+              label: Lístky
+            ticket_changes: 
+              label: "Změny lístků"
