@@ -15,6 +15,11 @@
 					:method => :get %>      
     </div>
     <div class="small"><%= "S#{story.id} &ndash; " + story_status(story) %></div>
+    <% if story.goal -%>
+    <div class="small">Goal:
+       <%= h(truncate(story.goal.title, :length => 50)) %>
+    </div>
+    <% end -%>
   </td>
 
   <td class="actions righted span-4">
