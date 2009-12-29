@@ -6,3 +6,12 @@ Capfile
 *.*~
 vendor/gems
 vendor/rails
+
+/.idea/.generators
+/.idea/.rakeTasks
+/.idea/encodings.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/retrospectiva.iml
+/.idea/vcs.xml
+/.idea/workspace.xml

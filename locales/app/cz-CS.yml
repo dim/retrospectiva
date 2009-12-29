@@ -1,0 +1,1327 @@
+cs-CZ:
+  application:
+    # app/views/notifications/account_validation.text.plain.erb
+    "1. Click this link": "1. Klikněte na tento odkaz"
+
+    # app/views/notifications/account_validation.text.plain.erb
+    "2. Surf to {{url}} and enter the following activation code": "2. Otevřete {{url}} a vložte následující aktivační kód"
+
+    # app/controllers/admin/users_controller.rb
+    "A notification was sent to the user.": "Oznámení bylo odesláno uživateli."
+
+    # app/views/milestones/_form.html.erb
+    "A short description or other info you want displayed (optional)": "Krátký popis a další informace, které chcete zobrazit (dobrovolné)"
+
+    # app/views/browse/show_file.html.erb
+    "A viewable MIME type was not detected. Trying to display the file content as plain text.": "MIME typ nebyl rozpoznán jako zobrazitelný a bude zobrazen jako prostý text."
+
+    # app/views/admin/projects/_project.html.erb
+    "ATTENTION: Are you really sure, that you want to delete this project?": "POZOR: Jste si opravdu jistý, že chcete smazat tento projekt?"
+
+    # app/views/admin/users/_groups.html.erb
+    "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "POZOR: Nastavení skupin bude ignorováno, pokud je vybrána položka 'Administrátor!'"    
+
+    # app/views/rescue/403.html.erb
+    "Access forbidden (403)": "Přístup odepřen (403)"
+
+    # app/models/notifications.rb
+    "Account activation": "Aktivace účtu"
+
+    # app/models/notifications.rb
+    "Account validation": "Ověření účtu"
+
+    # app/views/accounts/activate.html.erb
+    Activate: Aktivace
+
+    # app/views/accounts/activate.html.erb
+    "Activate account": "Aktivovat účet"
+
+    # app/views/accounts/activate.html.erb
+    "Activation code": "Aktivační kód"
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/admin/users/index.html.erb
+    Active: Aktivní
+
+    # app/helpers/ticket_filter_helper.rb
+    "Add filter": "Přidat filtr"
+
+    # app/helpers/changesets_helper.rb
+    Added: Přidáno
+
+    # app/helpers/navigation_helper.rb
+    Admin: Admin
+
+    # app/views/admin/shared/_header.html.erb
+    Administration: Administrace
+
+    # app/views/admin/users/_form.html.erb
+    # app/views/admin/users/_user.html.erb
+    Administrator: Administrátor
+
+    # app/views/changesets/show.html.erb
+    "Affected files": "Zasažené soubory" #TODO: Zasažené is not the right word !
+
+    # app/helpers/search_helper.rb
+    # app/models/group.rb
+    # app/views/rss/_all.html.erb
+    # app/views/rss/_feed.html.erb
+    All: Vše
+
+    # app/controllers/projects_controller.rb
+    # app/views/rss/_all.html.erb
+    "All Projects": "Všechny projekty"
+
+    # app/views/rss/_feed.html.erb
+    "All feeds for {{project}}": "Všechny zdroje projektu {{project}}"
+
+    # app/views/rss/_all.html.erb
+    "All feeds from all projects": "Všechny zdroje ze všech projektů"
+
+    # app/models/status.rb
+    "All in progress": "Všechny rozpracované"
+
+    # app/controllers/projects_controller.rb
+    "All news for all projects": "Všechny novinky ze všech projektů"
+
+    # app/controllers/projects_controller.rb
+    "All news for {{project}}": "Všechny novinky z projektu {{project}}"
+
+    # app/models/status.rb
+    "All open": "Všechny otevřené"
+
+    # app/models/status.rb
+    "All resolved": "Všechny vyřešené"
+
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "Alternatively, copy and paste this link to your browser address bar.": "Alternativa: zkopírovat a vložit tento odkaz do adresního řádku prohlížeče."
+
+    # app/controllers/accounts_controller.rb
+    "An email including the activation code and the instructions was sent to you.": "E-mail obsahující aktivační kód a instrukce Vám byl odeslán."
+
+    # app/helpers/application_helper.rb
+    "Are you sure?": "Jste si jistý?"
+
+    # app/views/tickets/_ticket_info.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    "Assigned To": "Přiřazeno"
+
+    # app/models/ticket_filter/custom/my_tickets.rb
+    "Assigned to me": "Přiřazeno mně"
+
+    # app/models/ticket_change.rb
+    "Assigned user": "Přiřazeno uživateli"
+
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    Attachment: Příloha
+
+    # app/views/browse/revisions.html.erb
+    Author: Autor
+
+    # app/views/milestones/edit.html.erb
+    # app/views/milestones/new.html.erb
+    Back: Zpět
+
+    # app/views/tickets/_navigation.html.erb
+    "Back to ticket list": "Zpět na seznam lístků"
+
+    # app/helpers/navigation_helper.rb
+    "Back to top": "Zpět nahoru"
+
+    # app/views/browse/show_binary.html.erb
+    "Binary File": "Binární soubor"
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Blocks: Bloky
+
+    # app/core_info.rb
+    # app/views/browse/diff.html.erb
+    # app/views/browse/revisions.html.erb
+    Browse: Procházet
+
+    # app/controllers/browse_controller.rb
+    "Browse Code": "Procházet kód"
+
+    # app/views/browse/revisions.html.erb
+    "Browse revisions": "Procházet revize"
+
+    # app/views/browse/index.html.erb
+    # app/views/browse/repository_unavailable.html.erb
+    # app/views/browse/show_binary.html.erb
+    # app/views/browse/show_file.html.erb
+    # app/views/browse/show_image.html.erb
+    "Browse source": "Procházet kód"
+
+    # app/helpers/navigation_helper.rb
+    "Browse {{title}}": "Procházet {{title}}"
+
+    # app/helpers/application_helper.rb
+    # app/views/admin/shared/_form_footer.html.erb
+    # app/views/ticket_reports/_new.html.erb
+    Cancel: Zrušit
+
+    # app/models/user.rb
+    "Cannot delete. User '{{username}}' is the last available admin.": "Nelze smazat. Uživatel '{{username}}' je poslední zbylý administrátor."
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/projects/index.html.erb
+    Central: Hlavní
+
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "Changed by {{author}} - {{time}}": "Změnil {{author}} - {{time}}"
+
+    # app/views/browse/_revision.html.erb
+    # app/views/changesets/_changeset.html.erb
+    # app/views/changesets/show.html.erb
+    Changeset: Změny
+
+    # app/helpers/changesets_helper.rb
+    "Changeset index": "Přehled změn"
+
+    # app/models/changeset.rb
+    "Changeset {{revision}}": "Změny {{revision}}"
+
+    # app/controllers/changesets_controller.rb
+    # app/core_info.rb
+    # app/models/changeset.rb
+    # app/views/changesets/index.html.erb
+    Changesets: Změny
+
+    # app/models/changeset.rb
+    "Changesets for {{project}}": "Změny projektu {{project}}"
+
+    # app/views/admin/projects/_form.html.erb
+    "Check this option to make this your default project.": "Vybráním nastavíte tento projekt Vaším hlavním."
+
+    # app/views/accounts/show.html.erb
+    "Check this option to renew your private access key.": "Vybráním znovu vygenerujete svůj privátní klíč."
+
+    # app/views/tickets/index.html.erb
+    "Clear selection": "Vymazat výběr"
+
+    # app/views/projects/index.html.erb
+    "Click for info": "Klikněte pro více informací"
+
+    # app/views/changesets/_quick_diff.html.erb
+    Close: Zavřít
+
+    # app/helpers/format_helper.rb
+    "Close preview": "Zavřít náhled"
+
+    # app/views/admin/projects/_form.html.erb
+    Closed: Zavřeno
+
+    # app/core_info.rb
+    Code: Kód
+
+    # app/views/tickets/_update_form.html.erb
+    Comment: Komentář
+
+    # app/views/tickets/show.html.erb
+    "Comments and Changes": "Komentáře a Změny"
+
+    # app/views/browse/index.html.erb
+    Commit: Commity
+
+    # app/helpers/browse_helper.rb
+    "Compare [{{revision_a}}] with [{{revision_b}}]": "Porovnání [{{revision_a}}] a [{{revision_b}}]"
+
+    # app/views/admin/setup/index.html.erb
+    "Configuration could not be saved": "Konfigurace nemůže být uložena"
+
+    # app/views/admin/users/_core.html.erb
+    Confirmation: Potvrzení
+
+    # app/core_info.rb
+    # app/views/tickets/form/_update_content.html.erb
+    Content: Obsah
+
+    # app/helpers/changesets_helper.rb
+    Copied: Okopírováno
+
+    # app/core_info.rb
+    # app/views/accounts/new.html.erb
+    # app/views/admin/shared/_new_form.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    # app/views/milestones/new.html.erb
+    # app/views/ticket_reports/_new.html.erb
+    # app/views/tickets/new.html.erb
+    Create: Vytvořit
+
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/groups/new.html.erb
+    "Create a new group": "Vytvořit novou skupinu"
+
+    # app/views/milestones/index.html.erb
+    # app/views/milestones/new.html.erb
+    "Create a new milestone": "Vytvořit nový milník"
+
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/projects/new.html.erb
+    "Create a new project": "Vytvořit nový projekt"
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    "Create a new property value": "Vytvořit novou hodnotu položky"
+
+    # app/views/admin/repositories/index.html.erb
+    # app/views/admin/repositories/new.html.erb
+    "Create a new repository": "Vytvořit nový repozitář"
+
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_properties/new.html.erb
+    "Create a new ticket property": "Vytvořit novou položku lístku"
+
+    # app/views/admin/users/index.html.erb
+    # app/views/admin/users/new.html.erb
+    "Create a new user": "Vytvořit nového uživatele"
+
+    # app/views/tickets/_ticket.html.erb
+    "Created {{period}} ago by {{author}}": "Vytvřil {{author}} před {{period}}"
+
+    # app/helpers/browse_helper.rb
+    Current: aktuální
+
+    # app/helpers/navigation_helper.rb
+    Dashboard: Přehled
+
+    # app/views/browse/revisions.html.erb
+    Date: Datum
+
+    # lib/time_interval.rb
+    Days: Dny
+
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "Dear user!": "Milí uživateli!"
+
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    Default: Základní #TODO: Find better !
+
+    # app/models/group.rb
+    "Default group cannot be deleted": "Základní skupina nemůže být smazána"
+
+    # app/models/group.rb
+    "Default group cannot be modified.": "Základní skupina nemůže být měněna"
+
+    # app/views/admin/ticket_property_values/_priority_form.html.erb
+    "Default value": "Základní hodnota"
+
+    # app/core_info.rb
+    # app/helpers/admin/ticket_property_values_helper.rb
+    # app/helpers/milestones_helper.rb
+    # app/views/admin/groups/_group.html.erb
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/repositories/_repository.html.erb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_property_values/_property_value.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_report.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    Delete: Smazat
+
+    # app/helpers/changesets_helper.rb
+    Deleted: Smazáno
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/tasks/index.html.erb
+    # app/views/tickets/form/_summary_and_description.html.erb
+    Description: Popis
+
+    # app/views/tickets/new.html.erb
+    Details: Detaily
+
+    # app/views/browse/_revision.html.erb
+    Diff: Diff
+
+    # app/helpers/application_helper.rb
+    Display: Zobrazit
+
+    # app/helpers/changesets_helper.rb
+    # app/views/browse/diff.html.erb
+    Download: Stáhnout
+
+    # app/views/browse/_show_header.html.erb
+    "Download in other formats": "Stáhnout v jiných formátech"
+
+    # app/views/milestones/_form.html.erb
+    # app/views/milestones/_milestone.html.erb
+    "Due on": "Ukončení"
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    # app/helpers/milestones_helper.rb
+    # app/views/admin/groups/_group.html.erb
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/repositories/_repository.html.erb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/users/_user.html.erb
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    Edit: Upravit
+
+    # app/views/admin/groups/edit.html.erb
+    "Edit group": "Upravit skupinu"
+
+    # app/views/milestones/edit.html.erb
+    "Edit milestone": "Upravit milník"
+
+    # app/views/admin/projects/edit.html.erb
+    "Edit project": "Upravit projekt"
+
+    # app/views/admin/ticket_property_values/edit.html.erb
+    "Edit property value": "Upravit hodnotu položky"
+
+    # app/views/admin/repositories/edit.html.erb
+    "Edit repository": "Upravit repozitář"
+
+    # app/views/tickets/_navigation.html.erb
+    "Edit summary": "Upravit shrnutí"
+
+    # app/views/admin/ticket_properties/edit.html.erb
+    "Edit ticket property": "Upravit položku lístku"
+
+    # app/views/admin/users/edit.html.erb
+    "Edit user": "Upravit uživatele"
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    # app/views/tickets/form/_name_and_email.html.erb
+    Email: E-mail
+
+    # app/views/admin/users/edit.html.erb
+    "Email notification": "Upozornění e-mailem"
+
+    # app/views/admin/projects/_form.html.erb
+    "Enabled modules": "Povolené moduly"
+
+    # app/views/admin/repositories/_form.html.erb
+    Examples: Příklady
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/extensions/index.html.erb
+    Extensions: Rozšíření
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! Path does not contain a valid repository.": "Chyba! Cesta neobsahuje platný repozitář."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! Path does not exist.": "Chyba! Cesta neexistuje."
+
+    # app/controllers/admin/projects_controller.rb
+    "Failure! Path is not a directory in this repository.": "Chyba! Cesta není adresář v tomto repozitáři."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Failure! You are not permitted to browse this path.": "Chyba! Nemáte povolen přístup k této cestě."
+
+    # app/helpers/navigation_helper.rb
+    Feeds: Zdroje
+
+    # app/views/browse/show_binary.html.erb
+    "File content cannot be displayed for binary files.": "U binárních souborů nelze zobrazit obsah."
+
+    # app/views/tickets/index.html.erb
+    "Filter tickets": "Filtrovat lístky"
+
+    # app/views/admin/tasks/_task.html.erb
+    Finished: Dokončen
+
+    # app/views/milestones/_form.html.erb
+    "Finished on": "Dokončení"
+
+    # app/views/accounts/forgot_password.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    # app/views/sessions/new.html.erb
+    "Forgot password": "Zapomenuté heslo"
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Formats: Fotmáty
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    "Full name": "Celé jméno"
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    Global: Globalní
+
+    # app/views/admin/groups/index.html.erb
+    Group: Skupina
+
+    # app/controllers/admin/groups_controller.rb
+    "Group could not be deleted. Following error(s) occured": "Skupina nemůže být smazána. Došla k následujícím chybám"
+
+    # app/views/admin/groups/_form.html.erb
+    "Group name": "Jméno skupiny"
+
+    # app/views/tickets/index.html.erb
+    "Group records": "Záznamy skupiny"
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully created.": "Skupina byla vytvořena."
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully deleted.": "Skupina byla smazána."
+
+    # app/controllers/admin/groups_controller.rb
+    "Group was successfully updated.": "Skupina byla upravena."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/groups/_header.html.erb
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/users/_groups.html.erb
+    # app/views/admin/users/index.html.erb
+    Groups: Skupiny
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Headers: Hlavičky
+
+    # app/views/sessions/logged_in.html.erb
+    "Hi {{user}}!": "Ahoj {{user}}!"
+
+    # app/helpers/changesets_helper.rb
+    "Hide Quick Diffs": "Skrýt rychlé diffy"
+
+    # app/views/milestones/index.html.erb
+    "Hide already completed milestones": "Skrýt již dokončené milníky"
+
+    # app/views/layouts/_header.html.erb
+    # app/views/rescue/403.html.erb
+    # app/views/rescue/404.html.erb
+    # app/views/rescue/422.html.erb
+    # app/views/rescue/500.html.erb
+    # app/views/sessions/destroy.html.erb
+    # app/views/sessions/logged_in.html.erb
+    # app/views/sessions/new.html.erb
+    Home: Domů
+
+    # lib/time_interval.rb
+    Hours: Hodiny
+
+    # app/views/tickets/index.html.erb
+    ID: ID
+
+    # app/models/status.rb
+    "In progress": "Rozpracováno"
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/users/_user.html.erb
+    Inactive: Neaktivní
+
+    # app/helpers/application_helper.rb
+    Info: Informace
+
+    # app/views/admin/extensions/index.html.erb
+    Installed: Instalováno
+
+    # app/views/admin/tasks/index.html.erb
+    Interval: Interval
+
+    # app/views/browse/diff.html.erb
+    "Invalid or empty DIFF": "Prázdný nebo neplatný DIFF"
+
+    # app/views/admin/repositories/_form.html.erb
+    # app/views/admin/repositories/index.html.erb
+    Kind: Druh
+
+    # app/views/tickets/index.html.erb
+    "Last Update": "Poslední změna"
+
+    # app/views/browse/index.html.erb
+    "Last modified": "Neposledy změněno"
+
+    # app/views/admin/users/_core.html.erb
+    "Leave password field blank, unless you actually want to change your password.": "Heslo vyplňte pouze pokud chcete heslo změnit."
+
+    # app/helpers/browse_helper.rb
+    "Line {{number}}": "Řádek {{number}}"
+
+    # app/controllers/markup_controller.rb
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Links: Odkazy
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Lists: Seznamy
+
+    # app/helpers/application_helper.rb
+    # app/views/layouts/_header.html.erb
+    Loading...: Načítání...
+
+    # app/views/admin/projects/_form.html.erb
+    Locale: Lokalizace
+
+    # app/views/browse/revisions.html.erb
+    Log: Záznam
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/logged_in.html.erb
+    "Logged in as {{name}}": "Přihlášen jako {{name}}"
+
+    # app/views/sessions/destroy.html.erb
+    "Logged out": "Odhlášen"
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/destroy.html.erb
+    # app/views/sessions/new.html.erb
+    Login: Přihlášení
+
+    # app/controllers/sessions_controller.rb
+    "Login was not successful. Invalid username or password.": "Přihlášení se nezdařilo. Neplatné jméno či heslo."
+
+    # app/controllers/sessions_controller.rb
+    "Login was successful.": "Úspěšné přihlášení."
+
+    # app/helpers/navigation_helper.rb
+    # app/views/sessions/logged_in.html.erb
+    Logout: Odhlásit
+
+    # app/views/admin/groups/_form.html.erb
+    "Make all projects available to this group": "Zpřístupnit všechny projekty této skupině"
+
+    # app/views/admin/dashboard/index.html.erb
+    Manage: Spravovat
+
+    # app/helpers/format_helper.rb
+    "Markup reference": "Přehled značek"
+
+    # app/views/rescue/422.html.erb
+    "Maybe you tried to change something you didn't have access to.": "Možná jste zkoušel změnit něco k čemu nemáte přístup."
+
+    # app/helpers/tickets_helper.rb
+    # app/models/milestone.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    Milestone: Milník
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully created.": "Milník úspěšně vytvořen."
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully deleted.": "Milník úspěšně smazán."
+
+    # app/controllers/milestones_controller.rb
+    "Milestone was successfully updated.": "Milník úspěšně upraven."
+
+    # app/controllers/milestones_controller.rb
+    # app/core_info.rb
+    # app/models/milestone.rb
+    # app/views/milestones/edit.html.erb
+    # app/views/milestones/index.html.erb
+    # app/views/milestones/new.html.erb
+    Milestones: Milníky
+
+    # app/models/milestone.rb
+    "Milestones for {{project}}": "Milníky projektu {{project}}"
+
+    # lib/time_interval.rb
+    Minutes: Minuty
+
+    # app/core_info.rb
+    Modify: Upravit
+
+    # app/views/tickets/index.html.erb
+    Month: Měsíc
+
+    # lib/time_interval.rb
+    Months: Měsíce
+
+    # app/helpers/changesets_helper.rb
+    Moved: Přesunuto
+
+    # app/helpers/navigation_helper.rb
+    # app/views/accounts/show.html.erb
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    "My Account": "Můj účet"
+
+    # app/models/ticket_filter/custom/my_tickets.rb
+    "My Tickets": "Mé lístky"
+
+    # app/views/admin/repositories/_form.html.erb
+    # app/views/admin/ticket_properties/_form.html.erb
+    # app/views/admin/ticket_property_values/_value_form.html.erb
+    # app/views/browse/index.html.erb
+    # app/views/milestones/_form.html.erb
+    # app/views/ticket_reports/_form.html.erb
+    # app/views/tickets/form/_name_and_email.html.erb
+    Name: Jméno
+
+    # app/models/status.rb
+    Negative: Negativní
+
+    # app/models/status.rb
+    Neutral: Neutrální
+
+    # app/views/admin/ticket_property_values/new.html.erb
+    New: Nový
+
+    # app/controllers/tickets_controller.rb
+    "New Ticket": "Nový lístek"
+
+    # app/views/tickets/_ticket.html.erb
+    # app/views/tickets/new.html.erb
+    "New ticket": "Nový lístek"
+
+    # app/helpers/changesets_helper.rb
+    "Next changeset": "Next changeset"
+
+    # app/views/tickets/_navigation.html.erb
+    "Next ticket": "Další lístek"
+
+    # app/helpers/admin/setup_helper.rb
+    # app/helpers/format_helper.rb
+    "No": "Ne"
+
+    # app/models/ticket_change.rb
+    "No changes were made": "Nebyly provedeny žádné změny"
+
+    # app/views/projects/index.html.erb
+    "No projects available": "Žádné dostupné projekty"
+
+    # app/controllers/admin/projects_controller.rb
+    "No repository selected.": "Žádné vybrané repozitáře."
+
+    # app/views/tickets/index.html.erb
+    None: Žádný
+
+    # app/views/admin/extensions/index.html.erb
+    "Not Installed": "Nenainstalováno"
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    Note: Poznámka
+
+    # app/views/admin/users/edit.html.erb
+    "Notify user on account activation": "Upozornit uživatele na aktivaci účtu"
+
+    # app/views/ticket_reports/_form.html.erb
+    "Only Last": "Jen poslední"
+
+    # app/models/status.rb
+    Open: Otevřené
+
+    # app/views/accounts/show.html.erb
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/ticket_property_values/_priority_form.html.erb
+    # app/views/admin/users/_form.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    Options: Možnosti
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Paragraphs: Odstavce
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/sessions/new.html.erb
+    Password: Heslo
+
+    # app/models/notifications.rb
+    "Password reset": "Změnit heslo"
+
+    # app/views/admin/repositories/_form.html.erb
+    Path: Cesta
+
+    # app/controllers/browse_controller.rb
+    "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazena revize {{latest}}."
+
+    # app/controllers/browse_controller.rb
+    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazuji root." #TODO: root?
+
+    # app/views/admin/groups/_form.html.erb
+    # app/views/admin/groups/index.html.erb
+    Permissions: Oprávnění
+
+    # app/views/admin/repositories/_form.html.erb
+    "Please specify an optional system call, which will be executed before each repository synchronization.": "Uveďte systémové volání, které bude voláno při každé synchronizaci repozitáře."
+
+    # app/models/status.rb
+    Positive: Pozitivní
+
+    # app/helpers/format_helper.rb
+    Preview: Náhled
+
+    # app/helpers/changesets_helper.rb
+    "Previous changeset": "Předchozí změny"
+
+    # app/views/tickets/_navigation.html.erb
+    "Previous ticket": "Předchozí lístek"
+
+    # app/helpers/tickets_helper.rb
+    # app/models/priority.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    Priority: Priorita
+
+    # app/views/admin/projects/index.html.erb
+    Project: Projekt
+
+    # app/controllers/admin/projects_controller.rb
+    "Project could not be deleted. Following error(s) occured": "Projekt nemohl být smazán. Došlo k následujícím chybám"
+
+    # app/views/admin/projects/_form.html.erb
+    "Project name": "Jméno projektu"
+
+    # app/views/admin/ticket_properties/index.html.erb
+    "Project specific": "Specifické pro projekt"
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully created.": "Projekt byl úspěšně vytvořen."
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully deleted.": "Projekt byl úspěšně smazán."
+
+    # app/controllers/admin/projects_controller.rb
+    "Project was successfully updated.": "Projekt byl úspěšně změněn."
+
+    # app/helpers/navigation_helper.rb
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/groups/_form.html.erb
+    # app/views/admin/groups/index.html.erb
+    # app/views/admin/projects/_header.html.erb
+    # app/views/admin/projects/index.html.erb
+    # app/views/admin/ticket_properties/_header.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    # app/views/projects/index.html.erb
+    Projects: Projekty
+
+    # app/views/browse/_node_info.html.erb
+    # app/views/tickets/index.html.erb
+    Properties: Položky
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully created.": "Položka byla úspěšně vytvořena."
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully deleted.": "Položka byla úspěšně smazána."
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "Property value was successfully updated.": "Položka byla úspěšně upravena."
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    "Property values": "Hodnoty položky"
+
+    # app/models/user.rb
+    "Public user cannot be deleted.": "Veřejný uživatel nemůže být smazán."
+
+    # app/models/user.rb
+    "Public user cannot be modified.": "Veřejný uživatel nemůže být upraven."
+
+    # app/helpers/changesets_helper.rb
+    "Quick Diff": "Rychlý Diff"
+
+    # app/views/rss/index.html.erb
+    RSS: RSS
+
+    # app/helpers/browse_helper.rb
+    Raw: Raw
+
+    # app/helpers/format_helper.rb
+    Reference: Reference
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    References: Reference
+
+    # app/helpers/navigation_helper.rb
+    # app/views/accounts/new.html.erb
+    # app/views/sessions/new.html.erb
+    Register: Registrace
+
+    # app/views/accounts/show.html.erb
+    "Remember to update your RSS subscriptions afterwards.": "Nezapomeňte následně upravit své přihlášení RSS zdrojů."
+
+    # app/helpers/ticket_filter_helper.rb
+    "Remove filter": "Odbrat filtr"
+
+    # app/views/accounts/show.html.erb
+    "Renew my private key": "Znovu vygenerovat privátní klíč"
+
+    # app/controllers/ticket_reports_controller.rb
+    "Report was successfully created.": "Přehled byl úspěšně vytvořen."
+
+    # app/controllers/ticket_reports_controller.rb
+    "Report was successfully deleted.": "Přehled byl úspěšně smazán."
+
+    # app/models/ticket_filter/custom/my_tickets.rb
+    "Reported by me": "Reportováno mnou"
+
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "Reported by {{author}} - {{time}}": "Reportoval {{author}} - {{time}}"
+
+    # app/core_info.rb
+    # app/views/tickets/_reports.html.erb
+    Reports: Přehledy
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/repositories/_header.html.erb
+    # app/views/admin/repositories/index.html.erb
+    Repositories: Repozitáře
+
+    # app/views/admin/projects/_form.html.erb
+    # app/views/admin/repositories/index.html.erb
+    Repository: Repozitář
+
+    # app/views/browse/repository_unavailable.html.erb
+    "Repository Unavailable": "Repozitář nedostupný"
+
+    # app/views/admin/projects/_form.html.erb
+    "Repository path": "Cesta repozitáře"
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully created.": "Repozotář byl úspěšně vytvořen."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully deleted.": "Repozotář byl úspěšně smazán."
+
+    # app/controllers/admin/repositories_controller.rb
+    "Repository was successfully updated.": "Repozotář byl úspěšně upraven."
+
+    # app/views/admin/tasks/_task.html.erb
+    Reset: Reset
+
+    # app/models/status.rb
+    Resolved: Vyřešeno
+
+    # app/views/admin/dashboard/index.html.erb
+    "Retrospectiva administration": "Administrace retrospectivy"
+
+    # app/views/browse/_node_info.html.erb
+    # app/views/browse/revisions.html.erb
+    Revision: Revize
+
+    # app/controllers/browse_controller.rb
+    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revize {{revision}} se nezdá být platná, zobrazuji revizi {{latest}}."
+
+    # app/helpers/browse_helper.rb
+    Revisions: Revize
+
+    # app/views/admin/users/_form.html.erb
+    "SCM name": "Jméno SCM"
+
+    # app/helpers/application_helper.rb
+    Save: Uložit
+
+    # app/views/admin/setup/_section.html.erb
+    # app/views/admin/tasks/index.html.erb
+    "Save all": "Uložit vše"
+
+    # app/views/ticket_reports/_new.html.erb
+    # app/views/tickets/index.html.erb
+    "Save as Report": "Uložit jako přehled"
+
+    # app/helpers/application_helper.rb
+    Saving...: Ukládám...
+
+    # app/controllers/search_controller.rb
+    # app/core_info.rb
+    # app/helpers/navigation_helper.rb
+    # app/views/admin/users/index.html.erb
+    # app/views/search/index.html.erb
+    # app/views/tickets/index.html.erb
+    Search: Hledat
+
+    # app/views/tickets/_navigation.html.erb
+    "See last change": "Zobrazit poslední změnu"
+
+    # app/helpers/ticket_filter_helper.rb
+    "Select filter": "Vybrat filtr"
+
+    # app/views/accounts/forgot_password.html.erb
+    Send: Odeslat
+
+    # app/controllers/admin/setup_controller.rb
+    "Settings were successfully saved.": "Nastavení bylo úspěšně uloženo."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/setup/index.html.erb
+    Setup: Nastavení
+
+    # app/controllers/accounts_controller.rb
+    "Shortly you will receive an email with instructions on how to reset your password.": "Za krátko obdržíte e-mail s instrukcemi na změnu hesla."
+
+    # app/helpers/changesets_helper.rb
+    "Show Quick Diffs": "Zobrazit rychlé Diffy"
+
+    # app/views/milestones/index.html.erb
+    "Show already completed milestones": "Zobrazit již dokončené milníky"
+
+    # app/helpers/navigation_helper.rb
+    "Show changeset {{revision}}": "Zobrazit změny {{revision}}"
+
+    # app/views/browse/_node_info.html.erb
+    "Show latest": "Zobrazit poslední"
+
+    # app/views/tickets/index.html.erb
+    "Show report": "Zobrazit přehled"
+
+    # app/views/browse/index.html.erb
+    Size: Velikost
+
+    # app/views/admin/tasks/_task.html.erb
+    Started: Začátek
+
+    # app/views/milestones/_form.html.erb
+    "Started on": "Začátek"
+
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/ticket_property_values/_status_form.html.erb
+    State: Stav
+
+    # app/views/admin/ticket_property_values/_status_form.html.erb
+    Statement: Tvrzení #TODO: wtf is the translation ?
+
+    # app/helpers/tickets_helper.rb
+    # app/models/status.rb
+    # app/models/ticket_change.rb
+    # app/models/ticket_filter/collection.rb
+    # app/views/admin/tasks/index.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/tickets/form/_ticket_options.html.erb
+    # app/views/tickets/index.html.erb
+    Status: Stav
+
+    # app/views/tickets/_navigation.html.erb
+    "Stop watching this ticket": "Přestat sledovat tento lístek"
+
+    # app/controllers/admin/repositories_controller.rb
+    "Success! Path contains a valid repository (latest revision: {{latest}}).": "Úspěch! Cesta obsahuje platný repozitář (posledná revize: {{latest}})."
+
+    # app/controllers/admin/projects_controller.rb
+    "Success! Path is a directory in this repository.": "Úspěch! Cesta je obsažena v tomto repozitáři."
+
+    # app/views/tickets/form/_summary_and_description.html.erb
+    # app/views/tickets/index.html.erb
+    Summary: Shrnutí
+
+    # app/views/admin/repositories/_form.html.erb
+    "Sync callback": "Synchronizace"
+
+    # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
+    Tables: Tabulky
+
+    # app/views/admin/tasks/index.html.erb
+    Task: Úkoly
+
+    # app/controllers/admin/tasks_controller.rb
+    "Task configuration was successfully updated.": "Nastavení úkolu bylo úspěšně upraveno."
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/tasks/index.html.erb
+    Tasks: Úkoly
+
+    # app/helpers/browse_helper.rb
+    Text: Text
+
+    # app/controllers/accounts_controller.rb
+    "Thank you.": "Děkuji."
+
+    # app/views/rescue/422.html.erb
+    "The change you wanted was rejected.": "Změna kterou jeste žádal byla odmítnuta."
+
+    # app/views/rescue/404.html.erb
+    "The page you were looking for doesn't exist.": "Stránka kterou žádáte neexistuje."
+
+    # app/views/browse/repository_unavailable.html.erb
+    "The repository is currently unavailable, please try it again later.": "Repozitář není právě dostupný, prosím zkuste později."
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    "They will be set back to the default value.": "Budou nastaveny na původní hodnoty."
+
+    # app/views/admin/users/edit.html.erb
+    "This setting only applies if you enable the 'Activate' checkbox": "Toto nastavení je aktivní pouze pokud je vybráno zaškrtávátko 'Aktivace'"
+
+    # app/views/tickets/show.html.erb
+    Ticket: Lístek
+
+    # app/models/ticket_change.rb
+    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "Lístek #{{id}} ({{status}}) změnil {{author}} - {{summary}}"
+
+    # app/models/ticket.rb
+    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Lístek #{{id}} ({{status}}) reportoval {{author}} - {{summary}}"
+
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "Ticket #{{id}}: '{{summary}}'": "Lístek #{{id}}: '{{summary}}'"
+
+    # app/controllers/tickets_controller.rb
+    "Ticket change was successfully deleted.": "Změna lístku byla úspěšně smazána."
+
+    # app/views/admin/projects/_project.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/ticket_property_values/index.html.erb
+    # app/views/admin/ticket_property_values/new.html.erb
+    "Ticket properties": "Vlastnosti lístku"
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully created.": "Hodnota lístku byl úspěšně vytvořena."
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully deleted.": "Hodnota lístku byl úspěšně smazána."
+
+    # app/controllers/admin/ticket_properties_controller.rb
+    "Ticket property was successfully updated.": "Hodnota lístku byl úspěšně upravena."
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully created.": "Lístek byl úspěšně vytvořen."
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully deleted.": "Lístek byl úspěšně smazán."
+
+    # app/controllers/tickets_controller.rb
+    "Ticket was successfully updated.": "Lístek byl úspěšně upraven."
+
+    # app/controllers/tickets_controller.rb
+    # app/core_info.rb
+    # app/models/ticket.rb
+    # app/views/milestones/_milestone.html.erb
+    # app/views/tickets/index.html.erb
+    Tickets: Lístky
+
+    # app/models/ticket.rb
+    "Tickets for {{project}}": "Lístky projektu {{project}}"
+
+    # app/views/admin/users/_core.html.erb
+    # app/views/admin/users/index.html.erb
+    "Time zone": "Časová zóna"
+
+    # app/views/notifications/account_activation_note.text.plain.erb
+    "To access the login page click this link": "Pro přístup k přihlašovací stránce, klikněte na tento odkaz"
+
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "To access the ticket click this link": "Pro přístup k lístku klikněte na tento odkaz"
+
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    "To access your account, click the link below": "Pro přístup k vašemu účtu, klikněte na tento odkaz"
+
+    # app/views/notifications/account_validation.text.plain.erb
+    "To complete the registration process you need to verify your email address. To make up this process you have two options": "Pro dokončení registrace musíte ověřit svou e-mailovou adresu. Máte tyto dvě možnosti"
+
+    # app/helpers/admin/setup_helper.rb
+    "Toggle description for setting '{{name}}'": "Zobrazot popis nastavení '{{name}}'"
+
+    # app/views/browse/diff.html.erb
+    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Nelze zobrazit změny (DIFF) mezi revizemi '{{source}}' a '{{target}}' Pro tento soubor."
+
+    # app/controllers/browse_controller.rb
+    "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "Nelze najít revizi {{revision}} pro '{{path}}', zobrazuji revizi {{latest}}."
+
+    # app/views/tickets/_ticket_info.html.erb
+    Unassigned: Nepřiřazeno
+
+    # app/views/browse/show_file.html.erb
+    "Unknown File Type": "Neznámý typ souboru"
+
+    # app/core_info.rb
+    # app/views/accounts/show.html.erb
+    # app/views/admin/shared/_edit_form.html.erb
+    # app/views/admin/ticket_property_values/edit.html.erb
+    # app/views/admin/users/edit.html.erb
+    # app/views/milestones/edit.html.erb
+    # app/views/tickets/_update_form.html.erb
+    Update: Upravit
+
+    # app/helpers/changesets_helper.rb
+    Updated: Upraveno
+
+    # app/views/admin/users/index.html.erb
+    User: Uživatel
+
+    # app/controllers/admin/users_controller.rb
+    "User account was activated.": "Uživatelský účet byl aktivován."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully activated. You can now login.": "Uživatelský účet byl aktivován. Můžete se přihlásit."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully created.": "Uživatelský účet byl úspěšně vytvořen."
+
+    # app/controllers/accounts_controller.rb
+    "User account was successfully updated.": "Uživatelský účet byl úspěšně upraven."
+
+    # app/controllers/admin/users_controller.rb
+    "User could not be deleted. Following error(s) occurred": "Uživatele nelze smazat. Došlo k následujícím chybám"
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully created.": "Uživatel byl úspěšně vytvořen."
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully deleted.": "Uživatel byl úspěšně smazán."
+
+    # app/controllers/admin/users_controller.rb
+    "User was successfully updated.": "Uživatel byl úspěšně upraven."
+
+    # app/views/accounts/activate.html.erb
+    # app/views/admin/users/_core.html.erb
+    # app/views/admin/users/edit.html.erb
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    Username: Uživatelské jméno
+
+    # app/views/accounts/forgot_password.html.erb
+    # app/views/sessions/new.html.erb
+    "Username or Email": "Uživatelské jméno nebo e-mail"
+
+    # app/views/admin/dashboard/index.html.erb
+    # app/views/admin/users/_header.html.erb
+    # app/views/admin/users/index.html.erb
+    Users: Uživatelé
+
+    # app/core_info.rb
+    # app/views/admin/ticket_properties/_ticket_property.html.erb
+    # app/views/admin/ticket_properties/index.html.erb
+    View: Zobrazit
+
+    # app/views/browse/diff.html.erb
+    "View changes": "Zobrazit změny"
+
+    # app/helpers/admin/ticket_property_values_helper.rb
+    "WARNING: There are currently {{count}} tickets assigned with this property.": "VAROVÁNÍ: Právě existuje {{count}} lístků s touto vlastností."
+
+    # app/core_info.rb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    Watch: Sledovat
+
+    # app/views/tickets/_navigation.html.erb
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    "Watch this ticket": "Sledovat tento lístek"
+
+    # app/models/ticket_filter/custom/my_tickets.rb
+    "Watched by me": "Sleduji"
+
+    # app/views/rescue/500.html.erb
+    "We're sorry, but something went wrong.": "Je nám líto, ale došlo k chybě."
+
+    # app/views/rescue/500.html.erb
+    "We've been notified about this issue and we'll take a look at it shortly.": "Byly jsme obeznámeni o této chybě a brzy se jí začneme zabývat."
+
+    # app/views/tickets/index.html.erb
+    Week: Týden
+
+    # lib/time_interval.rb
+    Weeks: Týdny
+
+    # app/helpers/admin/setup_helper.rb
+    # app/helpers/format_helper.rb
+    "Yes": "Ano"
+
+    # app/views/sessions/logged_in.html.erb
+    "You are logged in to the system.": "Jste přihlášen do systému."
+
+    # app/controllers/accounts_controller.rb
+    "You are not allowed to login until your account has been activated by the administrator.": "Není povoleno se přihlašovat dokud účet nebude povolen správcem systému."
+
+    # app/views/rescue/403.html.erb
+    "You are not permitted to view this page.": "Nemáte oprávnění zobrazit tuto stránku."
+
+    # app/views/sessions/destroy.html.erb
+    "You are now logged out of the system.": "Nyní jste odhlášen ze systému."
+
+    # app/controllers/tickets_controller.rb
+    "You are now watching this ticket.": "Nyní sledujete tento lístek."
+
+    # app/views/notifications/account_activation_note.text.plain.erb
+    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Tuto zprávu jste obdržel(a), protože Váš účet v systému {{site}} byl aktivován."
+
+    # app/views/notifications/ticket_creation_note.text.plain.erb
+    "You are receiving this message because you are subscribed to receive notifications about": "Tuto zprávu jste obdržel(a), protože jste příhlášen k odebírání oznámení o těchto událostech"
+
+    # app/views/notifications/account_validation.text.plain.erb
+    "You are receiving this message because you have applied for an user account at {{site}}.": "Tuto zprávu jeste obdržel(a), protože jste žádal(a) o účet v systému {{site}}."
+
+    # app/views/notifications/ticket_update_note.text.plain.erb
+    "You are receiving this message because you have subscribed to receive notification about changes of": "Tuto zprávu jeste obdržel(a), protože jste příhlášen k odebírání oznámení o změnách v"
+
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "Tuto zprávu jeste obdržel(a), protože jste použila '{{forgot_password}}' v systému {{site}}."
+
+    # app/helpers/tickets_helper.rb
+    "You are watching this ticket": "Seldujete tento lístek"
+
+    # app/views/admin/ticket_property_values/index.html.erb
+    "You can sort the items by dragging them and dropping them into the right position.": "Můžete řadit položky přetažením do správné polohy."
+
+    # app/models/user.rb
+    "You cannot delete your own account.": "Nelze smazat vlastní účet."
+
+    # app/views/rescue/404.html.erb
+    "You may have mistyped the address or the page may have moved.": "Nejspíš jste zadal(a) špatnou adresu, nebo byla stránka přesunuta."
+
+    # app/controllers/accounts_controller.rb
+    "You need to activate your account within the next {{count}} hours to be able to login.": "Musíte aktivovat svůj učet během následujících {{count}} hodin, aby jste se mohl(a) přihlásit."
+
+    # app/controllers/tickets_controller.rb
+    "You stopped watching this ticket.": "Přestal(a) jste sledovat tento lístek."
+
+    # app/views/notifications/password_reset_instructions.text.plain.erb
+    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "Budete přesměrován(a) na obrazovku účtu '{{my_account}}', kde si budete moci změnit své heslo."
+
+    # app/views/admin/projects/_project.html.erb
+    "You will lose all related data as well!": "Přijdete také o všechna přidružená data!"
+
+    # app/views/notifications/account_activation_note.text.plain.erb
+    # app/views/notifications/account_validation.text.plain.erb
+    "Your registration details": "Detaily Vaší registrace"
+
+    # app/views/search/index.html.erb
+    "Your search for '{{term}}' did not match any results.": "Při hledání výrazu '{{term}}' nebyly nalezeny žádné výsledky."
+
+    # app/views/tickets/_change.html.erb
+    # app/views/tickets/_ticket_intro.html.erb
+    added: přidal
+
+    # app/helpers/tickets_helper.rb
+    "changed from {{old_value}} to {{new_value}}": "změnil z {{old_value}} na {{new_value}}"
+
+    # app/views/milestones/_milestone.html.erb
+    completed: dokončil
+
+    # app/helpers/changesets_helper.rb
+    "copied from {{path}}": "zkopíroval z {{path}}"
+
+    # app/helpers/format_helper.rb
+    "in {{period}}": "v {{period}}"
+
+    # app/views/tickets/form/_attachment_and_watch_status.html.erb
+    max.: max.
+
+    # app/helpers/changesets_helper.rb
+    "moved from {{path}}": "přesunul z {{path}}"
+
+    # app/helpers/tickets_helper.rb
+    "reset (from {{value}})": "vráceno (z {{value}})"
+
+    # app/helpers/tickets_helper.rb
+    "set to {{value}}": "nastaveno na {{value}}"
+
+    # app/views/browse/_node.html.erb
+    "{{count}} file(s)": "{{count}} soubor(y)"
+
+    # app/helpers/format_helper.rb
+    "{{period}} ago": "před {{period}}"
+
+    # app/controllers/admin/ticket_property_values_controller.rb
+    "{{record}} was successfully created.": "{{record}} byl úspěšně vytvořen."
+
