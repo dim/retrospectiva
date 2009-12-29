@@ -5,7 +5,7 @@ module Retrospectiva
       attr_accessor :last_comment, :tasks, :files
 
       def initialize 
-        @last_comment = ''        
+        @last_comment = nil        
         @tasks = []        
         @files = Dir["#{RAILS_ROOT}/extensions/**/tasks/**/ext_retro_tasks.rake"] + 
                  Dir["#{RAILS_ROOT}/lib/tasks/**/core_retro_tasks.rake"]
@@ -26,9 +26,12 @@ module Retrospectiva
           args.first
         end
         
-        entry = Task.find_or_create_by_name(key.to_s)
-        entry.description = last_comment        
-        self.tasks << entry
+        if last_comment
+          entry = Task.find_or_create_by_name(key.to_s)
+          entry.description = last_comment        
+          self.tasks << entry
+          self.last_comment = nil
+        end
       end
   
       def desc(comment = '')
