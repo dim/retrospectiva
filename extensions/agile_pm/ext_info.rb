@@ -23,7 +23,7 @@ RetroAM.permission_map do |map|
 
   map.resource :stories, :label => N_('Stories') do |stories|
     stories.permission :view,    :label => N_('View')
-    stories.permission :stories, :label => N_('Create'), &permitted_and_non_public
+    stories.permission :create, :label => N_('Create'), &permitted_and_non_public
     stories.permission :update,  :label => N_('Update'), &permitted_and_non_public
     stories.permission :delete,  :label => N_('Delete')
     stories.permission :modify,  :label => N_('Modify'), &permitted_and_non_public
