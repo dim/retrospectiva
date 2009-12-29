@@ -21,11 +21,10 @@ module RetroI18n
   extend Methods
 end
 
-RetroI18n.define do |l|
+RetroI18n.define do |l|  
+  l.store 'cs-CZ',     'Česky', 0 
   l.store 'da-DK',     'Dansk', 0 
   l.store 'de-DE',     'Deutsch', 0 
-  l.store 'de-DE-alt', 'Deutsch (Informell)', 1 
-  l.store 'de-AT',     'Deutsch (Österreich)', 2 
   l.store 'en-US',     'English (US)', 0 
   l.store 'en-GB',     'English (GB)', 1
   l.store 'fr-FR',     'Français', 0
