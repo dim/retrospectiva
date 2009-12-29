@@ -123,7 +123,9 @@ class GoalsController < ProjectAreaController
     end
   
     def find_goal
-      @goal = @milestone.goals.find(params[:id], :include => [:sprint])     
+      @goal = @milestone.goals.find params[:id], 
+        :include => [:sprint, :stories], 
+        :order => 'stories.title'     
     end
   
   

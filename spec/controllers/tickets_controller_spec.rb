@@ -543,6 +543,7 @@ describe TicketsController do
         :attachable => @ticket,
         :plain? => true,
         :inline? => true,
+        :redirect? => false,
         :readable? => true,
         :send_arguments => ['path', {}]
       Attachment.stub!(:find).and_return(@attachment)

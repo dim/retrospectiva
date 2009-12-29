@@ -6,6 +6,7 @@ class Goal < ActiveRecord::Base
   belongs_to :milestone
   belongs_to :sprint
   belongs_to :requester, :class_name => 'User'
+  has_many   :stories
 
   Priority = Struct.new(:id, :name)
 

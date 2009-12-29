@@ -18,7 +18,7 @@ describe GoalsController do
     
     @goal = mock_model(Goal, :sprint => @sprint)
     @goals = [@goal]
-    @goals.stub!(:find).with('37', :include => [:sprint]).and_return(@goal)
+    @goals.stub!(:find).with('37', :include=>[:sprint, :stories], :order=>"stories.title").and_return(@goal)
 
     @user = mock_model(User)
     @users = [@user]
@@ -103,7 +103,7 @@ describe GoalsController do
     it_assigns_the_milestone
 
     it "assigns the requested goal as @goal" do
-      @goals.should_receive(:find).with("37", {:include=>[:sprint]}).and_return(@goal)    
+      @goals.should_receive(:find).with("37", :include=>[:sprint, :stories], :order=>"stories.title").and_return(@goal)    
       do_get
       assigns[:goal].should equal(@goal)
     end
@@ -136,7 +136,7 @@ describe GoalsController do
     it_assigns_the_milestone
 
     it "assigns the requested goal as @goal" do
-      @goals.should_receive(:find).with("37", {:include=>[:sprint]}).and_return(@goal)    
+      @goals.should_receive(:find).and_return(@goal)    
       do_get
       assigns[:goal].should equal(@goal)
     end
@@ -198,7 +198,7 @@ describe GoalsController do
     
     describe "with valid params" do
       it "assigns the requested goal as @goal" do
-        @goals.should_receive(:find).with("37", {:include=>[:sprint]}).and_return(@goal)    
+        @goals.should_receive(:find).and_return(@goal)    
         do_put
         assigns[:goal].should equal(@goal)
       end
@@ -213,7 +213,7 @@ describe GoalsController do
 
     describe "with invalid params" do
       it "assigns the requested goal as @goal" do
-        @goals.should_receive(:find).with("37", {:include=>[:sprint]}).and_return(@goal)    
+        @goals.should_receive(:find).and_return(@goal)    
         do_put
         assigns[:goal].should equal(@goal)
       end
@@ -234,7 +234,7 @@ describe GoalsController do
     end
     
     it "destroys the requested goal" do
-      @goals.should_receive(:find).with("37", {:include=>[:sprint]}).and_return(@goal)    
+      @goals.should_receive(:find).and_return(@goal)    
       @goal.should_receive(:destroy)
       do_delete      
     end

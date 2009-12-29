@@ -107,7 +107,11 @@ class Story < ActiveRecord::Base
       :active
     end
   end
-    
+  
+  def current_status
+    status_on(Time.zone.today)
+  end
+  
   protected
     
     class ProgressIndex < ActiveSupport::OrderedHash

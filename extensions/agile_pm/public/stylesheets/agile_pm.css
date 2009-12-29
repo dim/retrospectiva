@@ -11,6 +11,9 @@
 .agile-pm table.sprint tbody tr td  { border-top:1px solid #bbb; }
 .agile-pm table.sprint table.goals tbody td { border-top:0; vertical-align:middle; }
 
+.agile-pm ul.stories .completed   { text-decoration: line-through; }
+.agile-pm ul.stories .active      { font-weight: bold; }
+
 .agile-pm .apm-nav-link { padding: 1px 4px; border:1px solid #ccc; font-weight: bold; }
 .agile-pm a.apm-nav-link { border-color:#ddd; }
 .agile-pm dl { margin-top:2px; }

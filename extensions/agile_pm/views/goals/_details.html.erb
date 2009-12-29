@@ -1,7 +1,19 @@
-<h1><%=h truncate(@goal.title) %></h1>  
-
-<% if @goal.description.present? -%>
-  <%= markup @goal.description %>
-<% else -%>
-  <p><%=_ 'No description' %></p>
-<% end -%>
+<div class="agile-pm">
+  <h1><%=h truncate(@goal.title) %></h1>  
+  
+  <% if @goal.description.present? -%>
+    <%= markup @goal.description %>
+  <% else -%>
+    <p><%=_ 'No description' %></p>
+  <% end -%>
+  
+  
+  <% if permitted?(:stories, :view) -%>
+    <h3><%=_ 'Stories' %></h3>
+    <ul class="stories">
+      <% @goal.stories.each do |story| -%>
+        <%= content_tag :li, h(story.title), :class => story.current_status %>
+      <% end -%>
+    </ul>
+  <% end -%>
+</div>
