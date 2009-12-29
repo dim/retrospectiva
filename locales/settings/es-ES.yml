@@ -99,6 +99,8 @@ es-ES:
               description: |-
                 Si su servidor de mail requiere autentificación, configure la contraseña en esta configuración.
                 Si deja este espacio en blanco, ningún tipo de autentificación va a ser hecho.
+            enable_starttls_auto: 
+              label: 
     content: 
       label: Content
       groups: 
@@ -148,6 +150,8 @@ es-ES:
             encourage_subscription: 
               label: "Encourage subscription"
               description: "Deberia la caja para comprobar la subscripción submit/comment del formulario habilitarse por default?"
+            notify_author: 
+              label: 
         user_assignment: 
           label: "User assignment"
           settings: 

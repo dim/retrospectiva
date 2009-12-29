@@ -131,6 +131,10 @@ ja-JP:
     # app/views/browse/revisions.html.erb
     Author: 作者
 
+    # Missing
+    # app/views/accounts/show.html.erb
+    Avatar: 
+
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
     Back: 戻る
@@ -459,6 +463,10 @@ ja-JP:
     # app/views/notifications/account_activation_note.text.plain.erb
     # app/views/notifications/account_validation.text.plain.erb
     "Full name": フルネーム
+
+    # Missing
+    # app/views/accounts/show.html.erb
+    "Get one avatar at": 
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
@@ -1019,6 +1027,10 @@ ja-JP:
     # app/views/tickets/form/_summary_and_description.html.erb
     # app/views/tickets/index.html.erb
     Summary: 要約
+
+    # Missing
+    # app/controllers/admin/repositories_controller.rb
+    "Support for {{system}} is not enabled.": 
 
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": 同期方法

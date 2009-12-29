@@ -59,6 +59,8 @@ ja-JP:
               label: 
             password: 
               label: 
+            enable_starttls_auto: 
+              label: 
     content: 
       label: 
       groups: 
@@ -96,6 +98,8 @@ ja-JP:
             subscribe_on_assignment: 
               label: 
             encourage_subscription: 
+              label: 
+            notify_author: 
               label: 
         user_assignment: 
           label: 

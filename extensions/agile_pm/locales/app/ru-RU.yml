@@ -24,6 +24,7 @@ ru-RU:
     # extensions/agile_pm/views/goals/new.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
     # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     Cancel: Отмена
 
@@ -78,6 +79,8 @@ ru-RU:
 
     # extensions/agile_pm/lib/goals_helper.rb
     # extensions/agile_pm/views/goals/_actions.html.erb
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
     Edit: Изменение
 
     # Missing
@@ -144,6 +147,9 @@ ru-RU:
     # extensions/agile_pm/views/goals/index.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     Milestones: Этапы
+
+    # extensions/agile_pm/ext_info.rb
+    Modify: Изменить
 
     # Missing
     # extensions/agile_pm/models/goal.rb
@@ -253,6 +259,7 @@ ru-RU:
     # extensions/agile_pm/views/stories/_sprint.html.erb
     # extensions/agile_pm/views/stories/backlog.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     # extensions/agile_pm/views/stories/no_sprints.html.erb
@@ -278,6 +285,10 @@ ru-RU:
     # Missing
     # extensions/agile_pm/lib/stories_controller.rb
     "Story was successfully created.": 
+
+    # Missing
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was successfully updated.": 
 
     # Missing
     # extensions/agile_pm/lib/stories_helper.rb
@@ -313,6 +324,7 @@ ru-RU:
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/goals/edit.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     Update: Обновлять
 
     # extensions/agile_pm/ext_info.rb

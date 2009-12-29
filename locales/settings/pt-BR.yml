@@ -99,6 +99,8 @@ pt-BR:
               description: |-
                 Se seu servidor de correio exigir autenticação, informe a senha neste campo.
                 Se você deixar este valor em branco, nenhuma autenticação será realizada.
+            enable_starttls_auto: 
+              label: 
     content: 
       label: Conteúdo
       groups: 

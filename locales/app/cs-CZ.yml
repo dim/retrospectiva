@@ -19,7 +19,7 @@ cs-CZ:
     "ATTENTION: Are you really sure, that you want to delete this project?": "POZOR: Jste si opravdu jistý, že chcete smazat tento projekt?"
 
     # app/views/admin/users/_groups.html.erb
-    "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "POZOR: Nastavení skupin bude ignorováno, pokud je vybrána položka 'Administrátor!'"    
+    "ATTENTION: Group settings will be ignored if the 'Administrator' option is selected!": "POZOR: Nastavení skupin bude ignorováno, pokud je vybrána položka 'Administrátor!'"
 
     # app/views/rescue/403.html.erb
     "Access forbidden (403)": "Přístup odepřen (403)"
@@ -63,7 +63,7 @@ cs-CZ:
     Administrator: Administrátor
 
     # app/views/changesets/show.html.erb
-    "Affected files": "Zasažené soubory" #TODO: Zasažené is not the right word !
+    "Affected files": "Zasažené soubory"
 
     # app/helpers/search_helper.rb
     # app/models/group.rb
@@ -112,7 +112,7 @@ cs-CZ:
     # app/views/tickets/_ticket_info.html.erb
     # app/views/tickets/form/_ticket_options.html.erb
     # app/views/tickets/index.html.erb
-    "Assigned To": "Přiřazeno"
+    "Assigned To": Přiřazeno
 
     # app/models/ticket_filter/custom/my_tickets.rb
     "Assigned to me": "Přiřazeno mně"
@@ -127,6 +127,9 @@ cs-CZ:
 
     # app/views/browse/revisions.html.erb
     Author: Autor
+
+    # app/views/accounts/show.html.erb
+    Avatar: Avatar
 
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
@@ -309,7 +312,7 @@ cs-CZ:
     "Dear user!": "Milí uživateli!"
 
     # app/views/admin/ticket_property_values/_property_value.html.erb
-    Default: Základní #TODO: Find better !
+    Default: Základní
 
     # app/models/group.rb
     "Default group cannot be deleted": "Základní skupina nemůže být smazána"
@@ -360,7 +363,7 @@ cs-CZ:
 
     # app/views/milestones/_form.html.erb
     # app/views/milestones/_milestone.html.erb
-    "Due on": "Ukončení"
+    "Due on": Ukončení
 
     # app/helpers/admin/ticket_property_values_helper.rb
     # app/helpers/milestones_helper.rb
@@ -442,7 +445,7 @@ cs-CZ:
     Finished: Dokončen
 
     # app/views/milestones/_form.html.erb
-    "Finished on": "Dokončení"
+    "Finished on": Dokončení
 
     # app/views/accounts/forgot_password.html.erb
     # app/views/notifications/password_reset_instructions.text.plain.erb
@@ -456,6 +459,10 @@ cs-CZ:
     # app/views/notifications/account_activation_note.text.plain.erb
     # app/views/notifications/account_validation.text.plain.erb
     "Full name": "Celé jméno"
+
+    # Missing
+    # app/views/accounts/show.html.erb
+    "Get one avatar at": 
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
@@ -518,7 +525,7 @@ cs-CZ:
     ID: ID
 
     # app/models/status.rb
-    "In progress": "Rozpracováno"
+    "In progress": Rozpracováno
 
     # app/views/admin/projects/_project.html.erb
     # app/views/admin/users/_user.html.erb
@@ -574,7 +581,7 @@ cs-CZ:
     "Logged in as {{name}}": "Přihlášen jako {{name}}"
 
     # app/views/sessions/destroy.html.erb
-    "Logged out": "Odhlášen"
+    "Logged out": Odhlášen
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/destroy.html.erb
@@ -687,7 +694,7 @@ cs-CZ:
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "No": "Ne"
+    "No": Ne
 
     # app/models/ticket_change.rb
     "No changes were made": "Nebyly provedeny žádné změny"
@@ -702,7 +709,7 @@ cs-CZ:
     None: Žádný
 
     # app/views/admin/extensions/index.html.erb
-    "Not Installed": "Nenainstalováno"
+    "Not Installed": Nenainstalováno
 
     # app/views/admin/ticket_property_values/index.html.erb
     Note: Poznámka
@@ -740,7 +747,7 @@ cs-CZ:
     "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazena revize {{latest}}."
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazuji root." #TODO: root?
+    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazuji root."
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
@@ -982,14 +989,14 @@ cs-CZ:
     Started: Začátek
 
     # app/views/milestones/_form.html.erb
-    "Started on": "Začátek"
+    "Started on": Začátek
 
     # app/models/ticket_filter/collection.rb
     # app/views/admin/ticket_property_values/_status_form.html.erb
     State: Stav
 
     # app/views/admin/ticket_property_values/_status_form.html.erb
-    Statement: Tvrzení #TODO: wtf is the translation ?
+    Statement: Tvrzení
 
     # app/helpers/tickets_helper.rb
     # app/models/status.rb
@@ -1014,8 +1021,12 @@ cs-CZ:
     # app/views/tickets/index.html.erb
     Summary: Shrnutí
 
+    # Missing
+    # app/controllers/admin/repositories_controller.rb
+    "Support for {{system}} is not enabled.": 
+
     # app/views/admin/repositories/_form.html.erb
-    "Sync callback": "Synchronizace"
+    "Sync callback": Synchronizace
 
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
     Tables: Tabulky
@@ -1034,7 +1045,7 @@ cs-CZ:
     Text: Text
 
     # app/controllers/accounts_controller.rb
-    "Thank you.": "Děkuji."
+    "Thank you.": Děkuji.
 
     # app/views/rescue/422.html.erb
     "The change you wanted was rejected.": "Změna kterou jeste žádal byla odmítnuta."
@@ -1178,7 +1189,7 @@ cs-CZ:
     # app/views/admin/users/edit.html.erb
     # app/views/notifications/account_activation_note.text.plain.erb
     # app/views/notifications/account_validation.text.plain.erb
-    Username: Uživatelské jméno
+    Username: "Uživatelské jméno"
 
     # app/views/accounts/forgot_password.html.erb
     # app/views/sessions/new.html.erb
@@ -1209,7 +1220,7 @@ cs-CZ:
     "Watch this ticket": "Sledovat tento lístek"
 
     # app/models/ticket_filter/custom/my_tickets.rb
-    "Watched by me": "Sleduji"
+    "Watched by me": Sleduji
 
     # app/views/rescue/500.html.erb
     "We're sorry, but something went wrong.": "Je nám líto, ale došlo k chybě."
@@ -1225,7 +1236,7 @@ cs-CZ:
 
     # app/helpers/admin/setup_helper.rb
     # app/helpers/format_helper.rb
-    "Yes": "Ano"
+    "Yes": Ano
 
     # app/views/sessions/logged_in.html.erb
     "You are logged in to the system.": "Jste přihlášen do systému."

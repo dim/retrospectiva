@@ -1,108 +1,128 @@
-de-DE:
+cs-CZ:
   application:
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     Author: Autor
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
     # extensions/retro_blog/models/blog_post.rb
     # extensions/retro_blog/views/blog/edit.html.erb
     # extensions/retro_blog/views/blog/index.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    Blog: Blog
+    Blog: 
 
+    # Missing
     # extensions/retro_blog/ext_info.rb
-    "Blog Posts": Blog-Einträge
+    "Blog Posts": 
 
+    # Missing
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "Blog für {{project}}"
+    "Blog for {{project}}": 
 
     # extensions/retro_blog/views/blog/edit.html.erb
-    Cancel: Abbrechen
+    Cancel: Zrušit
 
+    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    Categories: Kategorien
+    Categories: 
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
-    Comment: Kommentar
+    Comment: Komentář
 
+    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully created.": "Kommentar wurde erfolgreich erstellt."
+    "Comment was successfully created.": 
 
+    # Missing
     # extensions/retro_blog/lib/blog_comments_controller.rb
-    "Comment was successfully deleted.": "Kommentar wurde erfolgreich gelöscht."
+    "Comment was successfully deleted.": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_comments.html.erb
-    Comments: Kommentare
+    Comments: 
 
     # extensions/retro_blog/views/blog/_form.html.erb
-    Content: Inhalt
+    Content: Obsah
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
-    Create: Erstellen
+    Create: Vytvořit
 
+    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/new.html.erb
-    "Create Post": "Eintrag anlegen"
+    "Create Post": 
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    Delete: Löschen
+    Delete: Smazat
 
     # extensions/retro_blog/views/blog/_comment.html.erb
     # extensions/retro_blog/views/blog/show.html.erb
-    Edit: Bearbeiten
+    Edit: Upravit
 
     # extensions/retro_blog/views/blog/_comment_form.html.erb
-    Email: E-Mail
+    Email: E-mail
 
+    # Missing
     # extensions/retro_blog/views/blog/_comment_form.html.erb
     # extensions/retro_blog/views/blog/_comments.html.erb
-    "Leave a comment": "Kommentar hinterlassen"
+    "Leave a comment": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    "My Posts": "Meine Einträge"
+    "My Posts": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
-    Navigation: Navigation
+    Navigation: 
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully created.": "Eintrag wurde erfolgreich erstellt."
+    "Post was successfully created.": 
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully deleted.": "Eintrag wurde erfolgreich gelöscht."
+    "Post was successfully deleted.": 
 
+    # Missing
     # extensions/retro_blog/lib/blog_controller.rb
-    "Post was successfully updated.": "Eintrag wurde erfolgreich aktualisiert."
+    "Post was successfully updated.": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Read more": Weiterlesen
+    "Read more": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_navigation.html.erb
     # extensions/retro_blog/views/blog/_post.html.erb
-    "Recent Posts": "Letzte Einträge"
+    "Recent Posts": 
 
+    # Missing
     # extensions/retro_blog/views/blog/index.html.erb
-    "There are no posts available.": "Es sind keine Einträge vorhanden."
+    "There are no posts available.": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_form.html.erb
-    Title: Titel
+    Title: 
 
     # extensions/retro_blog/ext_info.rb
     # extensions/retro_blog/views/blog/edit.html.erb
-    Update: Bearbeiten
+    Update: Upravit
 
     # extensions/retro_blog/ext_info.rb
-    View: Anzeigen
+    View: Zobrazit
 
+    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "{{count}} Kommentare"
+    "{{count}} comments": 
 
+    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": "{{user}} am {{date}}"
+    "{{user}} on {{date}}": 
 

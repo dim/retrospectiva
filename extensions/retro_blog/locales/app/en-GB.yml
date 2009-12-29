@@ -11,9 +11,8 @@ en-GB:
     # extensions/retro_blog/views/blog/show.html.erb
     Blog: Blog
 
-    # Missing
     # extensions/retro_blog/ext_info.rb
-    "Blog Posts": 
+    "Blog Posts": "Blog Posts"
 
     # extensions/retro_blog/models/blog_post.rb
     "Blog for {{project}}": "Blog for {{project}}"
@@ -104,7 +103,6 @@ en-GB:
     # extensions/retro_blog/views/blog/_post.html.erb
     "{{count}} comments": "{{count}} comments"
 
-    # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": 
+    "{{user}} on {{date}}": "{{user}} on {{date}}"
 

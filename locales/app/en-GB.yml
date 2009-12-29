@@ -128,6 +128,9 @@ en-GB:
     # app/views/browse/revisions.html.erb
     Author: Author
 
+    # app/views/accounts/show.html.erb
+    Avatar: Avatar
+
     # app/views/milestones/edit.html.erb
     # app/views/milestones/new.html.erb
     Back: Back
@@ -456,6 +459,9 @@ en-GB:
     # app/views/notifications/account_activation_note.text.plain.erb
     # app/views/notifications/account_validation.text.plain.erb
     "Full name": "Full name"
+
+    # app/views/accounts/show.html.erb
+    "Get one avatar at": "Get one avatar at"
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/ticket_properties/index.html.erb
@@ -1013,6 +1019,9 @@ en-GB:
     # app/views/tickets/form/_summary_and_description.html.erb
     # app/views/tickets/index.html.erb
     Summary: Summary
+
+    # app/controllers/admin/repositories_controller.rb
+    "Support for {{system}} is not enabled.": "Support for {{system}} is not enabled."
 
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Sync callback"

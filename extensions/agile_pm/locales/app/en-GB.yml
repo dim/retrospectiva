@@ -22,6 +22,7 @@ en-GB:
     # extensions/agile_pm/views/goals/new.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
     # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     Cancel: Cancel
 
@@ -72,6 +73,8 @@ en-GB:
 
     # extensions/agile_pm/lib/goals_helper.rb
     # extensions/agile_pm/views/goals/_actions.html.erb
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
     Edit: Edit
 
     # extensions/agile_pm/views/stories/_form.html.erb
@@ -127,6 +130,9 @@ en-GB:
     # extensions/agile_pm/views/goals/index.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     Milestones: Milestones
+
+    # extensions/agile_pm/ext_info.rb
+    Modify: Modify
 
     # extensions/agile_pm/models/goal.rb
     "Must have": "Must have"
@@ -214,6 +220,7 @@ en-GB:
     # extensions/agile_pm/views/stories/_sprint.html.erb
     # extensions/agile_pm/views/stories/backlog.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     # extensions/agile_pm/views/stories/no_sprints.html.erb
@@ -234,6 +241,9 @@ en-GB:
 
     # extensions/agile_pm/lib/stories_controller.rb
     "Story was successfully created.": "Story was successfully created."
+
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was successfully updated.": "Story was successfully updated."
 
     # extensions/agile_pm/lib/stories_helper.rb
     "Take Over": "Take Over"
@@ -263,6 +273,7 @@ en-GB:
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/goals/edit.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     Update: Update
 
     # extensions/agile_pm/ext_info.rb

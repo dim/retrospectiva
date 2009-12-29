@@ -22,6 +22,7 @@ ja-JP:
     # extensions/agile_pm/views/goals/new.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
     # extensions/agile_pm/views/sprints/new.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     Cancel: 中止
 
@@ -72,6 +73,8 @@ ja-JP:
 
     # extensions/agile_pm/lib/goals_helper.rb
     # extensions/agile_pm/views/goals/_actions.html.erb
+    # extensions/agile_pm/views/stories/_popup.html.erb
+    # extensions/agile_pm/views/stories/show.html.erb
     Edit: 編集
 
     # extensions/agile_pm/views/stories/_form.html.erb
@@ -127,6 +130,9 @@ ja-JP:
     # extensions/agile_pm/views/goals/index.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     Milestones: マイルストーン一覧
+
+    # extensions/agile_pm/ext_info.rb
+    Modify: 変更
 
     # extensions/agile_pm/models/goal.rb
     "Must have": "FIXME: 必須(Must have)"
@@ -214,6 +220,7 @@ ja-JP:
     # extensions/agile_pm/views/stories/_sprint.html.erb
     # extensions/agile_pm/views/stories/backlog.html.erb
     # extensions/agile_pm/views/stories/charts/_stories.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     # extensions/agile_pm/views/stories/index.html.erb
     # extensions/agile_pm/views/stories/new.html.erb
     # extensions/agile_pm/views/stories/no_sprints.html.erb
@@ -234,6 +241,10 @@ ja-JP:
 
     # extensions/agile_pm/lib/stories_controller.rb
     "Story was successfully created.": ストーリを作成しました。
+
+    # Missing
+    # extensions/agile_pm/lib/stories_controller.rb
+    "Story was successfully updated.": 
 
     # extensions/agile_pm/lib/stories_helper.rb
     "Take Over": 引き継ぐ
@@ -263,6 +274,7 @@ ja-JP:
     # extensions/agile_pm/ext_info.rb
     # extensions/agile_pm/views/goals/edit.html.erb
     # extensions/agile_pm/views/sprints/edit.html.erb
+    # extensions/agile_pm/views/stories/edit.html.erb
     Update: 更新
 
     # extensions/agile_pm/ext_info.rb

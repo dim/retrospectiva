@@ -10,7 +10,7 @@ cs-CZ:
               label: "Jméno webu"
               description: |-
                 Prosím nastavte jméno webu (např. 'Můj projekt').
-                Toto jméno bude zobrazeno na stránkách a v e-mailech. 
+                Toto jméno bude zobrazeno na stránkách a v e-mailech.
             site_url: 
               label: "URL webu"
               description: |-
@@ -23,7 +23,7 @@ cs-CZ:
                 Tímto je umožněno oddělit různé instalce retrospectivy.
                 Klíč sezení smí obsahovat jen alfanumerické znaky a podtržítko.
             locale: 
-              label: "Lokalizace"
+              label: Lokalizace
               description: "Nastavte lokalizaci webu."
             session_expiration: 
               label: "Expirace sezení (minuty)"
@@ -47,8 +47,7 @@ cs-CZ:
               description: "Uživatelé se mohou sami registrovat do systému."
             assign_to_groups: 
               label: "Automaticky přidat nově registrované uživatele do těchto skupin (ID oddělená mezerami)"
-              description: |-
-                Je bráno v potaz jen pokud je povolena registrace. Neplatné hodnoty budou ignorovány.             
+              description: "Je bráno v potaz jen pokud je povolena registrace. Neplatné hodnoty budou ignorovány."
             activation: 
               label: "Aktivace uživatelských účtů"
               description: |-
@@ -69,7 +68,7 @@ cs-CZ:
           label: Obecné
           settings: 
             from: 
-              label: "Od"
+              label: Od
               description: |-
                 Nastavuje From: hlavičku odchozích e-mailů. Použijte buď adresu (např. 'neodpovidejte@mujprojekt.cz') nebo adresu se jménem (např. 'MůjProjekt - Oznámení <neodpovidejte@mujprojekt.cz>')
                 Prosím použijte adresu s FQDN, protože některé servery nedporují hlavičku From: bez FQDN.
@@ -89,7 +88,7 @@ cs-CZ:
               label: Přihlášení
               description: "Pokud Váš mail-server vyžaduje přihlášení."
             user_name: 
-              label: Uživatelské jméno
+              label: "Uživatelské jméno"
               description: |-
                 Uživatelské jméno pro přihlášení k mail severu, pokud je vyžadováno.
                 Pokud bude pole prázdné, nebude autentifikace použita.
@@ -98,11 +97,9 @@ cs-CZ:
               description: |-
                 Heslo pro přihlášení k mail severu, pokud je vyžadováno.
                 Pokud bude pole prázdné, nebude autentifikace použita.
-            enable_starttls_auto:
-              label: 'Automaticky detekovat STARTTLS'
-              description: |
-                Pokud true, bude použita detekce STARTTLS na Vašem serveru a použito, pokud bude dostupné. 
-
+            enable_starttls_auto: 
+              label: "Automaticky detekovat STARTTLS"
+              description: "Pokud true, bude použita detekce STARTTLS na Vašem serveru a použito, pokud bude dostupné."
     content: 
       label: Obsah
       groups: 
@@ -113,10 +110,10 @@ cs-CZ:
               label: "Datum a čas"
               description: "Prosím nastavte formát data a času."
             date: 
-              label: "Datum"
+              label: Datum
               description: "Formát pokud je zobrzaováno pouze datum"
             time: 
-              label: "Čas"
+              label: Čas
               description: "formát pokud je zobrazován pouze čas"
             changeset_logs: 
               label: "Záznamy změn"
@@ -125,7 +122,7 @@ cs-CZ:
           label: Styly
           settings: 
             default: 
-              label: "Jazyk"
+              label: Jazyk
             global_ticket_refs: 
               label: "Globální mapování lístků"
               description: |-
@@ -152,8 +149,8 @@ cs-CZ:
             encourage_subscription: 
               label: "Podporovan přihlášení"
               description: "Má uživateli automaticky nabídnuto přihlášení k odběru novinek?"
-            notify_author:
-              label: 'Obeznámit autora'
+            notify_author: 
+              label: "Obeznámit autora"
               description: "Má být autor také informován (pouze pokud je přihlášen)?"
         user_assignment: 
           label: "Přiřazení uživatelů"

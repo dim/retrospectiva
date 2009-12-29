@@ -99,11 +99,9 @@ en-GB:
               description: |-
                 If your mail server requires authentication, set the password in this setting.
                 If you leave this value blank, no authentication will be performed.
-            enable_starttls_auto:
-              label: 'Auto-detect STARTTLS'
-              description: |
-                When set to true, detects if STARTTLS is enabled in your SMTP server and starts to use it. 
-
+            enable_starttls_auto: 
+              label: "Auto-detect STARTTLS"
+              description: "When set to true, detects if STARTTLS is enabled in your SMTP server and starts to use it."
     content: 
       label: Content
       groups: 
@@ -153,8 +151,8 @@ en-GB:
             encourage_subscription: 
               label: "Encourage subscription"
               description: "Should the subscription check box in the ticket submit/comment form be enabled by default?"
-            notify_author:
-              label: 'Notify author'
+            notify_author: 
+              label: "Notify author"
               description: "Should the author of the ticket/change be notified as well (only if subscribed)?"
         user_assignment: 
           label: "User assignment"

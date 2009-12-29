@@ -4,7 +4,7 @@ de-DE:
       label: Allgemein
       groups: 
         basic: 
-          label:  Grundeinstellungen
+          label: Grundeinstellungen
           settings: 
             site_name: 
               label: "Name der Webseite"
@@ -37,7 +37,7 @@ de-DE:
             expiration: 
               label: 
     email: 
-      label: "E-Mail-Einstellungen"
+      label: E-Mail-Einstellungen
       groups: 
         general: 
           label: Allgemein
@@ -45,7 +45,7 @@ de-DE:
             from: 
               label: Absenderadresse
         smtp: 
-          label: "SMTP-Server"
+          label: SMTP-Server
           settings: 
             address: 
               label: Adresse
@@ -56,7 +56,7 @@ de-DE:
             authentication: 
               label: Authentifizierung
             user_name: 
-              label:  Benutzername
+              label: Benutzername
             password: 
               label: Passwort
             enable_starttls_auto: 
@@ -69,7 +69,7 @@ de-DE:
           settings: 
             datetime: 
               label: "Datum und Uhrzeit"
-            date:
+            date: 
               label: Datum
             time: 
               label: Zeit
@@ -100,7 +100,7 @@ de-DE:
             encourage_subscription: 
               label: 
             notify_author: 
-              label: 'Autor benachrichtigen'
+              label: "Autor benachrichtigen"
         user_assignment: 
           label: 
           settings: 
