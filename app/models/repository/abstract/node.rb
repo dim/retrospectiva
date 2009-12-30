@@ -5,9 +5,11 @@
 class Repository::Abstract::Node
   extend ActiveSupport::Memoizable
 
-  class InvalidPath < StandardError
+  class NodeError < StandardError
   end
-  class InvalidPathForRevision < StandardError
+  class InvalidPath < NodeError
+  end
+  class InvalidPathForRevision < NodeError
   end
 
   DEFAULT_MIME_TYPE = MIME::Types['application/octet-stream'].first.freeze

@@ -54,14 +54,14 @@ describe Repository::Git do
   describe 'bulk synchronization (incremental)' do
     def do_sync
       @repository.changesets.last.destroy
-      @repository.changesets.reload.should have(9).records
+      @repository.changesets.reload.should have(10).records
       @repository.sync_changesets
       @repository.changesets.reload      
     end
     
     it 'should correctly add all missing changesets' do
       do_sync
-      @repository.changesets.should have(10).records
+      @repository.changesets.should have(11).records
     end
     
   end
@@ -91,7 +91,7 @@ describe Repository::Git do
   end
   
   it 'should correctly extract the latest revision' do
-    @repository.latest_revision.should == 'fe8566ec42808bdce1795d0759ee1e4a49bd2715'
+    @repository.latest_revision.should == '9d55e12f976bd5226445b6940b3210dde253c8e2'
   end
 
   describe 'creating a unified diff' do

@@ -20,13 +20,14 @@ class Change < ActiveRecord::Base
   end
   memoize :previous_revision
 
-  def unified_diff
-    if @unified_diff.nil? && diffable?
+  def unified_diff    
+    begin
       node = repository.node(path, revision)
       if node.size < self.class.maximum_diff_size
         @unified_diff = repository.unified_diff(path, previous_revision, revision)
       end
-    end
+    rescue Repository::Abstract::Node::NodeError
+    end if @unified_diff.nil? && diffable?
     @unified_diff ||= ''
   end
   
@@ -43,7 +44,7 @@ class Change < ActiveRecord::Base
   end
   
   protected
-  
+
     def before_validation
       if changeset
         self.repository_id = changeset.repository_id

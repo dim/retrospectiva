@@ -899,4 +899,17 @@ git_fe8566_cp21:
   repository_id: 2
   from_revision: f4979fce71cc0c2ba39d5578502d41cc7c24d64a
   path: retro-copied/script/server
-  
+git_9d55e_a01:
+  name: A
+  id: 31101
+  changeset_id: 310
+  revision: 9d55e12f976bd5226445b6940b3210dde253c8e2
+  repository_id: 2
+  path: .gitmodules
+git_9d55e_a02:
+  name: A
+  id: 31102
+  changeset_id: 310
+  revision: 9d55e12f976bd5226445b6940b3210dde253c8e2
+  repository_id: 2
+  path: retrospectiva/vendor/retro

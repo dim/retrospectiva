@@ -166,4 +166,11 @@ git_large_copy:
   log: * copied retrospectiva/.
   author: kou
   created_at: 2008-02-07 13:21:14
+git_submodule:
+  id: 310
+  revision: 9d55e12f976bd5226445b6940b3210dde253c8e2
+  repository_id: 2
+  log: Added submodule
+  author: Dimitrij Denissenko
+  created_at: 2009-12-30 08:39:44
   
