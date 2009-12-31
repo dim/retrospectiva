@@ -18,21 +18,22 @@
 /* Markup specific settings
 -------------------------------------------------------------- */
 
-.markup       { margin: 0 0 1.5em; }
-.markup p     { line-height: 1.5; margin-bottom: 1em; clear:left; } 
-.markup p img { float: left; margin: 0.3em 1.5em 1.5em 0; padding: 1px; border:1px solid #ccc; } 
+.markup        { margin: 0 0 1.5em; }
+.markup p      { line-height: 1.5; margin-bottom: 1em; clear:left; } 
+.markup p code { background: #eee; padding: 1px; border: 1px dashed #666; } 
+.markup p img  { float: left; margin: 0.3em 1.5em 1.5em 0; padding: 1px; border:1px solid #ccc; } 
 .markup h2,
 .markup h3,    
 .markup h4,
 .markup h5,
-.markup h6    { clear:left; margin-bottom:0.3em; }
+.markup h6     { clear:left; margin-bottom:0.3em; }
 .markup h1,
-.markup h2    { color:#444; padding-top: 0.25em; }
-.markup li    { margin-bottom:0.1em; }
+.markup h2     { color:#444; padding-top: 0.25em; }
+.markup li     { margin-bottom:0.1em; }
 .markup table td, 
 .markup table th { vertical-align: middle; }
-.markup table { border: 1px solid #bbb; padding: 1px; }
-.markup pre   { overflow:auto; } 
+.markup table  { border: 1px solid #bbb; padding: 1px; }
+.markup pre    { overflow:auto; } 
 
 .markup-preview {
   width: 740px; height: 300px;
