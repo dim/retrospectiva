@@ -445,7 +445,7 @@ fr-FR:
     Finished: Fini
 
     # app/views/milestones/_form.html.erb
-    "Finished on": "Fini me"
+    "Finished on": "Fini le"
 
     # app/views/accounts/forgot_password.html.erb
     # app/views/notifications/password_reset_instructions.text.plain.erb
@@ -624,7 +624,7 @@ fr-FR:
     "Milestone was successfully deleted.": "Le jalon a bien été supprimé."
 
     # app/controllers/milestones_controller.rb
-    "Milestone was successfully updated.": "La jalon a bien été supprimé."
+    "Milestone was successfully updated.": "La jalon a bien été modifié."
 
     # app/controllers/milestones_controller.rb
     # app/core_info.rb
