@@ -12,9 +12,9 @@ module Retro
 
     attr_reader :words, :phrases
     def initialize(pattern)
-      pattern = pattern.to_s.dup
+      pattern  = pattern.to_s.dup
       @phrases = extract_phrases!(pattern)
-      @words = extract_words!(pattern)
+      @words   = extract_words!(pattern)
     end
       
     def tokens
@@ -59,7 +59,7 @@ module Retro
   
         def initialize(value)
           @method_code = value.starts_with?('-') ? :x : :i
-          super(value.gsub(/^[\+\-]/, ''))
+          super(value.gsub(/^[\+\-]/, '').downcase)
         end
         
         def inspect
@@ -95,7 +95,7 @@ module Retro
       def extract_words!(pattern)
         pattern.split(/\s+/).map do |word|
           word.strip!
-          word.blank? ? nil : Token.new(word.downcase)
+          word.blank? ? nil : Token.new(word)
         end.compact
       end
         
