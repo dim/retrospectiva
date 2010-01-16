@@ -8,6 +8,10 @@ class Goal < ActiveRecord::Base
   belongs_to :requester, :class_name => 'User'
   has_many   :stories
 
+  before_validation_on_create :assign_current_user
+  validate :sprint_matches_milestone
+  before_update :keep_stories_in_sync
+
   Priority = Struct.new(:id, :name)
 
   cattr_reader :priorities
@@ -30,12 +34,18 @@ class Goal < ActiveRecord::Base
     
   protected
   
-    def before_validation_on_create
+    def keep_stories_in_sync
+      stories.each do |story|
+        story.pending? ? story.update_attribute(:sprint_id, sprint_id) : story.update_attribute(:goal_id, nil)
+      end if sprint_id_changed?
+    end
+  
+    def assign_current_user
       self.requester_id ||= User.current.id unless User.current.public?
       true
     end
 
-    def validate
+    def sprint_matches_milestone
       if sprint and milestone and sprint.milestone != milestone
         errors.add :sprint_id, :invalid
       end

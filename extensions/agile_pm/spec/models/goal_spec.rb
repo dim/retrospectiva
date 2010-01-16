@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Goal do
-  fixtures :milestones, :projects, :users, :goals, :sprints
+  fixtures :milestones, :projects, :users, :goals, :sprints, :stories
   
   it 'should belong to milestone' do
     goals(:must_have).should belong_to(:milestone)
@@ -31,6 +31,28 @@ describe Goal do
   it 'should ensure that sprint and milestone are matching' do
     goals(:must_have).milestone = milestones(:completed)
     goals(:must_have).should have(1).error_on(:sprint_id)
+  end
+
+  describe 'if sprint association is updated' do
+    before do
+      goals(:current).sprint.should == sprints(:current)
+      goals(:current).should have(4).stories
+      goals(:current).sprint = sprints(:future)
+      goals(:current).save.should be(true)
+    end
+
+    it "should 'detach' all started/assigned stories (keeping them assigned to their sprint)" do
+      stories(:active, :almost_complete, :complete).each do |story|
+        story.goal.should be_nil
+        story.sprint.should == sprints(:current)
+      end
+    end
+
+    it 'should take all pending stories along' do
+      goals(:current).stories(true).should == [stories(:pending)]
+      stories(:pending).sprint.should == sprints(:future)
+    end
+
   end
 
   describe 'on create' do

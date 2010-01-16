@@ -10,6 +10,12 @@ should_have:
   milestone: upcoming
   sprint: previous
   requester: creator
+current: 
+  title: A Current Goal
+  priority_id: 3
+  milestone: upcoming
+  sprint: current
+  requester: creator
 unassigned: 
   title: This one is unassigned
   priority_id: 2

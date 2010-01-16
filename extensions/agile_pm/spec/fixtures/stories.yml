@@ -4,7 +4,7 @@ pending:
   revised_hours: 16
   sprint: current
   creator: creator
-
+  goal: current
 
 #  active:
 #
@@ -15,6 +15,7 @@ active:
   estimated_hours: 12
   revised_hours: 12
   sprint: current
+  goal: current
   creator: creator
   assigned: worker
   started_at: <%= 23.hours.ago.to_s(:db) %>  
@@ -31,6 +32,7 @@ almost_complete:
   estimated_hours: 16
   revised_hours: 24
   sprint: current
+  goal: current
   creator: creator
   assigned: worker
   started_at: <%= 3.days.ago.to_s(:db) %>  
@@ -46,6 +48,7 @@ complete:
   estimated_hours: 8
   revised_hours: 7
   sprint: current
+  goal: current
   creator: creator
   assigned: worker
   started_at: <%= 5.days.ago.to_s(:db) %>  
