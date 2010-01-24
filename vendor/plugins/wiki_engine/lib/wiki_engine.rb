@@ -18,7 +18,7 @@ module WikiEngine
     # Returns the HTML formatted markup
     def markup(text, engine = nil)
       engine = select_engine(engine)
-      text.blank? || engine.nil? ? '' : engine.markup(text)
+      text.blank? ? '' : engine.markup(text)
     end
   
     # This method can be called in environment.rb to override the default engine
