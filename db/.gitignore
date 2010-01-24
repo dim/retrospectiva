@@ -1,2 +1,3 @@
 *.sql
 schema.rb
+*.sqlite3
