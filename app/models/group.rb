@@ -16,6 +16,11 @@ class Group < ActiveRecord::Base
 
   serialize :permissions, Hash
 
+  def initialize(*args)
+    super(*args)
+    
+    self.permissions = self.class.default_group.permissions if new_record?
+  end
     
   def self.default_group
     Group.find_by_name('Default')
@@ -24,7 +29,7 @@ class Group < ActiveRecord::Base
   # Returns true if group is the Default group, else false
   def default?
     ( new_record? ? name : name_was ) == 'Default'
-  end   
+  end
   
   # Return true is the group has a permission for a resource, else false
   def permitted?(resource, action)
