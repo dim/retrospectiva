@@ -4,12 +4,12 @@ module WikiEngine
     
     def parse_wiki_word_link(match_data, &block)
       engine = select_engine(engine)
-      engine.blank? ? match_data[0] : supported_engines[engine].parse_wiki_word_link(match_data, &block)
+      engine.blank? ? match_data[0] : engine.parse_wiki_word_link(match_data, &block)
     end
     
     def wiki_word_pattern(engine = nil)
       engine = select_engine(engine)
-      engine.blank? ? %r{} : supported_engines[engine].wiki_word_pattern
+      engine.blank? ? %r{} : engine.wiki_word_pattern
     end
   
   end
