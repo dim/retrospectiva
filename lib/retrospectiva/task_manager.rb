@@ -25,7 +25,10 @@ module Retrospectiva
       
       pending.each do |task|
         rake_task = Rake.application.lookup("retro:#{task.name}")
-        next unless rake_task
+        unless rake_task
+          logger.error "[!] No rake task for '#{task.name}'"
+          next
+        end
   
         task.log_run(logger) do
           rake_task.invoke        
