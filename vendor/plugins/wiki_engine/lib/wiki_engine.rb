@@ -15,14 +15,10 @@ module WikiEngine
     end
     alias_method :available_engine_names, :supported_engine_names
 
-    def default
-      supported_engines[default_engine]
-    end
-
     # Returns the HTML formatted markup
     def markup(text, engine = nil)
       engine = select_engine(engine)
-      text.blank? || engine.blank? ? '' : supported_engines[engine].markup(text)
+      text.blank? || engine.nil? ? '' : engine.markup(text)
     end
   
     # This method can be called in environment.rb to override the default engine
@@ -31,7 +27,7 @@ module WikiEngine
       if !self.supported_engines.include?(engine)
         raise "The selected WIKI engine '#{engine}' is invalid! Supported engines: #{supported_engines.keys.inspect}"
       elsif supported_engines[engine]
-        @@default_engine = engine
+        @@default_engine = supported_engines[engine]
       elsif supported_engines.values.compact.any?
         @@default_engine = supported_engines.values.first
       else
@@ -44,7 +40,7 @@ module WikiEngine
 
     # Returns the default engine
     def default_engine
-      @@default_engine ? @@default_engine : 'retro'
+      @@default_engine ? @@default_engine : supported_engines['retro']
     end
     alias_method :default_markup, :default_engine
 
@@ -97,7 +93,7 @@ module WikiEngine
     private      
 
       def select_engine(engine = nil)
-        engine && supported_engines[engine] ? engine : default_engine        
+        engine && supported_engines[engine] ? supported_engines[engine] : default_engine        
       end
     
   end

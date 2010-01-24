@@ -7,7 +7,7 @@ class MarkupController < ApplicationController
   end
   
   def reference
-    @examples = WikiEngine.default.markup_examples
+    @examples = WikiEngine.default_engine.markup_examples
     @examples[_('Links')] += [
       "A solution to this problem can be found\nin changeset \[712\]",
       "This problem is described in Ticket [#3733]",    
