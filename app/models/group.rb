@@ -16,12 +16,6 @@ class Group < ActiveRecord::Base
 
   serialize :permissions, Hash
 
-  def initialize(*args)
-    super(*args)
-    
-    self.permissions = self.class.default_group.permissions if new_record?
-  end
-    
   def self.default_group
     Group.find_by_name('Default')
   end
