@@ -11,9 +11,8 @@ module WikiEngine
     # Returns an array of system available WIKI engines
     # eg. ['retro', 'rdoc', 'textile', 'markdown']
     def supported_engine_names
-      supported_engines.map { |(k, v)| v ? k : nil }.compact
+      supported_engines.map {|k, v| v ? k : nil }.compact
     end
-    alias_method :available_engine_names, :supported_engine_names
 
     # Returns the HTML formatted markup
     def markup(text, engine = nil)
@@ -24,7 +23,7 @@ module WikiEngine
     # This method can be called in environment.rb to override the default engine
     def default_engine=(engine)
       engine = engine.to_s
-      if !self.supported_engines.include?(engine)
+      if !supported_engines.include?(engine)
         raise "The selected WIKI engine '#{engine}' is invalid! Supported engines: #{supported_engines.keys.inspect}"
       elsif supported_engines[engine]
         @@default_engine = supported_engines[engine]
@@ -33,16 +32,14 @@ module WikiEngine
       else
         raise "The selected WIKI default engine '#{engine}' is missing! " + 
               "Please install required GEM or library or switch to another engine. " + 
-              "Available engines: #{available_engine_names.inspect}" 
+              "Supported engines: #{supported_engine_names.inspect}" 
       end
     end
-    alias_method :default_markup=, :default_engine=
 
     # Returns the default engine
     def default_engine
       @@default_engine ? @@default_engine : supported_engines['retro']
     end
-    alias_method :default_markup, :default_engine
 
     # Initializes the WikiEngine. Looks for available libraries. A default engine can be specified.
     def init(default = :retro)
