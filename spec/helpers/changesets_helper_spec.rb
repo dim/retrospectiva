@@ -5,7 +5,7 @@ describe ChangesetsHelper do
   
   before do
     helper.stub!(:relativize_path).and_return {|path| path }
-    helper.stub!(:link_to_show_file).and_return {|change, *other| change.path }
+    helper.stub!(:link_to_show_file).and_return {|change, *args| change ? change.path : nil }
     helper.stub!(:link_to_quick_diff).and_return {|changeset, change| %Q(<a href="DIFF">#{change.path}</a>) }    
   end
   

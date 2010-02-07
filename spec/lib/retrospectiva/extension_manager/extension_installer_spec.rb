@@ -82,7 +82,7 @@ describe Retrospectiva::ExtensionManager::ExtensionInstaller do
   describe 'downloading extensions' do
 
     it 'should use git to clone extension' do
-      target = Rails.root.join('extensions', 'openid_auth')
+      target = ::Rails.root.join('extensions', 'openid_auth')
       installer.should_receive(:system).
         with("git clone --depth 1 git://github.com/dim/retrospectiva.openid_auth.git #{target}").
         and_return(false)

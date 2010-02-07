@@ -132,6 +132,19 @@ inline:
     assert_equal(html, markup)
   end
 
+  def test_code_parts_with_links
+    text = %Q({{{    
+<scheduler>http://setiboinc.ssl.berkeley.edu/sah_cgi/cgi</scheduler>
+<link rel="boinc_scheduler" href="http://setiboinc.ssl.berkeley.edu/sah_cgi/cgi">
+}}}
+)
+    html = %Q(<pre><code>&lt;scheduler&gt;http://setiboinc.ssl.berkeley.edu/sah_cgi/cgi&lt;/scheduler&gt;
+&lt;link rel=&quot;boinc_scheduler&quot; href=&quot;http://setiboinc.ssl.berkeley.edu/sah_cgi/cgi&quot;&gt;</code></pre>)
+
+    markup = WikiEngine.markup(text, 'retro')    
+    assert_equal(html, markup)
+  end
+
   def test_code_parts_only
     text = %Q({{{
 inline:

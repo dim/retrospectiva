@@ -168,4 +168,22 @@ describe FormatHelper do
     end
   end
 
+  describe 'markup' do
+
+    it 'should transform content' do
+      helper.markup("h1. Title\n\nSome content").should == "<h1>Title</h1>\n<p>Some content</p>"
+    end
+
+    it 'should auto-link content' do
+      helper.markup("Visit http://retrospectiva.org for more...").
+        should == "<p>Visit <a href=\"http://retrospectiva.org\">http://retrospectiva.org</a> for more&#8230;</p>"
+    end
+
+    it 'should corretly auto-link in code-blocks' do
+      helper.markup(%({{{\n<a href="http://retrospectiva.org/wiki/Retrospectiva" />\n}}})).
+        should == %(<pre><code>&lt;a href=&quot;<a href="http://retrospectiva.org/wiki/Retrospectiva">http://retrospectiva.org/wiki/Retrospectiva</a>&quot; /&gt;\n</code></pre>)
+    end
+
+  end
+
 end
