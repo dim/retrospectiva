@@ -14,7 +14,8 @@ module ActionView::Helpers::TextHelper
         href
       else
         # ADDED - START
-        if href.sub!(/&\w+;$/, '')
+        href.sub!(/&amp;/, '&')
+        if href.sub!(/&(quot|lt|gt);.*$/, '')
           punctuation = $&
         end
         # ADDED - END
@@ -30,7 +31,7 @@ module ActionView::Helpers::TextHelper
         link_text = block_given?? yield(href) : href
         href = 'http://' + href unless href.index('http') == 0
 
-        content_tag(:a, h(link_text), link_attributes.merge('href' => href)) + punctuation
+        content_tag(:a, escape_once(link_text), link_attributes.merge('href' => href)) + punctuation
       end
     end
   end

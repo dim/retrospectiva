@@ -182,7 +182,10 @@ describe FormatHelper do
     it 'should corretly auto-link in code-blocks' do
       helper.markup(%({{{\n<a href="http://retrospectiva.org/wiki/Retrospectiva" />\n}}})).
         should == %(<pre><code>&lt;a href=&quot;<a href="http://retrospectiva.org/wiki/Retrospectiva">http://retrospectiva.org/wiki/Retrospectiva</a>&quot; /&gt;\n</code></pre>)
+      helper.markup(%({{{\n<scheduler>http://retrospectiva.org/wiki/Retrospectiva?a=1&amp;b=2</scheduler>\n}}})).
+        should == %(<pre><code>&lt;scheduler&gt;<a href="http://retrospectiva.org/wiki/Retrospectiva?a=1&amp;b=2">http://retrospectiva.org/wiki/Retrospectiva?a=1&amp;b=2</a>&lt;/scheduler&gt;\n</code></pre>)
     end
+    
 
   end
 
