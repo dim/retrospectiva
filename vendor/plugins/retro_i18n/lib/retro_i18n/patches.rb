@@ -4,12 +4,14 @@ I18n.module_eval do
   class << self
     protected
       
-      def normalize_translation_keys(locale, key, scope)
-        separator = key.to_s =~ /\>\>\>/ ?  /\>\>\>/ : /\./
-        keys = [locale] + Array(scope) + [key]
-        keys = keys.map{|k| k.to_s.split(separator) }
-        keys.flatten.map{|k| k.to_sym}
+      def normalize_keys(locale, key, scope, separator = nil)
+        separator ||= key.to_s =~ /\>\>\>/ ?  /\>\>\>/ : /\./
+        keys = [locale] + Array(scope) + Array(key)
+        keys = keys.map { |k| k.to_s.split(separator) }
+        keys = keys.flatten - ['']
+        keys.map { |k| k.to_sym }
       end
+
   end
 end
 
