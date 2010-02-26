@@ -17,7 +17,7 @@ class TicketChange < ActiveRecord::Base
   
   retro_previewable do |r|
     r.item do |i, change, options|
-      project = options[:project] || Project.current
+      project = options[:project] || change.project
       i.title = _('Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}', :id => change.ticket.id, :status => change.ticket.status.name, :author => change.author, :summary => change.ticket.summary)
       
       updates = change.updates.map do |attr, update|

@@ -151,7 +151,7 @@ describe Notifications do
     fixtures :projects, :tickets, :users, :statuses, :priorities
     
     before do
-      Project.stub!(:current).and_return(projects(:retro))
+      Project.stub!(:current).and_return(nil)
       @ticket = tickets(:agents_ticket)
       @ticket.stub!(:created_at).and_return(Time.local(2008, 1, 1))
     end
@@ -182,7 +182,7 @@ describe Notifications do
     fixtures :projects, :tickets, :ticket_changes, :users, :statuses, :priorities
     
     before do
-      Project.stub!(:current).and_return(projects(:retro))
+      Project.stub!(:current).and_return(nil)
       @change = ticket_changes(:special_update_last)
     end
     
