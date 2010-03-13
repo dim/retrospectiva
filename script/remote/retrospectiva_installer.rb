@@ -5,7 +5,7 @@ require 'uri'
 require 'yaml'
 
 class RemoteInstaller
-  BRANCH = ARGV[0] || "master"
+  BRANCH = ARGV[0] || "2-0-stable"
   RETRO_URL    = "http://github.com/dim/retrospectiva/tarball/#{BRANCH}"
   RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz"
   RAKE_URL     = "http://rubyforge.org/frs/download.php/56872/rake-0.8.7.tgz"
