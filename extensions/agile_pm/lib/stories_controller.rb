@@ -18,7 +18,7 @@ class StoriesController < ProjectAreaController
     :view   => ['home', 'index', 'show', 'chart', 'backlog'],
     :create => ['new', 'create'],
     :modify => ['edit', 'update'],
-    :update => ['accept', 'complete', 'reopen', 'comment', 'update_progress'],
+    :update => ['accept', 'complete', 'reopen', 'comment', 'update_progress', 'revise_hours'],
     :delete => ['destroy']
 
   before_filter :find_sprint, :except => [:home]  

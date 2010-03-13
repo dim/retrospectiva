@@ -4,7 +4,7 @@ describe User do
   fixtures :milestones, :projects, :users, :goals, :sprints, :stories, :story_events
   
   it 'should have many requested goals' do
-    users(:creator).should have(3).requested_goals
+    users(:creator).should have(4).requested_goals
   end
 
   it 'should have many created stories' do
