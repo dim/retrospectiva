@@ -1,5 +1,6 @@
 require 'retrospectiva/task_manager/task'
 require 'retrospectiva/task_manager/parser'
+require 'fileutils'
 
 module Retrospectiva
   class TaskManager
