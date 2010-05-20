@@ -154,14 +154,19 @@ module ApplicationHelper
 
     def gravatar(email, options = {})
       size = options.delete(:size) || 40
-      options.reverse_merge!(:class => 'frame', :alt => '')
-      image_tag "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.to_s.downcase)}.png?s=#{size}", options
+      options.reverse_merge!(:class => 'frame', :alt => '', :secure => site_is_secure)
+      hostname = "http" + (options.delete(:secure) ? "s://secure" : "://www") + ".gravatar.com"
+      image_tag hostname + "/avatar/#{Digest::MD5.hexdigest(email.to_s.downcase)}.png?s=#{size}", options
     end
 
   private
     
     def enkode_token_tag(tag)
       enkode(tag)      
+    end
+
+    def site_is_secure
+      /^https/.match( RetroCM[:general][:basic][:site_url].to_s )
     end
     
     def token_tag
