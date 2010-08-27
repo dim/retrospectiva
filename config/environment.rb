@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   # They can then be installed with "rake gems:install" on new installations.
   config.gem 'rack', :lib => 'rack', :version => '~> 1.0.0'
   config.gem 'will_paginate', :lib => 'will_paginate', :version => '>= 2.3.8'
-  config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 1.0.3' 
+  config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 2.0.4'
   config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
   
   # Only load the plugins named here, in the order given. By default, all plugins 

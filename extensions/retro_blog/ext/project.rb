@@ -7,9 +7,9 @@ Project.class_eval do
 
     def categories
       records = find :all,
-        :select => "DISTINCT #{Tag.quoted_table_name}.name",
+        :select => "DISTINCT #{ActsAsTaggableOn::Tag.quoted_table_name}.name",
         :joins => :categories,
-        :order => "#{Tag.quoted_table_name}.name"
+        :order => "#{ActsAsTaggableOn::Tag.quoted_table_name}.name"
       records.map(&:name) 
     end
     
