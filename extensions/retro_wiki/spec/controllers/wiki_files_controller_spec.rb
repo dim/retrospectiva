@@ -46,7 +46,7 @@ describe WikiFilesController do
   describe 'GET /show' do
     
     before do
-      @file = mock_model(WikiFile, :readable? => true, :send_arguments => ['path', {}], :created_at => 2.days.ago)
+      @file = mock_model(WikiFile, :readable? => true, :send_arguments => ['path', {}], :created_at => 2.days.ago, :redirect? => false)
       @files_proxy.stub!(:find_by_wiki_title!).and_return(@file)
       controller.stub!(:send_file) 
       controller.stub!(:render) 
@@ -93,7 +93,7 @@ describe WikiFilesController do
   describe 'GET /new' do
     
     before do
-      @file = stub_model(WikiFile).as_new_record
+      @file = mock_model(WikiFile, :new_record? => true)
       @files_proxy.stub!(:new).and_return(@file)
     end
     
@@ -119,7 +119,7 @@ describe WikiFilesController do
   describe 'POST /create' do
     
     before do
-      @file = stub_model(WikiFile, :save => true).as_new_record
+      @file = mock_model(WikiFile, :new_record? => true, :save => true, :wiki_title= => nil)
       @files_proxy.stub!(:new).and_return(@file)
     end
     
