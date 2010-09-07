@@ -28,7 +28,7 @@ class Admin::TicketPropertyValuesController < AdminAreaController
     respond_to do |format|
       if @ticket_property.save      
         flash[:notice] = @property_type.global? ?      
-          _('{{record}} was successfully created.', :record => @property_type.name) :
+          _('%{record} was successfully created.', :record => @property_type.name) :
           _('Property value was successfully created.')
         format.html { redirect_to admin_project_ticket_property_values_path(@project, @property_type) }
         format.xml  { render :xml => @ticket_property, :status => :created, :location => admin_project_ticket_property_values_path(@project, @property_type) }
@@ -79,7 +79,7 @@ class Admin::TicketPropertyValuesController < AdminAreaController
   protected 
 
     def param_name
-      @property_type.global? ? @property_type.class_name.underscore : :ticket_property
+      @property_type.global? ? @property_type.model_name.singular : :ticket_property
     end
   
     def find_project

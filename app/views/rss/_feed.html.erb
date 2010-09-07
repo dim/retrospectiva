@@ -6,7 +6,7 @@
     <%= render :partial => 'description', :locals => { 
 					:title => _('All'), 
 					:url => feed_url(project_url(project)), 
-					:description => _('All feeds for {{project}}', :project => project.name)
+					:description => _('All feeds for %{project}', :project => project.name)
 				} %>
 
   <% else -%>

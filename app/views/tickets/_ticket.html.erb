@@ -13,7 +13,7 @@
     </div>
     <div class="prepend-1">
       <h6><%= link_to h(truncate(ticket.summary, :length => 50)), project_ticket_path(Project.current, ticket) %></h6>
-      <span class="small quieter"><%=_ 'Created {{period}} ago by {{author}}', :period => time_ago_in_words(ticket.created_at), :author => truncate(ticket.author) %></span>
+      <span class="small quieter"><%=_ 'Created %{period} ago by %{author}', :period => time_ago_in_words(ticket.created_at), :author => truncate(ticket.author) %></span>
     </div>
   </td>
   <td class="ticket-col-assigned-to" title="<%= h(ticket.assigned_user.name) if ticket.assigned_user %>">

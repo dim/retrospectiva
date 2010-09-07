@@ -69,7 +69,7 @@ module WikiEngine
       tokenizer = HTML::Tokenizer.new(text)
       open_pre  = false
       
-      returning [] do |result|           
+      [].tap do |result|           
         
         while token = tokenizer.next
           node = HTML::Node.parse(nil, 0, 0, token, false)

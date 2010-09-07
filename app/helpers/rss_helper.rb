@@ -12,7 +12,7 @@ module RssHelper
   end
 
   def feed_url(url)
-    returning url + '.rss' do |full_url|
+    (url + '.rss').tap do |full_url|
       full_url << ( '?' + { :private => User.current.private_key }.to_query ) unless User.current.public?
     end
   end

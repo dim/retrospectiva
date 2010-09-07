@@ -19,7 +19,7 @@ de-DE:
     Create: Erstellen
 
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Created on {{date}} by {{author}}": "Erstellt am {{date}} von {{author}}"
+    "Created on %{date} by %{author}": "Erstellt am %{date} von %{author}"
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
@@ -116,7 +116,7 @@ de-DE:
     Update: Bearbeiten
 
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Updated on {{date}} by {{author}}": "Aktualisiert am {{date}} von {{author}}"
+    "Updated on %{date} by %{author}": "Aktualisiert am %{date} von %{author}"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
@@ -143,11 +143,11 @@ de-DE:
     "Wiki Pages": Wiki-Seiten
 
     # extensions/retro_wiki/models/wiki_page.rb
-    "Wiki for {{project}}": "Wiki für {{project}}"
+    "Wiki for %{project}": "Wiki für %{project}"
 
     # extensions/retro_wiki/views/wiki/index.html.erb
     updated: aktualisiert
 
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "{{count}} more": "{{count}} weitere"
+    "%{count} more": "%{count} weitere"
 

@@ -116,19 +116,19 @@ class BrowseController < ProjectAreaController
         @node = @repository.node(full_path, revision)
         @changeset = Project.current.changesets.find_by_revision @node.selected_revision, :include => [:user]
       rescue Repository::RevisionNotFound
-        message = _('Unable to find revision {{revision}} for \'{{path}}\', showing revision {{latest}}.', :revision => revision, :path => relative_path, :latest => @repository.latest_revision)
+        message = _('Unable to find revision %{revision} for \'%{path}\', showing revision %{latest}.', :revision => revision, :path => relative_path, :latest => @repository.latest_revision)
         fail_with message, params[:path]
       rescue Repository::InvalidRevision
-        message = _('Revision {{revision}} seems not to be valid, showing revision {{latest}}.', :revision => revision, :latest => @repository.latest_revision)
+        message = _('Revision %{revision} seems not to be valid, showing revision %{latest}.', :revision => revision, :latest => @repository.latest_revision)
         fail_with message, params[:path]
       rescue Repository::Abstract::Node::InvalidPathForRevision
-        message = _('Path \'{{path}}\' does not exist in revision {{revision}}, showing revision {{latest}}.', :path => relative_path, :revision => revision, :latest => @repository.latest_revision)
+        message = _('Path \'%{path}\' does not exist in revision %{revision}, showing revision %{latest}.', :path => relative_path, :revision => revision, :latest => @repository.latest_revision)
         fail_with message, params[:path]
       rescue Repository::Abstract::Node::InvalidPath
         if relative_path.split('/').blank?
           render :action => 'repository_unavailable'
         else
-          message = _('Path \'{{path}}\' does not exist in revision {{revision}}, showing root path.', :path => relative_path, :revision => revision)
+          message = _('Path \'%{path}\' does not exist in revision %{revision}, showing root path.', :path => relative_path, :revision => revision)
           fail_with message, nil          
         end
       end

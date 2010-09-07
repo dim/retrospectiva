@@ -14,7 +14,7 @@ module Retrospectiva
       alias_method_chain :require_or_load, :extensions        
 
       def remove_path_prefix(file_name)
-        load_paths.reverse_each do |root|
+        autoload_paths.reverse_each do |root|
           return file_name.gsub(/^#{Regexp.escape(root)}\/?/, '') if file_name.starts_with?(root)
         end
         nil

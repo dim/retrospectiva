@@ -20,7 +20,7 @@ ru-RU:
 
     # Missing
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Created on {{date}} by {{author}}": 
+    "Created on %{date} by %{author}": 
 
     # extensions/retro_wiki/ext_info.rb
     # extensions/retro_wiki/lib/wiki_helper.rb
@@ -117,7 +117,7 @@ ru-RU:
     Update: Исправить
 
     # extensions/retro_wiki/views/wiki/show.html.erb
-    "Updated on {{date}} by {{author}}": "Последнее обновление от {{date}}, корректор {{author}}"
+    "Updated on %{date} by %{author}": "Последнее обновление от %{date}, корректор %{author}"
 
     # extensions/retro_wiki/views/wiki_files/index.html.erb
     # extensions/retro_wiki/views/wiki_files/new.html.erb
@@ -144,14 +144,14 @@ ru-RU:
     "Wiki Pages": "Страницы Wiki"
 
     # Unknown
-    "Wiki Pages for {{project}}": 
+    "Wiki Pages for %{project}": 
 
     # extensions/retro_wiki/models/wiki_page.rb
-    "Wiki for {{project}}": "Wiki проекта {{project}}"
+    "Wiki for %{project}": "Wiki проекта %{project}"
 
     # extensions/retro_wiki/views/wiki/index.html.erb
     updated: изменено
 
     # extensions/retro_wiki/lib/wiki_helper.rb
-    "{{count}} more": "еще {{count}}"
+    "%{count} more": "еще %{count}"
 

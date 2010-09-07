@@ -23,11 +23,11 @@ module TicketsHelper
 
   def ticket_update(update, tag = nil)
     if !update[:old].blank? && !update[:new].blank?
-      RetroI18n._('changed from {{old_value}} to {{new_value}}', :old_value => wrap_update(update[:old], tag), :new_value => wrap_update(update[:new], tag))
+      RetroI18n._('changed from %{old_value} to %{new_value}', :old_value => wrap_update(update[:old], tag), :new_value => wrap_update(update[:new], tag))
     elsif update[:old].blank?
-      RetroI18n._('set to {{value}}', :value => wrap_update(update[:new], tag))
+      RetroI18n._('set to %{value}', :value => wrap_update(update[:new], tag))
     elsif update[:new].blank?
-      RetroI18n._('reset (from {{value}})', :value => wrap_update(update[:old], tag))
+      RetroI18n._('reset (from %{value})', :value => wrap_update(update[:old], tag))
     end
   end
 

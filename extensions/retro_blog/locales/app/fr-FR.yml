@@ -15,7 +15,7 @@ fr-FR:
     "Blog Posts": "Billets de blog"
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "Blog pour {{project}}"
+    "Blog for %{project}": "Blog pour %{project}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Annuler
@@ -101,8 +101,8 @@ fr-FR:
     View: Voir
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "{{count}} commentaires"
+    "%{count} comments": "%{count} commentaires"
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": "{{user}} le {{date}}"
+    "%{user} on %{date}": "%{user} le %{date}"
 

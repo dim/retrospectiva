@@ -5,8 +5,8 @@
 				:html => { :class => 'strong' },
 				:method => :get %><br/>
     <span class="quieter">
-      <%=_ '{{count}}h', :count => story.revised_hours %> / 
-      <%=_ '{{count}}h', :count => story.estimated_hours %>
+      <%=_ '%{count}h', :count => story.revised_hours %> / 
+      <%=_ '%{count}h', :count => story.estimated_hours %>
     </span>        
   </td>    
   <td class="span-1 righted">

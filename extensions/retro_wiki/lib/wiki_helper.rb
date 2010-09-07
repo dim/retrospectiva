@@ -35,11 +35,11 @@ module WikiHelper
     
     if @wiki_page.newer_versions > 0 
       links << link_to_wiki_page(_('Show current'), @wiki_page)
-      links << link_to_wiki_page(_('Forward in time'), @wiki_page, :version => @wiki_page.number + 1) + note_after_link(_('{{count}} more', :count => @wiki_page.newer_versions)) 
+      links << link_to_wiki_page(_('Forward in time'), @wiki_page, :version => @wiki_page.number + 1) + note_after_link(_('%{count} more', :count => @wiki_page.newer_versions)) 
     end
     
     if @wiki_page.older_versions > 0
-      links << link_to_wiki_page(_('Back in time'), @wiki_page, :version => @wiki_page.number - 1) + note_after_link(_('{{count}} more', :count => @wiki_page.older_versions)) 
+      links << link_to_wiki_page(_('Back in time'), @wiki_page, :version => @wiki_page.number - 1) + note_after_link(_('%{count} more', :count => @wiki_page.older_versions)) 
     end
     
     links.join(' | ')

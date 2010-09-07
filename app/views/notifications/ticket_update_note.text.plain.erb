@@ -2,7 +2,7 @@
 
 <%=_ "You are receiving this message because you have subscribed to receive notification about changes of" %>:
 
-  <%=_ 'Ticket #{{id}}: \'{{summary}}\'', :id => @ticket_change.ticket.id, :summary => truncate(@ticket_change.ticket.summary, :length => 50) %>
+  <%=_ 'Ticket #%{id}: \'%{summary}\'', :id => @ticket_change.ticket.id, :summary => truncate(@ticket_change.ticket.summary, :length => 50) %>
 
 <%=_ "To access the ticket click this link" %>:
   <%= @ticket_change.previewable.link %>
@@ -12,12 +12,12 @@
 <% @ticket_change.ticket.changes.reverse.each do |tc| -%>
 -----------------------------------------------------------------------
 
-  <%=_ "Changed by {{author}} - {{time}}", :author => tc.author, :time => tc.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
+  <%=_ "Changed by %{author} - %{time}", :author => tc.author, :time => tc.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
 <%= format_updates(tc) if tc.updates.any? -%>
 <%= format_content(tc) if tc.content.present? -%>
 
 <% end -%>
 -----------------------------------------------------------------------
 
-  <%=_ "Reported by {{author}} - {{time}}", :author => @ticket_change.ticket.author, :time => @ticket_change.ticket.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
+  <%=_ "Reported by %{author} - %{time}", :author => @ticket_change.ticket.author, :time => @ticket_change.ticket.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
 <%= format_content(@ticket_change.ticket) -%>

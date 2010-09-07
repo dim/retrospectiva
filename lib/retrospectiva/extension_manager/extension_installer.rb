@@ -11,7 +11,7 @@ module Retrospectiva
         return if installed_extension_names.include?(extension.name) 
 
         @installed_extension_names << extension.name
-        returning write_extension_table do
+        write_extension_table.tap do
           dump_schema
         end
       end
@@ -20,7 +20,7 @@ module Retrospectiva
         return unless installed_extension_names.include?(extension.name)
 
         @installed_extension_names.delete(extension.name)        
-        returning write_extension_table do
+        write_extension_table.tap do
           dump_schema
         end
       end

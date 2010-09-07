@@ -1,6 +1,6 @@
 <%=_ "Dear user!" %>
 
-<%=_ "You are receiving this message because you have applied for an user account at {{site}}.", :site => @site_name %>
+<%=_ "You are receiving this message because you have applied for an user account at %{site}.", :site => @site_name %>
 
 <%=_ "Your registration details" %>:
 
@@ -14,4 +14,4 @@
    <%= account_activate_url(:username => @user.username, :code => @user.activation_code) %>
    <%=_ "Alternatively, copy and paste this link to your browser address bar." %>
 
-<%=_ "2. Surf to {{url}} and enter the following activation code", :url => account_activate_url %>: <%= @user.activation_code %>
+<%=_ "2. Surf to %{url} and enter the following activation code", :url => account_activate_url %>: <%= @user.activation_code %>

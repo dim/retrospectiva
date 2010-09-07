@@ -26,7 +26,7 @@ module RoutingFilter
 
     def around_recognize(path, env, &block)
       locale = extract_locale!(path)                 # remove the locale from the beginning of the path
-      returning yield do |params|                    # invoke the given block (calls more filters and finally routing)
+      yield.tap do |params|                    # invoke the given block (calls more filters and finally routing)
         params[:locale] = locale if locale           # set recognized locale to the resulting params hash
       end
     end
@@ -36,7 +36,7 @@ module RoutingFilter
       locale = I18n.locale if locale.nil?            # default to I18n.locale when locale is nil (could also be false)
       locale = nil unless valid_locale?(locale)      # reset to no locale when locale is not valid
 
-      returning yield do |result|
+      yield.tap do |result|
         if locale && prepend_locale?(locale)
           url = result.is_a?(Array) ? result.first : result
           prepend_locale!(url, locale)

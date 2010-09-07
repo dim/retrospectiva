@@ -24,7 +24,7 @@ class WikiPage < ActiveRecord::Base
       project = options[:project] || Project.current
       c.name = 'wiki'
       c.title = _('Wiki')
-      c.description = _('Wiki for {{project}}', :project => project.name)
+      c.description = _('Wiki for %{project}', :project => project.name)
       c.link = c.route(:project_wiki_pages_url, project)
     end
     r.item do |i, wiki_page, options|

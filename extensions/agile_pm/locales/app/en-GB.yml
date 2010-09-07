@@ -44,7 +44,7 @@ en-GB:
     Completed: Completed
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "Completed on {{date}}": "Completed on {{date}}"
+    "Completed on %{date}": "Completed on %{date}"
 
     # extensions/agile_pm/models/goal.rb
     "Could have": "Could have"
@@ -210,7 +210,7 @@ en-GB:
     Started: Started
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "Started on {{date}}": "Started on {{date}}"
+    "Started on %{date}": "Started on %{date}"
 
     # extensions/agile_pm/views/sprints/_form.html.erb
     "Starts On": "Starts On"
@@ -290,8 +290,8 @@ en-GB:
     # extensions/agile_pm/views/stories/_full.html.erb
     # extensions/agile_pm/views/stories/charts/_story_line.html.erb
     # extensions/agile_pm/views/stories/revise_hours.js.rjs
-    "{{count}}h": "{{count}}h"
+    "%{count}h": "%{count}h"
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "{{period}} ago": "{{period}} ago"
+    "%{period} ago": "%{period} ago"
 

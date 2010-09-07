@@ -22,7 +22,7 @@ module Admin::TicketPropertyValuesHelper
       ticket_count = value.tickets.count
       unless ticket_count.zero?
         confirmation = "\n" +
-          _("WARNING: There are currently {{count}} tickets assigned with this property.", :count => ticket_count) << "\n" <<
+          _("WARNING: There are currently %{count} tickets assigned with this property.", :count => ticket_count) << "\n" <<
           _("They will be set back to the default value.")
       end
       

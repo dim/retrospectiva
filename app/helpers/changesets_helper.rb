@@ -36,9 +36,9 @@ module ChangesetsHelper
           quick_diff = render :partial => 'quick_diff', :locals => { :change => change }
         end
       elsif change.name == 'CP'
-        small = RetroI18n._('copied from {{path}}', :path => link_to_show_file(change, true))
+        small = RetroI18n._('copied from %{path}', :path => link_to_show_file(change, true))
       elsif change.name == 'MV'
-        small = RetroI18n._('moved from {{path}}', :path => link_to_show_file(change, true))
+        small = RetroI18n._('moved from %{path}', :path => link_to_show_file(change, true))
       end
 
       parts << "<span class=\"small\">(#{small})</span>" if small

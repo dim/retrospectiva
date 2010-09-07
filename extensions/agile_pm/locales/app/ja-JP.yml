@@ -44,7 +44,7 @@ ja-JP:
     Completed: 完了
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "Completed on {{date}}": "{{date}}に完了"
+    "Completed on %{date}": "%{date}に完了"
 
     # extensions/agile_pm/models/goal.rb
     "Could have": "FIXME: できれば(Could have)"
@@ -210,7 +210,7 @@ ja-JP:
     Started: 開始
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "Started on {{date}}": "{{date}}から開始"
+    "Started on %{date}": "%{date}から開始"
 
     # extensions/agile_pm/views/sprints/_form.html.erb
     "Starts On": 開始日
@@ -291,8 +291,8 @@ ja-JP:
     # extensions/agile_pm/views/stories/_full.html.erb
     # extensions/agile_pm/views/stories/charts/_story_line.html.erb
     # extensions/agile_pm/views/stories/revise_hours.js.rjs
-    "{{count}}h": "{{count}}時間"
+    "%{count}h": "%{count}時間"
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "{{period}} ago": "{{period}}以前"
+    "%{period} ago": "%{period}以前"
 

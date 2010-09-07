@@ -1,9 +1,5 @@
 # Be sure to restart your server when you modify this file
-
 RETROSPECTIVA_VERSION = '2.0.0'
-
-# Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -17,23 +13,11 @@ Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use. To use Rails without a database
   # you must remove the Active Record framework.
   config.frameworks -= [ :active_resource ]
-
-  # Specify gems that this application depends on. 
-  # They can then be installed with "rake gems:install" on new installations.
-  config.gem 'rack', :lib => 'rack', :version => '~> 1.0.0'
-  config.gem 'will_paginate', :lib => 'will_paginate', :version => '>= 2.3.8'
-  config.gem 'acts-as-taggable-on', :lib => 'acts-as-taggable-on', :version => '>= 2.0.4'
-  config.gem 'RedCloth', :lib => 'redcloth', :version => '>= 4.1.9'
   
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :enkoder, :retro_i18n, :retro_search, :validates_as_email, :wiki_engine ]
-
-  # Add additional load paths for your own custom dirs
-  config.load_paths += [
-#    "#{RAILS_ROOT}/vendor/coderay-0.7.4/lib"
-  ].flatten
 
   config.controller_paths += [
     "#{RAILS_ROOT}/lib/retrospectiva/extension_manager/controllers"

@@ -4,12 +4,13 @@ I18n.locale = :'en-US'
 I18n::Backend::Simple.class_eval do
   protected
 
-    def init_translations_with_copying
-      returning(init_translations_without_copying) do 
-        merge_translations(I18n.default_locale, translations[:en])
+    def init_translations_with_normalization
+      init_translations_without_normalization.tap do
+        translations[I18n.default_locale] ||= {}
+        translations[I18n.default_locale].deep_merge!(translations[:en])
       end
     end 
-    alias_method_chain :init_translations, :copying
+    alias_method_chain :init_translations, :normalization
 end
 
 

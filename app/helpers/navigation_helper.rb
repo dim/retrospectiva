@@ -37,7 +37,7 @@ module NavigationHelper
 
     link_to_if condition, label, 
       project_changeset_path(Project.current, revision, params.only(:expand_all)), 
-      options.reverse_merge(:title => _('Show changeset {{revision}}', :revision => h(revision)))
+      options.reverse_merge(:title => _('Show changeset %{revision}', :revision => h(revision)))
   end
   
   def link_to_browse(label, path, revision = nil)
@@ -47,7 +47,7 @@ module NavigationHelper
     
     link_to_if_permitted label, 
       project_browse_path(Project.current, tokens, :rev => revision),
-      :title => _('Browse {{title}}', :title => title)      
+      :title => _('Browse %{title}', :title => title)      
   end
 
   def link_to_admin_dashboard(label = nil)
@@ -70,7 +70,7 @@ module NavigationHelper
       html << link_to(_('Login'), login_path)
       html << link_to(_('Register'), new_account_path) if cf[:account_management] && cf[:self_registration]
     else
-      html << _('Logged in as {{name}}', :name => h(User.current.name))
+      html << _('Logged in as %{name}', :name => h(User.current.name))
       html << link_to(_('My Account'), account_path) if cf[:account_management]
       html << link_to(_('Logout'), logout_path)
     end

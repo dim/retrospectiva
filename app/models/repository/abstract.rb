@@ -24,7 +24,7 @@ class Repository::Abstract < ::Repository
     private
 
       def subclasses_preloaded?
-        @subclasses_preloaded ||= ActiveSupport::Dependencies.load_paths.each do |root|
+        @subclasses_preloaded ||= ActiveSupport::Dependencies.autoload_paths.each do |root|
           Dir[File.join(root, 'repository', '*.rb')].each do |file|
             type = File.basename(file, '.rb')
             Repository[type]

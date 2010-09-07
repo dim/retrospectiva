@@ -7,7 +7,7 @@ module Admin::SetupHelper
   def setting_input(setting, f) 
     label = h(setting.label)
     unless setting.description.blank?
-      alt_text = _('Toggle description for setting \'{{name}}\'', :name => label)
+      alt_text = _("Toggle description for setting '%{name}'", :name => label)
       image = image_tag('info.gif', :alt => alt_text, :title => alt_text)
       link = link_to_function image, visual_effect(:toggle_appear, "#{tag_id_for(setting)}_info", :duration => 0.25)
       label += ' ' + link

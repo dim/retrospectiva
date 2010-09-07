@@ -39,11 +39,11 @@ module StoriesHelper
     if story.pending?
       _('Pending')
     elsif story.completed?
-      _('Completed on {{date}}', :date => date_format(story.completed_at.to_date)) + ' - ' + 
-      _('{{period}} ago', :period => time_ago_in_words(story.completed_at))
+      _('Completed on %{date}', :date => date_format(story.completed_at.to_date)) + ' - ' + 
+      _('%{period} ago', :period => time_ago_in_words(story.completed_at))
     else
-      _('Started on {{date}}', :date => date_format(story.started_at.to_date)) + ' - ' +
-      _('{{period}} ago', :period => time_ago_in_words(story.started_at))
+      _('Started on %{date}', :date => date_format(story.started_at.to_date)) + ' - ' +
+      _('%{period} ago', :period => time_ago_in_words(story.started_at))
     end
   end
 
@@ -84,8 +84,8 @@ module StoriesHelper
   end
 
   def hours_comparison(story)    
-    revision   = _('{{count}}h', :count => story.revised_hours)
-    estimation = _('{{count}}h', :count => story.estimated_hours)
+    revision   = _('%{count}h', :count => story.revised_hours)
+    estimation = _('%{count}h', :count => story.estimated_hours)
 
     if permitted?(:stories, :update) and not story.completed?
       link_to_function(revision, '', :id => "story_#{story.id}_hours") +

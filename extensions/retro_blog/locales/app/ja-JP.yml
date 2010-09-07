@@ -15,7 +15,7 @@ ja-JP:
     "Blog Posts": ブログの投稿
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "{{project}}のブログ"
+    "Blog for %{project}": "%{project}のブログ"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: 中止
@@ -107,8 +107,8 @@ ja-JP:
     View: 表示
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "{{count}}個のコメント"
+    "%{count} comments": "%{count}個のコメント"
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": "{{date}}に{{user}}が投稿"
+    "%{user} on %{date}": "%{date}に%{user}が投稿"
 

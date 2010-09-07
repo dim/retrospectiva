@@ -21,12 +21,12 @@ class Changeset < ActiveRecord::Base
       project = options[:project] || Project.current
       c.name = 'changesets'
       c.title = _('Changesets')
-      c.description = _('Changesets for {{project}}', :project => project.name)
+      c.description = _('Changesets for %{project}', :project => project.name)
       c.link = c.route(:project_changesets_url, project)
     end
     r.item do |i, changeset, options|
       project = options[:project] || Project.current
-      i.title = _('Changeset {{revision}}', :revision => changeset.revision)
+      i.title = _('Changeset %{revision}', :revision => changeset.revision)
       i.description = changeset.log
       i.author = changeset.author
       i.date = changeset.created_at

@@ -56,7 +56,7 @@ module Retrospectiva
         def require_permissions(resource = nil, options = {})
           ensure_authorize_before_filter!
 
-          returning(@retro_am_auth_require_permissions ||= {}) do |permission_map|
+          (@retro_am_auth_require_permissions ||= {}).tap do |permission_map|
 
             options.each do |permission, actions|
               [actions].flatten.map(&:to_s).each do |action|
@@ -75,7 +75,7 @@ module Retrospectiva
         #
         def require_user(*actions)
           ensure_authorize_before_filter!
-          returning(@retro_am_auth_require_user ||= []) do
+          (@retro_am_auth_require_user ||= []).tap do
             @retro_am_auth_require_user += actions.map(&:to_s) unless actions.blank?
           end
         end

@@ -133,7 +133,7 @@ class AccountsController < ApplicationController
       when 'email'
         Notifications.queue_account_validation(@user)
         flash[:notice] += [
-          _('You need to activate your account within the next {{count}} hours to be able to login.', :count => config[:expiration]),
+          _('You need to activate your account within the next %{count} hours to be able to login.', :count => config[:expiration]),
           _('An email including the activation code and the instructions was sent to you.')
         ]
         redirect_to account_activate_path

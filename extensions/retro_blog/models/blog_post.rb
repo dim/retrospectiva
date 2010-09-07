@@ -22,7 +22,7 @@ class BlogPost < ActiveRecord::Base
       project = options[:project] || Project.current
       c.name = 'blog'
       c.title = _('Blog')
-      c.description = _('Blog for {{project}}', :project => project.name)
+      c.description = _('Blog for %{project}', :project => project.name)
       c.link = c.route(:project_blog_posts_url, project)
     end
     r.item do |i, blog_post, options|

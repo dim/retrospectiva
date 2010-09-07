@@ -1,8 +1,8 @@
-<% @page_title = _('Logged in as {{name}}', :name => h(User.current.name)) %>
+<% @page_title = _('Logged in as %{name}', :name => h(User.current.name)) %>
 <% slim_page %>
 <%= page_title %>
 
-<p><%=_ 'Hi {{user}}!', :user => h(User.current.name) %> <%=_ 'You are logged in to the system.' %></p>
+<p><%=_ 'Hi %{user}!', :user => h(User.current.name) %> <%=_ 'You are logged in to the system.' %></p>
       
 <div class="content-footer">
   <%= link_to _('Home'), root_path %> | <%= link_to _('Logout'), logout_path %>  

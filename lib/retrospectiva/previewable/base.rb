@@ -2,7 +2,7 @@ module Retrospectiva
   module Previewable
     
     def self.load!
-      ActiveSupport::Dependencies.load_paths.map do |path|
+      ActiveSupport::Dependencies.autoload_paths.map do |path|
         Dir[path + '/**/*.rb']
       end.flatten.uniq.each do |file|
         content = File.read(file)
@@ -17,13 +17,13 @@ module Retrospectiva
       end
       
       def channel(options = {})
-        returning(Channel.new) do |entity|
+        Channel.new.tap do |entity|
           @setup.channel.call(entity, options)
         end
       end
 
       def item(*args)
-        returning(Item.new) do |entity|
+        Item.new.tap do |entity|
           @setup.item.call(entity, *args)
         end
       end

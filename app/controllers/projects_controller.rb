@@ -87,7 +87,7 @@ class ProjectsController < ApplicationController
     
     def show_rss(project)
       render_rss project.name, 
-        _('All news for {{project}}', :project => project.name), 
+        _('All news for %{project}', :project => project.name), 
         project_url(project) do |items|
 
         find_feedable_records(project).each do |record|

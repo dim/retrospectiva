@@ -4,7 +4,7 @@ cs-CZ:
     "1. Click this link": "1. Klikněte na tento odkaz"
 
     # app/views/notifications/account_validation.text.plain.erb
-    "2. Surf to {{url}} and enter the following activation code": "2. Otevřete {{url}} a vložte následující aktivační kód"
+    "2. Surf to %{url} and enter the following activation code": "2. Otevřete %{url} a vložte následující aktivační kód"
 
     # app/controllers/admin/users_controller.rb
     "A notification was sent to the user.": "Oznámení bylo odesláno uživateli."
@@ -76,7 +76,7 @@ cs-CZ:
     "All Projects": "Všechny projekty"
 
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": "Všechny zdroje projektu {{project}}"
+    "All feeds for %{project}": "Všechny zdroje projektu %{project}"
 
     # app/views/rss/_all.html.erb
     "All feeds from all projects": "Všechny zdroje ze všech projektů"
@@ -88,7 +88,7 @@ cs-CZ:
     "All news for all projects": "Všechny novinky ze všech projektů"
 
     # app/controllers/projects_controller.rb
-    "All news for {{project}}": "Všechny novinky z projektu {{project}}"
+    "All news for %{project}": "Všechny novinky z projektu %{project}"
 
     # app/models/status.rb
     "All open": "Všechny otevřené"
@@ -166,7 +166,7 @@ cs-CZ:
     "Browse source": "Procházet kód"
 
     # app/helpers/navigation_helper.rb
-    "Browse {{title}}": "Procházet {{title}}"
+    "Browse %{title}": "Procházet %{title}"
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
@@ -174,14 +174,14 @@ cs-CZ:
     Cancel: Zrušit
 
     # app/models/user.rb
-    "Cannot delete. User '{{username}}' is the last available admin.": "Nelze smazat. Uživatel '{{username}}' je poslední zbylý administrátor."
+    "Cannot delete. User '%{username}' is the last available admin.": "Nelze smazat. Uživatel '%{username}' je poslední zbylý administrátor."
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
     Central: Hlavní
 
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Changed by {{author}} - {{time}}": "Změnil {{author}} - {{time}}"
+    "Changed by %{author} - %{time}": "Změnil %{author} - %{time}"
 
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
@@ -192,7 +192,7 @@ cs-CZ:
     "Changeset index": "Přehled změn"
 
     # app/models/changeset.rb
-    "Changeset {{revision}}": "Změny {{revision}}"
+    "Changeset %{revision}": "Změny %{revision}"
 
     # app/controllers/changesets_controller.rb
     # app/core_info.rb
@@ -201,7 +201,7 @@ cs-CZ:
     Changesets: Změny
 
     # app/models/changeset.rb
-    "Changesets for {{project}}": "Změny projektu {{project}}"
+    "Changesets for %{project}": "Změny projektu %{project}"
 
     # app/views/admin/projects/_form.html.erb
     "Check this option to make this your default project.": "Vybráním nastavíte tento projekt Vaším hlavním."
@@ -237,7 +237,7 @@ cs-CZ:
     Commit: Commity
 
     # app/helpers/browse_helper.rb
-    "Compare [{{revision_a}}] with [{{revision_b}}]": "Porovnání [{{revision_a}}] a [{{revision_b}}]"
+    "Compare [%{revision_a}] with [%{revision_b}]": "Porovnání [%{revision_a}] a [%{revision_b}]"
 
     # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "Konfigurace nemůže být uložena"
@@ -290,7 +290,7 @@ cs-CZ:
     "Create a new user": "Vytvořit nového uživatele"
 
     # app/views/tickets/_ticket.html.erb
-    "Created {{period}} ago by {{author}}": "Vytvřil {{author}} před {{period}}"
+    "Created %{period} ago by %{author}": "Vytvřil %{author} před %{period}"
 
     # app/helpers/browse_helper.rb
     Current: aktuální
@@ -500,7 +500,7 @@ cs-CZ:
     Headers: Hlavičky
 
     # app/views/sessions/logged_in.html.erb
-    "Hi {{user}}!": "Ahoj {{user}}!"
+    "Hi %{user}!": "Ahoj %{user}!"
 
     # app/helpers/changesets_helper.rb
     "Hide Quick Diffs": "Skrýt rychlé diffy"
@@ -557,7 +557,7 @@ cs-CZ:
     "Leave password field blank, unless you actually want to change your password.": "Heslo vyplňte pouze pokud chcete heslo změnit."
 
     # app/helpers/browse_helper.rb
-    "Line {{number}}": "Řádek {{number}}"
+    "Line %{number}": "Řádek %{number}"
 
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
@@ -578,7 +578,7 @@ cs-CZ:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{name}}": "Přihlášen jako {{name}}"
+    "Logged in as %{name}": "Přihlášen jako %{name}"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": Odhlášen
@@ -636,7 +636,7 @@ cs-CZ:
     Milestones: Milníky
 
     # app/models/milestone.rb
-    "Milestones for {{project}}": "Milníky projektu {{project}}"
+    "Milestones for %{project}": "Milníky projektu %{project}"
 
     # lib/time_interval.rb
     Minutes: Minuty
@@ -744,10 +744,10 @@ cs-CZ:
     Path: Cesta
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazena revize {{latest}}."
+    "Path '%{path}' does not exist in revision %{revision}, showing revision %{latest}.": "Cesta '%{path}' neexistuje v revizi %{revision}, zobrazena revize %{latest}."
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Cesta '{{path}}' neexistuje v revizi {{revision}}, zobrazuji root."
+    "Path '%{path}' does not exist in revision %{revision}, showing root path.": "Cesta '%{path}' neexistuje v revizi %{revision}, zobrazuji root."
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
@@ -874,7 +874,7 @@ cs-CZ:
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Reported by {{author}} - {{time}}": "Reportoval {{author}} - {{time}}"
+    "Reported by %{author} - %{time}": "Reportoval %{author} - %{time}"
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
@@ -918,7 +918,7 @@ cs-CZ:
     Revision: Revize
 
     # app/controllers/browse_controller.rb
-    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revize {{revision}} se nezdá být platná, zobrazuji revizi {{latest}}."
+    "Revision %{revision} seems not to be valid, showing revision %{latest}.": "Revize %{revision} se nezdá být platná, zobrazuji revizi %{latest}."
 
     # app/helpers/browse_helper.rb
     Revisions: Revize
@@ -974,7 +974,7 @@ cs-CZ:
     "Show already completed milestones": "Zobrazit již dokončené milníky"
 
     # app/helpers/navigation_helper.rb
-    "Show changeset {{revision}}": "Zobrazit změny {{revision}}"
+    "Show changeset %{revision}": "Zobrazit změny %{revision}"
 
     # app/views/browse/_node_info.html.erb
     "Show latest": "Zobrazit poslední"
@@ -1012,7 +1012,7 @@ cs-CZ:
     "Stop watching this ticket": "Přestat sledovat tento lístek"
 
     # app/controllers/admin/repositories_controller.rb
-    "Success! Path contains a valid repository (latest revision: {{latest}}).": "Úspěch! Cesta obsahuje platný repozitář (posledná revize: {{latest}})."
+    "Success! Path contains a valid repository (latest revision: %{latest}).": "Úspěch! Cesta obsahuje platný repozitář (posledná revize: %{latest})."
 
     # app/controllers/admin/projects_controller.rb
     "Success! Path is a directory in this repository.": "Úspěch! Cesta je obsažena v tomto repozitáři."
@@ -1023,7 +1023,7 @@ cs-CZ:
 
     # Missing
     # app/controllers/admin/repositories_controller.rb
-    "Support for {{system}} is not enabled.": 
+    "Support for %{system} is not enabled.": 
 
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": Synchronizace
@@ -1066,14 +1066,14 @@ cs-CZ:
     Ticket: Lístek
 
     # app/models/ticket_change.rb
-    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "Lístek #{{id}} ({{status}}) změnil {{author}} - {{summary}}"
+    "Ticket #%{id} (%{status}) changed by %{author} - %{summary}": "Lístek #%{id} (%{status}) změnil %{author} - %{summary}"
 
     # app/models/ticket.rb
-    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Lístek #{{id}} ({{status}}) reportoval {{author}} - {{summary}}"
+    "Ticket #%{id} (%{status}) reported by %{author} - %{summary}": "Lístek #%{id} (%{status}) reportoval %{author} - %{summary}"
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Ticket #{{id}}: '{{summary}}'": "Lístek #{{id}}: '{{summary}}'"
+    "Ticket #%{id}: '%{summary}'": "Lístek #%{id}: '%{summary}'"
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Změna lístku byla úspěšně smazána."
@@ -1111,7 +1111,7 @@ cs-CZ:
     Tickets: Lístky
 
     # app/models/ticket.rb
-    "Tickets for {{project}}": "Lístky projektu {{project}}"
+    "Tickets for %{project}": "Lístky projektu %{project}"
 
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/index.html.erb
@@ -1131,13 +1131,13 @@ cs-CZ:
     "To complete the registration process you need to verify your email address. To make up this process you have two options": "Pro dokončení registrace musíte ověřit svou e-mailovou adresu. Máte tyto dvě možnosti"
 
     # app/helpers/admin/setup_helper.rb
-    "Toggle description for setting '{{name}}'": "Zobrazot popis nastavení '{{name}}'"
+    "Toggle description for setting '%{name}'": "Zobrazot popis nastavení '%{name}'"
 
     # app/views/browse/diff.html.erb
-    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Nelze zobrazit změny (DIFF) mezi revizemi '{{source}}' a '{{target}}' Pro tento soubor."
+    "Unable to display the changes (DIFF) between revision '%{source}' and '%{target}' for the selected file.": "Nelze zobrazit změny (DIFF) mezi revizemi '%{source}' a '%{target}' Pro tento soubor."
 
     # app/controllers/browse_controller.rb
-    "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "Nelze najít revizi {{revision}} pro '{{path}}', zobrazuji revizi {{latest}}."
+    "Unable to find revision %{revision} for '%{path}', showing revision %{latest}.": "Nelze najít revizi %{revision} pro '%{path}', zobrazuji revizi %{latest}."
 
     # app/views/tickets/_ticket_info.html.erb
     Unassigned: Nepřiřazeno
@@ -1209,7 +1209,7 @@ cs-CZ:
     "View changes": "Zobrazit změny"
 
     # app/helpers/admin/ticket_property_values_helper.rb
-    "WARNING: There are currently {{count}} tickets assigned with this property.": "VAROVÁNÍ: Právě existuje {{count}} lístků s touto vlastností."
+    "WARNING: There are currently %{count} tickets assigned with this property.": "VAROVÁNÍ: Právě existuje %{count} lístků s touto vlastností."
 
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
@@ -1254,19 +1254,19 @@ cs-CZ:
     "You are now watching this ticket.": "Nyní sledujete tento lístek."
 
     # app/views/notifications/account_activation_note.text.plain.erb
-    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "Tuto zprávu jste obdržel(a), protože Váš účet v systému {{site}} byl aktivován."
+    "You are receiving this message because the user account you have applied for at %{site} has been activated.": "Tuto zprávu jste obdržel(a), protože Váš účet v systému %{site} byl aktivován."
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": "Tuto zprávu jste obdržel(a), protože jste příhlášen k odebírání oznámení o těchto událostech"
 
     # app/views/notifications/account_validation.text.plain.erb
-    "You are receiving this message because you have applied for an user account at {{site}}.": "Tuto zprávu jeste obdržel(a), protože jste žádal(a) o účet v systému {{site}}."
+    "You are receiving this message because you have applied for an user account at %{site}.": "Tuto zprávu jeste obdržel(a), protože jste žádal(a) o účet v systému %{site}."
 
     # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "Tuto zprávu jeste obdržel(a), protože jste příhlášen k odebírání oznámení o změnách v"
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "Tuto zprávu jeste obdržel(a), protože jste použila '{{forgot_password}}' v systému {{site}}."
+    "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}.": "Tuto zprávu jeste obdržel(a), protože jste použila '%{forgot_password}' v systému %{site}."
 
     # app/helpers/tickets_helper.rb
     "You are watching this ticket": "Seldujete tento lístek"
@@ -1281,13 +1281,13 @@ cs-CZ:
     "You may have mistyped the address or the page may have moved.": "Nejspíš jste zadal(a) špatnou adresu, nebo byla stránka přesunuta."
 
     # app/controllers/accounts_controller.rb
-    "You need to activate your account within the next {{count}} hours to be able to login.": "Musíte aktivovat svůj učet během následujících {{count}} hodin, aby jste se mohl(a) přihlásit."
+    "You need to activate your account within the next %{count} hours to be able to login.": "Musíte aktivovat svůj učet během následujících %{count} hodin, aby jste se mohl(a) přihlásit."
 
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": "Přestal(a) jste sledovat tento lístek."
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "Budete přesměrován(a) na obrazovku účtu '{{my_account}}', kde si budete moci změnit své heslo."
+    "You will be directed to the '%{my_account}' screen where you will have the option to change your current password.": "Budete přesměrován(a) na obrazovku účtu '%{my_account}', kde si budete moci změnit své heslo."
 
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": "Přijdete také o všechna přidružená data!"
@@ -1297,42 +1297,42 @@ cs-CZ:
     "Your registration details": "Detaily Vaší registrace"
 
     # app/views/search/index.html.erb
-    "Your search for '{{term}}' did not match any results.": "Při hledání výrazu '{{term}}' nebyly nalezeny žádné výsledky."
+    "Your search for '%{term}' did not match any results.": "Při hledání výrazu '%{term}' nebyly nalezeny žádné výsledky."
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     added: přidal
 
     # app/helpers/tickets_helper.rb
-    "changed from {{old_value}} to {{new_value}}": "změnil z {{old_value}} na {{new_value}}"
+    "changed from %{old_value} to %{new_value}": "změnil z %{old_value} na %{new_value}"
 
     # app/views/milestones/_milestone.html.erb
     completed: dokončil
 
     # app/helpers/changesets_helper.rb
-    "copied from {{path}}": "zkopíroval z {{path}}"
+    "copied from %{path}": "zkopíroval z %{path}"
 
     # app/helpers/format_helper.rb
-    "in {{period}}": "v {{period}}"
+    "in %{period}": "v %{period}"
 
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     max.: max.
 
     # app/helpers/changesets_helper.rb
-    "moved from {{path}}": "přesunul z {{path}}"
+    "moved from %{path}": "přesunul z %{path}"
 
     # app/helpers/tickets_helper.rb
-    "reset (from {{value}})": "vráceno (z {{value}})"
+    "reset (from %{value})": "vráceno (z %{value})"
 
     # app/helpers/tickets_helper.rb
-    "set to {{value}}": "nastaveno na {{value}}"
+    "set to %{value}": "nastaveno na %{value}"
 
     # app/views/browse/_node.html.erb
-    "{{count}} file(s)": "{{count}} soubor(y)"
+    "%{count} file(s)": "%{count} soubor(y)"
 
     # app/helpers/format_helper.rb
-    "{{period}} ago": "před {{period}}"
+    "%{period} ago": "před %{period}"
 
     # app/controllers/admin/ticket_property_values_controller.rb
-    "{{record}} was successfully created.": "{{record}} byl úspěšně vytvořen."
+    "%{record} was successfully created.": "%{record} byl úspěšně vytvořen."
 

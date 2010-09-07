@@ -23,7 +23,7 @@ class TicketFilter::Collection < Array
   
   def including(name, id)
     name, id = name.to_s, id.to_i
-    returning(real_params) do |result|      
+    real_params.tap do |result|      
       result[name] ||= []
       result[name] << id      
       if name == 'status'
@@ -34,7 +34,7 @@ class TicketFilter::Collection < Array
 
   def excluding(name, id)
     name, id = name.to_s, id.to_i
-    returning(real_params) do |result|
+    real_params.tap do |result|
       
       if result[name] == [id]
         result.delete(name)
@@ -54,7 +54,7 @@ class TicketFilter::Collection < Array
   end
   
   def conditions
-    returning PlusFilter::Conditions.new do |values|
+    PlusFilter::Conditions.new.tap do |values|
       each {|i| values << i.conditions if i.selected? }
     end.to_a
   end

@@ -6,7 +6,7 @@ class StoryRevision < StoryEvent
   attr_accessible :hours, :creator
   
   def description
-    _('Revision') + ': ' + _("{{count}}h", :count => hours)
+    _('Revision') + ': ' + _("%{count}h", :count => hours)
   end
 
 end

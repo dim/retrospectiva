@@ -4,7 +4,7 @@
   </td>
   <td><%= time_interval_in_words(node.date) %></td>
   <td class="centered">
-    <%= node.dir? ? _('{{count}} file(s)', :count => node.sub_node_count) : number_to_human_size(node.size) -%>
+    <%= node.dir? ? _('%{count} file(s)', :count => node.sub_node_count) : number_to_human_size(node.size) -%>
   </td>
   <td class="small quiet">
     <%= link_to_changeset '[' + h(node.short_revision) + ']', node.revision %>

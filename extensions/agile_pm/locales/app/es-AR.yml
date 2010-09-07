@@ -48,7 +48,7 @@ es-AR:
 
     # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Completed on {{date}}": 
+    "Completed on %{date}": 
 
     # Missing
     # extensions/agile_pm/models/goal.rb
@@ -247,7 +247,7 @@ es-AR:
 
     # Missing
     # extensions/agile_pm/lib/stories_helper.rb
-    "Started on {{date}}": 
+    "Started on %{date}": 
 
     # Missing
     # extensions/agile_pm/views/sprints/_form.html.erb
@@ -344,8 +344,8 @@ es-AR:
     # extensions/agile_pm/views/stories/_full.html.erb
     # extensions/agile_pm/views/stories/charts/_story_line.html.erb
     # extensions/agile_pm/views/stories/revise_hours.js.rjs
-    "{{count}}h": 
+    "%{count}h": 
 
     # extensions/agile_pm/lib/stories_helper.rb
-    "{{period}} ago": "{{period}}"
+    "%{period} ago": "%{period}"
 

@@ -22,7 +22,7 @@ module Retrospectiva
     ]
         
     def self.create
-      returning new do |creator|
+      new.tap do |creator|
         creator.create_priorities if Priority.count.zero?
         creator.create_statuses if Status.count.zero?
         creator.create_group unless Group.exists?(:name => 'Default')

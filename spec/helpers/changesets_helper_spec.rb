@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ChangesetsHelper do
-  fixtures :changesets, :changes
+  fixtures :changesets, :changes, :repositories
   
   before do
     helper.stub!(:relativize_path).and_return {|path| path }

@@ -91,7 +91,7 @@ describe TicketChange do
     end
 
     def build_attachment(content, name = 'file.rb', type = 'text/plain')    
-      returning ActionController::UploadedStringIO.new(content) do |stream|
+      ActionController::UploadedStringIO.new(content).tap do |stream|
         stream.original_path = name
         stream.content_type = type
       end

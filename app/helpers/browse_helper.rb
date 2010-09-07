@@ -53,7 +53,7 @@ module BrowseHelper
     else
       link_to label, 
         project_diff_path(Project.current, path_tokens, :rev => current_node.revision, :compare_with => revision),
-        :title => _('Compare [{{revision_a}}] with [{{revision_b}}]', :revision_a => current_node.revision, :revision_b => revision)      
+        :title => _('Compare [%{revision_a}] with [%{revision_b}]', :revision_a => current_node.revision, :revision_b => revision)      
     end    
   end
   
@@ -79,7 +79,7 @@ module BrowseHelper
       anchor = "ln#{line_number}"
       link_to line_number.to_s,
         project_browse_path(Project.current, params[:path], :rev => @node.selected_revision, :anchor => anchor),
-        :title => _('Line {{number}}', :number => line_number),
+        :title => _('Line %{number}', :number => line_number),
         :class => 'block', :id => anchor
     end
 

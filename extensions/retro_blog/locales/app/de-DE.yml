@@ -15,7 +15,7 @@ de-DE:
     "Blog Posts": Blog-Einträge
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "Blog für {{project}}"
+    "Blog for %{project}": "Blog für %{project}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Abbrechen
@@ -101,8 +101,8 @@ de-DE:
     View: Anzeigen
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "{{count}} Kommentare"
+    "%{count} comments": "%{count} Kommentare"
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": "{{user}} am {{date}}"
+    "%{user} on %{date}": "%{user} am %{date}"
 

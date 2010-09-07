@@ -46,7 +46,7 @@ module WikiEngine
     
     # Custom HTML formatter
     def to_html
-      returning to(Formatter) do |html|
+      to(Formatter).tap do |html|
         @code_blocks.each do |placeholder, code|
           html.sub!(placeholder) { code }
         end

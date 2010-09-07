@@ -8,7 +8,7 @@ class StoryProgressUpdate < ActiveRecord::Base
   class << self
     
     def find_or_initialize(created_on, percent_completed)
-      returning find_or_initialize_by_created_on(created_on) do |record|
+      find_or_initialize_by_created_on(created_on).tap do |record|
         record.percent_completed = percent_completed
       end    
     end

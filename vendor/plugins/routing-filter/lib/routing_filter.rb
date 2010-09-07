@@ -31,9 +31,9 @@ ActionController::Routing::RouteSet::NamedRouteCollection.class_eval do
     if match = code.match(%r(^return (.*) if (.*)))
       # returned string must not contain newlines, or we'll spill out of inline code comments in
       # ActionController::Routing::RouteSet::NamedRouteCollection#define_url_helper
-      "returning(#{match[1]}) { |result|" +
+      "(#{match[1]}).tap do |result|" +
       "  ActionController::Routing::Routes.filters.run(:around_generate, *args, &lambda{ result }) " +
-      "} if #{match[2]}"
+      "end if #{match[2]}"
     end
   end
   alias_method_chain :generate_optimisation_block, :filtering
@@ -67,7 +67,7 @@ ActionController::Routing::RouteSet.class_eval do
   # TODO move this ... where?
   alias_method :extract_request_environment_without_host, :extract_request_environment unless method_defined? :extract_request_environment_without_host
   def extract_request_environment(request)
-    returning extract_request_environment_without_host(request) do |env|
+    extract_request_environment_without_host(request).tap do |env|
       env.merge! :host => request.host,
                  :port => request.port,
                  :host_with_port => request.host_with_port,

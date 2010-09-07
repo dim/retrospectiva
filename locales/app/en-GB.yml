@@ -4,7 +4,7 @@ en-GB:
     "1. Click this link": "1. Click this link"
 
     # app/views/notifications/account_validation.text.plain.erb
-    "2. Surf to {{url}} and enter the following activation code": "2. Surf to {{url}} and enter the following activation code"
+    "2. Surf to %{url} and enter the following activation code": "2. Surf to %{url} and enter the following activation code"
 
     # app/controllers/admin/users_controller.rb
     "A notification was sent to the user.": "A notification was sent to the user."
@@ -76,7 +76,7 @@ en-GB:
     "All Projects": "All Projects"
 
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": "All feeds for {{project}}"
+    "All feeds for %{project}": "All feeds for %{project}"
 
     # app/views/rss/_all.html.erb
     "All feeds from all projects": "All feeds from all projects"
@@ -88,7 +88,7 @@ en-GB:
     "All news for all projects": "All news for all projects"
 
     # app/controllers/projects_controller.rb
-    "All news for {{project}}": "All news for {{project}}"
+    "All news for %{project}": "All news for %{project}"
 
     # app/models/status.rb
     "All open": "All open"
@@ -166,7 +166,7 @@ en-GB:
     "Browse source": "Browse source"
 
     # app/helpers/navigation_helper.rb
-    "Browse {{title}}": "Browse {{title}}"
+    "Browse %{title}": "Browse %{title}"
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
@@ -174,14 +174,14 @@ en-GB:
     Cancel: Cancel
 
     # app/models/user.rb
-    "Cannot delete. User '{{username}}' is the last available admin.": "Cannot delete. User '{{username}}' is the last available admin."
+    "Cannot delete. User '%{username}' is the last available admin.": "Cannot delete. User '%{username}' is the last available admin."
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
     Central: Central
 
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Changed by {{author}} - {{time}}": "Changed by {{author}} - {{time}}"
+    "Changed by %{author} - %{time}": "Changed by %{author} - %{time}"
 
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
@@ -192,7 +192,7 @@ en-GB:
     "Changeset index": "Changeset index"
 
     # app/models/changeset.rb
-    "Changeset {{revision}}": "Changeset {{revision}}"
+    "Changeset %{revision}": "Changeset %{revision}"
 
     # app/controllers/changesets_controller.rb
     # app/core_info.rb
@@ -201,7 +201,7 @@ en-GB:
     Changesets: Changesets
 
     # app/models/changeset.rb
-    "Changesets for {{project}}": "Changesets for {{project}}"
+    "Changesets for %{project}": "Changesets for %{project}"
 
     # app/views/admin/projects/_form.html.erb
     "Check this option to make this your default project.": "Check this option to make this your default project."
@@ -237,7 +237,7 @@ en-GB:
     Commit: Commit
 
     # app/helpers/browse_helper.rb
-    "Compare [{{revision_a}}] with [{{revision_b}}]": "Compare [{{revision_a}}] with [{{revision_b}}]"
+    "Compare [%{revision_a}] with [%{revision_b}]": "Compare [%{revision_a}] with [%{revision_b}]"
 
     # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": "Configuration could not be saved"
@@ -290,7 +290,7 @@ en-GB:
     "Create a new user": "Create a new user"
 
     # app/views/tickets/_ticket.html.erb
-    "Created {{period}} ago by {{author}}": "Created {{period}} ago by {{author}}"
+    "Created %{period} ago by %{author}": "Created %{period} ago by %{author}"
 
     # app/helpers/browse_helper.rb
     Current: Current
@@ -499,7 +499,7 @@ en-GB:
     Headers: Headers
 
     # app/views/sessions/logged_in.html.erb
-    "Hi {{user}}!": "Hi {{user}}!"
+    "Hi %{user}!": "Hi %{user}!"
 
     # app/helpers/changesets_helper.rb
     "Hide Quick Diffs": "Hide Quick Diffs"
@@ -556,7 +556,7 @@ en-GB:
     "Leave password field blank, unless you actually want to change your password.": "Leave password field blank, unless you actually want to change your password."
 
     # app/helpers/browse_helper.rb
-    "Line {{number}}": "Line {{number}}"
+    "Line %{number}": "Line %{number}"
 
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
@@ -577,7 +577,7 @@ en-GB:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{name}}": "Logged in as {{name}}"
+    "Logged in as %{name}": "Logged in as %{name}"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": "Logged out"
@@ -635,7 +635,7 @@ en-GB:
     Milestones: Milestones
 
     # app/models/milestone.rb
-    "Milestones for {{project}}": "Milestones for {{project}}"
+    "Milestones for %{project}": "Milestones for %{project}"
 
     # lib/time_interval.rb
     Minutes: Minutes
@@ -743,10 +743,10 @@ en-GB:
     Path: Path
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}."
+    "Path '%{path}' does not exist in revision %{revision}, showing revision %{latest}.": "Path '%{path}' does not exist in revision %{revision}, showing revision %{latest}."
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "Path '{{path}}' does not exist in revision {{revision}}, showing root path."
+    "Path '%{path}' does not exist in revision %{revision}, showing root path.": "Path '%{path}' does not exist in revision %{revision}, showing root path."
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
@@ -873,7 +873,7 @@ en-GB:
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Reported by {{author}} - {{time}}": "Reported by {{author}} - {{time}}"
+    "Reported by %{author} - %{time}": "Reported by %{author} - %{time}"
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
@@ -917,7 +917,7 @@ en-GB:
     Revision: Revision
 
     # app/controllers/browse_controller.rb
-    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "Revision {{revision}} seems not to be valid, showing revision {{latest}}."
+    "Revision %{revision} seems not to be valid, showing revision %{latest}.": "Revision %{revision} seems not to be valid, showing revision %{latest}."
 
     # app/helpers/browse_helper.rb
     Revisions: Revisions
@@ -973,7 +973,7 @@ en-GB:
     "Show already completed milestones": "Show already completed milestones"
 
     # app/helpers/navigation_helper.rb
-    "Show changeset {{revision}}": "Show changeset {{revision}}"
+    "Show changeset %{revision}": "Show changeset %{revision}"
 
     # app/views/browse/_node_info.html.erb
     "Show latest": "Show latest"
@@ -1011,7 +1011,7 @@ en-GB:
     "Stop watching this ticket": "Stop watching this ticket"
 
     # app/controllers/admin/repositories_controller.rb
-    "Success! Path contains a valid repository (latest revision: {{latest}}).": "Success! Path contains a valid repository (latest revision: {{latest}})."
+    "Success! Path contains a valid repository (latest revision: %{latest}).": "Success! Path contains a valid repository (latest revision: %{latest})."
 
     # app/controllers/admin/projects_controller.rb
     "Success! Path is a directory in this repository.": "Success! Path is a directory in this repository."
@@ -1021,7 +1021,7 @@ en-GB:
     Summary: Summary
 
     # app/controllers/admin/repositories_controller.rb
-    "Support for {{system}} is not enabled.": "Support for {{system}} is not enabled."
+    "Support for %{system} is not enabled.": "Support for %{system} is not enabled."
 
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": "Sync callback"
@@ -1064,14 +1064,14 @@ en-GB:
     Ticket: Ticket
 
     # app/models/ticket_change.rb
-    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}"
+    "Ticket #%{id} (%{status}) changed by %{author} - %{summary}": "Ticket #%{id} (%{status}) changed by %{author} - %{summary}"
 
     # app/models/ticket.rb
-    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}"
+    "Ticket #%{id} (%{status}) reported by %{author} - %{summary}": "Ticket #%{id} (%{status}) reported by %{author} - %{summary}"
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Ticket #{{id}}: '{{summary}}'": "Ticket #{{id}}: '{{summary}}'"
+    "Ticket #%{id}: '%{summary}'": "Ticket #%{id}: '%{summary}'"
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": "Ticket change was successfully deleted."
@@ -1109,7 +1109,7 @@ en-GB:
     Tickets: Tickets
 
     # app/models/ticket.rb
-    "Tickets for {{project}}": "Tickets for {{project}}"
+    "Tickets for %{project}": "Tickets for %{project}"
 
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/index.html.erb
@@ -1129,13 +1129,13 @@ en-GB:
     "To complete the registration process you need to verify your email address. To make up this process you have two options": "To complete the registration process you need to verify your email address. To make up this process you have two options"
 
     # app/helpers/admin/setup_helper.rb
-    "Toggle description for setting '{{name}}'": "Toggle description for setting '{{name}}'"
+    "Toggle description for setting '%{name}'": "Toggle description for setting '%{name}'"
 
     # app/views/browse/diff.html.erb
-    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file."
+    "Unable to display the changes (DIFF) between revision '%{source}' and '%{target}' for the selected file.": "Unable to display the changes (DIFF) between revision '%{source}' and '%{target}' for the selected file."
 
     # app/controllers/browse_controller.rb
-    "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}."
+    "Unable to find revision %{revision} for '%{path}', showing revision %{latest}.": "Unable to find revision %{revision} for '%{path}', showing revision %{latest}."
 
     # app/views/tickets/_ticket_info.html.erb
     Unassigned: Unassigned
@@ -1207,7 +1207,7 @@ en-GB:
     "View changes": "View changes"
 
     # app/helpers/admin/ticket_property_values_helper.rb
-    "WARNING: There are currently {{count}} tickets assigned with this property.": "WARNING: There are currently {{count}} tickets assigned with this property."
+    "WARNING: There are currently %{count} tickets assigned with this property.": "WARNING: There are currently %{count} tickets assigned with this property."
 
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
@@ -1252,19 +1252,19 @@ en-GB:
     "You are now watching this ticket.": "You are now watching this ticket."
 
     # app/views/notifications/account_activation_note.text.plain.erb
-    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": "You are receiving this message because the user account you have applied for at {{site}} has been activated."
+    "You are receiving this message because the user account you have applied for at %{site} has been activated.": "You are receiving this message because the user account you have applied for at %{site} has been activated."
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": "You are receiving this message because you are subscribed to receive notifications about"
 
     # app/views/notifications/account_validation.text.plain.erb
-    "You are receiving this message because you have applied for an user account at {{site}}.": "You are receiving this message because you have applied for an user account at {{site}}."
+    "You are receiving this message because you have applied for an user account at %{site}.": "You are receiving this message because you have applied for an user account at %{site}."
 
     # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": "You are receiving this message because you have subscribed to receive notification about changes of"
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}."
+    "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}.": "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}."
 
     # app/helpers/tickets_helper.rb
     "You are watching this ticket": "You are watching this ticket"
@@ -1279,13 +1279,13 @@ en-GB:
     "You may have mistyped the address or the page may have moved.": "You may have mistyped the address or the page may have moved."
 
     # app/controllers/accounts_controller.rb
-    "You need to activate your account within the next {{count}} hours to be able to login.": "You need to activate your account within the next {{count}} hours to be able to login."
+    "You need to activate your account within the next %{count} hours to be able to login.": "You need to activate your account within the next %{count} hours to be able to login."
 
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": "You stopped watching this ticket."
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password."
+    "You will be directed to the '%{my_account}' screen where you will have the option to change your current password.": "You will be directed to the '%{my_account}' screen where you will have the option to change your current password."
 
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": "You will lose all related data as well!"
@@ -1295,42 +1295,42 @@ en-GB:
     "Your registration details": "Your registration details"
 
     # app/views/search/index.html.erb
-    "Your search for '{{term}}' did not match any results.": "Your search for '{{term}}' did not match any results."
+    "Your search for '%{term}' did not match any results.": "Your search for '%{term}' did not match any results."
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     added: added
 
     # app/helpers/tickets_helper.rb
-    "changed from {{old_value}} to {{new_value}}": "changed from {{old_value}} to {{new_value}}"
+    "changed from %{old_value} to %{new_value}": "changed from %{old_value} to %{new_value}"
 
     # app/views/milestones/_milestone.html.erb
     completed: completed
 
     # app/helpers/changesets_helper.rb
-    "copied from {{path}}": "copied from {{path}}"
+    "copied from %{path}": "copied from %{path}"
 
     # app/helpers/format_helper.rb
-    "in {{period}}": "in {{period}}"
+    "in %{period}": "in %{period}"
 
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     max.: max.
 
     # app/helpers/changesets_helper.rb
-    "moved from {{path}}": "moved from {{path}}"
+    "moved from %{path}": "moved from %{path}"
 
     # app/helpers/tickets_helper.rb
-    "reset (from {{value}})": "reset (from {{value}})"
+    "reset (from %{value})": "reset (from %{value})"
 
     # app/helpers/tickets_helper.rb
-    "set to {{value}}": "set to {{value}}"
+    "set to %{value}": "set to %{value}"
 
     # app/views/browse/_node.html.erb
-    "{{count}} file(s)": "{{count}} file(s)"
+    "%{count} file(s)": "%{count} file(s)"
 
     # app/helpers/format_helper.rb
-    "{{period}} ago": "{{period}} ago"
+    "%{period} ago": "%{period} ago"
 
     # app/controllers/admin/ticket_property_values_controller.rb
-    "{{record}} was successfully created.": "{{record}} was successfully created."
+    "%{record} was successfully created.": "%{record} was successfully created."
 

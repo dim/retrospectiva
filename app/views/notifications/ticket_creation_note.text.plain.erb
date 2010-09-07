@@ -2,7 +2,7 @@
 
 <%=_ "You are receiving this message because you are subscribed to receive notifications about" %>:
 
-  <%=_ 'Ticket #{{id}}: \'{{summary}}\'', :id => @ticket.id, :summary => truncate(@ticket.summary, :length => 50) %>
+  <%=_ 'Ticket #%{id}: \'%{summary}\'', :id => @ticket.id, :summary => truncate(@ticket.summary, :length => 50) %>
 
 <%=_ "To access the ticket click this link" %>:
   <%= @ticket.previewable.link %>
@@ -11,6 +11,6 @@
 
 -----------------------------------------------------------------------
 
-  <%=_ "Reported by {{author}} - {{time}}", :author => @ticket.author, :time => @ticket.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
+  <%=_ "Reported by %{author} - %{time}", :author => @ticket.author, :time => @ticket.created_at.strftime(RetroCM[:content][:format][:datetime]) %>
 <%= format_content(@ticket) -%>
 

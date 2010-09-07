@@ -20,9 +20,9 @@
   
   <% content_footer('righted') do -%>
     <% if @wiki_page.number == 1 -%> 
-      <%=_ 'Created on {{date}} by {{author}}', :date => datetime_format(@wiki_page.created_at), :author => h(@wiki_page.author) -%> 
+      <%=_ 'Created on %{date} by %{author}', :date => datetime_format(@wiki_page.created_at), :author => h(@wiki_page.author) -%> 
     <% else -%> 
-      <%=_ 'Updated on {{date}} by {{author}}', :date => datetime_format(@wiki_page.updated_at), :author => h(@wiki_page.author) -%> 
+      <%=_ 'Updated on %{date} by %{author}', :date => datetime_format(@wiki_page.updated_at), :author => h(@wiki_page.author) -%> 
     <% end -%> 
   <% end -%>
 

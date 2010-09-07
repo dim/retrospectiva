@@ -15,10 +15,10 @@ ru-RU:
     "Blog Posts": "Заметки в ежедневник"
 
     # Unknown
-    "Blog Posts for {{project}}": 
+    "Blog Posts for %{project}": 
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "Ежедневник проекта {{project}}"
+    "Blog for %{project}": "Ежедневник проекта %{project}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Отмена
@@ -110,9 +110,9 @@ ru-RU:
     View: Просмотр
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "комментариев: {{count}}"
+    "%{count} comments": "комментариев: %{count}"
 
     # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": 
+    "%{user} on %{date}": 
 

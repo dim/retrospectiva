@@ -25,7 +25,7 @@ class Milestone < ActiveRecord::Base
       project = options[:project] || Project.current
       c.name = 'milestones'
       c.title = _('Milestones')
-      c.description = _('Milestones for {{project}}', :project => project.name)
+      c.description = _('Milestones for %{project}', :project => project.name)
       c.link = c.route(:project_milestones_url, project)
     end
     r.item do |i, milestone, options|

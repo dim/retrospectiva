@@ -10,7 +10,7 @@ module RoutingFilter
     end
         
     def around_generate(*args, &block)
-      returning yield do |result|
+      yield.tap do |result|
         path = result.is_a?(Array) ? result.first : result # In case generate_extras returns an Array         
         if Project.central and path !~ /^#{central_project_expression}\.rss/
           path.sub!(/^#{central_project_expression}(.+)$/, '\1\2')

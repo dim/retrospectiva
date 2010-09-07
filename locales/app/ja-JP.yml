@@ -4,8 +4,8 @@ ja-JP:
     "1. Click this link": "1. このリンクをクリックしてください"
 
     # app/views/notifications/account_validation.text.plain.erb
-    "2. Surf to {{url}} and enter the following activation code": |-
-      2. {{url}}に行き
+    "2. Surf to %{url} and enter the following activation code": |-
+      2. %{url}に行き
       次の有効化コードを入力してください
 
     # app/controllers/admin/users_controller.rb
@@ -78,7 +78,7 @@ ja-JP:
     "All Projects": すべてのプロジェクト
 
     # app/views/rss/_feed.html.erb
-    "All feeds for {{project}}": "{{project}}のすべてのフィード"
+    "All feeds for %{project}": "%{project}のすべてのフィード"
 
     # app/views/rss/_all.html.erb
     "All feeds from all projects": すべてのフィード
@@ -90,7 +90,7 @@ ja-JP:
     "All news for all projects": すべてのニュース
 
     # app/controllers/projects_controller.rb
-    "All news for {{project}}": "{{project}}のすべてのニュース"
+    "All news for %{project}": "%{project}のすべてのニュース"
 
     # app/models/status.rb
     "All open": 未解決のものすべて
@@ -170,7 +170,7 @@ ja-JP:
     "Browse source": ソース閲覧
 
     # app/helpers/navigation_helper.rb
-    "Browse {{title}}": "{{title}}を閲覧"
+    "Browse %{title}": "%{title}を閲覧"
 
     # app/helpers/application_helper.rb
     # app/views/admin/shared/_form_footer.html.erb
@@ -178,14 +178,14 @@ ja-JP:
     Cancel: 中止
 
     # app/models/user.rb
-    "Cannot delete. User '{{username}}' is the last available admin.": "削除で来ません。'{{username}}'ユーザは最後の管理者ユーザです。"
+    "Cannot delete. User '%{username}' is the last available admin.": "削除で来ません。'%{username}'ユーザは最後の管理者ユーザです。"
 
     # app/views/admin/projects/_form.html.erb
     # app/views/admin/projects/index.html.erb
     Central: 主要プロジェクト
 
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Changed by {{author}} - {{time}}": "{{author}}が変更 - {{time}}"
+    "Changed by %{author} - %{time}": "%{author}が変更 - %{time}"
 
     # app/views/browse/_revision.html.erb
     # app/views/changesets/_changeset.html.erb
@@ -196,7 +196,7 @@ ja-JP:
     "Changeset index": 変更群一覧
 
     # app/models/changeset.rb
-    "Changeset {{revision}}": "変更群{{revision}}"
+    "Changeset %{revision}": "変更群%{revision}"
 
     # app/controllers/changesets_controller.rb
     # app/core_info.rb
@@ -205,7 +205,7 @@ ja-JP:
     Changesets: 変更群一覧
 
     # app/models/changeset.rb
-    "Changesets for {{project}}": "{{project}}の変更群"
+    "Changesets for %{project}": "%{project}の変更群"
 
     # app/views/admin/projects/_form.html.erb
     "Check this option to make this your default project.": このプロジェクトをデフォルトプロジェクトとするときはこのオプションをチェックしてください。
@@ -241,7 +241,7 @@ ja-JP:
     Commit: コミット
 
     # app/helpers/browse_helper.rb
-    "Compare [{{revision_a}}] with [{{revision_b}}]": "[{{revision_a}}]と[{{revision_b}}]を比較"
+    "Compare [%{revision_a}] with [%{revision_b}]": "[%{revision_a}]と[%{revision_b}]を比較"
 
     # app/views/admin/setup/index.html.erb
     "Configuration could not be saved": 設定を保存できませんでした
@@ -294,7 +294,7 @@ ja-JP:
     "Create a new user": 新しいユーザの作成
 
     # app/views/tickets/_ticket.html.erb
-    "Created {{period}} ago by {{author}}": "{{author}}が{{period}}前に作成しました"
+    "Created %{period} ago by %{author}": "%{author}が%{period}前に作成しました"
 
     # app/helpers/browse_helper.rb
     Current: 現在
@@ -504,7 +504,7 @@ ja-JP:
     Headers: 見出し
 
     # app/views/sessions/logged_in.html.erb
-    "Hi {{user}}!": "ようこそ{{user}}さん！"
+    "Hi %{user}!": "ようこそ%{user}さん！"
 
     # app/helpers/changesets_helper.rb
     "Hide Quick Diffs": 差分を隠す
@@ -561,7 +561,7 @@ ja-JP:
     "Leave password field blank, unless you actually want to change your password.": パスワードを変更しない場合は何も入力しないでください。
 
     # app/helpers/browse_helper.rb
-    "Line {{number}}": "{{number}}行"
+    "Line %{number}": "%{number}行"
 
     # app/controllers/markup_controller.rb
     # vendor/plugins/wiki_engine/lib/wiki_engine/engines.rb
@@ -582,7 +582,7 @@ ja-JP:
 
     # app/helpers/navigation_helper.rb
     # app/views/sessions/logged_in.html.erb
-    "Logged in as {{name}}": "{{name}}でログイン中"
+    "Logged in as %{name}": "%{name}でログイン中"
 
     # app/views/sessions/destroy.html.erb
     "Logged out": ログアウトしました
@@ -640,7 +640,7 @@ ja-JP:
     Milestones: マイルストーン一覧
 
     # app/models/milestone.rb
-    "Milestones for {{project}}": "{{project}}のマイルストーン一覧"
+    "Milestones for %{project}": "%{project}のマイルストーン一覧"
 
     # lib/time_interval.rb
     Minutes: 分
@@ -749,10 +749,10 @@ ja-JP:
     Path: パス
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing revision {{latest}}.": "パス'{{path}}'は修正{{revision}}に存在しないので修正{{latest}}を表示しています。"
+    "Path '%{path}' does not exist in revision %{revision}, showing revision %{latest}.": "パス'%{path}'は修正%{revision}に存在しないので修正%{latest}を表示しています。"
 
     # app/controllers/browse_controller.rb
-    "Path '{{path}}' does not exist in revision {{revision}}, showing root path.": "パス'{{path}}'は修正{{revision}}に存在しないのでルートパスを表示しています。"
+    "Path '%{path}' does not exist in revision %{revision}, showing root path.": "パス'%{path}'は修正%{revision}に存在しないのでルートパスを表示しています。"
 
     # app/views/admin/groups/_form.html.erb
     # app/views/admin/groups/index.html.erb
@@ -879,7 +879,7 @@ ja-JP:
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Reported by {{author}} - {{time}}": "{{author}}が報告 - {{time}}"
+    "Reported by %{author} - %{time}": "%{author}が報告 - %{time}"
 
     # app/core_info.rb
     # app/views/tickets/_reports.html.erb
@@ -924,7 +924,7 @@ ja-JP:
     Revision: 修正
 
     # app/controllers/browse_controller.rb
-    "Revision {{revision}} seems not to be valid, showing revision {{latest}}.": "修正{{revision}}は正しくないようなので、修正{{latest}}を表示しています。"
+    "Revision %{revision} seems not to be valid, showing revision %{latest}.": "修正%{revision}は正しくないようなので、修正%{latest}を表示しています。"
 
     # app/helpers/browse_helper.rb
     Revisions: 修正一覧
@@ -981,7 +981,7 @@ ja-JP:
     "Show already completed milestones": 完了したマイルストーンを表示
 
     # app/helpers/navigation_helper.rb
-    "Show changeset {{revision}}": "{{revision}}の変更群を表示"
+    "Show changeset %{revision}": "%{revision}の変更群を表示"
 
     # app/views/browse/_node_info.html.erb
     "Show latest": 最新を表示
@@ -1019,7 +1019,7 @@ ja-JP:
     "Stop watching this ticket": このチケットの監視をやめる
 
     # app/controllers/admin/repositories_controller.rb
-    "Success! Path contains a valid repository (latest revision: {{latest}}).": "成功！パスは有効なリポジトリです（最新修正: {{latest}}）。"
+    "Success! Path contains a valid repository (latest revision: %{latest}).": "成功！パスは有効なリポジトリです（最新修正: %{latest}）。"
 
     # app/controllers/admin/projects_controller.rb
     "Success! Path is a directory in this repository.": 成功！パスはこのリポジトリのディレクトリです。
@@ -1030,7 +1030,7 @@ ja-JP:
 
     # Missing
     # app/controllers/admin/repositories_controller.rb
-    "Support for {{system}} is not enabled.": 
+    "Support for %{system} is not enabled.": 
 
     # app/views/admin/repositories/_form.html.erb
     "Sync callback": 同期方法
@@ -1073,14 +1073,14 @@ ja-JP:
     Ticket: チケット
 
     # app/models/ticket_change.rb
-    "Ticket #{{id}} ({{status}}) changed by {{author}} - {{summary}}": "{{author}}がチケット#{{id}}（{{status}}）を変更  - {{summary}}"
+    "Ticket #%{id} (%{status}) changed by %{author} - %{summary}": "%{author}がチケット#%{id}（%{status}）を変更  - %{summary}"
 
     # app/models/ticket.rb
-    "Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}": "{{author}}がチケット#{{id}}（{{status}}）を報告  - {{summary}}"
+    "Ticket #%{id} (%{status}) reported by %{author} - %{summary}": "%{author}がチケット#%{id}（%{status}）を報告  - %{summary}"
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     # app/views/notifications/ticket_update_note.text.plain.erb
-    "Ticket #{{id}}: '{{summary}}'": "チケット#{{id}}: 「{{summary}}」"
+    "Ticket #%{id}: '%{summary}'": "チケット#%{id}: 「%{summary}」"
 
     # app/controllers/tickets_controller.rb
     "Ticket change was successfully deleted.": チケットの変更の削除に成功しました。
@@ -1118,7 +1118,7 @@ ja-JP:
     Tickets: チケット一覧
 
     # app/models/ticket.rb
-    "Tickets for {{project}}": "{{project}}のチケット一覧"
+    "Tickets for %{project}": "%{project}のチケット一覧"
 
     # app/views/admin/users/_core.html.erb
     # app/views/admin/users/index.html.erb
@@ -1140,13 +1140,13 @@ ja-JP:
       このために2つの選択肢があります:
 
     # app/helpers/admin/setup_helper.rb
-    "Toggle description for setting '{{name}}'": "設定'{{name}}'の説明表示を切り替える"
+    "Toggle description for setting '%{name}'": "設定'%{name}'の説明表示を切り替える"
 
     # app/views/browse/diff.html.erb
-    "Unable to display the changes (DIFF) between revision '{{source}}' and '{{target}}' for the selected file.": "選択されたファイルへの修正'{{source}}'と'{{target}}'の間での変更（差分）を表示することができません。"
+    "Unable to display the changes (DIFF) between revision '%{source}' and '%{target}' for the selected file.": "選択されたファイルへの修正'%{source}'と'%{target}'の間での変更（差分）を表示することができません。"
 
     # app/controllers/browse_controller.rb
-    "Unable to find revision {{revision}} for '{{path}}', showing revision {{latest}}.": "修正{{revision}}にパス'/{{path}}'が見つからなかったので修正{{latest}}を表示しています。"
+    "Unable to find revision %{revision} for '%{path}', showing revision %{latest}.": "修正%{revision}にパス'/%{path}'が見つからなかったので修正%{latest}を表示しています。"
 
     # app/views/tickets/_ticket_info.html.erb
     Unassigned: 未割り当て
@@ -1218,7 +1218,7 @@ ja-JP:
     "View changes": 変更の閲覧
 
     # app/helpers/admin/ticket_property_values_helper.rb
-    "WARNING: There are currently {{count}} tickets assigned with this property.": "注意: 現在、{{count}}個のチケットがこのプロパティに関連付けられています。"
+    "WARNING: There are currently %{count} tickets assigned with this property.": "注意: 現在、%{count}個のチケットがこのプロパティに関連付けられています。"
 
     # app/core_info.rb
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
@@ -1263,23 +1263,23 @@ ja-JP:
     "You are now watching this ticket.": このチケットを注目することにしました。
 
     # app/views/notifications/account_activation_note.text.plain.erb
-    "You are receiving this message because the user account you have applied for at {{site}} has been activated.": |-
-      {{site}}で申し込んだユーザアカウントが有効になったので
+    "You are receiving this message because the user account you have applied for at %{site} has been activated.": |-
+      %{site}で申し込んだユーザアカウントが有効になったので
       このメッセージを送っています。
 
     # app/views/notifications/ticket_creation_note.text.plain.erb
     "You are receiving this message because you are subscribed to receive notifications about": 以下の通知を購読したのでこのメッセージを送っています。
 
     # app/views/notifications/account_validation.text.plain.erb
-    "You are receiving this message because you have applied for an user account at {{site}}.": |-
-      {{site}}でユーザアカウントを申し込んだので
+    "You are receiving this message because you have applied for an user account at %{site}.": |-
+      %{site}でユーザアカウントを申し込んだので
       このメッセージを送っています。
 
     # app/views/notifications/ticket_update_note.text.plain.erb
     "You are receiving this message because you have subscribed to receive notification about changes of": この変更の通知を購読したのでこのメッセージを送っています
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You are receiving this message because you have used the '{{forgot_password}}' feature at {{site}}.": "{{site}}で'{{forgot_password}}'機能を使ったのでこのメールを受け取っています。"
+    "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}.": "%{site}で'%{forgot_password}'機能を使ったのでこのメールを受け取っています。"
 
     # app/helpers/tickets_helper.rb
     "You are watching this ticket": このチケットを注目しています。
@@ -1294,13 +1294,13 @@ ja-JP:
     "You may have mistyped the address or the page may have moved.": アドレスを間違えたかページが移動したんだと思います。
 
     # app/controllers/accounts_controller.rb
-    "You need to activate your account within the next {{count}} hours to be able to login.": "ログインするためには{{count}}時間以内にあなたのアカウントを有効化する必要があります。"
+    "You need to activate your account within the next %{count} hours to be able to login.": "ログインするためには%{count}時間以内にあなたのアカウントを有効化する必要があります。"
 
     # app/controllers/tickets_controller.rb
     "You stopped watching this ticket.": このチケットの監視をやめました。
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You will be directed to the '{{my_account}}' screen where you will have the option to change your current password.": "'{{my_account}}'ページに移動します。そこで現在のパスワードを変更できます。"
+    "You will be directed to the '%{my_account}' screen where you will have the option to change your current password.": "'%{my_account}'ページに移動します。そこで現在のパスワードを変更できます。"
 
     # app/views/admin/projects/_project.html.erb
     "You will lose all related data as well!": 関連するデータも失うことになります！
@@ -1310,42 +1310,42 @@ ja-JP:
     "Your registration details": "登録情報の詳細:"
 
     # app/views/search/index.html.erb
-    "Your search for '{{term}}' did not match any results.": "{{term}}での検索に該当する結果はありませんでした。"
+    "Your search for '%{term}' did not match any results.": "%{term}での検索に該当する結果はありませんでした。"
 
     # app/views/tickets/_change.html.erb
     # app/views/tickets/_ticket_intro.html.erb
     added: 追加
 
     # app/helpers/tickets_helper.rb
-    "changed from {{old_value}} to {{new_value}}": "{{old_value}}から{{new_value}}へ変更"
+    "changed from %{old_value} to %{new_value}": "%{old_value}から%{new_value}へ変更"
 
     # app/views/milestones/_milestone.html.erb
     completed: 完了済み
 
     # app/helpers/changesets_helper.rb
-    "copied from {{path}}": "{{path}}から複製"
+    "copied from %{path}": "%{path}から複製"
 
     # app/helpers/format_helper.rb
-    "in {{period}}": "{{period}}以内"
+    "in %{period}": "%{period}以内"
 
     # app/views/tickets/form/_attachment_and_watch_status.html.erb
     max.: 最大
 
     # app/helpers/changesets_helper.rb
-    "moved from {{path}}": "{{path}}から移動"
+    "moved from %{path}": "%{path}から移動"
 
     # app/helpers/tickets_helper.rb
-    "reset (from {{value}})": "解除（以前は{{value}}）"
+    "reset (from %{value})": "解除（以前は%{value}）"
 
     # app/helpers/tickets_helper.rb
-    "set to {{value}}": "{{value}}に設定"
+    "set to %{value}": "%{value}に設定"
 
     # app/views/browse/_node.html.erb
-    "{{count}} file(s)": "{{count}}ファイル"
+    "%{count} file(s)": "%{count}ファイル"
 
     # app/helpers/format_helper.rb
-    "{{period}} ago": "{{period}}前"
+    "%{period} ago": "%{period}前"
 
     # app/controllers/admin/ticket_property_values_controller.rb
-    "{{record}} was successfully created.": "{{record}}の作成に成功しました。"
+    "%{record} was successfully created.": "%{record}の作成に成功しました。"
 

@@ -18,7 +18,7 @@ es-ES:
 
     # Missing
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": 
+    "Blog for %{project}": 
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Cancelar
@@ -120,9 +120,9 @@ es-ES:
 
     # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": 
+    "%{count} comments": 
 
     # Missing
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": 
+    "%{user} on %{date}": 
 

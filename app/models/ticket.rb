@@ -29,12 +29,12 @@ class Ticket < ActiveRecord::Base
       project = options[:project] || Project.current
       c.name = 'tickets'
       c.title = _('Tickets')
-      c.description = _('Tickets for {{project}}', :project => project.name)
+      c.description = _('Tickets for %{project}', :project => project.name)
       c.link = c.route(:project_tickets_url, project)
     end
     r.item do |i, ticket, options|
       project = options[:project] || ticket.project
-      i.title = _('Ticket #{{id}} ({{status}}) reported by {{author}} - {{summary}}', :id => ticket.id, :status => ticket.status.name, :author => ticket.author, :summary => ticket.summary)
+      i.title = _('Ticket #%{id} (%{status}) reported by %{author} - %{summary}', :id => ticket.id, :status => ticket.status.name, :author => ticket.author, :summary => ticket.summary)
       i.description = ticket.content
       i.date = ticket.created_at
       i.link = i.guid = i.route(:project_ticket_url, project, ticket)

@@ -253,7 +253,7 @@ class User < ActiveRecord::Base
         errors.add_to_base _('Public user cannot be deleted.')
       end
       if last_admin?
-        errors.add_to_base _("Cannot delete. User '{{username}}' is the last available admin.", :username => username)
+        errors.add_to_base _("Cannot delete. User '%{username}' is the last available admin.", :username => username)
       end
       if current?
         errors.add_to_base _('You cannot delete your own account.')

@@ -15,10 +15,10 @@ pt-BR:
     "Blog Posts": "Artigos do Blog"
 
     # Unknown
-    "Blog Posts for {{project}}": "Artigos do Blog para {{project}}"
+    "Blog Posts for %{project}": "Artigos do Blog para %{project}"
 
     # extensions/retro_blog/models/blog_post.rb
-    "Blog for {{project}}": "Blog para {{project}}"
+    "Blog for %{project}": "Blog para %{project}"
 
     # extensions/retro_blog/views/blog/edit.html.erb
     Cancel: Cancelar
@@ -110,8 +110,8 @@ pt-BR:
     View: Ver
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{count}} comments": "{{count}} comentários"
+    "%{count} comments": "%{count} comentários"
 
     # extensions/retro_blog/views/blog/_post.html.erb
-    "{{user}} on {{date}}": "{{user}} em {{date}}"
+    "%{user} on %{date}": "%{user} em %{date}"
 

@@ -122,8 +122,9 @@ module ApplicationHelper
 
   # Modification of the built-in encryption 
   # Uses modified version of the hivelogic enkoder (original Copyright (c) 2006, Automatic Corp.)
-  def mail_to(email_address, name = nil, html_options = {})
+  def mail_to(email, name = nil, html_options = {})
     html_options.symbolize_keys!
+    email = email.to_s
     if html_options[:encode] == :enkoder
       html_options.delete(:encode)
       enkode(super)
@@ -145,7 +146,7 @@ module ApplicationHelper
       end
       result = "eval(decodeURIComponent('#{result}'))"
   
-      logic  = random_enkode_logic     
+      logic  = ENKODE_LOGIC.sample     
       result = logic[:rb].call(result)
       result = "kode='#{escape_javascript(result)}';#{logic[:js]}"
       result = "function hl_enkoder(){var kode='#{h(escape_javascript(result))}'.unescapeHTML();var i,c,x;while(eval(kode));};hl_enkoder();"
@@ -172,41 +173,38 @@ module ApplicationHelper
     def token_tag
       protect_against_forgery? ? enkode_token_tag(super) : ''
     end  
-  
-    def random_enkode_logic
-      kodes = [{
-        :rb => lambda {|s| s.reverse },
-        :js => "kode=kode.split('').reverse().join('')"
-      }, {
-        :rb => lambda {|s|
-          result = ''
-          s.each_byte { |b|
-            b += 3
-            b -= 128 if b > 127
-            result << b.chr
-          }
-          result
-        },
-        :js => (
-           "x='';for(i=0;i<kode.length;i++){c=kode.charCodeAt(i)-3;" +
-           "if(c<0)c+=128;x+=String.fromCharCode(c)}kode=x"
-        )
-      }, {
-        :rb => lambda {|s|
-          for i in (0..s.length/2-1)
-            s[i*2],s[i*2+1] = s[i*2+1],s[i*2]
-          end
-          s
-        },
-        :js => (
-           "x='';for(i=0;i<(kode.length-1);i+=2){" +
-           "x+=kode.charAt(i+1)+kode.charAt(i)};" +
-           "kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
-         )
-      }]
-      kodes[rand(kodes.size)]      
-    end
 
+    ENKODE_LOGIC = [{
+      :rb => lambda {|s| s.reverse },
+      :js => "kode=kode.split('').reverse().join('')"
+    }, {
+      :rb => lambda {|s|
+        result = ''
+        s.each_byte { |b|
+          b += 3
+          b -= 128 if b > 127
+          result << b.chr
+        }
+        result
+      },
+      :js => (
+         "x='';for(i=0;i<kode.length;i++){c=kode.charCodeAt(i)-3;" +
+         "if(c<0)c+=128;x+=String.fromCharCode(c)}kode=x"
+      )
+    }, {
+      :rb => lambda {|s|
+        for i in (0..s.length/2-1)
+          s[i*2],s[i*2+1] = s[i*2+1],s[i*2]
+        end
+        s
+      },
+      :js => (
+         "x='';for(i=0;i<(kode.length-1);i+=2){" +
+         "x+=kode.charAt(i+1)+kode.charAt(i)};" +
+         "kode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+       )
+    }].freeze
+  
     def in_place_editor(js_class, field_id, options = {}, js_options = {})
       function =  "new #{js_class}("
       function << "'#{field_id}', "

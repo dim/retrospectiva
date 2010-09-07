@@ -19,7 +19,7 @@ class SecureToken < ActiveRecord::Base
       purge_expired!     
       return nil unless token.to_s.match(/^#{prefix}-(\d+)-(\w+)$/)
       
-      returning find_by_id_and_value($1.to_i, $2) do |record|
+      find_by_id_and_value($1.to_i, $2).tap do |record|
         record.destroy if record
       end
     end
