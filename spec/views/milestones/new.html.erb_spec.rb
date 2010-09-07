@@ -5,10 +5,7 @@ describe "/milestones/new.html.erb" do
   
   before(:each) do
     @project = stub_current_project!
-    @milestone = mock_model Milestone, 
-      :name => 'M1', :info => 'I1', 
-      :started_on => Date.today, :finished_on => nil, :due => nil
-    @milestone.stub!(:new_record?).and_return(true)
+    @milestone = stub_model(Milestone).as_new_record
     assigns[:milestone] = @milestone
     render "/milestones/new.html.erb"
   end

@@ -93,7 +93,7 @@ describe WikiFilesController do
   describe 'GET /new' do
     
     before do
-      @file = mock_model(WikiFile, :new_record? => true)
+      @file = stub_model(WikiFile).as_new_record
       @files_proxy.stub!(:new).and_return(@file)
     end
     
@@ -119,7 +119,7 @@ describe WikiFilesController do
   describe 'POST /create' do
     
     before do
-      @file = mock_model(WikiFile, :new_record? => true, :wiki_title= => nil, :save => true)
+      @file = stub_model(WikiFile, :save => true).as_new_record
       @files_proxy.stub!(:new).and_return(@file)
     end
     

@@ -5,7 +5,7 @@ describe "/sprints/new.html.erb" do
   before(:each) do
     @project = stub_current_project! :name => 'Retrospectiva'   
     @milestone = assigns[:milestone] = stub_model(Milestone, :to_param => '37')
-    @sprint = assigns[:sprint] = stub_model(Sprint, :new_record? => true)
+    @sprint = assigns[:sprint] = stub_model(Sprint).as_new_record
 
     template.stub!(:permitted?).and_return(true)
     template.stub!(:sprint_location).and_return('#')

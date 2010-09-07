@@ -10,7 +10,7 @@ describe "/stories/show.js.rjs" do
     @milestone  = assigns[:milestone] = stub_model(Milestone)    
     @sprint     = assigns[:sprint]    = stub_model(Sprint)
     @story      = assigns[:story] = stub_model(Story, :events => [@event], :title => 'My Story', :created_at => 4.days.ago)    
-    @comment    = assigns[:story_comment] = stub_model(StoryComment, :new_record? => true)
+    @comment    = assigns[:story_comment] = stub_model(StoryComment).as_new_record
 
     template.stub!(:permitted?).and_return(true)
     template.stub!(:stories_path).and_return('/path/to/stories')

@@ -4,7 +4,7 @@ describe "/admin/projects/new.html.erb" do
   
   before(:each) do
     stub_current_user! :admin? => true
-    assigns[:project] = @project = stub_model(Project, :new_record? => true, :short_name_was => 'any', :short_name => 'any')
+    assigns[:project] = @project = stub_model(Project, :short_name_was => 'any', :short_name => 'any').as_new_record
     assigns[:repositories] = [stub_model(Repository::Git, :name => 'R1')]
   end
 

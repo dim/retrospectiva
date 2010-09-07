@@ -4,7 +4,7 @@ describe "/admin/groups/edit.html.erb" do
   
   before(:each) do
     stub_current_user! :admin? => true
-    assigns[:group] = @group = stub_model(Group, :project_names => %w(P1 P2), :new_record? => false)
+    assigns[:group] = @group = stub_model(Group, :project_names => %w(P1 P2))
     assigns[:projects] = [mock_model(Project, :name => 'P1')]
   end
 

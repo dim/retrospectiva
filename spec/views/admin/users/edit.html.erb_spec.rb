@@ -4,7 +4,7 @@ describe "/admin/users/edit.html.erb" do
   
   before(:each) do
     stub_current_user! :admin? => true
-    assigns[:user] = @user = stub_model(User, :new_record? => false, :groups => [stub_model(Group)])
+    assigns[:user] = @user = stub_model(User, :groups => [stub_model(Group)])
     assigns[:groups] = [stub_model(Group, :name => 'G1')]
   end
 

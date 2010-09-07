@@ -4,7 +4,7 @@ describe "/admin/users/new.html.erb" do
   
   before(:each) do
     stub_current_user! :admin? => true
-    assigns[:user] = @user = stub_model(User, :new_record? => true, :groups => [])
+    assigns[:user] = @user = stub_model(User, :groups => []).as_new_record
     assigns[:groups] = [mock_model(Group, :name => 'G1')]
   end
 
