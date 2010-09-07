@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/goals/show.js.rjs" do
   
   before(:each) do
-    @project = mock_current_project! :name => 'Retrospectiva'   
+    @project = stub_current_project! :name => 'Retrospectiva'   
     assigns[:milestone] = stub_model(Milestone)
     assigns[:goal] = stub_model(Goal, :sprint => stub_model(Sprint, :title => 'Sprint 1'))
     

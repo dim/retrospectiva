@@ -4,18 +4,18 @@ describe TicketsController do
   it_should_behave_like EveryProjectAreaController
 
   before do      
-    Status.stub!(:default).and_return(mock_model(Status))
-    Priority.stub!(:default).and_return(mock_model(Priority))
+    Status.stub!(:default).and_return(stub_model(Status))
+    Priority.stub!(:default).and_return(stub_model(Priority))
   end
 
   before do
     @project = permit_access_with_current_project! :name => 'Any'
-    @tickets = [mock_model(Ticket)]
+    @tickets = [stub_model(Ticket)]
     @tickets_proxy = @project.stub_association!(:tickets)
     @tickets_proxy.stub!(:count)
     @tickets_proxy.stub!(:maximum)
     @changes_proxy = @project.stub_association!(:ticket_changes)
-    @user = mock_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
+    @user = stub_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
   end
 
   describe "handling GET /tickets" do

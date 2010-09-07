@@ -6,7 +6,7 @@ describe BrowseHelper do
   before do 
     @project = projects(:retro)
     Project.stub!(:current).and_return(@project)
-    @user = mock_current_user! :has_access? => true
+    @user = stub_current_user! :has_access? => true
     @path = ['folder', 'file.rb']
     @params = { :rev => 'R123', :path => @path }
     helper.extend ApplicationHelper

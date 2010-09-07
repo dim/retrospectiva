@@ -5,7 +5,7 @@ describe "/changesets/index.html.erb" do
   before do 
     template.stub!(:auto_discover_feed)
 
-    @project = mock_current_project!    
+    @project = stub_current_project!    
     @user = mock_model(User, :email => 'me@home', :name => 'DD')
     
     @changesets = [

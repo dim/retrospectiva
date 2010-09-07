@@ -3,9 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/index.html.erb" do
   
   before(:each) do
-    @project = mock_current_project!        
+    @project = stub_current_project!        
 
-    @user_a  = mock_current_user!
+    @user_a  = stub_current_user!
     @user_b  = stub_model(User)
     
     @stories   = assigns[:stories]   = { @user_a => [ stub_model(Story), stub_model(Story) ], @user_b => stub_model(Story) }    

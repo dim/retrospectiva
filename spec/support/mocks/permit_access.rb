@@ -8,6 +8,6 @@ ActionController::TestCase.class_eval do
   def permit_access_with_current_project!(methods = {})
     permit_access!
     @controller.stub!(:find_project).and_return(true)
-    mock_current_project! methods
+    stub_current_project! methods
   end
 end

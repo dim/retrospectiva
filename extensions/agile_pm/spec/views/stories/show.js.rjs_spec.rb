@@ -5,8 +5,8 @@ describe "/stories/show.js.rjs" do
   before(:each) do
     @event   = stub_model(StoryComment, :created_at => 3.days.ago)
 
-    @project    = mock_current_project!        
-    @user       = mock_current_user! :name => 'Doesnt Matter', :email => 'test@localhost.localdomain'        
+    @project    = stub_current_project!        
+    @user       = stub_current_user! :name => 'Doesnt Matter', :email => 'test@localhost.localdomain'        
     @milestone  = assigns[:milestone] = stub_model(Milestone)    
     @sprint     = assigns[:sprint]    = stub_model(Sprint)
     @story      = assigns[:story] = stub_model(Story, :events => [@event], :title => 'My Story', :created_at => 4.days.ago)    

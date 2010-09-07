@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/tickets/search.js.rjs" do
   
   before(:each) do
-    @user = mock_current_user! :permitted? => false
-    @project = mock_current_project! :ticket_property_types => []
+    @user = stub_current_user! :permitted? => false
+    @project = stub_current_project! :ticket_property_types => []
     @status = stub_model Status, 
       :state => Status.state(1), 
       :statement => Status.statement(1)

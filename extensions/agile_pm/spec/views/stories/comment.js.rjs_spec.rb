@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/comment.js.rjs" do
   
   before(:each) do
-    @user    = mock_current_user! :name => 'Doesnt Matter', :email => 'test@localhost.localdomain'   
-    @project = mock_current_project! :name => 'Retrospectiva'   
+    @user    = stub_current_user! :name => 'Doesnt Matter', :email => 'test@localhost.localdomain'   
+    @project = stub_current_project! :name => 'Retrospectiva'   
     @sprint = assigns[:sprint] = stub_model(Sprint)
     @milestone = assigns[:milestone] = stub_model(Milestone)
 

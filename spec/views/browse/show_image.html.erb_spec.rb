@@ -4,8 +4,8 @@ describe "/browse/show_image.html.erb" do
   include Spec::RepositoryInclude
 
   before do 
-    @project = mock_current_project!    
-    @user = mock_current_user! :permitted? => false
+    @project = stub_current_project!    
+    @user = stub_current_user! :permitted? => false
     assigns[:node] = @node = mock_image_node
     template.stub!(:browseable_path).and_return('<h2>PATH_BREADCRUMBS</h2>')
   end

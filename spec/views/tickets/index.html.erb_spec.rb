@@ -4,8 +4,8 @@ describe "/tickets/index.html.erb" do
   
   before(:each) do
     template.stub!(:auto_discover_feed)
-    @user = mock_current_user! :permitted? => false, :public? => false
-    @project = mock_current_project! :ticket_property_types => []
+    @user = stub_current_user! :permitted? => false, :public? => false
+    @project = stub_current_project! :ticket_property_types => []
     @status = mock_model Status, 
       :state => mock_model(Status::State, :group => 'All Open', :type => 'Open'), 
       :statement => mock_model(Status::Statement, :type => 'Positive'), 

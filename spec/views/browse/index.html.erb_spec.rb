@@ -4,8 +4,8 @@ describe "/browse/index.html.erb" do
   include Spec::RepositoryInclude
 
   before do 
-    @project = mock_current_project! :relativize_path => '', :absolutize_path => '' 
-    @user = mock_current_user! :permitted? => false, :has_access? => true
+    @project = stub_current_project! :relativize_path => '', :absolutize_path => '' 
+    @user = stub_current_user! :permitted? => false, :has_access? => true
     assigns[:node] = @node = mock_text_node
     template.stub!(:browseable_path).and_return('<h2>PATH_BREADCRUMBS</h2>')
     template.stub!(:link_to_revisions).and_return('<a>REVISIONS_LINK</a>')

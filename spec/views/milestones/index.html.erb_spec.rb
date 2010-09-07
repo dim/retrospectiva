@@ -7,8 +7,8 @@ describe "/milestones/index.html.erb" do
     template.stub!(:auto_discover_feed)
     template.stub!(:progress_bars).and_return('[PROGRESS BARS]')
     template.stub!(:ticket_stats_and_links).and_return('[TICKET STATS + LINKS]')
-    @user = mock_current_user! :permitted? => false
-    @project = mock_current_project!
+    @user = stub_current_user! :permitted? => false
+    @project = stub_current_project!
     @milestone = mock_model Milestone, :due => nil, :completed? => false, :name => 'M1', :info => 'I1',
       :progress_percentages => { :resolved => 60 }
     milestone_2 = mock_model(Milestone)

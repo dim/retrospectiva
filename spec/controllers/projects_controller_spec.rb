@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ProjectsController do
 
   before do 
-    @user = mock_current_user! :name => 'Someone'
+    @user = stub_current_user! :name => 'Someone'
   end
   
   describe 'loading active projects' do

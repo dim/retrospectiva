@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/no_sprints.html.erb" do
   
   before(:each) do
-    @project = mock_current_project!    
+    @project = stub_current_project!    
     template.stub!(:permitted?).and_return(true)
   end
 

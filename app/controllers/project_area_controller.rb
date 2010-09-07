@@ -37,7 +37,8 @@ class ProjectAreaController < ApplicationController
   protected
     
     def fresh_when(options = {})
-      options[:etag] = [User.current, Project.current, flash] + Array(options[:etag])
+      options[:etag] = [User.current, Project.current, flash] + Array.wrap(options[:etag])
+      options[:last_modified] = ([User.current, Project.current].map(&:updated_at) + Array.wrap(options[:last_modified])).compact.max
       super      
     end    
   

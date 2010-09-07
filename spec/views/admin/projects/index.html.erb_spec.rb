@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe "/admin/projects/index.html.erb" do
   
   before(:each) do
-    mock_current_user! :admin? => true
+    stub_current_user! :admin? => true
     @project = stub_model(Project, :name => 'P1', :short_name => 'any')
     project_2 = stub_model(Project)
 

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe "/admin/users/_form.html.erb" do
   
   before(:each) do
-    mock_current_user! :admin? => true
+    stub_current_user! :admin? => true
     assigns[:user] = @user = stub_model(User)
     @group = stub_model(Group, :name => 'G1')
     assigns[:groups] = [@group]

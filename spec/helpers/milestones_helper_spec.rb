@@ -11,7 +11,7 @@ describe MilestonesHelper do
   describe 'ticket stats and links' do
     
     before do
-      @project = mock_current_project! :to_param => 'retro'
+      @project = stub_current_project! :to_param => 'retro'
       @milestone = mock_model Milestone,      
         :id => '1',
         :ticket_counts => { 'open' => 10, 'in_progress' => 0, 'resolved' => 90 }.with_indifferent_access
@@ -30,7 +30,7 @@ describe MilestonesHelper do
     
     before do
       helper.stub!(:image_spacer).and_return('I')
-      @project = mock_current_project!
+      @project = stub_current_project!
       @milestone = mock_model Milestone, 
         :progress_percentages => { 'open' => 80, 'in_progress' => 20, 'resolved' => 0 }.with_indifferent_access
     end

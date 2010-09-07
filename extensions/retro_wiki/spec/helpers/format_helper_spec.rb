@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FormatHelper do
   before do
-    @project = mock_current_project! :existing_wiki_page_titles => ['Wiki'], :existing_revisions => []
-    @user = mock_current_user! :permitted? => true
+    @project = stub_current_project! :existing_wiki_page_titles => ['Wiki'], :existing_revisions => []
+    @user = stub_current_user! :permitted? => true
     helper.stub!(:permitted?).and_return(true)
   end
 

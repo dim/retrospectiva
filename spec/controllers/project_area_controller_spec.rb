@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ProjectAreaController do
 
   before do 
-    @user = mock_current_user! :admin? => true, :name => 'Agent'
-    @project = mock_current_project! :enabled_modules => [], :name => 'Retro'
+    @user = stub_current_user! :admin? => true, :name => 'Agent'
+    @project = stub_current_project! :enabled_modules => [], :name => 'Retro'
     @item = mock(RetroAM::MenuMap::Item, :name => 'Item', :active? => true)       
     RetroAM.menu_items.stub!(:find).and_return(@item)    
   end
@@ -89,7 +89,7 @@ describe 'real-world behaviour' do
   controller_name :milestones
     
   before do
-    @user = mock_current_user! :name => 'Public', :public? => true, :admin? => false, :permitted? => false
+    @user = stub_current_user! :name => 'Public', :public? => true, :admin? => false, :permitted? => false
     @project = stub_model Project,
       :name => 'Retro', :short_name => 'retro',
       :enabled_modules => ['milestones']

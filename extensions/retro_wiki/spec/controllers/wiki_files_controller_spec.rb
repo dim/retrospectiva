@@ -5,7 +5,7 @@ describe WikiFilesController do
 
   before do
     @project = permit_access_with_current_project! :name => 'Retro', :wiki_title => 'Retro'
-    @user = mock_current_user! :permitted? => true, :projects => [@project]
+    @user = stub_current_user! :permitted? => true, :projects => [@project]
     @files_proxy = @project.stub_association!(:wiki_files)
     @files_proxy.stub!(:count).and_return(5)
     @files_proxy.stub!(:maximum)

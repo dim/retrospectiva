@@ -5,7 +5,7 @@ describe ApplicationController do
   describe 'permission checks' do
     
     before do
-      @user = mock_current_user! :public? => true, :permitted => true    
+      @user = stub_current_user! :public? => true, :permitted => true    
     end
 
     it 'should forward checks currently logged-in user' do
@@ -252,7 +252,7 @@ describe 'Caching user attributes' do
     @tickets.stub!(:maximum)
 
     @project = permit_access_with_current_project! :name => 'Any', :tickets => @tickets
-    @user = mock_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
+    @user = stub_current_user! :public? => false, :name => 'Agent', :email => 'agent@mail.com' 
   end
 
   describe 'storing' do
@@ -331,7 +331,7 @@ describe 'Back-to path storage' do
   before do
     permit_access_with_current_project!
     controller.stub!(:load_channels).and_return([])
-    @user = mock_current_user! :name => 'Doesnt Matter' 
+    @user = stub_current_user! :name => 'Doesnt Matter' 
   end       
   
   def do_get

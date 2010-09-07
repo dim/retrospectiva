@@ -7,7 +7,7 @@ describe "/changesets/diff.html.erb" do
     @project = stub_model Project, :repository => @repository, :existing_revisions => ['R5', 'R15'], :to_param => 'retro', :root_path => 'retro'
     Project.stub!(:current).and_return(@project)
     
-    @user = mock_current_user! :permitted? => true, :has_access? => true
+    @user = stub_current_user! :permitted? => true, :has_access? => true
     @change = mock_model Change, 
       :name => 'M', :path => '/retro/modified.rb', :revision => 'R10', :previous_revision => 'R5', :diffable? => true,
       :unified_diff? => true,

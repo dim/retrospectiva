@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/goals/edit.html.erb" do
   
   before(:each) do
-    @project = mock_current_project! :name => 'Retrospectiva'   
+    @project = stub_current_project! :name => 'Retrospectiva'   
     @milestone = assigns[:milestone] = stub_model(Milestone)
     @goal = assigns[:goal] = stub_model(Goal, :sprint => stub_model(Sprint, :title => 'Sprint 1'))
     assigns[:sprints] = [stub_model(Sprint)]

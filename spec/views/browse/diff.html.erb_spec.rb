@@ -5,8 +5,8 @@ describe "/browse/diff.html.erb" do
   
   before do 
     @repository = stub_model(Repository::Subversion)
-    @project = mock_current_project! :repository => @repository
-    @user = mock_current_user! :permitted? => false
+    @project = stub_current_project! :repository => @repository
+    @user = stub_current_user! :permitted? => false
     assigns[:node] = @node = mock_text_node
     template.stub!(:browseable_path).and_return('<h2>PATH_BREADCRUMBS</h2>')
     template.stub!(:link_to_browse).and_return('<a>BROWSE_LINK</a>')

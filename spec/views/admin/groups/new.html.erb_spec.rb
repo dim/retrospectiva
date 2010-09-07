@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe "/admin/groups/new.html.erb" do
   
   before(:each) do
-    mock_current_user! :admin? => true
+    stub_current_user! :admin? => true
     assigns[:group] = @group = stub_model(Group, :project_names => %w(P1 P2), :new_record? => true)
     assigns[:projects] = [stub_model(Project, :name => 'G1')]
   end

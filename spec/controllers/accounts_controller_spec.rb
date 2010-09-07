@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe AccountsController do
 
   before do
-    @user = mock_current_user!
+    @user = stub_current_user!
     @project = permit_access_with_current_project!
     @new = mock_model(User)
     User.stub!(:new).and_return(@new)

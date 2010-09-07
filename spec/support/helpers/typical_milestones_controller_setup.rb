@@ -14,7 +14,7 @@ module Spec::TypicalMilestonesControllerSetup
       @projects.stub!(:active).and_return(@projects)
       @projects.stub!(:find).and_return(@project)
 
-      @user = mock_current_user! :projects => @projects,
+      @user = stub_current_user! :projects => @projects,
         :name => 'Public', :public? => true, :admin? => false, :permitted? => true
       
       Project.stub!(:find_by_short_name!).and_return(@project) 

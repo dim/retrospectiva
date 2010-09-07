@@ -4,8 +4,8 @@ describe "/browse/revisions.html.erb" do
   include Spec::RepositoryInclude
   
   before do 
-    @project = mock_current_project! :relativize_path => '', :absolutize_path => ''   
-    @user = mock_current_user! :permitted? => false, :has_access? => true
+    @project = stub_current_project! :relativize_path => '', :absolutize_path => ''   
+    @user = stub_current_user! :permitted? => false, :has_access? => true
     assigns[:node] = @node = mock_text_node
     assigns[:revisions] = @revisions = [
       mock_model(Changeset,

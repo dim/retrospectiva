@@ -5,7 +5,7 @@ describe SearchController do
 
   before do
     @project = permit_access_with_current_project! :name => 'Retrospectiva'
-    @user = mock_current_user! :has_access? => true
+    @user = stub_current_user! :has_access? => true
   end
 
   describe 'GET /index' do    

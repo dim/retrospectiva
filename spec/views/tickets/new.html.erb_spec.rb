@@ -3,8 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/tickets/new.html.erb" do
   
   before(:each) do
-    @user = mock_current_user! :permitted? => false, :public? => false
-    @project = mock_current_project!
+    @user = stub_current_user! :permitted? => false, :public? => false
+    @project = stub_current_project!
     @project.stub_association!(:users, :with_permission => [])
     @milestones = @project.stub_association!(:milestones, :active_on => [])
     @milestones.stub!(:in_default_order).and_return(@milestones)

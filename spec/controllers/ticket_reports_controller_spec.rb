@@ -5,7 +5,7 @@ describe TicketReportsController do
 
   before do
     @project = permit_access_with_current_project! :name => 'Retrospectiva'
-    @user = mock_current_user! :has_access? => true
+    @user = stub_current_user! :has_access? => true
     @reports_proxy = []
     @project.stub!(:ticket_reports).and_return(@reports_proxy)
   end

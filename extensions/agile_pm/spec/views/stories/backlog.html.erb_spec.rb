@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/stories/backlog.html.erb" do
   
   before(:each) do
-    @project = mock_current_project!        
+    @project = stub_current_project!        
 
     @stories = [stub_model(Story), stub_model(Story), stub_model(Story)]
     @stories.stub!(:active_count).and_return(1)

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe "/admin/repositories/new.html.erb" do
   
   before(:each) do
-    mock_current_user! :admin? => true
+    stub_current_user! :admin? => true
     assigns[:repository] = @repository = mock_model(Repository::Subversion, 
       :name => 'R1', :kind => 'Subversion', :path => '/home/me/repo', :sync_callback => nil)
   end

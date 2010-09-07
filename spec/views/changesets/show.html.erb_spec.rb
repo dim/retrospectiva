@@ -4,7 +4,7 @@ describe "/changesets/show.html.erb" do
 
   before do 
     @repository = stub_model(Repository::Subversion)
-    @project = mock_current_project! :repository => @repository, :existing_revisions => ['R5', 'R10', 'R15']
+    @project = stub_current_project! :repository => @repository, :existing_revisions => ['R5', 'R10', 'R15']
     
     @project.stub!(:relativize_path).with('added.rb').and_return('added.rb')
     @project.stub!(:relativize_path).with('modified.rb').and_return('modified.rb')
@@ -15,7 +15,7 @@ describe "/changesets/show.html.erb" do
     @project.stub!(:relativize_path).with('/retro/moved_from.rb').and_return('moved_from.rb')
     @project.stub!(:relativize_path).with('/retro/moved_to.rb').and_return('moved_to.rb')
     @project.stub!(:relativize_path).with('/retro/added.rb').and_return('added.rb')      
-    @user = mock_current_user! :permitted? => true, :has_access? => true
+    @user = stub_current_user! :permitted? => true, :has_access? => true
 
     @c1 = mock_model Change, 
       :name => 'M', :path => '/retro/modified.rb', :revision => 'R10', :diffable? => true,

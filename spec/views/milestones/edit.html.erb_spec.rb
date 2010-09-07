@@ -4,7 +4,7 @@ describe "/milestones/edit.html.erb" do
   include MilestonesHelper
   
   before do
-    @project = mock_current_project!
+    @project = stub_current_project!
     @milestone = mock_model Milestone, 
       :name => 'M1', :info => 'I1', 
       :started_on => Date.today, :finished_on => nil, :due => nil

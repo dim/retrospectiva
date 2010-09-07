@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FormatHelper do
   before do
-    @project = mock_current_project!
-    @user = mock_current_user!
+    @project = stub_current_project!
+    @user = stub_current_user!
   end
   
   describe 'formatting internal links' do

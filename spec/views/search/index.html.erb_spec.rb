@@ -3,8 +3,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 describe "/search/index.html.erb" do
   
   before do 
-    @project = mock_current_project! :name => 'Retrospectiva'
-    @user = mock_current_user! :has_access? => true
+    @project = stub_current_project! :name => 'Retrospectiva'
+    @user = stub_current_user! :has_access? => true
     template.stub!(:channel_checkboxes).and_return('[CHECKBOXES]')
     assigns[:results] = []
   end

@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../../spec_helper')
 describe "/admin/users/search.js.rjs" do
   
   before(:each) do
-    mock_current_user! :admin? => true
+    stub_current_user! :admin? => true
     @user = stub_model(User, :groups => [stub_model(Group)])
     user_2 = stub_model(User)
 
