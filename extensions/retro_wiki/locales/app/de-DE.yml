@@ -89,6 +89,10 @@ de-DE:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: Speichern
 
+    # extensions/retro_wiki/views/wiki/edit.html.erb
+    # extensions/retro_wiki/lib/wiki_controller.rb
+    "Save and continue":
+
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": "Aktuelle anzeigen"
 

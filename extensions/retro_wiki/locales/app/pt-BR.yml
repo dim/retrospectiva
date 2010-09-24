@@ -92,6 +92,10 @@ pt-BR:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: Salvar
 
+    # extensions/retro_wiki/views/wiki/edit.html.erb
+    # extensions/retro_wiki/lib/wiki_controller.rb
+    "Save and continue":
+
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": "Exibir atual"
 
@@ -146,7 +150,7 @@ pt-BR:
     "Wiki Pages": "Páginas Wiki"
 
     # Unknown
-    "Wiki Pages for %{project}": 
+    "Wiki Pages for %{project}":
 
     # extensions/retro_wiki/models/wiki_page.rb
     "Wiki for %{project}": "Wiki para %{project}"

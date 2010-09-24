@@ -92,6 +92,10 @@ ja-JP:
     # extensions/retro_wiki/views/wiki/edit.html.erb
     Save: 保存
 
+    # extensions/retro_wiki/views/wiki/edit.html.erb
+    # extensions/retro_wiki/lib/wiki_controller.rb
+    "Save and continue":
+
     # extensions/retro_wiki/lib/wiki_helper.rb
     "Show current": 最新版を表示
 
