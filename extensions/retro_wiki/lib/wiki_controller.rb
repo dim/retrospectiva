@@ -4,7 +4,7 @@
 #++
 class WikiController < ProjectAreaController
   retrospectiva_extension('retro_wiki')
-  
+
   menu_item :wiki do |i|
     i.label = N_('Wiki')
     i.rank = 50
@@ -22,14 +22,14 @@ class WikiController < ProjectAreaController
 
   before_filter :check_freshness_of_index, :only => :index
   before_filter :paginate_pages, :only => [:index]
-  
+
   before_filter :find_page_or_redirect, :only => :show
   before_filter :find_version, :only => :show
   before_filter :check_freshness_of_page, :only => :show
-  
+
   before_filter :find_page!, :only => [:rename, :update_title, :destroy]
   before_filter :find_or_build_page, :only => [:edit, :update]
-  
+
   def index
     respond_to do |format|
       format.html
@@ -37,20 +37,20 @@ class WikiController < ProjectAreaController
       format.xml  { render :xml => @pages.to_xml }
     end
   end
-  
+
   def show
     respond_to do |format|
       format.html
       format.xml  { render :xml => @wiki_page.to_xml(:root => 'wiki_page') }
-    end  
+    end
   end
-  
+
   def edit
     version = @wiki_page.find_version(params[:version])
     @wiki_page.content = version.content if version
     @wiki_page.author = cached_user_attribute(:name, 'Anonymous')
   end
-  
+
   def update
     respond_to do |format|
       if @wiki_page.update_attributes(params[:wiki_page])
@@ -58,8 +58,16 @@ class WikiController < ProjectAreaController
            _('Page was successfully created.') :
            _('Page was successfully updated.')
         cache_user_attributes!(:name => @wiki_page.author)
-        
-        format.html { redirect_to [Project.current, @wiki_page] }
+
+        continue = (params[:commit] == _('Save and continue'))
+
+        format.html {
+          if continue
+            render :action => "edit"
+          else
+            redirect_to [Project.current, @wiki_page]
+          end
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -67,7 +75,7 @@ class WikiController < ProjectAreaController
       end
     end
   end
-  
+
   def rename
   end
 
@@ -79,13 +87,13 @@ class WikiController < ProjectAreaController
         flash[:notice] = _('Page was successfully updated.')
         format.html { redirect_to [Project.current, @wiki_page] }
         format.xml  { head :ok }
-      else        
+      else
         format.html { render :action => "rename" }
         format.xml  { render :xml => @wiki_page.errors, :status => :unprocessable_entity }
       end
     end
   end
-  
+
   def destroy
     @wiki_page.destroy
 
@@ -94,7 +102,7 @@ class WikiController < ProjectAreaController
       format.xml  { head :ok }
     end
   end
-  
+
   protected
 
     def check_freshness_of_index
@@ -102,9 +110,9 @@ class WikiController < ProjectAreaController
     end
 
     def paginate_pages
-      @pages = Project.current.wiki_pages.paginate options_for_paginate      
+      @pages = Project.current.wiki_pages.paginate options_for_paginate
     end
-  
+
     def find_page_or_redirect
       @wiki_page = Project.current.wiki_pages.find_by_title params[:id], :include => [:versions]
       if @wiki_page
@@ -129,18 +137,19 @@ class WikiController < ProjectAreaController
     end
 
     def find_or_build_page
-      @wiki_page = Project.current.wiki_pages.find_or_build(params[:id])     
+      @wiki_page = Project.current.wiki_pages.find_or_build(params[:id])
     end
 
     def options_for_paginate
-      { :page => ( request.format.rss? ? 1 : params[:page] ), 
+      { :page => ( request.format.rss? ? 1 : params[:page] ),
         :per_page => ( request.format.rss? ? 10 : nil ),
         :total_entries => ( request.format.rss? ? 10 : nil ),
         :order => pagination_order }
     end
-        
+
     def pagination_order
       request.format.rss? || params[:order] == 'recent' ? 'wiki_pages.updated_at DESC' : 'wiki_pages.title'
     end
 
 end
+
