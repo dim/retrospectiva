@@ -5,7 +5,7 @@ class AddTimestampsToProjectsAndUsers < ActiveRecord::Migration
     add_column :users, :updated_at, :timestamp
     
     rows = select_all %(
-      SELECT projects.id, MIN(LEAST(tickets.created_at, milestones.created_at)) AS created_at 
+      SELECT projects.id, MIN(tickets.created_at, milestones.created_at) AS created_at 
       FROM projects 
       INNER JOIN tickets ON tickets.project_id = projects.id    
       INNER JOIN milestones ON milestones.project_id = projects.id
