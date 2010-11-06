@@ -1,6 +1,6 @@
 module Retrospectiva
   module ExtensionManager
-    DependenciesExtension = lambda do
+    DependenciesExtension = Proc.new do
 
       def require_or_load_with_extensions(file_name, const_path = nil)
         loaded = require_or_load_without_extensions(file_name, const_path)
