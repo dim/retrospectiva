@@ -1,5 +1,5 @@
 <%= render :partial => 'header' %>
-    
+
 <div class="retro-wiki">
 
   <div class="page-title">
@@ -12,22 +12,23 @@
     <fieldset>
       <%= f.label_tag _('Title') + ':' %>
       <%=h @wiki_page.title %>
-    </fieldset>  
+    </fieldset>
 
     <fieldset>
       <%= f.label :author, _('Author') + ':' %>
       <%= f.text_field :author, :disabled => !User.current.public? %>
-    </fieldset>  
+    </fieldset>
 
     <fieldset>
       <%= f.label :content, _('Content') + ':' %>
       <%= markup_area :wiki_page, :content %>
-    </fieldset>  
-      
+    </fieldset>
+
     <fieldset>
-      <%= f.submit _('Save') %> | <%= link_to_function _('Cancel'), 'history.back()' %>
+      <%= f.submit _('Save') %> | <%= f.submit _('Save and continue') %> | <%= link_to_function _('Cancel'), 'history.back()' %>
     </fieldset>
 
   <% end -%>
 
 </div>
+
