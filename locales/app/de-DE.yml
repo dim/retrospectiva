@@ -1264,7 +1264,7 @@ de-DE:
     "You are receiving this message because you have subscribed to receive notification about changes of": "Sie bekommen diese Nachricht, weil Benachrichtigungen aktiviert sind für"
 
     # app/views/notifications/password_reset_instructions.text.plain.erb
-    "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}.": "Sie bekommen diese Nachricht, weil Sie die '%{forget_password}' Funktion auf %{site} benutzt haben."
+    "You are receiving this message because you have used the '%{forgot_password}' feature at %{site}.": "Sie bekommen diese Nachricht, weil Sie die '%{forgot_password}' Funktion auf %{site} benutzt haben."
 
     # app/helpers/tickets_helper.rb
     "You are watching this ticket": "Dieses Ticket wird von Ihnen beobachtet."
